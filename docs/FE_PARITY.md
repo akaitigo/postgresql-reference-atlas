@@ -12,7 +12,7 @@ Authority denominatorの参照はFE commit `841ec2fa399606a10305021a8bcd396713b8
 
 Skill Evalの参照はFE commit `8a9e34a89a55cc53702032783c06ede7246a286f`である。PostgreSQL側は8 Outcome × 14 Surfaceを全56 Target state、実Evidence、Authority、Variant、共有Reference Systemのquery plan/WAL/18.6 runtimeへ接続し、mutation authorization、人手Authority、stale relock、曖昧・未知Queryを停止境界として検証する。112 Cellのcontract passはTargetまたはSubject completionへ算入しない。
 
-Reference System/Scenario Proofの参照はFE commit `f2e4c4b19156f8e993f48cdcbce23679ad881924`である。PostgreSQL側は統合10 Scenarioと29 Behavior × 10 Scenarioの専用Proofを分離する。各rowはserver/client/version/runtime identity、SQL/plan/WAL/log/metricを観測またはgapとして固定する。Surface × Scenarioの全Variantを専用実server/clientでretry 0実行し、専用Oracle、Source/Harness digest、同一実行のArtifactが揃う場合だけGapを閉じる。統合成功や別Artifact metadataはBehavior固有Closureへ流用しない。FEの絶対件数は転用しない。
+Reference System/Scenario Proofの参照はFE commit `f2e4c4b19156f8e993f48cdcbce23679ad881924`である。Closure PlanはFE commit `8329cb3c09e034b36b8cbe35021f7dd7b52d4140`、原子的Evidence保存はFE commit `7175de4`を参照する。PostgreSQL側は統合10 Scenarioと29 Behavior × 10 Scenarioの専用Proofを分離する。Surface × Scenarioの全Variantを専用実server/clientでretry 0実行し、専用Oracle、Source/Harness digest、同一実行のArtifactが揃う場合だけGapを閉じる。統合成功や別Artifact metadataはBehavior固有Closureへ流用せず、FEの絶対件数も転用しない。
 
 ## 現在値
 
@@ -25,7 +25,7 @@ Reference System/Scenario Proofの参照はFE commit `f2e4c4b19156f8e993f48cdcbc
 - Gapを持つ分野: 15
 - 未Closure軸: 29
 - 統合Reference System: PostgreSQL/psql 18.6で10 Scenarioを10/10実行。SQL、Index Plan、Lock拒否/回復、WAL、Server log、Statement metricをArtifact化
-- Scenario Proof: 29 Behavior × 10 Scenario = 290専用File / bounded補助Evidence 69 / strict Closure 0 / Gap 290 / retry 0記録済み0 / 全Variant実行済み0 / 統合結果・別Artifact metadata流用0 / Authority atomic 0 / completion eligible 0
+- Scenario Proof: 29 Behavior × 10 Scenario = 290専用File / bounded補助Evidence 69 / strict Closure 4 / Gap 286 / retry 0記録済み4 / 全Variant実行済み4 / 統合結果・別Artifact metadata流用0 / Authority atomic 0 / completion eligible 0。残りは79 tranche、各最大4 rowで計画する
 - Depth Parity契約: `depth.parity.yaml`の`completion_status: incomplete`、rows 0
 - Authority locator: 生成候補11,340 / stale 0 / URL再取得deferred 183 / Human review 0
 - Core Authority root: matched 0 / stale 0 / fetch failed 10 / locator deferred 10 / Human review 0 / eligible 0

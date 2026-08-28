@@ -14,6 +14,14 @@ errors << "denominator" unless index.fetch("denominator") == "29-current-domain-
 errors << "FE method lock" unless index.fetch("completion_limits").any? { |item| item.include?("f2e4c4b19156f8e993f48cdcbce23679ad881924") && item.include?("絶対件数は転用しない") }
 
 expected_proofs, behaviors = ScenarioProofs.build
+expected_closed = %w[
+  definitive-domain.concurrency.deadlock
+  definitive-domain.concurrency.locking
+  definitive-domain.concurrency.mvcc
+  definitive-domain.foundation.authority-lock
+].map { |behavior_id| [behavior_id, "security"] }.sort
+runtime_report_path = File.join(root, "artifacts/pattern-scenarios/results.json")
+runtime_report = JSON.parse(File.read(runtime_report_path))
 expected_pairs = expected_proofs.map { |proof| [proof.fetch("behavior_id"), proof.fetch("scenario")] }.sort
 actual_paths = Dir.glob(File.join(root, "evidence/scenarios/behaviors/**/*.proof.json")).sort
 indexed_paths = index.fetch("files").map { |item| File.join(root, item.fetch("path")) }.sort
@@ -40,9 +48,34 @@ index.fetch("files").each do |entry|
   identity = proof.dig("pattern_evidence", "capture_environment_identity")
   errors << "identity contract: #{proof.fetch("id")}" unless %w[server client version runtime].all? { |key| %w[observed gap].include?(identity.dig(key, "status")) }
   closure_contract = identity.fetch("closure_contract")
-  errors << "strict closure state: #{proof.fetch("id")}" unless proof.fetch("status") == "pattern-specific-gap" && proof.dig("closure", "pattern_specific_evidence") == false && proof.dig("closure", "real_runtime_identity") == false && closure_contract.fetch("gap_closed") == false
-  errors << "all-Variant boundary: #{proof.fetch("id")}" unless closure_contract.fetch("variant_denominator_status") == "gap" && closure_contract.fetch("all_variants_executed") == false
-  errors << "retry-zero boundary: #{proof.fetch("id")}" unless closure_contract.dig("retry_count", "status") == "gap" && closure_contract.dig("retry_count", "value").nil? && closure_contract.dig("retry_count", "required") == 0
+  closed = proof.dig("closure", "pattern_specific_evidence") == true
+  if closed
+    errors << "strict runtime closure state: #{proof.fetch("id")}" unless proof.fetch("status") == "bounded-runtime-proof" && proof.dig("closure", "real_runtime_identity") == true && closure_contract.fetch("gap_closed") == true
+    errors << "all-Variant runtime closure: #{proof.fetch("id")}" unless closure_contract.fetch("variant_denominator_status") == "observed" && closure_contract.fetch("all_variants_executed") == true
+    errors << "retry-zero runtime closure: #{proof.fetch("id")}" unless closure_contract.dig("retry_count", "status") == "observed" && closure_contract.dig("retry_count", "value") == 0 && closure_contract.dig("retry_count", "required") == 0
+    errors << "runtime report binding: #{proof.fetch("id")}" unless proof.dig("pattern_evidence", "scenario_runtime_report") == "artifacts/pattern-scenarios/results.json" && proof.dig("pattern_evidence", "scenario_runtime_environment") == runtime_report.fetch("environment")
+    records = proof.dig("pattern_evidence", "scenario_runtime_records")
+    errors << "runtime record cardinality: #{proof.fetch("id")}" unless records.length == 1
+    records.each do |record|
+      errors << "runtime record identity: #{proof.fetch("id")}" unless record.fetch("pattern_id") == proof.fetch("pattern_id") && record.fetch("scenario") == proof.fetch("scenario") && record.fetch("variant_id") == "postgresql-verification-matrix-v2"
+      errors << "runtime first-attempt result: #{proof.fetch("id")}" unless record.fetch("attempts") == 1 && record.fetch("outcome") == "expected" && record.fetch("final_status") == "passed" && record["error"].nil?
+      errors << "runtime source binding: #{proof.fetch("id")}" unless record.fetch("source_digest") == proof.fetch("source_bindings").first.fetch("digest")
+      errors << "runtime Oracle: #{proof.fetch("id")}" unless record.dig("oracle", "scenario") == proof.fetch("scenario") && record.dig("oracle", "passed") == true
+      %w[trace screenshot].each do |kind|
+        artifact = record.fetch(kind)
+        artifact_path = File.join(root, artifact.fetch("path"))
+        errors << "runtime #{kind} Artifact: #{proof.fetch("id")}" unless File.file?(artifact_path) && ScenarioProofs.sha256(artifact_path) == artifact.fetch("digest") && File.size(artifact_path) == artifact.fetch("bytes")
+      end
+      trace = JSON.parse(File.read(File.join(root, record.dig("trace", "path"))))
+      errors << "runtime PostgreSQL Artifact set: #{proof.fetch("id")}" unless %w[sql plan wal log metric].all? { |key| trace.key?(key) }
+      errors << "integrated runtime reuse: #{proof.fetch("id")}" if record.dig("trace", "path") == proof.dig("integrated_reference", "trace", "path") || record.dig("trace", "digest") == proof.dig("integrated_reference", "trace", "digest")
+    end
+  else
+    errors << "strict closure state: #{proof.fetch("id")}" unless proof.fetch("status") == "pattern-specific-gap" && proof.dig("closure", "real_runtime_identity") == false && closure_contract.fetch("gap_closed") == false
+    errors << "all-Variant boundary: #{proof.fetch("id")}" unless closure_contract.fetch("variant_denominator_status") == "gap" && closure_contract.fetch("all_variants_executed") == false
+    errors << "retry-zero boundary: #{proof.fetch("id")}" unless closure_contract.dig("retry_count", "status") == "gap" && closure_contract.dig("retry_count", "value").nil? && closure_contract.dig("retry_count", "required") == 0
+    errors << "runtime report overclaim: #{proof.fetch("id")}" unless proof.dig("pattern_evidence", "scenario_runtime_report").nil? && proof.dig("pattern_evidence", "scenario_runtime_environment").nil? && Array(proof.dig("pattern_evidence", "scenario_runtime_records")).empty?
+  end
   errors << "reuse boundary: #{proof.fetch("id")}" unless closure_contract.fetch("integrated_reference_credit") == false && closure_contract.fetch("foreign_artifact_metadata_credit") == false
   artifact_records = proof.dig("pattern_evidence", "capture_records")
   artifacts = artifact_records.to_h { |item| [item.fetch("category"), item] }
@@ -93,7 +126,9 @@ ScenarioProofs::SCENARIOS.each do |scenario|
   errors << "scenario summary: #{scenario}" unless index.dig("by_scenario", scenario) == expected
 end
 errors << "completion boundary" unless summary.fetch("integrated_trace_rows") == 290 && summary.fetch("authority_atomic_rows") == 0 && summary.fetch("completion_eligible_rows") == 0
-errors << "strict Scenario closure boundary" unless summary.fetch("pattern_specific_rows") == 0 && summary.fetch("pattern_specific_runtime_rows") == 0 && summary.fetch("pattern_specific_gaps") == 290
+actual_closed = actual_proofs.select { |proof| proof.dig("closure", "pattern_specific_evidence") }.map { |proof| [proof.fetch("behavior_id"), proof.fetch("scenario")] }.sort
+errors << "strict Scenario closure set" unless actual_closed == expected_closed
+errors << "strict Scenario closure boundary" unless summary.fetch("pattern_specific_rows") == 4 && summary.fetch("pattern_specific_runtime_rows") == 4 && summary.fetch("pattern_specific_gaps") == 286
 errors << "completion limits" unless index.fetch("completion_limits").length >= 4
 
 abort errors.uniq.join("\n") unless errors.empty?

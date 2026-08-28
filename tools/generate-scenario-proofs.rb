@@ -34,6 +34,7 @@ source_files = %w[
   evidence/artifacts/reference-system.json
   integrations/reference-system/manifest.json
   artifacts/reference-system/results.json
+  artifacts/pattern-scenarios/results.json
 ]
 source_digests = source_files.to_h { |path| [path, ScenarioProofs.relative_digest(path)] }
 by_scenario = ScenarioProofs::SCENARIOS.to_h do |scenario|

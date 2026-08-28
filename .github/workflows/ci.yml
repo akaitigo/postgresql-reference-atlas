@@ -19,7 +19,7 @@ jobs:
         uses: actions/checkout@v4
         with:
           repository: akaitigo/reference-atlas-core
-          ref: d535b0802697edea73ca1c778a5b571e28fe0614
+          ref: 40f627e7e7db1d679c18f9442754951b0e1dd13b
           path: reference-atlas-core
       - name: Install CI dependencies
         run: sudo apt-get update && sudo apt-get install -y ripgrep
@@ -30,7 +30,7 @@ jobs:
       - name: Enforce published-main non-regression baseline
         run: make -C postgresql-reference-atlas CORE_DIR=../reference-atlas-core non-regression-audit core-non-regression-audit authority-body-non-regression-audit
       - name: Audit Definitive inventory and open proof ledger
-        run: make -C postgresql-reference-atlas CORE_DIR=../reference-atlas-core definitive-audit parity-audit authority-locator-verify authority-body-verify authority-review-verify definitive-skill-eval-verify scenario-proofs-verify core-scenario-trace-audit core-authority-audit core-authority-body-audit core-authority-review-audit core-skill-router-audit depth-parity-audit
+        run: make -C postgresql-reference-atlas CORE_DIR=../reference-atlas-core definitive-audit parity-audit authority-locator-verify authority-body-verify authority-review-verify definitive-skill-eval-verify scenario-proofs-verify scenario-closure-plan-verify scenario-evidence-atomicity-test core-scenario-trace-audit core-scenario-plan-audit core-evidence-durability-audit core-authority-audit core-authority-body-audit core-authority-review-audit core-skill-router-audit depth-parity-audit
       - name: Assert Definitive promotion remains blocked while incomplete
         run: |
           if make -C postgresql-reference-atlas CORE_DIR=../reference-atlas-core definitive-gate; then

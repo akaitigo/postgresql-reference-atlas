@@ -1,0 +1,172 @@
+{
+  "schema_version": 1,
+  "id": "postgresql-pattern-scenario-runtime-v1",
+  "created_at": "2026-08-28T14:52:27Z",
+  "status": "passed",
+  "command": "ruby tools/run-scenario-security-001.rb",
+  "profile": "real-postgresql-18.6-container",
+  "counts": {
+    "rows": 4,
+    "variants": 4,
+    "total": 4,
+    "passed": 4,
+    "failed": 0,
+    "flaky": 0,
+    "skipped": 0
+  },
+  "source_digest": "sha256:b8734bc90dcefeb02b28f1858c73e8aba0452cf78d0d27349b708e16a4e14ad9",
+  "harness_digest": "sha256:69866be25e82b559a7eeaeed46040317b26bb59ea0ccfaf11e827be97a7c3602",
+  "environment": {
+    "subject": "PostgreSQL",
+    "server_product": "PostgreSQL",
+    "server_version": "18.6",
+    "server_version_num": "180006",
+    "client_product": "psql",
+    "client_version": "psql (PostgreSQL) 18.6",
+    "runtime_image": "postgres:18.6-alpine",
+    "runtime_identity": "pg-atlas-security-67159-f0dd4d",
+    "workers": 1,
+    "retries": 0,
+    "trace_mode": "on",
+    "execution_mode": "real-postgresql-server-client"
+  },
+  "retention_contract": {
+    "publish_on": "full-run-passed",
+    "failed_run": "retain-prior-success",
+    "swap": "staged-directory-rename-with-rollback"
+  },
+  "tests": [
+    {
+      "id": "security-001.concurrency.deadlock",
+      "pattern_id": "definitive-domain.concurrency.deadlock",
+      "variant_id": "postgresql-verification-matrix-v2",
+      "scenario": "security",
+      "title": "concurrency.deadlock dedicated PostgreSQL security scenario",
+      "file": "tools/run-scenario-security-001.rb",
+      "line": 1,
+      "source_digest": "sha256:b8734bc90dcefeb02b28f1858c73e8aba0452cf78d0d27349b708e16a4e14ad9",
+      "outcome": "expected",
+      "attempts": 1,
+      "final_status": "passed",
+      "error": null,
+      "oracle": {
+        "kind": "permission-denied-private-relation",
+        "scenario": "security",
+        "marker": "ATLAS_SECURITY_PASS:concurrency.deadlock",
+        "passed": true
+      },
+      "trace": {
+        "path": "artifacts/pattern-scenarios/traces/definitive-domain_concurrency_deadlock__security__postgresql-verification-matrix-v2.trace.json",
+        "digest": "sha256:7e456b1a563768ad1947acbcfe1bccc7da9539f0c2bb83760bdbc5c6239de763",
+        "bytes": 3698,
+        "action_stream": true,
+        "network_stream": true,
+        "resource_stream": true
+      },
+      "screenshot": {
+        "path": "artifacts/pattern-scenarios/observations/definitive-domain_concurrency_deadlock__security__postgresql-verification-matrix-v2.observable.json",
+        "digest": "sha256:74a90de43d249cef40fd22be6966559337769504ac062e501037f45099885153",
+        "bytes": 303
+      }
+    },
+    {
+      "id": "security-001.concurrency.locking",
+      "pattern_id": "definitive-domain.concurrency.locking",
+      "variant_id": "postgresql-verification-matrix-v2",
+      "scenario": "security",
+      "title": "concurrency.locking dedicated PostgreSQL security scenario",
+      "file": "tools/run-scenario-security-001.rb",
+      "line": 1,
+      "source_digest": "sha256:b8734bc90dcefeb02b28f1858c73e8aba0452cf78d0d27349b708e16a4e14ad9",
+      "outcome": "expected",
+      "attempts": 1,
+      "final_status": "passed",
+      "error": null,
+      "oracle": {
+        "kind": "update-lock-permission-denied",
+        "scenario": "security",
+        "marker": "ATLAS_SECURITY_PASS:concurrency.locking",
+        "passed": true
+      },
+      "trace": {
+        "path": "artifacts/pattern-scenarios/traces/definitive-domain_concurrency_locking__security__postgresql-verification-matrix-v2.trace.json",
+        "digest": "sha256:174781af755e247944723b22086dbd721c7aca66ce57fa7ce01d3b3a59aaa2a7",
+        "bytes": 3875,
+        "action_stream": true,
+        "network_stream": true,
+        "resource_stream": true
+      },
+      "screenshot": {
+        "path": "artifacts/pattern-scenarios/observations/definitive-domain_concurrency_locking__security__postgresql-verification-matrix-v2.observable.json",
+        "digest": "sha256:5921844f6629347d2f6c8fed428a128e9ebb654559885468b5cc67a3c309396f",
+        "bytes": 302
+      }
+    },
+    {
+      "id": "security-001.concurrency.mvcc",
+      "pattern_id": "definitive-domain.concurrency.mvcc",
+      "variant_id": "postgresql-verification-matrix-v2",
+      "scenario": "security",
+      "title": "concurrency.mvcc dedicated PostgreSQL security scenario",
+      "file": "tools/run-scenario-security-001.rb",
+      "line": 1,
+      "source_digest": "sha256:b8734bc90dcefeb02b28f1858c73e8aba0452cf78d0d27349b708e16a4e14ad9",
+      "outcome": "expected",
+      "attempts": 1,
+      "final_status": "passed",
+      "error": null,
+      "oracle": {
+        "kind": "row-level-security-snapshot-isolation",
+        "scenario": "security",
+        "marker": "ATLAS_SECURITY_PASS:concurrency.mvcc",
+        "passed": true
+      },
+      "trace": {
+        "path": "artifacts/pattern-scenarios/traces/definitive-domain_concurrency_mvcc__security__postgresql-verification-matrix-v2.trace.json",
+        "digest": "sha256:212b2ebb57438c3dd620c0be55b7c8ea96017d84d6c69d6eb064c3ff6dd4c62f",
+        "bytes": 4302,
+        "action_stream": true,
+        "network_stream": true,
+        "resource_stream": true
+      },
+      "screenshot": {
+        "path": "artifacts/pattern-scenarios/observations/definitive-domain_concurrency_mvcc__security__postgresql-verification-matrix-v2.observable.json",
+        "digest": "sha256:8f39c2d97108e0f4bb72379e0729bff62e8869b1535e7915bd1874c2e83685ef",
+        "bytes": 299
+      }
+    },
+    {
+      "id": "security-001.foundation.authority-lock",
+      "pattern_id": "definitive-domain.foundation.authority-lock",
+      "variant_id": "postgresql-verification-matrix-v2",
+      "scenario": "security",
+      "title": "foundation.authority-lock dedicated PostgreSQL security scenario",
+      "file": "tools/run-scenario-security-001.rb",
+      "line": 1,
+      "source_digest": "sha256:b8734bc90dcefeb02b28f1858c73e8aba0452cf78d0d27349b708e16a4e14ad9",
+      "outcome": "expected",
+      "attempts": 1,
+      "final_status": "passed",
+      "error": null,
+      "oracle": {
+        "kind": "version-and-password-policy-lock",
+        "scenario": "security",
+        "marker": "ATLAS_SECURITY_PASS:foundation.authority-lock",
+        "passed": true
+      },
+      "trace": {
+        "path": "artifacts/pattern-scenarios/traces/definitive-domain_foundation_authority-lock__security__postgresql-verification-matrix-v2.trace.json",
+        "digest": "sha256:68aa56baf0ce97085314f117b542d68a25d466b08123a100481a5bd69f926001",
+        "bytes": 3816,
+        "action_stream": true,
+        "network_stream": true,
+        "resource_stream": true
+      },
+      "screenshot": {
+        "path": "artifacts/pattern-scenarios/observations/definitive-domain_foundation_authority-lock__security__postgresql-verification-matrix-v2.observable.json",
+        "digest": "sha256:1c5482808ebf1546385817283c26a9f81568a1bec06d5451c28d49ee8bf6300c",
+        "bytes": 308
+      }
+    }
+  ]
+}

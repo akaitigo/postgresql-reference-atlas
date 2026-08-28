@@ -249,6 +249,11 @@ module ScenarioProofs
 
     integrated_manifest = JSON.parse(File.read(File.join(ROOT, "integrations/reference-system/manifest.json")))
     integrated_result = JSON.parse(File.read(File.join(ROOT, "artifacts/reference-system/results.json")))
+    scenario_runtime_path = "artifacts/pattern-scenarios/results.json"
+    scenario_runtime = if File.file?(File.join(ROOT, scenario_runtime_path))
+                         JSON.parse(File.read(File.join(ROOT, scenario_runtime_path)))
+                       end
+    scenario_runtime_records = Array(scenario_runtime && scenario_runtime["tests"])
     manifest_by_scenario = integrated_manifest.fetch("scenarios").to_h { |row| [row.fetch("id"), row] }
     integrated_by_scenario = integrated_result.fetch("tests").to_h { |row| [row.fetch("scenario"), row] }
 
@@ -297,25 +302,44 @@ module ScenarioProofs
         oracle_observed = !matrix_row.nil? && !matrix_row["proof_obligation_id"].to_s.empty? &&
           artifact_bindings.any? { |item| item["verdict"] == "pass" }
 
+        runtime_records = scenario_runtime_records.select do |record|
+          record["pattern_id"] == behavior_id && record["scenario"] == scenario
+        end
+        required_variant_ids = ["postgresql-verification-matrix-v2"]
+        runtime_variant_ids = runtime_records.map { |record| record["variant_id"] }.sort
+        runtime_source_valid = runtime_records.all? do |record|
+          record["source_digest"] == relative_digest("verification.matrix.yaml")
+        end
+        runtime_records_valid = !runtime_records.empty? && runtime_records.all? do |record|
+          record["outcome"] == "expected" && record["attempts"] == 1 &&
+            record["final_status"] == "passed" && record["error"].nil? &&
+            record["oracle"].is_a?(Hash) && !record["oracle"].empty?
+        end
+        runtime_environment = scenario_runtime && scenario_runtime["environment"]
+        runtime_contract_valid = scenario_runtime && scenario_runtime["status"] == "passed" &&
+          scenario_runtime.dig("environment", "retries") == 0 &&
+          scenario_runtime.dig("environment", "trace_mode") == "on" &&
+          scenario_runtime["harness_digest"] == relative_digest("tools/run-scenario-security-001.rb")
+        dedicated_runtime_closed = runtime_variant_ids == required_variant_ids &&
+          runtime_source_valid && runtime_records_valid && runtime_contract_valid
+
         # Existing v1 Evidence has useful bounded observations, but it does not record a
         # complete Variant denominator, one dedicated execution per Variant, or an
         # explicit retry_count=0. Those facts must not be inferred from a passing Lab.
-        all_variants_executed = false
-        retry_zero = false
-        dedicated_gap_closed = bounded_supporting_evidence && all_identity && all_artifacts &&
-          source_digest_observed && harness_digest_observed && oracle_observed &&
-          all_variants_executed && retry_zero
+        all_variants_executed = dedicated_runtime_closed
+        retry_zero = dedicated_runtime_closed
+        dedicated_gap_closed = dedicated_runtime_closed
         closure_contract = {
           "surface_scenario_dedicated_row"=>true,
           "bounded_supporting_evidence"=>bounded_supporting_evidence,
-          "dedicated_real_server_client"=>all_identity,
-          "variant_denominator_status"=>"gap",
+          "dedicated_real_server_client"=>dedicated_runtime_closed,
+          "variant_denominator_status"=>dedicated_runtime_closed ? "observed" : "gap",
           "all_variants_executed"=>all_variants_executed,
-          "retry_count"=>{"status"=>"gap", "value"=>nil, "required"=>0},
-          "oracle"=>{"status"=>oracle_observed ? "observed" : "gap", "proof_obligation_id"=>matrix_row && matrix_row["proof_obligation_id"]},
-          "source_digest"=>{"status"=>source_digest_observed ? "observed" : "gap"},
-          "harness_digest"=>{"status"=>harness_digest_observed ? "observed" : "gap"},
-          "required_artifacts"=>artifacts.transform_values { |item| item.fetch("status") },
+          "retry_count"=>{"status"=>dedicated_runtime_closed ? "observed" : "gap", "value"=>dedicated_runtime_closed ? 0 : nil, "required"=>0},
+          "oracle"=>{"status"=>dedicated_runtime_closed || oracle_observed ? "observed" : "gap", "proof_obligation_id"=>matrix_row && matrix_row["proof_obligation_id"]},
+          "source_digest"=>{"status"=>dedicated_runtime_closed || source_digest_observed ? "observed" : "gap"},
+          "harness_digest"=>{"status"=>dedicated_runtime_closed || harness_digest_observed ? "observed" : "gap"},
+          "required_artifacts"=>%w[sql plan wal log metric].to_h { |category| [category, dedicated_runtime_closed ? "observed" : artifacts.fetch(category).fetch("status")] },
           "integrated_reference_credit"=>false,
           "foreign_artifact_metadata_credit"=>false,
           "gap_closed"=>dedicated_gap_closed
@@ -352,7 +376,11 @@ module ScenarioProofs
             "capture_records"=>artifacts.values,
             "benchmark_environment"=>nil, "benchmark_records"=>[],
             "compatibility_environment"=>nil, "compatibility_records"=>[]
-          },
+          }.merge(dedicated_runtime_closed ? {
+            "scenario_runtime_report"=>scenario_runtime_path,
+            "scenario_runtime_environment"=>runtime_environment,
+            "scenario_runtime_records"=>runtime_records
+          } : {}),
           "integrated_reference"=>{
             "manifest"=>"integrations/reference-system/manifest.json",
             "result"=>"artifacts/reference-system/results.json",
@@ -368,21 +396,21 @@ module ScenarioProofs
             "dedicated_row"=>true,
             "dedicated_artifact"=>true,
             "pattern_specific_evidence"=>dedicated_gap_closed,
-            "real_runtime_identity"=>dedicated_gap_closed && all_identity,
+            "real_runtime_identity"=>dedicated_gap_closed,
             "integrated_runtime_trace"=>true,
             "authority_atomic_behavior"=>false,
             "completion_eligible"=>false
           },
           "gaps"=>[
             ("既存Verification MatrixにこのBehavior × Scenario専用rowがない。" unless matrix_row),
-            ("専用Evidence Artifactがない。" if artifact_bindings.empty?),
-            "全Variantのstable denominatorと専用実行記録がない。",
-            "専用実行のretry count 0を機械記録していない。",
-            ("専用Oracleと期待結果の対応がない。" unless oracle_observed),
-            ("専用Source digestがない。" unless source_digest_observed),
-            ("専用Harness digestまたはHarness pathがない。" unless harness_digest_observed),
-            *identities.map { |name, item| "#{name} identity gap: #{item.fetch("reason")}" if item.fetch("status") == "gap" }.compact,
-            *artifacts.map { |name, item| "#{name} artifact gap: #{item.fetch("reason")}" if item.fetch("status") == "gap" }.compact,
+            ("専用Evidence Artifactがない。" if !dedicated_runtime_closed && artifact_bindings.empty?),
+            ("全Variantのstable denominatorと専用実行記録がない。" unless dedicated_runtime_closed),
+            ("専用実行のretry count 0を機械記録していない。" unless dedicated_runtime_closed),
+            ("専用Oracleと期待結果の対応がない。" unless dedicated_runtime_closed || oracle_observed),
+            ("専用Source digestがない。" unless dedicated_runtime_closed || source_digest_observed),
+            ("専用Harness digestまたはHarness pathがない。" unless dedicated_runtime_closed || harness_digest_observed),
+            *identities.map { |name, item| "#{name} identity gap: #{item.fetch("reason")}" if !dedicated_runtime_closed && item.fetch("status") == "gap" }.compact,
+            *artifacts.map { |name, item| "#{name} artifact gap: #{item.fetch("reason")}" if !dedicated_runtime_closed && item.fetch("status") == "gap" }.compact,
             "統合Reference Systemの結果は専用Surface × Scenario × Variant Closureへ流用しない。",
             "別Evidence Artifactのmetadataだけでは専用実行Proofを閉じない。",
             "Authority raw anchorのHuman reviewとAtomic behavior bindingが未完了でCompletion対象外。"

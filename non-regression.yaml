@@ -1,14 +1,14 @@
 schema_version: 2
 atlas_id: postgresql-reference-atlas
 baseline:
-  path: baselines/core-v1.2-v1.0.0.non-regression-baseline.json
-  digest: sha256:e21b4186c4aa76e51353eaa256ac4ad79600cbd587cc7aa1d4e42504660dad33
+  path: baselines/core-v1.3-v1.0.0.non-regression-baseline.json
+  digest: sha256:fcecbb15d67e6bcba7ce913346993677fb0dcf8aa935dc2eb35e42c8d7b1906e
 baseline_upgrade:
   mode: monotonic-capture-contract-extension
   from:
     path: baselines/v1.0.0.non-regression-baseline.json
     digest: sha256:01ab1feaab1cbea85275a3422fba55a402c581df9b62f6dacbff4b4e3870cb8d
-  reason: Core v1.1/v1.2でAuthority、Review Queue、Skill Router、Scenario Proof Row collectionを追加したため、初回公開anchorと同一commitから旧全項目をbyte-equivalentに保持し、公開時点0件のcollectionを加えて再捕捉する。
+  reason: Core v1.1/v1.2のAuthority・Review Queue・Skill Router・Scenario Proof Rowに加え、Definitive Gate v2のScenario Closure PlanとEvidence Durability collectionを追加したため、初回公開anchorと同一commitから旧全項目をbyte-equivalentに保持し、公開時点0件のcollectionだけを加えて再捕捉する。
   migration_evidence_ids: [lab.migration]
 replacements:
   - collection: tests_labs

@@ -21,6 +21,8 @@ body_non_regression = JSON.parse(File.read(File.join(root, "evidence/authority-b
 definitive_skill_routing = JSON.parse(File.read(File.join(root, "evals/postgresql-atlas.definitive-routing-eval.json")))
 forward_agent_eval = JSON.parse(File.read(File.join(root, "evals/postgresql-atlas.forward-agent-eval.json")))
 scenario_proofs = JSON.parse(File.read(File.join(root, "evidence/scenarios/index.json")))
+scenario_closure_plan = JSON.parse(File.read(File.join(root, "evidence/scenarios/closure-plan.json")))
+scenario_runtime_report = JSON.parse(File.read(File.join(root, "artifacts/pattern-scenarios/results.json")))
 
 required_axes = %w[
   authority-body-digestion surface-atomic-behavior-variant real-runtime-lab
@@ -174,8 +176,56 @@ scenario_summary = scenario_proofs.fetch("summary")
 errors << "PostgreSQL Scenario Proof identity" unless scenario_proofs.fetch("id") == "postgresql-scenario-proof-matrix-v1" && scenario_proofs.fetch("status") == "incomplete-authority-atomic-and-runtime-closure"
 errors << "PostgreSQL Scenario Proof denominator" unless scenario_summary.fetch("patterns") == 29 && scenario_summary.fetch("scenarios") == 10 && scenario_summary.fetch("rows") == 290
 errors << "PostgreSQL Scenario Proof non-reuse" unless scenario_summary.fetch("integrated_trace_rows") == 290 && scenario_proofs.fetch("files").all? { |item| item.fetch("status") != "completion-eligible-runtime-proof" }
-errors << "PostgreSQL strict Scenario closure" unless scenario_summary.fetch("pattern_specific_rows") == 0 && scenario_summary.fetch("pattern_specific_runtime_rows") == 0 && scenario_summary.fetch("pattern_specific_gaps") == 290
+errors << "PostgreSQL strict Scenario closure" unless scenario_summary.fetch("pattern_specific_rows") == 4 && scenario_summary.fetch("pattern_specific_runtime_rows") == 4 && scenario_summary.fetch("pattern_specific_gaps") == 286
 errors << "PostgreSQL Scenario Proof completion boundary" unless scenario_summary.fetch("authority_atomic_rows") == 0 && scenario_summary.fetch("completion_eligible_rows") == 0
+closure_plan_contract = mapping.fetch("scenario_closure_plan")
+closure_plan_reference = closure_plan_contract.fetch("reference")
+closure_plan_reference_commit = "8329cb3c09e034b36b8cbe35021f7dd7b52d4140"
+errors << "FE Scenario Closure Plan reference commit" unless closure_plan_reference.fetch("commit") == closure_plan_reference_commit
+expected_closure_plan_reference_files = {
+  "scripts/lib/scenario-closure-plan.ts"=>["sha256:3bfc98ffdda5e114ab265eb4914abd63c7c8c58bc6409fcdb68ae2fb17b0a58d", 5_784],
+  "scripts/generate-scenario-closure-plan.ts"=>["sha256:df449779a8320615ef6a7c6b206961c400505bf08a6b8a6b4c356ec72fd48b16", 519],
+  "scripts/verify-scenario-closure-plan.ts"=>["sha256:3bbeeba3cb987ec456b80e1eb6c6f4fe36a24f241d1607d5e49194940b765116", 2_903],
+  "evidence/scenarios/closure-plan.json"=>["sha256:ccf4f82e8713f3c4d8a14833935fd6f87d904a4e56e61a555e463d450a04f5fe", 694_882]
+}
+locked_closure_plan_reference_files = closure_plan_reference.fetch("files").to_h { |item| [item.fetch("path"), [item.fetch("digest"), item.fetch("size_bytes")]] }
+errors << "FE Scenario Closure Plan file lock" unless locked_closure_plan_reference_files == expected_closure_plan_reference_files
+if File.directory?(File.join(frontend_repo, ".git"))
+  closure_plan_reference_verified = expected_closure_plan_reference_files.all? do |relative, (expected_digest, expected_size)|
+    body, _stderr, status = Open3.capture3("git", "-C", frontend_repo, "show", "#{closure_plan_reference_commit}:#{relative}")
+    status.success? && body.bytesize == expected_size && "sha256:#{Digest::SHA256.hexdigest(body)}" == expected_digest
+  end
+  errors << "FE Scenario Closure Plan source verification" unless closure_plan_reference_verified
+end
+closure_plan_policy = closure_plan_contract.fetch("policy")
+errors << "Scenario Closure risk order" unless closure_plan_policy.fetch("risk_order") == %w[security refusal failure recovery migration operations boundary performance compatibility normal]
+errors << "Scenario Closure tranche size" unless closure_plan_policy.fetch("maximum_pattern_rows_per_tranche") == 4
+errors << "Scenario Closure Subject denominator" unless closure_plan_policy.fetch("derive_counts_from_postgresql_denominator") == true && closure_plan_policy.fetch("transplant_frontend_absolute_counts") == false
+closure_plan_summary = scenario_closure_plan.fetch("summary")
+errors << "PostgreSQL Scenario Closure Plan denominator" unless closure_plan_summary.fetch("remaining_rows") == 286 && closure_plan_summary.fetch("completed_dedicated_rows") == 4 && closure_plan_summary.fetch("planned_tranches") == 79
+errors << "PostgreSQL Scenario Closure Plan next tranche" unless scenario_closure_plan.dig("next_tranche", "id") == "security-001" && scenario_closure_plan.fetch("tranches").all? { |tranche| tranche.fetch("pattern_rows") <= 4 }
+
+atomic_contract = mapping.fetch("atomic_scenario_evidence_publishing")
+atomic_reference = atomic_contract.fetch("reference")
+errors << "FE atomic Evidence reference commit" unless atomic_reference.fetch("commit") == "7175de4"
+expected_atomic_reference_files = {
+  "scripts/reporters/pattern-scenario-evidence-reporter.ts"=>["sha256:fa93509b82141deb456e1218095de52a147c88d2b7e6f8e0e5df2725e92ad330", 10_029],
+  "scripts/verify-pattern-scenario-evidence.ts"=>["sha256:fc05990ab4a02a075f72badf60190dc3e584fe62acf52a31c179b99c90e3e0fd", 16_291],
+  "docs/REFERENCE_SYSTEM.md"=>["sha256:33d8b7d1c4cd0b01e094f3c1c805cfb0d6e2e7f2862305cb6daffc2852fe8bb9", 4_793]
+}
+locked_atomic_reference_files = atomic_reference.fetch("files").to_h { |item| [item.fetch("path"), [item.fetch("digest"), item.fetch("size_bytes")]] }
+errors << "FE atomic Evidence file lock" unless locked_atomic_reference_files == expected_atomic_reference_files
+if File.directory?(File.join(frontend_repo, ".git"))
+  atomic_reference_verified = expected_atomic_reference_files.all? do |relative, (expected_digest, expected_size)|
+    body, _stderr, status = Open3.capture3("git", "-C", frontend_repo, "show", "7175de4:#{relative}")
+    status.success? && body.bytesize == expected_size && "sha256:#{Digest::SHA256.hexdigest(body)}" == expected_digest
+  end
+  errors << "FE atomic Evidence source verification" unless atomic_reference_verified
+end
+atomic_policy = atomic_contract.fetch("policy")
+errors << "Atomic Evidence policy" unless atomic_policy.values.all? { |value| value == true }
+errors << "Atomic Evidence implementation" unless File.file?(File.join(root, atomic_contract.fetch("implementation"))) && File.file?(File.join(root, atomic_contract.fetch("negative_test")))
+errors << "Atomic Evidence runtime report" unless scenario_runtime_report.fetch("status") == "passed" && scenario_runtime_report.fetch("retention_contract") == {"publish_on"=>"full-run-passed", "failed_run"=>"retain-prior-success", "swap"=>"staged-directory-rename-with-rollback"} && scenario_runtime_report.fetch("tests").length == 4
 axes = mapping.fetch("axes")
 errors << "18 axes" unless axes.map { |axis| axis.fetch("id") } == required_axes
 errors << "FE canonical axes" unless Array(reference_document["axes"]).map { |axis| axis.fetch("id") } == required_axes
