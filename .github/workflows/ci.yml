@@ -15,11 +15,11 @@ jobs:
         uses: actions/checkout@v4
         with:
           path: postgresql-reference-atlas
-      - name: Checkout reference-atlas-core v1
+      - name: Checkout reference-atlas-core Definitive v2
         uses: actions/checkout@v4
         with:
           repository: akaitigo/reference-atlas-core
-          ref: cf9e6e2d981305c83f970c1f21a1ddc9c1109263
+          ref: 34af69051fd049313417a39a3a845c428f5b537d
           path: reference-atlas-core
       - name: Install CI dependencies
         run: sudo apt-get update && sudo apt-get install -y ripgrep
@@ -27,10 +27,16 @@ jobs:
         run: make -C postgresql-reference-atlas CORE_DIR=../reference-atlas-core validate
       - name: Audit mastery and cross-manifest contracts
         run: make -C postgresql-reference-atlas CORE_DIR=../reference-atlas-core audit
+      - name: Audit Definitive inventory and open proof ledger
+        run: make -C postgresql-reference-atlas CORE_DIR=../reference-atlas-core definitive-audit
+      - name: Assert Definitive promotion remains blocked while incomplete
+        run: |
+          if make -C postgresql-reference-atlas CORE_DIR=../reference-atlas-core definitive-gate; then
+            echo "incomplete repository unexpectedly passed Definitive promotion" >&2
+            exit 1
+          fi
       - name: Evaluate router skill
         run: make -C postgresql-reference-atlas eval
-      - name: Run static publication gates
-        run: make -C postgresql-reference-atlas test-static
       - name: Check committed evidence freshness
         run: make -C postgresql-reference-atlas evidence-freshness
 
@@ -40,7 +46,7 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        lab: [authority-lock, sql-surface, sql, types-constraints, catalog-inventory, partitioning, extension, security, mvcc, locking, deadlock, planner, statistics, index, performance, wal, backup-recovery, pitr, replication, logical-replication, observability, maintenance, failure-injection, migration, upgrade, pg-upgrade, compatibility-matrix]
+        lab: [authority-lock, definitive-inventory, sql-surface, sql, types-constraints, catalog-inventory, partitioning, extension, security, mvcc, locking, deadlock, planner, statistics, index, performance, wal, backup-recovery, pitr, replication, logical-replication, observability, maintenance, failure-injection, migration, upgrade, pg-upgrade, compatibility-matrix]
     steps:
       - name: Checkout PostgreSQL Atlas
         uses: actions/checkout@v4

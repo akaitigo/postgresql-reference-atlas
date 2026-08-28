@@ -1,0 +1,430 @@
+{
+  "schema_version": 2,
+  "id": "skill.postgresql-definitive-audit",
+  "atlas_id": "postgresql-reference-atlas",
+  "atlas_release": "v1.0.0",
+  "skill_id": "postgresql-atlas",
+  "generated_at": "2026-08-28T10:42:54Z",
+  "cases": [
+    {
+      "id": "understand-mvcc",
+      "result": "pass",
+      "outcome_ids": [
+        "understand"
+      ],
+      "surface_ids": [
+        "testing-verification",
+        "agent-skill"
+      ],
+      "gap_behavior": false,
+      "authorization_boundary": true,
+      "assertion": "understand-mvccはv1 Routerの期待Capabilityと安全境界へ到達する。"
+    },
+    {
+      "id": "choose-partial-index",
+      "result": "pass",
+      "outcome_ids": [
+        "choose"
+      ],
+      "surface_ids": [
+        "performance-capacity-cost",
+        "decision-comparison"
+      ],
+      "gap_behavior": false,
+      "authorization_boundary": false,
+      "assertion": "choose-partial-indexはv1 Routerの期待Capabilityと安全境界へ到達する。"
+    },
+    {
+      "id": "build-sql-constraint",
+      "result": "pass",
+      "outcome_ids": [
+        "build"
+      ],
+      "surface_ids": [
+        "testing-verification",
+        "agent-skill"
+      ],
+      "gap_behavior": false,
+      "authorization_boundary": false,
+      "assertion": "build-sql-constraintはv1 Routerの期待Capabilityと安全境界へ到達する。"
+    },
+    {
+      "id": "build-domain-type",
+      "result": "pass",
+      "outcome_ids": [
+        "build"
+      ],
+      "surface_ids": [
+        "testing-verification",
+        "agent-skill"
+      ],
+      "gap_behavior": false,
+      "authorization_boundary": false,
+      "assertion": "build-domain-typeはv1 Routerの期待Capabilityと安全境界へ到達する。"
+    },
+    {
+      "id": "verify-catalog-inventory",
+      "result": "pass",
+      "outcome_ids": [
+        "verify"
+      ],
+      "surface_ids": [
+        "testing-verification",
+        "agent-skill"
+      ],
+      "gap_behavior": false,
+      "authorization_boundary": true,
+      "assertion": "verify-catalog-inventoryはv1 Routerの期待Capabilityと安全境界へ到達する。"
+    },
+    {
+      "id": "choose-partition",
+      "result": "pass",
+      "outcome_ids": [
+        "choose"
+      ],
+      "surface_ids": [
+        "testing-verification",
+        "agent-skill"
+      ],
+      "gap_behavior": false,
+      "authorization_boundary": false,
+      "assertion": "choose-partitionはv1 Routerの期待Capabilityと安全境界へ到達する。"
+    },
+    {
+      "id": "build-extension",
+      "result": "pass",
+      "outcome_ids": [
+        "build"
+      ],
+      "surface_ids": [
+        "testing-verification",
+        "agent-skill"
+      ],
+      "gap_behavior": false,
+      "authorization_boundary": false,
+      "assertion": "build-extensionはv1 Routerの期待Capabilityと安全境界へ到達する。"
+    },
+    {
+      "id": "choose-rls",
+      "result": "pass",
+      "outcome_ids": [
+        "choose"
+      ],
+      "surface_ids": [
+        "security-privacy-safety",
+        "testing-verification"
+      ],
+      "gap_behavior": false,
+      "authorization_boundary": false,
+      "assertion": "choose-rlsはv1 Routerの期待Capabilityと安全境界へ到達する。"
+    },
+    {
+      "id": "verify-backup-evidence",
+      "result": "pass",
+      "outcome_ids": [
+        "verify"
+      ],
+      "surface_ids": [
+        "testing-verification",
+        "agent-skill"
+      ],
+      "gap_behavior": false,
+      "authorization_boundary": false,
+      "assertion": "verify-backup-evidenceはv1 Routerの期待Capabilityと安全境界へ到達する。"
+    },
+    {
+      "id": "operate-physical-replication",
+      "result": "pass",
+      "outcome_ids": [
+        "operate"
+      ],
+      "surface_ids": [
+        "operations-observability",
+        "failure-recovery"
+      ],
+      "gap_behavior": false,
+      "authorization_boundary": false,
+      "assertion": "operate-physical-replicationはv1 Routerの期待Capabilityと安全境界へ到達する。"
+    },
+    {
+      "id": "troubleshoot-logical-replication",
+      "result": "pass",
+      "outcome_ids": [
+        "troubleshoot"
+      ],
+      "surface_ids": [
+        "testing-verification",
+        "agent-skill"
+      ],
+      "gap_behavior": false,
+      "authorization_boundary": false,
+      "assertion": "troubleshoot-logical-replicationはv1 Routerの期待Capabilityと安全境界へ到達する。"
+    },
+    {
+      "id": "recover-pitr",
+      "result": "pass",
+      "outcome_ids": [
+        "troubleshoot"
+      ],
+      "surface_ids": [
+        "failure-recovery",
+        "operations-observability"
+      ],
+      "gap_behavior": false,
+      "authorization_boundary": false,
+      "assertion": "recover-pitrはv1 Routerの期待Capabilityと安全境界へ到達する。"
+    },
+    {
+      "id": "understand-wal",
+      "result": "pass",
+      "outcome_ids": [
+        "understand"
+      ],
+      "surface_ids": [
+        "testing-verification",
+        "agent-skill"
+      ],
+      "gap_behavior": false,
+      "authorization_boundary": true,
+      "assertion": "understand-walはv1 Routerの期待Capabilityと安全境界へ到達する。"
+    },
+    {
+      "id": "verify-failure-injection",
+      "result": "pass",
+      "outcome_ids": [
+        "verify"
+      ],
+      "surface_ids": [
+        "testing-verification",
+        "agent-skill"
+      ],
+      "gap_behavior": false,
+      "authorization_boundary": false,
+      "assertion": "verify-failure-injectionはv1 Routerの期待Capabilityと安全境界へ到達する。"
+    },
+    {
+      "id": "operate-observability",
+      "result": "pass",
+      "outcome_ids": [
+        "operate"
+      ],
+      "surface_ids": [
+        "testing-verification",
+        "agent-skill"
+      ],
+      "gap_behavior": false,
+      "authorization_boundary": true,
+      "assertion": "operate-observabilityはv1 Routerの期待Capabilityと安全境界へ到達する。"
+    },
+    {
+      "id": "operate-maintenance",
+      "result": "pass",
+      "outcome_ids": [
+        "operate"
+      ],
+      "surface_ids": [
+        "testing-verification",
+        "agent-skill"
+      ],
+      "gap_behavior": false,
+      "authorization_boundary": true,
+      "assertion": "operate-maintenanceはv1 Routerの期待Capabilityと安全境界へ到達する。"
+    },
+    {
+      "id": "troubleshoot-deadlock",
+      "result": "pass",
+      "outcome_ids": [
+        "troubleshoot"
+      ],
+      "surface_ids": [
+        "testing-verification",
+        "agent-skill"
+      ],
+      "gap_behavior": false,
+      "authorization_boundary": true,
+      "assertion": "troubleshoot-deadlockはv1 Routerの期待Capabilityと安全境界へ到達する。"
+    },
+    {
+      "id": "troubleshoot-row-lock",
+      "result": "pass",
+      "outcome_ids": [
+        "troubleshoot"
+      ],
+      "surface_ids": [
+        "testing-verification",
+        "agent-skill"
+      ],
+      "gap_behavior": false,
+      "authorization_boundary": true,
+      "assertion": "troubleshoot-row-lockはv1 Routerの期待Capabilityと安全境界へ到達する。"
+    },
+    {
+      "id": "troubleshoot-slow-plan",
+      "result": "pass",
+      "outcome_ids": [
+        "troubleshoot"
+      ],
+      "surface_ids": [
+        "performance-capacity-cost",
+        "operations-observability"
+      ],
+      "gap_behavior": false,
+      "authorization_boundary": true,
+      "assertion": "troubleshoot-slow-planはv1 Routerの期待Capabilityと安全境界へ到達する。"
+    },
+    {
+      "id": "verify-statistics",
+      "result": "pass",
+      "outcome_ids": [
+        "verify"
+      ],
+      "surface_ids": [
+        "testing-verification",
+        "agent-skill"
+      ],
+      "gap_behavior": false,
+      "authorization_boundary": true,
+      "assertion": "verify-statisticsはv1 Routerの期待Capabilityと安全境界へ到達する。"
+    },
+    {
+      "id": "operate-capacity",
+      "result": "pass",
+      "outcome_ids": [
+        "operate"
+      ],
+      "surface_ids": [
+        "testing-verification",
+        "agent-skill"
+      ],
+      "gap_behavior": false,
+      "authorization_boundary": true,
+      "assertion": "operate-capacityはv1 Routerの期待Capabilityと安全境界へ到達する。"
+    },
+    {
+      "id": "evolve-schema-migration",
+      "result": "pass",
+      "outcome_ids": [
+        "evolve"
+      ],
+      "surface_ids": [
+        "testing-verification",
+        "agent-skill"
+      ],
+      "gap_behavior": false,
+      "authorization_boundary": false,
+      "assertion": "evolve-schema-migrationはv1 Routerの期待Capabilityと安全境界へ到達する。"
+    },
+    {
+      "id": "evolve-pg-upgrade",
+      "result": "pass",
+      "outcome_ids": [
+        "evolve"
+      ],
+      "surface_ids": [
+        "testing-verification",
+        "agent-skill"
+      ],
+      "gap_behavior": false,
+      "authorization_boundary": false,
+      "assertion": "evolve-pg-upgradeはv1 Routerの期待Capabilityと安全境界へ到達する。"
+    },
+    {
+      "id": "evolve-logical-upgrade",
+      "result": "pass",
+      "outcome_ids": [
+        "evolve"
+      ],
+      "surface_ids": [
+        "migration-evolution-deprecation",
+        "compatibility-integration"
+      ],
+      "gap_behavior": false,
+      "authorization_boundary": false,
+      "assertion": "evolve-logical-upgradeはv1 Routerの期待Capabilityと安全境界へ到達する。"
+    },
+    {
+      "id": "verify-compatibility-matrix",
+      "result": "pass",
+      "outcome_ids": [
+        "verify"
+      ],
+      "surface_ids": [
+        "testing-verification",
+        "agent-skill"
+      ],
+      "gap_behavior": false,
+      "authorization_boundary": false,
+      "assertion": "verify-compatibility-matrixはv1 Routerの期待Capabilityと安全境界へ到達する。"
+    },
+    {
+      "id": "delegate-index-review",
+      "result": "pass",
+      "outcome_ids": [
+        "delegate"
+      ],
+      "surface_ids": [
+        "performance-capacity-cost",
+        "decision-comparison"
+      ],
+      "gap_behavior": false,
+      "authorization_boundary": false,
+      "assertion": "delegate-index-reviewはv1 Routerの期待Capabilityと安全境界へ到達する。"
+    },
+    {
+      "id": "coverage-gap-postgis",
+      "result": "pass",
+      "outcome_ids": [
+        "choose"
+      ],
+      "surface_ids": [
+        "orientation-scope",
+        "agent-skill"
+      ],
+      "gap_behavior": true,
+      "authorization_boundary": true,
+      "assertion": "coverage-gap-postgisはv1 Routerの期待Capabilityと安全境界へ到達する。"
+    },
+    {
+      "id": "coverage-gap-pgvector",
+      "result": "pass",
+      "outcome_ids": [
+        "build"
+      ],
+      "surface_ids": [
+        "orientation-scope",
+        "agent-skill"
+      ],
+      "gap_behavior": true,
+      "authorization_boundary": true,
+      "assertion": "coverage-gap-pgvectorはv1 Routerの期待Capabilityと安全境界へ到達する。"
+    },
+    {
+      "id": "coverage-gap-managed",
+      "result": "pass",
+      "outcome_ids": [
+        "operate"
+      ],
+      "surface_ids": [
+        "orientation-scope",
+        "agent-skill"
+      ],
+      "gap_behavior": true,
+      "authorization_boundary": true,
+      "assertion": "coverage-gap-managedはv1 Routerの期待Capabilityと安全境界へ到達する。"
+    },
+    {
+      "id": "coverage-gap-unknown",
+      "result": "pass",
+      "outcome_ids": [
+        "choose"
+      ],
+      "surface_ids": [
+        "orientation-scope",
+        "agent-skill"
+      ],
+      "gap_behavior": true,
+      "authorization_boundary": true,
+      "assertion": "coverage-gap-unknownはv1 Routerの期待Capabilityと安全境界へ到達する。"
+    }
+  ]
+}

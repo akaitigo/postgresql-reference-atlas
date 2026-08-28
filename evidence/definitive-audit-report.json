@@ -1,0 +1,836 @@
+{
+  "schema_version": 2,
+  "atlas_id": "postgresql-reference-atlas",
+  "verdict": "pending",
+  "historical_certificate": {
+    "path": "evidence/history/v1.0.0/completion-certificate.json",
+    "classification": "bounded-complete"
+  },
+  "inventory": {
+    "items": 11340,
+    "authority_artifacts": 5,
+    "by_target": {
+      "concurrency.deadlock": 1,
+      "concurrency.locking": 1,
+      "concurrency.mvcc": 22,
+      "concurrency.transactions-isolation": 6,
+      "foundation.authority-lock": 239,
+      "foundation.reference-system": 24,
+      "foundation.version-lock": 278,
+      "integration.client-tools": 798,
+      "integration.protocol": 176,
+      "lifecycle.compatibility-matrix": 42,
+      "lifecycle.pg-upgrade": 1,
+      "lifecycle.schema-migration": 1,
+      "lifecycle.upgrade": 1,
+      "lifecycle.upgrade-matrix": 1,
+      "operations.backup-methods": 27,
+      "operations.backup-recovery": 1,
+      "operations.checkpoint": 1,
+      "operations.corruption-recovery": 17,
+      "operations.failure-injection": 1,
+      "operations.gucs": 880,
+      "operations.logical-modes": 103,
+      "operations.logical-replication": 1,
+      "operations.maintenance": 21,
+      "operations.observability": 157,
+      "operations.pitr-recovery": 1,
+      "operations.replication": 1,
+      "operations.replication-ha": 30,
+      "operations.resource-limits": 3,
+      "operations.runbook-exercises": 5,
+      "operations.vacuum-bloat": 13,
+      "operations.wal": 20,
+      "performance.capacity-comparison": 1,
+      "performance.execution": 1,
+      "performance.index": 1,
+      "performance.index-methods": 103,
+      "performance.planner": 1,
+      "performance.planner-methods": 62,
+      "performance.statistics": 1,
+      "publication.provenance": 1,
+      "query.catalog-inventory": 1,
+      "query.extension": 814,
+      "query.partition-methods": 1,
+      "query.partitioning": 1,
+      "query.runtime-casts": 236,
+      "query.runtime-functions": 3674,
+      "query.runtime-operators": 800,
+      "query.runtime-types": 1765,
+      "query.security": 1,
+      "query.sql-commands": 512,
+      "query.sql-surface": 1,
+      "query.system-catalogs": 402,
+      "query.types-constraints": 1,
+      "security.authentication": 40,
+      "security.authorization": 45,
+      "skill.definitive-proof-routing": 1,
+      "skill.router-evaluation": 1
+    },
+    "unclassified": 0,
+    "duplicate_ids": [
+
+    ],
+    "unknown_targets": [
+
+    ],
+    "target_mismatches": [
+
+    ],
+    "artifact_errors": [
+
+    ]
+  },
+  "verification": {
+    "rows": 69,
+    "expected_classification_rows": 113400,
+    "missing_classification_rows": 113331,
+    "required_scenario_rows": 43544,
+    "missing_required_scenario_rows": 43510,
+    "behaviors_without_dedicated_accepted_claim": 11327,
+    "targets": 56,
+    "target_gaps": [
+      {
+        "target_id": "foundation.version-lock",
+        "state": "covered",
+        "missing_scenarios": [
+          "boundary",
+          "rejection"
+        ],
+        "unknown_evidence_ids": [
+
+        ]
+      },
+      {
+        "target_id": "foundation.authority-lock",
+        "state": "partial",
+        "missing_scenarios": [
+          "boundary",
+          "rejection"
+        ],
+        "unknown_evidence_ids": [
+
+        ]
+      },
+      {
+        "target_id": "query.sql-surface",
+        "state": "partial",
+        "missing_scenarios": [
+          "boundary"
+        ],
+        "unknown_evidence_ids": [
+
+        ]
+      },
+      {
+        "target_id": "query.types-constraints",
+        "state": "partial",
+        "missing_scenarios": [
+
+        ],
+        "unknown_evidence_ids": [
+
+        ]
+      },
+      {
+        "target_id": "query.catalog-inventory",
+        "state": "partial",
+        "missing_scenarios": [
+          "boundary",
+          "rejection"
+        ],
+        "unknown_evidence_ids": [
+
+        ]
+      },
+      {
+        "target_id": "query.partitioning",
+        "state": "covered",
+        "missing_scenarios": [
+          "rejection"
+        ],
+        "unknown_evidence_ids": [
+
+        ]
+      },
+      {
+        "target_id": "query.extension",
+        "state": "partial",
+        "missing_scenarios": [
+          "boundary"
+        ],
+        "unknown_evidence_ids": [
+
+        ]
+      },
+      {
+        "target_id": "query.security",
+        "state": "covered",
+        "missing_scenarios": [
+          "boundary"
+        ],
+        "unknown_evidence_ids": [
+
+        ]
+      },
+      {
+        "target_id": "concurrency.mvcc",
+        "state": "partial",
+        "missing_scenarios": [
+          "rejection"
+        ],
+        "unknown_evidence_ids": [
+
+        ]
+      },
+      {
+        "target_id": "concurrency.locking",
+        "state": "covered",
+        "missing_scenarios": [
+          "normal",
+          "boundary"
+        ],
+        "unknown_evidence_ids": [
+
+        ]
+      },
+      {
+        "target_id": "concurrency.deadlock",
+        "state": "covered",
+        "missing_scenarios": [
+          "normal",
+          "boundary",
+          "rejection"
+        ],
+        "unknown_evidence_ids": [
+
+        ]
+      },
+      {
+        "target_id": "performance.planner",
+        "state": "partial",
+        "missing_scenarios": [
+          "boundary",
+          "rejection"
+        ],
+        "unknown_evidence_ids": [
+
+        ]
+      },
+      {
+        "target_id": "performance.statistics",
+        "state": "covered",
+        "missing_scenarios": [
+          "boundary",
+          "rejection"
+        ],
+        "unknown_evidence_ids": [
+
+        ]
+      },
+      {
+        "target_id": "performance.index",
+        "state": "partial",
+        "missing_scenarios": [
+          "boundary",
+          "rejection"
+        ],
+        "unknown_evidence_ids": [
+
+        ]
+      },
+      {
+        "target_id": "performance.execution",
+        "state": "partial",
+        "missing_scenarios": [
+          "boundary",
+          "rejection"
+        ],
+        "unknown_evidence_ids": [
+
+        ]
+      },
+      {
+        "target_id": "operations.backup-recovery",
+        "state": "covered",
+        "missing_scenarios": [
+          "boundary",
+          "rejection",
+          "failure",
+          "operations"
+        ],
+        "unknown_evidence_ids": [
+
+        ]
+      },
+      {
+        "target_id": "operations.observability",
+        "state": "partial",
+        "missing_scenarios": [
+          "boundary",
+          "rejection",
+          "failure",
+          "recovery"
+        ],
+        "unknown_evidence_ids": [
+
+        ]
+      },
+      {
+        "target_id": "operations.wal",
+        "state": "covered",
+        "missing_scenarios": [
+          "boundary",
+          "rejection",
+          "failure",
+          "recovery"
+        ],
+        "unknown_evidence_ids": [
+
+        ]
+      },
+      {
+        "target_id": "operations.pitr-recovery",
+        "state": "covered",
+        "missing_scenarios": [
+          "normal",
+          "boundary",
+          "rejection",
+          "operations"
+        ],
+        "unknown_evidence_ids": [
+
+        ]
+      },
+      {
+        "target_id": "operations.replication",
+        "state": "covered",
+        "missing_scenarios": [
+          "boundary",
+          "rejection",
+          "operations"
+        ],
+        "unknown_evidence_ids": [
+
+        ]
+      },
+      {
+        "target_id": "operations.logical-replication",
+        "state": "covered",
+        "missing_scenarios": [
+          "boundary",
+          "rejection",
+          "operations"
+        ],
+        "unknown_evidence_ids": [
+
+        ]
+      },
+      {
+        "target_id": "operations.failure-injection",
+        "state": "covered",
+        "missing_scenarios": [
+          "normal",
+          "boundary",
+          "rejection",
+          "operations"
+        ],
+        "unknown_evidence_ids": [
+
+        ]
+      },
+      {
+        "target_id": "operations.maintenance",
+        "state": "partial",
+        "missing_scenarios": [
+          "boundary",
+          "rejection",
+          "failure"
+        ],
+        "unknown_evidence_ids": [
+
+        ]
+      },
+      {
+        "target_id": "lifecycle.schema-migration",
+        "state": "covered",
+        "missing_scenarios": [
+          "boundary",
+          "rejection",
+          "compatibility"
+        ],
+        "unknown_evidence_ids": [
+
+        ]
+      },
+      {
+        "target_id": "lifecycle.upgrade",
+        "state": "covered",
+        "missing_scenarios": [
+          "boundary",
+          "rejection",
+          "recovery"
+        ],
+        "unknown_evidence_ids": [
+
+        ]
+      },
+      {
+        "target_id": "lifecycle.pg-upgrade",
+        "state": "covered",
+        "missing_scenarios": [
+          "normal",
+          "boundary",
+          "rejection"
+        ],
+        "unknown_evidence_ids": [
+
+        ]
+      },
+      {
+        "target_id": "lifecycle.compatibility-matrix",
+        "state": "covered",
+        "missing_scenarios": [
+          "boundary",
+          "rejection"
+        ],
+        "unknown_evidence_ids": [
+
+        ]
+      },
+      {
+        "target_id": "skill.router-evaluation",
+        "state": "partial",
+        "missing_scenarios": [
+          "boundary"
+        ],
+        "unknown_evidence_ids": [
+
+        ]
+      },
+      {
+        "target_id": "publication.provenance",
+        "state": "partial",
+        "missing_scenarios": [
+          "boundary",
+          "failure",
+          "recovery",
+          "operations"
+        ],
+        "unknown_evidence_ids": [
+
+        ]
+      },
+      {
+        "target_id": "query.sql-commands",
+        "state": "partial",
+        "missing_scenarios": [
+          "normal",
+          "boundary",
+          "rejection"
+        ],
+        "unknown_evidence_ids": [
+
+        ]
+      },
+      {
+        "target_id": "query.runtime-types",
+        "state": "partial",
+        "missing_scenarios": [
+          "normal",
+          "boundary",
+          "rejection"
+        ],
+        "unknown_evidence_ids": [
+
+        ]
+      },
+      {
+        "target_id": "query.runtime-functions",
+        "state": "planned",
+        "missing_scenarios": [
+          "normal",
+          "boundary",
+          "rejection"
+        ],
+        "unknown_evidence_ids": [
+
+        ]
+      },
+      {
+        "target_id": "query.runtime-operators",
+        "state": "planned",
+        "missing_scenarios": [
+          "normal",
+          "boundary",
+          "rejection"
+        ],
+        "unknown_evidence_ids": [
+
+        ]
+      },
+      {
+        "target_id": "query.runtime-casts",
+        "state": "planned",
+        "missing_scenarios": [
+          "normal",
+          "boundary",
+          "rejection"
+        ],
+        "unknown_evidence_ids": [
+
+        ]
+      },
+      {
+        "target_id": "query.system-catalogs",
+        "state": "partial",
+        "missing_scenarios": [
+          "normal",
+          "boundary",
+          "rejection"
+        ],
+        "unknown_evidence_ids": [
+
+        ]
+      },
+      {
+        "target_id": "operations.gucs",
+        "state": "planned",
+        "missing_scenarios": [
+          "normal",
+          "boundary",
+          "rejection",
+          "failure",
+          "recovery",
+          "operations"
+        ],
+        "unknown_evidence_ids": [
+
+        ]
+      },
+      {
+        "target_id": "integration.protocol",
+        "state": "planned",
+        "missing_scenarios": [
+          "normal",
+          "boundary",
+          "rejection",
+          "compatibility"
+        ],
+        "unknown_evidence_ids": [
+
+        ]
+      },
+      {
+        "target_id": "integration.client-tools",
+        "state": "partial",
+        "missing_scenarios": [
+          "normal",
+          "boundary",
+          "rejection",
+          "compatibility"
+        ],
+        "unknown_evidence_ids": [
+
+        ]
+      },
+      {
+        "target_id": "concurrency.transactions-isolation",
+        "state": "partial",
+        "missing_scenarios": [
+          "normal",
+          "boundary",
+          "rejection"
+        ],
+        "unknown_evidence_ids": [
+
+        ]
+      },
+      {
+        "target_id": "performance.planner-methods",
+        "state": "partial",
+        "missing_scenarios": [
+          "normal",
+          "boundary",
+          "rejection",
+          "performance"
+        ],
+        "unknown_evidence_ids": [
+
+        ]
+      },
+      {
+        "target_id": "performance.index-methods",
+        "state": "partial",
+        "missing_scenarios": [
+          "normal",
+          "boundary",
+          "rejection",
+          "performance"
+        ],
+        "unknown_evidence_ids": [
+
+        ]
+      },
+      {
+        "target_id": "query.partition-methods",
+        "state": "partial",
+        "missing_scenarios": [
+          "normal",
+          "boundary",
+          "rejection"
+        ],
+        "unknown_evidence_ids": [
+
+        ]
+      },
+      {
+        "target_id": "security.authentication",
+        "state": "planned",
+        "missing_scenarios": [
+          "normal",
+          "boundary",
+          "rejection",
+          "security"
+        ],
+        "unknown_evidence_ids": [
+
+        ]
+      },
+      {
+        "target_id": "security.authorization",
+        "state": "partial",
+        "missing_scenarios": [
+          "normal",
+          "boundary",
+          "rejection",
+          "security"
+        ],
+        "unknown_evidence_ids": [
+
+        ]
+      },
+      {
+        "target_id": "operations.checkpoint",
+        "state": "partial",
+        "missing_scenarios": [
+          "normal",
+          "boundary",
+          "rejection",
+          "failure",
+          "recovery",
+          "operations"
+        ],
+        "unknown_evidence_ids": [
+
+        ]
+      },
+      {
+        "target_id": "operations.backup-methods",
+        "state": "partial",
+        "missing_scenarios": [
+          "normal",
+          "boundary",
+          "rejection",
+          "failure",
+          "recovery",
+          "operations"
+        ],
+        "unknown_evidence_ids": [
+
+        ]
+      },
+      {
+        "target_id": "operations.replication-ha",
+        "state": "partial",
+        "missing_scenarios": [
+          "normal",
+          "boundary",
+          "rejection",
+          "failure",
+          "recovery",
+          "operations"
+        ],
+        "unknown_evidence_ids": [
+
+        ]
+      },
+      {
+        "target_id": "operations.logical-modes",
+        "state": "partial",
+        "missing_scenarios": [
+          "normal",
+          "boundary",
+          "rejection",
+          "failure",
+          "recovery",
+          "operations"
+        ],
+        "unknown_evidence_ids": [
+
+        ]
+      },
+      {
+        "target_id": "operations.vacuum-bloat",
+        "state": "partial",
+        "missing_scenarios": [
+          "normal",
+          "boundary",
+          "rejection",
+          "failure",
+          "recovery",
+          "operations"
+        ],
+        "unknown_evidence_ids": [
+
+        ]
+      },
+      {
+        "target_id": "operations.resource-limits",
+        "state": "planned",
+        "missing_scenarios": [
+          "normal",
+          "boundary",
+          "rejection",
+          "performance"
+        ],
+        "unknown_evidence_ids": [
+
+        ]
+      },
+      {
+        "target_id": "operations.corruption-recovery",
+        "state": "planned",
+        "missing_scenarios": [
+          "normal",
+          "boundary",
+          "rejection",
+          "failure",
+          "recovery"
+        ],
+        "unknown_evidence_ids": [
+
+        ]
+      },
+      {
+        "target_id": "lifecycle.upgrade-matrix",
+        "state": "partial",
+        "missing_scenarios": [
+          "normal",
+          "boundary",
+          "rejection",
+          "migration",
+          "compatibility",
+          "recovery"
+        ],
+        "unknown_evidence_ids": [
+
+        ]
+      },
+      {
+        "target_id": "operations.runbook-exercises",
+        "state": "planned",
+        "missing_scenarios": [
+          "normal",
+          "boundary",
+          "rejection",
+          "failure",
+          "recovery",
+          "operations"
+        ],
+        "unknown_evidence_ids": [
+
+        ]
+      },
+      {
+        "target_id": "foundation.reference-system",
+        "state": "missing",
+        "missing_scenarios": [
+          "normal",
+          "boundary",
+          "rejection",
+          "failure",
+          "recovery"
+        ],
+        "unknown_evidence_ids": [
+
+        ]
+      },
+      {
+        "target_id": "performance.capacity-comparison",
+        "state": "planned",
+        "missing_scenarios": [
+          "normal",
+          "boundary",
+          "rejection",
+          "performance"
+        ],
+        "unknown_evidence_ids": [
+
+        ]
+      },
+      {
+        "target_id": "skill.definitive-proof-routing",
+        "state": "planned",
+        "missing_scenarios": [
+          "normal",
+          "boundary",
+          "rejection"
+        ],
+        "unknown_evidence_ids": [
+
+        ]
+      }
+    ],
+    "open_targets": 56
+  },
+  "skill": {
+    "cases": 30,
+    "missing_outcomes": [
+
+    ],
+    "missing_surfaces": [
+      "foundations-mechanics",
+      "architecture-design",
+      "implementation-construction",
+      "provenance-rights"
+    ],
+    "unrouted_targets": [
+      "concurrency.transactions-isolation",
+      "foundation.reference-system",
+      "integration.client-tools",
+      "integration.protocol",
+      "lifecycle.upgrade-matrix",
+      "operations.backup-methods",
+      "operations.checkpoint",
+      "operations.corruption-recovery",
+      "operations.gucs",
+      "operations.logical-modes",
+      "operations.replication-ha",
+      "operations.resource-limits",
+      "operations.runbook-exercises",
+      "operations.vacuum-bloat",
+      "performance.capacity-comparison",
+      "performance.index-methods",
+      "performance.planner-methods",
+      "query.partition-methods",
+      "query.runtime-casts",
+      "query.runtime-functions",
+      "query.runtime-operators",
+      "query.runtime-types",
+      "query.sql-commands",
+      "query.system-catalogs",
+      "security.authentication",
+      "security.authorization",
+      "skill.definitive-proof-routing",
+      "skill.router-evaluation"
+    ]
+  },
+  "structural_gaps": [
+    "integrated-reference-system",
+    "multi-method-comparisons",
+    "runbook-exercise-evidence",
+    "current-definitive-certificate"
+  ],
+  "promotion_blocked": true
+}

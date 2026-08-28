@@ -1,0 +1,685 @@
+{
+  "schema_version": 2,
+  "source_id": "postgresql-docs-18.6",
+  "source_digest": "sha256:c51c06f037afdb7563e2d98a5e59ebb380f103b13ce5b9eff5bc11128c330656",
+  "extraction": {
+    "method": "machine-readable-primary",
+    "tool": "tools/generate-definitive-inventory.rb",
+    "reviewed_by": "independent-definitive-audit",
+    "reviewed_at": "2026-08-28"
+  },
+  "surfaces": [
+    {
+      "id": "definitive-domain.concurrency.deadlock",
+      "locator": "coverage.yaml#concurrency.deadlock",
+      "kind": "capability",
+      "capability_id": "concurrency.deadlock",
+      "behavior_id": "definitive-domain.concurrency.deadlock",
+      "title": "Deadlock検出とVictim Rollback",
+      "surface_ids": [
+        "orientation-scope",
+        "testing-verification"
+      ]
+    },
+    {
+      "id": "definitive-domain.concurrency.locking",
+      "locator": "coverage.yaml#concurrency.locking",
+      "kind": "capability",
+      "capability_id": "concurrency.locking",
+      "behavior_id": "definitive-domain.concurrency.locking",
+      "title": "Row Lock競合とNOWAIT拒否",
+      "surface_ids": [
+        "orientation-scope",
+        "testing-verification"
+      ]
+    },
+    {
+      "id": "definitive-domain.concurrency.mvcc",
+      "locator": "coverage.yaml#concurrency.mvcc",
+      "kind": "capability",
+      "capability_id": "concurrency.mvcc",
+      "behavior_id": "definitive-domain.concurrency.mvcc",
+      "title": "MVCC、Isolation、Lock",
+      "surface_ids": [
+        "orientation-scope",
+        "testing-verification"
+      ]
+    },
+    {
+      "id": "definitive-domain.concurrency.transactions-isolation",
+      "locator": "coverage.yaml#concurrency.transactions-isolation",
+      "kind": "capability",
+      "capability_id": "concurrency.transactions-isolation",
+      "behavior_id": "definitive-domain.concurrency.transactions-isolation",
+      "title": "Transactionと全Isolation Level",
+      "surface_ids": [
+        "orientation-scope",
+        "testing-verification"
+      ]
+    },
+    {
+      "id": "definitive-domain.foundation.authority-lock",
+      "locator": "coverage.yaml#foundation.authority-lock",
+      "kind": "capability",
+      "capability_id": "foundation.authority-lock",
+      "behavior_id": "definitive-domain.foundation.authority-lock",
+      "title": "複数一次資料のAuthority Lock",
+      "surface_ids": [
+        "orientation-scope",
+        "testing-verification"
+      ]
+    },
+    {
+      "id": "definitive-domain.foundation.reference-system",
+      "locator": "coverage.yaml#foundation.reference-system",
+      "kind": "capability",
+      "capability_id": "foundation.reference-system",
+      "behavior_id": "definitive-domain.foundation.reference-system",
+      "title": "統合Reference System",
+      "surface_ids": [
+        "orientation-scope",
+        "testing-verification"
+      ]
+    },
+    {
+      "id": "definitive-domain.foundation.version-lock",
+      "locator": "coverage.yaml#foundation.version-lock",
+      "kind": "capability",
+      "capability_id": "foundation.version-lock",
+      "behavior_id": "definitive-domain.foundation.version-lock",
+      "title": "PostgreSQL 18.6 Version固定",
+      "surface_ids": [
+        "orientation-scope",
+        "testing-verification"
+      ]
+    },
+    {
+      "id": "definitive-domain.integration.client-tools",
+      "locator": "coverage.yaml#integration.client-tools",
+      "kind": "capability",
+      "capability_id": "integration.client-tools",
+      "behavior_id": "definitive-domain.integration.client-tools",
+      "title": "公式Client-facing Tool全件",
+      "surface_ids": [
+        "orientation-scope",
+        "testing-verification"
+      ]
+    },
+    {
+      "id": "definitive-domain.integration.protocol",
+      "locator": "coverage.yaml#integration.protocol",
+      "kind": "capability",
+      "capability_id": "integration.protocol",
+      "behavior_id": "definitive-domain.integration.protocol",
+      "title": "Frontend Backend Protocol全Message",
+      "surface_ids": [
+        "orientation-scope",
+        "testing-verification"
+      ]
+    },
+    {
+      "id": "definitive-domain.lifecycle.compatibility-matrix",
+      "locator": "coverage.yaml#lifecycle.compatibility-matrix",
+      "kind": "capability",
+      "capability_id": "lifecycle.compatibility-matrix",
+      "behavior_id": "definitive-domain.lifecycle.compatibility-matrix",
+      "title": "PostgreSQL 14.24から18.6のCompatibility Matrix",
+      "surface_ids": [
+        "orientation-scope",
+        "testing-verification"
+      ]
+    },
+    {
+      "id": "definitive-domain.lifecycle.pg-upgrade",
+      "locator": "coverage.yaml#lifecycle.pg-upgrade",
+      "kind": "capability",
+      "capability_id": "lifecycle.pg-upgrade",
+      "behavior_id": "definitive-domain.lifecycle.pg-upgrade",
+      "title": "pg_upgradeによる17.11から18.6へのBinary Upgrade",
+      "surface_ids": [
+        "orientation-scope",
+        "testing-verification"
+      ]
+    },
+    {
+      "id": "definitive-domain.lifecycle.schema-migration",
+      "locator": "coverage.yaml#lifecycle.schema-migration",
+      "kind": "capability",
+      "capability_id": "lifecycle.schema-migration",
+      "behavior_id": "definitive-domain.lifecycle.schema-migration",
+      "title": "NOT VALID、VALIDATE、CONCURRENTLYによるSchema移行",
+      "surface_ids": [
+        "orientation-scope",
+        "testing-verification"
+      ]
+    },
+    {
+      "id": "definitive-domain.lifecycle.upgrade",
+      "locator": "coverage.yaml#lifecycle.upgrade",
+      "kind": "capability",
+      "capability_id": "lifecycle.upgrade",
+      "behavior_id": "definitive-domain.lifecycle.upgrade",
+      "title": "Major Version Upgrade",
+      "surface_ids": [
+        "orientation-scope",
+        "testing-verification"
+      ]
+    },
+    {
+      "id": "definitive-domain.lifecycle.upgrade-matrix",
+      "locator": "coverage.yaml#lifecycle.upgrade-matrix",
+      "kind": "capability",
+      "capability_id": "lifecycle.upgrade-matrix",
+      "behavior_id": "definitive-domain.lifecycle.upgrade-matrix",
+      "title": "Upgrade・Migration・互換性全方式",
+      "surface_ids": [
+        "orientation-scope",
+        "testing-verification"
+      ]
+    },
+    {
+      "id": "definitive-domain.operations.backup-methods",
+      "locator": "coverage.yaml#operations.backup-methods",
+      "kind": "capability",
+      "capability_id": "operations.backup-methods",
+      "behavior_id": "definitive-domain.operations.backup-methods",
+      "title": "Backup方式比較とRestore演習",
+      "surface_ids": [
+        "orientation-scope",
+        "testing-verification"
+      ]
+    },
+    {
+      "id": "definitive-domain.operations.backup-recovery",
+      "locator": "coverage.yaml#operations.backup-recovery",
+      "kind": "capability",
+      "capability_id": "operations.backup-recovery",
+      "behavior_id": "definitive-domain.operations.backup-recovery",
+      "title": "BackupとRecovery",
+      "surface_ids": [
+        "orientation-scope",
+        "testing-verification"
+      ]
+    },
+    {
+      "id": "definitive-domain.operations.checkpoint",
+      "locator": "coverage.yaml#operations.checkpoint",
+      "kind": "capability",
+      "capability_id": "operations.checkpoint",
+      "behavior_id": "definitive-domain.operations.checkpoint",
+      "title": "CheckpointとWAL Capacity",
+      "surface_ids": [
+        "orientation-scope",
+        "testing-verification"
+      ]
+    },
+    {
+      "id": "definitive-domain.operations.corruption-recovery",
+      "locator": "coverage.yaml#operations.corruption-recovery",
+      "kind": "capability",
+      "capability_id": "operations.corruption-recovery",
+      "behavior_id": "definitive-domain.operations.corruption-recovery",
+      "title": "Corruption検出とRecovery",
+      "surface_ids": [
+        "orientation-scope",
+        "testing-verification"
+      ]
+    },
+    {
+      "id": "definitive-domain.operations.failure-injection",
+      "locator": "coverage.yaml#operations.failure-injection",
+      "kind": "capability",
+      "capability_id": "operations.failure-injection",
+      "behavior_id": "definitive-domain.operations.failure-injection",
+      "title": "Backend強制終了と未確定Transaction回収",
+      "surface_ids": [
+        "orientation-scope",
+        "testing-verification"
+      ]
+    },
+    {
+      "id": "definitive-domain.operations.gucs",
+      "locator": "coverage.yaml#operations.gucs",
+      "kind": "capability",
+      "capability_id": "operations.gucs",
+      "behavior_id": "definitive-domain.operations.gucs",
+      "title": "GUC全件のContext・単位・境界",
+      "surface_ids": [
+        "orientation-scope",
+        "testing-verification"
+      ]
+    },
+    {
+      "id": "definitive-domain.operations.logical-modes",
+      "locator": "coverage.yaml#operations.logical-modes",
+      "kind": "capability",
+      "capability_id": "operations.logical-modes",
+      "behavior_id": "definitive-domain.operations.logical-modes",
+      "title": "Logical Replication方式とConflict",
+      "surface_ids": [
+        "orientation-scope",
+        "testing-verification"
+      ]
+    },
+    {
+      "id": "definitive-domain.operations.logical-replication",
+      "locator": "coverage.yaml#operations.logical-replication",
+      "kind": "capability",
+      "capability_id": "operations.logical-replication",
+      "behavior_id": "definitive-domain.operations.logical-replication",
+      "title": "PublicationとSubscriptionによるLogical Replication",
+      "surface_ids": [
+        "orientation-scope",
+        "testing-verification"
+      ]
+    },
+    {
+      "id": "definitive-domain.operations.maintenance",
+      "locator": "coverage.yaml#operations.maintenance",
+      "kind": "capability",
+      "capability_id": "operations.maintenance",
+      "behavior_id": "definitive-domain.operations.maintenance",
+      "title": "VACUUM、ANALYZE、Freezeの運用検証",
+      "surface_ids": [
+        "orientation-scope",
+        "testing-verification"
+      ]
+    },
+    {
+      "id": "definitive-domain.operations.observability",
+      "locator": "coverage.yaml#operations.observability",
+      "kind": "capability",
+      "capability_id": "operations.observability",
+      "behavior_id": "definitive-domain.operations.observability",
+      "title": "Activity、Statement、Table、Lock、WAL Observability",
+      "surface_ids": [
+        "orientation-scope",
+        "testing-verification"
+      ]
+    },
+    {
+      "id": "definitive-domain.operations.pitr-recovery",
+      "locator": "coverage.yaml#operations.pitr-recovery",
+      "kind": "capability",
+      "capability_id": "operations.pitr-recovery",
+      "behavior_id": "definitive-domain.operations.pitr-recovery",
+      "title": "Archive WALによるPoint-in-Time Recovery",
+      "surface_ids": [
+        "orientation-scope",
+        "testing-verification"
+      ]
+    },
+    {
+      "id": "definitive-domain.operations.replication",
+      "locator": "coverage.yaml#operations.replication",
+      "kind": "capability",
+      "capability_id": "operations.replication",
+      "behavior_id": "definitive-domain.operations.replication",
+      "title": "Physical Replication",
+      "surface_ids": [
+        "orientation-scope",
+        "testing-verification"
+      ]
+    },
+    {
+      "id": "definitive-domain.operations.replication-ha",
+      "locator": "coverage.yaml#operations.replication-ha",
+      "kind": "capability",
+      "capability_id": "operations.replication-ha",
+      "behavior_id": "definitive-domain.operations.replication-ha",
+      "title": "ReplicationとHA境界",
+      "surface_ids": [
+        "orientation-scope",
+        "testing-verification"
+      ]
+    },
+    {
+      "id": "definitive-domain.operations.resource-limits",
+      "locator": "coverage.yaml#operations.resource-limits",
+      "kind": "capability",
+      "capability_id": "operations.resource-limits",
+      "behavior_id": "definitive-domain.operations.resource-limits",
+      "title": "Connection・Memory・Disk・WAL Resource Limit",
+      "surface_ids": [
+        "orientation-scope",
+        "testing-verification"
+      ]
+    },
+    {
+      "id": "definitive-domain.operations.runbook-exercises",
+      "locator": "coverage.yaml#operations.runbook-exercises",
+      "kind": "capability",
+      "capability_id": "operations.runbook-exercises",
+      "behavior_id": "definitive-domain.operations.runbook-exercises",
+      "title": "運用Runbook実地演習",
+      "surface_ids": [
+        "orientation-scope",
+        "testing-verification"
+      ]
+    },
+    {
+      "id": "definitive-domain.operations.vacuum-bloat",
+      "locator": "coverage.yaml#operations.vacuum-bloat",
+      "kind": "capability",
+      "capability_id": "operations.vacuum-bloat",
+      "behavior_id": "definitive-domain.operations.vacuum-bloat",
+      "title": "Vacuum・Freeze・Bloat・Wraparound",
+      "surface_ids": [
+        "orientation-scope",
+        "testing-verification"
+      ]
+    },
+    {
+      "id": "definitive-domain.operations.wal",
+      "locator": "coverage.yaml#operations.wal",
+      "kind": "capability",
+      "capability_id": "operations.wal",
+      "behavior_id": "definitive-domain.operations.wal",
+      "title": "WAL生成、LSN差分、Segment切替",
+      "surface_ids": [
+        "orientation-scope",
+        "testing-verification"
+      ]
+    },
+    {
+      "id": "definitive-domain.performance.capacity-comparison",
+      "locator": "coverage.yaml#performance.capacity-comparison",
+      "kind": "capability",
+      "capability_id": "performance.capacity-comparison",
+      "behavior_id": "definitive-domain.performance.capacity-comparison",
+      "title": "性能・容量・費用の方式比較",
+      "surface_ids": [
+        "orientation-scope",
+        "testing-verification"
+      ]
+    },
+    {
+      "id": "definitive-domain.performance.execution",
+      "locator": "coverage.yaml#performance.execution",
+      "kind": "capability",
+      "capability_id": "performance.execution",
+      "behavior_id": "definitive-domain.performance.execution",
+      "title": "実行時Plan、Buffer、Relation Size証拠",
+      "surface_ids": [
+        "orientation-scope",
+        "testing-verification"
+      ]
+    },
+    {
+      "id": "definitive-domain.performance.index",
+      "locator": "coverage.yaml#performance.index",
+      "kind": "capability",
+      "capability_id": "performance.index",
+      "behavior_id": "definitive-domain.performance.index",
+      "title": "Indexとアクセスパス",
+      "surface_ids": [
+        "orientation-scope",
+        "testing-verification"
+      ]
+    },
+    {
+      "id": "definitive-domain.performance.index-methods",
+      "locator": "coverage.yaml#performance.index-methods",
+      "kind": "capability",
+      "capability_id": "performance.index-methods",
+      "behavior_id": "definitive-domain.performance.index-methods",
+      "title": "Index MethodとOperator Class",
+      "surface_ids": [
+        "orientation-scope",
+        "testing-verification"
+      ]
+    },
+    {
+      "id": "definitive-domain.performance.planner",
+      "locator": "coverage.yaml#performance.planner",
+      "kind": "capability",
+      "capability_id": "performance.planner",
+      "behavior_id": "definitive-domain.performance.planner",
+      "title": "Plannerと統計情報",
+      "surface_ids": [
+        "orientation-scope",
+        "testing-verification"
+      ]
+    },
+    {
+      "id": "definitive-domain.performance.planner-methods",
+      "locator": "coverage.yaml#performance.planner-methods",
+      "kind": "capability",
+      "capability_id": "performance.planner-methods",
+      "behavior_id": "definitive-domain.performance.planner-methods",
+      "title": "Planner MethodとJoin Strategy",
+      "surface_ids": [
+        "orientation-scope",
+        "testing-verification"
+      ]
+    },
+    {
+      "id": "definitive-domain.performance.statistics",
+      "locator": "coverage.yaml#performance.statistics",
+      "kind": "capability",
+      "capability_id": "performance.statistics",
+      "behavior_id": "definitive-domain.performance.statistics",
+      "title": "Extended Statisticsと行数推定",
+      "surface_ids": [
+        "orientation-scope",
+        "testing-verification"
+      ]
+    },
+    {
+      "id": "definitive-domain.publication.provenance",
+      "locator": "coverage.yaml#publication.provenance",
+      "kind": "capability",
+      "capability_id": "publication.provenance",
+      "behavior_id": "definitive-domain.publication.provenance",
+      "title": "LicenseとProvenance",
+      "surface_ids": [
+        "orientation-scope",
+        "testing-verification"
+      ]
+    },
+    {
+      "id": "definitive-domain.query.catalog-inventory",
+      "locator": "coverage.yaml#query.catalog-inventory",
+      "kind": "capability",
+      "capability_id": "query.catalog-inventory",
+      "behavior_id": "definitive-domain.query.catalog-inventory",
+      "title": "PostgreSQL 18.6 Runtime Catalog Inventory",
+      "surface_ids": [
+        "orientation-scope",
+        "testing-verification"
+      ]
+    },
+    {
+      "id": "definitive-domain.query.extension",
+      "locator": "coverage.yaml#query.extension",
+      "kind": "capability",
+      "capability_id": "query.extension",
+      "behavior_id": "definitive-domain.query.extension",
+      "title": "公式同梱Extensionの導入と索引利用",
+      "surface_ids": [
+        "orientation-scope",
+        "testing-verification"
+      ]
+    },
+    {
+      "id": "definitive-domain.query.partition-methods",
+      "locator": "coverage.yaml#query.partition-methods",
+      "kind": "capability",
+      "capability_id": "query.partition-methods",
+      "behavior_id": "definitive-domain.query.partition-methods",
+      "title": "Partition方式とLifecycle",
+      "surface_ids": [
+        "orientation-scope",
+        "testing-verification"
+      ]
+    },
+    {
+      "id": "definitive-domain.query.partitioning",
+      "locator": "coverage.yaml#query.partitioning",
+      "kind": "capability",
+      "capability_id": "query.partitioning",
+      "behavior_id": "definitive-domain.query.partitioning",
+      "title": "Range Partition RoutingとPruning",
+      "surface_ids": [
+        "orientation-scope",
+        "testing-verification"
+      ]
+    },
+    {
+      "id": "definitive-domain.query.runtime-casts",
+      "locator": "coverage.yaml#query.runtime-casts",
+      "kind": "capability",
+      "capability_id": "query.runtime-casts",
+      "behavior_id": "definitive-domain.query.runtime-casts",
+      "title": "Cast全件と安全境界",
+      "surface_ids": [
+        "orientation-scope",
+        "testing-verification"
+      ]
+    },
+    {
+      "id": "definitive-domain.query.runtime-functions",
+      "locator": "coverage.yaml#query.runtime-functions",
+      "kind": "capability",
+      "capability_id": "query.runtime-functions",
+      "behavior_id": "definitive-domain.query.runtime-functions",
+      "title": "組み込みFunction全件の分類とProof",
+      "surface_ids": [
+        "orientation-scope",
+        "testing-verification"
+      ]
+    },
+    {
+      "id": "definitive-domain.query.runtime-operators",
+      "locator": "coverage.yaml#query.runtime-operators",
+      "kind": "capability",
+      "capability_id": "query.runtime-operators",
+      "behavior_id": "definitive-domain.query.runtime-operators",
+      "title": "組み込みOperator全件の分類とProof",
+      "surface_ids": [
+        "orientation-scope",
+        "testing-verification"
+      ]
+    },
+    {
+      "id": "definitive-domain.query.runtime-types",
+      "locator": "coverage.yaml#query.runtime-types",
+      "kind": "capability",
+      "capability_id": "query.runtime-types",
+      "behavior_id": "definitive-domain.query.runtime-types",
+      "title": "組み込みType全件の意味論",
+      "surface_ids": [
+        "orientation-scope",
+        "testing-verification"
+      ]
+    },
+    {
+      "id": "definitive-domain.query.security",
+      "locator": "coverage.yaml#query.security",
+      "kind": "capability",
+      "capability_id": "query.security",
+      "behavior_id": "definitive-domain.query.security",
+      "title": "Role、RLS、SECURITY DEFINER安全境界",
+      "surface_ids": [
+        "orientation-scope",
+        "testing-verification"
+      ]
+    },
+    {
+      "id": "definitive-domain.query.sql-commands",
+      "locator": "coverage.yaml#query.sql-commands",
+      "kind": "capability",
+      "capability_id": "query.sql-commands",
+      "behavior_id": "definitive-domain.query.sql-commands",
+      "title": "SQL Command 183件のCommand別Proof",
+      "surface_ids": [
+        "orientation-scope",
+        "testing-verification"
+      ]
+    },
+    {
+      "id": "definitive-domain.query.sql-surface",
+      "locator": "coverage.yaml#query.sql-surface",
+      "kind": "capability",
+      "capability_id": "query.sql-surface",
+      "behavior_id": "definitive-domain.query.sql-surface",
+      "title": "SQL公開Surfaceと実行意味論",
+      "surface_ids": [
+        "orientation-scope",
+        "testing-verification"
+      ]
+    },
+    {
+      "id": "definitive-domain.query.system-catalogs",
+      "locator": "coverage.yaml#query.system-catalogs",
+      "kind": "capability",
+      "capability_id": "query.system-catalogs",
+      "behavior_id": "definitive-domain.query.system-catalogs",
+      "title": "System CatalogとInformation Schema全件",
+      "surface_ids": [
+        "orientation-scope",
+        "testing-verification"
+      ]
+    },
+    {
+      "id": "definitive-domain.query.types-constraints",
+      "locator": "coverage.yaml#query.types-constraints",
+      "kind": "capability",
+      "capability_id": "query.types-constraints",
+      "behavior_id": "definitive-domain.query.types-constraints",
+      "title": "組み込み型とConstraintの実行意味論",
+      "surface_ids": [
+        "orientation-scope",
+        "testing-verification"
+      ]
+    },
+    {
+      "id": "definitive-domain.security.authentication",
+      "locator": "coverage.yaml#security.authentication",
+      "kind": "capability",
+      "capability_id": "security.authentication",
+      "behavior_id": "definitive-domain.security.authentication",
+      "title": "Authentication MethodとTLS境界",
+      "surface_ids": [
+        "orientation-scope",
+        "testing-verification"
+      ]
+    },
+    {
+      "id": "definitive-domain.security.authorization",
+      "locator": "coverage.yaml#security.authorization",
+      "kind": "capability",
+      "capability_id": "security.authorization",
+      "behavior_id": "definitive-domain.security.authorization",
+      "title": "Role・Privilege・RLS全境界",
+      "surface_ids": [
+        "orientation-scope",
+        "testing-verification"
+      ]
+    },
+    {
+      "id": "definitive-domain.skill.definitive-proof-routing",
+      "locator": "coverage.yaml#skill.definitive-proof-routing",
+      "kind": "capability",
+      "capability_id": "skill.definitive-proof-routing",
+      "behavior_id": "definitive-domain.skill.definitive-proof-routing",
+      "title": "Target別Proof Router Eval",
+      "surface_ids": [
+        "orientation-scope",
+        "testing-verification"
+      ]
+    },
+    {
+      "id": "definitive-domain.skill.router-evaluation",
+      "locator": "coverage.yaml#skill.router-evaluation",
+      "kind": "capability",
+      "capability_id": "skill.router-evaluation",
+      "behavior_id": "definitive-domain.skill.router-evaluation",
+      "title": "PostgreSQL Router Skill評価",
+      "surface_ids": [
+        "orientation-scope",
+        "testing-verification"
+      ]
+    }
+  ]
+}
