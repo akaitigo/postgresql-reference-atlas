@@ -1,0 +1,1414 @@
+{
+  "atlas_id": "postgresql-reference-atlas",
+  "baseline_commit": "8a4259d2de288178b8b87f09a09e5b57654c88e0",
+  "captured_at": "2026-08-28T17:28:13+09:00",
+  "collections": {
+    "ci_jobs": [
+      {
+        "enabled": true,
+        "fingerprint": "sha256:b3c306a057bb6312fa13bcc4ca73053be3f8b55bdb34632197eab5cf2a4b54a3",
+        "id": ".github/workflows/ci.yml:executable-labs",
+        "kind": "ci-job",
+        "path": ".github/workflows/ci.yml",
+        "platform": "ubuntu-latest"
+      },
+      {
+        "enabled": true,
+        "fingerprint": "sha256:9108ccdb206179323c6a53ed1fe098d078419535bca1ce31ebd43efbfaea658e",
+        "id": ".github/workflows/ci.yml:validate",
+        "kind": "ci-job",
+        "path": ".github/workflows/ci.yml",
+        "platform": "ubuntu-latest"
+      }
+    ],
+    "claims": [
+      {
+        "fingerprint": "sha256:2e1d5d26ec6dca05e1d816b04db8611efc235eca16779f0913b7e363b7797dd3",
+        "id": "concurrency.deadlock"
+      },
+      {
+        "fingerprint": "sha256:a233dfeae338dad78842291cd0bb1e30c13519b0164a70557537dde74e9a3a74",
+        "id": "concurrency.locking"
+      },
+      {
+        "fingerprint": "sha256:27d10cc90ef2c7efafc13ff9a5479e946a658f0987a456c6f40dfd6d7b9c0f8e",
+        "id": "concurrency.mvcc"
+      },
+      {
+        "fingerprint": "sha256:cd66bf9f80d515b62c6b228e18770d91fd130fab2be470005568139c33a44727",
+        "id": "foundation.authority-lock"
+      },
+      {
+        "fingerprint": "sha256:ac9d25019df18b350192ba9fe1d46a6307c4cbb3879c7baceec1e6d8dc9b686c",
+        "id": "foundation.version-lock"
+      },
+      {
+        "fingerprint": "sha256:5fe980566f9db170bee335b4ec605960e7eb4ddc5d3d8cef3fa3bc3e5fc2e862",
+        "id": "lifecycle.compatibility-matrix"
+      },
+      {
+        "fingerprint": "sha256:686316080e1f0dbc2328852e3b867b72e9f68d2a859e8075719e0487e17761d3",
+        "id": "lifecycle.pg-upgrade"
+      },
+      {
+        "fingerprint": "sha256:e3698682da90112e935ec018dc00824677e2ac8491df78a55a82fc921256bdef",
+        "id": "lifecycle.schema-migration"
+      },
+      {
+        "fingerprint": "sha256:7b1c69624b0b6468c61be4fcd2f76ea78b28512a1a1365597978b1a2926bd1eb",
+        "id": "lifecycle.upgrade"
+      },
+      {
+        "fingerprint": "sha256:ff8b09564e3b78470c177d0a1be473f1f713d96b9f4717272424f8229bded12f",
+        "id": "operations.backup-recovery"
+      },
+      {
+        "fingerprint": "sha256:eb08253c28b6a969a5e72f690f665facfa94d973ca1a2b79c505f2a71449e137",
+        "id": "operations.failure-injection"
+      },
+      {
+        "fingerprint": "sha256:3c7eb78ef77086a1ee4ffb9dd936af0c0719b3d9cbd0bbadcea85378e4d6fc7e",
+        "id": "operations.logical-replication"
+      },
+      {
+        "fingerprint": "sha256:cfd1212c248f515409d3216a1d8028f934ea5be6885c42a9c775b4f1b4162193",
+        "id": "operations.maintenance"
+      },
+      {
+        "fingerprint": "sha256:ee7088099928abb06c5805d08cdd8becc6703fc8d8cf55f826763c7f02d09a8b",
+        "id": "operations.observability"
+      },
+      {
+        "fingerprint": "sha256:391f7ae7da37b224bcf3c79c70c7bb19a34ad74e3052c32d42775d75c26a001d",
+        "id": "operations.pitr-recovery"
+      },
+      {
+        "fingerprint": "sha256:c17ae324a00d49d9337c925f70a82be1e0d8b8fa4a49fa90b45f9b0be8ff27cf",
+        "id": "operations.replication"
+      },
+      {
+        "fingerprint": "sha256:c04703bc4c3929b7b609b32fb9cfcfee93091ca951de79d89c8691b57f96a438",
+        "id": "operations.wal"
+      },
+      {
+        "fingerprint": "sha256:ada5dc4bfdcd3344cce2bbb00c5bf064c84619de6b462f65eeb1a386e33214d9",
+        "id": "performance.execution"
+      },
+      {
+        "fingerprint": "sha256:ef74a9aaee4c20b335c2f1795cab4d74f7746cca5b9117146004c3f10b4b827c",
+        "id": "performance.index"
+      },
+      {
+        "fingerprint": "sha256:ec604fb1e6059353d8f2ebe73d0bf59581e276de35b81d71082328c9b458b5cf",
+        "id": "performance.planner"
+      },
+      {
+        "fingerprint": "sha256:6032af2e93aacb4be83facdaa4f736318ffaae7af32242b1a5ffd513c44cb4ca",
+        "id": "performance.statistics"
+      },
+      {
+        "fingerprint": "sha256:017c6e9761b618e226145cdbc6347d21ba1f8359c05869a447c369391d5bc4ee",
+        "id": "publication.provenance"
+      },
+      {
+        "fingerprint": "sha256:3dac3b8720d05a2b3b1837a3f036a02ff9a191c4739a84fdb5ac84ea5340ed9a",
+        "id": "query.catalog-inventory"
+      },
+      {
+        "fingerprint": "sha256:8d76ab31f8ef22a2d480c0bf9c66831b1b7b254efacb640b15eb9cd5366f769a",
+        "id": "query.extension"
+      },
+      {
+        "fingerprint": "sha256:beae9d37e29ee712558a4cb9e331bd63d10c4bd56729fe854bcc38e8af9731b8",
+        "id": "query.partitioning"
+      },
+      {
+        "fingerprint": "sha256:c1ee155aecd03b8e213a3d5cc12766016137116e8fc05d74004d296197c2f06e",
+        "id": "query.security"
+      },
+      {
+        "fingerprint": "sha256:0a9f941ad62f7c9ae860a4421633e6b3835edc45ca433e0cd8b757daeed57d15",
+        "id": "query.sql-surface"
+      },
+      {
+        "fingerprint": "sha256:072e8f18cb85e06258d8abfedc5d7e74f1c3a96b178e223ca4ac3ff175e4d9fb",
+        "id": "query.types-constraints"
+      },
+      {
+        "fingerprint": "sha256:17b312e3528931ea2e24b74f35cf7245c10f05ae2898a2b9e5d8911837cedd9d",
+        "id": "skill.router"
+      }
+    ],
+    "depth_parity_rows": [],
+    "evidence": [
+      {
+        "execution_mode": "runtime",
+        "fingerprint": "sha256:4187c59b4d135db97f4bc7e7c66586134fed62501e61c0e40e978949ac94d873",
+        "id": "foundation.authority-lock",
+        "profile": "local",
+        "verdict": "pass"
+      },
+      {
+        "execution_mode": "runtime",
+        "fingerprint": "sha256:33882eae83c9b195af11f0d498cb9152af778a43f34704e3c93c801466cde187",
+        "id": "lab.authority-lock",
+        "profile": "local",
+        "verdict": "pass"
+      },
+      {
+        "execution_mode": "runtime",
+        "fingerprint": "sha256:5e4272b9bee7039c1e991f7567eb487a0183f07d9e058ad6ebb415e8ad72d5c8",
+        "id": "lab.backup-recovery",
+        "profile": "container",
+        "verdict": "pass"
+      },
+      {
+        "execution_mode": "runtime",
+        "fingerprint": "sha256:00685508d0e84e91c7abc678588c1e4e8a5bd8ed835b4ba91c422766108d8ba8",
+        "id": "lab.catalog-inventory",
+        "profile": "container",
+        "verdict": "pass"
+      },
+      {
+        "execution_mode": "runtime",
+        "fingerprint": "sha256:47a4d756cd68b7f2a286b354f2d16ae922a5173dfc02c3b7488e5e76fa1f0c14",
+        "id": "lab.compatibility-matrix",
+        "profile": "cluster",
+        "verdict": "pass"
+      },
+      {
+        "execution_mode": "runtime",
+        "fingerprint": "sha256:3393f8532faf821d4f0bcf74e6bda68c1da8e65178d59645353e4d19f138b85b",
+        "id": "lab.deadlock",
+        "profile": "container",
+        "verdict": "pass"
+      },
+      {
+        "execution_mode": "runtime",
+        "fingerprint": "sha256:0f80f6aeeb0ef6f5ce4b30d66238ba397691e088da2d1d06c4db229ad6f2de19",
+        "id": "lab.extension",
+        "profile": "container",
+        "verdict": "pass"
+      },
+      {
+        "execution_mode": "runtime",
+        "fingerprint": "sha256:d21e61b4d2e9d5af5b3119de60268a26a4de125ce4a7878acac630ad831bbbb6",
+        "id": "lab.failure-injection",
+        "profile": "container",
+        "verdict": "pass"
+      },
+      {
+        "execution_mode": "runtime",
+        "fingerprint": "sha256:5ce1eae3fffff95be01cb63cc10979bcdde3aff3dc19c507d1f75f838e5848ab",
+        "id": "lab.index",
+        "profile": "container",
+        "verdict": "pass"
+      },
+      {
+        "execution_mode": "runtime",
+        "fingerprint": "sha256:05e94d9fe2185950941a368229c3c773e7525702c0dde22f0fee94fa4f79c52d",
+        "id": "lab.locking",
+        "profile": "container",
+        "verdict": "pass"
+      },
+      {
+        "execution_mode": "runtime",
+        "fingerprint": "sha256:32f30ce0e89b85f306201e711052a812270066c6cb1eb1c5bdcf4e4155f50c22",
+        "id": "lab.logical-replication",
+        "profile": "cluster",
+        "verdict": "pass"
+      },
+      {
+        "execution_mode": "runtime",
+        "fingerprint": "sha256:3997e42cdbf7ef9d2af79863a6a645a30a069a3123dcd5e4746952eb330c41c9",
+        "id": "lab.maintenance",
+        "profile": "container",
+        "verdict": "pass"
+      },
+      {
+        "execution_mode": "runtime",
+        "fingerprint": "sha256:6e3f3f21c89ae255479efd3f4bc73b62ed409a5c8937a59e698008c7d86b2f44",
+        "id": "lab.migration",
+        "profile": "container",
+        "verdict": "pass"
+      },
+      {
+        "execution_mode": "runtime",
+        "fingerprint": "sha256:58576a89c9600033be88fcaa0baba9bdd30d63132f709f406625e83fde3396e7",
+        "id": "lab.mvcc",
+        "profile": "container",
+        "verdict": "pass"
+      },
+      {
+        "execution_mode": "runtime",
+        "fingerprint": "sha256:5a803a097d43361beea2ca1d36d72c98b937e63f642de34809ee736a6c9a8cc3",
+        "id": "lab.observability",
+        "profile": "container",
+        "verdict": "pass"
+      },
+      {
+        "execution_mode": "runtime",
+        "fingerprint": "sha256:d40c8a01023b8efed3df87be7fdf8a8ac3a5f43a9b5bf94319c84ebe0615209e",
+        "id": "lab.partitioning",
+        "profile": "container",
+        "verdict": "pass"
+      },
+      {
+        "execution_mode": "runtime",
+        "fingerprint": "sha256:d6c39a2468dfecb6bd5bfd951dd66500d59b0ca53b6bb4c0beab5968eb8a8be8",
+        "id": "lab.performance",
+        "profile": "container",
+        "verdict": "pass"
+      },
+      {
+        "execution_mode": "runtime",
+        "fingerprint": "sha256:0f2415af6637d0b1fd6deddf74953f9cfb6bcedfa67e3edb9bfae02f2c2e1c1e",
+        "id": "lab.pg-upgrade",
+        "profile": "cluster",
+        "verdict": "pass"
+      },
+      {
+        "execution_mode": "runtime",
+        "fingerprint": "sha256:84f0cab468b6c454c9e6a67e0ec01cfff04bebd94a0236cc68c8e99616fc62bf",
+        "id": "lab.pitr",
+        "profile": "cluster",
+        "verdict": "pass"
+      },
+      {
+        "execution_mode": "runtime",
+        "fingerprint": "sha256:474a7ed7c9248503469460be37d61e7503647178625dd06f23faa44456516dcc",
+        "id": "lab.planner",
+        "profile": "container",
+        "verdict": "pass"
+      },
+      {
+        "execution_mode": "runtime",
+        "fingerprint": "sha256:209695ae5ecf3b294199b2d4eb3da39dacb98f41b17b28b81f454e0a3e44c4d4",
+        "id": "lab.replication",
+        "profile": "cluster",
+        "verdict": "pass"
+      },
+      {
+        "execution_mode": "runtime",
+        "fingerprint": "sha256:4c4bcf6f9ebf75c4aa57e63ff42f25a251f16cf636fa68e235bfee74e06c2078",
+        "id": "lab.security",
+        "profile": "container",
+        "verdict": "pass"
+      },
+      {
+        "execution_mode": "runtime",
+        "fingerprint": "sha256:89e131db9449fecb9b5e4194ad4000f0c35a597250e434f3a2b40f019e50e9c2",
+        "id": "lab.sql",
+        "profile": "container",
+        "verdict": "pass"
+      },
+      {
+        "execution_mode": "runtime",
+        "fingerprint": "sha256:92d52edff8473d9a7acf9e1f98c18bf792c7383390de3935519a4c720e4a16ef",
+        "id": "lab.sql-surface",
+        "profile": "local",
+        "verdict": "pass"
+      },
+      {
+        "execution_mode": "runtime",
+        "fingerprint": "sha256:d082723fb78cc68825a573bdd33492a916628053b2763460d8f23e24edabdf42",
+        "id": "lab.statistics",
+        "profile": "container",
+        "verdict": "pass"
+      },
+      {
+        "execution_mode": "runtime",
+        "fingerprint": "sha256:9b7fc3b49a16b3fe77c60f408d073402872a961c1a7e5b62db95e6cd2959a0f1",
+        "id": "lab.types-constraints",
+        "profile": "container",
+        "verdict": "pass"
+      },
+      {
+        "execution_mode": "runtime",
+        "fingerprint": "sha256:2d3495536987bbde76b0705e0691a1ecdfc07bd189efd938857f9289582e6f93",
+        "id": "lab.upgrade",
+        "profile": "cluster",
+        "verdict": "pass"
+      },
+      {
+        "execution_mode": "runtime",
+        "fingerprint": "sha256:11bebbaa619d8cb1fa4be5604104f1f80f8a2b88a6096d5c29e10108c2f1b4b3",
+        "id": "lab.wal",
+        "profile": "container",
+        "verdict": "pass"
+      },
+      {
+        "execution_mode": "runtime",
+        "fingerprint": "sha256:aab4a0fc6e4012ab266b7e54ce2f604432cd3aed7ae802fd531e6dfec2722925",
+        "id": "publication.static-gates",
+        "profile": "local",
+        "verdict": "pass"
+      },
+      {
+        "execution_mode": "runtime",
+        "fingerprint": "sha256:985a7d4a433897e41206ade8c333af5239beb1a57161a3d519ea470a78510f63",
+        "id": "skill.router-eval",
+        "profile": "local",
+        "verdict": "pass"
+      }
+    ],
+    "matrix_rows": [],
+    "proof_obligations": [
+      {
+        "fingerprint": "sha256:e694face15325e198089a137a4c3c19d122234e60e4a6da4c481f4747b56d82c",
+        "id": "concurrency.deadlock-victim"
+      },
+      {
+        "fingerprint": "sha256:24eb1261ee4a6daa868f454b9717976fc58de16eccc4b3feb661bc10b196fe1a",
+        "id": "concurrency.repeatable-read-snapshot"
+      },
+      {
+        "fingerprint": "sha256:9a33c9b177d2dfa1f5afd6e20cdb55d1781541f2b4efcfb74db705701726bcf4",
+        "id": "concurrency.row-lock-nowait"
+      },
+      {
+        "fingerprint": "sha256:a23abad962adc8acabe05eecae107ccb5b8a55f5f244d78a5b80aab98ecfc619",
+        "id": "foundation.authority-digests"
+      },
+      {
+        "fingerprint": "sha256:40eea181a6ea96757061cd04e6ed3f93bfd43e29d884c314b6f001c97671fa49",
+        "id": "foundation.authority-digests"
+      },
+      {
+        "fingerprint": "sha256:ed58be94d9d92e5ad1e372f54ae9bda20c2007f1ad133db2ca81cc19b314196a",
+        "id": "lifecycle.binary-pg-upgrade"
+      },
+      {
+        "fingerprint": "sha256:22a4551d9cd9fa3bf979613a7d4c896a9307658a7a664f29a38dbe9baa7d4787",
+        "id": "lifecycle.cross-version-matrix"
+      },
+      {
+        "fingerprint": "sha256:a2fbfd8609836fa9bf558c1757ee8697c0a19bb27509fb2d5a735fa733c3be37",
+        "id": "lifecycle.logical-upgrade"
+      },
+      {
+        "fingerprint": "sha256:8df1d7e468dd9de923538326c1d44152e883992ba8fe6c991bdd929cd90ba38c",
+        "id": "lifecycle.online-schema-migration"
+      },
+      {
+        "fingerprint": "sha256:d11181ae93d2fd5655ea65693f6308bceb10f5f9888e204db852d39887a37868",
+        "id": "operations.backend-failure"
+      },
+      {
+        "fingerprint": "sha256:5cea9e7b753d4cdb8b783da7d543e1b5a6a8f1c0dffcf452a41be9ad2101bb2f",
+        "id": "operations.logical-replication"
+      },
+      {
+        "fingerprint": "sha256:8574708ee58f2a29c380813e927319b943c7b245657783a0619ca9b026f9ab13",
+        "id": "operations.logical-restore"
+      },
+      {
+        "fingerprint": "sha256:a367ef14bb0216a965a21374250106939338d8c1c22faaee8da96b6aa3b3b716",
+        "id": "operations.named-pitr"
+      },
+      {
+        "fingerprint": "sha256:3d83ca52611b520819b32be511af1e7929fa3332194802b0abd058cdbe36f914",
+        "id": "operations.observability-views"
+      },
+      {
+        "fingerprint": "sha256:bb3325dd3a2cfb440e2cbd63e97777bd585e7e0842e7354b0ea06a723d854e94",
+        "id": "operations.physical-replication"
+      },
+      {
+        "fingerprint": "sha256:523db67cff463aa4f7720046bf22b33014bb5738499da3be09c85e0badcc234c",
+        "id": "operations.vacuum-maintenance"
+      },
+      {
+        "fingerprint": "sha256:af3793f920d9a9cac0f58ac65fac9611530c53d8344825a14d9d6443e1c19ce9",
+        "id": "operations.wal-generation"
+      },
+      {
+        "fingerprint": "sha256:d82aeead5a21468ec70069405179e7eb29db087197b4a3c0c5e7bb8ebc8094fe",
+        "id": "performance.execution-evidence"
+      },
+      {
+        "fingerprint": "sha256:af6e40a777464c807a76562c4003b8c008df3de6beadc00c71edd68351445bee",
+        "id": "performance.extended-statistics"
+      },
+      {
+        "fingerprint": "sha256:3de8d27dd98f53dc8e15976fe26a57f787aa17666101f96c293381ab121c67ff",
+        "id": "performance.partial-index"
+      },
+      {
+        "fingerprint": "sha256:b9e258b5551ddf2ff8d5318acd5e550125dc660a6b1bbac7f22a67ae9f8fb43e",
+        "id": "performance.semantic-plan"
+      },
+      {
+        "fingerprint": "sha256:2002cef4437bb202ecb62049ef158d60e67d747fb2d157a832d2cef611fe9450",
+        "id": "publication.static-gates"
+      },
+      {
+        "fingerprint": "sha256:593d538187a4efb55dd7906cbc4dcca9b859fcf792ac3ee393d39425f12fb013",
+        "id": "query.bundled-extension"
+      },
+      {
+        "fingerprint": "sha256:fc7178e726a6fa4e83f115f3e94fa9f98251f3e2c0b3c55d54da798f4d0c2ee5",
+        "id": "query.constraints-and-returning"
+      },
+      {
+        "fingerprint": "sha256:59e22ce50179c26ecdb417bc5b8ff9fe3a71915870aba9f3d5c6fa9ef289b591",
+        "id": "query.partition-routing-pruning"
+      },
+      {
+        "fingerprint": "sha256:8a31775fc97753ad5ac6ca32faf020653d7608567eabee479a21f7454c96beb5",
+        "id": "query.rls-boundary"
+      },
+      {
+        "fingerprint": "sha256:6b507947b5639968a66c73fb5f9a2f7a02fa54e2f9c980c8d643e5ef10a00f6a",
+        "id": "query.runtime-catalog-inventory"
+      },
+      {
+        "fingerprint": "sha256:16c01f6594285ea376ffc4427e55e12e2ca9249c8fe584588bd31d60ef216b35",
+        "id": "query.types-constraints"
+      },
+      {
+        "fingerprint": "sha256:9347ec21b2e913841a19af9cc98b9a6edb4440b0b4a3e12a4e3388cd4f168e87",
+        "id": "skill.routing"
+      }
+    ],
+    "required_profiles": [
+      {
+        "fingerprint": "sha256:023f529feb6a02470a68b9b4c6d8821b09ef90363e74d68c2e6a09dedf6eeb94",
+        "id": "cluster"
+      },
+      {
+        "fingerprint": "sha256:29fb24a09109031672a8623940e7270457f4521cca1b345291eabd206cd97a22",
+        "id": "container"
+      },
+      {
+        "fingerprint": "sha256:5ecda787e51a590af90a522264b84a48da429ab4475f34348877334c82a1cf61",
+        "id": "local"
+      }
+    ],
+    "skill_eval_cases": [
+      {
+        "fingerprint": "sha256:f9e14b60a6ef847ec463205413ecfa54a0938ffa4cc5c63fbd29bb39a8468032",
+        "id": "build-domain-type"
+      },
+      {
+        "fingerprint": "sha256:c4fa51f063513deea7b21c489679bfd77a9323f680c85253879b43b390284bd7",
+        "id": "build-extension"
+      },
+      {
+        "fingerprint": "sha256:aa78ed2ab53bb43db0c7d3727c719bb083a63eb54500650acd6dbdd91a7e3519",
+        "id": "build-sql-constraint"
+      },
+      {
+        "fingerprint": "sha256:83f1130d5d5097d487b152462220aee506486c4834597242b797c9f090959e44",
+        "id": "choose-partial-index"
+      },
+      {
+        "fingerprint": "sha256:7735a8f8dca0a9ff8db978167a47954f0055f80924aaf0569a7a392325f8f8ae",
+        "id": "choose-partition"
+      },
+      {
+        "fingerprint": "sha256:5a857522b6dab244874b436677a4c9d2cfc7dfbc4d6e77698dede616cdfb9ccd",
+        "id": "choose-rls"
+      },
+      {
+        "fingerprint": "sha256:3a78cbe110ed8a38c72c3d18fd66a5459f3d8646918f9808780f69e38a13368a",
+        "id": "coverage-gap-managed"
+      },
+      {
+        "fingerprint": "sha256:4e2599c774fd1cb39c3b030f387672268f1617fdc7cdd2f76a027dc5a064c31b",
+        "id": "coverage-gap-pgvector"
+      },
+      {
+        "fingerprint": "sha256:8bb60b57871d8865819524f209ff5a073aed031bd75fb00d4c4a923a629e8717",
+        "id": "coverage-gap-postgis"
+      },
+      {
+        "fingerprint": "sha256:8184dd47e8d7e61850eb0d74af4c03914964a5098e7e0c1ff9d6828cf9c294ae",
+        "id": "coverage-gap-unknown"
+      },
+      {
+        "fingerprint": "sha256:dcaee49a4cca1e3f37e798d8857a72f2a7c92d3a4e39c0a96c7d5101c4d20817",
+        "id": "delegate-index-review"
+      },
+      {
+        "fingerprint": "sha256:5bda1138947409e1bd373ea878001e35117e3717278ac33aadf7bdae2c387d21",
+        "id": "evolve-logical-upgrade"
+      },
+      {
+        "fingerprint": "sha256:0a91336b4cb295fd7b3019d40b34189b779a7f561b6f4c7d4da6f1d26399b52f",
+        "id": "evolve-pg-upgrade"
+      },
+      {
+        "fingerprint": "sha256:c65611b7b8b24bd7fc67f907b3ad3a65247e0a92adf34ff0a327709f672b12ef",
+        "id": "evolve-schema-migration"
+      },
+      {
+        "fingerprint": "sha256:2681e504026cb32d8ed54d4579d1c8174c0e87980a2d1e1657ff86bfe9445be8",
+        "id": "operate-capacity"
+      },
+      {
+        "fingerprint": "sha256:42234ac916793a05e2918213aff7e32fab66536643b0365e91d0d75c38dceef6",
+        "id": "operate-maintenance"
+      },
+      {
+        "fingerprint": "sha256:68492ab0184729ee038835d30cbb7aa7b0c8c6924ae0ce261eb43cf65b3ce226",
+        "id": "operate-observability"
+      },
+      {
+        "fingerprint": "sha256:22bc4614171966c2fb291e1fa3cf2adf7dd2f7e20789a5d06ef6eefc903866b8",
+        "id": "operate-physical-replication"
+      },
+      {
+        "fingerprint": "sha256:d44748f9440d7ffcc6e8a3710dfbd0468815b55f39ed743dbed76c47c83c6275",
+        "id": "recover-pitr"
+      },
+      {
+        "fingerprint": "sha256:068d0d0fe274aa3897e1a08c29e9a2b2fa7673e31a598b0340bcda086fca5b5b",
+        "id": "troubleshoot-deadlock"
+      },
+      {
+        "fingerprint": "sha256:30d0a734152ca0ac355391904bd1ea6595ab6ddfcfab9a4ee6b8f39341945687",
+        "id": "troubleshoot-logical-replication"
+      },
+      {
+        "fingerprint": "sha256:212c2d113357b6eaf6b907db16fe492e86623403e9aee2c7c400c980f024070f",
+        "id": "troubleshoot-row-lock"
+      },
+      {
+        "fingerprint": "sha256:cbce8b48671a36b5243b0b6158cddb19f6d45eec649ba1d1e407671696b0cbab",
+        "id": "troubleshoot-slow-plan"
+      },
+      {
+        "fingerprint": "sha256:50e0c0115ec4766ea666988953699e0d0488fbd972f4ee234613fee57e59b45b",
+        "id": "understand-mvcc"
+      },
+      {
+        "fingerprint": "sha256:1722a76d02a85160fef6037e1ec00ef1d717e065e00254c054593ae9d3241b62",
+        "id": "understand-wal"
+      },
+      {
+        "fingerprint": "sha256:4f309c0fb95394c8be9b184aa62460aba8ad24fd38805e3e6a0c020d70dfafec",
+        "id": "verify-backup-evidence"
+      },
+      {
+        "fingerprint": "sha256:66629acde8443839dc7bc90139b44d3dfad8aa4db4f9fb1227176ead06e49151",
+        "id": "verify-catalog-inventory"
+      },
+      {
+        "fingerprint": "sha256:20305bb1ee51ecc34cd403ae5b8cb9a33ea2a3ea4cf77fa6cd91019d71f6c232",
+        "id": "verify-compatibility-matrix"
+      },
+      {
+        "fingerprint": "sha256:846daa613841bc00163fe2372adb4d16ecaa8e5e1b51d12dd703acaef8380f36",
+        "id": "verify-failure-injection"
+      },
+      {
+        "fingerprint": "sha256:617b20ce744bf89c57975dfec5ae77f4cd9e91c899d75bb00a5defc9f51b889b",
+        "id": "verify-statistics"
+      }
+    ],
+    "sources": [
+      {
+        "fingerprint": "sha256:5052e9674f561dc7aad20ad574dbb29f68c06b037807162b25dfe6b9cac91910",
+        "id": "postgres-container-14.24-alpine"
+      },
+      {
+        "fingerprint": "sha256:ff22bffeb06275ff3c6a4b97482be3e0c3fa6521ebf1be0af48ad1088b7e786f",
+        "id": "postgres-container-15.19-alpine"
+      },
+      {
+        "fingerprint": "sha256:04281da6a2241b849b403a66bad47d902c92f1a4cd57e416a1577fffb07e9135",
+        "id": "postgres-container-16.15-alpine"
+      },
+      {
+        "fingerprint": "sha256:f9ffc791dcf333f965532005412003492acbf36d9f2d2b9b8e75c83a254b4850",
+        "id": "postgres-container-17.11-alpine"
+      },
+      {
+        "fingerprint": "sha256:2d862e8b276488a2abf3135decaeb59df8e8097908e15f658510be640729cc91",
+        "id": "postgres-container-18.6-alpine"
+      },
+      {
+        "fingerprint": "sha256:e9e6d64a608c7ce5d206a4d35a7c6ceb3f8e9c2559a4a71b174c0d28ec29bed8",
+        "id": "postgresql-docs-18.6"
+      },
+      {
+        "fingerprint": "sha256:3b5e9e708f87fa9070934beed6892a95fe3ecd77dcf63f174f952286695515c7",
+        "id": "postgresql-license-rel-18.6"
+      },
+      {
+        "fingerprint": "sha256:f0b4152214f8e6ae622344a3fcd48cbae8abb004e44a7575265cbe21e306248e",
+        "id": "postgresql-release-18.6"
+      },
+      {
+        "fingerprint": "sha256:5578efc951db7e81304a96a21e5611b2c013c751a03b437da3055c3331a2f76c",
+        "id": "postgresql-source-rel-18.6"
+      },
+      {
+        "fingerprint": "sha256:3a3298d361179aa791c210b44cb54958fe2c7a9ee15c499ce26e2285b85d1e0b",
+        "id": "postgresql-source-tarball-checksum-18.6"
+      }
+    ],
+    "target_sets": [
+      {
+        "fingerprint": "sha256:ed019392338500eb4b3e5db606f936096996bbe73d27fcad967affb7a1ffd622",
+        "id": "concurrency"
+      },
+      {
+        "fingerprint": "sha256:1dbdb73ed024afeaeb7360b68f4c25dd2bdb2f8455a81ae07cb541cd37cd4c65",
+        "id": "foundation"
+      },
+      {
+        "fingerprint": "sha256:11693613f9b7a356781ea92c1fea206c109f3b248a28811a4416565f99802de1",
+        "id": "lifecycle"
+      },
+      {
+        "fingerprint": "sha256:6bb6bca5c121aeaa4bde996f0fae310eca9dacf32b3d5a7f9cb594d52fc69ccb",
+        "id": "operations"
+      },
+      {
+        "fingerprint": "sha256:bd13fd82602fe471f0939eb56eba61fed9d2fc55b95332d531a932683b96d79a",
+        "id": "performance"
+      },
+      {
+        "fingerprint": "sha256:50d74959cf9bceff1cf209a4bba9a56c59b47dfb477ba0bfbd44fe78f8635964",
+        "id": "publication"
+      },
+      {
+        "fingerprint": "sha256:8615adfc197ab309d6d24bd0335c3ef76176e6aa3542fa68b275d58d2f5b4304",
+        "id": "query"
+      },
+      {
+        "fingerprint": "sha256:1c7f0233ab6053740cef293594f1b7aac287fa70648573ec091fa585031012b8",
+        "id": "skill"
+      }
+    ],
+    "targets": [
+      {
+        "claim_count": 1,
+        "evidence_count": 1,
+        "fingerprint": "sha256:13b3bc4f34b652e9081b1286815dd09966583b2bdf353176471c010b79758950",
+        "id": "concurrency.deadlock",
+        "requirement": "required",
+        "state": "covered"
+      },
+      {
+        "claim_count": 1,
+        "evidence_count": 1,
+        "fingerprint": "sha256:0fbd67dcb4af906c4f42d78536c4ec41b71fbeb8ba4e6c48dbf27c2fa4300842",
+        "id": "concurrency.locking",
+        "requirement": "required",
+        "state": "covered"
+      },
+      {
+        "claim_count": 1,
+        "evidence_count": 1,
+        "fingerprint": "sha256:8b226984de5082afbdb9212f524ad4481a6e5931f3d55fbd09aeade7cef68b5d",
+        "id": "concurrency.mvcc",
+        "requirement": "required",
+        "state": "covered"
+      },
+      {
+        "claim_count": 1,
+        "evidence_count": 2,
+        "fingerprint": "sha256:c2ecd33c1efc53a6e0023c6657930ae99d0004e12ce49b2c61433012b43b3fd5",
+        "id": "foundation.authority-lock",
+        "requirement": "required",
+        "state": "covered"
+      },
+      {
+        "claim_count": 1,
+        "evidence_count": 1,
+        "fingerprint": "sha256:3eccf734177c431e8304d02995639de59c1b92b0a9c46349f251071134adb39f",
+        "id": "foundation.version-lock",
+        "requirement": "required",
+        "state": "covered"
+      },
+      {
+        "claim_count": 1,
+        "evidence_count": 1,
+        "fingerprint": "sha256:dc37e64c17b1cec073d4701530e3d4ab1f59a7ceca7f626c32a1a866ea585f1e",
+        "id": "lifecycle.compatibility-matrix",
+        "requirement": "required",
+        "state": "covered"
+      },
+      {
+        "claim_count": 1,
+        "evidence_count": 1,
+        "fingerprint": "sha256:0450ced23f89627b092c4fc2789ccfcc4ce8631c4680d86e155f50c762d8fb3e",
+        "id": "lifecycle.pg-upgrade",
+        "requirement": "required",
+        "state": "covered"
+      },
+      {
+        "claim_count": 1,
+        "evidence_count": 1,
+        "fingerprint": "sha256:de55f03a73008c6275f9bec2d426aeca9ec0f7df79dca1a5e31cdad302f2639c",
+        "id": "lifecycle.schema-migration",
+        "requirement": "required",
+        "state": "covered"
+      },
+      {
+        "claim_count": 1,
+        "evidence_count": 1,
+        "fingerprint": "sha256:7f72b10a35692c6dac8650c5898115a240db18fc9eb3b52ba8e954d07110b122",
+        "id": "lifecycle.upgrade",
+        "requirement": "required",
+        "state": "covered"
+      },
+      {
+        "claim_count": 1,
+        "evidence_count": 1,
+        "fingerprint": "sha256:dbbdd0cdc79f634498a9dfb4b614945ff51979f30c5e15d83f046afa0908a703",
+        "id": "operations.backup-recovery",
+        "requirement": "required",
+        "state": "covered"
+      },
+      {
+        "claim_count": 1,
+        "evidence_count": 1,
+        "fingerprint": "sha256:7d74cab30da93eb698e61afc38e1dcd53b19ed10970376b98aa1f11c95b1a114",
+        "id": "operations.failure-injection",
+        "requirement": "required",
+        "state": "covered"
+      },
+      {
+        "claim_count": 1,
+        "evidence_count": 1,
+        "fingerprint": "sha256:9ee58c495d941e6bac089bdac8d373cc194a9e7e04e7a070e10d8c1c7703d5f8",
+        "id": "operations.logical-replication",
+        "requirement": "required",
+        "state": "covered"
+      },
+      {
+        "claim_count": 1,
+        "evidence_count": 1,
+        "fingerprint": "sha256:97650fbc11c54966c75150b67ef8be32423e14fb0a37b92a1ccdb964ead94ee7",
+        "id": "operations.maintenance",
+        "requirement": "required",
+        "state": "covered"
+      },
+      {
+        "claim_count": 1,
+        "evidence_count": 1,
+        "fingerprint": "sha256:faa7b0c69515f0e04efb94ca0875cd315630e285e3ee7e0142753da1494ead90",
+        "id": "operations.observability",
+        "requirement": "required",
+        "state": "covered"
+      },
+      {
+        "claim_count": 1,
+        "evidence_count": 1,
+        "fingerprint": "sha256:20d7478118add2e67c0cbfbde03c532def22bad3a203e4a71a527e058ce59652",
+        "id": "operations.pitr-recovery",
+        "requirement": "required",
+        "state": "covered"
+      },
+      {
+        "claim_count": 1,
+        "evidence_count": 1,
+        "fingerprint": "sha256:03febc31324c6057d70e2d8d379cf2899668546d90dced345fc1eda5d136dff9",
+        "id": "operations.replication",
+        "requirement": "required",
+        "state": "covered"
+      },
+      {
+        "claim_count": 1,
+        "evidence_count": 1,
+        "fingerprint": "sha256:77fbd4398976d52b581490beda16b3bfb4c6d96285ba429102a4040ca8c78453",
+        "id": "operations.wal",
+        "requirement": "required",
+        "state": "covered"
+      },
+      {
+        "claim_count": 1,
+        "evidence_count": 1,
+        "fingerprint": "sha256:6bf49419ca069305baadc857855c9ad407e52c8523ba91bf06c3ff8626c0477f",
+        "id": "performance.execution",
+        "requirement": "required",
+        "state": "covered"
+      },
+      {
+        "claim_count": 1,
+        "evidence_count": 1,
+        "fingerprint": "sha256:4577629298c143950ad222f3991c0c0bf9772d476e61e47fcacc08815a626c2d",
+        "id": "performance.index",
+        "requirement": "required",
+        "state": "covered"
+      },
+      {
+        "claim_count": 1,
+        "evidence_count": 1,
+        "fingerprint": "sha256:a67670af91eaec051af3bb0fa840ffe011dd4bf301b83d3a5c1de677cf50fcec",
+        "id": "performance.planner",
+        "requirement": "required",
+        "state": "covered"
+      },
+      {
+        "claim_count": 1,
+        "evidence_count": 1,
+        "fingerprint": "sha256:ef5b989fb7ba262e07a8589184996169ce7a13cdfed3d39fafaae249130981f6",
+        "id": "performance.statistics",
+        "requirement": "required",
+        "state": "covered"
+      },
+      {
+        "claim_count": 1,
+        "evidence_count": 1,
+        "fingerprint": "sha256:a71aaf8d1fcab4477787cccd0163f1ea0045cc0a44c58b0084a54e1a1ce7be0d",
+        "id": "publication.provenance",
+        "requirement": "required",
+        "state": "covered"
+      },
+      {
+        "claim_count": 1,
+        "evidence_count": 1,
+        "fingerprint": "sha256:62fa92b25768bec3c5c28f2e46e21e1533e35e6f4c6ee9031db1bb517f2616a6",
+        "id": "query.catalog-inventory",
+        "requirement": "required",
+        "state": "covered"
+      },
+      {
+        "claim_count": 1,
+        "evidence_count": 1,
+        "fingerprint": "sha256:bafc7e21031863e5326da8093832dd1b20bb0a798c134af46d102814fb49e7b1",
+        "id": "query.extension",
+        "requirement": "required",
+        "state": "covered"
+      },
+      {
+        "claim_count": 1,
+        "evidence_count": 1,
+        "fingerprint": "sha256:a6401e1e0c92ee5fa8829de1e5d1e8ae2050dd4e1698d257def32d72832de612",
+        "id": "query.partitioning",
+        "requirement": "required",
+        "state": "covered"
+      },
+      {
+        "claim_count": 1,
+        "evidence_count": 1,
+        "fingerprint": "sha256:3e1440bf65bc707ec3d0391fb16b65979a5534494049e6513b610d87e4c597f5",
+        "id": "query.security",
+        "requirement": "required",
+        "state": "covered"
+      },
+      {
+        "claim_count": 1,
+        "evidence_count": 2,
+        "fingerprint": "sha256:54d2a5cdf3bfd7f9f8dd2a444234b73985f8d6300d15079dd3d7281c778e7a0e",
+        "id": "query.sql-surface",
+        "requirement": "required",
+        "state": "covered"
+      },
+      {
+        "claim_count": 1,
+        "evidence_count": 1,
+        "fingerprint": "sha256:135c009a1a1140ee87731b272a3d4a8e8073fd3c932847b08bd096e36bde1353",
+        "id": "query.types-constraints",
+        "requirement": "required",
+        "state": "covered"
+      },
+      {
+        "claim_count": 1,
+        "evidence_count": 1,
+        "fingerprint": "sha256:1cfabf67e80b67d3f1c1b975ed92711abd24bf3ff4803eab1b14a5c365feb5d7",
+        "id": "skill.router-evaluation",
+        "requirement": "required",
+        "state": "covered"
+      }
+    ],
+    "tests_labs": [
+      {
+        "enabled": true,
+        "fingerprint": "sha256:7c347d5e7f65fdd86237d1d757c595062466025a48e3ea3d75616d15802bc554",
+        "id": "lab:labs/README.md",
+        "kind": "lab",
+        "path": "labs/README.md"
+      },
+      {
+        "enabled": true,
+        "fingerprint": "sha256:46269889963d0d3bb117a48d5592a49077fb07c462918920b7a2b4825d03eaac",
+        "id": "lab:labs/authority-lock/run.sh",
+        "kind": "lab",
+        "path": "labs/authority-lock/run.sh"
+      },
+      {
+        "enabled": true,
+        "fingerprint": "sha256:92f9165db9f82ccc3706d40763992ef9a83d784e42e4aa064ed042835ac1f7d0",
+        "id": "lab:labs/backup-recovery/README.md",
+        "kind": "lab",
+        "path": "labs/backup-recovery/README.md"
+      },
+      {
+        "enabled": true,
+        "fingerprint": "sha256:0c5afd74be94f7a8dcb0958aab0be43e30e101521f6f9e724ecd33bf09f09160",
+        "id": "lab:labs/backup-recovery/run.sh",
+        "kind": "lab",
+        "path": "labs/backup-recovery/run.sh"
+      },
+      {
+        "enabled": true,
+        "fingerprint": "sha256:7c5ce9686ef52f4c2bd7cd274da0dac1928882a86b7006f3f503762301f49eca",
+        "id": "lab:labs/backup-recovery/seed.sql",
+        "kind": "lab",
+        "path": "labs/backup-recovery/seed.sql"
+      },
+      {
+        "enabled": true,
+        "fingerprint": "sha256:42ceef67bb3a807ea80c36f5a5c07a27378be719a7f2dacb53ccc5e9fb2b88a7",
+        "id": "lab:labs/catalog-inventory/run.sh",
+        "kind": "lab",
+        "path": "labs/catalog-inventory/run.sh"
+      },
+      {
+        "enabled": true,
+        "fingerprint": "sha256:c22860d515efaff4f5b9a5074c74cbeda65ec27ce5b97f2c617c7c51fbe4003b",
+        "id": "lab:labs/catalog-inventory/verify.sql",
+        "kind": "lab",
+        "path": "labs/catalog-inventory/verify.sql"
+      },
+      {
+        "enabled": true,
+        "fingerprint": "sha256:4344750390d0e90c7fb1c9c2bd8394d491c4095262b6e508c4681cc5bbee596d",
+        "id": "lab:labs/compatibility-matrix/run.sh",
+        "kind": "lab",
+        "path": "labs/compatibility-matrix/run.sh"
+      },
+      {
+        "enabled": true,
+        "fingerprint": "sha256:91eb16e2392e406423b8899d75fe1a5fdbd76ce41d90d3cbe7eefb77a62b7ef3",
+        "id": "lab:labs/compatibility-matrix/verify.sql",
+        "kind": "lab",
+        "path": "labs/compatibility-matrix/verify.sql"
+      },
+      {
+        "enabled": true,
+        "fingerprint": "sha256:17d0fda3c48757daf3ef951bef3fc7ef3f173a69683dfc9ce3d882683be455b8",
+        "id": "lab:labs/deadlock/run.sh",
+        "kind": "lab",
+        "path": "labs/deadlock/run.sh"
+      },
+      {
+        "enabled": true,
+        "fingerprint": "sha256:58fc930d24d0c4e252d894c6633586e7615d49127b532a575406ea2f8192b665",
+        "id": "lab:labs/deadlock/session-a.sql",
+        "kind": "lab",
+        "path": "labs/deadlock/session-a.sql"
+      },
+      {
+        "enabled": true,
+        "fingerprint": "sha256:d7c56f8feb5a476601caa93207f9dabb6fc871741d46cd50f943adab396f91da",
+        "id": "lab:labs/deadlock/session-b.sql",
+        "kind": "lab",
+        "path": "labs/deadlock/session-b.sql"
+      },
+      {
+        "enabled": true,
+        "fingerprint": "sha256:45b1821fe6aead748d9acf0ff0eff78db8297d9a2b3dbc91af88778631bb6284",
+        "id": "lab:labs/extension/README.md",
+        "kind": "lab",
+        "path": "labs/extension/README.md"
+      },
+      {
+        "enabled": true,
+        "fingerprint": "sha256:b7f201e18b025f430e367945a3c608fddda63a432f0755e1278bf575c66ae35a",
+        "id": "lab:labs/extension/run.sh",
+        "kind": "lab",
+        "path": "labs/extension/run.sh"
+      },
+      {
+        "enabled": true,
+        "fingerprint": "sha256:0b72f45d6e4c3bf9e87d0bdbb86a48880058fad2ccc363828724df3ac8ad1414",
+        "id": "lab:labs/extension/verify.sql",
+        "kind": "lab",
+        "path": "labs/extension/verify.sql"
+      },
+      {
+        "enabled": true,
+        "fingerprint": "sha256:44ab9d01532c4bea1bdc4529c487f0d3207faf0ec0f9a3408894f60ecd6cff38",
+        "id": "lab:labs/failure-injection/run.sh",
+        "kind": "lab",
+        "path": "labs/failure-injection/run.sh"
+      },
+      {
+        "enabled": true,
+        "fingerprint": "sha256:7359597c9fbc501a8e9ba2535ca68a2faa55375c25c4638241f093ad91707ff7",
+        "id": "lab:labs/failure-injection/verify.sql",
+        "kind": "lab",
+        "path": "labs/failure-injection/verify.sql"
+      },
+      {
+        "enabled": true,
+        "fingerprint": "sha256:e1d703650418be2519664bedab62ef62f3c90150f6ae05912205fba140c61e9b",
+        "id": "lab:labs/index/README.md",
+        "kind": "lab",
+        "path": "labs/index/README.md"
+      },
+      {
+        "enabled": true,
+        "fingerprint": "sha256:f2340ce99df8330d0866652fbaa52179423295cd473acaa859b3e9e5d5a2579b",
+        "id": "lab:labs/index/run.sh",
+        "kind": "lab",
+        "path": "labs/index/run.sh"
+      },
+      {
+        "enabled": true,
+        "fingerprint": "sha256:cc377b043d90debf9625817cf0a9db5dae61e09cc89bf38559246777b8b58c29",
+        "id": "lab:labs/index/verify.sql",
+        "kind": "lab",
+        "path": "labs/index/verify.sql"
+      },
+      {
+        "enabled": true,
+        "fingerprint": "sha256:6b315023d0594cfe92f1cafbdec27ab90f8fcc7c623edbda6e88a35ea9d75395",
+        "id": "lab:labs/locking/README.md",
+        "kind": "lab",
+        "path": "labs/locking/README.md"
+      },
+      {
+        "enabled": true,
+        "fingerprint": "sha256:ee5d0e4a1d4c9c99fb7eb1fdb877b752dae635eb46db065a8e620ad8a0ef1969",
+        "id": "lab:labs/locking/run.sh",
+        "kind": "lab",
+        "path": "labs/locking/run.sh"
+      },
+      {
+        "enabled": true,
+        "fingerprint": "sha256:8b5fe0d865f1b2a9be3e8f8b64d3baa1e754ebaa659f5b9eb70db16c5351d521",
+        "id": "lab:labs/locking/verify.sql",
+        "kind": "lab",
+        "path": "labs/locking/verify.sql"
+      },
+      {
+        "enabled": true,
+        "fingerprint": "sha256:c6a032c926565af7b40d73167630857c7441951b9f95492a4d44ffe2aa297ffa",
+        "id": "lab:labs/logical-replication/run.sh",
+        "kind": "lab",
+        "path": "labs/logical-replication/run.sh"
+      },
+      {
+        "enabled": true,
+        "fingerprint": "sha256:4be81e87a04e42a690b9e14682ac6cff0830cb1a8c5f354bbb021379997929dc",
+        "id": "lab:labs/maintenance/run.sh",
+        "kind": "lab",
+        "path": "labs/maintenance/run.sh"
+      },
+      {
+        "enabled": true,
+        "fingerprint": "sha256:adc4f3206daae5fd6580801c554c5ff07eecee2ac27f72daee54f2deec0f51e4",
+        "id": "lab:labs/maintenance/verify.sql",
+        "kind": "lab",
+        "path": "labs/maintenance/verify.sql"
+      },
+      {
+        "enabled": true,
+        "fingerprint": "sha256:e5449b41647a10e6ffbf1f4b3017b51fdcd04b9842e03abf505fd2014cae21ab",
+        "id": "lab:labs/migration/run.sh",
+        "kind": "lab",
+        "path": "labs/migration/run.sh"
+      },
+      {
+        "enabled": true,
+        "fingerprint": "sha256:b06f4063afc16c160e9f68495ae683b6fa5ae3d0fea3992295d7792ccf70389a",
+        "id": "lab:labs/migration/verify.sql",
+        "kind": "lab",
+        "path": "labs/migration/verify.sql"
+      },
+      {
+        "enabled": true,
+        "fingerprint": "sha256:7ee28d6c441316127940021718983cc2a9d89776680e5779ef50e9e31d8cce06",
+        "id": "lab:labs/mvcc/README.md",
+        "kind": "lab",
+        "path": "labs/mvcc/README.md"
+      },
+      {
+        "enabled": true,
+        "fingerprint": "sha256:beb6b849eb1aac6a31ca094a8d8ad446345242041b155542f8eae4562255b870",
+        "id": "lab:labs/mvcc/run.sh",
+        "kind": "lab",
+        "path": "labs/mvcc/run.sh"
+      },
+      {
+        "enabled": true,
+        "fingerprint": "sha256:96d77b28a5fc964a8b0a74e8590f7263315912496da5a9bd55349232c14a36b2",
+        "id": "lab:labs/mvcc/verify.sql",
+        "kind": "lab",
+        "path": "labs/mvcc/verify.sql"
+      },
+      {
+        "enabled": true,
+        "fingerprint": "sha256:e534097c4f26b3ca0c000288454e28328cfaba46a8ea75e942fee9ce8d494130",
+        "id": "lab:labs/observability/README.md",
+        "kind": "lab",
+        "path": "labs/observability/README.md"
+      },
+      {
+        "enabled": true,
+        "fingerprint": "sha256:575e4a70c8c4e0247ea5e48f733e0b8fd82036e54cda747e08c8f3bb42ac8509",
+        "id": "lab:labs/observability/run.sh",
+        "kind": "lab",
+        "path": "labs/observability/run.sh"
+      },
+      {
+        "enabled": true,
+        "fingerprint": "sha256:bf29cb44195aa1043f5a03f4dfa41018da18297da07bfad12a085fd82c1a4b3a",
+        "id": "lab:labs/observability/verify.sql",
+        "kind": "lab",
+        "path": "labs/observability/verify.sql"
+      },
+      {
+        "enabled": true,
+        "fingerprint": "sha256:347f3fd461cf50761839e3db22c0737c075ed71f178dd3c28ca8084e4729f996",
+        "id": "lab:labs/partitioning/README.md",
+        "kind": "lab",
+        "path": "labs/partitioning/README.md"
+      },
+      {
+        "enabled": true,
+        "fingerprint": "sha256:1c573ad7ad7ac92d9d0ccf01d6d86906a76d9c7797e9c9117b87954822184a0e",
+        "id": "lab:labs/partitioning/run.sh",
+        "kind": "lab",
+        "path": "labs/partitioning/run.sh"
+      },
+      {
+        "enabled": true,
+        "fingerprint": "sha256:0b67a44f6fbb1310a7fcade108c3f113192e9049f0a949a9fdc52982b0ce988d",
+        "id": "lab:labs/partitioning/verify.sql",
+        "kind": "lab",
+        "path": "labs/partitioning/verify.sql"
+      },
+      {
+        "enabled": true,
+        "fingerprint": "sha256:2b48e975c0cbf540cd8a03518f22f7401a3692d5c6040bc2e4689dd3503788d6",
+        "id": "lab:labs/performance/README.md",
+        "kind": "lab",
+        "path": "labs/performance/README.md"
+      },
+      {
+        "enabled": true,
+        "fingerprint": "sha256:3500f08f822bb7d7e7b20f7a831f9a8c0ae5c6dd2e0bc4fdbc4261a9e68fa77f",
+        "id": "lab:labs/performance/run.sh",
+        "kind": "lab",
+        "path": "labs/performance/run.sh"
+      },
+      {
+        "enabled": true,
+        "fingerprint": "sha256:dc803e0e6b64976768f2f9e999dd11c44ddc6a225a6427d5c886f90c9f49dec3",
+        "id": "lab:labs/performance/verify.sql",
+        "kind": "lab",
+        "path": "labs/performance/verify.sql"
+      },
+      {
+        "enabled": true,
+        "fingerprint": "sha256:eea1acfbccc17449aa12d56d91c6bf7b3b852e7316fd289d582707077c330fcf",
+        "id": "lab:labs/pg-upgrade/Dockerfile",
+        "kind": "lab",
+        "path": "labs/pg-upgrade/Dockerfile"
+      },
+      {
+        "enabled": true,
+        "fingerprint": "sha256:a431ba66549d6fafbf836c93b024c2fa701964927a233d81739bf65c31ce4eb7",
+        "id": "lab:labs/pg-upgrade/run.sh",
+        "kind": "lab",
+        "path": "labs/pg-upgrade/run.sh"
+      },
+      {
+        "enabled": true,
+        "fingerprint": "sha256:e1c8715bea3b71be67814c79dab1ed8d15853fae3b64498809a796bb71ae19c4",
+        "id": "lab:labs/pg-upgrade/verify.sh",
+        "kind": "lab",
+        "path": "labs/pg-upgrade/verify.sh"
+      },
+      {
+        "enabled": true,
+        "fingerprint": "sha256:555809dc053c93b7ffdbdfd67454886f7eca11ebd29d9c5c71b31d6205fa8005",
+        "id": "lab:labs/pitr/run.sh",
+        "kind": "lab",
+        "path": "labs/pitr/run.sh"
+      },
+      {
+        "enabled": true,
+        "fingerprint": "sha256:2160988266873baec5e5cd525d27ef65252382d262b2735c31041c64e94e3789",
+        "id": "lab:labs/planner/README.md",
+        "kind": "lab",
+        "path": "labs/planner/README.md"
+      },
+      {
+        "enabled": true,
+        "fingerprint": "sha256:c9f8be755b097038ed89249a782082d0ae0b389280446ded8c46b57ca64c7904",
+        "id": "lab:labs/planner/run.sh",
+        "kind": "lab",
+        "path": "labs/planner/run.sh"
+      },
+      {
+        "enabled": true,
+        "fingerprint": "sha256:4a95aaae560ef4f7bfdd658308dd4151f1555c3883933cc46490cda180e84865",
+        "id": "lab:labs/planner/verify.sql",
+        "kind": "lab",
+        "path": "labs/planner/verify.sql"
+      },
+      {
+        "enabled": true,
+        "fingerprint": "sha256:905c3333f1670c0feee67aa5255d28b48276bd511dcfa55953e254fe0b81ddc4",
+        "id": "lab:labs/replication/README.md",
+        "kind": "lab",
+        "path": "labs/replication/README.md"
+      },
+      {
+        "enabled": true,
+        "fingerprint": "sha256:496dd5500a40ae3a5de0bf6c144a1affef9a02c4a70da337482ab56ba9018afc",
+        "id": "lab:labs/replication/run.sh",
+        "kind": "lab",
+        "path": "labs/replication/run.sh"
+      },
+      {
+        "enabled": true,
+        "fingerprint": "sha256:0170a27e926d6b02ea0a13a6e17ade42a2b419fec172e22f937fb7d61d49102c",
+        "id": "lab:labs/security/README.md",
+        "kind": "lab",
+        "path": "labs/security/README.md"
+      },
+      {
+        "enabled": true,
+        "fingerprint": "sha256:bf7bd1061970e8b06bb027fdbb0247756923dcf002d9979332b9d092e8efc709",
+        "id": "lab:labs/security/run.sh",
+        "kind": "lab",
+        "path": "labs/security/run.sh"
+      },
+      {
+        "enabled": true,
+        "fingerprint": "sha256:28f2ec0178827ba607f180c11e1e5244b4e28f354a882aa834ae254b1ec5e176",
+        "id": "lab:labs/security/verify.sql",
+        "kind": "lab",
+        "path": "labs/security/verify.sql"
+      },
+      {
+        "enabled": true,
+        "fingerprint": "sha256:147ca7b23e54136ee5bfa52e08d4fe57b1705e1ab212aa2b51b192c3b83d75b6",
+        "id": "lab:labs/sql-surface/run.sh",
+        "kind": "lab",
+        "path": "labs/sql-surface/run.sh"
+      },
+      {
+        "enabled": true,
+        "fingerprint": "sha256:e6d4aef542970b0d33ddf7d4edf476f9684b54d663dff77a04192d91424dfa0d",
+        "id": "lab:labs/sql/README.md",
+        "kind": "lab",
+        "path": "labs/sql/README.md"
+      },
+      {
+        "enabled": true,
+        "fingerprint": "sha256:aa651079654ddd8705b516a2e51d2a6f7e6e4b0386509ccf444ed2cb43971682",
+        "id": "lab:labs/sql/run.sh",
+        "kind": "lab",
+        "path": "labs/sql/run.sh"
+      },
+      {
+        "enabled": true,
+        "fingerprint": "sha256:0aca6a9a9cbfaeca50d60cbc1fe849af4e0429057371e8d234f0baf3fdbd468b",
+        "id": "lab:labs/sql/verify.sql",
+        "kind": "lab",
+        "path": "labs/sql/verify.sql"
+      },
+      {
+        "enabled": true,
+        "fingerprint": "sha256:b94a4fdc1fec48f7963ddb3b7203b8388cda0e6dbd1e1baacf02e81a394c945b",
+        "id": "lab:labs/statistics/README.md",
+        "kind": "lab",
+        "path": "labs/statistics/README.md"
+      },
+      {
+        "enabled": true,
+        "fingerprint": "sha256:05c9aac08aa3ba435c48044908e7986dfbd62f481e1f2c685f7737792d33f99c",
+        "id": "lab:labs/statistics/run.sh",
+        "kind": "lab",
+        "path": "labs/statistics/run.sh"
+      },
+      {
+        "enabled": true,
+        "fingerprint": "sha256:5ac7f62ca28bb3777af68e28916dffe773ee316c7fdb051783bb86237b842acd",
+        "id": "lab:labs/statistics/verify.sql",
+        "kind": "lab",
+        "path": "labs/statistics/verify.sql"
+      },
+      {
+        "enabled": true,
+        "fingerprint": "sha256:6fae9b4c4c6772af287019f16d451caba2ffc8ae68134d0c25787ffaeded7f83",
+        "id": "lab:labs/types-constraints/README.md",
+        "kind": "lab",
+        "path": "labs/types-constraints/README.md"
+      },
+      {
+        "enabled": true,
+        "fingerprint": "sha256:d67b41f8d4bf9ec2ba4d1b13e8b467c66af5302d97ce7bc52918fb1fb691dfbe",
+        "id": "lab:labs/types-constraints/run.sh",
+        "kind": "lab",
+        "path": "labs/types-constraints/run.sh"
+      },
+      {
+        "enabled": true,
+        "fingerprint": "sha256:5a59363f2d308688793ea4796fc7a62dccbd5bfad592bdd9511cbf2849912b1c",
+        "id": "lab:labs/types-constraints/verify.sql",
+        "kind": "lab",
+        "path": "labs/types-constraints/verify.sql"
+      },
+      {
+        "enabled": true,
+        "fingerprint": "sha256:3f6c7b3e82450d189636c1eac439f19e0c387310853bb68b2318dbaf8153d7e7",
+        "id": "lab:labs/upgrade/README.md",
+        "kind": "lab",
+        "path": "labs/upgrade/README.md"
+      },
+      {
+        "enabled": true,
+        "fingerprint": "sha256:ac202c49b321bb55e3eac1217a4e569ee264f28c926d8e0eaa4a699d5d1e16e9",
+        "id": "lab:labs/upgrade/run.sh",
+        "kind": "lab",
+        "path": "labs/upgrade/run.sh"
+      },
+      {
+        "enabled": true,
+        "fingerprint": "sha256:e00d6f0047e8b001ffa49f7a66e83710e81ab6b6294a7c13af167833474d803f",
+        "id": "lab:labs/wal/run.sh",
+        "kind": "lab",
+        "path": "labs/wal/run.sh"
+      },
+      {
+        "enabled": true,
+        "fingerprint": "sha256:04e2d04fdf54b835488773c78e760aaaca72f3c90307e24cdbdd605e8ee86134",
+        "id": "lab:labs/wal/verify.sql",
+        "kind": "lab",
+        "path": "labs/wal/verify.sql"
+      },
+      {
+        "enabled": true,
+        "fingerprint": "sha256:9c48ac6d8af5440484b30ae1a7e231a152bf8eb0a7af93f1f9309ef950cace3d",
+        "id": "test-harness:evals/run.sh",
+        "kind": "test-harness",
+        "path": "evals/run.sh"
+      },
+      {
+        "enabled": true,
+        "fingerprint": "sha256:375d7bda52b1aa000fd0554e915ffc4f02376ddb000745fb1853b045dc5d8f6f",
+        "id": "test-harness:scripts/graph-gates.rb",
+        "kind": "test-harness",
+        "path": "scripts/graph-gates.rb"
+      },
+      {
+        "enabled": true,
+        "fingerprint": "sha256:46eb5eefad25ad4468718df0d13b2e735173aade771f60891c67e84fd02f9645",
+        "id": "test-harness:scripts/static-gates.sh",
+        "kind": "test-harness",
+        "path": "scripts/static-gates.sh"
+      }
+    ]
+  },
+  "minimum_skill_pass_rate": 1,
+  "schema_version": 2,
+  "scope_exclusions": [
+    "PostgreSQL 19 Betaおよび開発中BranchはこのCoverage Epochの正式対象に含めない。",
+    "PostGISやpgvectorなど公式配布物に含まれない外部Extensionは完全性の対象に含めない。",
+    "Managed Service固有APIと外部HA・Pooler製品は別のProduct AtlasまたはInteroperability Labで扱う。"
+  ],
+  "scope_statement_fingerprint": "sha256:74ecf4a36b1858c789bae1b398deaf43f7ffb12be96f28a0ac1bd6f9cdac878c"
+}

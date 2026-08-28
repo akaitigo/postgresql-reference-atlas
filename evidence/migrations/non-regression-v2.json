@@ -1,0 +1,25 @@
+{
+  "schema_version": 1,
+  "atlas_id": "postgresql-reference-atlas",
+  "baseline_commit": "8a4259d2de288178b8b87f09a09e5b57654c88e0",
+  "mappings": [
+    {
+      "id": "completion-certificate-history-copy",
+      "result": "pass",
+      "assertions": [
+        "旧Certificateと履歴CertificateのSHA-256が一致する",
+        "schema_version 1とcommit 9704d11b19a65755cb6d5738131d104d48309ef5を保持する"
+      ]
+    },
+    {
+      "id": "core-definitive-v2-forward-update",
+      "result": "pass",
+      "assertions": [
+        "219dee20e23811195f541bbce71a730237a27231はcf9e6e2d981305c83f970c1f21a1ddc9c1109263の子孫である",
+        "Core Go testとPostgreSQL make testが成功する",
+        "公開mainのCI Stepと27 Lab Matrixを保持する"
+      ]
+    }
+  ],
+  "verdict": "pass"
+}

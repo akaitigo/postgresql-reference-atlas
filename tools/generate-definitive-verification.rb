@@ -64,7 +64,7 @@ surface_by_capability = {
 cases = router_report.fetch("results").map do |result|
   outcome = result.fetch("outcome")
   {
-    "id"=>result.fetch("id"),"result"=>result.fetch("verdict"),"outcome_ids"=>[outcome],
+    "id"=>"definitive.#{result.fetch("id")}","result"=>result.fetch("verdict"),"outcome_ids"=>[outcome],
     "surface_ids"=>surface_by_capability.fetch(result.fetch("capability"), %w[testing-verification agent-skill]),
     "gap_behavior"=>result.fetch("coverage") == "outside","authorization_boundary"=>%w[stop read-only-first].include?(result.fetch("safety")),
     "assertion"=>"#{result.fetch("id")}はv1 Routerの期待Capabilityと安全境界へ到達する。"

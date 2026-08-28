@@ -87,7 +87,7 @@
     "missing_classification_rows": 113331,
     "required_scenario_rows": 43544,
     "missing_required_scenario_rows": 43510,
-    "behaviors_without_dedicated_accepted_claim": 11327,
+    "behaviors_without_dedicated_accepted_claim": 11320,
     "targets": 56,
     "target_gaps": [
       {
@@ -103,7 +103,7 @@
       },
       {
         "target_id": "foundation.authority-lock",
-        "state": "partial",
+        "state": "covered",
         "missing_scenarios": [
           "boundary",
           "rejection"
@@ -114,7 +114,7 @@
       },
       {
         "target_id": "query.sql-surface",
-        "state": "partial",
+        "state": "covered",
         "missing_scenarios": [
           "boundary"
         ],
@@ -123,18 +123,8 @@
         ]
       },
       {
-        "target_id": "query.types-constraints",
-        "state": "partial",
-        "missing_scenarios": [
-
-        ],
-        "unknown_evidence_ids": [
-
-        ]
-      },
-      {
         "target_id": "query.catalog-inventory",
-        "state": "partial",
+        "state": "covered",
         "missing_scenarios": [
           "boundary",
           "rejection"
@@ -155,7 +145,7 @@
       },
       {
         "target_id": "query.extension",
-        "state": "partial",
+        "state": "covered",
         "missing_scenarios": [
           "boundary"
         ],
@@ -175,7 +165,7 @@
       },
       {
         "target_id": "concurrency.mvcc",
-        "state": "partial",
+        "state": "covered",
         "missing_scenarios": [
           "rejection"
         ],
@@ -208,7 +198,7 @@
       },
       {
         "target_id": "performance.planner",
-        "state": "partial",
+        "state": "covered",
         "missing_scenarios": [
           "boundary",
           "rejection"
@@ -230,7 +220,7 @@
       },
       {
         "target_id": "performance.index",
-        "state": "partial",
+        "state": "covered",
         "missing_scenarios": [
           "boundary",
           "rejection"
@@ -241,7 +231,7 @@
       },
       {
         "target_id": "performance.execution",
-        "state": "partial",
+        "state": "covered",
         "missing_scenarios": [
           "boundary",
           "rejection"
@@ -265,7 +255,7 @@
       },
       {
         "target_id": "operations.observability",
-        "state": "partial",
+        "state": "covered",
         "missing_scenarios": [
           "boundary",
           "rejection",
@@ -341,7 +331,7 @@
       },
       {
         "target_id": "operations.maintenance",
-        "state": "partial",
+        "state": "covered",
         "missing_scenarios": [
           "boundary",
           "rejection",
@@ -400,7 +390,7 @@
       },
       {
         "target_id": "skill.router-evaluation",
-        "state": "partial",
+        "state": "covered",
         "missing_scenarios": [
           "boundary"
         ],
@@ -410,7 +400,7 @@
       },
       {
         "target_id": "publication.provenance",
-        "state": "partial",
+        "state": "covered",
         "missing_scenarios": [
           "boundary",
           "failure",
@@ -744,7 +734,7 @@
       },
       {
         "target_id": "foundation.reference-system",
-        "state": "missing",
+        "state": "partial",
         "missing_scenarios": [
           "normal",
           "boundary",
@@ -782,7 +772,7 @@
         ]
       }
     ],
-    "open_targets": 56
+    "open_targets": 55
   },
   "skill": {
     "cases": 30,
@@ -827,7 +817,6 @@
     ]
   },
   "structural_gaps": [
-    "integrated-reference-system",
     "multi-method-comparisons",
     "runbook-exercise-evidence",
     "current-definitive-certificate"

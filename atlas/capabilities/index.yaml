@@ -1,6 +1,11 @@
 schema_version: 1
 atlas_id: postgresql-reference-atlas
 capabilities:
+  - id: foundation.reference-system
+    title: 統合Reference System
+    disposition: conditional
+    lab: labs/reference-system
+    claim_ids: [foundation.reference-system.runtime-slice]
   - id: query.sql-surface
     title: SQL公開Surfaceと実行意味論
     disposition: recommended-default

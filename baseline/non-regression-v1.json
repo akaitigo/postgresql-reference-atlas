@@ -1,0 +1,2439 @@
+{
+  "schema_version": 1,
+  "atlas_id": "postgresql-reference-atlas",
+  "baseline_commit": "8a4259d2de288178b8b87f09a09e5b57654c88e0",
+  "classification": "published-main-non-regression",
+  "policy": {
+    "removal": "forbidden",
+    "weakening": "forbidden",
+    "replacement": "mapping-plus-equivalent-runtime-proof-plus-migration-evidence"
+  },
+  "immutable_files": [
+    {
+      "path": ".agents/skills/postgresql-atlas/SKILL.md",
+      "digest": "sha256:f51a7e7401d380e1677990a927d29f2b7fb500220e19ba56ef3bac9f22fcf104"
+    },
+    {
+      "path": ".agents/skills/postgresql-atlas/agents/openai.yaml",
+      "digest": "sha256:449be633972aaf622278eb9aa333e51718a095b3271268bef17b894f47cb2f45"
+    },
+    {
+      "path": ".agents/skills/postgresql-atlas/references/capability-index.md",
+      "digest": "sha256:77ea91b662d0f074be78d917ad9203a8f94d6e8a677db9b49d5086b8858daadd"
+    },
+    {
+      "path": ".agents/skills/postgresql-atlas/references/mastery-routing.md",
+      "digest": "sha256:b3eed277148247b854c557951b656d1c40b2bf619bd548f586f21a283d497029"
+    },
+    {
+      "path": ".agents/skills/postgresql-atlas/references/safety-boundary.md",
+      "digest": "sha256:5605287f54fc47d6e9b349abd92a44f90e72dd323d666ce10495f54a5c6bb20a"
+    },
+    {
+      "path": ".agents/skills/postgresql-atlas/scripts/route.sh",
+      "digest": "sha256:17492f13fada343546461364c78828914fe5fb3b082a7f20d61e5604a9260038"
+    },
+    {
+      "path": "claims/concurrency.deadlock.claim.yaml",
+      "digest": "sha256:4a62a6b68ee23965d3bfb264523e4f37db9e4b91a932c29d2d8ec7969d29e11d"
+    },
+    {
+      "path": "claims/concurrency.locking.claim.yaml",
+      "digest": "sha256:ca025dd8203c92823212918664281d0d3752c833f9449d387fd4c0f62fa4ec24"
+    },
+    {
+      "path": "claims/concurrency.mvcc.claim.yaml",
+      "digest": "sha256:c3a6ff92ce97435b1ac2632df6667a3c5c143036f9dd4c00e99f571fbeeb1624"
+    },
+    {
+      "path": "claims/foundation.authority-lock.claim.yaml",
+      "digest": "sha256:c32f099bb7ceb30d5819d83af0b5dbe54b0184d831b2c7b06397fb6eb713df7e"
+    },
+    {
+      "path": "claims/foundation.version-lock.claim.yaml",
+      "digest": "sha256:d4e61323bc3834419dbb7efabf63fb1ed67d2e79adedec9b31dda4c2f02ee15f"
+    },
+    {
+      "path": "claims/lifecycle.compatibility-matrix.claim.yaml",
+      "digest": "sha256:af594e98800983a6c4fc71f702dd2278a1afb55039969edde5361e8f6f23bb9e"
+    },
+    {
+      "path": "claims/lifecycle.pg-upgrade.claim.yaml",
+      "digest": "sha256:cfdc3b748e927273afdd3de7d382c7d0132a52fd7042773b93b5e2f90839cb80"
+    },
+    {
+      "path": "claims/lifecycle.schema-migration.claim.yaml",
+      "digest": "sha256:f5337f89488387c6824d7dc7a5078acf829ed6c4e844caad4bfe3511125159ed"
+    },
+    {
+      "path": "claims/lifecycle.upgrade.claim.yaml",
+      "digest": "sha256:dbba76d9ef8992a1fcf812d70efc8f16f58311f6816be97f649e2d6bcc669a28"
+    },
+    {
+      "path": "claims/operations.backup-recovery.claim.yaml",
+      "digest": "sha256:7a09b40f7fa3384fda39704d6a37f03590dd7dec665ae327783958e6d8e2ecb0"
+    },
+    {
+      "path": "claims/operations.failure-injection.claim.yaml",
+      "digest": "sha256:78199bdb14af3f12e1d7acd094f60d23165bf269339cba98c587f06ffcdb0657"
+    },
+    {
+      "path": "claims/operations.logical-replication.claim.yaml",
+      "digest": "sha256:0efe25f49bf84a2e6942e5ab74f7e677f6e89094e362dcf9c3f1d5a571fd9561"
+    },
+    {
+      "path": "claims/operations.maintenance.claim.yaml",
+      "digest": "sha256:765f2a3bd6046e59b95ca75c1885b6cc663aa757a1659bba1351e33c250941dd"
+    },
+    {
+      "path": "claims/operations.observability.claim.yaml",
+      "digest": "sha256:8c5db7029d0173ce28f24491d37d5773a1e55f3a0e2811d050525465a98a94a9"
+    },
+    {
+      "path": "claims/operations.pitr-recovery.claim.yaml",
+      "digest": "sha256:4ecb7daa78af981b84298045046b8dea1b9eb699b99507dec13900d7495a15f9"
+    },
+    {
+      "path": "claims/operations.replication.claim.yaml",
+      "digest": "sha256:eb76b94641264272686cdffb9c41424c6e1402cf092f852c109a69198510ef07"
+    },
+    {
+      "path": "claims/operations.wal.claim.yaml",
+      "digest": "sha256:6ebb99528c5a220d4a3a006a0a183d0f7b2d749a2f7d5739c40203e044d88de9"
+    },
+    {
+      "path": "claims/performance.execution.claim.yaml",
+      "digest": "sha256:1307f6554eb2cc160375d82decec4359f9c39d26257c84a8c642d3c5dec44569"
+    },
+    {
+      "path": "claims/performance.index.claim.yaml",
+      "digest": "sha256:a9d305fbff77d1caa28ca02c4fa727c87ce56ab5d9f27be16eb2d35066ae5203"
+    },
+    {
+      "path": "claims/performance.planner.claim.yaml",
+      "digest": "sha256:ea5d689efaafd9362703c9394a3a584dfb6e24c4bef2675cded492894509f71e"
+    },
+    {
+      "path": "claims/performance.statistics.claim.yaml",
+      "digest": "sha256:b27a5fe86e9aed0896fefb5798585766f49edf2346dcc91cf784d08dabac6d3b"
+    },
+    {
+      "path": "claims/publication.provenance.claim.yaml",
+      "digest": "sha256:8eba48882248fc93d13ebf71b5e29fe6cbfb2a2755eb01ef1ad86af38be6611f"
+    },
+    {
+      "path": "claims/query.catalog-inventory.claim.yaml",
+      "digest": "sha256:25d617e1b158610262f31bde90c797de826cf72e42d5468cf3cb5a26be15e74f"
+    },
+    {
+      "path": "claims/query.extension.claim.yaml",
+      "digest": "sha256:b8327ebdf563248b5055b89fe2617fbcbc7d001563ccbc7d7d92fb707b90aa4c"
+    },
+    {
+      "path": "claims/query.partitioning.claim.yaml",
+      "digest": "sha256:c4966b3e7e8656b8b35cf3138787cdc7a0b870d4961f24fd802595f3bfc22d92"
+    },
+    {
+      "path": "claims/query.security.claim.yaml",
+      "digest": "sha256:a738b87c0aa37b2bf6c8c0e9a05d8f1c7c93720679b0d825f44c6f80e70aaf5e"
+    },
+    {
+      "path": "claims/query.sql-surface.claim.yaml",
+      "digest": "sha256:9866c103895fffec1dca55488465270ffae9629359a14558456d4014f86a17be"
+    },
+    {
+      "path": "claims/query.types-constraints.claim.yaml",
+      "digest": "sha256:404eb1ea7b16da86d6e283db766658a57233d4b3d45fb76d6cef10d0bf152ab7"
+    },
+    {
+      "path": "claims/skill.router.claim.yaml",
+      "digest": "sha256:6ddd444e35760831e204ea81896d19d9fb3718f9b4ff0d99acfa38a7f0b58e4e"
+    },
+    {
+      "path": "environments/cluster.yaml",
+      "digest": "sha256:718afbefcc01162a74a85ae51d34b733849f4a6b6c28d17428beead9fcd11701"
+    },
+    {
+      "path": "environments/container.yaml",
+      "digest": "sha256:3df4dbd82139e17c785348c281f26b54d7300662087baaeec3034acefedf36b9"
+    },
+    {
+      "path": "environments/local.yaml",
+      "digest": "sha256:56798a33c95014233b4f9465aa91ce1198673432edb9114da08dec932ab1331d"
+    },
+    {
+      "path": "evals/cases.json",
+      "digest": "sha256:85cde3875edd307a09a670bf5b2dbe81927446bc418c0ded196aeac786c31552"
+    },
+    {
+      "path": "evals/postgresql-router.skill-eval.json",
+      "digest": "sha256:0e09ab0c0855af117e1df58e166c2f207078fb62ffd0df6fb45863029cc6089a"
+    },
+    {
+      "path": "evals/run.sh",
+      "digest": "sha256:599cb182ffabc6cada637578a76a387a2563288955f947f790103b3f8f32d984"
+    },
+    {
+      "path": "evidence/artifacts/authority-lock.json",
+      "digest": "sha256:6dfa657fffa8bc98a2b44d097f19b8cb56eb3074c9b21651e73cc8ebb17ba892"
+    },
+    {
+      "path": "evidence/artifacts/backup-recovery.json",
+      "digest": "sha256:b31577e18ae2d41141b97c93d23f04b108ece978183b286a3baaa578bbe8f52d"
+    },
+    {
+      "path": "evidence/artifacts/catalog-inventory.json",
+      "digest": "sha256:e903f4785face57d318dcbda000ebf6d1679017f81590e6c35c5e0360c14df2e"
+    },
+    {
+      "path": "evidence/artifacts/compatibility-matrix.json",
+      "digest": "sha256:8db7e2c4d4a13a34f83b9acca0293c9f47e728a8ad8b359652e27338a36711c6"
+    },
+    {
+      "path": "evidence/artifacts/deadlock.json",
+      "digest": "sha256:8ff033c62a9ea8360237094c041c09603e342ab7f4be29e544ceadfd0e6beb0b"
+    },
+    {
+      "path": "evidence/artifacts/extension.json",
+      "digest": "sha256:fba8b0cb54d443047834079106273ce83b1f4ddf3a958b8662a47b1876e14f41"
+    },
+    {
+      "path": "evidence/artifacts/failure-injection.json",
+      "digest": "sha256:060807b83036b3fe84bca1567be86d4e6a2ee416186422e0d15c7201738179e0"
+    },
+    {
+      "path": "evidence/artifacts/foundation-authority-lock.json",
+      "digest": "sha256:cac7df52d6ca6f2dce96e11aaf865a0b13fce0cbc099ba2a330aa9e49d2bce43"
+    },
+    {
+      "path": "evidence/artifacts/index.json",
+      "digest": "sha256:ef9cba7954437c58c492b980e2da59a061f4e7c515a9c51248d99766f50dad85"
+    },
+    {
+      "path": "evidence/artifacts/locking.json",
+      "digest": "sha256:5c28cbc5dcf813b021dcd0027606f94cee70c5b207e67a033942903ef9499196"
+    },
+    {
+      "path": "evidence/artifacts/logical-replication.json",
+      "digest": "sha256:ea72f1ea4839b9e84d3222658f5154b7a8b6b821e59a28132ab144078e9906c7"
+    },
+    {
+      "path": "evidence/artifacts/maintenance.json",
+      "digest": "sha256:db36e8c0afcfd8a8a7fc11351cc4acf2546003e2545c02f94acd4f1b8bdc8b9a"
+    },
+    {
+      "path": "evidence/artifacts/migration.json",
+      "digest": "sha256:4ed7230db1679e677224428bebf1339b8c9a02d0b97ceb1d3944f6c5c6ad6557"
+    },
+    {
+      "path": "evidence/artifacts/mvcc.json",
+      "digest": "sha256:e22131b26364018b3310bb5cf98a8a8c329f824ac42092d0f47d3aa9fc3a7f83"
+    },
+    {
+      "path": "evidence/artifacts/observability.json",
+      "digest": "sha256:649bca2f8fea40fb7d9e14785cc5da2c4a8913cc5dc7fb39e748d6d87e665ed7"
+    },
+    {
+      "path": "evidence/artifacts/partitioning.json",
+      "digest": "sha256:a79da652c9d347f02856e3bd5047f46c69c88ac5df982125b95317c2bd833231"
+    },
+    {
+      "path": "evidence/artifacts/performance.json",
+      "digest": "sha256:a920b70cddef92935081f1970afdab11c8fa9ca7373d21f46b47ebeb6f3928d6"
+    },
+    {
+      "path": "evidence/artifacts/pg-upgrade.json",
+      "digest": "sha256:ade5856a457c34c0aaad66a80d48246020dc1013fbfc7f569eeb3ff207e0b0dd"
+    },
+    {
+      "path": "evidence/artifacts/pitr.json",
+      "digest": "sha256:ef5ed5e1f85239a5f9e9e54b3f9bb6cff112f79c443d747cedc2cf95c8d20a9d"
+    },
+    {
+      "path": "evidence/artifacts/planner.json",
+      "digest": "sha256:23996bd727c7fb1769ad10ef53f313c993b819edf65eed1dd00c0b1836f2ca15"
+    },
+    {
+      "path": "evidence/artifacts/publication-static-gates.json",
+      "digest": "sha256:b329666dcf103149ae210611511c1331cf5d3bf9d78bff66d395c0b643837094"
+    },
+    {
+      "path": "evidence/artifacts/replication.json",
+      "digest": "sha256:917089c4219799f4d5100ffb2b70987f7478a9f3ceb622be7d510edddd3815bd"
+    },
+    {
+      "path": "evidence/artifacts/security.json",
+      "digest": "sha256:d33a405af1a47717a703b16db2ce412a003e2549f1260cbb068f280ce2e6432b"
+    },
+    {
+      "path": "evidence/artifacts/skill-router-eval.json",
+      "digest": "sha256:11e3d4301de73eca5ee25a01eb3c6f0c6f3a13552c19ffc4ce8a38fbc105e2d4"
+    },
+    {
+      "path": "evidence/artifacts/sql-surface.json",
+      "digest": "sha256:329b325937c6ffdb03b5ec622b3d5473f7c8f3d28a62d1eeb47006b1ddc6ebd1"
+    },
+    {
+      "path": "evidence/artifacts/sql.json",
+      "digest": "sha256:e7c5757fcff20b9de4f5256967c2ecbd595e02a9f2cdd5b70b6286a08c308191"
+    },
+    {
+      "path": "evidence/artifacts/statistics.json",
+      "digest": "sha256:1a8fa8d450e2dc28a3bf88006d9c6bbc3299aaf8fdb014caf3c23659c93c0129"
+    },
+    {
+      "path": "evidence/artifacts/types-constraints.json",
+      "digest": "sha256:ab534541b6eba2f13bcd5c0b918d02c9052ca1fc0a37909fbea9be9ebc086b0e"
+    },
+    {
+      "path": "evidence/artifacts/upgrade.json",
+      "digest": "sha256:77db10fbe04af0ae85f0bbe526abbbbecf9c1e3ce3f8739ef55aa72fe1608268"
+    },
+    {
+      "path": "evidence/artifacts/wal.json",
+      "digest": "sha256:ea97afb6a4d973a728fe6cb073ad9e5c8f256b52dc1e8aa5a0f7f7f2c9a41c85"
+    },
+    {
+      "path": "evidence/authority-lock.evidence.yaml",
+      "digest": "sha256:b64d04c53352dd56af9f364915e457337ca4dcfeee751a10d698c7e40778d78c"
+    },
+    {
+      "path": "evidence/backup-recovery.evidence.yaml",
+      "digest": "sha256:ee15486c738337d56473db8fc3fc9647b49a38d46a90bdd3dbd0cfcaa1c5f64a"
+    },
+    {
+      "path": "evidence/catalog-inventory.evidence.yaml",
+      "digest": "sha256:67a7f00757c5eb227c6faffddc89b6e4cca5eb114df2496012f2d398dd3a6ed1"
+    },
+    {
+      "path": "evidence/compatibility-matrix.evidence.yaml",
+      "digest": "sha256:11cc5b56685961447883c29a57684d240656135857314e7493b0a15b78a396e5"
+    },
+    {
+      "path": "evidence/completion-certificate.json",
+      "digest": "sha256:7f88fc0e072438d84b296b51428e88983688eca85cf4f97d7bf819b0bde9a26a"
+    },
+    {
+      "path": "evidence/deadlock.evidence.yaml",
+      "digest": "sha256:a53e2f7560acd601598b8824159f5fb9e4edbe7613bfad197c8d13ef1e61923e"
+    },
+    {
+      "path": "evidence/extension.evidence.yaml",
+      "digest": "sha256:f252f46c71acd5d59e9dde7aacbc43508cd68e0cf234c3fd7cd0d6efa946996b"
+    },
+    {
+      "path": "evidence/failure-injection.evidence.yaml",
+      "digest": "sha256:7a0ae1d2679152ed8662fdc3b8dfd26ab434048e89428eb9aec723ed804a31e7"
+    },
+    {
+      "path": "evidence/foundation-authority-lock.evidence.yaml",
+      "digest": "sha256:742be0bbe51cd453e2f43ee5bd1ed1d0e8413d4ba62398ee22e71a13a680e752"
+    },
+    {
+      "path": "evidence/harnesses/authority-lock.manifest",
+      "digest": "sha256:d49f210f3635dc60acd584a802e6dc3d3c78d6f819c4d886d30e6bdac8c9775d"
+    },
+    {
+      "path": "evidence/harnesses/backup-recovery.manifest",
+      "digest": "sha256:21384fc596ceb52ba6fe16a17a7516775a5a4baab803e07dddc50242d33d563a"
+    },
+    {
+      "path": "evidence/harnesses/catalog-inventory.manifest",
+      "digest": "sha256:76018e9feed09db82bae5bbf7a5dc4213dd3f24f8323053edcfe3a3371ea5048"
+    },
+    {
+      "path": "evidence/harnesses/compatibility-matrix.manifest",
+      "digest": "sha256:559ccd9ca37a6e52771de30993240c51baf2cdbea23ffa4b732f4e79b928b754"
+    },
+    {
+      "path": "evidence/harnesses/deadlock.manifest",
+      "digest": "sha256:60aa11d7a7e91ee501deebb8e555ee35cd8a316b55d2af53210dc132c7ed102c"
+    },
+    {
+      "path": "evidence/harnesses/extension.manifest",
+      "digest": "sha256:c63ebf46bf53289b483f3d89a19b57fb4ef9f0b8df6641da3a90f88a3a50ba7b"
+    },
+    {
+      "path": "evidence/harnesses/failure-injection.manifest",
+      "digest": "sha256:32c4edb7491edbe7f4c6937c8b1961e9f530a1ebec45d6f90cacee6092e271c7"
+    },
+    {
+      "path": "evidence/harnesses/foundation-authority-lock.manifest",
+      "digest": "sha256:d2aa18a4139816b81cbbc9350b929057ee636a5beed55410b1b35705df55f390"
+    },
+    {
+      "path": "evidence/harnesses/index.manifest",
+      "digest": "sha256:679271160d478980c779e3efcdc73cdc25d2e1534b7cf800432477afcdb1bcac"
+    },
+    {
+      "path": "evidence/harnesses/locking.manifest",
+      "digest": "sha256:dde173ada18b5b24fcc637b227d59259b055f00f8b44c3e1315be08093c5fac2"
+    },
+    {
+      "path": "evidence/harnesses/logical-replication.manifest",
+      "digest": "sha256:e11530bdd38bd3a715cc74e4d0ce521950a36bbee31515e9989c5cfe3f70be2c"
+    },
+    {
+      "path": "evidence/harnesses/maintenance.manifest",
+      "digest": "sha256:9b12937f7ffde52a627ead1385b541625dedee19ba20e6a775a968956d5eafa9"
+    },
+    {
+      "path": "evidence/harnesses/migration.manifest",
+      "digest": "sha256:32122577b215926df8ee0361709b57dcc1838053eaa31584e29d3d363d4755f6"
+    },
+    {
+      "path": "evidence/harnesses/mvcc.manifest",
+      "digest": "sha256:447b882cef7a0120f13632dec50dcab0c9649f595d2aee6a498f5f5b5a2d1883"
+    },
+    {
+      "path": "evidence/harnesses/observability.manifest",
+      "digest": "sha256:0a74783abce0c78643523c9ba5ac1bde2ac7c25049ebeb0221872737b1d03f01"
+    },
+    {
+      "path": "evidence/harnesses/partitioning.manifest",
+      "digest": "sha256:da44ecb385cafb79536d3d5f7e4d1d2f9c9094ff9b0a7378bf83f902242b31f5"
+    },
+    {
+      "path": "evidence/harnesses/performance.manifest",
+      "digest": "sha256:a0b4c2abf4c26d33eeb96a06d1e41a9151fb2cd1970143c9d317864d63d10b7c"
+    },
+    {
+      "path": "evidence/harnesses/pg-upgrade.manifest",
+      "digest": "sha256:fd25b6628f28659e6d879d0697a958a4c23060756420f03797e4c317758ad0c1"
+    },
+    {
+      "path": "evidence/harnesses/pitr.manifest",
+      "digest": "sha256:35bfb7f21f59f8da139917259264890991ea8088dd4af54ae6e0c04155578ece"
+    },
+    {
+      "path": "evidence/harnesses/planner.manifest",
+      "digest": "sha256:7fa62d96a6cb81f5e9d17004a8078337f2ae97811ecc2d24e9aa046e0b3c3bb1"
+    },
+    {
+      "path": "evidence/harnesses/publication-static-gates.manifest",
+      "digest": "sha256:d2aa18a4139816b81cbbc9350b929057ee636a5beed55410b1b35705df55f390"
+    },
+    {
+      "path": "evidence/harnesses/replication.manifest",
+      "digest": "sha256:5c4e135b34858c7329afbbfb8b9c28b1a835a7b0dfdf3e751d7c4b035e734af9"
+    },
+    {
+      "path": "evidence/harnesses/security.manifest",
+      "digest": "sha256:0e93aad5e54bd09ced386ff86b880f90970bc4905dca6450d53d072d7f2c8468"
+    },
+    {
+      "path": "evidence/harnesses/skill-router-eval.manifest",
+      "digest": "sha256:6ae8427b29b0475de6bbd75a289c9e2c51f09aec9bff35e4a15af4c4426d2489"
+    },
+    {
+      "path": "evidence/harnesses/sql-surface.manifest",
+      "digest": "sha256:75afca61578d1f8fb76a09bed36f40733218b9c6daca264c09182454809e759e"
+    },
+    {
+      "path": "evidence/harnesses/sql.manifest",
+      "digest": "sha256:2909e4754d1ddf615fdeb248359b280af970d27d50b57b514a6e39443378a488"
+    },
+    {
+      "path": "evidence/harnesses/statistics.manifest",
+      "digest": "sha256:4e00721ef17c66e40725190e76116c2f9c67cbd806557164e7855bc2500a639f"
+    },
+    {
+      "path": "evidence/harnesses/types-constraints.manifest",
+      "digest": "sha256:6b233ae03fdc4708d55022e3259f742ff4cd46c87dbd0a57086a1a598a9471b9"
+    },
+    {
+      "path": "evidence/harnesses/upgrade.manifest",
+      "digest": "sha256:994e678394e20bba7ece80ca6b683c6500d2077127d644411fe31cee8baf4d8b"
+    },
+    {
+      "path": "evidence/harnesses/wal.manifest",
+      "digest": "sha256:48942d8755c08c3c18a30022fb44a2c334c26fd4aaf5c06215f0d275b9dbbd73"
+    },
+    {
+      "path": "evidence/index.evidence.yaml",
+      "digest": "sha256:03ae650880e9fdeb3f169b514f7b71a5b77bbf4daa621cdabe41d12313b4fa27"
+    },
+    {
+      "path": "evidence/locking.evidence.yaml",
+      "digest": "sha256:3c802f46832c76d62a83f550b6bfa1c3f59d650b244147f4b37a02533485a3eb"
+    },
+    {
+      "path": "evidence/logical-replication.evidence.yaml",
+      "digest": "sha256:76ea41bc3ed8c947e47a04e432c0e0d87074d1ffb1ffea00a9753e094e3288ab"
+    },
+    {
+      "path": "evidence/maintenance.evidence.yaml",
+      "digest": "sha256:75d4a9b260b33c34c2d6a8c3f624afb90caaaff8cdb5ca108afb47afd4ab2a81"
+    },
+    {
+      "path": "evidence/migration.evidence.yaml",
+      "digest": "sha256:e0b14a0e6bfa826e1897419efac9462f7dbd87fccf5deaf9530e64b5b44cefab"
+    },
+    {
+      "path": "evidence/mvcc.evidence.yaml",
+      "digest": "sha256:ea7b6ef2b6a89d571300f19af060fc94bd004e66a815f78eba80ea3d3ba444a5"
+    },
+    {
+      "path": "evidence/observability.evidence.yaml",
+      "digest": "sha256:d918cd5718e253b61a4c6d1b1d79d5a11e665dbfc55e02b957cdff63bcd423f8"
+    },
+    {
+      "path": "evidence/partitioning.evidence.yaml",
+      "digest": "sha256:1792f200be6b46337ab4f837bfda56d4c3a55d082964762821d0c91ac867cb84"
+    },
+    {
+      "path": "evidence/performance.evidence.yaml",
+      "digest": "sha256:daee434368ea1a2b2c7a179a97d3bbd9659ec9ad40a70f610ad92f61599f7ae2"
+    },
+    {
+      "path": "evidence/pg-upgrade.evidence.yaml",
+      "digest": "sha256:85d2c9347589e84a38c4068fdb2d453c6901ac7d8de31e6dd7032b31a5d30ff8"
+    },
+    {
+      "path": "evidence/pitr.evidence.yaml",
+      "digest": "sha256:9ac33af02862a4f808c78857ac2aa174783674410e2a9f6ea1fac60c246c9355"
+    },
+    {
+      "path": "evidence/planner.evidence.yaml",
+      "digest": "sha256:450b134f6fb64e5b52b3c0b775cc52fded6cad20765c1ca5d5f63cef21945802"
+    },
+    {
+      "path": "evidence/publication-static-gates.evidence.yaml",
+      "digest": "sha256:9aa8e7333b5acd7daeb32c2a12ac25616e7b773f204e140cb1168c7147a3fb11"
+    },
+    {
+      "path": "evidence/replication.evidence.yaml",
+      "digest": "sha256:13557b8fc06e0a919eaaa9e97f8a0c34bd73636bcdee66ba877f73cd43c4b413"
+    },
+    {
+      "path": "evidence/security.evidence.yaml",
+      "digest": "sha256:2b7a3401cfba04cf77a1ef2fffa6f3a58e22fdf6f0a5c3f33b5c9221c47782df"
+    },
+    {
+      "path": "evidence/skill-router-eval.evidence.yaml",
+      "digest": "sha256:dc5fc381bc3368137c7a4575756f8a4aa6cdb591485a00880f3e4e19f5b2f3b4"
+    },
+    {
+      "path": "evidence/sql-surface.evidence.yaml",
+      "digest": "sha256:09e7e6577c67c63bfc595fec9f2653646283e12916b819dc54f7da992fd53aa4"
+    },
+    {
+      "path": "evidence/sql.evidence.yaml",
+      "digest": "sha256:10316ff051cca29b3efbd0ca6c51dce309754fc814d2a21bae03658a3fe53278"
+    },
+    {
+      "path": "evidence/statistics.evidence.yaml",
+      "digest": "sha256:e3b8d2f1fe9cfbde084e1e463230e89af59d9fd936d3074921d4807fc2b2a093"
+    },
+    {
+      "path": "evidence/types-constraints.evidence.yaml",
+      "digest": "sha256:d7f256533f59ec6d835f1dd3b5cf4498a74d73bb269aae37b073f0d3ec3c56d1"
+    },
+    {
+      "path": "evidence/upgrade.evidence.yaml",
+      "digest": "sha256:ea19e15718c3daf8dd64a637931192801b71071f257e43fb534a72566e6b19d2"
+    },
+    {
+      "path": "evidence/wal.evidence.yaml",
+      "digest": "sha256:331c0b012417811d14f386b7727d5e0d37a39a99ca01bb0e2208153fd31c836e"
+    },
+    {
+      "path": "labs/README.md",
+      "digest": "sha256:d17aa77d2f6fdf512ae5c287a6c90332742716ad348f715295942a25b3ae164a"
+    },
+    {
+      "path": "labs/authority-lock/run.sh",
+      "digest": "sha256:00f9c9bd19566da99afd82c3cf6a800b03c1441786645f59e209918277169009"
+    },
+    {
+      "path": "labs/backup-recovery/README.md",
+      "digest": "sha256:ebe2117d7e1ab68a1adf7072a85984b94d0794391501e96293bca8a1b5a1f4fb"
+    },
+    {
+      "path": "labs/backup-recovery/run.sh",
+      "digest": "sha256:c4ff76813cfb2914caf256f6e79c273204d24bce2b34abeaf54820540d57f190"
+    },
+    {
+      "path": "labs/backup-recovery/seed.sql",
+      "digest": "sha256:bbcf60856191fc905f0654556222adbb375de5208baf6a96b34757683c45de51"
+    },
+    {
+      "path": "labs/catalog-inventory/run.sh",
+      "digest": "sha256:a7ce9c435af4b9373521b699864c8cd5dd87ffb7dc3e2e243d2671867c73caa7"
+    },
+    {
+      "path": "labs/catalog-inventory/verify.sql",
+      "digest": "sha256:939f2502ffe47f6c8307ccc6e45b0aca411cdfd59d571b089d44180eab30f02a"
+    },
+    {
+      "path": "labs/compatibility-matrix/run.sh",
+      "digest": "sha256:087002f787391f1394fd45d5c9b07600675721a6b876a1ec06b2cb6395ca7388"
+    },
+    {
+      "path": "labs/compatibility-matrix/verify.sql",
+      "digest": "sha256:0d961c2b9f6c78d658e7e4ac9049412be505efb60cc1382a4ee98b4933c4d260"
+    },
+    {
+      "path": "labs/deadlock/run.sh",
+      "digest": "sha256:6be07e8b0fd1436f9667c4e637f480a99f2bdab606a454fe23501aad267e1611"
+    },
+    {
+      "path": "labs/deadlock/session-a.sql",
+      "digest": "sha256:6881d5b4badb962071276fdaa5d2b712805eee8f8798c265f9cf37e8e767cbbc"
+    },
+    {
+      "path": "labs/deadlock/session-b.sql",
+      "digest": "sha256:7035d2eec6785250b8ba2f147aa5b5b4494060663b47ed42b883674e91194222"
+    },
+    {
+      "path": "labs/extension/README.md",
+      "digest": "sha256:70867d4f12541c3dc06dcccafd639c503167aedba80a73198c9f281819ad1005"
+    },
+    {
+      "path": "labs/extension/run.sh",
+      "digest": "sha256:32377aae233136f32b0b1f859b875bcf6bcecab8f267437a79da1e3d3ecc3e6e"
+    },
+    {
+      "path": "labs/extension/verify.sql",
+      "digest": "sha256:6447e1bc251be5ecbafe940afa0277b3a9e03710c1a3aa892bde16a6083d2173"
+    },
+    {
+      "path": "labs/failure-injection/run.sh",
+      "digest": "sha256:1760fccdd07e9e4b22095da00cea3afc5af59efaede256a9d345fcb985d6cf94"
+    },
+    {
+      "path": "labs/failure-injection/verify.sql",
+      "digest": "sha256:c0faa36e48f5756e6580f978903aa4c203f5701f3787da36db08a249825feed6"
+    },
+    {
+      "path": "labs/index/README.md",
+      "digest": "sha256:907d6fa52f30b3d0b4e8ac09b7f85a6d2f4525f6cb7892e0b229916c8662fb8c"
+    },
+    {
+      "path": "labs/index/run.sh",
+      "digest": "sha256:facc655964bf5794aca4f050454cb05d17f0925f363aa723ef7ad9a10785a772"
+    },
+    {
+      "path": "labs/index/verify.sql",
+      "digest": "sha256:72ca4554d5b08f478d49c955c88d6ce258a438bfb5e5869bdea50e030ea9545f"
+    },
+    {
+      "path": "labs/locking/README.md",
+      "digest": "sha256:af1d935e5b942383a49e6c654571a120f10d6a691b9eab52ac8cb7fa6ce06b0a"
+    },
+    {
+      "path": "labs/locking/run.sh",
+      "digest": "sha256:78da2fdf1396e0ea16840d907146366e788440291cf0281e5c5a1ecee98e8296"
+    },
+    {
+      "path": "labs/locking/verify.sql",
+      "digest": "sha256:289ad895a8e59ef4369889d101d207c497370da6750f7187b562f60a0c1fb4f6"
+    },
+    {
+      "path": "labs/logical-replication/run.sh",
+      "digest": "sha256:f83ef999000224bb673ca688eadb970e9f36348cb06287b9b2f800ab1eca3572"
+    },
+    {
+      "path": "labs/maintenance/run.sh",
+      "digest": "sha256:0ad03a2d73d43879105d4787b02e24bde26f8bfe4c759eff93958e51b974ea74"
+    },
+    {
+      "path": "labs/maintenance/verify.sql",
+      "digest": "sha256:cc075d2ce8e431c830cdd63edcd004473346c38bce47b1b8776bb9d53e392e46"
+    },
+    {
+      "path": "labs/migration/run.sh",
+      "digest": "sha256:d4d265db3d779bcfd3a98f137bcf0c68bbb0825efffd987d7658bf3bcc055275"
+    },
+    {
+      "path": "labs/migration/verify.sql",
+      "digest": "sha256:9c6dbce60b406ed5d6853d14e084feaae0006dd7b81ae01c6d2eea062e93f8c5"
+    },
+    {
+      "path": "labs/mvcc/README.md",
+      "digest": "sha256:164bee264dfb2d933add1ba56582cb545f7168b79ffd9ca457f0a7d631636e8f"
+    },
+    {
+      "path": "labs/mvcc/run.sh",
+      "digest": "sha256:c7b18ba9b04324a3360f2a359dec7460db89c50935fb51be62b60b8d182d22fb"
+    },
+    {
+      "path": "labs/mvcc/verify.sql",
+      "digest": "sha256:4f3b360d9e9b2afb5a2a841a6affe624fa65c2369045d36fb7015e196d233094"
+    },
+    {
+      "path": "labs/observability/README.md",
+      "digest": "sha256:2608ad409499a9a9e11b2c2a0526b5657f07511a54e7e073b00abbe95ccc101d"
+    },
+    {
+      "path": "labs/observability/run.sh",
+      "digest": "sha256:89a38e3d1d603551e8b7cf391b3bb16d5a3aac9475fcf7e2ac45479a9803c541"
+    },
+    {
+      "path": "labs/observability/verify.sql",
+      "digest": "sha256:6a4966768325d38b4a3dedee72bfdc6e55e3381f10697dc1b91e42b3a87462e6"
+    },
+    {
+      "path": "labs/partitioning/README.md",
+      "digest": "sha256:9cfd7a2b97aa884ad63cfd6c16026a0078042227b7453608c6e9e3c354a25328"
+    },
+    {
+      "path": "labs/partitioning/run.sh",
+      "digest": "sha256:f14087c99af397c7113a9b257788a2a6237ae200e687eb5014fa4634faf5ef72"
+    },
+    {
+      "path": "labs/partitioning/verify.sql",
+      "digest": "sha256:a9c6decc1a770c15c13ba859daacade85442dda84ece9ead05db56b53b87b07b"
+    },
+    {
+      "path": "labs/performance/README.md",
+      "digest": "sha256:9a60def827bcccd6c6d0e440b2a010202c847e0441c8dd030b98215c5af80d2c"
+    },
+    {
+      "path": "labs/performance/run.sh",
+      "digest": "sha256:ccac980964bcff3a87f981fb7f10cd70a1fcf2d36ce68ba3022029acc13dbd79"
+    },
+    {
+      "path": "labs/performance/verify.sql",
+      "digest": "sha256:206a4112a7fbad10a6f7658d62a6a29bb9c3837029578edf1637e599c34f1c93"
+    },
+    {
+      "path": "labs/pg-upgrade/Dockerfile",
+      "digest": "sha256:bab5451c591707b3d9847ab5d478c5fa0aeeb9b9ff7438a9376ed53c8953b7f8"
+    },
+    {
+      "path": "labs/pg-upgrade/run.sh",
+      "digest": "sha256:04fcb96dd8b05bca8fcd99f617143eab33050ab19f3bf140bf997c3ec16aa139"
+    },
+    {
+      "path": "labs/pg-upgrade/verify.sh",
+      "digest": "sha256:c9ad65df4be11553c255a1ff75c3868b0d4156ffecf93a939a12eca1b1a3092e"
+    },
+    {
+      "path": "labs/pitr/run.sh",
+      "digest": "sha256:8dfc168e81d3265753e07065c5ee358e9c27d25aa0993ca124b974a0bea2fcc7"
+    },
+    {
+      "path": "labs/planner/README.md",
+      "digest": "sha256:5a15826186c4fc3c556965978c1d49e7fd6402f8e673c6f956fdff2c04c1bc49"
+    },
+    {
+      "path": "labs/planner/run.sh",
+      "digest": "sha256:37dafb6a2b07c60c3b5341c9b5758374051e125e624dfd32d5292210901b9025"
+    },
+    {
+      "path": "labs/planner/verify.sql",
+      "digest": "sha256:7ec7e806fbdaf4ec5aaf3627d041ce30efa68cc0a3da7cc8288d0410f911844f"
+    },
+    {
+      "path": "labs/replication/README.md",
+      "digest": "sha256:734f1d03386c27a78d3cf773f60f2897ab5f19c4c3ab0fde512367fead84ad1c"
+    },
+    {
+      "path": "labs/replication/run.sh",
+      "digest": "sha256:1a4b7deaf70c839a256a968daaa9744169266da7a802ac245f055599ca4c9773"
+    },
+    {
+      "path": "labs/security/README.md",
+      "digest": "sha256:a0a60c344775778e5d5c4f95080c67539c31ec909468d95818becb4bcfcfb63f"
+    },
+    {
+      "path": "labs/security/run.sh",
+      "digest": "sha256:efbe7c5626e311c31ef6c1f8be22843537c1859f23392cd78cb5255ff2067bb2"
+    },
+    {
+      "path": "labs/security/verify.sql",
+      "digest": "sha256:3a914afc2ea423180db3db1184c091ed948f09eac62c90bbac8362fe2f8c3746"
+    },
+    {
+      "path": "labs/sql-surface/run.sh",
+      "digest": "sha256:1b00597a2f2fedfee916cd18420d79ca9790e3679f4f6f69638517adc3fcf873"
+    },
+    {
+      "path": "labs/sql/README.md",
+      "digest": "sha256:e84bb37e237530f1802d5484f68a6845c513d91302d3aeb382ac831ef7a45bde"
+    },
+    {
+      "path": "labs/sql/run.sh",
+      "digest": "sha256:bdee2c627abac543e48bc2b5701f63ac847c708263b3f41f11db7f74351c0ae1"
+    },
+    {
+      "path": "labs/sql/verify.sql",
+      "digest": "sha256:38e31ca9d5bf03c6b7d42da11c5251cbe0d7eff4e24dcc47890187971c603d6b"
+    },
+    {
+      "path": "labs/statistics/README.md",
+      "digest": "sha256:e934f477da4baf26c331cd4a6798e8ffc756cadee0d349515d8ad25869c7fd14"
+    },
+    {
+      "path": "labs/statistics/run.sh",
+      "digest": "sha256:bf3d255c9fdf5bcae78e330733dce03c1650295003ae47e4c5ca34626bc8bd28"
+    },
+    {
+      "path": "labs/statistics/verify.sql",
+      "digest": "sha256:77f2518af404a2a43beb56354277827076b6fa8b0b9cec93eddc68dc3611475f"
+    },
+    {
+      "path": "labs/types-constraints/README.md",
+      "digest": "sha256:6ea279dd70b3e4ee07be06b249c58ed43735ddc29897837dbbaf780e30eb3d98"
+    },
+    {
+      "path": "labs/types-constraints/run.sh",
+      "digest": "sha256:136f3a0163a65e9cff9c2a1ae41926e792c314d88c069538907a068ea609dc37"
+    },
+    {
+      "path": "labs/types-constraints/verify.sql",
+      "digest": "sha256:1d4a07b7a5215b7e77eb7dd8b34f7245930d2c360b7d7011f05fac4673407ad9"
+    },
+    {
+      "path": "labs/upgrade/README.md",
+      "digest": "sha256:77d075d39d7c46efe7cf5c8646f405fe517dd2b27614cffdf30f5bf4b70f13a6"
+    },
+    {
+      "path": "labs/upgrade/run.sh",
+      "digest": "sha256:d8f3168a4058df0fbb067aff04e6ccc788ce82b9de36d4b4b758e9a21f3384f5"
+    },
+    {
+      "path": "labs/wal/run.sh",
+      "digest": "sha256:5f0120c5ef3cc27900e21961d7b07c4b8414cec309c2eaa079949d8128137de4"
+    },
+    {
+      "path": "labs/wal/verify.sql",
+      "digest": "sha256:a45a1e2e0caaf94b188c75832beec7b3b3be9392a6164189cc1a78d89d213293"
+    },
+    {
+      "path": "mastery.yaml",
+      "digest": "sha256:d640d2e3f70b5c10aba9ae18112b69cf188d3c700b70f0685ace7278044fc022"
+    },
+    {
+      "path": "operations/backup-recovery.md",
+      "digest": "sha256:feba186339cd541b8376c3754767ad53ffe2c740038bfb6fb4e159e18f3fe3fa"
+    },
+    {
+      "path": "operations/concurrency.md",
+      "digest": "sha256:0f8389f4648ca09fe51374721909c4ab2e210be4e2c5e6f4e95d1805970c4353"
+    },
+    {
+      "path": "operations/diagnose-query.md",
+      "digest": "sha256:b982c9db164eac09e494e43b2b06d3d01672e68f0806b17d6a9799db63280b2e"
+    },
+    {
+      "path": "operations/failure-response.md",
+      "digest": "sha256:df128838a907a52c5eb643d024d477b17f1f4a253703071c7cbbe1c528d468f8"
+    },
+    {
+      "path": "operations/index.yaml",
+      "digest": "sha256:6ced08aa5f6303c99bb656565b7461618806bd154a31cbd36b23d15bc3d4768e"
+    },
+    {
+      "path": "operations/maintenance.md",
+      "digest": "sha256:99fb5a78ee1b56241b423b2a246521e53fff993ac02141e1b439f738059f8bd9"
+    },
+    {
+      "path": "operations/migration.md",
+      "digest": "sha256:ee5e6856b71e3578ab062c1ee6cbc4eed91135718093666f28bd005e970e026e"
+    },
+    {
+      "path": "operations/observability.md",
+      "digest": "sha256:7f159a59217201d0559673b4f6608d4ef2d170c219ccdabe26ae593cc7ee1f94"
+    },
+    {
+      "path": "operations/replication.md",
+      "digest": "sha256:9f5d57e8573998837f5922668a197afb62d0cbb30bfffbebbde6a6fcda33207e"
+    },
+    {
+      "path": "operations/security.md",
+      "digest": "sha256:abf0db4ffdbb65ba6c8ba626fc862719149b7880ff67fb5255d58c6ce717b70a"
+    },
+    {
+      "path": "operations/upgrade.md",
+      "digest": "sha256:5ce18f6828bcb72250282ba86bca80c3465438bbda9ff5d8e233abb2858a110f"
+    },
+    {
+      "path": "scripts/graph-gates.rb",
+      "digest": "sha256:974f731bba27318586c1e3765a60df5702d05bfaa6834793bcb91b03c1c980c1"
+    },
+    {
+      "path": "scripts/lib.sh",
+      "digest": "sha256:8e1401802b8378d1b39a785de3c27354842827c9f13cbbfb0d341bec53971e88"
+    },
+    {
+      "path": "scripts/run-lab.sh",
+      "digest": "sha256:4302928aee57cd26b65a140de8161744862611affa4802a718c1da516eefd910"
+    },
+    {
+      "path": "scripts/run-sql-lab.sh",
+      "digest": "sha256:7b9de9e17b429094daddf3b9fc2285c27c39e6d591036fd97aa2f0a215ea540c"
+    },
+    {
+      "path": "scripts/static-gates.sh",
+      "digest": "sha256:61ded41cb2f7020be6db8fd1ee1a174421e5e528a13291f75e701802f479bb30"
+    },
+    {
+      "path": "skill.package.yaml",
+      "digest": "sha256:5eb7cba98dbaa87007a45a679f649d8e8c135cb10d2e9ac89a3eab0fb5961432"
+    },
+    {
+      "path": "sources.lock.yaml",
+      "digest": "sha256:7a5097c6130472b193adb30fda89b4a607f1ae00a1ae87dbc1cf22ae5484eaef"
+    },
+    {
+      "path": "surface/sql-commands.yaml",
+      "digest": "sha256:8c1b40df5e7882dccad9eb97785e8b73f5508affb4807913380c53aebbfb4b63"
+    },
+    {
+      "path": "versions/18.6.yaml",
+      "digest": "sha256:dca5dbd13f3db2be3dacd343dfb6d5c19c75e36cfe9e36e9e4b74d934a11bf6c"
+    }
+  ],
+  "targets": [
+    {
+      "id": "foundation.version-lock",
+      "kind": "compatibility",
+      "requirement": "required",
+      "state": "covered",
+      "claim_ids": [
+        "foundation.version-lock"
+      ],
+      "evidence_ids": [
+        "foundation.authority-lock"
+      ]
+    },
+    {
+      "id": "foundation.authority-lock",
+      "kind": "concept",
+      "requirement": "required",
+      "state": "covered",
+      "claim_ids": [
+        "foundation.authority-lock"
+      ],
+      "evidence_ids": [
+        "foundation.authority-lock",
+        "lab.authority-lock"
+      ]
+    },
+    {
+      "id": "query.sql-surface",
+      "kind": "capability",
+      "requirement": "required",
+      "state": "covered",
+      "claim_ids": [
+        "query.sql-surface"
+      ],
+      "evidence_ids": [
+        "lab.sql",
+        "lab.sql-surface"
+      ]
+    },
+    {
+      "id": "query.types-constraints",
+      "kind": "capability",
+      "requirement": "required",
+      "state": "covered",
+      "claim_ids": [
+        "query.types-constraints"
+      ],
+      "evidence_ids": [
+        "lab.types-constraints"
+      ]
+    },
+    {
+      "id": "query.catalog-inventory",
+      "kind": "compatibility",
+      "requirement": "required",
+      "state": "covered",
+      "claim_ids": [
+        "query.catalog-inventory"
+      ],
+      "evidence_ids": [
+        "lab.catalog-inventory"
+      ]
+    },
+    {
+      "id": "query.partitioning",
+      "kind": "capability",
+      "requirement": "required",
+      "state": "covered",
+      "claim_ids": [
+        "query.partitioning"
+      ],
+      "evidence_ids": [
+        "lab.partitioning"
+      ]
+    },
+    {
+      "id": "query.extension",
+      "kind": "capability",
+      "requirement": "required",
+      "state": "covered",
+      "claim_ids": [
+        "query.extension"
+      ],
+      "evidence_ids": [
+        "lab.extension"
+      ]
+    },
+    {
+      "id": "query.security",
+      "kind": "security",
+      "requirement": "required",
+      "state": "covered",
+      "claim_ids": [
+        "query.security"
+      ],
+      "evidence_ids": [
+        "lab.security"
+      ]
+    },
+    {
+      "id": "concurrency.mvcc",
+      "kind": "capability",
+      "requirement": "required",
+      "state": "covered",
+      "claim_ids": [
+        "concurrency.mvcc"
+      ],
+      "evidence_ids": [
+        "lab.mvcc"
+      ]
+    },
+    {
+      "id": "concurrency.locking",
+      "kind": "capability",
+      "requirement": "required",
+      "state": "covered",
+      "claim_ids": [
+        "concurrency.locking"
+      ],
+      "evidence_ids": [
+        "lab.locking"
+      ]
+    },
+    {
+      "id": "concurrency.deadlock",
+      "kind": "capability",
+      "requirement": "required",
+      "state": "covered",
+      "claim_ids": [
+        "concurrency.deadlock"
+      ],
+      "evidence_ids": [
+        "lab.deadlock"
+      ]
+    },
+    {
+      "id": "performance.planner",
+      "kind": "performance",
+      "requirement": "required",
+      "state": "covered",
+      "claim_ids": [
+        "performance.planner"
+      ],
+      "evidence_ids": [
+        "lab.planner"
+      ]
+    },
+    {
+      "id": "performance.statistics",
+      "kind": "performance",
+      "requirement": "required",
+      "state": "covered",
+      "claim_ids": [
+        "performance.statistics"
+      ],
+      "evidence_ids": [
+        "lab.statistics"
+      ]
+    },
+    {
+      "id": "performance.index",
+      "kind": "performance",
+      "requirement": "required",
+      "state": "covered",
+      "claim_ids": [
+        "performance.index"
+      ],
+      "evidence_ids": [
+        "lab.index"
+      ]
+    },
+    {
+      "id": "performance.execution",
+      "kind": "performance",
+      "requirement": "required",
+      "state": "covered",
+      "claim_ids": [
+        "performance.execution"
+      ],
+      "evidence_ids": [
+        "lab.performance"
+      ]
+    },
+    {
+      "id": "operations.backup-recovery",
+      "kind": "operation",
+      "requirement": "required",
+      "state": "covered",
+      "claim_ids": [
+        "operations.backup-recovery"
+      ],
+      "evidence_ids": [
+        "lab.backup-recovery"
+      ]
+    },
+    {
+      "id": "operations.observability",
+      "kind": "operation",
+      "requirement": "required",
+      "state": "covered",
+      "claim_ids": [
+        "operations.observability"
+      ],
+      "evidence_ids": [
+        "lab.observability"
+      ]
+    },
+    {
+      "id": "operations.wal",
+      "kind": "operation",
+      "requirement": "required",
+      "state": "covered",
+      "claim_ids": [
+        "operations.wal"
+      ],
+      "evidence_ids": [
+        "lab.wal"
+      ]
+    },
+    {
+      "id": "operations.pitr-recovery",
+      "kind": "operation",
+      "requirement": "required",
+      "state": "covered",
+      "claim_ids": [
+        "operations.pitr-recovery"
+      ],
+      "evidence_ids": [
+        "lab.pitr"
+      ]
+    },
+    {
+      "id": "operations.replication",
+      "kind": "operation",
+      "requirement": "required",
+      "state": "covered",
+      "claim_ids": [
+        "operations.replication"
+      ],
+      "evidence_ids": [
+        "lab.replication"
+      ]
+    },
+    {
+      "id": "operations.logical-replication",
+      "kind": "operation",
+      "requirement": "required",
+      "state": "covered",
+      "claim_ids": [
+        "operations.logical-replication"
+      ],
+      "evidence_ids": [
+        "lab.logical-replication"
+      ]
+    },
+    {
+      "id": "operations.failure-injection",
+      "kind": "operation",
+      "requirement": "required",
+      "state": "covered",
+      "claim_ids": [
+        "operations.failure-injection"
+      ],
+      "evidence_ids": [
+        "lab.failure-injection"
+      ]
+    },
+    {
+      "id": "operations.maintenance",
+      "kind": "operation",
+      "requirement": "required",
+      "state": "covered",
+      "claim_ids": [
+        "operations.maintenance"
+      ],
+      "evidence_ids": [
+        "lab.maintenance"
+      ]
+    },
+    {
+      "id": "lifecycle.schema-migration",
+      "kind": "migration",
+      "requirement": "required",
+      "state": "covered",
+      "claim_ids": [
+        "lifecycle.schema-migration"
+      ],
+      "evidence_ids": [
+        "lab.migration"
+      ]
+    },
+    {
+      "id": "lifecycle.upgrade",
+      "kind": "migration",
+      "requirement": "required",
+      "state": "covered",
+      "claim_ids": [
+        "lifecycle.upgrade"
+      ],
+      "evidence_ids": [
+        "lab.upgrade"
+      ]
+    },
+    {
+      "id": "lifecycle.pg-upgrade",
+      "kind": "migration",
+      "requirement": "required",
+      "state": "covered",
+      "claim_ids": [
+        "lifecycle.pg-upgrade"
+      ],
+      "evidence_ids": [
+        "lab.pg-upgrade"
+      ]
+    },
+    {
+      "id": "lifecycle.compatibility-matrix",
+      "kind": "compatibility",
+      "requirement": "required",
+      "state": "covered",
+      "claim_ids": [
+        "lifecycle.compatibility-matrix"
+      ],
+      "evidence_ids": [
+        "lab.compatibility-matrix"
+      ]
+    },
+    {
+      "id": "skill.router-evaluation",
+      "kind": "skill",
+      "requirement": "required",
+      "state": "covered",
+      "claim_ids": [
+        "skill.router"
+      ],
+      "evidence_ids": [
+        "skill.router-eval"
+      ]
+    },
+    {
+      "id": "publication.provenance",
+      "kind": "operation",
+      "requirement": "required",
+      "state": "covered",
+      "claim_ids": [
+        "publication.provenance"
+      ],
+      "evidence_ids": [
+        "publication.static-gates"
+      ]
+    }
+  ],
+  "capabilities": [
+    {
+      "id": "query.sql-surface",
+      "title": "SQL公開Surfaceと実行意味論",
+      "disposition": "recommended-default",
+      "lab": "labs/sql",
+      "claim_ids": [
+        "query.sql-surface"
+      ]
+    },
+    {
+      "id": "query.types-constraints",
+      "title": "組み込み型とConstraint",
+      "disposition": "recommended-default",
+      "lab": "labs/types-constraints",
+      "claim_ids": [
+        "query.types-constraints"
+      ]
+    },
+    {
+      "id": "query.catalog-inventory",
+      "title": "Runtime Catalog Inventory",
+      "disposition": "recommended-default",
+      "lab": "labs/catalog-inventory",
+      "claim_ids": [
+        "query.catalog-inventory"
+      ]
+    },
+    {
+      "id": "query.partitioning",
+      "title": "Declarative Partitioning",
+      "disposition": "conditional",
+      "lab": "labs/partitioning",
+      "claim_ids": [
+        "query.partitioning"
+      ]
+    },
+    {
+      "id": "query.extension",
+      "title": "公式同梱Extension",
+      "disposition": "conditional",
+      "lab": "labs/extension",
+      "claim_ids": [
+        "query.extension"
+      ]
+    },
+    {
+      "id": "query.security",
+      "title": "Role、RLS、SECURITY DEFINER",
+      "disposition": "recommended-default",
+      "lab": "labs/security",
+      "claim_ids": [
+        "query.security"
+      ]
+    },
+    {
+      "id": "concurrency.mvcc",
+      "title": "MVCC、Isolation、Lock",
+      "disposition": "conditional",
+      "lab": "labs/mvcc",
+      "claim_ids": [
+        "concurrency.mvcc"
+      ]
+    },
+    {
+      "id": "concurrency.locking",
+      "title": "Row LockとNOWAIT",
+      "disposition": "conditional",
+      "lab": "labs/locking",
+      "claim_ids": [
+        "concurrency.locking"
+      ]
+    },
+    {
+      "id": "concurrency.deadlock",
+      "title": "Deadlock検出",
+      "disposition": "conditional",
+      "lab": "labs/deadlock",
+      "claim_ids": [
+        "concurrency.deadlock"
+      ]
+    },
+    {
+      "id": "performance.planner",
+      "title": "Plannerと統計情報",
+      "disposition": "conditional",
+      "lab": "labs/planner",
+      "claim_ids": [
+        "performance.planner"
+      ]
+    },
+    {
+      "id": "performance.statistics",
+      "title": "Extended Statistics",
+      "disposition": "conditional",
+      "lab": "labs/statistics",
+      "claim_ids": [
+        "performance.statistics"
+      ]
+    },
+    {
+      "id": "performance.index",
+      "title": "Indexとアクセスパス",
+      "disposition": "conditional",
+      "lab": "labs/index",
+      "claim_ids": [
+        "performance.index"
+      ]
+    },
+    {
+      "id": "performance.execution",
+      "title": "実行時PlanとBuffer証拠",
+      "disposition": "recommended-default",
+      "lab": "labs/performance",
+      "claim_ids": [
+        "performance.execution"
+      ]
+    },
+    {
+      "id": "operations.backup-recovery",
+      "title": "BackupとRecovery",
+      "disposition": "recommended-default",
+      "lab": "labs/backup-recovery",
+      "claim_ids": [
+        "operations.backup-recovery"
+      ]
+    },
+    {
+      "id": "operations.observability",
+      "title": "PostgreSQL Observability Surface",
+      "disposition": "recommended-default",
+      "lab": "labs/observability",
+      "claim_ids": [
+        "operations.observability"
+      ]
+    },
+    {
+      "id": "operations.wal",
+      "title": "WAL生成とSegment切替",
+      "disposition": "recommended-default",
+      "lab": "labs/wal",
+      "claim_ids": [
+        "operations.wal"
+      ]
+    },
+    {
+      "id": "operations.pitr-recovery",
+      "title": "Point-in-Time Recovery",
+      "disposition": "specialized",
+      "lab": "labs/pitr",
+      "claim_ids": [
+        "operations.pitr-recovery"
+      ]
+    },
+    {
+      "id": "operations.replication",
+      "title": "Physical Replication",
+      "disposition": "specialized",
+      "lab": "labs/replication",
+      "claim_ids": [
+        "operations.replication"
+      ]
+    },
+    {
+      "id": "operations.logical-replication",
+      "title": "Logical Replication",
+      "disposition": "specialized",
+      "lab": "labs/logical-replication",
+      "claim_ids": [
+        "operations.logical-replication"
+      ]
+    },
+    {
+      "id": "operations.failure-injection",
+      "title": "Backend Failure Injection",
+      "disposition": "conditional",
+      "lab": "labs/failure-injection",
+      "claim_ids": [
+        "operations.failure-injection"
+      ]
+    },
+    {
+      "id": "operations.maintenance",
+      "title": "VACUUM、ANALYZE、Freeze",
+      "disposition": "recommended-default",
+      "lab": "labs/maintenance",
+      "claim_ids": [
+        "operations.maintenance"
+      ]
+    },
+    {
+      "id": "lifecycle.schema-migration",
+      "title": "Online Schema Migration",
+      "disposition": "recommended-default",
+      "lab": "labs/migration",
+      "claim_ids": [
+        "lifecycle.schema-migration"
+      ]
+    },
+    {
+      "id": "lifecycle.upgrade",
+      "title": "Major Version Upgrade",
+      "disposition": "conditional",
+      "lab": "labs/upgrade",
+      "claim_ids": [
+        "lifecycle.upgrade"
+      ]
+    },
+    {
+      "id": "lifecycle.pg-upgrade",
+      "title": "pg_upgrade Binary Upgrade",
+      "disposition": "conditional",
+      "lab": "labs/pg-upgrade",
+      "claim_ids": [
+        "lifecycle.pg-upgrade"
+      ]
+    },
+    {
+      "id": "lifecycle.compatibility-matrix",
+      "title": "14.24-18.6 Compatibility Matrix",
+      "disposition": "conditional",
+      "lab": "labs/compatibility-matrix",
+      "claim_ids": [
+        "lifecycle.compatibility-matrix"
+      ]
+    }
+  ],
+  "claims": [
+    {
+      "id": "foundation.version-lock",
+      "statement": "このCoverage Epochの正式対象はPostgreSQL 18.6のREL_18_6である。",
+      "source_ids": [
+        "postgresql-release-18.6",
+        "postgresql-source-rel-18.6"
+      ],
+      "proof_obligation_ids": [
+        "foundation.authority-digests"
+      ]
+    },
+    {
+      "id": "foundation.authority-lock",
+      "statement": "Authority Sourceは取得時点の内容DigestとVersionへ固定されている。",
+      "source_ids": [
+        "postgresql-docs-18.6",
+        "postgresql-release-18.6",
+        "postgresql-source-rel-18.6"
+      ],
+      "proof_obligation_ids": [
+        "foundation.authority-digests"
+      ]
+    },
+    {
+      "id": "query.sql-surface",
+      "statement": "制約違反は受理されず、成功したSQL操作だけが期待する状態変更を残す。",
+      "source_ids": [
+        "postgresql-docs-18.6"
+      ],
+      "proof_obligation_ids": [
+        "query.constraints-and-returning"
+      ]
+    },
+    {
+      "id": "query.types-constraints",
+      "statement": "PostgreSQL 18.6の代表的な構造型とDomain Constraintは値を保持し、不正なDomain値を拒否する。",
+      "source_ids": [
+        "postgresql-docs-18.6"
+      ],
+      "proof_obligation_ids": [
+        "query.types-constraints"
+      ]
+    },
+    {
+      "id": "query.catalog-inventory",
+      "statement": "PostgreSQL 18.6 Runtimeが公開する主要pg_catalog Surfaceは件数と順序付きDigestで再取得できる。",
+      "source_ids": [
+        "postgresql-docs-18.6",
+        "postgres-container-18.6-alpine"
+      ],
+      "proof_obligation_ids": [
+        "query.runtime-catalog-inventory"
+      ]
+    },
+    {
+      "id": "query.partitioning",
+      "statement": "Range Partition Tableは境界に従って行をRoutingし、固定Predicateで不要PartitionをPlanから除外する。",
+      "source_ids": [
+        "postgresql-docs-18.6"
+      ],
+      "proof_obligation_ids": [
+        "query.partition-routing-pruning"
+      ]
+    },
+    {
+      "id": "query.extension",
+      "statement": "公式同梱pg_trgm Extensionは導入後にTrigram OperatorとGIN Operator Classを提供し対象Queryで利用できる。",
+      "source_ids": [
+        "postgresql-docs-18.6"
+      ],
+      "proof_obligation_ids": [
+        "query.bundled-extension"
+      ]
+    },
+    {
+      "id": "query.security",
+      "statement": "FORCE RLS Tableへの非Superuser接続はTenant PredicateでFilterされ、WITH CHECK違反がSQLSTATE 42501で拒否される。",
+      "source_ids": [
+        "postgresql-docs-18.6"
+      ],
+      "proof_obligation_ids": [
+        "query.rls-boundary"
+      ]
+    },
+    {
+      "id": "concurrency.mvcc",
+      "statement": "Repeatable Read Transactionは同一Transaction内でSnapshotを維持し、別Transactionの確定後も既読値を変えない。",
+      "source_ids": [
+        "postgresql-docs-18.6"
+      ],
+      "proof_obligation_ids": [
+        "concurrency.repeatable-read-snapshot"
+      ]
+    },
+    {
+      "id": "concurrency.locking",
+      "statement": "保持中のRow Lockに対するNOWAIT取得はSQLSTATE 55P03で拒否され、解放後は競合Sessionが進行できる。",
+      "source_ids": [
+        "postgresql-docs-18.6"
+      ],
+      "proof_obligation_ids": [
+        "concurrency.row-lock-nowait"
+      ]
+    },
+    {
+      "id": "concurrency.deadlock",
+      "statement": "逆順のRow Lock取得で待機Cycleが成立するとPostgreSQL 18.6は1 TransactionをSQLSTATE 40P01で中止し、残るTransactionを進行させる。",
+      "source_ids": [
+        "postgresql-docs-18.6"
+      ],
+      "proof_obligation_ids": [
+        "concurrency.deadlock-victim"
+      ]
+    },
+    {
+      "id": "performance.planner",
+      "statement": "統計情報更新後、選択性の高いPredicateは固定FixtureでIndex Scan系Planを選択できる。",
+      "source_ids": [
+        "postgresql-docs-18.6"
+      ],
+      "proof_obligation_ids": [
+        "performance.semantic-plan"
+      ]
+    },
+    {
+      "id": "performance.statistics",
+      "statement": "相関列のExtended StatisticsはCatalogへ記録され、ANALYZE後の結合Predicate行数推定へ利用される。",
+      "source_ids": [
+        "postgresql-docs-18.6"
+      ],
+      "proof_obligation_ids": [
+        "performance.extended-statistics"
+      ]
+    },
+    {
+      "id": "performance.index",
+      "statement": "Partial Indexの有無は対象Queryの結果集合を変えず、Predicateが含意される場合に利用候補となる。",
+      "source_ids": [
+        "postgresql-docs-18.6"
+      ],
+      "proof_obligation_ids": [
+        "performance.partial-index"
+      ]
+    },
+    {
+      "id": "performance.execution",
+      "statement": "固定Fixtureの実行性能は結果OracleとともにPlan Node、Buffer、WAL、Relation Sizeとして再取得できる。",
+      "source_ids": [
+        "postgresql-docs-18.6"
+      ],
+      "proof_obligation_ids": [
+        "performance.execution-evidence"
+      ]
+    },
+    {
+      "id": "operations.backup-recovery",
+      "statement": "PostgreSQL 18.6の論理Backupを別DatabaseへRestoreするとFixtureの論理Digestが一致する。",
+      "source_ids": [
+        "postgresql-docs-18.6"
+      ],
+      "proof_obligation_ids": [
+        "operations.logical-restore"
+      ]
+    },
+    {
+      "id": "operations.observability",
+      "statement": "必要なPreload設定下でpg_stat_statementsと主要System ViewからStatement、Session、Table、Lock、WAL状態を観測できる。",
+      "source_ids": [
+        "postgresql-docs-18.6"
+      ],
+      "proof_obligation_ids": [
+        "operations.observability-views"
+      ]
+    },
+    {
+      "id": "operations.wal",
+      "statement": "PostgreSQL 18.6の確定WriteはWAL Insert LSNを前進させ、明示的なWAL Segment切替を観測できる。",
+      "source_ids": [
+        "postgresql-docs-18.6"
+      ],
+      "proof_obligation_ids": [
+        "operations.wal-generation"
+      ]
+    },
+    {
+      "id": "operations.pitr-recovery",
+      "statement": "Base BackupとArchive WALから名前付き復旧点まで回復すると、復旧点前の確定変更を保持し復旧点後の変更を除外できる。",
+      "source_ids": [
+        "postgresql-docs-18.6"
+      ],
+      "proof_obligation_ids": [
+        "operations.named-pitr"
+      ]
+    },
+    {
+      "id": "operations.replication",
+      "statement": "Physical StandbyはPrimaryで確定したFixtureをRead-onlyで参照でき、停止中の確定Writeへ再起動後に追随する。",
+      "source_ids": [
+        "postgresql-docs-18.6"
+      ],
+      "proof_obligation_ids": [
+        "operations.physical-replication"
+      ]
+    },
+    {
+      "id": "operations.logical-replication",
+      "statement": "PostgreSQL 18.6のPublication対象Tableへの確定変更はReplication SlotとApply Workerを介してSubscriberへ到達する。",
+      "source_ids": [
+        "postgresql-docs-18.6"
+      ],
+      "proof_obligation_ids": [
+        "operations.logical-replication"
+      ]
+    },
+    {
+      "id": "operations.failure-injection",
+      "statement": "Write Transaction中のBackend強制終了は未確定変更を残さず、Clusterは後続の確定Writeを受理する。",
+      "source_ids": [
+        "postgresql-docs-18.6"
+      ],
+      "proof_obligation_ids": [
+        "operations.backend-failure"
+      ]
+    },
+    {
+      "id": "operations.maintenance",
+      "statement": "明示VACUUM FREEZE ANALYZEは削除後のLive行を保持し、Dead Tupleを回収してVacuum/Analyze統計を更新する。",
+      "source_ids": [
+        "postgresql-docs-18.6"
+      ],
+      "proof_obligation_ids": [
+        "operations.vacuum-maintenance"
+      ]
+    },
+    {
+      "id": "lifecycle.schema-migration",
+      "statement": "NOT VALID Constraintは既存不整合修復後に検証でき、Concurrent Indexは行集合を維持したまま有効化できる。",
+      "source_ids": [
+        "postgresql-docs-18.6"
+      ],
+      "proof_obligation_ids": [
+        "lifecycle.online-schema-migration"
+      ]
+    },
+    {
+      "id": "lifecycle.upgrade",
+      "statement": "PostgreSQL 17.11の論理Backupは18.6へRestoreでき、Fixtureの論理Digestが一致する。",
+      "source_ids": [
+        "postgresql-docs-18.6",
+        "postgresql-release-18.6"
+      ],
+      "proof_obligation_ids": [
+        "lifecycle.logical-upgrade"
+      ]
+    },
+    {
+      "id": "lifecycle.pg-upgrade",
+      "statement": "PostgreSQL 17.11のData Directoryは互換性Check後に18.6のpg_upgradeで変換でき、固定Fixtureの論理Digestを保持する。",
+      "source_ids": [
+        "postgresql-docs-18.6",
+        "postgresql-release-18.6"
+      ],
+      "proof_obligation_ids": [
+        "lifecycle.binary-pg-upgrade"
+      ]
+    },
+    {
+      "id": "lifecycle.compatibility-matrix",
+      "statement": "固定した14.24から18.6の各Runtimeで共通Fixtureの論理結果を比較し、Version固有Featureの境界を明示できる。",
+      "source_ids": [
+        "postgresql-docs-18.6",
+        "postgresql-release-18.6",
+        "postgres-container-18.6-alpine",
+        "postgres-container-17.11-alpine",
+        "postgres-container-16.15-alpine",
+        "postgres-container-15.19-alpine",
+        "postgres-container-14.24-alpine"
+      ],
+      "proof_obligation_ids": [
+        "lifecycle.cross-version-matrix"
+      ]
+    },
+    {
+      "id": "skill.router",
+      "statement": "Router Skillは依頼をCoverage内Capabilityへ案内し、Coverage外ならGapを明示する。",
+      "source_ids": [
+        "postgresql-docs-18.6"
+      ],
+      "proof_obligation_ids": [
+        "skill.routing"
+      ]
+    },
+    {
+      "id": "publication.provenance",
+      "statement": "独自成果物と第三者資料のLicenseと出典を分離して追跡できる。",
+      "source_ids": [
+        "postgresql-license-rel-18.6"
+      ],
+      "proof_obligation_ids": [
+        "publication.static-gates"
+      ]
+    }
+  ],
+  "claim_entities": [
+    {
+      "id": "concurrency.deadlock",
+      "path": "claims/concurrency.deadlock.claim.yaml",
+      "digest": "sha256:4a62a6b68ee23965d3bfb264523e4f37db9e4b91a932c29d2d8ec7969d29e11d"
+    },
+    {
+      "id": "concurrency.locking",
+      "path": "claims/concurrency.locking.claim.yaml",
+      "digest": "sha256:ca025dd8203c92823212918664281d0d3752c833f9449d387fd4c0f62fa4ec24"
+    },
+    {
+      "id": "concurrency.mvcc",
+      "path": "claims/concurrency.mvcc.claim.yaml",
+      "digest": "sha256:c3a6ff92ce97435b1ac2632df6667a3c5c143036f9dd4c00e99f571fbeeb1624"
+    },
+    {
+      "id": "foundation.authority-lock",
+      "path": "claims/foundation.authority-lock.claim.yaml",
+      "digest": "sha256:c32f099bb7ceb30d5819d83af0b5dbe54b0184d831b2c7b06397fb6eb713df7e"
+    },
+    {
+      "id": "foundation.version-lock",
+      "path": "claims/foundation.version-lock.claim.yaml",
+      "digest": "sha256:d4e61323bc3834419dbb7efabf63fb1ed67d2e79adedec9b31dda4c2f02ee15f"
+    },
+    {
+      "id": "lifecycle.compatibility-matrix",
+      "path": "claims/lifecycle.compatibility-matrix.claim.yaml",
+      "digest": "sha256:af594e98800983a6c4fc71f702dd2278a1afb55039969edde5361e8f6f23bb9e"
+    },
+    {
+      "id": "lifecycle.pg-upgrade",
+      "path": "claims/lifecycle.pg-upgrade.claim.yaml",
+      "digest": "sha256:cfdc3b748e927273afdd3de7d382c7d0132a52fd7042773b93b5e2f90839cb80"
+    },
+    {
+      "id": "lifecycle.schema-migration",
+      "path": "claims/lifecycle.schema-migration.claim.yaml",
+      "digest": "sha256:f5337f89488387c6824d7dc7a5078acf829ed6c4e844caad4bfe3511125159ed"
+    },
+    {
+      "id": "lifecycle.upgrade",
+      "path": "claims/lifecycle.upgrade.claim.yaml",
+      "digest": "sha256:dbba76d9ef8992a1fcf812d70efc8f16f58311f6816be97f649e2d6bcc669a28"
+    },
+    {
+      "id": "operations.backup-recovery",
+      "path": "claims/operations.backup-recovery.claim.yaml",
+      "digest": "sha256:7a09b40f7fa3384fda39704d6a37f03590dd7dec665ae327783958e6d8e2ecb0"
+    },
+    {
+      "id": "operations.failure-injection",
+      "path": "claims/operations.failure-injection.claim.yaml",
+      "digest": "sha256:78199bdb14af3f12e1d7acd094f60d23165bf269339cba98c587f06ffcdb0657"
+    },
+    {
+      "id": "operations.logical-replication",
+      "path": "claims/operations.logical-replication.claim.yaml",
+      "digest": "sha256:0efe25f49bf84a2e6942e5ab74f7e677f6e89094e362dcf9c3f1d5a571fd9561"
+    },
+    {
+      "id": "operations.maintenance",
+      "path": "claims/operations.maintenance.claim.yaml",
+      "digest": "sha256:765f2a3bd6046e59b95ca75c1885b6cc663aa757a1659bba1351e33c250941dd"
+    },
+    {
+      "id": "operations.observability",
+      "path": "claims/operations.observability.claim.yaml",
+      "digest": "sha256:8c5db7029d0173ce28f24491d37d5773a1e55f3a0e2811d050525465a98a94a9"
+    },
+    {
+      "id": "operations.pitr-recovery",
+      "path": "claims/operations.pitr-recovery.claim.yaml",
+      "digest": "sha256:4ecb7daa78af981b84298045046b8dea1b9eb699b99507dec13900d7495a15f9"
+    },
+    {
+      "id": "operations.replication",
+      "path": "claims/operations.replication.claim.yaml",
+      "digest": "sha256:eb76b94641264272686cdffb9c41424c6e1402cf092f852c109a69198510ef07"
+    },
+    {
+      "id": "operations.wal",
+      "path": "claims/operations.wal.claim.yaml",
+      "digest": "sha256:6ebb99528c5a220d4a3a006a0a183d0f7b2d749a2f7d5739c40203e044d88de9"
+    },
+    {
+      "id": "performance.execution",
+      "path": "claims/performance.execution.claim.yaml",
+      "digest": "sha256:1307f6554eb2cc160375d82decec4359f9c39d26257c84a8c642d3c5dec44569"
+    },
+    {
+      "id": "performance.index",
+      "path": "claims/performance.index.claim.yaml",
+      "digest": "sha256:a9d305fbff77d1caa28ca02c4fa727c87ce56ab5d9f27be16eb2d35066ae5203"
+    },
+    {
+      "id": "performance.planner",
+      "path": "claims/performance.planner.claim.yaml",
+      "digest": "sha256:ea5d689efaafd9362703c9394a3a584dfb6e24c4bef2675cded492894509f71e"
+    },
+    {
+      "id": "performance.statistics",
+      "path": "claims/performance.statistics.claim.yaml",
+      "digest": "sha256:b27a5fe86e9aed0896fefb5798585766f49edf2346dcc91cf784d08dabac6d3b"
+    },
+    {
+      "id": "publication.provenance",
+      "path": "claims/publication.provenance.claim.yaml",
+      "digest": "sha256:8eba48882248fc93d13ebf71b5e29fe6cbfb2a2755eb01ef1ad86af38be6611f"
+    },
+    {
+      "id": "query.catalog-inventory",
+      "path": "claims/query.catalog-inventory.claim.yaml",
+      "digest": "sha256:25d617e1b158610262f31bde90c797de826cf72e42d5468cf3cb5a26be15e74f"
+    },
+    {
+      "id": "query.extension",
+      "path": "claims/query.extension.claim.yaml",
+      "digest": "sha256:b8327ebdf563248b5055b89fe2617fbcbc7d001563ccbc7d7d92fb707b90aa4c"
+    },
+    {
+      "id": "query.partitioning",
+      "path": "claims/query.partitioning.claim.yaml",
+      "digest": "sha256:c4966b3e7e8656b8b35cf3138787cdc7a0b870d4961f24fd802595f3bfc22d92"
+    },
+    {
+      "id": "query.security",
+      "path": "claims/query.security.claim.yaml",
+      "digest": "sha256:a738b87c0aa37b2bf6c8c0e9a05d8f1c7c93720679b0d825f44c6f80e70aaf5e"
+    },
+    {
+      "id": "query.sql-surface",
+      "path": "claims/query.sql-surface.claim.yaml",
+      "digest": "sha256:9866c103895fffec1dca55488465270ffae9629359a14558456d4014f86a17be"
+    },
+    {
+      "id": "query.types-constraints",
+      "path": "claims/query.types-constraints.claim.yaml",
+      "digest": "sha256:404eb1ea7b16da86d6e283db766658a57233d4b3d45fb76d6cef10d0bf152ab7"
+    },
+    {
+      "id": "skill.router",
+      "path": "claims/skill.router.claim.yaml",
+      "digest": "sha256:6ddd444e35760831e204ea81896d19d9fb3718f9b4ff0d99acfa38a7f0b58e4e"
+    }
+  ],
+  "proof_obligations": [
+    {
+      "id": "foundation.authority-digests",
+      "acceptance": "sources.lock.yamlの全DigestがSchema適合し、CoverageがLockfile Digestへ束縛される。",
+      "command": "make validate"
+    },
+    {
+      "id": "query.constraints-and-returning",
+      "acceptance": "正常INSERTはRETURNING値を返し、重複KeyとCHECK違反は期待SQLSTATEで拒否される。",
+      "command": "make lab LAB=sql"
+    },
+    {
+      "id": "query.types-constraints",
+      "acceptance": "代表型を含む行がRound-tripし、UUIDv7とGenerated値が確認でき、不正Domain値が拒否される。",
+      "command": "make lab LAB=types-constraints"
+    },
+    {
+      "id": "query.runtime-catalog-inventory",
+      "acceptance": "18.6の型、関数、演算子、Cast、Access Method、Collation、同梱Extension、Catalog Relationが正の件数とDigestを返す。",
+      "command": "make lab LAB=catalog-inventory"
+    },
+    {
+      "id": "query.partition-routing-pruning",
+      "acceptance": "3行が対応Partitionへ1行ずつRoutingされ、Q1固定PredicateのPlanにQ2とDefault Partitionが現れない。",
+      "command": "make lab LAB=partitioning"
+    },
+    {
+      "id": "query.bundled-extension",
+      "acceptance": "pg_trgmが導入され、Trigram検索結果が1行で、JSON PlanがGIN Index名を参照する。",
+      "command": "make lab LAB=extension"
+    },
+    {
+      "id": "query.rls-boundary",
+      "acceptance": "Tenant接続から1行だけ可視で、別Tenant INSERTがSQLSTATE 42501で拒否され、Function search_pathが固定される。",
+      "command": "make lab LAB=security"
+    },
+    {
+      "id": "concurrency.repeatable-read-snapshot",
+      "acceptance": "制御された2 Sessionで、Readerの2回の読取り値が同一、Reader終了後の値がWriter確定値になる。",
+      "command": "make lab LAB=mvcc"
+    },
+    {
+      "id": "concurrency.row-lock-nowait",
+      "acceptance": "Holderのgranted Lockをpg_locksで観測でき、NOWAITがSQLSTATE 55P03で拒否され、COMMIT後の更新値が20になる。",
+      "command": "make lab LAB=locking"
+    },
+    {
+      "id": "concurrency.deadlock-victim",
+      "acceptance": "逆順Row Lockの2 TransactionからSQLSTATE 40P01のVictimが1件だけ発生し、Survivorの2更新だけが残る。",
+      "command": "make lab LAB=deadlock"
+    },
+    {
+      "id": "performance.semantic-plan",
+      "acceptance": "JSON PlanにIndex ScanまたはBitmap Index Scanが含まれ、対象結果件数がOracleと一致する。",
+      "command": "make lab LAB=planner"
+    },
+    {
+      "id": "performance.extended-statistics",
+      "acceptance": "DependenciesとMCV統計がCatalogに存在し、相関Predicateの推定行数が実100行の80から120に入る。",
+      "command": "make lab LAB=statistics"
+    },
+    {
+      "id": "performance.partial-index",
+      "acceptance": "Partial Index作成前後で結果Digestが同じで、作成後PlanがIndex名を参照する。",
+      "command": "make lab LAB=index"
+    },
+    {
+      "id": "performance.execution-evidence",
+      "acceptance": "20万行Fixtureで結果200行、Index Plan、Actual Rows、Buffer情報、正のRelation Sizeを取得する。",
+      "command": "make lab LAB=performance"
+    },
+    {
+      "id": "operations.logical-restore",
+      "acceptance": "Dump元とRestore先の順序付き論理Digestが一致する。",
+      "command": "make lab LAB=backup-recovery"
+    },
+    {
+      "id": "operations.observability-views",
+      "acceptance": "pg_stat_statementsの同一Query Callsが3以上で、Activity、Database、Table、Lock、WAL Viewが観測可能である。",
+      "command": "make lab LAB=observability"
+    },
+    {
+      "id": "operations.wal-generation",
+      "acceptance": "2万行WriteでWAL LSN差分が正となり、Segment切替LSNとpg_stat_walのRecordを観測できる。",
+      "command": "make lab LAB=wal"
+    },
+    {
+      "id": "operations.named-pitr",
+      "acceptance": "Base BackupとArchive WALから名前付き復旧点へPromoteし、復旧後のIDが1,2で復旧点後のID 3が存在しない。",
+      "command": "make lab LAB=pitr"
+    },
+    {
+      "id": "operations.physical-replication",
+      "acceptance": "Primaryの確定行がStandbyへ到達し、Standby停止中の2件目も再起動後に追随し、pg_is_in_recovery()をtrueとして返す。",
+      "command": "make lab LAB=replication"
+    },
+    {
+      "id": "operations.logical-replication",
+      "acceptance": "Publication対象の確定行がSubscriberへ到達し、Publisher SlotとSubscriber Apply Workerがactiveである。",
+      "command": "make lab LAB=logical-replication"
+    },
+    {
+      "id": "operations.backend-failure",
+      "acceptance": "Write中Backendの強制終了後に未確定行がゼロで、別の確定Writeが成功する。",
+      "command": "make lab LAB=failure-injection"
+    },
+    {
+      "id": "operations.vacuum-maintenance",
+      "acceptance": "10万行から半数Delete後にDead Tupleを観測し、VACUUM FREEZE ANALYZE後は5万行、Dead Tuple 0、実行Count 1以上となる。",
+      "command": "make lab LAB=maintenance"
+    },
+    {
+      "id": "lifecycle.online-schema-migration",
+      "acceptance": "NOT VALID状態を観測し、不整合修復後のVALIDATEとCREATE INDEX CONCURRENTLYが5万行を維持して完了する。",
+      "command": "make lab LAB=migration"
+    },
+    {
+      "id": "lifecycle.logical-upgrade",
+      "acceptance": "17.11から取得したDumpを18.6へRestoreし、Version境界と論理Digest一致を確認する。",
+      "command": "make lab LAB=upgrade"
+    },
+    {
+      "id": "lifecycle.binary-pg-upgrade",
+      "acceptance": "17.11と18.6の固定Binaryでpg_upgrade --checkと実Upgradeを通し、5万行と論理Digestを保持する。",
+      "command": "make lab LAB=pg-upgrade"
+    },
+    {
+      "id": "lifecycle.cross-version-matrix",
+      "acceptance": "5世代のImage digestがSource Lockされ、同一1000行Fixtureの論理Digestが一致し、UUIDv7が18.6だけで観測される。",
+      "command": "make lab LAB=compatibility-matrix"
+    },
+    {
+      "id": "skill.routing",
+      "acceptance": "全Eval Caseが期待Capability、Authority優先、安全境界、Gap応答を満たす。",
+      "command": "make eval"
+    },
+    {
+      "id": "publication.static-gates",
+      "acceptance": "必須権利File、SPDX SBOM、第三者Manifest、秘密Pattern検査が通る。",
+      "command": "make test-static"
+    }
+  ],
+  "evidence": [
+    {
+      "id": "lab.authority-lock",
+      "path": "evidence/authority-lock.evidence.yaml",
+      "digest": "sha256:b64d04c53352dd56af9f364915e457337ca4dcfeee751a10d698c7e40778d78c",
+      "verdict": "pass"
+    },
+    {
+      "id": "lab.backup-recovery",
+      "path": "evidence/backup-recovery.evidence.yaml",
+      "digest": "sha256:ee15486c738337d56473db8fc3fc9647b49a38d46a90bdd3dbd0cfcaa1c5f64a",
+      "verdict": "pass"
+    },
+    {
+      "id": "lab.catalog-inventory",
+      "path": "evidence/catalog-inventory.evidence.yaml",
+      "digest": "sha256:67a7f00757c5eb227c6faffddc89b6e4cca5eb114df2496012f2d398dd3a6ed1",
+      "verdict": "pass"
+    },
+    {
+      "id": "lab.compatibility-matrix",
+      "path": "evidence/compatibility-matrix.evidence.yaml",
+      "digest": "sha256:11cc5b56685961447883c29a57684d240656135857314e7493b0a15b78a396e5",
+      "verdict": "pass"
+    },
+    {
+      "id": "lab.deadlock",
+      "path": "evidence/deadlock.evidence.yaml",
+      "digest": "sha256:a53e2f7560acd601598b8824159f5fb9e4edbe7613bfad197c8d13ef1e61923e",
+      "verdict": "pass"
+    },
+    {
+      "id": "lab.extension",
+      "path": "evidence/extension.evidence.yaml",
+      "digest": "sha256:f252f46c71acd5d59e9dde7aacbc43508cd68e0cf234c3fd7cd0d6efa946996b",
+      "verdict": "pass"
+    },
+    {
+      "id": "lab.failure-injection",
+      "path": "evidence/failure-injection.evidence.yaml",
+      "digest": "sha256:7a0ae1d2679152ed8662fdc3b8dfd26ab434048e89428eb9aec723ed804a31e7",
+      "verdict": "pass"
+    },
+    {
+      "id": "foundation.authority-lock",
+      "path": "evidence/foundation-authority-lock.evidence.yaml",
+      "digest": "sha256:742be0bbe51cd453e2f43ee5bd1ed1d0e8413d4ba62398ee22e71a13a680e752",
+      "verdict": "pass"
+    },
+    {
+      "id": "lab.index",
+      "path": "evidence/index.evidence.yaml",
+      "digest": "sha256:03ae650880e9fdeb3f169b514f7b71a5b77bbf4daa621cdabe41d12313b4fa27",
+      "verdict": "pass"
+    },
+    {
+      "id": "lab.locking",
+      "path": "evidence/locking.evidence.yaml",
+      "digest": "sha256:3c802f46832c76d62a83f550b6bfa1c3f59d650b244147f4b37a02533485a3eb",
+      "verdict": "pass"
+    },
+    {
+      "id": "lab.logical-replication",
+      "path": "evidence/logical-replication.evidence.yaml",
+      "digest": "sha256:76ea41bc3ed8c947e47a04e432c0e0d87074d1ffb1ffea00a9753e094e3288ab",
+      "verdict": "pass"
+    },
+    {
+      "id": "lab.maintenance",
+      "path": "evidence/maintenance.evidence.yaml",
+      "digest": "sha256:75d4a9b260b33c34c2d6a8c3f624afb90caaaff8cdb5ca108afb47afd4ab2a81",
+      "verdict": "pass"
+    },
+    {
+      "id": "lab.migration",
+      "path": "evidence/migration.evidence.yaml",
+      "digest": "sha256:e0b14a0e6bfa826e1897419efac9462f7dbd87fccf5deaf9530e64b5b44cefab",
+      "verdict": "pass"
+    },
+    {
+      "id": "lab.mvcc",
+      "path": "evidence/mvcc.evidence.yaml",
+      "digest": "sha256:ea7b6ef2b6a89d571300f19af060fc94bd004e66a815f78eba80ea3d3ba444a5",
+      "verdict": "pass"
+    },
+    {
+      "id": "lab.observability",
+      "path": "evidence/observability.evidence.yaml",
+      "digest": "sha256:d918cd5718e253b61a4c6d1b1d79d5a11e665dbfc55e02b957cdff63bcd423f8",
+      "verdict": "pass"
+    },
+    {
+      "id": "lab.partitioning",
+      "path": "evidence/partitioning.evidence.yaml",
+      "digest": "sha256:1792f200be6b46337ab4f837bfda56d4c3a55d082964762821d0c91ac867cb84",
+      "verdict": "pass"
+    },
+    {
+      "id": "lab.performance",
+      "path": "evidence/performance.evidence.yaml",
+      "digest": "sha256:daee434368ea1a2b2c7a179a97d3bbd9659ec9ad40a70f610ad92f61599f7ae2",
+      "verdict": "pass"
+    },
+    {
+      "id": "lab.pg-upgrade",
+      "path": "evidence/pg-upgrade.evidence.yaml",
+      "digest": "sha256:85d2c9347589e84a38c4068fdb2d453c6901ac7d8de31e6dd7032b31a5d30ff8",
+      "verdict": "pass"
+    },
+    {
+      "id": "lab.pitr",
+      "path": "evidence/pitr.evidence.yaml",
+      "digest": "sha256:9ac33af02862a4f808c78857ac2aa174783674410e2a9f6ea1fac60c246c9355",
+      "verdict": "pass"
+    },
+    {
+      "id": "lab.planner",
+      "path": "evidence/planner.evidence.yaml",
+      "digest": "sha256:450b134f6fb64e5b52b3c0b775cc52fded6cad20765c1ca5d5f63cef21945802",
+      "verdict": "pass"
+    },
+    {
+      "id": "publication.static-gates",
+      "path": "evidence/publication-static-gates.evidence.yaml",
+      "digest": "sha256:9aa8e7333b5acd7daeb32c2a12ac25616e7b773f204e140cb1168c7147a3fb11",
+      "verdict": "pass"
+    },
+    {
+      "id": "lab.replication",
+      "path": "evidence/replication.evidence.yaml",
+      "digest": "sha256:13557b8fc06e0a919eaaa9e97f8a0c34bd73636bcdee66ba877f73cd43c4b413",
+      "verdict": "pass"
+    },
+    {
+      "id": "lab.security",
+      "path": "evidence/security.evidence.yaml",
+      "digest": "sha256:2b7a3401cfba04cf77a1ef2fffa6f3a58e22fdf6f0a5c3f33b5c9221c47782df",
+      "verdict": "pass"
+    },
+    {
+      "id": "skill.router-eval",
+      "path": "evidence/skill-router-eval.evidence.yaml",
+      "digest": "sha256:dc5fc381bc3368137c7a4575756f8a4aa6cdb591485a00880f3e4e19f5b2f3b4",
+      "verdict": "pass"
+    },
+    {
+      "id": "lab.sql-surface",
+      "path": "evidence/sql-surface.evidence.yaml",
+      "digest": "sha256:09e7e6577c67c63bfc595fec9f2653646283e12916b819dc54f7da992fd53aa4",
+      "verdict": "pass"
+    },
+    {
+      "id": "lab.sql",
+      "path": "evidence/sql.evidence.yaml",
+      "digest": "sha256:10316ff051cca29b3efbd0ca6c51dce309754fc814d2a21bae03658a3fe53278",
+      "verdict": "pass"
+    },
+    {
+      "id": "lab.statistics",
+      "path": "evidence/statistics.evidence.yaml",
+      "digest": "sha256:e3b8d2f1fe9cfbde084e1e463230e89af59d9fd936d3074921d4807fc2b2a093",
+      "verdict": "pass"
+    },
+    {
+      "id": "lab.types-constraints",
+      "path": "evidence/types-constraints.evidence.yaml",
+      "digest": "sha256:d7f256533f59ec6d835f1dd3b5cf4498a74d73bb269aae37b073f0d3ec3c56d1",
+      "verdict": "pass"
+    },
+    {
+      "id": "lab.upgrade",
+      "path": "evidence/upgrade.evidence.yaml",
+      "digest": "sha256:ea19e15718c3daf8dd64a637931192801b71071f257e43fb534a72566e6b19d2",
+      "verdict": "pass"
+    },
+    {
+      "id": "lab.wal",
+      "path": "evidence/wal.evidence.yaml",
+      "digest": "sha256:331c0b012417811d14f386b7727d5e0d37a39a99ca01bb0e2208153fd31c836e",
+      "verdict": "pass"
+    }
+  ],
+  "sources": [
+    {
+      "id": "postgresql-docs-18.6",
+      "kind": "official-documentation",
+      "version": "18.6",
+      "digest": "sha256:c51c06f037afdb7563e2d98a5e59ebb380f103b13ce5b9eff5bc11128c330656"
+    },
+    {
+      "id": "postgresql-release-18.6",
+      "kind": "release-notes",
+      "version": "18.6",
+      "digest": "sha256:4479466ad13c12bb916b83881db008f97f4905d8ee67286f5ddcf94adc9f94a7"
+    },
+    {
+      "id": "postgresql-source-rel-18.6",
+      "kind": "source",
+      "version": "724edf9bde9d356724ad384a2e196edc3c9f80f7",
+      "digest": "sha256:873c03070a2e8aae0768fb75d8d6739ae9589681c6cd50839e79d787a7aed222"
+    },
+    {
+      "id": "postgresql-source-tarball-checksum-18.6",
+      "kind": "registry",
+      "version": "18.6",
+      "digest": "sha256:92b190ded4a002654768daa8ac41db530354b9be13c7c67059592ddf5bb0c43a"
+    },
+    {
+      "id": "postgresql-license-rel-18.6",
+      "kind": "official-documentation",
+      "version": "REL_18_6",
+      "digest": "sha256:3d6af92ff8a4c2cdf69afb1cf44edea727922f5cd0cf8b5f72b11cdecac8fdfd"
+    },
+    {
+      "id": "postgres-container-18.6-alpine",
+      "kind": "runtime-inventory",
+      "version": "postgres:18.6-alpine",
+      "digest": "sha256:d3e1620b530c944afa6e887d22eb899824da68e19c52024bf98f5220c88a65b2"
+    },
+    {
+      "id": "postgres-container-17.11-alpine",
+      "kind": "runtime-inventory",
+      "version": "postgres:17.11-alpine",
+      "digest": "sha256:18cfe3ef5e6815560c98237d6216d1e5119702fb0f3894c8785dd58b8bbe5d73"
+    },
+    {
+      "id": "postgres-container-16.15-alpine",
+      "kind": "runtime-inventory",
+      "version": "postgres:16.15-alpine3.23",
+      "digest": "sha256:421b84e07a72bb8f3715f20501a1fdbe1219aad1fa4af7786a49d9a3f2480296"
+    },
+    {
+      "id": "postgres-container-15.19-alpine",
+      "kind": "runtime-inventory",
+      "version": "postgres:15.19-alpine3.23",
+      "digest": "sha256:b0dc4a8dc256b963ee25867843d9fd366850e327e4a2a65ccb3c47262d092973"
+    },
+    {
+      "id": "postgres-container-14.24-alpine",
+      "kind": "runtime-inventory",
+      "version": "postgres:14.24-alpine",
+      "digest": "sha256:727876d274666da0b92a445390ba093c84b8e9f8343e1c53cd4e9a7ab2d85310"
+    }
+  ],
+  "labs": [
+    "authority-lock",
+    "backup-recovery",
+    "catalog-inventory",
+    "compatibility-matrix",
+    "deadlock",
+    "extension",
+    "failure-injection",
+    "index",
+    "locking",
+    "logical-replication",
+    "maintenance",
+    "migration",
+    "mvcc",
+    "observability",
+    "partitioning",
+    "performance",
+    "pg-upgrade",
+    "pitr",
+    "planner",
+    "replication",
+    "security",
+    "sql-surface",
+    "sql",
+    "statistics",
+    "types-constraints",
+    "upgrade",
+    "wal"
+  ],
+  "skill_eval": {
+    "minimum_pass_rate": 1.0,
+    "case_ids": [
+      "understand-mvcc",
+      "choose-partial-index",
+      "build-sql-constraint",
+      "build-domain-type",
+      "verify-catalog-inventory",
+      "choose-partition",
+      "build-extension",
+      "choose-rls",
+      "verify-backup-evidence",
+      "operate-physical-replication",
+      "troubleshoot-logical-replication",
+      "recover-pitr",
+      "understand-wal",
+      "verify-failure-injection",
+      "operate-observability",
+      "operate-maintenance",
+      "troubleshoot-deadlock",
+      "troubleshoot-row-lock",
+      "troubleshoot-slow-plan",
+      "verify-statistics",
+      "operate-capacity",
+      "evolve-schema-migration",
+      "evolve-pg-upgrade",
+      "evolve-logical-upgrade",
+      "verify-compatibility-matrix",
+      "delegate-index-review",
+      "coverage-gap-postgis",
+      "coverage-gap-pgvector",
+      "coverage-gap-managed",
+      "coverage-gap-unknown"
+    ]
+  },
+  "ci": {
+    "required_steps": [
+      {
+        "name": "Install CI dependencies",
+        "run": "sudo apt-get update && sudo apt-get install -y ripgrep"
+      },
+      {
+        "name": "Validate common manifests",
+        "run": "make -C postgresql-reference-atlas CORE_DIR=../reference-atlas-core validate"
+      },
+      {
+        "name": "Audit mastery and cross-manifest contracts",
+        "run": "make -C postgresql-reference-atlas CORE_DIR=../reference-atlas-core audit"
+      },
+      {
+        "name": "Evaluate router skill",
+        "run": "make -C postgresql-reference-atlas eval"
+      },
+      {
+        "name": "Run static publication gates",
+        "run": "make -C postgresql-reference-atlas test-static"
+      },
+      {
+        "name": "Check committed evidence freshness",
+        "run": "make -C postgresql-reference-atlas evidence-freshness"
+      }
+    ],
+    "executable_labs": [
+      "authority-lock",
+      "sql-surface",
+      "sql",
+      "types-constraints",
+      "catalog-inventory",
+      "partitioning",
+      "extension",
+      "security",
+      "mvcc",
+      "locking",
+      "deadlock",
+      "planner",
+      "statistics",
+      "index",
+      "performance",
+      "wal",
+      "backup-recovery",
+      "pitr",
+      "replication",
+      "logical-replication",
+      "observability",
+      "maintenance",
+      "failure-injection",
+      "migration",
+      "upgrade",
+      "pg-upgrade",
+      "compatibility-matrix"
+    ],
+    "core_ref": "cf9e6e2d981305c83f970c1f21a1ddc9c1109263"
+  },
+  "counts": {
+    "targets": 29,
+    "capabilities": 25,
+    "claims": 29,
+    "claim_entities": 29,
+    "proof_obligations": 28,
+    "evidence": 30,
+    "sources": 10,
+    "labs": 27,
+    "skill_cases": 30,
+    "ci_labs": 27
+  }
+}

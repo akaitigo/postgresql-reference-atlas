@@ -1,0 +1,21 @@
+schema_version: 1
+atlas_id: postgresql-reference-atlas
+baseline_commit: 8a4259d2de288178b8b87f09a09e5b57654c88e0
+policy: additive-only
+replacements:
+  - id: completion-certificate-history-copy
+    old_id: file:evidence/completion-certificate.json
+    new_id: file:evidence/history/v1.0.0/completion-certificate.json
+    old_value: sha256:7f88fc0e072438d84b296b51428e88983688eca85cf4f97d7bf819b0bde9a26a
+    new_value: sha256:7f88fc0e072438d84b296b51428e88983688eca85cf4f97d7bf819b0bde9a26a
+    proof_type: byte-identical
+    migration_evidence: evidence/migrations/non-regression-v2.json
+    reason: Core Definitive v2の履歴規約へ移し、v1 bounded Certificateの意味とbyte列を不変保存するため。
+  - id: core-definitive-v2-forward-update
+    old_id: ci:core-ref:cf9e6e2d981305c83f970c1f21a1ddc9c1109263
+    new_id: ci:core-ref:219dee20e23811195f541bbce71a730237a27231
+    old_value: cf9e6e2d981305c83f970c1f21a1ddc9c1109263
+    new_value: 219dee20e23811195f541bbce71a730237a27231
+    proof_type: version-forward-compatible
+    migration_evidence: evidence/migrations/non-regression-v2.json
+    reason: v1互換Gateを保持した子孫commitへ更新し、FE Depth ReferenceとDefinitive Gate v2を加法的に利用するため。

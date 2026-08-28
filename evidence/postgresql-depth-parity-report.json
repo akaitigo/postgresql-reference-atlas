@@ -1,0 +1,280 @@
+{
+  "schema_version": 1,
+  "id": "postgresql-depth-parity",
+  "atlas_id": "postgresql-reference-atlas",
+  "frontend_reference": {
+    "repository": "frontend-behavior-atlas",
+    "commit": "4a0b2df8e2091a963bd0e0e1bbccef9c84b49a45",
+    "status": "incomplete",
+    "summary": {
+      "satisfied": 1,
+      "partial": 17,
+      "missing": 0
+    },
+    "files": [
+      {
+        "path": "FE_DEPTH_REFERENCE.json",
+        "digest": "sha256:2452696f9807b7d4a8ffb22b3ba37f079a25a34ac2370d78423445b96064582a",
+        "size_bytes": 31657
+      },
+      {
+        "path": "docs/DEFINITIVE_GATE_V2_REFERENCE.md",
+        "digest": "sha256:280a398ed1251438ad244e999c9c9cef9b0b6b78217db82e2b55ef882306d241",
+        "size_bytes": 4435
+      },
+      {
+        "path": "fixtures/definitive-gate-v2/authority-surface-inventory.fixture.json",
+        "digest": "sha256:01c29cdd29f61968b06791edf3d0d0674462d279422bd312d523ab7964e2a1e4",
+        "size_bytes": 1783
+      },
+      {
+        "path": "fixtures/definitive-gate-v2/variant-comparison.fixture.json",
+        "digest": "sha256:2964d596201033761c083d06dc705d21a428de043a91a0f1e71e7d5b841f59d3",
+        "size_bytes": 2306
+      },
+      {
+        "path": "fixtures/definitive-gate-v2/profile-incompatibility.fixture.json",
+        "digest": "sha256:95c07992da4b78db5c5551d7ed0c4425668dde9188c0acb53c3b76b17a91e364",
+        "size_bytes": 2209
+      },
+      {
+        "path": "fixtures/definitive-gate-v2/evidence-granularity.fixture.json",
+        "digest": "sha256:94506646f1e30429cb84a87927e1af7e1e890d401efd0335ebf911aed6f85126",
+        "size_bytes": 3590
+      },
+      {
+        "path": "baselines/definitive-gate-v2.json",
+        "digest": "sha256:b6685fac1e11429ed7c203e35aac55c7a82c276dc32aadb97f225af801c3bb67",
+        "size_bytes": 656649
+      }
+    ]
+  },
+  "frontend_source_verified": true,
+  "authority_locator_reference": {
+    "repository": "frontend-behavior-atlas",
+    "commit": "cabf687bab769b17928d950acc416f3f77eb4ca3",
+    "policy": {
+      "body_storage": "digest-and-locator-offset-only",
+      "generated_candidates_are_authority_text_exhaustive": false,
+      "require_explicit_stale_deferred_human_review_counts": true
+    },
+    "files": [
+      {
+        "path": "scripts/lib/authority-extraction.ts",
+        "digest": "sha256:d0efb14e943384b363f6596cff32371368ad69d4aa319de4c7f5ecf189cb8c7c",
+        "size_bytes": 17508
+      },
+      {
+        "path": "scripts/verify-authority-extraction.ts",
+        "digest": "sha256:420acbe08bff848786c4a28febb4443c671afdd53ff1643413317a9ce175d9aa",
+        "size_bytes": 121
+      }
+    ]
+  },
+  "authority_locator_extraction": {
+    "authority_artifacts": 5,
+    "candidate_surfaces": 11340,
+    "source_commit_matched": true,
+    "stale_source_bodies": 0,
+    "url_retrieval_deferred": 183,
+    "locator_evaluations_deferred": 183,
+    "human_reviewed_surfaces": 0,
+    "generated_surface_candidates_exhaustive": true,
+    "authority_text_surfaces_exhaustive": false,
+    "postgresql_authority_denominator_closed": false,
+    "core_v2_eligible_surfaces": 0
+  },
+  "core_authority_extraction": {
+    "locked_sources": 10,
+    "fetched_digest_matched": 0,
+    "fetched_digest_stale": 0,
+    "fetch_failed": 10,
+    "candidate_surfaces": 10,
+    "root_locators": 0,
+    "fragments_found": 0,
+    "fragments_not_found": 0,
+    "locator_evaluations_deferred": 10,
+    "reference_edges_classified": 10,
+    "unclassified_reference_edges": 0,
+    "authority_text_surfaces_exhaustive": false,
+    "human_reviewed_surfaces": 0,
+    "core_v2_eligible_surfaces": 0
+  },
+  "denominator": {
+    "authority_behaviors": 11340,
+    "variant_ids": 0,
+    "runtime_proven_behaviors": 29,
+    "behaviors_without_dedicated_accepted_claim": 11320,
+    "scenario_rows": {
+      "normal": {
+        "required": 11340,
+        "closed": 24,
+        "gap": 11316
+      },
+      "boundary": {
+        "required": 11340,
+        "closed": 3,
+        "gap": 11337
+      },
+      "rejection": {
+        "required": 11340,
+        "closed": 7,
+        "gap": 11333
+      },
+      "failure": {
+        "required": 892,
+        "closed": 6,
+        "gap": 886
+      },
+      "recovery": {
+        "required": 892,
+        "closed": 10,
+        "gap": 882
+      },
+      "migration": {
+        "required": 1696,
+        "closed": 3,
+        "gap": 1693
+      },
+      "operations": {
+        "required": 1534,
+        "closed": 3,
+        "gap": 1531
+      },
+      "security": {
+        "required": 679,
+        "closed": 1,
+        "gap": 678
+      },
+      "performance": {
+        "required": 1361,
+        "closed": 6,
+        "gap": 1355
+      },
+      "compatibility": {
+        "required": 2470,
+        "closed": 6,
+        "gap": 2464
+      }
+    }
+  },
+  "axes": [
+    {
+      "id": "authority-body-digestion",
+      "status": "partial",
+      "gap_count": 2,
+      "denominator": "locked authority sources × extracted locator surfaces × classification review decisions"
+    },
+    {
+      "id": "surface-atomic-behavior-variant",
+      "status": "partial",
+      "gap_count": 2,
+      "denominator": "11,340 authority-derived behaviors × applicable PostgreSQL implementation variants"
+    },
+    {
+      "id": "real-runtime-lab",
+      "status": "partial",
+      "gap_count": 1,
+      "denominator": "required behavior × PostgreSQL version/runtime/profile"
+    },
+    {
+      "id": "scenario-normal",
+      "status": "partial",
+      "gap_count": 1,
+      "denominator": "applicable authority-derived behaviors"
+    },
+    {
+      "id": "scenario-boundary",
+      "status": "partial",
+      "gap_count": 1,
+      "denominator": "applicable authority-derived behaviors"
+    },
+    {
+      "id": "scenario-refusal",
+      "status": "partial",
+      "gap_count": 1,
+      "denominator": "applicable authority-derived behaviors"
+    },
+    {
+      "id": "scenario-failure",
+      "status": "partial",
+      "gap_count": 1,
+      "denominator": "failure-applicable authority-derived behaviors"
+    },
+    {
+      "id": "scenario-recovery",
+      "status": "partial",
+      "gap_count": 1,
+      "denominator": "recovery-applicable authority-derived behaviors"
+    },
+    {
+      "id": "scenario-migration",
+      "status": "partial",
+      "gap_count": 1,
+      "denominator": "migration-applicable authority-derived behaviors × source/target version path"
+    },
+    {
+      "id": "scenario-operations",
+      "status": "partial",
+      "gap_count": 1,
+      "denominator": "operations-applicable authority-derived behaviors × runbook exercise"
+    },
+    {
+      "id": "scenario-security",
+      "status": "partial",
+      "gap_count": 1,
+      "denominator": "security-applicable authority-derived behaviors × trust boundary"
+    },
+    {
+      "id": "scenario-performance",
+      "status": "partial",
+      "gap_count": 1,
+      "denominator": "performance-applicable behavior × variant × workload/profile"
+    },
+    {
+      "id": "scenario-compatibility",
+      "status": "partial",
+      "gap_count": 1,
+      "denominator": "compatibility-applicable behavior × PostgreSQL version/profile"
+    },
+    {
+      "id": "artifact-trace",
+      "status": "partial",
+      "gap_count": 1,
+      "denominator": "required scenario rows"
+    },
+    {
+      "id": "integrated-reference-system",
+      "status": "partial",
+      "gap_count": 1,
+      "denominator": "authority-derived architecture/integration behaviors"
+    },
+    {
+      "id": "skill-eval",
+      "status": "partial",
+      "gap_count": 1,
+      "denominator": "outcome × surface × risk/coverage-gap class × task result"
+    },
+    {
+      "id": "rights-provenance",
+      "status": "partial",
+      "gap_count": 1,
+      "denominator": "repository files × authority artifacts × runtime images × transitive publication dependencies"
+    },
+    {
+      "id": "non-regression-gate",
+      "status": "satisfied",
+      "gap_count": 0,
+      "denominator": "published-main Test/Lab/Target/Claim/Proof/Evidence/Source/Skill/CI identities"
+    }
+  ],
+  "summary": {
+    "satisfied": 1,
+    "partial": 17,
+    "missing": 0
+  },
+  "structural_errors": [
+
+  ],
+  "completion_status": "incomplete"
+}

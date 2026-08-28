@@ -1,0 +1,80 @@
+schema_version: 1
+atlas_id: postgresql-reference-atlas
+baseline: frontend-definitive-parity
+required_axes: [authority, behavior-variant, runtime, artifact, failure-recovery, comparison, integration, skill]
+domains:
+  - id: sql-semantics
+    target_ids: [query.sql-commands, query.sql-surface, query.types-constraints, query.runtime-types, query.runtime-functions, query.runtime-operators, query.runtime-casts]
+    evidence_ids: [lab.sql, lab.sql-surface, lab.types-constraints]
+    artifact_signals: ["sql:accepted_rows", "sql:balance", "types-constraints:uuid_version", "types-constraints:range_contains"]
+  - id: planner-executor
+    target_ids: [performance.planner, performance.planner-methods, performance.statistics, performance.execution]
+    evidence_ids: [lab.planner, lab.statistics, lab.performance]
+    artifact_signals: ["planner:oracle_rows", "statistics:estimated_rows", "statistics:actual_rows", "performance:plan_has_actual_rows"]
+    comparison_required: true
+  - id: index
+    target_ids: [performance.index, performance.index-methods]
+    evidence_ids: [lab.index, lab.extension, lab.performance]
+    artifact_signals: ["index:digest_unchanged", "extension:index_used", "performance:index_bytes"]
+    comparison_required: true
+  - id: concurrency-mvcc
+    target_ids: [concurrency.mvcc, concurrency.transactions-isolation, concurrency.locking, concurrency.deadlock]
+    evidence_ids: [lab.mvcc, lab.locking, lab.deadlock]
+    artifact_signals: ["mvcc:reader_during", "locking:sqlstate", "deadlock:deadlock_victims"]
+    failure_recovery_required: true
+  - id: wal-replication
+    target_ids: [operations.wal, operations.checkpoint, operations.replication, operations.replication-ha, operations.logical-replication, operations.logical-modes]
+    evidence_ids: [lab.wal, lab.replication, lab.logical-replication]
+    artifact_signals: ["wal:wal_bytes_delta", "wal:wal_records_observed", "replication:sender_state", "logical-replication:slot_active"]
+    failure_recovery_required: true
+    comparison_required: true
+  - id: backup-pitr
+    target_ids: [operations.backup-recovery, operations.backup-methods, operations.pitr-recovery]
+    evidence_ids: [lab.backup-recovery, lab.pitr]
+    artifact_signals: ["backup-recovery:source_digest", "backup-recovery:restore_digest", "pitr:recovery_target", "pitr:after_target_rows"]
+    failure_recovery_required: true
+    comparison_required: true
+  - id: security
+    target_ids: [query.security, security.authentication, security.authorization]
+    evidence_ids: [lab.security]
+    artifact_signals: ["security:visible_rows", "security:tenant_escape_denied", "security:sqlstate", "security:scram_verifier"]
+    failure_recovery_required: true
+  - id: extension
+    target_ids: [query.extension]
+    evidence_ids: [lab.extension]
+    artifact_signals: ["extension:extension_version", "extension:index_used"]
+  - id: observability
+    target_ids: [operations.observability]
+    evidence_ids: [lab.observability]
+    artifact_signals: ["observability:statement_calls", "observability:activity_visible", "observability:lock_stats"]
+  - id: performance-capacity
+    target_ids: [performance.execution, performance.capacity-comparison, operations.resource-limits]
+    evidence_ids: [lab.performance]
+    artifact_signals: ["performance:fixture_rows", "performance:index_bytes", "performance:heap_bytes", "performance:plan_has_buffers"]
+    comparison_required: true
+  - id: upgrade-migration
+    target_ids: [lifecycle.upgrade, lifecycle.pg-upgrade, lifecycle.schema-migration, lifecycle.compatibility-matrix, lifecycle.upgrade-matrix]
+    evidence_ids: [lab.upgrade, lab.pg-upgrade, lab.migration, lab.compatibility-matrix]
+    artifact_signals: ["upgrade:old_digest", "upgrade:new_digest", "pg-upgrade:check", "migration:rows_preserved"]
+    failure_recovery_required: true
+    comparison_required: true
+  - id: failure-recovery
+    target_ids: [operations.failure-injection, operations.corruption-recovery, operations.runbook-exercises]
+    evidence_ids: [lab.failure-injection, lab.deadlock, lab.pitr]
+    artifact_signals: ["failure-injection:victim_terminated", "failure-injection:uncommitted_row_count", "failure-injection:server_accepting_queries"]
+    failure_recovery_required: true
+  - id: version-compatibility
+    target_ids: [lifecycle.compatibility-matrix, lifecycle.upgrade-matrix]
+    evidence_ids: [lab.compatibility-matrix, lab.upgrade, lab.pg-upgrade]
+    artifact_signals: ["compatibility-matrix:observations", "upgrade:old_version", "upgrade:new_version"]
+    comparison_required: true
+  - id: integrated-reference-system
+    target_ids: [foundation.reference-system]
+    evidence_ids: [lab.reference-system]
+    artifact_signals: ["reference-system:rls.rejected", "reference-system:locking.nowait_rejected", "reference-system:plan_has_index", "reference-system:wal_bytes_delta", "reference-system:statement_calls"]
+    integration_required: true
+  - id: skill-eval
+    target_ids: [skill.router-evaluation, skill.definitive-proof-routing]
+    evidence_ids: [skill.router-eval]
+    artifact_signals: ["skill-router-eval:pass_rate", "skill-router-eval:path_checks"]
+    skill_required: true

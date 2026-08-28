@@ -1,0 +1,126 @@
+{
+  "schema_version": 1,
+  "atlas_id": "postgresql-reference-atlas",
+  "generated_at": "2026-08-28T00:00:00+09:00",
+  "status": "incomplete-human-review-required",
+  "input_digest": "sha256:ac7a8fe18d80de6903bd62a87b08490ddc0f34689074b5de749696b96a9835de",
+  "body_storage": "digest-and-locator-context-digest-only",
+  "summary": {
+    "locked_sources": 10,
+    "fetched_digest_matched": 0,
+    "fetched_digest_stale": 0,
+    "fetch_failed": 10,
+    "candidate_surfaces": 10,
+    "root_locators": 0,
+    "fragments_found": 0,
+    "fragments_not_found": 0,
+    "locator_evaluations_deferred": 10,
+    "reference_edges_classified": 10,
+    "unclassified_reference_edges": 0,
+    "authority_text_surfaces_exhaustive": false,
+    "human_reviewed_surfaces": 0,
+    "core_v2_eligible_surfaces": 0
+  },
+  "sources": [
+    {
+      "id": "postgres-container-14.24-alpine",
+      "path": "authority/surfaces-draft/postgres-container-14.24-alpine.json",
+      "digest": "sha256:6118a26e30cb737543d927b9a47e686757e416f3feba07989a3aaa470ffd66e4",
+      "locked_digest_match": false,
+      "candidate_surfaces": 1,
+      "locator_status": {
+        "not-evaluated-fetch-failed": 1
+      }
+    },
+    {
+      "id": "postgres-container-15.19-alpine",
+      "path": "authority/surfaces-draft/postgres-container-15.19-alpine.json",
+      "digest": "sha256:efeb6d3cb8df117d5a03b1cbdbcbdf017f920930ffcd33bf2d8dfb288eef73a1",
+      "locked_digest_match": false,
+      "candidate_surfaces": 1,
+      "locator_status": {
+        "not-evaluated-fetch-failed": 1
+      }
+    },
+    {
+      "id": "postgres-container-16.15-alpine",
+      "path": "authority/surfaces-draft/postgres-container-16.15-alpine.json",
+      "digest": "sha256:a41041f0a84d6198cb4a61d27eed8d7db81f0e8c71ae817e56695a510443496a",
+      "locked_digest_match": false,
+      "candidate_surfaces": 1,
+      "locator_status": {
+        "not-evaluated-fetch-failed": 1
+      }
+    },
+    {
+      "id": "postgres-container-17.11-alpine",
+      "path": "authority/surfaces-draft/postgres-container-17.11-alpine.json",
+      "digest": "sha256:53e0be206bf686ecb14b2d3160f948d1744097eb21381d6d11e889c41ff1c138",
+      "locked_digest_match": false,
+      "candidate_surfaces": 1,
+      "locator_status": {
+        "not-evaluated-fetch-failed": 1
+      }
+    },
+    {
+      "id": "postgres-container-18.6-alpine",
+      "path": "authority/surfaces-draft/postgres-container-18.6-alpine.json",
+      "digest": "sha256:e20b11dc95bf4678d4f7df2caea34e2278135e2516d91f0711fa56bfca041c87",
+      "locked_digest_match": false,
+      "candidate_surfaces": 1,
+      "locator_status": {
+        "not-evaluated-fetch-failed": 1
+      }
+    },
+    {
+      "id": "postgresql-docs-18.6",
+      "path": "authority/surfaces-draft/postgresql-docs-18.6.json",
+      "digest": "sha256:cd3aac4b2e3eb88f86915b56b6592fc707b6cfa80a0493269874b043691b613a",
+      "locked_digest_match": false,
+      "candidate_surfaces": 1,
+      "locator_status": {
+        "not-evaluated-fetch-failed": 1
+      }
+    },
+    {
+      "id": "postgresql-license-rel-18.6",
+      "path": "authority/surfaces-draft/postgresql-license-rel-18.6.json",
+      "digest": "sha256:fc19619587f6583ef4073fc7b7658a61cb034a0f6b6fa482e212af21d9483189",
+      "locked_digest_match": false,
+      "candidate_surfaces": 1,
+      "locator_status": {
+        "not-evaluated-fetch-failed": 1
+      }
+    },
+    {
+      "id": "postgresql-release-18.6",
+      "path": "authority/surfaces-draft/postgresql-release-18.6.json",
+      "digest": "sha256:f7fb294e8a82e741e0827334569772fc47117f5e629cf3cc4328676d5a21568b",
+      "locked_digest_match": false,
+      "candidate_surfaces": 1,
+      "locator_status": {
+        "not-evaluated-fetch-failed": 1
+      }
+    },
+    {
+      "id": "postgresql-source-rel-18.6",
+      "path": "authority/surfaces-draft/postgresql-source-rel-18.6.json",
+      "digest": "sha256:8e92bbc884fb9ab84acceb5129a45648057983c1d53b085acb5faddfc7d92191",
+      "locked_digest_match": false,
+      "candidate_surfaces": 1,
+      "locator_status": {
+        "not-evaluated-fetch-failed": 1
+      }
+    },
+    {
+      "id": "postgresql-source-tarball-checksum-18.6",
+      "path": "authority/surfaces-draft/postgresql-source-tarball-checksum-18.6.json",
+      "digest": "sha256:2fb4f248dfbd7cc8df07a674bf4dbf936a168a7fcc7570a2a70d9f95b0a05078",
+      "locked_digest_match": false,
+      "candidate_surfaces": 1,
+      "locator_status": {
+        "not-evaluated-fetch-failed": 1
+      }
+    }
+  ]
+}

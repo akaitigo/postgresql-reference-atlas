@@ -1,8 +1,133 @@
 ---
 schema_version: 1
 atlas_id: postgresql-reference-atlas
-generated_at: '2026-08-28T07:55:12Z'
+generated_at: '2026-08-28T11:47:14Z'
 artifacts:
+- path: authority/FE_DEPTH_REFERENCE.json
+  digest: sha256:2452696f9807b7d4a8ffb22b3ba37f079a25a34ac2370d78423445b96064582a
+  kind: document
+  license: Apache-2.0
+  source_ids: []
+  generated_by: frontend-behavior-atlas@4a0b2df8e2091a963bd0e0e1bbccef9c84b49a45
+- path: authority/extraction.snapshot.json
+  digest: sha256:a819e78faa170982b0deb271de91f28d939108033dfa90cbafd348974183a6ed
+  kind: generated
+  license: Apache-2.0
+  source_ids: []
+  generated_by: ruby tools/generate-core-authority-extraction.rb
+- path: authority/locator-draft/definitive-domain.json
+  digest: sha256:72b7324e1277ced19aa9d906b5e80b4d14a5e495a25169be24871a41726939dd
+  kind: generated
+  license: Apache-2.0
+  source_ids: []
+  generated_by: ruby tools/generate-authority-locators.rb <REL_18_6-checkout>
+- path: authority/locator-draft/docs-sections.json
+  digest: sha256:c58caa4bb3ea87eab7bc57d06c75526dcc60dbc75e06c197bbfe4516723270f8
+  kind: generated
+  license: Apache-2.0
+  source_ids:
+  - postgresql-source-rel-18.6
+  generated_by: ruby tools/generate-authority-locators.rb <REL_18_6-checkout>
+- path: authority/locator-draft/docs-sql.json
+  digest: sha256:f99ecdd0557fc558521663639e3011cbce4196418040feb2e000a6a7bd8dab5e
+  kind: generated
+  license: Apache-2.0
+  source_ids:
+  - postgresql-docs-18.6
+  - postgresql-source-rel-18.6
+  generated_by: ruby tools/generate-authority-locators.rb <REL_18_6-checkout>
+- path: authority/locator-draft/runtime-catalog.json
+  digest: sha256:ca6ae0aae9d3a0bea533911a0b0dfc370dce5703b835419f02fc4e701cc88cca
+  kind: generated
+  license: Apache-2.0
+  source_ids:
+  - postgres-container-18.6-alpine
+  generated_by: ruby tools/generate-authority-locators.rb <REL_18_6-checkout>
+- path: authority/locator-draft/source-surface.json
+  digest: sha256:ea7ea56acc089956c33e5ea0ba5d27b2625b2d3534c7098165c920b56bf98871
+  kind: generated
+  license: Apache-2.0
+  source_ids:
+  - postgresql-source-rel-18.6
+  generated_by: ruby tools/generate-authority-locators.rb <REL_18_6-checkout>
+- path: authority/locator-extraction.snapshot.json
+  digest: sha256:75db086f21507be56365995ff6d3b7bc81c7b88c1023c0229bebece652b1d52b
+  kind: generated
+  license: Apache-2.0
+  source_ids:
+  - postgresql-docs-18.6
+  - postgresql-source-rel-18.6
+  generated_by: ruby tools/generate-authority-locators.rb <REL_18_6-checkout>
+- path: authority/surfaces-draft/postgres-container-14.24-alpine.json
+  digest: sha256:6118a26e30cb737543d927b9a47e686757e416f3feba07989a3aaa470ffd66e4
+  kind: generated
+  license: Apache-2.0
+  source_ids:
+  - postgres-container-14.24-alpine
+  generated_by: ruby tools/generate-core-authority-extraction.rb
+- path: authority/surfaces-draft/postgres-container-15.19-alpine.json
+  digest: sha256:efeb6d3cb8df117d5a03b1cbdbcbdf017f920930ffcd33bf2d8dfb288eef73a1
+  kind: generated
+  license: Apache-2.0
+  source_ids:
+  - postgres-container-15.19-alpine
+  generated_by: ruby tools/generate-core-authority-extraction.rb
+- path: authority/surfaces-draft/postgres-container-16.15-alpine.json
+  digest: sha256:a41041f0a84d6198cb4a61d27eed8d7db81f0e8c71ae817e56695a510443496a
+  kind: generated
+  license: Apache-2.0
+  source_ids:
+  - postgres-container-16.15-alpine
+  generated_by: ruby tools/generate-core-authority-extraction.rb
+- path: authority/surfaces-draft/postgres-container-17.11-alpine.json
+  digest: sha256:53e0be206bf686ecb14b2d3160f948d1744097eb21381d6d11e889c41ff1c138
+  kind: generated
+  license: Apache-2.0
+  source_ids:
+  - postgres-container-17.11-alpine
+  generated_by: ruby tools/generate-core-authority-extraction.rb
+- path: authority/surfaces-draft/postgres-container-18.6-alpine.json
+  digest: sha256:e20b11dc95bf4678d4f7df2caea34e2278135e2516d91f0711fa56bfca041c87
+  kind: generated
+  license: Apache-2.0
+  source_ids:
+  - postgres-container-18.6-alpine
+  generated_by: ruby tools/generate-core-authority-extraction.rb
+- path: authority/surfaces-draft/postgresql-docs-18.6.json
+  digest: sha256:cd3aac4b2e3eb88f86915b56b6592fc707b6cfa80a0493269874b043691b613a
+  kind: generated
+  license: Apache-2.0
+  source_ids:
+  - postgresql-docs-18.6
+  generated_by: ruby tools/generate-core-authority-extraction.rb
+- path: authority/surfaces-draft/postgresql-license-rel-18.6.json
+  digest: sha256:fc19619587f6583ef4073fc7b7658a61cb034a0f6b6fa482e212af21d9483189
+  kind: generated
+  license: Apache-2.0
+  source_ids:
+  - postgresql-license-rel-18.6
+  generated_by: ruby tools/generate-core-authority-extraction.rb
+- path: authority/surfaces-draft/postgresql-release-18.6.json
+  digest: sha256:f7fb294e8a82e741e0827334569772fc47117f5e629cf3cc4328676d5a21568b
+  kind: generated
+  license: Apache-2.0
+  source_ids:
+  - postgresql-release-18.6
+  generated_by: ruby tools/generate-core-authority-extraction.rb
+- path: authority/surfaces-draft/postgresql-source-rel-18.6.json
+  digest: sha256:8e92bbc884fb9ab84acceb5129a45648057983c1d53b085acb5faddfc7d92191
+  kind: generated
+  license: Apache-2.0
+  source_ids:
+  - postgresql-source-rel-18.6
+  generated_by: ruby tools/generate-core-authority-extraction.rb
+- path: authority/surfaces-draft/postgresql-source-tarball-checksum-18.6.json
+  digest: sha256:2fb4f248dfbd7cc8df07a674bf4dbf936a168a7fcc7570a2a70d9f95b0a05078
+  kind: generated
+  license: Apache-2.0
+  source_ids:
+  - postgresql-source-tarball-checksum-18.6
+  generated_by: ruby tools/generate-core-authority-extraction.rb
 - path: evals/postgresql-router.skill-eval.json
   digest: sha256:0e09ab0c0855af117e1df58e166c2f207078fb62ffd0df6fb45863029cc6089a
   kind: skill-eval
@@ -169,6 +294,14 @@ artifacts:
   source_ids:
   - postgresql-license-rel-18.6
   generated_by: make test-static
+- path: evidence/artifacts/reference-system.json
+  digest: sha256:de2ae7ad02e3a393d356cab8e432b59659af7e8f1255303296ef02a475a00105
+  kind: test-report
+  license: Apache-2.0
+  source_ids:
+  - postgres-container-18.6-alpine
+  - postgresql-docs-18.6
+  generated_by: make lab LAB=reference-system
 - path: evidence/artifacts/replication.json
   digest: sha256:917089c4219799f4d5100ffb2b70987f7478a9f3ceb622be7d510edddd3815bd
   kind: test-report
@@ -233,8 +366,14 @@ artifacts:
   source_ids:
   - postgresql-docs-18.6
   generated_by: make lab LAB=wal
+- path: postgresql-depth-parity.yaml
+  digest: sha256:a41ea01a179e7a9044a55bcac30b5175c42a0fcfb9d57e65a08ce2d1019def8a
+  kind: generated
+  license: Apache-2.0
+  source_ids: []
+  generated_by: make depth-parity-audit
 - path: sbom.spdx.json
-  digest: sha256:9bbe0fc575eb2d0d79a8e79615b88d5ba720a92a568ae63ada0e115fe1c6f472
+  digest: sha256:f285cda3eedd6a037b6e15463f5dbd09a99f9c80f7f1af2f479b1822f8abde44
   kind: sbom
   license: Apache-2.0
   source_ids:

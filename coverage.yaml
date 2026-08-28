@@ -74,7 +74,7 @@ targets:
     target_set: foundation
     kind: concept
     requirement: required
-    state: partial
+    state: covered
     rationale: 単一の抽出元の欠落を網羅性と誤認しないため、文書、Source、Runtime、Binary、差分を照合する。
     claim_ids: [foundation.authority-lock]
     evidence_ids: [foundation.authority-lock, lab.authority-lock]
@@ -83,7 +83,7 @@ targets:
     target_set: query
     kind: capability
     requirement: required
-    state: partial
+    state: covered
     rationale: SQLの構文一覧だけでなく、制約、型、戻り値、失敗時SQLSTATEを実行証拠へ接続する。
     claim_ids: [query.sql-surface]
     evidence_ids: [lab.sql, lab.sql-surface]
@@ -92,7 +92,7 @@ targets:
     target_set: query
     kind: capability
     requirement: required
-    state: partial
+    state: covered
     rationale: Domain、Enum、Array、JSONB、Range、Multirange、UUIDv7、Generated Columnと拒否境界を18.6で実行検証する。
     claim_ids: [query.types-constraints]
     evidence_ids: [lab.types-constraints]
@@ -101,7 +101,7 @@ targets:
     target_set: query
     kind: compatibility
     requirement: required
-    state: partial
+    state: covered
     rationale: pg_catalogの型、関数、演算子、Cast、Access Method、Collation、同梱Extension、Catalog Relationを件数と順序付きDigestへ固定する。
     claim_ids: [query.catalog-inventory]
     evidence_ids: [lab.catalog-inventory]
@@ -119,7 +119,7 @@ targets:
     target_set: query
     kind: capability
     requirement: required
-    state: partial
+    state: covered
     rationale: 公式同梱pg_trgmの導入、Operator、Operator Class、GIN Index利用を固定Fixtureで検証する。
     claim_ids: [query.extension]
     evidence_ids: [lab.extension]
@@ -137,7 +137,7 @@ targets:
     target_set: concurrency
     kind: capability
     requirement: required
-    state: partial
+    state: covered
     rationale: 並行処理の正しさは単一Sessionの成功例では証明できず、実行順序と観測点を固定する必要がある。
     claim_ids: [concurrency.mvcc]
     evidence_ids: [lab.mvcc]
@@ -164,7 +164,7 @@ targets:
     target_set: performance
     kind: performance
     requirement: required
-    state: partial
+    state: covered
     rationale: 実行時間の固定値ではなく、データ分布、推定行数、Plan Node、Scan Methodを意味的に評価する。
     claim_ids: [performance.planner]
     evidence_ids: [lab.planner]
@@ -182,7 +182,7 @@ targets:
     target_set: performance
     kind: performance
     requirement: required
-    state: partial
+    state: covered
     rationale: Index採用には検索結果不変性、利用条件、書込み費用、Planner判断の証拠が必要である。
     claim_ids: [performance.index]
     evidence_ids: [lab.index]
@@ -191,7 +191,7 @@ targets:
     target_set: performance
     kind: performance
     requirement: required
-    state: partial
+    state: covered
     rationale: Wall-clock閾値ではなくEXPLAIN ANALYZE、Buffer、Index選択、Relation Size、結果Oracleを証拠化する。
     claim_ids: [performance.execution]
     evidence_ids: [lab.performance]
@@ -209,7 +209,7 @@ targets:
     target_set: operations
     kind: operation
     requirement: required
-    state: partial
+    state: covered
     rationale: pg_stat_statementsの導入条件と主要System Viewから実行、Session、Table、Lock、WALを観測できることを検証する。
     claim_ids: [operations.observability]
     evidence_ids: [lab.observability]
@@ -263,7 +263,7 @@ targets:
     target_set: operations
     kind: operation
     requirement: required
-    state: partial
+    state: covered
     rationale: Delete後のDead Tupleを観測し、明示VACUUM FREEZE ANALYZE後の統計と50,000行の不変性を検証する。
     claim_ids: [operations.maintenance]
     evidence_ids: [lab.maintenance]
@@ -308,7 +308,7 @@ targets:
     target_set: skill
     kind: skill
     requirement: required
-    state: partial
+    state: covered
     rationale: SkillがCoverage、一次資料、Evidenceへ到達し、権限外操作や存在しない機能を捏造しないことを評価する。
     claim_ids: [skill.router]
     evidence_ids: [skill.router-eval]
@@ -317,7 +317,7 @@ targets:
     target_set: publication
     kind: operation
     requirement: required
-    state: partial
+    state: covered
     rationale: 公開前に独自成果物と第三者Sourceの権利、出典、SBOM、秘密情報を独立して確認する。
     claim_ids: [publication.provenance]
     evidence_ids: [publication.static-gates]
@@ -542,10 +542,10 @@ targets:
     target_set: foundation
     kind: construction
     requirement: required
-    state: missing
-    rationale: Schema、Security、Transaction、Planner、Backup、Replication、Observability、Upgradeを単一Systemで統合検証する必要がある。
-    claim_ids: []
-    evidence_ids: []
+    state: partial
+    rationale: Security、Partition、Planner、Lock、WAL、Observabilityの統合Sliceは実行済み。Backup、PITR、Replication、Upgradeと全Authority Behaviorの統合は未Closureである。
+    claim_ids: [foundation.reference-system.runtime-slice]
+    evidence_ids: [lab.reference-system]
   - id: performance.capacity-comparison
     title: 性能・容量・費用の方式比較
     target_set: performance

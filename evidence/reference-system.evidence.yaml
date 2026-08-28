@@ -1,0 +1,21 @@
+schema_version: 1
+id: lab.reference-system
+atlas_id: postgresql-reference-atlas
+claim_ids: [foundation.reference-system.runtime-slice]
+kind: test-report
+producer: postgresql-reference-atlas
+command: make lab LAB=reference-system
+created_at: "2026-08-28T11:11:38Z"
+environment:
+  profile: container
+  manifest_digest: sha256:3df4dbd82139e17c785348c281f26b54d7300662087baaeec3034acefedf36b9
+source_digest: sha256:7a5097c6130472b193adb30fda89b4a607f1ae00a1ae87dbc1cf22ae5484eaef
+harness_digest: sha256:c3fa097a823ecbcfecbfbfdc09609c9948f19883ec8d8670f762c907365480d3
+harness_path: evidence/harnesses/reference-system.manifest
+artifact:
+  uri: evidence/artifacts/reference-system.json
+  digest: sha256:de2ae7ad02e3a393d356cab8e432b59659af7e8f1255303296ef02a475a00105
+  media_type: application/json
+  size_bytes: 3651
+verdict: pass
+retention: git

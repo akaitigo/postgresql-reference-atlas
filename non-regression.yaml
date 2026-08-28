@@ -1,0 +1,20 @@
+schema_version: 2
+atlas_id: postgresql-reference-atlas
+baseline:
+  path: baselines/v1.0.0.non-regression-baseline.json
+  digest: sha256:01ab1feaab1cbea85275a3422fba55a402c581df9b62f6dacbff4b4e3870cb8d
+replacements:
+  - collection: ci_jobs
+    old_id: .github/workflows/ci.yml:validate
+    new_ids: [.github/workflows/ci.yml:validate]
+    equivalence: equal-or-stronger
+    reason: 公開mainの全検証Stepを保持したまま非後退監査とDefinitive監査を加え、Coreをv1互換の子孫commitへ更新した。
+    execution_proof_evidence_ids: [lab.compatibility-matrix]
+    migration_evidence_ids: [lab.migration]
+  - collection: ci_jobs
+    old_id: .github/workflows/ci.yml:executable-labs
+    new_ids: [.github/workflows/ci.yml:executable-labs]
+    equivalence: equal-or-stronger
+    reason: 公開mainの27 Lab Matrixをすべて保持し、固定Source Inventoryと統合Runtime SystemのLabを追加した。
+    execution_proof_evidence_ids: [lab.compatibility-matrix]
+    migration_evidence_ids: [lab.migration]

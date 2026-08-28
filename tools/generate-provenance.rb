@@ -30,7 +30,15 @@ end
 
 {
   "evals/postgresql-router.skill-eval.json" => ["skill-eval", ["postgresql-docs-18.6"], "make eval"],
-  "sbom.spdx.json" => ["sbom", ["postgresql-source-rel-18.6"], "make provenance"]
+  "sbom.spdx.json" => ["sbom", ["postgresql-source-rel-18.6"], "make provenance"],
+  "authority/FE_DEPTH_REFERENCE.json" => ["document", [], "frontend-behavior-atlas@4a0b2df8e2091a963bd0e0e1bbccef9c84b49a45"],
+  "authority/locator-extraction.snapshot.json" => ["generated", ["postgresql-docs-18.6", "postgresql-source-rel-18.6"], "ruby tools/generate-authority-locators.rb <REL_18_6-checkout>"],
+  "authority/locator-draft/definitive-domain.json" => ["generated", [], "ruby tools/generate-authority-locators.rb <REL_18_6-checkout>"],
+  "authority/locator-draft/docs-sections.json" => ["generated", ["postgresql-source-rel-18.6"], "ruby tools/generate-authority-locators.rb <REL_18_6-checkout>"],
+  "authority/locator-draft/docs-sql.json" => ["generated", ["postgresql-docs-18.6", "postgresql-source-rel-18.6"], "ruby tools/generate-authority-locators.rb <REL_18_6-checkout>"],
+  "authority/locator-draft/runtime-catalog.json" => ["generated", ["postgres-container-18.6-alpine"], "ruby tools/generate-authority-locators.rb <REL_18_6-checkout>"],
+  "authority/locator-draft/source-surface.json" => ["generated", ["postgresql-source-rel-18.6"], "ruby tools/generate-authority-locators.rb <REL_18_6-checkout>"],
+  "postgresql-depth-parity.yaml" => ["generated", [], "make depth-parity-audit"]
 }.each do |relative, (kind, source_ids, generator)|
   records << {
     "path" => relative,
@@ -39,6 +47,26 @@ end
     "license" => "Apache-2.0",
     "source_ids" => source_ids,
     "generated_by" => generator
+  }
+end
+
+records << {
+  "path" => "authority/extraction.snapshot.json",
+  "digest" => "sha256:#{Digest::SHA256.file(File.join(root, "authority/extraction.snapshot.json")).hexdigest}",
+  "kind" => "generated",
+  "license" => "Apache-2.0",
+  "source_ids" => [],
+  "generated_by" => "ruby tools/generate-core-authority-extraction.rb"
+}
+Dir.glob(File.join(root, "authority/surfaces-draft/*.json")).sort.each do |path|
+  source_id = File.basename(path, ".json")
+  records << {
+    "path" => path.delete_prefix("#{root}/"),
+    "digest" => "sha256:#{Digest::SHA256.file(path).hexdigest}",
+    "kind" => "generated",
+    "license" => "Apache-2.0",
+    "source_ids" => [source_id],
+    "generated_by" => "ruby tools/generate-core-authority-extraction.rb"
   }
 end
 

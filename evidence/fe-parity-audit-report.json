@@ -1,0 +1,477 @@
+{
+  "schema_version": 1,
+  "atlas_id": "postgresql-reference-atlas",
+  "baseline": "frontend-definitive-parity",
+  "domains": [
+    {
+      "id": "sql-semantics",
+      "behaviors": 6989,
+      "scenario_rows_missing": 69885,
+      "evidence_ids": [
+        "lab.sql",
+        "lab.sql-surface",
+        "lab.types-constraints"
+      ],
+      "evidence_errors": [
+
+      ],
+      "missing_artifact_signals": [
+
+      ],
+      "axes": {
+        "authority": true,
+        "behavior-variant": false,
+        "runtime": true,
+        "artifact": true,
+        "failure-recovery": true,
+        "comparison": true,
+        "integration": true,
+        "skill": true
+      },
+      "gaps": [
+        "behavior-variant"
+      ]
+    },
+    {
+      "id": "planner-executor",
+      "behaviors": 65,
+      "scenario_rows_missing": 644,
+      "evidence_ids": [
+        "lab.planner",
+        "lab.statistics",
+        "lab.performance"
+      ],
+      "evidence_errors": [
+
+      ],
+      "missing_artifact_signals": [
+
+      ],
+      "axes": {
+        "authority": true,
+        "behavior-variant": false,
+        "runtime": true,
+        "artifact": true,
+        "failure-recovery": true,
+        "comparison": false,
+        "integration": true,
+        "skill": true
+      },
+      "gaps": [
+        "behavior-variant",
+        "comparison"
+      ]
+    },
+    {
+      "id": "index",
+      "behaviors": 104,
+      "scenario_rows_missing": 1038,
+      "evidence_ids": [
+        "lab.index",
+        "lab.extension",
+        "lab.performance"
+      ],
+      "evidence_errors": [
+
+      ],
+      "missing_artifact_signals": [
+
+      ],
+      "axes": {
+        "authority": true,
+        "behavior-variant": false,
+        "runtime": true,
+        "artifact": true,
+        "failure-recovery": true,
+        "comparison": false,
+        "integration": true,
+        "skill": true
+      },
+      "gaps": [
+        "behavior-variant",
+        "comparison"
+      ]
+    },
+    {
+      "id": "concurrency-mvcc",
+      "behaviors": 30,
+      "scenario_rows_missing": 293,
+      "evidence_ids": [
+        "lab.mvcc",
+        "lab.locking",
+        "lab.deadlock"
+      ],
+      "evidence_errors": [
+
+      ],
+      "missing_artifact_signals": [
+
+      ],
+      "axes": {
+        "authority": true,
+        "behavior-variant": false,
+        "runtime": true,
+        "artifact": true,
+        "failure-recovery": false,
+        "comparison": true,
+        "integration": true,
+        "skill": true
+      },
+      "gaps": [
+        "behavior-variant",
+        "failure-recovery"
+      ]
+    },
+    {
+      "id": "wal-replication",
+      "behaviors": 156,
+      "scenario_rows_missing": 1552,
+      "evidence_ids": [
+        "lab.wal",
+        "lab.replication",
+        "lab.logical-replication"
+      ],
+      "evidence_errors": [
+
+      ],
+      "missing_artifact_signals": [
+
+      ],
+      "axes": {
+        "authority": true,
+        "behavior-variant": false,
+        "runtime": true,
+        "artifact": true,
+        "failure-recovery": false,
+        "comparison": false,
+        "integration": true,
+        "skill": true
+      },
+      "gaps": [
+        "behavior-variant",
+        "failure-recovery",
+        "comparison"
+      ]
+    },
+    {
+      "id": "backup-pitr",
+      "behaviors": 29,
+      "scenario_rows_missing": 286,
+      "evidence_ids": [
+        "lab.backup-recovery",
+        "lab.pitr"
+      ],
+      "evidence_errors": [
+
+      ],
+      "missing_artifact_signals": [
+
+      ],
+      "axes": {
+        "authority": true,
+        "behavior-variant": false,
+        "runtime": true,
+        "artifact": true,
+        "failure-recovery": false,
+        "comparison": false,
+        "integration": true,
+        "skill": true
+      },
+      "gaps": [
+        "behavior-variant",
+        "failure-recovery",
+        "comparison"
+      ]
+    },
+    {
+      "id": "security",
+      "behaviors": 86,
+      "scenario_rows_missing": 857,
+      "evidence_ids": [
+        "lab.security"
+      ],
+      "evidence_errors": [
+
+      ],
+      "missing_artifact_signals": [
+
+      ],
+      "axes": {
+        "authority": true,
+        "behavior-variant": false,
+        "runtime": true,
+        "artifact": true,
+        "failure-recovery": false,
+        "comparison": true,
+        "integration": true,
+        "skill": true
+      },
+      "gaps": [
+        "behavior-variant",
+        "failure-recovery"
+      ]
+    },
+    {
+      "id": "extension",
+      "behaviors": 814,
+      "scenario_rows_missing": 8137,
+      "evidence_ids": [
+        "lab.extension"
+      ],
+      "evidence_errors": [
+
+      ],
+      "missing_artifact_signals": [
+
+      ],
+      "axes": {
+        "authority": true,
+        "behavior-variant": false,
+        "runtime": true,
+        "artifact": true,
+        "failure-recovery": true,
+        "comparison": true,
+        "integration": true,
+        "skill": true
+      },
+      "gaps": [
+        "behavior-variant"
+      ]
+    },
+    {
+      "id": "observability",
+      "behaviors": 157,
+      "scenario_rows_missing": 1568,
+      "evidence_ids": [
+        "lab.observability"
+      ],
+      "evidence_errors": [
+
+      ],
+      "missing_artifact_signals": [
+
+      ],
+      "axes": {
+        "authority": true,
+        "behavior-variant": false,
+        "runtime": true,
+        "artifact": true,
+        "failure-recovery": true,
+        "comparison": true,
+        "integration": true,
+        "skill": true
+      },
+      "gaps": [
+        "behavior-variant"
+      ]
+    },
+    {
+      "id": "performance-capacity",
+      "behaviors": 5,
+      "scenario_rows_missing": 48,
+      "evidence_ids": [
+        "lab.performance"
+      ],
+      "evidence_errors": [
+
+      ],
+      "missing_artifact_signals": [
+
+      ],
+      "axes": {
+        "authority": true,
+        "behavior-variant": false,
+        "runtime": true,
+        "artifact": true,
+        "failure-recovery": true,
+        "comparison": false,
+        "integration": true,
+        "skill": true
+      },
+      "gaps": [
+        "behavior-variant",
+        "comparison"
+      ]
+    },
+    {
+      "id": "upgrade-migration",
+      "behaviors": 46,
+      "scenario_rows_missing": 449,
+      "evidence_ids": [
+        "lab.upgrade",
+        "lab.pg-upgrade",
+        "lab.migration",
+        "lab.compatibility-matrix"
+      ],
+      "evidence_errors": [
+
+      ],
+      "missing_artifact_signals": [
+
+      ],
+      "axes": {
+        "authority": true,
+        "behavior-variant": false,
+        "runtime": true,
+        "artifact": true,
+        "failure-recovery": false,
+        "comparison": false,
+        "integration": true,
+        "skill": true
+      },
+      "gaps": [
+        "behavior-variant",
+        "failure-recovery",
+        "comparison"
+      ]
+    },
+    {
+      "id": "failure-recovery",
+      "behaviors": 23,
+      "scenario_rows_missing": 228,
+      "evidence_ids": [
+        "lab.failure-injection",
+        "lab.deadlock",
+        "lab.pitr"
+      ],
+      "evidence_errors": [
+
+      ],
+      "missing_artifact_signals": [
+
+      ],
+      "axes": {
+        "authority": true,
+        "behavior-variant": false,
+        "runtime": true,
+        "artifact": true,
+        "failure-recovery": false,
+        "comparison": true,
+        "integration": true,
+        "skill": true
+      },
+      "gaps": [
+        "behavior-variant",
+        "failure-recovery"
+      ]
+    },
+    {
+      "id": "version-compatibility",
+      "behaviors": 43,
+      "scenario_rows_missing": 428,
+      "evidence_ids": [
+        "lab.compatibility-matrix",
+        "lab.upgrade",
+        "lab.pg-upgrade"
+      ],
+      "evidence_errors": [
+
+      ],
+      "missing_artifact_signals": [
+
+      ],
+      "axes": {
+        "authority": true,
+        "behavior-variant": false,
+        "runtime": true,
+        "artifact": true,
+        "failure-recovery": true,
+        "comparison": false,
+        "integration": true,
+        "skill": true
+      },
+      "gaps": [
+        "behavior-variant",
+        "comparison"
+      ]
+    },
+    {
+      "id": "integrated-reference-system",
+      "behaviors": 24,
+      "scenario_rows_missing": 240,
+      "evidence_ids": [
+        "lab.reference-system"
+      ],
+      "evidence_errors": [
+
+      ],
+      "missing_artifact_signals": [
+
+      ],
+      "axes": {
+        "authority": true,
+        "behavior-variant": false,
+        "runtime": true,
+        "artifact": true,
+        "failure-recovery": true,
+        "comparison": true,
+        "integration": true,
+        "skill": true
+      },
+      "gaps": [
+        "behavior-variant"
+      ]
+    },
+    {
+      "id": "skill-eval",
+      "behaviors": 2,
+      "scenario_rows_missing": 18,
+      "evidence_ids": [
+        "skill.router-eval"
+      ],
+      "evidence_errors": [
+
+      ],
+      "missing_artifact_signals": [
+
+      ],
+      "axes": {
+        "authority": true,
+        "behavior-variant": false,
+        "runtime": true,
+        "artifact": true,
+        "failure-recovery": true,
+        "comparison": true,
+        "integration": true,
+        "skill": false
+      },
+      "gaps": [
+        "behavior-variant",
+        "skill"
+      ]
+    }
+  ],
+  "gap_domains": 15,
+  "gap_axes": [
+    "sql-semantics:behavior-variant",
+    "planner-executor:behavior-variant",
+    "planner-executor:comparison",
+    "index:behavior-variant",
+    "index:comparison",
+    "concurrency-mvcc:behavior-variant",
+    "concurrency-mvcc:failure-recovery",
+    "wal-replication:behavior-variant",
+    "wal-replication:failure-recovery",
+    "wal-replication:comparison",
+    "backup-pitr:behavior-variant",
+    "backup-pitr:failure-recovery",
+    "backup-pitr:comparison",
+    "security:behavior-variant",
+    "security:failure-recovery",
+    "extension:behavior-variant",
+    "observability:behavior-variant",
+    "performance-capacity:behavior-variant",
+    "performance-capacity:comparison",
+    "upgrade-migration:behavior-variant",
+    "upgrade-migration:failure-recovery",
+    "upgrade-migration:comparison",
+    "failure-recovery:behavior-variant",
+    "failure-recovery:failure-recovery",
+    "version-compatibility:behavior-variant",
+    "version-compatibility:comparison",
+    "integrated-reference-system:behavior-variant",
+    "skill-eval:behavior-variant",
+    "skill-eval:skill"
+  ],
+  "verdict": "incomplete"
+}

@@ -2,12 +2,25 @@ schema_version: 2
 atlas_id: postgresql-reference-atlas
 epoch: "2026-08-28"
 completion_class: subject-definitive
+authority_extraction: authority/extraction.snapshot.json
 surface_inventory: surface.inventory.yaml
 verification_matrix: verification.matrix.yaml
+depth_parity: depth.parity.yaml
 skill_eval: evals/postgresql-atlas.definitive-skill-eval.json
+non_regression: non-regression.yaml
 certificate: evidence/definitive-certificate.json
 historical_certificates:
   - path: evidence/history/v1.0.0/completion-certificate.json
     classification: bounded-complete
-reference_systems: []
+reference_systems:
+  - id: order-runtime-slice
+    path: evidence/artifacts/reference-system.json
+    digest: sha256:de2ae7ad02e3a393d356cab8e432b59659af7e8f1255303296ef02a475a00105
+    behavior_ids:
+      - definitive-domain.query.security
+      - definitive-domain.query.partitioning
+      - definitive-domain.performance.planner
+      - definitive-domain.concurrency.locking
+      - definitive-domain.operations.wal
+      - definitive-domain.operations.observability
 comparisons: []

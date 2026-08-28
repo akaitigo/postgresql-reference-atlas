@@ -24,13 +24,13 @@ Definitive v2ではBehaviorごとに専用Claim、Scenarioごとに専用Proof�
 
 現在のGapは次の通り。
 
-- 56 required Target中56 Targetが未Closure
-- 11,340 Behavior中11,327件が専用covered Target・accepted Claimの組を持たない
+- 56 required Target中55 TargetがDefinitive未Closure
+- 11,340 Behavior中11,320件が専用covered Target・accepted Claimの組を持たない
 - 全Scenario分類113,400 Row中113,331 Rowが未作成。Surfaceから必須となる43,544 Scenarioのうち43,510 Rowが未接続
 - Subject全体として、必要Scenarioごとの専用Proof・Evidence・Artifact closureが未整備
 - Function、Operator、Cast、GUC、Protocol、Client Toolの全件Proofが未実装
 - Authentication、Resource Limit、Corruption Recoveryが未実装
-- 統合Reference System、複数方式Comparison、Runbook実地演習が未実装
+- 統合Reference SystemのSecurity、Partition、Planner、Lock、WAL、Observability Sliceは実行済み。Backup/PITR/Replication/Upgrade統合、複数方式Comparison、Runbook実地演習は未実装
 - Routerが28 Targetへ未到達。Definitive Skill Evalの4 Surfaceが不足
 - 現行Definitive Certificateは未発行
 
@@ -40,4 +40,4 @@ PostGIS、pgvector等の外部Extension、Managed Service固有API、外部HA Or
 
 ## Promotion rule
 
-`make definitive-audit`はInventoryの未分類0とGap計数を検証する。`make definitive-gate`は全required Target、専用Claim/Evidence、113,400 RowのScenario Matrix、実Runtime、統合Reference System、方式比較、Definitive Skill Eval、Certificateが揃うまで成功してはならない。
+`make definitive-audit`はInventoryの未分類0とGap計数を検証する。`make parity-audit`は15分野の実行証拠と未Closure軸を検証する。`make definitive-gate`は全required Target、専用Claim/Evidence、113,400 RowのScenario Matrix、実Runtime、全Behaviorを接続する統合Reference System、方式比較、Definitive Skill Eval、Certificateが揃うまで成功してはならない。

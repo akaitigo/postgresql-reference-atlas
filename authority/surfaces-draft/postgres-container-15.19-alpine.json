@@ -1,0 +1,53 @@
+{
+  "schema_version": 1,
+  "source_id": "postgres-container-15.19-alpine",
+  "source_url": "https://hub.docker.com/_/postgres",
+  "locked_source_digest": "sha256:b0dc4a8dc256b963ee25867843d9fd366850e327e4a2a65ccb3c47262d092973",
+  "fetch": {
+    "status": "failed",
+    "fetched_digest": null,
+    "locked_digest_match": false,
+    "http_status": null,
+    "final_url": null,
+    "content_type": null,
+    "fetched_bytes": null,
+    "error_digest": "sha256:0bda203b740f623b91d8f7b55712173079f390342fbebb65770807e1f516dfee"
+  },
+  "extraction": {
+    "method": "locked-body-locator-context-digest",
+    "tool": "tools/generate-core-authority-extraction.rb",
+    "review_status": "automated-unreviewed",
+    "body_storage": "digest-and-locator-context-digest-only"
+  },
+  "candidate_surfaces": [
+    {
+      "edge_id": "edge.authority.postgres-container-15.19-alpine",
+      "source_id": "postgres-container-15.19-alpine",
+      "reference_url": "https://hub.docker.com/_/postgres",
+      "locator": "document-root",
+      "pattern_id": "authority/postgres-container-15-19-alpine",
+      "pattern_kind": "systemic",
+      "candidate_behavior_id": "candidate.authority.postgres-container-15.19-alpine",
+      "capability_id": "foundation.authority-lock",
+      "target_id": "foundation.authority-lock",
+      "claim_id": "foundation.authority-lock",
+      "variant_ids": [
+        "variant.authority.postgres-container-15-19-alpine.locked-root"
+      ],
+      "surface_ids": [
+        "orientation-scope",
+        "provenance-rights",
+        "testing-verification"
+      ],
+      "classification_basis": "domain-contract-projection-unreviewed",
+      "domain_reference_metadata_digest": "sha256:6ebf8fe8c6176c4b02fb34b002f007e097d265070a54d924b18541f94268313e",
+      "locator_status": "not-evaluated-fetch-failed",
+      "context_digest": null,
+      "context_start": null,
+      "context_end": null,
+      "context_unit": null,
+      "heading_digest": null,
+      "classification": "candidate-included-unreviewed"
+    }
+  ]
+}

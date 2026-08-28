@@ -1,0 +1,139 @@
+schema_version: 1
+id: postgresql-depth-parity
+atlas_id: postgresql-reference-atlas
+epoch: "2026-08-28"
+completion_status: incomplete
+decision_rule: PostgreSQL固有のAuthority由来denominatorについて18軸すべてがsatisfiedかつgap 0になるまでParityまたはSubject Closureを主張しない。
+absolute_count_threshold: null
+frontend_reference:
+  repository: frontend-behavior-atlas
+  commit: 4a0b2df8e2091a963bd0e0e1bbccef9c84b49a45
+  status: incomplete
+  summary: {satisfied: 1, partial: 17, missing: 0}
+  files:
+    - {path: FE_DEPTH_REFERENCE.json, digest: "sha256:2452696f9807b7d4a8ffb22b3ba37f079a25a34ac2370d78423445b96064582a", size_bytes: 31657}
+    - {path: docs/DEFINITIVE_GATE_V2_REFERENCE.md, digest: "sha256:280a398ed1251438ad244e999c9c9cef9b0b6b78217db82e2b55ef882306d241", size_bytes: 4435}
+    - {path: fixtures/definitive-gate-v2/authority-surface-inventory.fixture.json, digest: "sha256:01c29cdd29f61968b06791edf3d0d0674462d279422bd312d523ab7964e2a1e4", size_bytes: 1783}
+    - {path: fixtures/definitive-gate-v2/variant-comparison.fixture.json, digest: "sha256:2964d596201033761c083d06dc705d21a428de043a91a0f1e71e7d5b841f59d3", size_bytes: 2306}
+    - {path: fixtures/definitive-gate-v2/profile-incompatibility.fixture.json, digest: "sha256:95c07992da4b78db5c5551d7ed0c4425668dde9188c0acb53c3b76b17a91e364", size_bytes: 2209}
+    - {path: fixtures/definitive-gate-v2/evidence-granularity.fixture.json, digest: "sha256:94506646f1e30429cb84a87927e1af7e1e890d401efd0335ebf911aed6f85126", size_bytes: 3590}
+    - {path: baselines/definitive-gate-v2.json, digest: "sha256:b6685fac1e11429ed7c203e35aac55c7a82c276dc32aadb97f225af801c3bb67", size_bytes: 656649}
+authority_locator_reference:
+  repository: frontend-behavior-atlas
+  commit: cabf687bab769b17928d950acc416f3f77eb4ca3
+  policy:
+    body_storage: digest-and-locator-offset-only
+    generated_candidates_are_authority_text_exhaustive: false
+    require_explicit_stale_deferred_human_review_counts: true
+  files:
+    - {path: scripts/lib/authority-extraction.ts, digest: "sha256:d0efb14e943384b363f6596cff32371368ad69d4aa319de4c7f5ecf189cb8c7c", size_bytes: 17508}
+    - {path: scripts/verify-authority-extraction.ts, digest: "sha256:420acbe08bff848786c4a28febb4443c671afdd53ff1643413317a9ce175d9aa", size_bytes: 121}
+axes:
+  - id: authority-body-digestion
+    portable_criterion: 対象分野の母集団を自己申告Scopeではなく一次資料本文または固定Surface Artifactから導き、全本文をDigest固定し、Locator単位で分類・Reviewする。
+    postgresql_denominator: locked authority sources × extracted locator surfaces × classification review decisions
+    status: partial
+    evidence: [sources.lock.yaml, surface.inventory.yaml, authority/extraction.snapshot.json, authority/locator-extraction.snapshot.json, evidence/definitive-audit-report.json]
+    gaps: [生成候補11,340件のlocator metadataとoffset/digestは検証済みだが、Core広域Source rootはfetch failed 10 / deferred 10、公式Docs URL再取得はdeferred 183、Human reviewは0で、Authority本文全体のdenominatorは未Closureである。]
+  - id: surface-atomic-behavior-variant
+    portable_criterion: Authority Surfaceを一意なAtomic behavior、Target、Claimへ接続し、同じObservable Contractの実装差だけをVariantとして比較する。
+    postgresql_denominator: 11,340 authority-derived behaviors × applicable PostgreSQL implementation variants
+    status: partial
+    evidence: [surface.inventory.yaml, evidence/definitive-audit-report.json]
+    gaps: [11,320 Behaviorに専用accepted Claimと専用covered Targetがなく、Variant IDは0件である。]
+  - id: real-runtime-lab
+    portable_criterion: 各Behaviorを対象Runtime/Platform上で起動・操作・破棄し、Source/Harness digestと実Versionを記録する。Mock/static fixtureは実Runtime Profileの代替にしない。
+    postgresql_denominator: required behavior × PostgreSQL version/runtime/profile
+    status: partial
+    evidence: [verification.matrix.yaml, evidence/reference-system.evidence.yaml, evidence/compatibility-matrix.evidence.yaml]
+    gaps: [全Behaviorと必要Profileの専用Runtime Evidenceへ未分割である。]
+  - id: scenario-normal
+    portable_criterion: 各Authority由来Atomic behaviorの正常系を専用Oracle、Runtime Profile、Artifactへ一対一接続する。
+    postgresql_denominator: applicable authority-derived behaviors
+    status: partial
+    evidence: [verification.matrix.yaml]
+    gaps: [正常Scenarioの専用Rowが母集団全件へ接続されていない。]
+  - id: scenario-boundary
+    portable_criterion: 各Authority由来Atomic behaviorの境界値を専用Oracle、Runtime Profile、Artifactへ一対一接続する。
+    postgresql_denominator: applicable authority-derived behaviors
+    status: partial
+    evidence: [verification.matrix.yaml]
+    gaps: [境界Scenarioの専用Rowが母集団全件へ接続されていない。]
+  - id: scenario-refusal
+    portable_criterion: 各Authority由来Atomic behaviorの拒否動作を専用Oracle、Runtime Profile、Artifactへ一対一接続する。
+    postgresql_denominator: applicable authority-derived behaviors
+    status: partial
+    evidence: [verification.matrix.yaml]
+    gaps: [拒否Scenarioの専用Rowが母集団全件へ接続されていない。]
+  - id: scenario-failure
+    portable_criterion: 障害が適用可能な各Atomic behaviorを専用Failure OracleとArtifactへ接続する。
+    postgresql_denominator: failure-applicable authority-derived behaviors
+    status: partial
+    evidence: [verification.matrix.yaml, evidence/failure-injection.evidence.yaml]
+    gaps: [障害Scenarioの専用Rowが適用母集団全件へ接続されていない。]
+  - id: scenario-recovery
+    portable_criterion: 回復が適用可能な各Atomic behaviorを障害前後の専用OracleとArtifactへ接続する。
+    postgresql_denominator: recovery-applicable authority-derived behaviors
+    status: partial
+    evidence: [verification.matrix.yaml, evidence/pitr.evidence.yaml]
+    gaps: [回復Scenarioの専用Rowが適用母集団全件へ接続されていない。]
+  - id: scenario-migration
+    portable_criterion: 移行が適用可能な各Atomic behaviorをVersion固定の移行・Rollback Oracleへ接続する。
+    postgresql_denominator: migration-applicable authority-derived behaviors × source/target version path
+    status: partial
+    evidence: [verification.matrix.yaml, evidence/migration.evidence.yaml, evidence/pg-upgrade.evidence.yaml]
+    gaps: [移行ScenarioとVersion経路の専用Rowが適用母集団全件へ接続されていない。]
+  - id: scenario-operations
+    portable_criterion: 運用が適用可能な各Atomic behaviorをRunbook操作、Metric、停止条件、回復Artifactへ接続する。
+    postgresql_denominator: operations-applicable authority-derived behaviors × runbook exercise
+    status: partial
+    evidence: [verification.matrix.yaml, evidence/observability.evidence.yaml]
+    gaps: [運用Scenarioと時間制限付きRunbook演習が適用母集団全件へ接続されていない。]
+  - id: scenario-security
+    portable_criterion: Security境界が適用可能な各Atomic behaviorを許可、拒否、監査Oracleへ接続する。
+    postgresql_denominator: security-applicable authority-derived behaviors × trust boundary
+    status: partial
+    evidence: [verification.matrix.yaml, evidence/security.evidence.yaml]
+    gaps: [Security Scenarioが認証・認可・RLS・Protocolの適用母集団全件へ接続されていない。]
+  - id: scenario-performance
+    portable_criterion: 各Atomic behaviorへWorkload、環境、分布、予算、劣化戦略を接続し、全Variantを同じOracleで測定する。
+    postgresql_denominator: performance-applicable behavior × variant × workload/profile
+    status: partial
+    evidence: [verification.matrix.yaml, evidence/performance.evidence.yaml]
+    gaps: [専用WorkloadとLatency・Throughput・Memory・Disk・WAL・回復時間の予算が全件へ接続されていない。]
+  - id: scenario-compatibility
+    portable_criterion: 必要Version/Profileを根拠から列挙し、各Atomic behaviorの正常・劣化・非対応境界を実Runtimeで区別する。
+    postgresql_denominator: compatibility-applicable behavior × PostgreSQL version/profile
+    status: partial
+    evidence: [verification.matrix.yaml, evidence/compatibility-matrix.evidence.yaml]
+    gaps: [14.24〜18.6の集約Matrixはあるが、各Behavior専用の互換・非対応Evidenceへ未分割である。]
+  - id: artifact-trace
+    portable_criterion: 各Required ScenarioのOracle結果を専用Artifactへ固定し、Source、Harness、Runtime、Version、Attemptと追跡可能にする。
+    postgresql_denominator: required scenario rows
+    status: partial
+    evidence: [provenance.yaml, evidence/definitive-audit-report.json]
+    gaps: [既存Bundle Artifactは保持するが、Behavior × Scenario × Profile単位の一意ArtifactとTraceへ未分割である。]
+  - id: integrated-reference-system
+    portable_criterion: 複数Atomic behaviorを実責任境界で接続した統合SystemとCross-behavior failure/recoveryを証明する。
+    postgresql_denominator: authority-derived architecture/integration behaviors
+    status: partial
+    evidence: [evidence/reference-system.evidence.yaml, evidence/artifacts/reference-system.json]
+    gaps: [6 BehaviorのRuntime Sliceのみで、全Architecture/Integration BehaviorとBackup、PITR、Replication、Upgradeを統合していない。]
+  - id: skill-eval
+    portable_criterion: Skillが8 Outcome、14 Surface、曖昧Query、Coverage Gap、権限境界、実装・診断・移行・Reviewを実行Evidence付きで扱う。
+    postgresql_denominator: outcome × surface × risk/coverage-gap class × task result
+    status: partial
+    evidence: [evals/postgresql-atlas.definitive-skill-eval.json, evidence/definitive-audit-report.json]
+    gaps: [4 Surfaceと28 Targetが未到達で、変更結果を判定する専用End-to-End Oracleがない。]
+  - id: rights-provenance
+    portable_criterion: Code、Authority、Dependency、再配布義務を別々に追跡し、不明またはReview待ちなら公開をFail closedにする。
+    postgresql_denominator: repository files × authority artifacts × runtime images × transitive publication dependencies
+    status: partial
+    evidence: [LICENSE, NOTICE, third_party/manifest.yaml, sbom.spdx.json, provenance.yaml]
+    gaps: [Runtime imageと検証Toolを含むtransitive artifact全件の義務Review結果が独立記録されていない。]
+  - id: non-regression-gate
+    portable_criterion: 公開mainの能力をID、Runtime Contract、Assertion、閾値、Profile、Version、CI、Evidenceで固定し、置換へMappingと実行Proofを要求する。
+    postgresql_denominator: published-main Test/Lab/Target/Claim/Proof/Evidence/Source/Skill/CI identities
+    status: satisfied
+    evidence: [baseline/non-regression-v1.json, baselines/v1.0.0.non-regression-baseline.json, evidence/non-regression-audit-report.json]
+    gaps: []
