@@ -5,12 +5,13 @@ claim_ids: [lifecycle.upgrade]
 kind: migration
 producer: postgresql-reference-atlas
 command: make lab LAB=upgrade
-created_at: "2026-08-28T06:11:01Z"
+created_at: "2026-08-28T07:52:30Z"
 environment:
   profile: cluster
-  manifest_digest: sha256:781e9d727707e277b21a986e1639ebc93af79a940b1ed618b75dc13a5467b17c
-source_digest: sha256:89d1f94da2085fe535bf7acdd28a85f6cc251e079eb19f92d5eb1a07e8d467d0
-harness_digest: sha256:66bc6dcd45b3d7c057699f5004cba66f32cce6cd94334489b04853d37f91cfeb
+  manifest_digest: sha256:718afbefcc01162a74a85ae51d34b733849f4a6b6c28d17428beead9fcd11701
+source_digest: sha256:7a5097c6130472b193adb30fda89b4a607f1ae00a1ae87dbc1cf22ae5484eaef
+harness_digest: sha256:994e678394e20bba7ece80ca6b683c6500d2077127d644411fe31cee8baf4d8b
+harness_path: evidence/harnesses/upgrade.manifest
 artifact:
   uri: evidence/artifacts/upgrade.json
   digest: sha256:77db10fbe04af0ae85f0bbe526abbbbecf9c1e3ce3f8739ef55aa72fe1608268

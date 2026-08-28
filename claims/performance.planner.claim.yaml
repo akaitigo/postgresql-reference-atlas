@@ -1,0 +1,14 @@
+---
+schema_version: 1
+id: performance.planner
+atlas_id: postgresql-reference-atlas
+capability_id: performance.planner
+statement: 統計情報更新後、選択性の高いPredicateは固定FixtureでIndex Scan系Planを選択できる。
+status: accepted
+source_ids:
+- postgresql-docs-18.6
+proof_obligations:
+- id: performance.semantic-plan
+  statement: performance.semantic-planを再現可能なCommandと明示したOracleによって検証する。
+  acceptance_criteria:
+  - JSON PlanにIndex ScanまたはBitmap Index Scanが含まれ、対象結果件数がOracleと一致する。

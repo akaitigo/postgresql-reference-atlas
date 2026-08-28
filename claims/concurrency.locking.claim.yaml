@@ -1,0 +1,14 @@
+---
+schema_version: 1
+id: concurrency.locking
+atlas_id: postgresql-reference-atlas
+capability_id: concurrency.locking
+statement: 保持中のRow Lockに対するNOWAIT取得はSQLSTATE 55P03で拒否され、解放後は競合Sessionが進行できる。
+status: accepted
+source_ids:
+- postgresql-docs-18.6
+proof_obligations:
+- id: concurrency.row-lock-nowait
+  statement: concurrency.row-lock-nowaitを再現可能なCommandと明示したOracleによって検証する。
+  acceptance_criteria:
+  - Holderのgranted Lockをpg_locksで観測でき、NOWAITがSQLSTATE 55P03で拒否され、COMMIT後の更新値が20になる。

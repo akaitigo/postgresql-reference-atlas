@@ -5,16 +5,17 @@ claim_ids: [operations.replication]
 kind: recovery
 producer: postgresql-reference-atlas
 command: make lab LAB=replication
-created_at: "2026-08-28T06:10:57Z"
+created_at: "2026-08-28T07:51:30Z"
 environment:
   profile: cluster
-  manifest_digest: sha256:781e9d727707e277b21a986e1639ebc93af79a940b1ed618b75dc13a5467b17c
-source_digest: sha256:89d1f94da2085fe535bf7acdd28a85f6cc251e079eb19f92d5eb1a07e8d467d0
-harness_digest: sha256:66e999b5b7fb4df79d5179b27886c2141f1ee217b4bc010aba8f1ec4ddddca86
+  manifest_digest: sha256:718afbefcc01162a74a85ae51d34b733849f4a6b6c28d17428beead9fcd11701
+source_digest: sha256:7a5097c6130472b193adb30fda89b4a607f1ae00a1ae87dbc1cf22ae5484eaef
+harness_digest: sha256:5c4e135b34858c7329afbbfb8b9c28b1a835a7b0dfdf3e751d7c4b035e734af9
+harness_path: evidence/harnesses/replication.manifest
 artifact:
   uri: evidence/artifacts/replication.json
-  digest: sha256:b57e674b1c20c8ecb25984fa6bfdaf6f9b1aa2029c13d976d1f72b9253477367
+  digest: sha256:917089c4219799f4d5100ffb2b70987f7478a9f3ceb622be7d510edddd3815bd
   media_type: application/json
-  size_bytes: 158
+  size_bytes: 251
 verdict: pass
 retention: git

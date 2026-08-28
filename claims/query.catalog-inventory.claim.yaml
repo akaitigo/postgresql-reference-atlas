@@ -1,0 +1,15 @@
+---
+schema_version: 1
+id: query.catalog-inventory
+atlas_id: postgresql-reference-atlas
+capability_id: query.catalog-inventory
+statement: PostgreSQL 18.6 Runtimeが公開する主要pg_catalog Surfaceは件数と順序付きDigestで再取得できる。
+status: accepted
+source_ids:
+- postgresql-docs-18.6
+- postgres-container-18.6-alpine
+proof_obligations:
+- id: query.runtime-catalog-inventory
+  statement: query.runtime-catalog-inventoryを再現可能なCommandと明示したOracleによって検証する。
+  acceptance_criteria:
+  - 18.6の型、関数、演算子、Cast、Access Method、Collation、同梱Extension、Catalog Relationが正の件数とDigestを返す。

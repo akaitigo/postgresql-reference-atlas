@@ -1,0 +1,280 @@
+{
+  "schema_version": 1,
+  "id": "skill.postgresql-router",
+  "atlas_id": "postgresql-reference-atlas",
+  "atlas_release": "v1.0.0",
+  "skill_id": "postgresql-atlas",
+  "generated_at": "2026-08-28T07:55:10Z",
+  "cases": [
+    {
+      "id": "understand-mvcc",
+      "category": "routing",
+      "result": "pass",
+      "assertion": "understand-mvcc は期待したCapability、Coverage、安全境界へ正しくRoutingされる。",
+      "evidence_ids": [
+        "skill.router-eval"
+      ]
+    },
+    {
+      "id": "choose-partial-index",
+      "category": "near-neighbor",
+      "result": "pass",
+      "assertion": "choose-partial-index は期待したCapability、Coverage、安全境界へ正しくRoutingされる。",
+      "evidence_ids": [
+        "skill.router-eval"
+      ]
+    },
+    {
+      "id": "build-sql-constraint",
+      "category": "routing",
+      "result": "pass",
+      "assertion": "build-sql-constraint は期待したCapability、Coverage、安全境界へ正しくRoutingされる。",
+      "evidence_ids": [
+        "skill.router-eval"
+      ]
+    },
+    {
+      "id": "build-domain-type",
+      "category": "near-neighbor",
+      "result": "pass",
+      "assertion": "build-domain-type は期待したCapability、Coverage、安全境界へ正しくRoutingされる。",
+      "evidence_ids": [
+        "skill.router-eval"
+      ]
+    },
+    {
+      "id": "verify-catalog-inventory",
+      "category": "authority",
+      "result": "pass",
+      "assertion": "verify-catalog-inventory は期待したCapability、Coverage、安全境界へ正しくRoutingされる。",
+      "evidence_ids": [
+        "skill.router-eval"
+      ]
+    },
+    {
+      "id": "choose-partition",
+      "category": "near-neighbor",
+      "result": "pass",
+      "assertion": "choose-partition は期待したCapability、Coverage、安全境界へ正しくRoutingされる。",
+      "evidence_ids": [
+        "skill.router-eval"
+      ]
+    },
+    {
+      "id": "build-extension",
+      "category": "routing",
+      "result": "pass",
+      "assertion": "build-extension は期待したCapability、Coverage、安全境界へ正しくRoutingされる。",
+      "evidence_ids": [
+        "skill.router-eval"
+      ]
+    },
+    {
+      "id": "choose-rls",
+      "category": "security",
+      "result": "pass",
+      "assertion": "choose-rls は期待したCapability、Coverage、安全境界へ正しくRoutingされる。",
+      "evidence_ids": [
+        "skill.router-eval"
+      ]
+    },
+    {
+      "id": "verify-backup-evidence",
+      "category": "execution",
+      "result": "pass",
+      "assertion": "verify-backup-evidence は期待したCapability、Coverage、安全境界へ正しくRoutingされる。",
+      "evidence_ids": [
+        "skill.router-eval"
+      ]
+    },
+    {
+      "id": "operate-physical-replication",
+      "category": "execution",
+      "result": "pass",
+      "assertion": "operate-physical-replication は期待したCapability、Coverage、安全境界へ正しくRoutingされる。",
+      "evidence_ids": [
+        "skill.router-eval"
+      ]
+    },
+    {
+      "id": "troubleshoot-logical-replication",
+      "category": "execution",
+      "result": "pass",
+      "assertion": "troubleshoot-logical-replication は期待したCapability、Coverage、安全境界へ正しくRoutingされる。",
+      "evidence_ids": [
+        "skill.router-eval"
+      ]
+    },
+    {
+      "id": "recover-pitr",
+      "category": "execution",
+      "result": "pass",
+      "assertion": "recover-pitr は期待したCapability、Coverage、安全境界へ正しくRoutingされる。",
+      "evidence_ids": [
+        "skill.router-eval"
+      ]
+    },
+    {
+      "id": "understand-wal",
+      "category": "routing",
+      "result": "pass",
+      "assertion": "understand-wal は期待したCapability、Coverage、安全境界へ正しくRoutingされる。",
+      "evidence_ids": [
+        "skill.router-eval"
+      ]
+    },
+    {
+      "id": "verify-failure-injection",
+      "category": "execution",
+      "result": "pass",
+      "assertion": "verify-failure-injection は期待したCapability、Coverage、安全境界へ正しくRoutingされる。",
+      "evidence_ids": [
+        "skill.router-eval"
+      ]
+    },
+    {
+      "id": "operate-observability",
+      "category": "execution",
+      "result": "pass",
+      "assertion": "operate-observability は期待したCapability、Coverage、安全境界へ正しくRoutingされる。",
+      "evidence_ids": [
+        "skill.router-eval"
+      ]
+    },
+    {
+      "id": "operate-maintenance",
+      "category": "execution",
+      "result": "pass",
+      "assertion": "operate-maintenance は期待したCapability、Coverage、安全境界へ正しくRoutingされる。",
+      "evidence_ids": [
+        "skill.router-eval"
+      ]
+    },
+    {
+      "id": "troubleshoot-deadlock",
+      "category": "execution",
+      "result": "pass",
+      "assertion": "troubleshoot-deadlock は期待したCapability、Coverage、安全境界へ正しくRoutingされる。",
+      "evidence_ids": [
+        "skill.router-eval"
+      ]
+    },
+    {
+      "id": "troubleshoot-row-lock",
+      "category": "execution",
+      "result": "pass",
+      "assertion": "troubleshoot-row-lock は期待したCapability、Coverage、安全境界へ正しくRoutingされる。",
+      "evidence_ids": [
+        "skill.router-eval"
+      ]
+    },
+    {
+      "id": "troubleshoot-slow-plan",
+      "category": "execution",
+      "result": "pass",
+      "assertion": "troubleshoot-slow-plan は期待したCapability、Coverage、安全境界へ正しくRoutingされる。",
+      "evidence_ids": [
+        "skill.router-eval"
+      ]
+    },
+    {
+      "id": "verify-statistics",
+      "category": "execution",
+      "result": "pass",
+      "assertion": "verify-statistics は期待したCapability、Coverage、安全境界へ正しくRoutingされる。",
+      "evidence_ids": [
+        "skill.router-eval"
+      ]
+    },
+    {
+      "id": "operate-capacity",
+      "category": "execution",
+      "result": "pass",
+      "assertion": "operate-capacity は期待したCapability、Coverage、安全境界へ正しくRoutingされる。",
+      "evidence_ids": [
+        "skill.router-eval"
+      ]
+    },
+    {
+      "id": "evolve-schema-migration",
+      "category": "lifecycle",
+      "result": "pass",
+      "assertion": "evolve-schema-migration は期待したCapability、Coverage、安全境界へ正しくRoutingされる。",
+      "evidence_ids": [
+        "skill.router-eval"
+      ]
+    },
+    {
+      "id": "evolve-pg-upgrade",
+      "category": "lifecycle",
+      "result": "pass",
+      "assertion": "evolve-pg-upgrade は期待したCapability、Coverage、安全境界へ正しくRoutingされる。",
+      "evidence_ids": [
+        "skill.router-eval"
+      ]
+    },
+    {
+      "id": "evolve-logical-upgrade",
+      "category": "lifecycle",
+      "result": "pass",
+      "assertion": "evolve-logical-upgrade は期待したCapability、Coverage、安全境界へ正しくRoutingされる。",
+      "evidence_ids": [
+        "skill.router-eval"
+      ]
+    },
+    {
+      "id": "verify-compatibility-matrix",
+      "category": "execution",
+      "result": "pass",
+      "assertion": "verify-compatibility-matrix は期待したCapability、Coverage、安全境界へ正しくRoutingされる。",
+      "evidence_ids": [
+        "skill.router-eval"
+      ]
+    },
+    {
+      "id": "delegate-index-review",
+      "category": "authorization",
+      "result": "pass",
+      "assertion": "delegate-index-review は期待したCapability、Coverage、安全境界へ正しくRoutingされる。",
+      "evidence_ids": [
+        "skill.router-eval"
+      ]
+    },
+    {
+      "id": "coverage-gap-postgis",
+      "category": "coverage-gap",
+      "result": "pass",
+      "assertion": "coverage-gap-postgis は期待したCapability、Coverage、安全境界へ正しくRoutingされる。",
+      "evidence_ids": [
+        "skill.router-eval"
+      ]
+    },
+    {
+      "id": "coverage-gap-pgvector",
+      "category": "coverage-gap",
+      "result": "pass",
+      "assertion": "coverage-gap-pgvector は期待したCapability、Coverage、安全境界へ正しくRoutingされる。",
+      "evidence_ids": [
+        "skill.router-eval"
+      ]
+    },
+    {
+      "id": "coverage-gap-managed",
+      "category": "coverage-gap",
+      "result": "pass",
+      "assertion": "coverage-gap-managed は期待したCapability、Coverage、安全境界へ正しくRoutingされる。",
+      "evidence_ids": [
+        "skill.router-eval"
+      ]
+    },
+    {
+      "id": "coverage-gap-unknown",
+      "category": "coverage-gap",
+      "result": "pass",
+      "assertion": "coverage-gap-unknown は期待したCapability、Coverage、安全境界へ正しくRoutingされる。",
+      "evidence_ids": [
+        "skill.router-eval"
+      ]
+    }
+  ]
+}

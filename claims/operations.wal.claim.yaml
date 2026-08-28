@@ -1,0 +1,14 @@
+---
+schema_version: 1
+id: operations.wal
+atlas_id: postgresql-reference-atlas
+capability_id: operations.wal
+statement: PostgreSQL 18.6の確定WriteはWAL Insert LSNを前進させ、明示的なWAL Segment切替を観測できる。
+status: accepted
+source_ids:
+- postgresql-docs-18.6
+proof_obligations:
+- id: operations.wal-generation
+  statement: operations.wal-generationを再現可能なCommandと明示したOracleによって検証する。
+  acceptance_criteria:
+  - 2万行WriteでWAL LSN差分が正となり、Segment切替LSNとpg_stat_walのRecordを観測できる。

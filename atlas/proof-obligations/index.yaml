@@ -7,24 +7,78 @@ proof_obligations:
   - id: query.constraints-and-returning
     acceptance: 正常INSERTはRETURNING値を返し、重複KeyとCHECK違反は期待SQLSTATEで拒否される。
     command: make lab LAB=sql
+  - id: query.types-constraints
+    acceptance: 代表型を含む行がRound-tripし、UUIDv7とGenerated値が確認でき、不正Domain値が拒否される。
+    command: make lab LAB=types-constraints
+  - id: query.runtime-catalog-inventory
+    acceptance: 18.6の型、関数、演算子、Cast、Access Method、Collation、同梱Extension、Catalog Relationが正の件数とDigestを返す。
+    command: make lab LAB=catalog-inventory
+  - id: query.partition-routing-pruning
+    acceptance: 3行が対応Partitionへ1行ずつRoutingされ、Q1固定PredicateのPlanにQ2とDefault Partitionが現れない。
+    command: make lab LAB=partitioning
+  - id: query.bundled-extension
+    acceptance: pg_trgmが導入され、Trigram検索結果が1行で、JSON PlanがGIN Index名を参照する。
+    command: make lab LAB=extension
+  - id: query.rls-boundary
+    acceptance: Tenant接続から1行だけ可視で、別Tenant INSERTがSQLSTATE 42501で拒否され、Function search_pathが固定される。
+    command: make lab LAB=security
   - id: concurrency.repeatable-read-snapshot
     acceptance: 制御された2 Sessionで、Readerの2回の読取り値が同一、Reader終了後の値がWriter確定値になる。
     command: make lab LAB=mvcc
+  - id: concurrency.row-lock-nowait
+    acceptance: Holderのgranted Lockをpg_locksで観測でき、NOWAITがSQLSTATE 55P03で拒否され、COMMIT後の更新値が20になる。
+    command: make lab LAB=locking
+  - id: concurrency.deadlock-victim
+    acceptance: 逆順Row Lockの2 TransactionからSQLSTATE 40P01のVictimが1件だけ発生し、Survivorの2更新だけが残る。
+    command: make lab LAB=deadlock
   - id: performance.semantic-plan
     acceptance: JSON PlanにIndex ScanまたはBitmap Index Scanが含まれ、対象結果件数がOracleと一致する。
     command: make lab LAB=planner
+  - id: performance.extended-statistics
+    acceptance: DependenciesとMCV統計がCatalogに存在し、相関Predicateの推定行数が実100行の80から120に入る。
+    command: make lab LAB=statistics
   - id: performance.partial-index
     acceptance: Partial Index作成前後で結果Digestが同じで、作成後PlanがIndex名を参照する。
     command: make lab LAB=index
+  - id: performance.execution-evidence
+    acceptance: 20万行Fixtureで結果200行、Index Plan、Actual Rows、Buffer情報、正のRelation Sizeを取得する。
+    command: make lab LAB=performance
   - id: operations.logical-restore
     acceptance: Dump元とRestore先の順序付き論理Digestが一致する。
     command: make lab LAB=backup-recovery
+  - id: operations.observability-views
+    acceptance: pg_stat_statementsの同一Query Callsが3以上で、Activity、Database、Table、Lock、WAL Viewが観測可能である。
+    command: make lab LAB=observability
+  - id: operations.wal-generation
+    acceptance: 2万行WriteでWAL LSN差分が正となり、Segment切替LSNとpg_stat_walのRecordを観測できる。
+    command: make lab LAB=wal
+  - id: operations.named-pitr
+    acceptance: Base BackupとArchive WALから名前付き復旧点へPromoteし、復旧後のIDが1,2で復旧点後のID 3が存在しない。
+    command: make lab LAB=pitr
   - id: operations.physical-replication
-    acceptance: Primaryの確定行がStandbyへ到達し、Standbyがpg_is_in_recovery()をtrueとして返す。
+    acceptance: Primaryの確定行がStandbyへ到達し、Standby停止中の2件目も再起動後に追随し、pg_is_in_recovery()をtrueとして返す。
     command: make lab LAB=replication
+  - id: operations.logical-replication
+    acceptance: Publication対象の確定行がSubscriberへ到達し、Publisher SlotとSubscriber Apply Workerがactiveである。
+    command: make lab LAB=logical-replication
+  - id: operations.backend-failure
+    acceptance: Write中Backendの強制終了後に未確定行がゼロで、別の確定Writeが成功する。
+    command: make lab LAB=failure-injection
+  - id: operations.vacuum-maintenance
+    acceptance: 10万行から半数Delete後にDead Tupleを観測し、VACUUM FREEZE ANALYZE後は5万行、Dead Tuple 0、実行Count 1以上となる。
+    command: make lab LAB=maintenance
+  - id: lifecycle.online-schema-migration
+    acceptance: NOT VALID状態を観測し、不整合修復後のVALIDATEとCREATE INDEX CONCURRENTLYが5万行を維持して完了する。
+    command: make lab LAB=migration
   - id: lifecycle.logical-upgrade
     acceptance: 17.11から取得したDumpを18.6へRestoreし、Version境界と論理Digest一致を確認する。
     command: make lab LAB=upgrade
+  - id: lifecycle.binary-pg-upgrade
+    acceptance: 17.11と18.6の固定Binaryでpg_upgrade --checkと実Upgradeを通し、5万行と論理Digestを保持する。
+    command: make lab LAB=pg-upgrade
+  - id: lifecycle.cross-version-matrix
+    acceptance: 5世代のImage digestがSource Lockされ、同一1000行Fixtureの論理Digestが一致し、UUIDv7が18.6だけで観測される。
+    command: make lab LAB=compatibility-matrix
   - id: skill.routing
     acceptance: 全Eval Caseが期待Capability、Authority優先、安全境界、Gap応答を満たす。
     command: make eval

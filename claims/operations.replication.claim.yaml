@@ -1,0 +1,14 @@
+---
+schema_version: 1
+id: operations.replication
+atlas_id: postgresql-reference-atlas
+capability_id: operations.replication
+statement: Physical StandbyはPrimaryで確定したFixtureをRead-onlyで参照でき、停止中の確定Writeへ再起動後に追随する。
+status: accepted
+source_ids:
+- postgresql-docs-18.6
+proof_obligations:
+- id: operations.physical-replication
+  statement: operations.physical-replicationを再現可能なCommandと明示したOracleによって検証する。
+  acceptance_criteria:
+  - Primaryの確定行がStandbyへ到達し、Standby停止中の2件目も再起動後に追随し、pg_is_in_recovery()をtrueとして返す。

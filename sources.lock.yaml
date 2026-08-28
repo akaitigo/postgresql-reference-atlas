@@ -66,3 +66,30 @@ sources:
     digest: sha256:18cfe3ef5e6815560c98237d6216d1e5119702fb0f3894c8785dd58b8bbe5d73
     license: PostgreSQL License and container distribution dependencies
     redistribution: metadata-only
+  - id: postgres-container-16.15-alpine
+    kind: runtime-inventory
+    title: Docker Official Image postgres 16.15 alpine3.23
+    url: https://hub.docker.com/_/postgres
+    version: postgres:16.15-alpine3.23
+    retrieved_at: "2026-08-28"
+    digest: sha256:421b84e07a72bb8f3715f20501a1fdbe1219aad1fa4af7786a49d9a3f2480296
+    license: PostgreSQL License and container distribution dependencies
+    redistribution: metadata-only
+  - id: postgres-container-15.19-alpine
+    kind: runtime-inventory
+    title: Docker Official Image postgres 15.19 alpine3.23
+    url: https://hub.docker.com/_/postgres
+    version: postgres:15.19-alpine3.23
+    retrieved_at: "2026-08-28"
+    digest: sha256:b0dc4a8dc256b963ee25867843d9fd366850e327e4a2a65ccb3c47262d092973
+    license: PostgreSQL License and container distribution dependencies
+    redistribution: metadata-only
+  - id: postgres-container-14.24-alpine
+    kind: runtime-inventory
+    title: Docker Official Image postgres 14.24 alpine
+    url: https://hub.docker.com/_/postgres
+    version: postgres:14.24-alpine
+    retrieved_at: "2026-08-28"
+    digest: sha256:727876d274666da0b92a445390ba093c84b8e9f8343e1c53cd4e9a7ab2d85310
+    license: PostgreSQL License and container distribution dependencies
+    redistribution: metadata-only

@@ -4,8 +4,11 @@ engine: Docker
 images:
   - postgres:18.6-alpine@sha256:d3e1620b530c944afa6e887d22eb899824da68e19c52024bf98f5220c88a65b2
   - postgres:17.11-alpine@sha256:18cfe3ef5e6815560c98237d6216d1e5119702fb0f3894c8785dd58b8bbe5d73
+  - postgres:16.15-alpine3.23@sha256:421b84e07a72bb8f3715f20501a1fdbe1219aad1fa4af7786a49d9a3f2480296
+  - postgres:15.19-alpine3.23@sha256:b0dc4a8dc256b963ee25867843d9fd366850e327e4a2a65ccb3c47262d092973
+  - postgres:14.24-alpine@sha256:727876d274666da0b92a445390ba093c84b8e9f8343e1c53cd4e9a7ab2d85310
 requirements:
   - isolated ephemeral network
   - isolated named volumes
   - explicit cleanup trap
-purpose: Physical ReplicationとMajor Upgrade Labを実行する。
+purpose: Physical/Logical Replication、PITR、Logical/Binary Major Upgrade、14.24-18.6 Compatibility Matrix Labを実行する。

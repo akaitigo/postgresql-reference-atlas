@@ -11,6 +11,21 @@ compatibility_versions:
   - "16.15"
   - "15.19"
   - "14.24"
+compatibility_images:
+  authority: Docker Hub Official Image API
+  observed_at: "2026-08-28"
+  execution_state: passed
+  images:
+    - version: "14.24"
+      image: postgres:14.24-alpine@sha256:727876d274666da0b92a445390ba093c84b8e9f8343e1c53cd4e9a7ab2d85310
+    - version: "15.19"
+      image: postgres:15.19-alpine3.23@sha256:b0dc4a8dc256b963ee25867843d9fd366850e327e4a2a65ccb3c47262d092973
+    - version: "16.15"
+      image: postgres:16.15-alpine3.23@sha256:421b84e07a72bb8f3715f20501a1fdbe1219aad1fa4af7786a49d9a3f2480296
+    - version: "17.11"
+      image: postgres:17.11-alpine@sha256:18cfe3ef5e6815560c98237d6216d1e5119702fb0f3894c8785dd58b8bbe5d73
+    - version: "18.6"
+      image: postgres:18.6-alpine@sha256:d3e1620b530c944afa6e887d22eb899824da68e19c52024bf98f5220c88a65b2
 development_versions:
   policy: excluded
 completeness: incomplete

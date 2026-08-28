@@ -1,0 +1,21 @@
+schema_version: 1
+id: lab.extension
+atlas_id: postgresql-reference-atlas
+claim_ids: [query.extension]
+kind: test-report
+producer: postgresql-reference-atlas
+command: make lab LAB=extension
+created_at: "2026-08-28T07:49:21Z"
+environment:
+  profile: container
+  manifest_digest: sha256:3df4dbd82139e17c785348c281f26b54d7300662087baaeec3034acefedf36b9
+source_digest: sha256:7a5097c6130472b193adb30fda89b4a607f1ae00a1ae87dbc1cf22ae5484eaef
+harness_digest: sha256:c63ebf46bf53289b483f3d89a19b57fb4ef9f0b8df6641da3a90f88a3a50ba7b
+harness_path: evidence/harnesses/extension.manifest
+artifact:
+  uri: evidence/artifacts/extension.json
+  digest: sha256:fba8b0cb54d443047834079106273ce83b1f4ddf3a958b8662a47b1876e14f41
+  media_type: application/json
+  size_bytes: 166
+verdict: pass
+retention: git

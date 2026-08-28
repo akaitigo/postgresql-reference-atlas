@@ -1,0 +1,14 @@
+---
+schema_version: 1
+id: query.security
+atlas_id: postgresql-reference-atlas
+capability_id: query.security
+statement: FORCE RLS Tableへの非Superuser接続はTenant PredicateでFilterされ、WITH CHECK違反がSQLSTATE 42501で拒否される。
+status: accepted
+source_ids:
+- postgresql-docs-18.6
+proof_obligations:
+- id: query.rls-boundary
+  statement: query.rls-boundaryを再現可能なCommandと明示したOracleによって検証する。
+  acceptance_criteria:
+  - Tenant接続から1行だけ可視で、別Tenant INSERTがSQLSTATE 42501で拒否され、Function search_pathが固定される。

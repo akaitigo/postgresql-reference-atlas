@@ -1,0 +1,14 @@
+---
+schema_version: 1
+id: query.extension
+atlas_id: postgresql-reference-atlas
+capability_id: query.extension
+statement: 公式同梱pg_trgm Extensionは導入後にTrigram OperatorとGIN Operator Classを提供し対象Queryで利用できる。
+status: accepted
+source_ids:
+- postgresql-docs-18.6
+proof_obligations:
+- id: query.bundled-extension
+  statement: query.bundled-extensionを再現可能なCommandと明示したOracleによって検証する。
+  acceptance_criteria:
+  - pg_trgmが導入され、Trigram検索結果が1行で、JSON PlanがGIN Index名を参照する。

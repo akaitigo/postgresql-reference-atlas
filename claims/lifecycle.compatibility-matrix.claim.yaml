@@ -1,0 +1,20 @@
+---
+schema_version: 1
+id: lifecycle.compatibility-matrix
+atlas_id: postgresql-reference-atlas
+capability_id: lifecycle.compatibility-matrix
+statement: 固定した14.24から18.6の各Runtimeで共通Fixtureの論理結果を比較し、Version固有Featureの境界を明示できる。
+status: accepted
+source_ids:
+- postgresql-docs-18.6
+- postgresql-release-18.6
+- postgres-container-18.6-alpine
+- postgres-container-17.11-alpine
+- postgres-container-16.15-alpine
+- postgres-container-15.19-alpine
+- postgres-container-14.24-alpine
+proof_obligations:
+- id: lifecycle.cross-version-matrix
+  statement: lifecycle.cross-version-matrixを再現可能なCommandと明示したOracleによって検証する。
+  acceptance_criteria:
+  - 5世代のImage digestがSource Lockされ、同一1000行Fixtureの論理Digestが一致し、UUIDv7が18.6だけで観測される。

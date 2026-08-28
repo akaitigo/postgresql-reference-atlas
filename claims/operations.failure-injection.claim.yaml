@@ -1,0 +1,14 @@
+---
+schema_version: 1
+id: operations.failure-injection
+atlas_id: postgresql-reference-atlas
+capability_id: operations.failure-injection
+statement: Write Transaction中のBackend強制終了は未確定変更を残さず、Clusterは後続の確定Writeを受理する。
+status: accepted
+source_ids:
+- postgresql-docs-18.6
+proof_obligations:
+- id: operations.backend-failure
+  statement: operations.backend-failureを再現可能なCommandと明示したOracleによって検証する。
+  acceptance_criteria:
+  - Write中Backendの強制終了後に未確定行がゼロで、別の確定Writeが成功する。

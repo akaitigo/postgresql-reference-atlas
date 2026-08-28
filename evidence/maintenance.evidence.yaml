@@ -1,0 +1,21 @@
+schema_version: 1
+id: lab.maintenance
+atlas_id: postgresql-reference-atlas
+claim_ids: [operations.maintenance]
+kind: test-report
+producer: postgresql-reference-atlas
+command: make lab LAB=maintenance
+created_at: "2026-08-28T07:52:03Z"
+environment:
+  profile: container
+  manifest_digest: sha256:3df4dbd82139e17c785348c281f26b54d7300662087baaeec3034acefedf36b9
+source_digest: sha256:7a5097c6130472b193adb30fda89b4a607f1ae00a1ae87dbc1cf22ae5484eaef
+harness_digest: sha256:9b12937f7ffde52a627ead1385b541625dedee19ba20e6a775a968956d5eafa9
+harness_path: evidence/harnesses/maintenance.manifest
+artifact:
+  uri: evidence/artifacts/maintenance.json
+  digest: sha256:db36e8c0afcfd8a8a7fc11351cc4acf2546003e2545c02f94acd4f1b8bdc8b9a
+  media_type: application/json
+  size_bytes: 205
+verdict: pass
+retention: git

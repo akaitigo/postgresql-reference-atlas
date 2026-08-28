@@ -1,0 +1,14 @@
+---
+schema_version: 1
+id: operations.logical-replication
+atlas_id: postgresql-reference-atlas
+capability_id: operations.logical-replication
+statement: PostgreSQL 18.6のPublication対象Tableへの確定変更はReplication SlotとApply Workerを介してSubscriberへ到達する。
+status: accepted
+source_ids:
+- postgresql-docs-18.6
+proof_obligations:
+- id: operations.logical-replication
+  statement: operations.logical-replicationを再現可能なCommandと明示したOracleによって検証する。
+  acceptance_criteria:
+  - Publication対象の確定行がSubscriberへ到達し、Publisher SlotとSubscriber Apply Workerがactiveである。

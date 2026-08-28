@@ -1,0 +1,21 @@
+schema_version: 1
+id: lab.deadlock
+atlas_id: postgresql-reference-atlas
+claim_ids: [concurrency.deadlock]
+kind: test-report
+producer: postgresql-reference-atlas
+command: make lab LAB=deadlock
+created_at: "2026-08-28T07:49:44Z"
+environment:
+  profile: container
+  manifest_digest: sha256:3df4dbd82139e17c785348c281f26b54d7300662087baaeec3034acefedf36b9
+source_digest: sha256:7a5097c6130472b193adb30fda89b4a607f1ae00a1ae87dbc1cf22ae5484eaef
+harness_digest: sha256:60aa11d7a7e91ee501deebb8e555ee35cd8a316b55d2af53210dc132c7ed102c
+harness_path: evidence/harnesses/deadlock.manifest
+artifact:
+  uri: evidence/artifacts/deadlock.json
+  digest: sha256:8ff033c62a9ea8360237094c041c09603e342ab7f4be29e544ceadfd0e6beb0b
+  media_type: application/json
+  size_bytes: 171
+verdict: pass
+retention: git

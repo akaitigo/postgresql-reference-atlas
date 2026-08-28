@@ -1,0 +1,14 @@
+---
+schema_version: 1
+id: operations.maintenance
+atlas_id: postgresql-reference-atlas
+capability_id: operations.maintenance
+statement: 明示VACUUM FREEZE ANALYZEは削除後のLive行を保持し、Dead Tupleを回収してVacuum/Analyze統計を更新する。
+status: accepted
+source_ids:
+- postgresql-docs-18.6
+proof_obligations:
+- id: operations.vacuum-maintenance
+  statement: operations.vacuum-maintenanceを再現可能なCommandと明示したOracleによって検証する。
+  acceptance_criteria:
+  - 10万行から半数Delete後にDead Tupleを観測し、VACUUM FREEZE ANALYZE後は5万行、Dead Tuple 0、実行Count 1以上となる。

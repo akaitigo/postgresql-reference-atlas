@@ -1,0 +1,14 @@
+---
+schema_version: 1
+id: skill.router
+atlas_id: postgresql-reference-atlas
+capability_id: skill.router
+statement: Router Skillは依頼をCoverage内Capabilityへ案内し、Coverage外ならGapを明示する。
+status: accepted
+source_ids:
+- postgresql-docs-18.6
+proof_obligations:
+- id: skill.routing
+  statement: skill.routingを再現可能なCommandと明示したOracleによって検証する。
+  acceptance_criteria:
+  - 全Eval Caseが期待Capability、Authority優先、安全境界、Gap応答を満たす。

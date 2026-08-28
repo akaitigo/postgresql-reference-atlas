@@ -52,15 +52,29 @@ until replicated="$(docker exec "$standby" psql -X -qAt -U postgres -d atlas -c 
   sleep 1
 done
 
+docker stop "$standby" >/dev/null
+docker exec "$primary" psql -X -q -v ON_ERROR_STOP=1 -U postgres -d atlas \
+  -c "INSERT INTO replication_probe VALUES (2, 'restart-catchup');"
+docker start "$standby" >/dev/null
+wait_postgres "$standby"
+attempts=60
+replicated_after_restart=""
+until replicated_after_restart="$(docker exec "$standby" psql -X -qAt -U postgres -d atlas -c "SELECT string_agg(id::text || ':' || payload, ',' ORDER BY id) FROM replication_probe" 2>/dev/null)" && [[ "$replicated_after_restart" == "1:wal-replayed,2:restart-catchup" ]]; do
+  attempts=$((attempts - 1))
+  [[ "$attempts" -gt 0 ]] || die "再起動したStandbyが停止中のWALへ追随しませんでした"
+  sleep 1
+done
+
 in_recovery="$(docker exec "$standby" psql -X -qAt -U postgres -d atlas -c 'SELECT pg_is_in_recovery()')"
 sender_state="$(docker exec "$primary" psql -X -qAt -U postgres -d postgres -c "SELECT state FROM pg_stat_replication WHERE application_name = 'walreceiver' LIMIT 1")"
 
 jq -n \
   --arg version "$(docker exec "$primary" psql -X -qAt -U postgres -d postgres -c 'SHOW server_version')" \
   --arg payload "$replicated" \
+  --arg replicated_after_restart "$replicated_after_restart" \
   --arg in_recovery "$in_recovery" \
   --arg sender_state "$sender_state" \
-  '{lab:"replication",server_version:$version,payload:$payload,in_recovery:$in_recovery,sender_state:$sender_state,verdict:(if $payload == "wal-replayed" and $in_recovery == "t" and $sender_state == "streaming" then "pass" else "fail" end)}' > "$artifact"
+  '{lab:"replication",server_version:$version,payload:$payload,replicated_after_restart:$replicated_after_restart,standby_restart:true,in_recovery:$in_recovery,sender_state:$sender_state,verdict:(if $payload == "wal-replayed" and $replicated_after_restart == "1:wal-replayed,2:restart-catchup" and $in_recovery == "t" and $sender_state == "streaming" then "pass" else "fail" end)}' > "$artifact"
 jq -e '.verdict == "pass"' "$artifact" >/dev/null
 record_evidence replication operations.replication recovery cluster "make lab LAB=replication" "$artifact" pass
 echo "Physical Replication Labを通過しました"

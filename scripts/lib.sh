@@ -30,14 +30,59 @@ directory_digest() {
   )
 }
 
+write_harness_manifest() {
+  local name="$1"
+  shift
+  local manifest="$ATLAS_ROOT/evidence/harnesses/${name}.manifest"
+  local paths_file
+  paths_file="$(mktemp)"
+  mkdir -p "$ATLAS_ROOT/evidence/harnesses"
+
+  local directory file relative
+  for directory in "$@" "$ATLAS_ROOT/scripts"; do
+    [[ -d "$directory" ]] || die "Harness Directoryがありません: $directory"
+    while IFS= read -r -d '' file; do
+      relative="${file#"$ATLAS_ROOT/"}"
+      [[ "$relative" != evidence/harnesses/* ]] && printf '%s\n' "$relative" >> "$paths_file"
+    done < <(find "$directory" -type f -print0)
+  done
+
+  : > "$manifest"
+  while IFS= read -r relative; do
+    printf '%s  %s\n' "$(sha256_file "$ATLAS_ROOT/$relative")" "$relative" >> "$manifest"
+  done < <(LC_ALL=C sort -u "$paths_file")
+  rm -f "$paths_file"
+  printf '%s\n' "$manifest"
+}
+
 wait_postgres() {
   local container="$1"
   local attempts=60
-  until docker exec "$container" pg_isready -U postgres -d postgres >/dev/null 2>&1; do
+  local consecutive=0
+  while [[ "$consecutive" -lt 2 ]]; do
+    if docker exec "$container" psql -X -qAt -U postgres -d postgres -c 'SELECT 1' 2>/dev/null | grep -qx 1; then
+      consecutive=$((consecutive + 1))
+    else
+      consecutive=0
+    fi
     attempts=$((attempts - 1))
     if [[ "$attempts" -eq 0 ]]; then
       docker logs "$container" >&2 || true
       die "PostgreSQLが起動しませんでした: $container"
+    fi
+    sleep 1
+  done
+}
+
+wait_postgres_database() {
+  local container="$1"
+  local database="$2"
+  local attempts=60
+  until docker exec "$container" psql -X -qAt -U postgres -d "$database" -c 'SELECT 1' 2>/dev/null | grep -qx 1; do
+    attempts=$((attempts - 1))
+    if [[ "$attempts" -eq 0 ]]; then
+      docker logs "$container" >&2 || true
+      die "PostgreSQL Databaseが利用可能になりませんでした: $container/$database"
     fi
     sleep 1
   done
@@ -54,17 +99,15 @@ record_evidence() {
   local harness_directory="${8:-$ATLAS_ROOT/labs/$lab}"
   local evidence_id="${9:-lab.$lab}"
   local additional_harness_directory="${10:-}"
-  local source_digest harness_digest environment_digest artifact_digest artifact_size created_at evidence_path
+  local source_digest harness_digest harness_path environment_digest artifact_digest artifact_size created_at evidence_path
 
   source_digest="$(sha256_file "$ATLAS_ROOT/sources.lock.yaml")"
-  harness_digest="$({
-    directory_digest "$harness_directory"
-    if [[ -n "$additional_harness_directory" ]]; then
-      directory_digest "$additional_harness_directory"
-    fi
-    sha256_file "$ATLAS_ROOT/scripts/lib.sh"
-    sha256_file "$ATLAS_ROOT/scripts/run-lab.sh"
-  } | shasum -a 256 | awk '{print $1}')"
+  if [[ -n "$additional_harness_directory" ]]; then
+    harness_path="$(write_harness_manifest "$lab" "$harness_directory" "$additional_harness_directory")"
+  else
+    harness_path="$(write_harness_manifest "$lab" "$harness_directory")"
+  fi
+  harness_digest="$(sha256_file "$harness_path")"
   environment_digest="$(sha256_file "$ATLAS_ROOT/environments/$profile.yaml")"
   artifact_digest="$(sha256_file "$artifact")"
   artifact_size="$(wc -c < "$artifact" | tr -d ' ')"
@@ -90,6 +133,7 @@ environment:
   manifest_digest: sha256:${environment_digest}
 source_digest: sha256:${source_digest}
 harness_digest: sha256:${harness_digest}
+harness_path: ${harness_path#"$ATLAS_ROOT/"}
 artifact:
   uri: evidence/artifacts/${lab}.json
   digest: sha256:${artifact_digest}

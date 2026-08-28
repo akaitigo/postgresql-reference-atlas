@@ -2,6 +2,8 @@
   "lab": "replication",
   "server_version": "18.6",
   "payload": "wal-replayed",
+  "replicated_after_restart": "1:wal-replayed,2:restart-catchup",
+  "standby_restart": true,
   "in_recovery": "t",
   "sender_state": "streaming",
   "verdict": "pass"

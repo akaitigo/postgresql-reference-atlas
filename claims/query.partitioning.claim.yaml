@@ -1,0 +1,14 @@
+---
+schema_version: 1
+id: query.partitioning
+atlas_id: postgresql-reference-atlas
+capability_id: query.partitioning
+statement: Range Partition Tableは境界に従って行をRoutingし、固定Predicateで不要PartitionをPlanから除外する。
+status: accepted
+source_ids:
+- postgresql-docs-18.6
+proof_obligations:
+- id: query.partition-routing-pruning
+  statement: query.partition-routing-pruningを再現可能なCommandと明示したOracleによって検証する。
+  acceptance_criteria:
+  - 3行が対応Partitionへ1行ずつRoutingされ、Q1固定PredicateのPlanにQ2とDefault Partitionが現れない。

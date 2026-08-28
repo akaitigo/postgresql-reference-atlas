@@ -1,0 +1,14 @@
+---
+schema_version: 1
+id: lifecycle.schema-migration
+atlas_id: postgresql-reference-atlas
+capability_id: lifecycle.schema-migration
+statement: NOT VALID Constraintは既存不整合修復後に検証でき、Concurrent Indexは行集合を維持したまま有効化できる。
+status: accepted
+source_ids:
+- postgresql-docs-18.6
+proof_obligations:
+- id: lifecycle.online-schema-migration
+  statement: lifecycle.online-schema-migrationを再現可能なCommandと明示したOracleによって検証する。
+  acceptance_criteria:
+  - NOT VALID状態を観測し、不整合修復後のVALIDATEとCREATE INDEX CONCURRENTLYが5万行を維持して完了する。

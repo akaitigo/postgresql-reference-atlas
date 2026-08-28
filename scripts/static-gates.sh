@@ -15,6 +15,8 @@ required=(
   skill.package.yaml
   third_party/manifest.yaml
   sbom.spdx.json
+  go.mod
+  surface/sql-commands.yaml
 )
 
 for path in "${required[@]}"; do

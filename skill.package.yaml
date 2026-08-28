@@ -1,6 +1,6 @@
 schema_version: 1
 atlas_id: postgresql-reference-atlas
-atlas_release: v0.0.0
+atlas_release: v1.0.0
 router:
   id: postgresql-atlas
   path: .agents/skills/postgresql-atlas/SKILL.md
@@ -16,4 +16,4 @@ adapters:
   - codex
 evals:
   path: evals/
-  minimum_pass_rate: 0.9
+  minimum_pass_rate: 1.0

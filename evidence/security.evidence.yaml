@@ -1,0 +1,21 @@
+schema_version: 1
+id: lab.security
+atlas_id: postgresql-reference-atlas
+claim_ids: [query.security]
+kind: test-report
+producer: postgresql-reference-atlas
+command: make lab LAB=security
+created_at: "2026-08-28T07:49:26Z"
+environment:
+  profile: container
+  manifest_digest: sha256:3df4dbd82139e17c785348c281f26b54d7300662087baaeec3034acefedf36b9
+source_digest: sha256:7a5097c6130472b193adb30fda89b4a607f1ae00a1ae87dbc1cf22ae5484eaef
+harness_digest: sha256:0e93aad5e54bd09ced386ff86b880f90970bc4905dca6450d53d072d7f2c8468
+harness_path: evidence/harnesses/security.manifest
+artifact:
+  uri: evidence/artifacts/security.json
+  digest: sha256:d33a405af1a47717a703b16db2ce412a003e2549f1260cbb068f280ce2e6432b
+  media_type: application/json
+  size_bytes: 261
+verdict: pass
+retention: git

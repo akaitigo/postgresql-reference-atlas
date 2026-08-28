@@ -1,0 +1,242 @@
+---
+schema_version: 1
+atlas_id: postgresql-reference-atlas
+generated_at: '2026-08-28T07:55:12Z'
+artifacts:
+- path: evals/postgresql-router.skill-eval.json
+  digest: sha256:0e09ab0c0855af117e1df58e166c2f207078fb62ffd0df6fb45863029cc6089a
+  kind: skill-eval
+  license: Apache-2.0
+  source_ids:
+  - postgresql-docs-18.6
+  generated_by: make eval
+- path: evidence/artifacts/authority-lock.json
+  digest: sha256:6dfa657fffa8bc98a2b44d097f19b8cb56eb3074c9b21651e73cc8ebb17ba892
+  kind: test-report
+  license: Apache-2.0
+  source_ids:
+  - postgresql-docs-18.6
+  - postgresql-release-18.6
+  - postgresql-source-rel-18.6
+  generated_by: make lab LAB=authority-lock
+- path: evidence/artifacts/backup-recovery.json
+  digest: sha256:b31577e18ae2d41141b97c93d23f04b108ece978183b286a3baaa578bbe8f52d
+  kind: test-report
+  license: Apache-2.0
+  source_ids:
+  - postgresql-docs-18.6
+  generated_by: make lab LAB=backup-recovery
+- path: evidence/artifacts/catalog-inventory.json
+  digest: sha256:e903f4785face57d318dcbda000ebf6d1679017f81590e6c35c5e0360c14df2e
+  kind: capture
+  license: Apache-2.0
+  source_ids:
+  - postgres-container-18.6-alpine
+  - postgresql-docs-18.6
+  generated_by: make lab LAB=catalog-inventory
+- path: evidence/artifacts/compatibility-matrix.json
+  digest: sha256:8db7e2c4d4a13a34f83b9acca0293c9f47e728a8ad8b359652e27338a36711c6
+  kind: test-report
+  license: Apache-2.0
+  source_ids:
+  - postgres-container-14.24-alpine
+  - postgres-container-15.19-alpine
+  - postgres-container-16.15-alpine
+  - postgres-container-17.11-alpine
+  - postgres-container-18.6-alpine
+  - postgresql-docs-18.6
+  - postgresql-release-18.6
+  generated_by: make lab LAB=compatibility-matrix
+- path: evidence/artifacts/deadlock.json
+  digest: sha256:8ff033c62a9ea8360237094c041c09603e342ab7f4be29e544ceadfd0e6beb0b
+  kind: test-report
+  license: Apache-2.0
+  source_ids:
+  - postgresql-docs-18.6
+  generated_by: make lab LAB=deadlock
+- path: evidence/artifacts/extension.json
+  digest: sha256:fba8b0cb54d443047834079106273ce83b1f4ddf3a958b8662a47b1876e14f41
+  kind: test-report
+  license: Apache-2.0
+  source_ids:
+  - postgresql-docs-18.6
+  generated_by: make lab LAB=extension
+- path: evidence/artifacts/failure-injection.json
+  digest: sha256:060807b83036b3fe84bca1567be86d4e6a2ee416186422e0d15c7201738179e0
+  kind: test-report
+  license: Apache-2.0
+  source_ids:
+  - postgresql-docs-18.6
+  generated_by: make lab LAB=failure-injection
+- path: evidence/artifacts/foundation-authority-lock.json
+  digest: sha256:cac7df52d6ca6f2dce96e11aaf865a0b13fce0cbc099ba2a330aa9e49d2bce43
+  kind: test-report
+  license: Apache-2.0
+  source_ids:
+  - postgresql-docs-18.6
+  - postgresql-release-18.6
+  - postgresql-source-rel-18.6
+  generated_by: make test-static
+- path: evidence/artifacts/index.json
+  digest: sha256:ef9cba7954437c58c492b980e2da59a061f4e7c515a9c51248d99766f50dad85
+  kind: benchmark
+  license: Apache-2.0
+  source_ids:
+  - postgresql-docs-18.6
+  generated_by: make lab LAB=index
+- path: evidence/artifacts/locking.json
+  digest: sha256:5c28cbc5dcf813b021dcd0027606f94cee70c5b207e67a033942903ef9499196
+  kind: test-report
+  license: Apache-2.0
+  source_ids:
+  - postgresql-docs-18.6
+  generated_by: make lab LAB=locking
+- path: evidence/artifacts/logical-replication.json
+  digest: sha256:ea72f1ea4839b9e84d3222658f5154b7a8b6b821e59a28132ab144078e9906c7
+  kind: test-report
+  license: Apache-2.0
+  source_ids:
+  - postgresql-docs-18.6
+  generated_by: make lab LAB=logical-replication
+- path: evidence/artifacts/maintenance.json
+  digest: sha256:db36e8c0afcfd8a8a7fc11351cc4acf2546003e2545c02f94acd4f1b8bdc8b9a
+  kind: test-report
+  license: Apache-2.0
+  source_ids:
+  - postgresql-docs-18.6
+  generated_by: make lab LAB=maintenance
+- path: evidence/artifacts/migration.json
+  digest: sha256:4ed7230db1679e677224428bebf1339b8c9a02d0b97ceb1d3944f6c5c6ad6557
+  kind: test-report
+  license: Apache-2.0
+  source_ids:
+  - postgresql-docs-18.6
+  generated_by: make lab LAB=migration
+- path: evidence/artifacts/mvcc.json
+  digest: sha256:e22131b26364018b3310bb5cf98a8a8c329f824ac42092d0f47d3aa9fc3a7f83
+  kind: test-report
+  license: Apache-2.0
+  source_ids:
+  - postgresql-docs-18.6
+  generated_by: make lab LAB=mvcc
+- path: evidence/artifacts/observability.json
+  digest: sha256:649bca2f8fea40fb7d9e14785cc5da2c4a8913cc5dc7fb39e748d6d87e665ed7
+  kind: test-report
+  license: Apache-2.0
+  source_ids:
+  - postgresql-docs-18.6
+  generated_by: make lab LAB=observability
+- path: evidence/artifacts/partitioning.json
+  digest: sha256:a79da652c9d347f02856e3bd5047f46c69c88ac5df982125b95317c2bd833231
+  kind: test-report
+  license: Apache-2.0
+  source_ids:
+  - postgresql-docs-18.6
+  generated_by: make lab LAB=partitioning
+- path: evidence/artifacts/performance.json
+  digest: sha256:a920b70cddef92935081f1970afdab11c8fa9ca7373d21f46b47ebeb6f3928d6
+  kind: benchmark
+  license: Apache-2.0
+  source_ids:
+  - postgresql-docs-18.6
+  generated_by: make lab LAB=performance
+- path: evidence/artifacts/pg-upgrade.json
+  digest: sha256:ade5856a457c34c0aaad66a80d48246020dc1013fbfc7f569eeb3ff207e0b0dd
+  kind: test-report
+  license: Apache-2.0
+  source_ids:
+  - postgresql-docs-18.6
+  - postgresql-release-18.6
+  generated_by: make lab LAB=pg-upgrade
+- path: evidence/artifacts/pitr.json
+  digest: sha256:ef5ed5e1f85239a5f9e9e54b3f9bb6cff112f79c443d747cedc2cf95c8d20a9d
+  kind: test-report
+  license: Apache-2.0
+  source_ids:
+  - postgresql-docs-18.6
+  generated_by: make lab LAB=pitr
+- path: evidence/artifacts/planner.json
+  digest: sha256:23996bd727c7fb1769ad10ef53f313c993b819edf65eed1dd00c0b1836f2ca15
+  kind: benchmark
+  license: Apache-2.0
+  source_ids:
+  - postgresql-docs-18.6
+  generated_by: make lab LAB=planner
+- path: evidence/artifacts/publication-static-gates.json
+  digest: sha256:b329666dcf103149ae210611511c1331cf5d3bf9d78bff66d395c0b643837094
+  kind: test-report
+  license: Apache-2.0
+  source_ids:
+  - postgresql-license-rel-18.6
+  generated_by: make test-static
+- path: evidence/artifacts/replication.json
+  digest: sha256:917089c4219799f4d5100ffb2b70987f7478a9f3ceb622be7d510edddd3815bd
+  kind: test-report
+  license: Apache-2.0
+  source_ids:
+  - postgresql-docs-18.6
+  generated_by: make lab LAB=replication
+- path: evidence/artifacts/security.json
+  digest: sha256:d33a405af1a47717a703b16db2ce412a003e2549f1260cbb068f280ce2e6432b
+  kind: test-report
+  license: Apache-2.0
+  source_ids:
+  - postgresql-docs-18.6
+  generated_by: make lab LAB=security
+- path: evidence/artifacts/skill-router-eval.json
+  digest: sha256:11e3d4301de73eca5ee25a01eb3c6f0c6f3a13552c19ffc4ce8a38fbc105e2d4
+  kind: skill-eval
+  license: Apache-2.0
+  source_ids:
+  - postgresql-docs-18.6
+  generated_by: make eval
+- path: evidence/artifacts/sql-surface.json
+  digest: sha256:329b325937c6ffdb03b5ec622b3d5473f7c8f3d28a62d1eeb47006b1ddc6ebd1
+  kind: test-report
+  license: Apache-2.0
+  source_ids:
+  - postgresql-docs-18.6
+  generated_by: make lab LAB=sql-surface
+- path: evidence/artifacts/sql.json
+  digest: sha256:e7c5757fcff20b9de4f5256967c2ecbd595e02a9f2cdd5b70b6286a08c308191
+  kind: test-report
+  license: Apache-2.0
+  source_ids:
+  - postgresql-docs-18.6
+  generated_by: make lab LAB=sql
+- path: evidence/artifacts/statistics.json
+  digest: sha256:1a8fa8d450e2dc28a3bf88006d9c6bbc3299aaf8fdb014caf3c23659c93c0129
+  kind: benchmark
+  license: Apache-2.0
+  source_ids:
+  - postgresql-docs-18.6
+  generated_by: make lab LAB=statistics
+- path: evidence/artifacts/types-constraints.json
+  digest: sha256:ab534541b6eba2f13bcd5c0b918d02c9052ca1fc0a37909fbea9be9ebc086b0e
+  kind: test-report
+  license: Apache-2.0
+  source_ids:
+  - postgresql-docs-18.6
+  generated_by: make lab LAB=types-constraints
+- path: evidence/artifacts/upgrade.json
+  digest: sha256:77db10fbe04af0ae85f0bbe526abbbbecf9c1e3ce3f8739ef55aa72fe1608268
+  kind: test-report
+  license: Apache-2.0
+  source_ids:
+  - postgresql-docs-18.6
+  - postgresql-release-18.6
+  generated_by: make lab LAB=upgrade
+- path: evidence/artifacts/wal.json
+  digest: sha256:ea97afb6a4d973a728fe6cb073ad9e5c8f256b52dc1e8aa5a0f7f7f2c9a41c85
+  kind: test-report
+  license: Apache-2.0
+  source_ids:
+  - postgresql-docs-18.6
+  generated_by: make lab LAB=wal
+- path: sbom.spdx.json
+  digest: sha256:9bbe0fc575eb2d0d79a8e79615b88d5ba720a92a568ae63ada0e115fe1c6f472
+  kind: sbom
+  license: Apache-2.0
+  source_ids:
+  - postgresql-source-rel-18.6
+  generated_by: make provenance

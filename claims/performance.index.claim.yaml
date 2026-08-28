@@ -1,0 +1,14 @@
+---
+schema_version: 1
+id: performance.index
+atlas_id: postgresql-reference-atlas
+capability_id: performance.index
+statement: Partial Indexの有無は対象Queryの結果集合を変えず、Predicateが含意される場合に利用候補となる。
+status: accepted
+source_ids:
+- postgresql-docs-18.6
+proof_obligations:
+- id: performance.partial-index
+  statement: performance.partial-indexを再現可能なCommandと明示したOracleによって検証する。
+  acceptance_criteria:
+  - Partial Index作成前後で結果Digestが同じで、作成後PlanがIndex名を参照する。

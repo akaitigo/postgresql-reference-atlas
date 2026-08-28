@@ -1,0 +1,21 @@
+schema_version: 1
+id: lab.types-constraints
+atlas_id: postgresql-reference-atlas
+claim_ids: [query.types-constraints]
+kind: test-report
+producer: postgresql-reference-atlas
+command: make lab LAB=types-constraints
+created_at: "2026-08-28T07:49:02Z"
+environment:
+  profile: container
+  manifest_digest: sha256:3df4dbd82139e17c785348c281f26b54d7300662087baaeec3034acefedf36b9
+source_digest: sha256:7a5097c6130472b193adb30fda89b4a607f1ae00a1ae87dbc1cf22ae5484eaef
+harness_digest: sha256:6b233ae03fdc4708d55022e3259f742ff4cd46c87dbd0a57086a1a598a9471b9
+harness_path: evidence/harnesses/types-constraints.manifest
+artifact:
+  uri: evidence/artifacts/types-constraints.json
+  digest: sha256:ab534541b6eba2f13bcd5c0b918d02c9052ca1fc0a37909fbea9be9ebc086b0e
+  media_type: application/json
+  size_bytes: 219
+verdict: pass
+retention: git

@@ -1,0 +1,14 @@
+---
+schema_version: 1
+id: operations.pitr-recovery
+atlas_id: postgresql-reference-atlas
+capability_id: operations.pitr-recovery
+statement: Base BackupとArchive WALから名前付き復旧点まで回復すると、復旧点前の確定変更を保持し復旧点後の変更を除外できる。
+status: accepted
+source_ids:
+- postgresql-docs-18.6
+proof_obligations:
+- id: operations.named-pitr
+  statement: operations.named-pitrを再現可能なCommandと明示したOracleによって検証する。
+  acceptance_criteria:
+  - Base BackupとArchive WALから名前付き復旧点へPromoteし、復旧後のIDが1,2で復旧点後のID 3が存在しない。

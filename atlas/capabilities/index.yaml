@@ -6,33 +6,123 @@ capabilities:
     disposition: recommended-default
     lab: labs/sql
     claim_ids: [query.sql-surface]
+  - id: query.types-constraints
+    title: 組み込み型とConstraint
+    disposition: recommended-default
+    lab: labs/types-constraints
+    claim_ids: [query.types-constraints]
+  - id: query.catalog-inventory
+    title: Runtime Catalog Inventory
+    disposition: recommended-default
+    lab: labs/catalog-inventory
+    claim_ids: [query.catalog-inventory]
+  - id: query.partitioning
+    title: Declarative Partitioning
+    disposition: conditional
+    lab: labs/partitioning
+    claim_ids: [query.partitioning]
+  - id: query.extension
+    title: 公式同梱Extension
+    disposition: conditional
+    lab: labs/extension
+    claim_ids: [query.extension]
+  - id: query.security
+    title: Role、RLS、SECURITY DEFINER
+    disposition: recommended-default
+    lab: labs/security
+    claim_ids: [query.security]
   - id: concurrency.mvcc
     title: MVCC、Isolation、Lock
     disposition: conditional
     lab: labs/mvcc
     claim_ids: [concurrency.mvcc]
+  - id: concurrency.locking
+    title: Row LockとNOWAIT
+    disposition: conditional
+    lab: labs/locking
+    claim_ids: [concurrency.locking]
+  - id: concurrency.deadlock
+    title: Deadlock検出
+    disposition: conditional
+    lab: labs/deadlock
+    claim_ids: [concurrency.deadlock]
   - id: performance.planner
     title: Plannerと統計情報
     disposition: conditional
     lab: labs/planner
     claim_ids: [performance.planner]
+  - id: performance.statistics
+    title: Extended Statistics
+    disposition: conditional
+    lab: labs/statistics
+    claim_ids: [performance.statistics]
   - id: performance.index
     title: Indexとアクセスパス
     disposition: conditional
     lab: labs/index
     claim_ids: [performance.index]
+  - id: performance.execution
+    title: 実行時PlanとBuffer証拠
+    disposition: recommended-default
+    lab: labs/performance
+    claim_ids: [performance.execution]
   - id: operations.backup-recovery
     title: BackupとRecovery
     disposition: recommended-default
     lab: labs/backup-recovery
     claim_ids: [operations.backup-recovery]
+  - id: operations.observability
+    title: PostgreSQL Observability Surface
+    disposition: recommended-default
+    lab: labs/observability
+    claim_ids: [operations.observability]
+  - id: operations.wal
+    title: WAL生成とSegment切替
+    disposition: recommended-default
+    lab: labs/wal
+    claim_ids: [operations.wal]
+  - id: operations.pitr-recovery
+    title: Point-in-Time Recovery
+    disposition: specialized
+    lab: labs/pitr
+    claim_ids: [operations.pitr-recovery]
   - id: operations.replication
     title: Physical Replication
     disposition: specialized
     lab: labs/replication
     claim_ids: [operations.replication]
+  - id: operations.logical-replication
+    title: Logical Replication
+    disposition: specialized
+    lab: labs/logical-replication
+    claim_ids: [operations.logical-replication]
+  - id: operations.failure-injection
+    title: Backend Failure Injection
+    disposition: conditional
+    lab: labs/failure-injection
+    claim_ids: [operations.failure-injection]
+  - id: operations.maintenance
+    title: VACUUM、ANALYZE、Freeze
+    disposition: recommended-default
+    lab: labs/maintenance
+    claim_ids: [operations.maintenance]
+  - id: lifecycle.schema-migration
+    title: Online Schema Migration
+    disposition: recommended-default
+    lab: labs/migration
+    claim_ids: [lifecycle.schema-migration]
   - id: lifecycle.upgrade
     title: Major Version Upgrade
     disposition: conditional
     lab: labs/upgrade
     claim_ids: [lifecycle.upgrade]
+  - id: lifecycle.pg-upgrade
+    title: pg_upgrade Binary Upgrade
+    disposition: conditional
+    lab: labs/pg-upgrade
+    claim_ids: [lifecycle.pg-upgrade]
+  - id: lifecycle.compatibility-matrix
+    title: 14.24-18.6 Compatibility Matrix
+    disposition: conditional
+    lab: labs/compatibility-matrix
+    claim_ids: [lifecycle.compatibility-matrix]

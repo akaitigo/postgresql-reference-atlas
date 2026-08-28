@@ -1,0 +1,21 @@
+schema_version: 1
+id: lab.locking
+atlas_id: postgresql-reference-atlas
+claim_ids: [concurrency.locking]
+kind: test-report
+producer: postgresql-reference-atlas
+command: make lab LAB=locking
+created_at: "2026-08-28T07:49:36Z"
+environment:
+  profile: container
+  manifest_digest: sha256:3df4dbd82139e17c785348c281f26b54d7300662087baaeec3034acefedf36b9
+source_digest: sha256:7a5097c6130472b193adb30fda89b4a607f1ae00a1ae87dbc1cf22ae5484eaef
+harness_digest: sha256:dde173ada18b5b24fcc637b227d59259b055f00f8b44c3e1315be08093c5fac2
+harness_path: evidence/harnesses/locking.manifest
+artifact:
+  uri: evidence/artifacts/locking.json
+  digest: sha256:5c28cbc5dcf813b021dcd0027606f94cee70c5b207e67a033942903ef9499196
+  media_type: application/json
+  size_bytes: 176
+verdict: pass
+retention: git

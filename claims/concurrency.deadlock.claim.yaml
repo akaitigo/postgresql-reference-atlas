@@ -1,0 +1,14 @@
+---
+schema_version: 1
+id: concurrency.deadlock
+atlas_id: postgresql-reference-atlas
+capability_id: concurrency.deadlock
+statement: 逆順のRow Lock取得で待機Cycleが成立するとPostgreSQL 18.6は1 TransactionをSQLSTATE 40P01で中止し、残るTransactionを進行させる。
+status: accepted
+source_ids:
+- postgresql-docs-18.6
+proof_obligations:
+- id: concurrency.deadlock-victim
+  statement: concurrency.deadlock-victimを再現可能なCommandと明示したOracleによって検証する。
+  acceptance_criteria:
+  - 逆順Row Lockの2 TransactionからSQLSTATE 40P01のVictimが1件だけ発生し、Survivorの2更新だけが残る。

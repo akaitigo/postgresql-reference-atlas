@@ -1,0 +1,14 @@
+---
+schema_version: 1
+id: performance.statistics
+atlas_id: postgresql-reference-atlas
+capability_id: performance.statistics
+statement: 相関列のExtended StatisticsはCatalogへ記録され、ANALYZE後の結合Predicate行数推定へ利用される。
+status: accepted
+source_ids:
+- postgresql-docs-18.6
+proof_obligations:
+- id: performance.extended-statistics
+  statement: performance.extended-statisticsを再現可能なCommandと明示したOracleによって検証する。
+  acceptance_criteria:
+  - DependenciesとMCV統計がCatalogに存在し、相関Predicateの推定行数が実100行の80から120に入る。

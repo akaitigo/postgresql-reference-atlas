@@ -1,0 +1,21 @@
+schema_version: 1
+id: lab.logical-replication
+atlas_id: postgresql-reference-atlas
+claim_ids: [operations.logical-replication]
+kind: recovery
+producer: postgresql-reference-atlas
+command: make lab LAB=logical-replication
+created_at: "2026-08-28T07:51:49Z"
+environment:
+  profile: cluster
+  manifest_digest: sha256:718afbefcc01162a74a85ae51d34b733849f4a6b6c28d17428beead9fcd11701
+source_digest: sha256:7a5097c6130472b193adb30fda89b4a607f1ae00a1ae87dbc1cf22ae5484eaef
+harness_digest: sha256:e11530bdd38bd3a715cc74e4d0ce521950a36bbee31515e9989c5cfe3f70be2c
+harness_path: evidence/harnesses/logical-replication.manifest
+artifact:
+  uri: evidence/artifacts/logical-replication.json
+  digest: sha256:ea72f1ea4839b9e84d3222658f5154b7a8b6b821e59a28132ab144078e9906c7
+  media_type: application/json
+  size_bytes: 193
+verdict: pass
+retention: git

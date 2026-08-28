@@ -5,15 +5,16 @@ claim_ids: [foundation.authority-lock, foundation.version-lock]
 kind: test-report
 producer: postgresql-reference-atlas
 command: make test-static
-created_at: "2026-08-28T06:11:14Z"
+created_at: "2026-08-28T07:55:11Z"
 environment:
   profile: local
   manifest_digest: sha256:56798a33c95014233b4f9465aa91ce1198673432edb9114da08dec932ab1331d
-source_digest: sha256:89d1f94da2085fe535bf7acdd28a85f6cc251e079eb19f92d5eb1a07e8d467d0
-harness_digest: sha256:57b080a61dc6881207f4ebf5aeba2ed7f60f7fb083e73e5c1dcc13a695a41da0
+source_digest: sha256:7a5097c6130472b193adb30fda89b4a607f1ae00a1ae87dbc1cf22ae5484eaef
+harness_digest: sha256:d2aa18a4139816b81cbbc9350b929057ee636a5beed55410b1b35705df55f390
+harness_path: evidence/harnesses/foundation-authority-lock.manifest
 artifact:
   uri: evidence/artifacts/foundation-authority-lock.json
-  digest: sha256:f68855aac1593f7ce69680f39e95b5e37dd4c6dcff8874dfeff290c293ea9b38
+  digest: sha256:cac7df52d6ca6f2dce96e11aaf865a0b13fce0cbc099ba2a330aa9e49d2bce43
   media_type: application/json
   size_bytes: 204
 verdict: pass

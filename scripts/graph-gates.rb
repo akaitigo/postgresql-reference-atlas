@@ -32,9 +32,9 @@ actual_surfaces = mastery.fetch("surfaces").map { |surface| surface.fetch("id") 
 failures << "Mastery Outcomeが8種類の完全集合ではありません" unless actual_outcomes.sort == required_outcomes.sort
 failures << "Mastery Surfaceが14種類の完全集合ではありません" unless actual_surfaces.sort == required_surfaces.sort
 
-failures << "全Gate通過前はstatus: incompleteが必要です" unless atlas.fetch("status") == "incomplete"
+failures << "statusはincompleteまたはcompleteである必要があります" unless %w[incomplete complete].include?(atlas.fetch("status"))
 certificate = File.join(root, atlas.dig("completion", "certificate"))
-failures << "incomplete状態でCompletion Certificateを置けません" if File.exist?(certificate)
+failures << "incomplete状態でCompletion Certificateを置けません" if atlas.fetch("status") == "incomplete" && File.exist?(certificate)
 
 lock_digest = "sha256:#{Digest::SHA256.file(File.join(root, "sources.lock.yaml")).hexdigest}"
 failures << "coverage.yamlのauthority_lock_digestがLockfileと一致しません" unless coverage.fetch("authority_lock_digest") == lock_digest
@@ -66,6 +66,10 @@ claims = claims_document.fetch("claims")
 claim_ids = claims.map { |claim| claim.fetch("id") }
 proof_ids = proofs_document.fetch("proof_obligations").map { |proof| proof.fetch("id") }
 failures << "Claim IDが重複しています" unless claim_ids.uniq.length == claim_ids.length
+entity_claim_ids = Dir.glob(File.join(root, "claims", "*.claim.yaml")).map do |path|
+  YAML.safe_load(File.read(path), aliases: false).fetch("id")
+end
+failures << "個別Claim実体が集約Claimと一致しません" unless entity_claim_ids.sort == claim_ids.sort
 
 claims.each do |claim|
   claim.fetch("source_ids").each do |source_id|
@@ -100,6 +104,8 @@ evidence_records.each do |path, evidence|
     failures << "#{File.basename(path)}が未知のClaim #{claim_id}を参照しています" unless claim_ids.include?(claim_id)
   end
   failures << "#{File.basename(path)}のsource_digestが失効しています" unless evidence.fetch("source_digest") == lock_digest
+  harness = evidence["harness_path"] && File.join(root, evidence.fetch("harness_path"))
+  failures << "#{File.basename(path)}のHarness Manifestがありません" unless harness && File.file?(harness)
   artifact = File.join(root, evidence.dig("artifact", "uri"))
   unless File.file?(artifact)
     failures << "#{File.basename(path)}のArtifactがありません"

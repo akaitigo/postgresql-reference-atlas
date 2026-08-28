@@ -1,0 +1,14 @@
+---
+schema_version: 1
+id: query.sql-surface
+atlas_id: postgresql-reference-atlas
+capability_id: query.sql-surface
+statement: 制約違反は受理されず、成功したSQL操作だけが期待する状態変更を残す。
+status: accepted
+source_ids:
+- postgresql-docs-18.6
+proof_obligations:
+- id: query.constraints-and-returning
+  statement: query.constraints-and-returningを再現可能なCommandと明示したOracleによって検証する。
+  acceptance_criteria:
+  - 正常INSERTはRETURNING値を返し、重複KeyとCHECK違反は期待SQLSTATEで拒否される。

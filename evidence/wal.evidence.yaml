@@ -1,0 +1,21 @@
+schema_version: 1
+id: lab.wal
+atlas_id: postgresql-reference-atlas
+claim_ids: [operations.wal]
+kind: test-report
+producer: postgresql-reference-atlas
+command: make lab LAB=wal
+created_at: "2026-08-28T07:50:35Z"
+environment:
+  profile: container
+  manifest_digest: sha256:3df4dbd82139e17c785348c281f26b54d7300662087baaeec3034acefedf36b9
+source_digest: sha256:7a5097c6130472b193adb30fda89b4a607f1ae00a1ae87dbc1cf22ae5484eaef
+harness_digest: sha256:48942d8755c08c3c18a30022fb44a2c334c26fd4aaf5c06215f0d275b9dbbd73
+harness_path: evidence/harnesses/wal.manifest
+artifact:
+  uri: evidence/artifacts/wal.json
+  digest: sha256:ea97afb6a4d973a728fe6cb073ad9e5c8f256b52dc1e8aa5a0f7f7f2c9a41c85
+  media_type: application/json
+  size_bytes: 199
+verdict: pass
+retention: git

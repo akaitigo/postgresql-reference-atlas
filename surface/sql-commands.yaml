@@ -1,0 +1,1108 @@
+---
+schema_version: 1
+atlas_id: postgresql-reference-atlas
+source_id: postgresql-docs-18.6
+source_url: https://www.postgresql.org/docs/18/sql-commands.html
+source_version: '18.6'
+retrieved_at: '2026-08-28'
+source_capture_digest: sha256:b63a6b81eeca250e68fa960f0db663dbbc6c64f82289e3e0a15bf6d6271b10ca
+semantics_policy: 全CommandをCapabilityへ割り当て、構文全組合せではなく意味論Familyごとに正常・NULL・境界・拒否を実行証拠化する。
+commands:
+- id: abort
+  title: ABORT
+  reference: https://www.postgresql.org/docs/18/sql-abort.html
+  capability_id: query.sql-surface
+  coverage: covered
+  verification: command-inventory-and-semantic-family
+- id: alter-aggregate
+  title: ALTER AGGREGATE
+  reference: https://www.postgresql.org/docs/18/sql-alteraggregate.html
+  capability_id: query.sql-surface
+  coverage: covered
+  verification: command-inventory-and-semantic-family
+- id: alter-collation
+  title: ALTER COLLATION
+  reference: https://www.postgresql.org/docs/18/sql-altercollation.html
+  capability_id: query.sql-surface
+  coverage: covered
+  verification: command-inventory-and-semantic-family
+- id: alter-conversion
+  title: ALTER CONVERSION
+  reference: https://www.postgresql.org/docs/18/sql-alterconversion.html
+  capability_id: query.sql-surface
+  coverage: covered
+  verification: command-inventory-and-semantic-family
+- id: alter-database
+  title: ALTER DATABASE
+  reference: https://www.postgresql.org/docs/18/sql-alterdatabase.html
+  capability_id: query.sql-surface
+  coverage: covered
+  verification: command-inventory-and-semantic-family
+- id: alter-default-privileges
+  title: ALTER DEFAULT PRIVILEGES
+  reference: https://www.postgresql.org/docs/18/sql-alterdefaultprivileges.html
+  capability_id: query.sql-surface
+  coverage: covered
+  verification: command-inventory-and-semantic-family
+- id: alter-domain
+  title: ALTER DOMAIN
+  reference: https://www.postgresql.org/docs/18/sql-alterdomain.html
+  capability_id: query.sql-surface
+  coverage: covered
+  verification: command-inventory-and-semantic-family
+- id: alter-event-trigger
+  title: ALTER EVENT TRIGGER
+  reference: https://www.postgresql.org/docs/18/sql-altereventtrigger.html
+  capability_id: query.sql-surface
+  coverage: covered
+  verification: command-inventory-and-semantic-family
+- id: alter-extension
+  title: ALTER EXTENSION
+  reference: https://www.postgresql.org/docs/18/sql-alterextension.html
+  capability_id: query.sql-surface
+  coverage: covered
+  verification: command-inventory-and-semantic-family
+- id: alter-foreign-data-wrapper
+  title: ALTER FOREIGN DATA WRAPPER
+  reference: https://www.postgresql.org/docs/18/sql-alterforeigndatawrapper.html
+  capability_id: query.sql-surface
+  coverage: covered
+  verification: command-inventory-and-semantic-family
+- id: alter-foreign-table
+  title: ALTER FOREIGN TABLE
+  reference: https://www.postgresql.org/docs/18/sql-alterforeigntable.html
+  capability_id: query.sql-surface
+  coverage: covered
+  verification: command-inventory-and-semantic-family
+- id: alter-function
+  title: ALTER FUNCTION
+  reference: https://www.postgresql.org/docs/18/sql-alterfunction.html
+  capability_id: query.sql-surface
+  coverage: covered
+  verification: command-inventory-and-semantic-family
+- id: alter-group
+  title: ALTER GROUP
+  reference: https://www.postgresql.org/docs/18/sql-altergroup.html
+  capability_id: query.sql-surface
+  coverage: covered
+  verification: command-inventory-and-semantic-family
+- id: alter-index
+  title: ALTER INDEX
+  reference: https://www.postgresql.org/docs/18/sql-alterindex.html
+  capability_id: query.sql-surface
+  coverage: covered
+  verification: command-inventory-and-semantic-family
+- id: alter-language
+  title: ALTER LANGUAGE
+  reference: https://www.postgresql.org/docs/18/sql-alterlanguage.html
+  capability_id: query.sql-surface
+  coverage: covered
+  verification: command-inventory-and-semantic-family
+- id: alter-large-object
+  title: ALTER LARGE OBJECT
+  reference: https://www.postgresql.org/docs/18/sql-alterlargeobject.html
+  capability_id: query.sql-surface
+  coverage: covered
+  verification: command-inventory-and-semantic-family
+- id: alter-materialized-view
+  title: ALTER MATERIALIZED VIEW
+  reference: https://www.postgresql.org/docs/18/sql-altermaterializedview.html
+  capability_id: query.sql-surface
+  coverage: covered
+  verification: command-inventory-and-semantic-family
+- id: alter-operator
+  title: ALTER OPERATOR
+  reference: https://www.postgresql.org/docs/18/sql-alteroperator.html
+  capability_id: query.sql-surface
+  coverage: covered
+  verification: command-inventory-and-semantic-family
+- id: alter-operator-class
+  title: ALTER OPERATOR CLASS
+  reference: https://www.postgresql.org/docs/18/sql-alteropclass.html
+  capability_id: query.sql-surface
+  coverage: covered
+  verification: command-inventory-and-semantic-family
+- id: alter-operator-family
+  title: ALTER OPERATOR FAMILY
+  reference: https://www.postgresql.org/docs/18/sql-alteropfamily.html
+  capability_id: query.sql-surface
+  coverage: covered
+  verification: command-inventory-and-semantic-family
+- id: alter-policy
+  title: ALTER POLICY
+  reference: https://www.postgresql.org/docs/18/sql-alterpolicy.html
+  capability_id: query.sql-surface
+  coverage: covered
+  verification: command-inventory-and-semantic-family
+- id: alter-procedure
+  title: ALTER PROCEDURE
+  reference: https://www.postgresql.org/docs/18/sql-alterprocedure.html
+  capability_id: query.sql-surface
+  coverage: covered
+  verification: command-inventory-and-semantic-family
+- id: alter-publication
+  title: ALTER PUBLICATION
+  reference: https://www.postgresql.org/docs/18/sql-alterpublication.html
+  capability_id: query.sql-surface
+  coverage: covered
+  verification: command-inventory-and-semantic-family
+- id: alter-role
+  title: ALTER ROLE
+  reference: https://www.postgresql.org/docs/18/sql-alterrole.html
+  capability_id: query.sql-surface
+  coverage: covered
+  verification: command-inventory-and-semantic-family
+- id: alter-routine
+  title: ALTER ROUTINE
+  reference: https://www.postgresql.org/docs/18/sql-alterroutine.html
+  capability_id: query.sql-surface
+  coverage: covered
+  verification: command-inventory-and-semantic-family
+- id: alter-rule
+  title: ALTER RULE
+  reference: https://www.postgresql.org/docs/18/sql-alterrule.html
+  capability_id: query.sql-surface
+  coverage: covered
+  verification: command-inventory-and-semantic-family
+- id: alter-schema
+  title: ALTER SCHEMA
+  reference: https://www.postgresql.org/docs/18/sql-alterschema.html
+  capability_id: query.sql-surface
+  coverage: covered
+  verification: command-inventory-and-semantic-family
+- id: alter-sequence
+  title: ALTER SEQUENCE
+  reference: https://www.postgresql.org/docs/18/sql-altersequence.html
+  capability_id: query.sql-surface
+  coverage: covered
+  verification: command-inventory-and-semantic-family
+- id: alter-server
+  title: ALTER SERVER
+  reference: https://www.postgresql.org/docs/18/sql-alterserver.html
+  capability_id: query.sql-surface
+  coverage: covered
+  verification: command-inventory-and-semantic-family
+- id: alter-statistics
+  title: ALTER STATISTICS
+  reference: https://www.postgresql.org/docs/18/sql-alterstatistics.html
+  capability_id: query.sql-surface
+  coverage: covered
+  verification: command-inventory-and-semantic-family
+- id: alter-subscription
+  title: ALTER SUBSCRIPTION
+  reference: https://www.postgresql.org/docs/18/sql-altersubscription.html
+  capability_id: query.sql-surface
+  coverage: covered
+  verification: command-inventory-and-semantic-family
+- id: alter-system
+  title: ALTER SYSTEM
+  reference: https://www.postgresql.org/docs/18/sql-altersystem.html
+  capability_id: query.sql-surface
+  coverage: covered
+  verification: command-inventory-and-semantic-family
+- id: alter-table
+  title: ALTER TABLE
+  reference: https://www.postgresql.org/docs/18/sql-altertable.html
+  capability_id: query.sql-surface
+  coverage: covered
+  verification: command-inventory-and-semantic-family
+- id: alter-tablespace
+  title: ALTER TABLESPACE
+  reference: https://www.postgresql.org/docs/18/sql-altertablespace.html
+  capability_id: query.sql-surface
+  coverage: covered
+  verification: command-inventory-and-semantic-family
+- id: alter-text-search-configuration
+  title: ALTER TEXT SEARCH CONFIGURATION
+  reference: https://www.postgresql.org/docs/18/sql-altertsconfig.html
+  capability_id: query.sql-surface
+  coverage: covered
+  verification: command-inventory-and-semantic-family
+- id: alter-text-search-dictionary
+  title: ALTER TEXT SEARCH DICTIONARY
+  reference: https://www.postgresql.org/docs/18/sql-altertsdictionary.html
+  capability_id: query.sql-surface
+  coverage: covered
+  verification: command-inventory-and-semantic-family
+- id: alter-text-search-parser
+  title: ALTER TEXT SEARCH PARSER
+  reference: https://www.postgresql.org/docs/18/sql-altertsparser.html
+  capability_id: query.sql-surface
+  coverage: covered
+  verification: command-inventory-and-semantic-family
+- id: alter-text-search-template
+  title: ALTER TEXT SEARCH TEMPLATE
+  reference: https://www.postgresql.org/docs/18/sql-altertstemplate.html
+  capability_id: query.sql-surface
+  coverage: covered
+  verification: command-inventory-and-semantic-family
+- id: alter-trigger
+  title: ALTER TRIGGER
+  reference: https://www.postgresql.org/docs/18/sql-altertrigger.html
+  capability_id: query.sql-surface
+  coverage: covered
+  verification: command-inventory-and-semantic-family
+- id: alter-type
+  title: ALTER TYPE
+  reference: https://www.postgresql.org/docs/18/sql-altertype.html
+  capability_id: query.sql-surface
+  coverage: covered
+  verification: command-inventory-and-semantic-family
+- id: alter-user
+  title: ALTER USER
+  reference: https://www.postgresql.org/docs/18/sql-alteruser.html
+  capability_id: query.sql-surface
+  coverage: covered
+  verification: command-inventory-and-semantic-family
+- id: alter-user-mapping
+  title: ALTER USER MAPPING
+  reference: https://www.postgresql.org/docs/18/sql-alterusermapping.html
+  capability_id: query.sql-surface
+  coverage: covered
+  verification: command-inventory-and-semantic-family
+- id: alter-view
+  title: ALTER VIEW
+  reference: https://www.postgresql.org/docs/18/sql-alterview.html
+  capability_id: query.sql-surface
+  coverage: covered
+  verification: command-inventory-and-semantic-family
+- id: analyze
+  title: ANALYZE
+  reference: https://www.postgresql.org/docs/18/sql-analyze.html
+  capability_id: query.sql-surface
+  coverage: covered
+  verification: command-inventory-and-semantic-family
+- id: begin
+  title: BEGIN
+  reference: https://www.postgresql.org/docs/18/sql-begin.html
+  capability_id: query.sql-surface
+  coverage: covered
+  verification: command-inventory-and-semantic-family
+- id: call
+  title: CALL
+  reference: https://www.postgresql.org/docs/18/sql-call.html
+  capability_id: query.sql-surface
+  coverage: covered
+  verification: command-inventory-and-semantic-family
+- id: checkpoint
+  title: CHECKPOINT
+  reference: https://www.postgresql.org/docs/18/sql-checkpoint.html
+  capability_id: query.sql-surface
+  coverage: covered
+  verification: command-inventory-and-semantic-family
+- id: close
+  title: CLOSE
+  reference: https://www.postgresql.org/docs/18/sql-close.html
+  capability_id: query.sql-surface
+  coverage: covered
+  verification: command-inventory-and-semantic-family
+- id: cluster
+  title: CLUSTER
+  reference: https://www.postgresql.org/docs/18/sql-cluster.html
+  capability_id: query.sql-surface
+  coverage: covered
+  verification: command-inventory-and-semantic-family
+- id: comment
+  title: COMMENT
+  reference: https://www.postgresql.org/docs/18/sql-comment.html
+  capability_id: query.sql-surface
+  coverage: covered
+  verification: command-inventory-and-semantic-family
+- id: commit
+  title: COMMIT
+  reference: https://www.postgresql.org/docs/18/sql-commit.html
+  capability_id: query.sql-surface
+  coverage: covered
+  verification: command-inventory-and-semantic-family
+- id: commit-prepared
+  title: COMMIT PREPARED
+  reference: https://www.postgresql.org/docs/18/sql-commit-prepared.html
+  capability_id: query.sql-surface
+  coverage: covered
+  verification: command-inventory-and-semantic-family
+- id: copy
+  title: COPY
+  reference: https://www.postgresql.org/docs/18/sql-copy.html
+  capability_id: query.sql-surface
+  coverage: covered
+  verification: command-inventory-and-semantic-family
+- id: create-access-method
+  title: CREATE ACCESS METHOD
+  reference: https://www.postgresql.org/docs/18/sql-create-access-method.html
+  capability_id: query.sql-surface
+  coverage: covered
+  verification: command-inventory-and-semantic-family
+- id: create-aggregate
+  title: CREATE AGGREGATE
+  reference: https://www.postgresql.org/docs/18/sql-createaggregate.html
+  capability_id: query.sql-surface
+  coverage: covered
+  verification: command-inventory-and-semantic-family
+- id: create-cast
+  title: CREATE CAST
+  reference: https://www.postgresql.org/docs/18/sql-createcast.html
+  capability_id: query.sql-surface
+  coverage: covered
+  verification: command-inventory-and-semantic-family
+- id: create-collation
+  title: CREATE COLLATION
+  reference: https://www.postgresql.org/docs/18/sql-createcollation.html
+  capability_id: query.sql-surface
+  coverage: covered
+  verification: command-inventory-and-semantic-family
+- id: create-conversion
+  title: CREATE CONVERSION
+  reference: https://www.postgresql.org/docs/18/sql-createconversion.html
+  capability_id: query.sql-surface
+  coverage: covered
+  verification: command-inventory-and-semantic-family
+- id: create-database
+  title: CREATE DATABASE
+  reference: https://www.postgresql.org/docs/18/sql-createdatabase.html
+  capability_id: query.sql-surface
+  coverage: covered
+  verification: command-inventory-and-semantic-family
+- id: create-domain
+  title: CREATE DOMAIN
+  reference: https://www.postgresql.org/docs/18/sql-createdomain.html
+  capability_id: query.sql-surface
+  coverage: covered
+  verification: command-inventory-and-semantic-family
+- id: create-event-trigger
+  title: CREATE EVENT TRIGGER
+  reference: https://www.postgresql.org/docs/18/sql-createeventtrigger.html
+  capability_id: query.sql-surface
+  coverage: covered
+  verification: command-inventory-and-semantic-family
+- id: create-extension
+  title: CREATE EXTENSION
+  reference: https://www.postgresql.org/docs/18/sql-createextension.html
+  capability_id: query.sql-surface
+  coverage: covered
+  verification: command-inventory-and-semantic-family
+- id: create-foreign-data-wrapper
+  title: CREATE FOREIGN DATA WRAPPER
+  reference: https://www.postgresql.org/docs/18/sql-createforeigndatawrapper.html
+  capability_id: query.sql-surface
+  coverage: covered
+  verification: command-inventory-and-semantic-family
+- id: create-foreign-table
+  title: CREATE FOREIGN TABLE
+  reference: https://www.postgresql.org/docs/18/sql-createforeigntable.html
+  capability_id: query.sql-surface
+  coverage: covered
+  verification: command-inventory-and-semantic-family
+- id: create-function
+  title: CREATE FUNCTION
+  reference: https://www.postgresql.org/docs/18/sql-createfunction.html
+  capability_id: query.sql-surface
+  coverage: covered
+  verification: command-inventory-and-semantic-family
+- id: create-group
+  title: CREATE GROUP
+  reference: https://www.postgresql.org/docs/18/sql-creategroup.html
+  capability_id: query.sql-surface
+  coverage: covered
+  verification: command-inventory-and-semantic-family
+- id: create-index
+  title: CREATE INDEX
+  reference: https://www.postgresql.org/docs/18/sql-createindex.html
+  capability_id: query.sql-surface
+  coverage: covered
+  verification: command-inventory-and-semantic-family
+- id: create-language
+  title: CREATE LANGUAGE
+  reference: https://www.postgresql.org/docs/18/sql-createlanguage.html
+  capability_id: query.sql-surface
+  coverage: covered
+  verification: command-inventory-and-semantic-family
+- id: create-materialized-view
+  title: CREATE MATERIALIZED VIEW
+  reference: https://www.postgresql.org/docs/18/sql-creatematerializedview.html
+  capability_id: query.sql-surface
+  coverage: covered
+  verification: command-inventory-and-semantic-family
+- id: create-operator
+  title: CREATE OPERATOR
+  reference: https://www.postgresql.org/docs/18/sql-createoperator.html
+  capability_id: query.sql-surface
+  coverage: covered
+  verification: command-inventory-and-semantic-family
+- id: create-operator-class
+  title: CREATE OPERATOR CLASS
+  reference: https://www.postgresql.org/docs/18/sql-createopclass.html
+  capability_id: query.sql-surface
+  coverage: covered
+  verification: command-inventory-and-semantic-family
+- id: create-operator-family
+  title: CREATE OPERATOR FAMILY
+  reference: https://www.postgresql.org/docs/18/sql-createopfamily.html
+  capability_id: query.sql-surface
+  coverage: covered
+  verification: command-inventory-and-semantic-family
+- id: create-policy
+  title: CREATE POLICY
+  reference: https://www.postgresql.org/docs/18/sql-createpolicy.html
+  capability_id: query.sql-surface
+  coverage: covered
+  verification: command-inventory-and-semantic-family
+- id: create-procedure
+  title: CREATE PROCEDURE
+  reference: https://www.postgresql.org/docs/18/sql-createprocedure.html
+  capability_id: query.sql-surface
+  coverage: covered
+  verification: command-inventory-and-semantic-family
+- id: create-publication
+  title: CREATE PUBLICATION
+  reference: https://www.postgresql.org/docs/18/sql-createpublication.html
+  capability_id: query.sql-surface
+  coverage: covered
+  verification: command-inventory-and-semantic-family
+- id: create-role
+  title: CREATE ROLE
+  reference: https://www.postgresql.org/docs/18/sql-createrole.html
+  capability_id: query.sql-surface
+  coverage: covered
+  verification: command-inventory-and-semantic-family
+- id: create-rule
+  title: CREATE RULE
+  reference: https://www.postgresql.org/docs/18/sql-createrule.html
+  capability_id: query.sql-surface
+  coverage: covered
+  verification: command-inventory-and-semantic-family
+- id: create-schema
+  title: CREATE SCHEMA
+  reference: https://www.postgresql.org/docs/18/sql-createschema.html
+  capability_id: query.sql-surface
+  coverage: covered
+  verification: command-inventory-and-semantic-family
+- id: create-sequence
+  title: CREATE SEQUENCE
+  reference: https://www.postgresql.org/docs/18/sql-createsequence.html
+  capability_id: query.sql-surface
+  coverage: covered
+  verification: command-inventory-and-semantic-family
+- id: create-server
+  title: CREATE SERVER
+  reference: https://www.postgresql.org/docs/18/sql-createserver.html
+  capability_id: query.sql-surface
+  coverage: covered
+  verification: command-inventory-and-semantic-family
+- id: create-statistics
+  title: CREATE STATISTICS
+  reference: https://www.postgresql.org/docs/18/sql-createstatistics.html
+  capability_id: query.sql-surface
+  coverage: covered
+  verification: command-inventory-and-semantic-family
+- id: create-subscription
+  title: CREATE SUBSCRIPTION
+  reference: https://www.postgresql.org/docs/18/sql-createsubscription.html
+  capability_id: query.sql-surface
+  coverage: covered
+  verification: command-inventory-and-semantic-family
+- id: create-table
+  title: CREATE TABLE
+  reference: https://www.postgresql.org/docs/18/sql-createtable.html
+  capability_id: query.sql-surface
+  coverage: covered
+  verification: command-inventory-and-semantic-family
+- id: create-table-as
+  title: CREATE TABLE AS
+  reference: https://www.postgresql.org/docs/18/sql-createtableas.html
+  capability_id: query.sql-surface
+  coverage: covered
+  verification: command-inventory-and-semantic-family
+- id: create-tablespace
+  title: CREATE TABLESPACE
+  reference: https://www.postgresql.org/docs/18/sql-createtablespace.html
+  capability_id: query.sql-surface
+  coverage: covered
+  verification: command-inventory-and-semantic-family
+- id: create-text-search-configuration
+  title: CREATE TEXT SEARCH CONFIGURATION
+  reference: https://www.postgresql.org/docs/18/sql-createtsconfig.html
+  capability_id: query.sql-surface
+  coverage: covered
+  verification: command-inventory-and-semantic-family
+- id: create-text-search-dictionary
+  title: CREATE TEXT SEARCH DICTIONARY
+  reference: https://www.postgresql.org/docs/18/sql-createtsdictionary.html
+  capability_id: query.sql-surface
+  coverage: covered
+  verification: command-inventory-and-semantic-family
+- id: create-text-search-parser
+  title: CREATE TEXT SEARCH PARSER
+  reference: https://www.postgresql.org/docs/18/sql-createtsparser.html
+  capability_id: query.sql-surface
+  coverage: covered
+  verification: command-inventory-and-semantic-family
+- id: create-text-search-template
+  title: CREATE TEXT SEARCH TEMPLATE
+  reference: https://www.postgresql.org/docs/18/sql-createtstemplate.html
+  capability_id: query.sql-surface
+  coverage: covered
+  verification: command-inventory-and-semantic-family
+- id: create-transform
+  title: CREATE TRANSFORM
+  reference: https://www.postgresql.org/docs/18/sql-createtransform.html
+  capability_id: query.sql-surface
+  coverage: covered
+  verification: command-inventory-and-semantic-family
+- id: create-trigger
+  title: CREATE TRIGGER
+  reference: https://www.postgresql.org/docs/18/sql-createtrigger.html
+  capability_id: query.sql-surface
+  coverage: covered
+  verification: command-inventory-and-semantic-family
+- id: create-type
+  title: CREATE TYPE
+  reference: https://www.postgresql.org/docs/18/sql-createtype.html
+  capability_id: query.sql-surface
+  coverage: covered
+  verification: command-inventory-and-semantic-family
+- id: create-user
+  title: CREATE USER
+  reference: https://www.postgresql.org/docs/18/sql-createuser.html
+  capability_id: query.sql-surface
+  coverage: covered
+  verification: command-inventory-and-semantic-family
+- id: create-user-mapping
+  title: CREATE USER MAPPING
+  reference: https://www.postgresql.org/docs/18/sql-createusermapping.html
+  capability_id: query.sql-surface
+  coverage: covered
+  verification: command-inventory-and-semantic-family
+- id: create-view
+  title: CREATE VIEW
+  reference: https://www.postgresql.org/docs/18/sql-createview.html
+  capability_id: query.sql-surface
+  coverage: covered
+  verification: command-inventory-and-semantic-family
+- id: deallocate
+  title: DEALLOCATE
+  reference: https://www.postgresql.org/docs/18/sql-deallocate.html
+  capability_id: query.sql-surface
+  coverage: covered
+  verification: command-inventory-and-semantic-family
+- id: declare
+  title: DECLARE
+  reference: https://www.postgresql.org/docs/18/sql-declare.html
+  capability_id: query.sql-surface
+  coverage: covered
+  verification: command-inventory-and-semantic-family
+- id: delete
+  title: DELETE
+  reference: https://www.postgresql.org/docs/18/sql-delete.html
+  capability_id: query.sql-surface
+  coverage: covered
+  verification: command-inventory-and-semantic-family
+- id: discard
+  title: DISCARD
+  reference: https://www.postgresql.org/docs/18/sql-discard.html
+  capability_id: query.sql-surface
+  coverage: covered
+  verification: command-inventory-and-semantic-family
+- id: do
+  title: DO
+  reference: https://www.postgresql.org/docs/18/sql-do.html
+  capability_id: query.sql-surface
+  coverage: covered
+  verification: command-inventory-and-semantic-family
+- id: drop-access-method
+  title: DROP ACCESS METHOD
+  reference: https://www.postgresql.org/docs/18/sql-drop-access-method.html
+  capability_id: query.sql-surface
+  coverage: covered
+  verification: command-inventory-and-semantic-family
+- id: drop-aggregate
+  title: DROP AGGREGATE
+  reference: https://www.postgresql.org/docs/18/sql-dropaggregate.html
+  capability_id: query.sql-surface
+  coverage: covered
+  verification: command-inventory-and-semantic-family
+- id: drop-cast
+  title: DROP CAST
+  reference: https://www.postgresql.org/docs/18/sql-dropcast.html
+  capability_id: query.sql-surface
+  coverage: covered
+  verification: command-inventory-and-semantic-family
+- id: drop-collation
+  title: DROP COLLATION
+  reference: https://www.postgresql.org/docs/18/sql-dropcollation.html
+  capability_id: query.sql-surface
+  coverage: covered
+  verification: command-inventory-and-semantic-family
+- id: drop-conversion
+  title: DROP CONVERSION
+  reference: https://www.postgresql.org/docs/18/sql-dropconversion.html
+  capability_id: query.sql-surface
+  coverage: covered
+  verification: command-inventory-and-semantic-family
+- id: drop-database
+  title: DROP DATABASE
+  reference: https://www.postgresql.org/docs/18/sql-dropdatabase.html
+  capability_id: query.sql-surface
+  coverage: covered
+  verification: command-inventory-and-semantic-family
+- id: drop-domain
+  title: DROP DOMAIN
+  reference: https://www.postgresql.org/docs/18/sql-dropdomain.html
+  capability_id: query.sql-surface
+  coverage: covered
+  verification: command-inventory-and-semantic-family
+- id: drop-event-trigger
+  title: DROP EVENT TRIGGER
+  reference: https://www.postgresql.org/docs/18/sql-dropeventtrigger.html
+  capability_id: query.sql-surface
+  coverage: covered
+  verification: command-inventory-and-semantic-family
+- id: drop-extension
+  title: DROP EXTENSION
+  reference: https://www.postgresql.org/docs/18/sql-dropextension.html
+  capability_id: query.sql-surface
+  coverage: covered
+  verification: command-inventory-and-semantic-family
+- id: drop-foreign-data-wrapper
+  title: DROP FOREIGN DATA WRAPPER
+  reference: https://www.postgresql.org/docs/18/sql-dropforeigndatawrapper.html
+  capability_id: query.sql-surface
+  coverage: covered
+  verification: command-inventory-and-semantic-family
+- id: drop-foreign-table
+  title: DROP FOREIGN TABLE
+  reference: https://www.postgresql.org/docs/18/sql-dropforeigntable.html
+  capability_id: query.sql-surface
+  coverage: covered
+  verification: command-inventory-and-semantic-family
+- id: drop-function
+  title: DROP FUNCTION
+  reference: https://www.postgresql.org/docs/18/sql-dropfunction.html
+  capability_id: query.sql-surface
+  coverage: covered
+  verification: command-inventory-and-semantic-family
+- id: drop-group
+  title: DROP GROUP
+  reference: https://www.postgresql.org/docs/18/sql-dropgroup.html
+  capability_id: query.sql-surface
+  coverage: covered
+  verification: command-inventory-and-semantic-family
+- id: drop-index
+  title: DROP INDEX
+  reference: https://www.postgresql.org/docs/18/sql-dropindex.html
+  capability_id: query.sql-surface
+  coverage: covered
+  verification: command-inventory-and-semantic-family
+- id: drop-language
+  title: DROP LANGUAGE
+  reference: https://www.postgresql.org/docs/18/sql-droplanguage.html
+  capability_id: query.sql-surface
+  coverage: covered
+  verification: command-inventory-and-semantic-family
+- id: drop-materialized-view
+  title: DROP MATERIALIZED VIEW
+  reference: https://www.postgresql.org/docs/18/sql-dropmaterializedview.html
+  capability_id: query.sql-surface
+  coverage: covered
+  verification: command-inventory-and-semantic-family
+- id: drop-operator
+  title: DROP OPERATOR
+  reference: https://www.postgresql.org/docs/18/sql-dropoperator.html
+  capability_id: query.sql-surface
+  coverage: covered
+  verification: command-inventory-and-semantic-family
+- id: drop-operator-class
+  title: DROP OPERATOR CLASS
+  reference: https://www.postgresql.org/docs/18/sql-dropopclass.html
+  capability_id: query.sql-surface
+  coverage: covered
+  verification: command-inventory-and-semantic-family
+- id: drop-operator-family
+  title: DROP OPERATOR FAMILY
+  reference: https://www.postgresql.org/docs/18/sql-dropopfamily.html
+  capability_id: query.sql-surface
+  coverage: covered
+  verification: command-inventory-and-semantic-family
+- id: drop-owned
+  title: DROP OWNED
+  reference: https://www.postgresql.org/docs/18/sql-drop-owned.html
+  capability_id: query.sql-surface
+  coverage: covered
+  verification: command-inventory-and-semantic-family
+- id: drop-policy
+  title: DROP POLICY
+  reference: https://www.postgresql.org/docs/18/sql-droppolicy.html
+  capability_id: query.sql-surface
+  coverage: covered
+  verification: command-inventory-and-semantic-family
+- id: drop-procedure
+  title: DROP PROCEDURE
+  reference: https://www.postgresql.org/docs/18/sql-dropprocedure.html
+  capability_id: query.sql-surface
+  coverage: covered
+  verification: command-inventory-and-semantic-family
+- id: drop-publication
+  title: DROP PUBLICATION
+  reference: https://www.postgresql.org/docs/18/sql-droppublication.html
+  capability_id: query.sql-surface
+  coverage: covered
+  verification: command-inventory-and-semantic-family
+- id: drop-role
+  title: DROP ROLE
+  reference: https://www.postgresql.org/docs/18/sql-droprole.html
+  capability_id: query.sql-surface
+  coverage: covered
+  verification: command-inventory-and-semantic-family
+- id: drop-routine
+  title: DROP ROUTINE
+  reference: https://www.postgresql.org/docs/18/sql-droproutine.html
+  capability_id: query.sql-surface
+  coverage: covered
+  verification: command-inventory-and-semantic-family
+- id: drop-rule
+  title: DROP RULE
+  reference: https://www.postgresql.org/docs/18/sql-droprule.html
+  capability_id: query.sql-surface
+  coverage: covered
+  verification: command-inventory-and-semantic-family
+- id: drop-schema
+  title: DROP SCHEMA
+  reference: https://www.postgresql.org/docs/18/sql-dropschema.html
+  capability_id: query.sql-surface
+  coverage: covered
+  verification: command-inventory-and-semantic-family
+- id: drop-sequence
+  title: DROP SEQUENCE
+  reference: https://www.postgresql.org/docs/18/sql-dropsequence.html
+  capability_id: query.sql-surface
+  coverage: covered
+  verification: command-inventory-and-semantic-family
+- id: drop-server
+  title: DROP SERVER
+  reference: https://www.postgresql.org/docs/18/sql-dropserver.html
+  capability_id: query.sql-surface
+  coverage: covered
+  verification: command-inventory-and-semantic-family
+- id: drop-statistics
+  title: DROP STATISTICS
+  reference: https://www.postgresql.org/docs/18/sql-dropstatistics.html
+  capability_id: query.sql-surface
+  coverage: covered
+  verification: command-inventory-and-semantic-family
+- id: drop-subscription
+  title: DROP SUBSCRIPTION
+  reference: https://www.postgresql.org/docs/18/sql-dropsubscription.html
+  capability_id: query.sql-surface
+  coverage: covered
+  verification: command-inventory-and-semantic-family
+- id: drop-table
+  title: DROP TABLE
+  reference: https://www.postgresql.org/docs/18/sql-droptable.html
+  capability_id: query.sql-surface
+  coverage: covered
+  verification: command-inventory-and-semantic-family
+- id: drop-tablespace
+  title: DROP TABLESPACE
+  reference: https://www.postgresql.org/docs/18/sql-droptablespace.html
+  capability_id: query.sql-surface
+  coverage: covered
+  verification: command-inventory-and-semantic-family
+- id: drop-text-search-configuration
+  title: DROP TEXT SEARCH CONFIGURATION
+  reference: https://www.postgresql.org/docs/18/sql-droptsconfig.html
+  capability_id: query.sql-surface
+  coverage: covered
+  verification: command-inventory-and-semantic-family
+- id: drop-text-search-dictionary
+  title: DROP TEXT SEARCH DICTIONARY
+  reference: https://www.postgresql.org/docs/18/sql-droptsdictionary.html
+  capability_id: query.sql-surface
+  coverage: covered
+  verification: command-inventory-and-semantic-family
+- id: drop-text-search-parser
+  title: DROP TEXT SEARCH PARSER
+  reference: https://www.postgresql.org/docs/18/sql-droptsparser.html
+  capability_id: query.sql-surface
+  coverage: covered
+  verification: command-inventory-and-semantic-family
+- id: drop-text-search-template
+  title: DROP TEXT SEARCH TEMPLATE
+  reference: https://www.postgresql.org/docs/18/sql-droptstemplate.html
+  capability_id: query.sql-surface
+  coverage: covered
+  verification: command-inventory-and-semantic-family
+- id: drop-transform
+  title: DROP TRANSFORM
+  reference: https://www.postgresql.org/docs/18/sql-droptransform.html
+  capability_id: query.sql-surface
+  coverage: covered
+  verification: command-inventory-and-semantic-family
+- id: drop-trigger
+  title: DROP TRIGGER
+  reference: https://www.postgresql.org/docs/18/sql-droptrigger.html
+  capability_id: query.sql-surface
+  coverage: covered
+  verification: command-inventory-and-semantic-family
+- id: drop-type
+  title: DROP TYPE
+  reference: https://www.postgresql.org/docs/18/sql-droptype.html
+  capability_id: query.sql-surface
+  coverage: covered
+  verification: command-inventory-and-semantic-family
+- id: drop-user
+  title: DROP USER
+  reference: https://www.postgresql.org/docs/18/sql-dropuser.html
+  capability_id: query.sql-surface
+  coverage: covered
+  verification: command-inventory-and-semantic-family
+- id: drop-user-mapping
+  title: DROP USER MAPPING
+  reference: https://www.postgresql.org/docs/18/sql-dropusermapping.html
+  capability_id: query.sql-surface
+  coverage: covered
+  verification: command-inventory-and-semantic-family
+- id: drop-view
+  title: DROP VIEW
+  reference: https://www.postgresql.org/docs/18/sql-dropview.html
+  capability_id: query.sql-surface
+  coverage: covered
+  verification: command-inventory-and-semantic-family
+- id: end
+  title: END
+  reference: https://www.postgresql.org/docs/18/sql-end.html
+  capability_id: query.sql-surface
+  coverage: covered
+  verification: command-inventory-and-semantic-family
+- id: execute
+  title: EXECUTE
+  reference: https://www.postgresql.org/docs/18/sql-execute.html
+  capability_id: query.sql-surface
+  coverage: covered
+  verification: command-inventory-and-semantic-family
+- id: explain
+  title: EXPLAIN
+  reference: https://www.postgresql.org/docs/18/sql-explain.html
+  capability_id: query.sql-surface
+  coverage: covered
+  verification: command-inventory-and-semantic-family
+- id: fetch
+  title: FETCH
+  reference: https://www.postgresql.org/docs/18/sql-fetch.html
+  capability_id: query.sql-surface
+  coverage: covered
+  verification: command-inventory-and-semantic-family
+- id: grant
+  title: GRANT
+  reference: https://www.postgresql.org/docs/18/sql-grant.html
+  capability_id: query.sql-surface
+  coverage: covered
+  verification: command-inventory-and-semantic-family
+- id: import-foreign-schema
+  title: IMPORT FOREIGN SCHEMA
+  reference: https://www.postgresql.org/docs/18/sql-importforeignschema.html
+  capability_id: query.sql-surface
+  coverage: covered
+  verification: command-inventory-and-semantic-family
+- id: insert
+  title: INSERT
+  reference: https://www.postgresql.org/docs/18/sql-insert.html
+  capability_id: query.sql-surface
+  coverage: covered
+  verification: command-inventory-and-semantic-family
+- id: listen
+  title: LISTEN
+  reference: https://www.postgresql.org/docs/18/sql-listen.html
+  capability_id: query.sql-surface
+  coverage: covered
+  verification: command-inventory-and-semantic-family
+- id: load
+  title: LOAD
+  reference: https://www.postgresql.org/docs/18/sql-load.html
+  capability_id: query.sql-surface
+  coverage: covered
+  verification: command-inventory-and-semantic-family
+- id: lock
+  title: LOCK
+  reference: https://www.postgresql.org/docs/18/sql-lock.html
+  capability_id: query.sql-surface
+  coverage: covered
+  verification: command-inventory-and-semantic-family
+- id: merge
+  title: MERGE
+  reference: https://www.postgresql.org/docs/18/sql-merge.html
+  capability_id: query.sql-surface
+  coverage: covered
+  verification: command-inventory-and-semantic-family
+- id: move
+  title: MOVE
+  reference: https://www.postgresql.org/docs/18/sql-move.html
+  capability_id: query.sql-surface
+  coverage: covered
+  verification: command-inventory-and-semantic-family
+- id: notify
+  title: NOTIFY
+  reference: https://www.postgresql.org/docs/18/sql-notify.html
+  capability_id: query.sql-surface
+  coverage: covered
+  verification: command-inventory-and-semantic-family
+- id: prepare
+  title: PREPARE
+  reference: https://www.postgresql.org/docs/18/sql-prepare.html
+  capability_id: query.sql-surface
+  coverage: covered
+  verification: command-inventory-and-semantic-family
+- id: prepare-transaction
+  title: PREPARE TRANSACTION
+  reference: https://www.postgresql.org/docs/18/sql-prepare-transaction.html
+  capability_id: query.sql-surface
+  coverage: covered
+  verification: command-inventory-and-semantic-family
+- id: reassign-owned
+  title: REASSIGN OWNED
+  reference: https://www.postgresql.org/docs/18/sql-reassign-owned.html
+  capability_id: query.sql-surface
+  coverage: covered
+  verification: command-inventory-and-semantic-family
+- id: refresh-materialized-view
+  title: REFRESH MATERIALIZED VIEW
+  reference: https://www.postgresql.org/docs/18/sql-refreshmaterializedview.html
+  capability_id: query.sql-surface
+  coverage: covered
+  verification: command-inventory-and-semantic-family
+- id: reindex
+  title: REINDEX
+  reference: https://www.postgresql.org/docs/18/sql-reindex.html
+  capability_id: query.sql-surface
+  coverage: covered
+  verification: command-inventory-and-semantic-family
+- id: release-savepoint
+  title: RELEASE SAVEPOINT
+  reference: https://www.postgresql.org/docs/18/sql-release-savepoint.html
+  capability_id: query.sql-surface
+  coverage: covered
+  verification: command-inventory-and-semantic-family
+- id: reset
+  title: RESET
+  reference: https://www.postgresql.org/docs/18/sql-reset.html
+  capability_id: query.sql-surface
+  coverage: covered
+  verification: command-inventory-and-semantic-family
+- id: revoke
+  title: REVOKE
+  reference: https://www.postgresql.org/docs/18/sql-revoke.html
+  capability_id: query.sql-surface
+  coverage: covered
+  verification: command-inventory-and-semantic-family
+- id: rollback
+  title: ROLLBACK
+  reference: https://www.postgresql.org/docs/18/sql-rollback.html
+  capability_id: query.sql-surface
+  coverage: covered
+  verification: command-inventory-and-semantic-family
+- id: rollback-prepared
+  title: ROLLBACK PREPARED
+  reference: https://www.postgresql.org/docs/18/sql-rollback-prepared.html
+  capability_id: query.sql-surface
+  coverage: covered
+  verification: command-inventory-and-semantic-family
+- id: rollback-to-savepoint
+  title: ROLLBACK TO SAVEPOINT
+  reference: https://www.postgresql.org/docs/18/sql-rollback-to.html
+  capability_id: query.sql-surface
+  coverage: covered
+  verification: command-inventory-and-semantic-family
+- id: savepoint
+  title: SAVEPOINT
+  reference: https://www.postgresql.org/docs/18/sql-savepoint.html
+  capability_id: query.sql-surface
+  coverage: covered
+  verification: command-inventory-and-semantic-family
+- id: security-label
+  title: SECURITY LABEL
+  reference: https://www.postgresql.org/docs/18/sql-security-label.html
+  capability_id: query.sql-surface
+  coverage: covered
+  verification: command-inventory-and-semantic-family
+- id: select
+  title: SELECT
+  reference: https://www.postgresql.org/docs/18/sql-select.html
+  capability_id: query.sql-surface
+  coverage: covered
+  verification: command-inventory-and-semantic-family
+- id: select-into
+  title: SELECT INTO
+  reference: https://www.postgresql.org/docs/18/sql-selectinto.html
+  capability_id: query.sql-surface
+  coverage: covered
+  verification: command-inventory-and-semantic-family
+- id: set
+  title: SET
+  reference: https://www.postgresql.org/docs/18/sql-set.html
+  capability_id: query.sql-surface
+  coverage: covered
+  verification: command-inventory-and-semantic-family
+- id: set-constraints
+  title: SET CONSTRAINTS
+  reference: https://www.postgresql.org/docs/18/sql-set-constraints.html
+  capability_id: query.sql-surface
+  coverage: covered
+  verification: command-inventory-and-semantic-family
+- id: set-role
+  title: SET ROLE
+  reference: https://www.postgresql.org/docs/18/sql-set-role.html
+  capability_id: query.sql-surface
+  coverage: covered
+  verification: command-inventory-and-semantic-family
+- id: set-session-authorization
+  title: SET SESSION AUTHORIZATION
+  reference: https://www.postgresql.org/docs/18/sql-set-session-authorization.html
+  capability_id: query.sql-surface
+  coverage: covered
+  verification: command-inventory-and-semantic-family
+- id: set-transaction
+  title: SET TRANSACTION
+  reference: https://www.postgresql.org/docs/18/sql-set-transaction.html
+  capability_id: query.sql-surface
+  coverage: covered
+  verification: command-inventory-and-semantic-family
+- id: show
+  title: SHOW
+  reference: https://www.postgresql.org/docs/18/sql-show.html
+  capability_id: query.sql-surface
+  coverage: covered
+  verification: command-inventory-and-semantic-family
+- id: start-transaction
+  title: START TRANSACTION
+  reference: https://www.postgresql.org/docs/18/sql-start-transaction.html
+  capability_id: query.sql-surface
+  coverage: covered
+  verification: command-inventory-and-semantic-family
+- id: truncate
+  title: TRUNCATE
+  reference: https://www.postgresql.org/docs/18/sql-truncate.html
+  capability_id: query.sql-surface
+  coverage: covered
+  verification: command-inventory-and-semantic-family
+- id: unlisten
+  title: UNLISTEN
+  reference: https://www.postgresql.org/docs/18/sql-unlisten.html
+  capability_id: query.sql-surface
+  coverage: covered
+  verification: command-inventory-and-semantic-family
+- id: update
+  title: UPDATE
+  reference: https://www.postgresql.org/docs/18/sql-update.html
+  capability_id: query.sql-surface
+  coverage: covered
+  verification: command-inventory-and-semantic-family
+- id: vacuum
+  title: VACUUM
+  reference: https://www.postgresql.org/docs/18/sql-vacuum.html
+  capability_id: query.sql-surface
+  coverage: covered
+  verification: command-inventory-and-semantic-family
+- id: values
+  title: VALUES
+  reference: https://www.postgresql.org/docs/18/sql-values.html
+  capability_id: query.sql-surface
+  coverage: covered
+  verification: command-inventory-and-semantic-family

@@ -1,0 +1,15 @@
+---
+schema_version: 1
+id: foundation.version-lock
+atlas_id: postgresql-reference-atlas
+capability_id: foundation.version-lock
+statement: このCoverage Epochの正式対象はPostgreSQL 18.6のREL_18_6である。
+status: accepted
+source_ids:
+- postgresql-release-18.6
+- postgresql-source-rel-18.6
+proof_obligations:
+- id: foundation.authority-digests
+  statement: foundation.authority-digestsを再現可能なCommandと明示したOracleによって検証する。
+  acceptance_criteria:
+  - sources.lock.yamlの全DigestがSchema適合し、CoverageがLockfile Digestへ束縛される。

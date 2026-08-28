@@ -4,7 +4,7 @@ PostgreSQL 18.6の公開機能について、一次資料、設計判断、再�
 
 このAtlasのMastery Promiseは、PostgreSQLについて「理解する、選ぶ、構築する、検証する、運用する、診断する、進化させる、Agentへ委任する」の8 Outcomeを、14の技術Surfaceにわたって一次資料と実行証拠へ接続することです。対象分野を増やす契約ではありません。
 
-現在の状態は **`incomplete`** です。個別Labの成功はAtlas全体の完成を意味しません。固定したCoverage Epochに対して全Closureを通過し、生成済みCompletion Certificateが得られるまで`complete`を名乗りません。
+現在の状態は **`complete`** です。個別Labの成功ではなく、固定したCoverage Epochに対する全Closure、Claim↔Evidence Graph、Skill Eval、Supply Chain、Completion CertificateをCore v1で監査して完成を判定します。
 
 ## 固定境界
 
@@ -16,10 +16,11 @@ PostgreSQL 18.6の公開機能について、一次資料、設計判断、再�
 
 ## 構造
 
-- `atlas/`: Capability、Claim、Proof Obligation、判断、失敗、除外
+- `atlas/`と`claims/`: Capability、集約索引、Core v1 Claim実体
 - `mastery.yaml`: 8 Outcomeと14 Surfaceを既存Coverageへ接続する契約
 - `versions/`: Version固定と互換性境界
-- `labs/`: SQL、MVCC、Planner、Index、Backup/Recovery、Replication、Upgradeの再実行Harness
+- `labs/`: 27領域のVersion固定・再実行可能Harness
+- `surface/`: PostgreSQL 18.6公式SQL Command 183件の有限Inventory
 - `operations/`: 診断・変更・復旧Runbook
 - `evidence/`: 実行結果とCore Evidence Record
 - `.agents/skills/postgresql-atlas/`: 一つのRouter Skill
@@ -34,17 +35,18 @@ make validate
 make audit
 make test-static
 make lab LAB=sql
-make lab LAB=mvcc
-make lab LAB=planner
-make lab LAB=index
-make lab LAB=backup-recovery
-make lab LAB=replication
-make lab LAB=upgrade
+make lab LAB=types-constraints
+make lab LAB=deadlock
+make lab LAB=pitr
+make lab LAB=logical-replication
+make lab LAB=pg-upgrade
 make eval
 ```
+
+利用可能なLabは`authority-lock`、`sql-surface`、`sql`、`types-constraints`、`catalog-inventory`、`partitioning`、`extension`、`security`、`mvcc`、`locking`、`deadlock`、`planner`、`statistics`、`index`、`performance`、`wal`、`backup-recovery`、`pitr`、`replication`、`logical-replication`、`observability`、`maintenance`、`failure-injection`、`migration`、`upgrade`、`pg-upgrade`、`compatibility-matrix`です。
 
 Labは`pgra-<lab>-<pid>`という一時Resourceだけを使い、終了時に削除します。失敗時に証拠を調べたい場合は`KEEP_LAB=1`を指定します。
 
 ## 完成の意味
 
-`make validate`は共通5 Manifest、`make audit`はID、Epoch、Target Set、Routerの横断整合を検証します。Atlas全体の完成には、Authority、Coverage、Claim、Execution、Operational、Skill、Publicationの7 Closureすべてが必要です。現時点の未完項目は[docs/STATUS.md](docs/STATUS.md)を参照してください。
+`make validate`はManifest、Claim、Evidence、Skill Eval、Provenance、Certificateを検証し、`make audit`はCore v1の完全監査を実行します。Authority、Coverage、Claim、Execution、Operational、Skill、Publicationの7 ClosureはすべてCompletion Certificateへ固定されています。監査結果は[docs/STATUS.md](docs/STATUS.md)を参照してください。

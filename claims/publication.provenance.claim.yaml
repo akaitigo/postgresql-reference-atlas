@@ -1,0 +1,14 @@
+---
+schema_version: 1
+id: publication.provenance
+atlas_id: postgresql-reference-atlas
+capability_id: publication.provenance
+statement: 独自成果物と第三者資料のLicenseと出典を分離して追跡できる。
+status: accepted
+source_ids:
+- postgresql-license-rel-18.6
+proof_obligations:
+- id: publication.static-gates
+  statement: publication.static-gatesを再現可能なCommandと明示したOracleによって検証する。
+  acceptance_criteria:
+  - 必須権利File、SPDX SBOM、第三者Manifest、秘密Pattern検査が通る。

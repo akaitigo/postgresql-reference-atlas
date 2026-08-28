@@ -1,0 +1,21 @@
+schema_version: 1
+id: lab.pitr
+atlas_id: postgresql-reference-atlas
+claim_ids: [operations.pitr-recovery]
+kind: recovery
+producer: postgresql-reference-atlas
+command: make lab LAB=pitr
+created_at: "2026-08-28T07:51:06Z"
+environment:
+  profile: cluster
+  manifest_digest: sha256:718afbefcc01162a74a85ae51d34b733849f4a6b6c28d17428beead9fcd11701
+source_digest: sha256:7a5097c6130472b193adb30fda89b4a607f1ae00a1ae87dbc1cf22ae5484eaef
+harness_digest: sha256:35bfb7f21f59f8da139917259264890991ea8088dd4af54ae6e0c04155578ece
+harness_path: evidence/harnesses/pitr.manifest
+artifact:
+  uri: evidence/artifacts/pitr.json
+  digest: sha256:ef5ed5e1f85239a5f9e9e54b3f9bb6cff112f79c443d747cedc2cf95c8d20a9d
+  media_type: application/json
+  size_bytes: 209
+verdict: pass
+retention: git

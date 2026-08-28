@@ -1,0 +1,21 @@
+schema_version: 1
+id: lab.sql-surface
+atlas_id: postgresql-reference-atlas
+claim_ids: [query.sql-surface]
+kind: conformance
+producer: postgresql-reference-atlas
+command: make lab LAB=sql-surface
+created_at: "2026-08-28T07:53:24Z"
+environment:
+  profile: local
+  manifest_digest: sha256:56798a33c95014233b4f9465aa91ce1198673432edb9114da08dec932ab1331d
+source_digest: sha256:7a5097c6130472b193adb30fda89b4a607f1ae00a1ae87dbc1cf22ae5484eaef
+harness_digest: sha256:75afca61578d1f8fb76a09bed36f40733218b9c6daca264c09182454809e759e
+harness_path: evidence/harnesses/sql-surface.manifest
+artifact:
+  uri: evidence/artifacts/sql-surface.json
+  digest: sha256:329b325937c6ffdb03b5ec622b3d5473f7c8f3d28a62d1eeb47006b1ddc6ebd1
+  media_type: application/json
+  size_bytes: 912
+verdict: pass
+retention: git

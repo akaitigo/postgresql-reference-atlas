@@ -1,0 +1,14 @@
+---
+schema_version: 1
+id: operations.backup-recovery
+atlas_id: postgresql-reference-atlas
+capability_id: operations.backup-recovery
+statement: PostgreSQL 18.6の論理Backupを別DatabaseへRestoreするとFixtureの論理Digestが一致する。
+status: accepted
+source_ids:
+- postgresql-docs-18.6
+proof_obligations:
+- id: operations.logical-restore
+  statement: operations.logical-restoreを再現可能なCommandと明示したOracleによって検証する。
+  acceptance_criteria:
+  - Dump元とRestore先の順序付き論理Digestが一致する。

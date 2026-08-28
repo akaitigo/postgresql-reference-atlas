@@ -13,30 +13,102 @@ claims:
     statement: 制約違反は受理されず、成功したSQL操作だけが期待する状態変更を残す。
     source_ids: [postgresql-docs-18.6]
     proof_obligation_ids: [query.constraints-and-returning]
+  - id: query.types-constraints
+    statement: PostgreSQL 18.6の代表的な構造型とDomain Constraintは値を保持し、不正なDomain値を拒否する。
+    source_ids: [postgresql-docs-18.6]
+    proof_obligation_ids: [query.types-constraints]
+  - id: query.catalog-inventory
+    statement: PostgreSQL 18.6 Runtimeが公開する主要pg_catalog Surfaceは件数と順序付きDigestで再取得できる。
+    source_ids: [postgresql-docs-18.6, postgres-container-18.6-alpine]
+    proof_obligation_ids: [query.runtime-catalog-inventory]
+  - id: query.partitioning
+    statement: Range Partition Tableは境界に従って行をRoutingし、固定Predicateで不要PartitionをPlanから除外する。
+    source_ids: [postgresql-docs-18.6]
+    proof_obligation_ids: [query.partition-routing-pruning]
+  - id: query.extension
+    statement: 公式同梱pg_trgm Extensionは導入後にTrigram OperatorとGIN Operator Classを提供し対象Queryで利用できる。
+    source_ids: [postgresql-docs-18.6]
+    proof_obligation_ids: [query.bundled-extension]
+  - id: query.security
+    statement: FORCE RLS Tableへの非Superuser接続はTenant PredicateでFilterされ、WITH CHECK違反がSQLSTATE 42501で拒否される。
+    source_ids: [postgresql-docs-18.6]
+    proof_obligation_ids: [query.rls-boundary]
   - id: concurrency.mvcc
     statement: Repeatable Read Transactionは同一Transaction内でSnapshotを維持し、別Transactionの確定後も既読値を変えない。
     source_ids: [postgresql-docs-18.6]
     proof_obligation_ids: [concurrency.repeatable-read-snapshot]
+  - id: concurrency.locking
+    statement: 保持中のRow Lockに対するNOWAIT取得はSQLSTATE 55P03で拒否され、解放後は競合Sessionが進行できる。
+    source_ids: [postgresql-docs-18.6]
+    proof_obligation_ids: [concurrency.row-lock-nowait]
+  - id: concurrency.deadlock
+    statement: 逆順のRow Lock取得で待機Cycleが成立するとPostgreSQL 18.6は1 TransactionをSQLSTATE 40P01で中止し、残るTransactionを進行させる。
+    source_ids: [postgresql-docs-18.6]
+    proof_obligation_ids: [concurrency.deadlock-victim]
   - id: performance.planner
     statement: 統計情報更新後、選択性の高いPredicateは固定FixtureでIndex Scan系Planを選択できる。
     source_ids: [postgresql-docs-18.6]
     proof_obligation_ids: [performance.semantic-plan]
+  - id: performance.statistics
+    statement: 相関列のExtended StatisticsはCatalogへ記録され、ANALYZE後の結合Predicate行数推定へ利用される。
+    source_ids: [postgresql-docs-18.6]
+    proof_obligation_ids: [performance.extended-statistics]
   - id: performance.index
     statement: Partial Indexの有無は対象Queryの結果集合を変えず、Predicateが含意される場合に利用候補となる。
     source_ids: [postgresql-docs-18.6]
     proof_obligation_ids: [performance.partial-index]
+  - id: performance.execution
+    statement: 固定Fixtureの実行性能は結果OracleとともにPlan Node、Buffer、WAL、Relation Sizeとして再取得できる。
+    source_ids: [postgresql-docs-18.6]
+    proof_obligation_ids: [performance.execution-evidence]
   - id: operations.backup-recovery
     statement: PostgreSQL 18.6の論理Backupを別DatabaseへRestoreするとFixtureの論理Digestが一致する。
     source_ids: [postgresql-docs-18.6]
     proof_obligation_ids: [operations.logical-restore]
+  - id: operations.observability
+    statement: 必要なPreload設定下でpg_stat_statementsと主要System ViewからStatement、Session、Table、Lock、WAL状態を観測できる。
+    source_ids: [postgresql-docs-18.6]
+    proof_obligation_ids: [operations.observability-views]
+  - id: operations.wal
+    statement: PostgreSQL 18.6の確定WriteはWAL Insert LSNを前進させ、明示的なWAL Segment切替を観測できる。
+    source_ids: [postgresql-docs-18.6]
+    proof_obligation_ids: [operations.wal-generation]
+  - id: operations.pitr-recovery
+    statement: Base BackupとArchive WALから名前付き復旧点まで回復すると、復旧点前の確定変更を保持し復旧点後の変更を除外できる。
+    source_ids: [postgresql-docs-18.6]
+    proof_obligation_ids: [operations.named-pitr]
   - id: operations.replication
-    statement: Physical StandbyはPrimaryで確定したFixtureをWAL Replay後にRead-onlyで参照できる。
+    statement: Physical StandbyはPrimaryで確定したFixtureをRead-onlyで参照でき、停止中の確定Writeへ再起動後に追随する。
     source_ids: [postgresql-docs-18.6]
     proof_obligation_ids: [operations.physical-replication]
+  - id: operations.logical-replication
+    statement: PostgreSQL 18.6のPublication対象Tableへの確定変更はReplication SlotとApply Workerを介してSubscriberへ到達する。
+    source_ids: [postgresql-docs-18.6]
+    proof_obligation_ids: [operations.logical-replication]
+  - id: operations.failure-injection
+    statement: Write Transaction中のBackend強制終了は未確定変更を残さず、Clusterは後続の確定Writeを受理する。
+    source_ids: [postgresql-docs-18.6]
+    proof_obligation_ids: [operations.backend-failure]
+  - id: operations.maintenance
+    statement: 明示VACUUM FREEZE ANALYZEは削除後のLive行を保持し、Dead Tupleを回収してVacuum/Analyze統計を更新する。
+    source_ids: [postgresql-docs-18.6]
+    proof_obligation_ids: [operations.vacuum-maintenance]
+  - id: lifecycle.schema-migration
+    statement: NOT VALID Constraintは既存不整合修復後に検証でき、Concurrent Indexは行集合を維持したまま有効化できる。
+    source_ids: [postgresql-docs-18.6]
+    proof_obligation_ids: [lifecycle.online-schema-migration]
   - id: lifecycle.upgrade
     statement: PostgreSQL 17.11の論理Backupは18.6へRestoreでき、Fixtureの論理Digestが一致する。
     source_ids: [postgresql-docs-18.6, postgresql-release-18.6]
     proof_obligation_ids: [lifecycle.logical-upgrade]
+  - id: lifecycle.pg-upgrade
+    statement: PostgreSQL 17.11のData Directoryは互換性Check後に18.6のpg_upgradeで変換でき、固定Fixtureの論理Digestを保持する。
+    source_ids: [postgresql-docs-18.6, postgresql-release-18.6]
+    proof_obligation_ids: [lifecycle.binary-pg-upgrade]
+  - id: lifecycle.compatibility-matrix
+    statement: 固定した14.24から18.6の各Runtimeで共通Fixtureの論理結果を比較し、Version固有Featureの境界を明示できる。
+    source_ids: [postgresql-docs-18.6, postgresql-release-18.6, postgres-container-18.6-alpine, postgres-container-17.11-alpine, postgres-container-16.15-alpine, postgres-container-15.19-alpine, postgres-container-14.24-alpine]
+    proof_obligation_ids: [lifecycle.cross-version-matrix]
   - id: skill.router
     statement: Router Skillは依頼をCoverage内Capabilityへ案内し、Coverage外ならGapを明示する。
     source_ids: [postgresql-docs-18.6]

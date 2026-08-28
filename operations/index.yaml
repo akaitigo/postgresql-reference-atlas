@@ -13,6 +13,30 @@ operations:
     title: Replication Lagを送信・受信・Replayへ分解する
     mode: read-only
     references: [operations/replication.md]
+  - id: diagnose.concurrency
+    title: MVCC、Lock、Deadlockを待機GraphとSQLSTATEから診断する
+    mode: read-only
+    references: [operations/concurrency.md]
+  - id: diagnose.observability
+    title: Session、Query、WAL、容量を同じ観測窓で関連付ける
+    mode: read-only
+    references: [operations/observability.md]
+  - id: operate.maintenance
+    title: VACUUM、ANALYZE、Freezeを安全に計画する
+    mode: change-with-approval
+    references: [operations/maintenance.md]
+  - id: review.security
+    title: Role、SCRAM、RLS、SECURITY DEFINERをReviewする
+    mode: read-only
+    references: [operations/security.md]
+  - id: rehearse.failure-response
+    title: 隔離環境で障害を注入し回復Oracleを検証する
+    mode: isolated-change
+    references: [operations/failure-response.md]
+  - id: plan.schema-migration
+    title: Expand-Migrate-ContractでSchemaを移行する
+    mode: change-with-approval
+    references: [operations/migration.md]
   - id: plan.major-upgrade
     title: Major Upgradeを計画しRollback境界を確認する
     mode: plan-only

@@ -1,7 +1,7 @@
 schema_version: 1
 atlas_id: postgresql-reference-atlas
 epoch: "2026-08-28"
-authority_lock_digest: sha256:89d1f94da2085fe535bf7acdd28a85f6cc251e079eb19f92d5eb1a07e8d467d0
+authority_lock_digest: sha256:7a5097c6130472b193adb30fda89b4a607f1ae00a1ae87dbc1cf22ae5484eaef
 target_sets:
   - id: foundation
     title: Versionと一次資料の固定
@@ -65,7 +65,7 @@ targets:
     target_set: foundation
     kind: compatibility
     requirement: required
-    state: partial
+    state: covered
     rationale: 完全性の主張を有限にし、上流更新で過去Evidenceの意味が変わらないようにする。
     claim_ids: [foundation.version-lock]
     evidence_ids: [foundation.authority-lock]
@@ -74,79 +74,241 @@ targets:
     target_set: foundation
     kind: concept
     requirement: required
-    state: partial
+    state: covered
     rationale: 単一の抽出元の欠落を網羅性と誤認しないため、文書、Source、Runtime、Binary、差分を照合する。
     claim_ids: [foundation.authority-lock]
-    evidence_ids: [foundation.authority-lock]
+    evidence_ids: [foundation.authority-lock, lab.authority-lock]
   - id: query.sql-surface
     title: SQL公開Surfaceと実行意味論
     target_set: query
     kind: capability
     requirement: required
-    state: partial
+    state: covered
     rationale: SQLの構文一覧だけでなく、制約、型、戻り値、失敗時SQLSTATEを実行証拠へ接続する。
     claim_ids: [query.sql-surface]
-    evidence_ids: [lab.sql]
+    evidence_ids: [lab.sql, lab.sql-surface]
+  - id: query.types-constraints
+    title: 組み込み型とConstraintの実行意味論
+    target_set: query
+    kind: capability
+    requirement: required
+    state: covered
+    rationale: Domain、Enum、Array、JSONB、Range、Multirange、UUIDv7、Generated Columnと拒否境界を18.6で実行検証する。
+    claim_ids: [query.types-constraints]
+    evidence_ids: [lab.types-constraints]
+  - id: query.catalog-inventory
+    title: PostgreSQL 18.6 Runtime Catalog Inventory
+    target_set: query
+    kind: compatibility
+    requirement: required
+    state: covered
+    rationale: pg_catalogの型、関数、演算子、Cast、Access Method、Collation、同梱Extension、Catalog Relationを件数と順序付きDigestへ固定する。
+    claim_ids: [query.catalog-inventory]
+    evidence_ids: [lab.catalog-inventory]
+  - id: query.partitioning
+    title: Range Partition RoutingとPruning
+    target_set: query
+    kind: capability
+    requirement: required
+    state: covered
+    rationale: Range Partitionへの行Routingと固定PredicateによるPlan時PruningをJSON Planで検証する。
+    claim_ids: [query.partitioning]
+    evidence_ids: [lab.partitioning]
+  - id: query.extension
+    title: 公式同梱Extensionの導入と索引利用
+    target_set: query
+    kind: capability
+    requirement: required
+    state: covered
+    rationale: 公式同梱pg_trgmの導入、Operator、Operator Class、GIN Index利用を固定Fixtureで検証する。
+    claim_ids: [query.extension]
+    evidence_ids: [lab.extension]
+  - id: query.security
+    title: Role、RLS、SECURITY DEFINER安全境界
+    target_set: query
+    kind: security
+    requirement: required
+    state: covered
+    rationale: 非SuperuserのTenant Filter、WITH CHECK拒否、固定search_pathを独立Sessionから検証する。
+    claim_ids: [query.security]
+    evidence_ids: [lab.security]
   - id: concurrency.mvcc
     title: MVCC、Isolation、Lock
     target_set: concurrency
     kind: capability
     requirement: required
-    state: partial
+    state: covered
     rationale: 並行処理の正しさは単一Sessionの成功例では証明できず、実行順序と観測点を固定する必要がある。
     claim_ids: [concurrency.mvcc]
     evidence_ids: [lab.mvcc]
+  - id: concurrency.locking
+    title: Row Lock競合とNOWAIT拒否
+    target_set: concurrency
+    kind: capability
+    requirement: required
+    state: covered
+    rationale: 独立SessionのRow Lock競合、SQLSTATE 55P03、Lock解放後の進行を決定論的に検証する。
+    claim_ids: [concurrency.locking]
+    evidence_ids: [lab.locking]
+  - id: concurrency.deadlock
+    title: Deadlock検出とVictim Rollback
+    target_set: concurrency
+    kind: capability
+    requirement: required
+    state: covered
+    rationale: 逆順Row Lockで待機Cycleを作り、SQLSTATE 40P01、Victim 1件、Survivorの整合性を検証する。
+    claim_ids: [concurrency.deadlock]
+    evidence_ids: [lab.deadlock]
   - id: performance.planner
     title: Plannerと統計情報
     target_set: performance
     kind: performance
     requirement: required
-    state: partial
+    state: covered
     rationale: 実行時間の固定値ではなく、データ分布、推定行数、Plan Node、Scan Methodを意味的に評価する。
     claim_ids: [performance.planner]
     evidence_ids: [lab.planner]
+  - id: performance.statistics
+    title: Extended Statisticsと行数推定
+    target_set: performance
+    kind: performance
+    requirement: required
+    state: covered
+    rationale: 相関列のDependenciesとMCV統計を作成し、ANALYZE後のCatalogと行数推定を検証する。
+    claim_ids: [performance.statistics]
+    evidence_ids: [lab.statistics]
   - id: performance.index
     title: Indexとアクセスパス
     target_set: performance
     kind: performance
     requirement: required
-    state: partial
+    state: covered
     rationale: Index採用には検索結果不変性、利用条件、書込み費用、Planner判断の証拠が必要である。
     claim_ids: [performance.index]
     evidence_ids: [lab.index]
+  - id: performance.execution
+    title: 実行時Plan、Buffer、Relation Size証拠
+    target_set: performance
+    kind: performance
+    requirement: required
+    state: covered
+    rationale: Wall-clock閾値ではなくEXPLAIN ANALYZE、Buffer、Index選択、Relation Size、結果Oracleを証拠化する。
+    claim_ids: [performance.execution]
+    evidence_ids: [lab.performance]
   - id: operations.backup-recovery
     title: BackupとRecovery
     target_set: operations
     kind: operation
     requirement: required
-    state: partial
+    state: covered
     rationale: Backupの存在ではなく、別DatabaseへのRestoreと論理整合性検証までを成功条件とする。
     claim_ids: [operations.backup-recovery]
     evidence_ids: [lab.backup-recovery]
+  - id: operations.observability
+    title: Activity、Statement、Table、Lock、WAL Observability
+    target_set: operations
+    kind: operation
+    requirement: required
+    state: covered
+    rationale: pg_stat_statementsの導入条件と主要System Viewから実行、Session、Table、Lock、WALを観測できることを検証する。
+    claim_ids: [operations.observability]
+    evidence_ids: [lab.observability]
+  - id: operations.wal
+    title: WAL生成、LSN差分、Segment切替
+    target_set: operations
+    kind: operation
+    requirement: required
+    state: covered
+    rationale: WALを抽象説明に留めず、固定Write WorkloadによるLSN進行とSegment切替を18.6で検証する。
+    claim_ids: [operations.wal]
+    evidence_ids: [lab.wal]
+  - id: operations.pitr-recovery
+    title: Archive WALによるPoint-in-Time Recovery
+    target_set: operations
+    kind: operation
+    requirement: required
+    state: covered
+    rationale: Base BackupとArchive WALから名前付き復旧点まで再生し、復旧点後の変更が除外されることを隔離Clusterで検証する。
+    claim_ids: [operations.pitr-recovery]
+    evidence_ids: [lab.pitr]
   - id: operations.replication
     title: Physical Replication
     target_set: operations
     kind: operation
     requirement: required
-    state: partial
+    state: covered
     rationale: PrimaryとStandbyのWAL追随、Read-only境界、停止と再同期を隔離Clusterで証明する。
     claim_ids: [operations.replication]
     evidence_ids: [lab.replication]
+  - id: operations.logical-replication
+    title: PublicationとSubscriptionによるLogical Replication
+    target_set: operations
+    kind: operation
+    requirement: required
+    state: covered
+    rationale: Publication、Replication Slot、Apply Worker、行変更の到達を独立Publisher/Subscriberで検証する。
+    claim_ids: [operations.logical-replication]
+    evidence_ids: [lab.logical-replication]
+  - id: operations.failure-injection
+    title: Backend強制終了と未確定Transaction回収
+    target_set: operations
+    kind: operation
+    requirement: required
+    state: covered
+    rationale: Backend消失時の未確定Write Rollbackと、障害後のService継続を制御されたInjectionで検証する。
+    claim_ids: [operations.failure-injection]
+    evidence_ids: [lab.failure-injection]
+  - id: operations.maintenance
+    title: VACUUM、ANALYZE、Freezeの運用検証
+    target_set: operations
+    kind: operation
+    requirement: required
+    state: covered
+    rationale: Delete後のDead Tupleを観測し、明示VACUUM FREEZE ANALYZE後の統計と50,000行の不変性を検証する。
+    claim_ids: [operations.maintenance]
+    evidence_ids: [lab.maintenance]
+  - id: lifecycle.schema-migration
+    title: NOT VALID、VALIDATE、CONCURRENTLYによるSchema移行
+    target_set: lifecycle
+    kind: migration
+    requirement: required
+    state: covered
+    rationale: 既存データの修復を挟むConstraint検証とConcurrent Index構築を固定Fixtureで検証する。
+    claim_ids: [lifecycle.schema-migration]
+    evidence_ids: [lab.migration]
   - id: lifecycle.upgrade
     title: Major Version Upgrade
     target_set: lifecycle
     kind: migration
     requirement: required
-    state: partial
+    state: covered
     rationale: Version間移行は手順書だけでなく、固定した旧版から新版への再実行と検証を必要とする。
     claim_ids: [lifecycle.upgrade]
     evidence_ids: [lab.upgrade]
+  - id: lifecycle.pg-upgrade
+    title: pg_upgradeによる17.11から18.6へのBinary Upgrade
+    target_set: lifecycle
+    kind: migration
+    requirement: required
+    state: covered
+    rationale: 論理Dump経路とは独立に、固定Binary間でpg_upgrade --checkと実Upgradeを実行し論理Digestを照合する。
+    claim_ids: [lifecycle.pg-upgrade]
+    evidence_ids: [lab.pg-upgrade]
+  - id: lifecycle.compatibility-matrix
+    title: PostgreSQL 14.24から18.6のCompatibility Matrix
+    target_set: lifecycle
+    kind: compatibility
+    requirement: required
+    state: covered
+    rationale: 14.24、15.19、16.15、17.11、18.6で同一Fixture、論理Digest、SCRAM既定、UUIDv7 Feature transitionをVersion固定Image上で比較する。
+    claim_ids: [lifecycle.compatibility-matrix]
+    evidence_ids: [lab.compatibility-matrix]
   - id: skill.router-evaluation
     title: PostgreSQL Router Skill評価
     target_set: skill
     kind: skill
     requirement: required
-    state: partial
+    state: covered
     rationale: SkillがCoverage、一次資料、Evidenceへ到達し、権限外操作や存在しない機能を捏造しないことを評価する。
     claim_ids: [skill.router]
     evidence_ids: [skill.router-eval]
@@ -155,7 +317,7 @@ targets:
     target_set: publication
     kind: operation
     requirement: required
-    state: partial
+    state: covered
     rationale: 公開前に独自成果物と第三者Sourceの権利、出典、SBOM、秘密情報を独立して確認する。
     claim_ids: [publication.provenance]
     evidence_ids: [publication.static-gates]

@@ -1,0 +1,15 @@
+---
+schema_version: 1
+id: lifecycle.pg-upgrade
+atlas_id: postgresql-reference-atlas
+capability_id: lifecycle.pg-upgrade
+statement: PostgreSQL 17.11のData Directoryは互換性Check後に18.6のpg_upgradeで変換でき、固定Fixtureの論理Digestを保持する。
+status: accepted
+source_ids:
+- postgresql-docs-18.6
+- postgresql-release-18.6
+proof_obligations:
+- id: lifecycle.binary-pg-upgrade
+  statement: lifecycle.binary-pg-upgradeを再現可能なCommandと明示したOracleによって検証する。
+  acceptance_criteria:
+  - 17.11と18.6の固定Binaryでpg_upgrade --checkと実Upgradeを通し、5万行と論理Digestを保持する。

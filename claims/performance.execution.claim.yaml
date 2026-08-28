@@ -1,0 +1,14 @@
+---
+schema_version: 1
+id: performance.execution
+atlas_id: postgresql-reference-atlas
+capability_id: performance.execution
+statement: 固定Fixtureの実行性能は結果OracleとともにPlan Node、Buffer、WAL、Relation Sizeとして再取得できる。
+status: accepted
+source_ids:
+- postgresql-docs-18.6
+proof_obligations:
+- id: performance.execution-evidence
+  statement: performance.execution-evidenceを再現可能なCommandと明示したOracleによって検証する。
+  acceptance_criteria:
+  - 20万行Fixtureで結果200行、Index Plan、Actual Rows、Buffer情報、正のRelation Sizeを取得する。

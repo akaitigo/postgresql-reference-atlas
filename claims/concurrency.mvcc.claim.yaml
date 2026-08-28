@@ -1,0 +1,14 @@
+---
+schema_version: 1
+id: concurrency.mvcc
+atlas_id: postgresql-reference-atlas
+capability_id: concurrency.mvcc
+statement: Repeatable Read Transactionは同一Transaction内でSnapshotを維持し、別Transactionの確定後も既読値を変えない。
+status: accepted
+source_ids:
+- postgresql-docs-18.6
+proof_obligations:
+- id: concurrency.repeatable-read-snapshot
+  statement: concurrency.repeatable-read-snapshotを再現可能なCommandと明示したOracleによって検証する。
+  acceptance_criteria:
+  - 制御された2 Sessionで、Readerの2回の読取り値が同一、Reader終了後の値がWriter確定値になる。

@@ -1,0 +1,14 @@
+---
+schema_version: 1
+id: query.types-constraints
+atlas_id: postgresql-reference-atlas
+capability_id: query.types-constraints
+statement: PostgreSQL 18.6の代表的な構造型とDomain Constraintは値を保持し、不正なDomain値を拒否する。
+status: accepted
+source_ids:
+- postgresql-docs-18.6
+proof_obligations:
+- id: query.types-constraints
+  statement: query.types-constraintsを再現可能なCommandと明示したOracleによって検証する。
+  acceptance_criteria:
+  - 代表型を含む行がRound-tripし、UUIDv7とGenerated値が確認でき、不正Domain値が拒否される。

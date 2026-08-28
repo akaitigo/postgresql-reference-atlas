@@ -6,6 +6,7 @@ source "$ROOT/scripts/lib.sh"
 router="$ROOT/.agents/skills/postgresql-atlas/scripts/route.sh"
 cases="$ROOT/evals/cases.json"
 report="$ROOT/evidence/artifacts/skill-router-eval.json"
+eval_entity="$ROOT/evals/postgresql-router.skill-eval.json"
 mkdir -p "$ROOT/evidence/artifacts"
 
 passed=0
@@ -14,26 +15,57 @@ results='[]'
 while IFS= read -r case_json; do
   id="$(jq -r '.id' <<<"$case_json")"
   input="$(jq -r '.input' <<<"$case_json")"
-  expected_capability="$(jq -r '.capability' <<<"$case_json")"
-  expected_mode="$(jq -r '.mode' <<<"$case_json")"
-  expected_outcome="$(jq -r '.outcome' <<<"$case_json")"
   actual="$(bash "$router" "$input")"
-  actual_capability="$(jq -r '.capability' <<<"$actual")"
-  actual_mode="$(jq -r '.mode' <<<"$actual")"
-  actual_outcome="$(jq -r '.outcome' <<<"$actual")"
-  verdict=fail
-  if [[ "$actual_capability" == "$expected_capability" && "$actual_mode" == "$expected_mode" && "$actual_outcome" == "$expected_outcome" ]]; then
-    verdict=pass
-    passed=$((passed + 1))
+  verdict=pass
+  for field in capability mode outcome coverage safety; do
+    expected="$(jq -r ".${field}" <<<"$case_json")"
+    observed="$(jq -r ".${field}" <<<"$actual")"
+    [[ "$observed" == "$expected" ]] || verdict=fail
+  done
+  [[ "$(jq -r '.version' <<<"$actual")" == "18.6" ]] || verdict=fail
+
+  capability="$(jq -r '.capability' <<<"$actual")"
+  lab="$(jq -r '.lab // empty' <<<"$actual")"
+  evidence="$(jq -r '.evidence // empty' <<<"$actual")"
+  runbook="$(jq -r '.runbook // empty' <<<"$actual")"
+  if [[ "$capability" == "coverage-gap" ]]; then
+    [[ -z "$lab" && -z "$evidence" ]] || verdict=fail
+  elif [[ "$(jq -r '.coverage' <<<"$actual")" == "planned" ]]; then
+    [[ -n "$lab" && -d "$ROOT/$lab" && -z "$evidence" && "$(jq -r '.safety' <<<"$actual")" == "stop" ]] || verdict=fail
+    rg -q --fixed-strings "id: $capability" "$ROOT/atlas/capabilities/index.yaml" || verdict=fail
+  else
+    [[ -n "$lab" && -d "$ROOT/$lab" ]] || verdict=fail
+    [[ -n "$evidence" && -s "$ROOT/$evidence" ]] || verdict=fail
+    rg -q --fixed-strings "id: $capability" "$ROOT/atlas/capabilities/index.yaml" || verdict=fail
+    [[ -z "$runbook" || -s "$ROOT/$runbook" ]] || verdict=fail
   fi
-  results="$(jq -c --arg id "$id" --arg capability "$actual_capability" --arg mode "$actual_mode" --arg outcome "$actual_outcome" --arg verdict "$verdict" '. + [{id:$id,capability:$capability,mode:$mode,outcome:$outcome,verdict:$verdict}]' <<<"$results")"
+
+  [[ "$verdict" == "pass" ]] && passed=$((passed + 1))
+  case "$id" in
+    coverage-gap-*) category=coverage-gap ;;
+    evolve-*) category=lifecycle ;;
+    delegate-*) category=authorization ;;
+    *rls*|*security*) category=security ;;
+    verify-catalog-inventory) category=authority ;;
+    choose-*|build-domain-type) category=near-neighbor ;;
+    operate-*|troubleshoot-*|recover-*|verify-*) category=execution ;;
+    *) category=routing ;;
+  esac
+  results="$(jq -c --arg id "$id" --arg capability "$capability" --arg mode "$(jq -r '.mode' <<<"$actual")" \
+    --arg outcome "$(jq -r '.outcome' <<<"$actual")" --arg coverage "$(jq -r '.coverage' <<<"$actual")" \
+    --arg safety "$(jq -r '.safety' <<<"$actual")" --arg verdict "$verdict" --arg category "$category" \
+    '. + [{id:$id,category:$category,capability:$capability,mode:$mode,outcome:$outcome,coverage:$coverage,safety:$safety,verdict:$verdict}]' <<<"$results")"
 done < <(jq -c '.[]' "$cases")
 
 pass_rate="$(awk -v p="$passed" -v t="$total" 'BEGIN { printf "%.3f", p/t }')"
 jq -n --argjson total "$total" --argjson passed "$passed" --argjson pass_rate "$pass_rate" \
   --argjson results "$results" \
-  '{total:$total,passed:$passed,pass_rate:$pass_rate,results:$results,verdict:(if $pass_rate >= 0.9 then "pass" else "fail" end)}' > "$report"
+  '{total:$total,passed:$passed,pass_rate:$pass_rate,version:"18.6",path_checks:true,results:$results,verdict:(if $pass_rate == 1 then "pass" else "fail" end)}' > "$report"
 jq -e '.verdict == "pass"' "$report" >/dev/null
+generated_at="$(date -u '+%Y-%m-%dT%H:%M:%SZ')"
+jq -n --arg generated_at "$generated_at" --argjson results "$results" \
+  '{schema_version:1,id:"skill.postgresql-router",atlas_id:"postgresql-reference-atlas",atlas_release:"v1.0.0",skill_id:"postgresql-atlas",generated_at:$generated_at,cases:($results | map({id,category,result:.verdict,assertion:(.id + " は期待したCapability、Coverage、安全境界へ正しくRoutingされる。"),evidence_ids:["skill.router-eval"]}))}' \
+  > "$eval_entity"
 record_evidence skill-router-eval skill.router skill-eval local "make eval" "$report" pass \
   "$ROOT/evals" skill.router-eval "$ROOT/.agents/skills/postgresql-atlas"
 echo "Router Skill Evalを通過しました: $passed/$total"

@@ -1,90 +1,308 @@
 {
-  "total": 12,
-  "passed": 12,
+  "total": 30,
+  "passed": 30,
   "pass_rate": 1.000,
+  "version": "18.6",
+  "path_checks": true,
   "results": [
     {
       "id": "understand-mvcc",
+      "category": "routing",
       "capability": "concurrency.mvcc",
       "mode": "review",
       "outcome": "understand",
+      "coverage": "covered",
+      "safety": "read-only-first",
       "verdict": "pass"
     },
     {
       "id": "choose-partial-index",
+      "category": "near-neighbor",
       "capability": "performance.index",
       "mode": "design",
       "outcome": "choose",
+      "coverage": "covered",
+      "safety": "isolated-lab",
       "verdict": "pass"
     },
     {
       "id": "build-sql-constraint",
+      "category": "routing",
       "capability": "query.sql-surface",
       "mode": "implement",
       "outcome": "build",
+      "coverage": "partial",
+      "safety": "isolated-lab",
+      "verdict": "pass"
+    },
+    {
+      "id": "build-domain-type",
+      "category": "near-neighbor",
+      "capability": "query.types-constraints",
+      "mode": "implement",
+      "outcome": "build",
+      "coverage": "covered",
+      "safety": "isolated-lab",
+      "verdict": "pass"
+    },
+    {
+      "id": "verify-catalog-inventory",
+      "category": "authority",
+      "capability": "query.catalog-inventory",
+      "mode": "review",
+      "outcome": "verify",
+      "coverage": "covered",
+      "safety": "read-only-first",
+      "verdict": "pass"
+    },
+    {
+      "id": "choose-partition",
+      "category": "near-neighbor",
+      "capability": "query.partitioning",
+      "mode": "design",
+      "outcome": "choose",
+      "coverage": "covered",
+      "safety": "isolated-lab",
+      "verdict": "pass"
+    },
+    {
+      "id": "build-extension",
+      "category": "routing",
+      "capability": "query.extension",
+      "mode": "implement",
+      "outcome": "build",
+      "coverage": "covered",
+      "safety": "isolated-lab",
+      "verdict": "pass"
+    },
+    {
+      "id": "choose-rls",
+      "category": "security",
+      "capability": "query.security",
+      "mode": "design",
+      "outcome": "choose",
+      "coverage": "covered",
+      "safety": "requires-approval",
       "verdict": "pass"
     },
     {
       "id": "verify-backup-evidence",
+      "category": "execution",
       "capability": "operations.backup-recovery",
       "mode": "review",
       "outcome": "verify",
+      "coverage": "partial",
+      "safety": "requires-approval",
       "verdict": "pass"
     },
     {
-      "id": "operate-replication",
+      "id": "operate-physical-replication",
+      "category": "execution",
       "capability": "operations.replication",
       "mode": "diagnose",
       "outcome": "operate",
+      "coverage": "covered",
+      "safety": "requires-approval",
       "verdict": "pass"
     },
     {
-      "id": "troubleshoot-mvcc-lock",
-      "capability": "concurrency.mvcc",
+      "id": "troubleshoot-logical-replication",
+      "category": "execution",
+      "capability": "operations.logical-replication",
       "mode": "diagnose",
       "outcome": "troubleshoot",
+      "coverage": "covered",
+      "safety": "requires-approval",
+      "verdict": "pass"
+    },
+    {
+      "id": "recover-pitr",
+      "category": "execution",
+      "capability": "operations.pitr-recovery",
+      "mode": "recover",
+      "outcome": "troubleshoot",
+      "coverage": "covered",
+      "safety": "requires-approval",
+      "verdict": "pass"
+    },
+    {
+      "id": "understand-wal",
+      "category": "routing",
+      "capability": "operations.wal",
+      "mode": "review",
+      "outcome": "understand",
+      "coverage": "covered",
+      "safety": "read-only-first",
+      "verdict": "pass"
+    },
+    {
+      "id": "verify-failure-injection",
+      "category": "execution",
+      "capability": "operations.failure-injection",
+      "mode": "review",
+      "outcome": "verify",
+      "coverage": "covered",
+      "safety": "isolated-lab",
+      "verdict": "pass"
+    },
+    {
+      "id": "operate-observability",
+      "category": "execution",
+      "capability": "operations.observability",
+      "mode": "diagnose",
+      "outcome": "operate",
+      "coverage": "covered",
+      "safety": "read-only-first",
+      "verdict": "pass"
+    },
+    {
+      "id": "operate-maintenance",
+      "category": "execution",
+      "capability": "operations.maintenance",
+      "mode": "diagnose",
+      "outcome": "operate",
+      "coverage": "covered",
+      "safety": "read-only-first",
+      "verdict": "pass"
+    },
+    {
+      "id": "troubleshoot-deadlock",
+      "category": "execution",
+      "capability": "concurrency.deadlock",
+      "mode": "diagnose",
+      "outcome": "troubleshoot",
+      "coverage": "covered",
+      "safety": "read-only-first",
+      "verdict": "pass"
+    },
+    {
+      "id": "troubleshoot-row-lock",
+      "category": "execution",
+      "capability": "concurrency.locking",
+      "mode": "diagnose",
+      "outcome": "troubleshoot",
+      "coverage": "covered",
+      "safety": "read-only-first",
       "verdict": "pass"
     },
     {
       "id": "troubleshoot-slow-plan",
+      "category": "execution",
       "capability": "performance.planner",
       "mode": "diagnose",
       "outcome": "troubleshoot",
+      "coverage": "covered",
+      "safety": "read-only-first",
       "verdict": "pass"
     },
     {
-      "id": "troubleshoot-restore",
-      "capability": "operations.backup-recovery",
-      "mode": "recover",
-      "outcome": "troubleshoot",
+      "id": "verify-statistics",
+      "category": "execution",
+      "capability": "performance.statistics",
+      "mode": "review",
+      "outcome": "verify",
+      "coverage": "covered",
+      "safety": "read-only-first",
       "verdict": "pass"
     },
     {
-      "id": "troubleshoot-replication-lag",
-      "capability": "operations.replication",
+      "id": "operate-capacity",
+      "category": "execution",
+      "capability": "performance.execution",
       "mode": "diagnose",
-      "outcome": "troubleshoot",
+      "outcome": "operate",
+      "coverage": "covered",
+      "safety": "read-only-first",
       "verdict": "pass"
     },
     {
-      "id": "evolve-major-upgrade",
+      "id": "evolve-schema-migration",
+      "category": "lifecycle",
+      "capability": "lifecycle.schema-migration",
+      "mode": "migrate",
+      "outcome": "evolve",
+      "coverage": "covered",
+      "safety": "requires-approval",
+      "verdict": "pass"
+    },
+    {
+      "id": "evolve-pg-upgrade",
+      "category": "lifecycle",
+      "capability": "lifecycle.pg-upgrade",
+      "mode": "migrate",
+      "outcome": "evolve",
+      "coverage": "covered",
+      "safety": "requires-approval",
+      "verdict": "pass"
+    },
+    {
+      "id": "evolve-logical-upgrade",
+      "category": "lifecycle",
       "capability": "lifecycle.upgrade",
       "mode": "migrate",
       "outcome": "evolve",
+      "coverage": "covered",
+      "safety": "requires-approval",
+      "verdict": "pass"
+    },
+    {
+      "id": "verify-compatibility-matrix",
+      "category": "execution",
+      "capability": "lifecycle.compatibility-matrix",
+      "mode": "review",
+      "outcome": "verify",
+      "coverage": "covered",
+      "safety": "isolated-lab",
       "verdict": "pass"
     },
     {
       "id": "delegate-index-review",
+      "category": "authorization",
       "capability": "performance.index",
       "mode": "review",
       "outcome": "delegate",
+      "coverage": "covered",
+      "safety": "isolated-lab",
       "verdict": "pass"
     },
     {
-      "id": "coverage-gap-external-extension",
+      "id": "coverage-gap-postgis",
+      "category": "coverage-gap",
       "capability": "coverage-gap",
       "mode": "review",
       "outcome": "choose",
+      "coverage": "outside",
+      "safety": "stop",
+      "verdict": "pass"
+    },
+    {
+      "id": "coverage-gap-pgvector",
+      "category": "coverage-gap",
+      "capability": "coverage-gap",
+      "mode": "review",
+      "outcome": "build",
+      "coverage": "outside",
+      "safety": "stop",
+      "verdict": "pass"
+    },
+    {
+      "id": "coverage-gap-managed",
+      "category": "coverage-gap",
+      "capability": "coverage-gap",
+      "mode": "review",
+      "outcome": "operate",
+      "coverage": "outside",
+      "safety": "stop",
+      "verdict": "pass"
+    },
+    {
+      "id": "coverage-gap-unknown",
+      "category": "coverage-gap",
+      "capability": "coverage-gap",
+      "mode": "review",
+      "outcome": "choose",
+      "coverage": "outside",
+      "safety": "stop",
       "verdict": "pass"
     }
   ],

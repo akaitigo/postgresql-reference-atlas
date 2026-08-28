@@ -1,0 +1,7 @@
+ARG PG17_IMAGE
+ARG PG18_IMAGE
+FROM ${PG17_IMAGE} AS pg17
+FROM ${PG18_IMAGE}
+COPY --from=pg17 /usr/local/ /opt/postgresql/17/
+COPY verify.sh /usr/local/bin/atlas-pg-upgrade-verify
+ENTRYPOINT ["/bin/sh", "/usr/local/bin/atlas-pg-upgrade-verify"]

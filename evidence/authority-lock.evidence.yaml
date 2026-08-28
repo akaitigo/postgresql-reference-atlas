@@ -1,0 +1,21 @@
+schema_version: 1
+id: lab.authority-lock
+atlas_id: postgresql-reference-atlas
+claim_ids: [foundation.authority-lock]
+kind: conformance
+producer: postgresql-reference-atlas
+command: make lab LAB=authority-lock
+created_at: "2026-08-28T07:53:24Z"
+environment:
+  profile: local
+  manifest_digest: sha256:56798a33c95014233b4f9465aa91ce1198673432edb9114da08dec932ab1331d
+source_digest: sha256:7a5097c6130472b193adb30fda89b4a607f1ae00a1ae87dbc1cf22ae5484eaef
+harness_digest: sha256:d49f210f3635dc60acd584a802e6dc3d3c78d6f819c4d886d30e6bdac8c9775d
+harness_path: evidence/harnesses/authority-lock.manifest
+artifact:
+  uri: evidence/artifacts/authority-lock.json
+  digest: sha256:6dfa657fffa8bc98a2b44d097f19b8cb56eb3074c9b21651e73cc8ebb17ba892
+  media_type: application/json
+  size_bytes: 1931
+verdict: pass
+retention: git

@@ -1,0 +1,16 @@
+---
+schema_version: 1
+id: foundation.authority-lock
+atlas_id: postgresql-reference-atlas
+capability_id: foundation.authority-lock
+statement: Authority Sourceは取得時点の内容DigestとVersionへ固定されている。
+status: accepted
+source_ids:
+- postgresql-docs-18.6
+- postgresql-release-18.6
+- postgresql-source-rel-18.6
+proof_obligations:
+- id: foundation.authority-digests
+  statement: foundation.authority-digestsを再現可能なCommandと明示したOracleによって検証する。
+  acceptance_criteria:
+  - sources.lock.yamlの全DigestがSchema適合し、CoverageがLockfile Digestへ束縛される。

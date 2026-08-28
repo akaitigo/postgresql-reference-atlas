@@ -2,61 +2,22 @@
   "spdxVersion": "SPDX-2.3",
   "dataLicense": "CC0-1.0",
   "SPDXID": "SPDXRef-DOCUMENT",
-  "name": "postgresql-reference-atlas",
-  "documentNamespace": "https://github.com/akaitigo/postgresql-reference-atlas/sbom/2026-08-28",
-  "creationInfo": {
-    "created": "2026-08-28T00:00:00Z",
-    "creators": ["Tool: postgresql-reference-atlas-static-manifest"]
-  },
+  "name": "postgresql-reference-atlas-v1.0.0",
+  "documentNamespace": "https://github.com/akaitigo/postgresql-reference-atlas/sbom/v1.0.0/2026-08-28",
+  "creationInfo": {"created": "2026-08-28T00:00:00Z", "creators": ["Tool: postgresql-reference-atlas-static-manifest"]},
   "packages": [
     {
       "name": "postgresql-reference-atlas",
       "SPDXID": "SPDXRef-Package-Atlas",
-      "versionInfo": "0.0.0-unreleased",
-      "downloadLocation": "NOASSERTION",
+      "versionInfo": "1.0.0",
+      "downloadLocation": "https://github.com/akaitigo/postgresql-reference-atlas",
       "filesAnalyzed": false,
       "licenseConcluded": "Apache-2.0",
       "licenseDeclared": "Apache-2.0",
       "copyrightText": "Copyright 2026 akaitigo"
-    },
-    {
-      "name": "PostgreSQL",
-      "SPDXID": "SPDXRef-Package-PostgreSQL-18.6",
-      "versionInfo": "18.6",
-      "downloadLocation": "https://ftp.postgresql.org/pub/source/v18.6/postgresql-18.6.tar.bz2",
-      "filesAnalyzed": false,
-      "licenseConcluded": "PostgreSQL",
-      "licenseDeclared": "PostgreSQL",
-      "copyrightText": "Copyright The PostgreSQL Global Development Group and contributors",
-      "checksums": [{"algorithm":"SHA256","checksumValue":"555610c24d53e4316da5b7d3fc25c279d96856d5e0e23ee308c328c5fa881d9f"}]
-    },
-    {
-      "name": "Docker Official Image postgres:18.6-alpine",
-      "SPDXID": "SPDXRef-Package-Postgres-Container-18.6",
-      "versionInfo": "18.6-alpine",
-      "downloadLocation": "https://hub.docker.com/_/postgres",
-      "filesAnalyzed": false,
-      "licenseConcluded": "NOASSERTION",
-      "licenseDeclared": "NOASSERTION",
-      "copyrightText": "NOASSERTION",
-      "checksums": [{"algorithm":"SHA256","checksumValue":"d3e1620b530c944afa6e887d22eb899824da68e19c52024bf98f5220c88a65b2"}]
-    },
-    {
-      "name": "Docker Official Image postgres:17.11-alpine",
-      "SPDXID": "SPDXRef-Package-Postgres-Container-17.11",
-      "versionInfo": "17.11-alpine",
-      "downloadLocation": "https://hub.docker.com/_/postgres",
-      "filesAnalyzed": false,
-      "licenseConcluded": "NOASSERTION",
-      "licenseDeclared": "NOASSERTION",
-      "copyrightText": "NOASSERTION",
-      "checksums": [{"algorithm":"SHA256","checksumValue":"18cfe3ef5e6815560c98237d6216d1e5119702fb0f3894c8785dd58b8bbe5d73"}]
     }
   ],
   "relationships": [
-    {"spdxElementId":"SPDXRef-DOCUMENT","relationshipType":"DESCRIBES","relatedSpdxElement":"SPDXRef-Package-Atlas"},
-    {"spdxElementId":"SPDXRef-Package-Atlas","relationshipType":"DEPENDS_ON","relatedSpdxElement":"SPDXRef-Package-PostgreSQL-18.6"},
-    {"spdxElementId":"SPDXRef-Package-Atlas","relationshipType":"TEST_DEPENDENCY_OF","relatedSpdxElement":"SPDXRef-Package-Postgres-Container-18.6"},
-    {"spdxElementId":"SPDXRef-Package-Atlas","relationshipType":"TEST_DEPENDENCY_OF","relatedSpdxElement":"SPDXRef-Package-Postgres-Container-17.11"}
+    {"spdxElementId":"SPDXRef-DOCUMENT","relationshipType":"DESCRIBES","relatedSpdxElement":"SPDXRef-Package-Atlas"}
   ]
 }

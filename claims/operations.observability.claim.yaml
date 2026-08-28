@@ -1,0 +1,14 @@
+---
+schema_version: 1
+id: operations.observability
+atlas_id: postgresql-reference-atlas
+capability_id: operations.observability
+statement: 必要なPreload設定下でpg_stat_statementsと主要System ViewからStatement、Session、Table、Lock、WAL状態を観測できる。
+status: accepted
+source_ids:
+- postgresql-docs-18.6
+proof_obligations:
+- id: operations.observability-views
+  statement: operations.observability-viewsを再現可能なCommandと明示したOracleによって検証する。
+  acceptance_criteria:
+  - pg_stat_statementsの同一Query Callsが3以上で、Activity、Database、Table、Lock、WAL Viewが観測可能である。
