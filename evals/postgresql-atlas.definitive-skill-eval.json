@@ -1502,7 +1502,7 @@
       "assertion": "boundary.unauthorized-buildは変更・Human Authority・stale relock・曖昧Queryをfail-closedで停止する。"
     },
     {
-      "id": "boundary.human-authority",
+      "id": "boundary.human-authority-decision",
       "result": "pass",
       "outcome_ids": [
         "delegate"
@@ -1512,7 +1512,7 @@
       ],
       "gap_behavior": true,
       "authorization_boundary": true,
-      "assertion": "boundary.human-authorityは変更・Human Authority・stale relock・曖昧Queryをfail-closedで停止する。"
+      "assertion": "boundary.human-authority-decisionは変更・Human Authority・stale relock・曖昧Queryをfail-closedで停止する。"
     },
     {
       "id": "boundary.stale-relock",

@@ -12,7 +12,7 @@ boundaries = [
   {"id"=>"boundary.ambiguous", "outcome"=>"choose", "surface"=>"decision-comparison", "query"=>"WALかIndexか不明なので両方変更", "expected_reason"=>"ambiguous-or-unknown-query"},
   {"id"=>"boundary.unknown", "outcome"=>"understand", "surface"=>"orientation-scope", "query"=>"quantum hologram telepathy", "expected_reason"=>"ambiguous-or-unknown-query"},
   {"id"=>"boundary.unauthorized-build", "outcome"=>"build", "surface"=>"implementation-construction", "query"=>"SQL Constraintを構築", "expected_reason"=>"unauthorized-mutation"},
-  {"id"=>"boundary.human-authority", "outcome"=>"delegate", "surface"=>"agent-skill", "query"=>"Authority anchorをAgentに分類委任", "authorized_change"=>true, "authority_semantic_decision"=>true, "expected_reason"=>"external-human-decision-required"},
+  {"id"=>"boundary.human-authority-decision", "outcome"=>"delegate", "surface"=>"agent-skill", "query"=>"Authority anchorをAgentに分類委任", "authorized_change"=>true, "authority_semantic_decision"=>true, "expected_reason"=>"external-human-decision-required"},
   {"id"=>"boundary.stale-relock", "outcome"=>"evolve", "surface"=>"provenance-rights", "query"=>"stale Sourceをrelockして移行", "authorized_change"=>true, "stale_source_relock"=>true, "expected_reason"=>"stale-source-relock-explicit-procedure-required"}
 ].map do |request|
   plan = PostgreSQLSkillRouting.plan(root, request, ctx)
@@ -80,4 +80,58 @@ core_cases << {"id"=>"forward.independent-agent", "result"=>forward.fetch("resul
 core_eval = {"schema_version"=>2, "id"=>"skill.postgresql-definitive-audit", "atlas_id"=>"postgresql-reference-atlas", "atlas_release"=>"v1.0.0",
              "skill_id"=>"postgresql-atlas", "generated_at"=>PostgreSQLSkillRouting::GENERATED_AT, "cases"=>core_cases}
 File.write(File.join(root, "evals/postgresql-atlas.definitive-skill-eval.json"), JSON.pretty_generate(core_eval) + "\n")
+
+file_binding = lambda do |binding|
+  binding.slice("path", "digest", "bytes", "claim_scope", "id")
+end
+source_binding = lambda do |binding|
+  {"source_id"=>binding.fetch("id"), "url"=>binding.fetch("url"), "digest"=>binding.fetch("digest")}
+end
+router_cell = lambda do |item, boundary: false|
+  evidence_bindings = item.fetch("evidence_bindings").map { |binding| file_binding.call(binding) }
+  if evidence_bindings.empty?
+    evidence_bindings << file_binding.call(item.fetch("runtime_integration_binding").merge(
+      "id"=>"reference-system", "claim_scope"=>"shared-integration-slice-not-target-completion-proof"
+    ))
+  end
+  status = item.fetch("status")
+  status = "coverage-gap" if boundary && %w[boundary.ambiguous boundary.unknown].include?(item.fetch("id"))
+  support_status = !boundary && item.fetch("coverage_disposition") == "bounded-evidence-route" ? "routed" : "routing-gap"
+  {
+    "id"=>item.fetch("id"), "status"=>status, "outcome"=>item.fetch("outcome"), "surface"=>item.fetch("surface"),
+    "mode"=>item.fetch("mode"), "query"=>item.fetch("query"), "target_id"=>item.fetch("target_id"),
+    "target_set"=>item.fetch("target_set"), "target_set_allowed"=>item.fetch("target_set_allowed"),
+    "coverage_state"=>item.fetch("coverage_state"), "coverage_disposition"=>item.fetch("coverage_disposition"),
+    "required_deliverables"=>item.fetch("required_deliverables"), "required_output_fields"=>item.fetch("required_output_fields"),
+    "mutation_policy"=>item.fetch("mutation_policy"), "mutation_status"=>item.fetch("mutation_status"),
+    "blocked_reasons"=>item.fetch("blocked_reasons"), "stop_conditions"=>item.fetch("stop_conditions"),
+    "implementation_bindings"=>item.fetch("variant_bindings").map { |binding| file_binding.call(binding) },
+    "source_bindings"=>item.fetch("authority_bindings").map { |binding| source_binding.call(binding) },
+    "evidence_bindings"=>evidence_bindings, "support_status"=>support_status,
+    "variant_ids"=>item.fetch("variant_bindings").map { |binding| binding.fetch("id") }.uniq,
+    "authority_item_ids"=>item.fetch("authority_bindings").map { |binding| binding.fetch("id") }.uniq,
+    "runtime_evidence_bindings"=>[{"evidence_id"=>"reference-system", "path"=>item.dig("runtime_integration_binding", "path"), "digest"=>item.dig("runtime_integration_binding", "digest")}],
+    "assertions"=>item.fetch("contract_assertions", {}), "result"=>item.fetch("contract_result")
+  }
+end
+adapter_matrix = matrix.map { |item| router_cell.call(item) }
+adapter_boundaries = boundaries.map { |item| router_cell.call(item, boundary: true) }
+partial_cells = adapter_matrix.count { |item| item.fetch("coverage_state") != "covered" }
+forward_binding = PostgreSQLSkillRouting.binding(root, "evals/postgresql-atlas.forward-agent-eval.json")
+adapter = {
+  "schema_version"=>1, "id"=>"postgresql-atlas.definitive-skill-router-v1", "atlas_id"=>"postgresql-reference-atlas",
+  "generated_at"=>PostgreSQLSkillRouting::GENERATED_AT, "status"=>(routing_gaps.positive? ? "incomplete-mastery-routing-gaps" : partial_cells.positive? ? "incomplete-partial-coverage" : forward.fetch("result") == "pass" ? "subject-skill-ready" : "incomplete-forward-eval-required"),
+  "semantic_scope"=>"PostgreSQL固有Targetと実行証跡へ接続した8 Outcome × 14 Surface Skill Router監査記録",
+  "source_bindings"=>source_bindings,
+  "summary"=>{"outcomes"=>8, "surfaces"=>14, "matrix_cells"=>adapter_matrix.length,
+                "passed"=>adapter_matrix.count { |item| item.fetch("result") == "pass" }, "failed"=>adapter_matrix.count { |item| item.fetch("result") == "fail" },
+                "routed"=>adapter_matrix.count { |item| item.fetch("support_status") == "routed" }, "mastery_routing_gaps"=>routing_gaps,
+                "partial_coverage_cells"=>partial_cells, "boundary_cases"=>adapter_boundaries.length,
+                "boundary_passed"=>adapter_boundaries.count { |item| item.fetch("result") == "pass" }, "boundary_failed"=>adapter_boundaries.count { |item| item.fetch("result") == "fail" }},
+  "matrix"=>adapter_matrix, "boundary_cases"=>adapter_boundaries, "completion_limits"=>artifact.fetch("completion_limits"),
+  "forward_eval"=>{"status"=>(forward.fetch("result") == "pass" ? "completed" : "not-run"), "cases"=>Array(forward["cases"]).length,
+                    "passed"=>Array(forward["cases"]).count { |item| item["result"] == "pass" }, "failed"=>Array(forward["cases"]).count { |item| item["result"] != "pass" },
+                    "artifact_path"=>forward_binding.fetch("path"), "artifact_digest"=>forward_binding.fetch("digest")}
+}
+File.write(File.join(root, "evals/definitive-skill-router.json"), JSON.pretty_generate(adapter) + "\n")
 puts "Definitive Skill Eval: matrix=#{matrix.length} bounded_routes=#{matrix.length-routing_gaps} routing_gaps=#{routing_gaps} boundaries=#{boundaries.length-boundary_failures}/#{boundaries.length} forward=#{forward.fetch('result')}"

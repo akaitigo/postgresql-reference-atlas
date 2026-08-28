@@ -1,8 +1,15 @@
 schema_version: 2
 atlas_id: postgresql-reference-atlas
 baseline:
-  path: baselines/v1.0.0.non-regression-baseline.json
-  digest: sha256:01ab1feaab1cbea85275a3422fba55a402c581df9b62f6dacbff4b4e3870cb8d
+  path: baselines/core-v1.1-v1.0.0.non-regression-baseline.json
+  digest: sha256:6ebd7d017746ea8044d931e31731aed7ab8ab8a66bdca4741c06f94081146265
+baseline_upgrade:
+  mode: monotonic-capture-contract-extension
+  from:
+    path: baselines/v1.0.0.non-regression-baseline.json
+    digest: sha256:01ab1feaab1cbea85275a3422fba55a402c581df9b62f6dacbff4b4e3870cb8d
+  reason: Core v1.1でAuthority body、Human review Queue、Skill Router collectionを追加したため、同一公開commitから旧全項目を保持して再捕捉する。
+  migration_evidence_ids: [lab.migration]
 replacements:
   - collection: tests_labs
     old_id: test-harness:evals/run.sh

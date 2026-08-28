@@ -3,7 +3,7 @@ CORE_DIR ?= ../reference-atlas-core
 LAB ?= sql
 ATLAS_ROOT := $(CURDIR)
 
-.PHONY: validate audit non-regression-audit core-non-regression-audit authority-body-non-regression-audit definitive-audit parity-audit depth-parity-audit authority-locator-verify authority-body-verify authority-review-verify definitive-skill-eval-verify core-authority-audit definitive-gate claims provenance certificate-verify test-static evidence-freshness lab eval refresh-evidence test
+.PHONY: validate audit non-regression-audit core-non-regression-audit authority-body-non-regression-audit definitive-audit parity-audit depth-parity-audit authority-locator-verify authority-body-verify authority-review-verify definitive-skill-eval-verify core-authority-audit core-authority-body-audit core-authority-review-audit core-skill-router-audit definitive-gate claims provenance certificate-verify test-static evidence-freshness lab eval refresh-evidence test
 
 validate:
 	cd $(CORE_DIR) && GOCACHE=$(CURDIR)/.cache/go-build go run ./cmd/atlas validate \
@@ -19,8 +19,15 @@ validate:
 		$(ATLAS_ROOT)/verification.matrix.yaml \
 		$(ATLAS_ROOT)/depth.parity.yaml \
 		$(ATLAS_ROOT)/evals/postgresql-atlas.definitive-skill-eval.json \
+		$(ATLAS_ROOT)/evals/definitive-skill-router.json \
+		$(ATLAS_ROOT)/authority/body-inventory.snapshot.json \
+		$(ATLAS_ROOT)/authority/review-queue.snapshot.json \
+		$(ATLAS_ROOT)/authority/reviews/decisions.json \
+		$(ATLAS_ROOT)/baselines/authority-body-inventory-v1.json \
+		$(ATLAS_ROOT)/migrations/authority-body-inventory-v1.json \
 		$(ATLAS_ROOT)/migrations/definitive-v2.yaml \
 		$(ATLAS_ROOT)/non-regression.yaml \
+		$(ATLAS_ROOT)/baselines/core-v1.1-v1.0.0.non-regression-baseline.json \
 		$(ATLAS_ROOT)/baselines/v1.0.0.non-regression-baseline.json \
 		$(ATLAS_ROOT)/evidence/history/v1.0.0/completion-certificate.json
 	@if [[ -d claims ]]; then \
@@ -80,6 +87,15 @@ definitive-skill-eval-verify:
 core-authority-audit:
 	cd $(CORE_DIR) && GOCACHE=$(CURDIR)/.cache/go-build go run ./cmd/atlas audit $(ATLAS_ROOT) --gate authority-extraction
 
+core-authority-body-audit:
+	cd $(CORE_DIR) && GOCACHE=$(CURDIR)/.cache/go-build go run ./cmd/atlas audit $(ATLAS_ROOT) --gate authority-body
+
+core-authority-review-audit:
+	cd $(CORE_DIR) && GOCACHE=$(CURDIR)/.cache/go-build go run ./cmd/atlas audit $(ATLAS_ROOT) --gate authority-review
+
+core-skill-router-audit:
+	cd $(CORE_DIR) && GOCACHE=$(CURDIR)/.cache/go-build go run ./cmd/atlas audit $(ATLAS_ROOT) --gate skill-router
+
 definitive-gate:
 	cd $(CORE_DIR) && GOCACHE=$(CURDIR)/.cache/go-build go run ./cmd/atlas audit $(ATLAS_ROOT) --gate definitive
 
@@ -106,4 +122,4 @@ certificate-verify:
 
 refresh-evidence: eval test-static provenance
 
-test: validate audit non-regression-audit core-non-regression-audit authority-body-non-regression-audit definitive-audit parity-audit authority-locator-verify authority-body-verify authority-review-verify definitive-skill-eval-verify core-authority-audit depth-parity-audit evidence-freshness certificate-verify
+test: validate audit non-regression-audit core-non-regression-audit authority-body-non-regression-audit definitive-audit parity-audit authority-locator-verify authority-body-verify authority-review-verify definitive-skill-eval-verify core-authority-audit core-authority-body-audit core-authority-review-audit core-skill-router-audit depth-parity-audit evidence-freshness certificate-verify

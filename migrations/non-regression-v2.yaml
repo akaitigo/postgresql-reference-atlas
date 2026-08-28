@@ -13,9 +13,9 @@ replacements:
     reason: Core Definitive v2の履歴規約へ移し、v1 bounded Certificateの意味とbyte列を不変保存するため。
   - id: core-definitive-v2-forward-update
     old_id: ci:core-ref:cf9e6e2d981305c83f970c1f21a1ddc9c1109263
-    new_id: ci:core-ref:219dee20e23811195f541bbce71a730237a27231
+    new_id: ci:core-ref:e8223295bd86f7400e154171dd1596b9e54f0835
     old_value: cf9e6e2d981305c83f970c1f21a1ddc9c1109263
-    new_value: 219dee20e23811195f541bbce71a730237a27231
+    new_value: e8223295bd86f7400e154171dd1596b9e54f0835
     proof_type: version-forward-compatible
     migration_evidence: evidence/migrations/non-regression-v2.json
     reason: v1互換Gateを保持した子孫commitへ更新し、FE Depth ReferenceとDefinitive Gate v2を加法的に利用するため。
@@ -39,7 +39,7 @@ replacements:
     old_id: file:skill.package.yaml
     new_id: file:skill.package.yaml
     old_value: sha256:5eb7cba98dbaa87007a45a679f649d8e8c135cb10d2e9ac89a3eab0fb5961432
-    new_value: sha256:d6e756d443340f559a1e30aacb21b2e25de351b7cab763f0af2fefa8a8df9154
+    new_value: sha256:0a977755eb1c565c504da823dbe5c13f748ea9d8753c6578b6e1fcde1689c68c
     proof_type: runtime-equivalent
     migration_evidence: evidence/migrations/non-regression-v2.json
     reason: 既存Skill packageと合格閾値を維持し、Definitive Routing Evalと独立Forward Evalを生成物として追加するため。

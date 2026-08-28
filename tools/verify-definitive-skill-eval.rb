@@ -6,6 +6,7 @@ require_relative "lib/postgresql-skill-routing"
 root = File.expand_path("..", __dir__)
 artifact = JSON.parse(File.read(File.join(root, "evals/postgresql-atlas.definitive-routing-eval.json")))
 core_eval = JSON.parse(File.read(File.join(root, "evals/postgresql-atlas.definitive-skill-eval.json")))
+adapter = JSON.parse(File.read(File.join(root, "evals/definitive-skill-router.json")))
 ctx = PostgreSQLSkillRouting.context(root)
 expected_matrix = PostgreSQLSkillRouting.matrix_requests(ctx).map do |request|
   PostgreSQLSkillRouting.evaluate_plan(root, PostgreSQLSkillRouting.plan(root, request, ctx), request, ctx)
@@ -27,7 +28,7 @@ abort "全Target stateが機械記録されていません" unless ledger.length
 abort "Routing gapが隠されています" unless artifact.dig("summary", "routing_gaps") == expected_matrix.count { |item| item.fetch("coverage_disposition") != "bounded-evidence-route" }
 
 boundaries = artifact.fetch("boundary_cases").to_h { |item| [item.fetch("id"), item] }
-%w[boundary.ambiguous boundary.unknown boundary.unauthorized-build boundary.human-authority boundary.stale-relock].each do |id|
+%w[boundary.ambiguous boundary.unknown boundary.unauthorized-build boundary.human-authority-decision boundary.stale-relock].each do |id|
   abort "Boundary caseが不合格です: #{id}" unless boundaries.fetch(id).fetch("contract_result") == "pass" && boundaries.fetch(id).fetch("status") == "blocked"
 end
 forward = artifact.fetch("independent_agent_forward_eval")
@@ -46,4 +47,15 @@ end
 expected_core_cases = expected_matrix.length + boundaries.length + 1
 abort "Core Definitive Skill Evalが詳細記録と一致しません" unless core_eval.fetch("cases").length == expected_core_cases && core_eval.fetch("cases").count { |item| item.fetch("result") == "pass" } >= expected_matrix.length + boundaries.length
 abort "Core EvalがOutcome/Surface全件を覆っていません" unless core_eval.fetch("cases").flat_map { |item| item.fetch("outcome_ids") }.uniq.sort == ctx.dig("mastery", "outcomes").map { |item| item.fetch("id") }.sort && core_eval.fetch("cases").flat_map { |item| item.fetch("surface_ids") }.uniq.sort == ctx.dig("mastery", "surfaces").map { |item| item.fetch("id") }.sort
+abort "Core Skill Router adapterが112 Cellと一致しません" unless adapter.fetch("matrix").length == 112 && adapter.dig("summary", "mastery_routing_gaps") == artifact.dig("summary", "routing_gaps")
+abort "Core Skill Router adapterのTarget/結果が詳細記録と一致しません" unless adapter.fetch("matrix").map { |item| [item.fetch("id"), item.fetch("target_id"), item.fetch("result")] } == expected_matrix.map { |item| [item.fetch("id"), item.fetch("target_id"), item.fetch("contract_result")] }
+abort "Core Skill Router adapterがbindingを欠いています" unless (adapter.fetch("matrix") + adapter.fetch("boundary_cases")).all? do |item|
+  %w[implementation_bindings source_bindings evidence_bindings].all? { |field| item.fetch(field).any? } &&
+    (item.fetch("implementation_bindings") + item.fetch("evidence_bindings")).all? do |binding|
+      path = File.join(root, binding.fetch("path"))
+      File.file?(path) && "sha256:#{Digest::SHA256.file(path).hexdigest}" == binding.fetch("digest")
+    end
+end
+abort "Core Skill Router adapterの5境界が不正です" unless adapter.fetch("boundary_cases").map { |item| item.fetch("id") }.sort == %w[boundary.ambiguous boundary.human-authority-decision boundary.stale-relock boundary.unauthorized-build boundary.unknown].sort
+abort "Core Skill Router adapterがForward Evalへ固定されていません" unless adapter.dig("forward_eval", "status") == "completed" && adapter.dig("forward_eval", "cases") == forward.fetch("cases").length && adapter.dig("forward_eval", "failed").zero?
 puts "Verified Definitive Skill Eval: matrix=112 routing_gaps=#{artifact.dig('summary', 'routing_gaps')} targets=#{ledger.length} boundaries=5/5 forward=#{forward.fetch('result')} completion_credit=false"
