@@ -21,6 +21,8 @@ jobs:
           repository: akaitigo/reference-atlas-core
           ref: cf9e6e2d981305c83f970c1f21a1ddc9c1109263
           path: reference-atlas-core
+      - name: Install CI dependencies
+        run: sudo apt-get update && sudo apt-get install -y ripgrep
       - name: Validate common manifests
         run: make -C postgresql-reference-atlas CORE_DIR=../reference-atlas-core validate
       - name: Audit mastery and cross-manifest contracts
@@ -44,5 +46,7 @@ jobs:
         uses: actions/checkout@v4
         with:
           path: postgresql-reference-atlas
+      - name: Install CI dependencies
+        run: sudo apt-get update && sudo apt-get install -y ripgrep
       - name: Run ${{ matrix.lab }} lab
         run: make -C postgresql-reference-atlas lab LAB=${{ matrix.lab }}
