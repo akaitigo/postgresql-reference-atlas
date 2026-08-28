@@ -100,12 +100,70 @@
     "human_reviewed_surfaces": 0,
     "core_v2_eligible_surfaces": 0
   },
+  "authority_body_denominator": {
+    "source_entries": 10,
+    "unique_documents": 398,
+    "matched_documents": 390,
+    "stale_documents": 0,
+    "failed_documents": 8,
+    "selector_exhaustive_documents": 390,
+    "raw_anchor_candidates": 5512,
+    "anchors_by_selector": {
+      "document-root": 390,
+      "sgml-id-attribute": 5122
+    },
+    "pending_human_anchors": 5512,
+    "human_reviewed_anchors": 0,
+    "promoted_surface_artifacts": 0,
+    "promoted_atomic_behaviors": 0,
+    "authority_semantics_exhaustive": false,
+    "postgresql_authority_denominator_closed": false
+  },
+  "authority_review_queue": {
+    "eligible_documents": 390,
+    "queued_anchors": 5512,
+    "pending_human": 5512,
+    "human_reviewed": 0,
+    "priority_counts": {
+      "0": 4352,
+      "1": 989,
+      "2": 171
+    },
+    "candidate_clusters": 0,
+    "clustered_anchors": 0,
+    "batches": 255,
+    "stale_document_holds": 0,
+    "unavailable_document_holds": 8,
+    "decisions": 0,
+    "included": 0,
+    "excluded": 0,
+    "merged": 0,
+    "split": 0,
+    "authority_semantics_exhaustive": false,
+    "queue_counts_as_depth_achievement": false
+  },
+  "authority_body_non_regression": {
+    "schema_version": 1,
+    "baseline_id": "postgresql-authority-body-inventory-v1-2026-08-28",
+    "baseline_anchors": 5512,
+    "current_anchors": 5512,
+    "retained": 5512,
+    "replaced": 0,
+    "added": 0,
+    "document_floor": "398/398",
+    "status": "pass"
+  },
   "denominator": {
-    "authority_behaviors": 11340,
+    "generated_mapping_candidates": 11340,
+    "raw_anchor_candidates": 5512,
+    "pending_human_anchors": 5512,
+    "human_reviewed_anchors": 0,
+    "promoted_semantic_surfaces": 0,
+    "promoted_atomic_behaviors": 0,
     "variant_ids": 0,
-    "runtime_proven_behaviors": 29,
-    "behaviors_without_dedicated_accepted_claim": 11320,
-    "scenario_rows": {
+    "provisional_mapping_records_with_runtime_proof": 29,
+    "generated_mapping_records_without_dedicated_accepted_claim": 11320,
+    "provisional_scenario_lower_bound": {
       "normal": {
         "required": 11340,
         "closed": 24,
@@ -156,20 +214,21 @@
         "closed": 6,
         "gap": 2464
       }
-    }
+    },
+    "denominator_closed": false
   },
   "axes": [
     {
       "id": "authority-body-digestion",
       "status": "partial",
-      "gap_count": 2,
-      "denominator": "locked authority sources × extracted locator surfaces × classification review decisions"
+      "gap_count": 3,
+      "denominator": "unique Authority document × fixed raw selector anchor × explicit Human classification decision"
     },
     {
       "id": "surface-atomic-behavior-variant",
       "status": "partial",
       "gap_count": 2,
-      "denominator": "11,340 authority-derived behaviors × applicable PostgreSQL implementation variants"
+      "denominator": "Human-reviewed raw anchor decisionsから昇格したAtomic behavior × applicable PostgreSQL implementation variants"
     },
     {
       "id": "real-runtime-lab",

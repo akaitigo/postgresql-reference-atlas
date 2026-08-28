@@ -1,0 +1,89 @@
+{
+  "document_id": "document-pg-9afdf912605b38c9",
+  "source_ids": [
+    "postgresql-source-rel-18.6"
+  ],
+  "authority_url": "https://github.com/postgres/postgres/tree/REL_18_6",
+  "document_locator": "git:724edf9bde9d356724ad384a2e196edc3c9f80f7:doc/src/sgml/tsm-system-time.sgml",
+  "locked_source_digest": "sha256:873c03070a2e8aae0768fb75d8d6739ae9589681c6cd50839e79d787a7aed222",
+  "locked_body_digest": "sha256:7f1638d0d05b15d47479239b34283a48279635b5cd97c0d019f4ce27a308a0e1",
+  "fetch": {
+    "status": "matched",
+    "fetched_digest": "sha256:7f1638d0d05b15d47479239b34283a48279635b5cd97c0d019f4ce27a308a0e1",
+    "locked_digest_match": true,
+    "error_digest": null
+  },
+  "schema_version": 1,
+  "extraction": {
+    "method": "sgml-raw-anchor-selector-v1",
+    "tool": "postgresql-reference-atlas-authority-body-inventory-v1",
+    "tool_digest": "sha256:097da35cf95014735db866fca94f5db07c0717353928b543bcf9c188ae005d2c",
+    "selector_contract": [
+      "document-root",
+      "sgml-id-attribute"
+    ],
+    "selector_exhaustive_for_locked_body": true,
+    "authority_semantics_exhaustive": false,
+    "review_status": "automated-unreviewed",
+    "body_storage": "digest-locator-and-offset-only"
+  },
+  "anchors": [
+    {
+      "id": "anchor-pg-b1d20df4cb44e7e7852d",
+      "locator": "document-root",
+      "locator_kind": "document-root",
+      "raw_selector": "document-root",
+      "element_name": "document",
+      "parent_anchor_id": null,
+      "context_start": 0,
+      "context_end": 2357,
+      "context_unit": "byte",
+      "context_digest": "sha256:7f1638d0d05b15d47479239b34283a48279635b5cd97c0d019f4ce27a308a0e1",
+      "classification_status": "pending-human",
+      "surface_ids": [
+
+      ],
+      "behavior_ids": [
+
+      ]
+    },
+    {
+      "id": "anchor-pg-b7854bb2181ea5f79e01",
+      "locator": "#tsm-system-time",
+      "locator_kind": "fragment",
+      "raw_selector": "sgml-id-attribute",
+      "element_name": "sect1",
+      "parent_anchor_id": "anchor-pg-b1d20df4cb44e7e7852d",
+      "context_start": 44,
+      "context_end": 101,
+      "context_unit": "byte",
+      "context_digest": "sha256:e203e4763c49254426a85918c623e9afa770cd92f3d4bdb601ab10c797283cd5",
+      "classification_status": "pending-human",
+      "surface_ids": [
+
+      ],
+      "behavior_ids": [
+
+      ]
+    },
+    {
+      "id": "anchor-pg-91145e29ecd1746d7a55",
+      "locator": "#tsm-system-time-examples",
+      "locator_kind": "fragment",
+      "raw_selector": "sgml-id-attribute",
+      "element_name": "sect2",
+      "parent_anchor_id": "anchor-pg-b1d20df4cb44e7e7852d",
+      "context_start": 1620,
+      "context_end": 1659,
+      "context_unit": "byte",
+      "context_digest": "sha256:0c78c640e92fdf21071900e0d9789f45bc553fa743ff866c98f76acaab755eff",
+      "classification_status": "pending-human",
+      "surface_ids": [
+
+      ],
+      "behavior_ids": [
+
+      ]
+    }
+  ]
+}

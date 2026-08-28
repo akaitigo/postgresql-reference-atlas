@@ -1,0 +1,70 @@
+{
+  "document_id": "document-pg-e6dafcd4cb96eb4c",
+  "source_ids": [
+    "postgresql-source-rel-18.6"
+  ],
+  "authority_url": "https://github.com/postgres/postgres/tree/REL_18_6",
+  "document_locator": "git:724edf9bde9d356724ad384a2e196edc3c9f80f7:doc/src/sgml/appendix-obsolete-pgresetxlog.sgml",
+  "locked_source_digest": "sha256:873c03070a2e8aae0768fb75d8d6739ae9589681c6cd50839e79d787a7aed222",
+  "locked_body_digest": "sha256:addeb18efe79e717c5ec617a201f6defef3cd3bd7f3d86c5ed69426a40ef4bcb",
+  "fetch": {
+    "status": "matched",
+    "fetched_digest": "sha256:addeb18efe79e717c5ec617a201f6defef3cd3bd7f3d86c5ed69426a40ef4bcb",
+    "locked_digest_match": true,
+    "error_digest": null
+  },
+  "schema_version": 1,
+  "extraction": {
+    "method": "sgml-raw-anchor-selector-v1",
+    "tool": "postgresql-reference-atlas-authority-body-inventory-v1",
+    "tool_digest": "sha256:097da35cf95014735db866fca94f5db07c0717353928b543bcf9c188ae005d2c",
+    "selector_contract": [
+      "document-root",
+      "sgml-id-attribute"
+    ],
+    "selector_exhaustive_for_locked_body": true,
+    "authority_semantics_exhaustive": false,
+    "review_status": "automated-unreviewed",
+    "body_storage": "digest-locator-and-offset-only"
+  },
+  "anchors": [
+    {
+      "id": "anchor-pg-ca0ebfa50a8523bfbcfe",
+      "locator": "document-root",
+      "locator_kind": "document-root",
+      "raw_selector": "document-root",
+      "element_name": "document",
+      "parent_anchor_id": null,
+      "context_start": 0,
+      "context_end": 907,
+      "context_unit": "byte",
+      "context_digest": "sha256:addeb18efe79e717c5ec617a201f6defef3cd3bd7f3d86c5ed69426a40ef4bcb",
+      "classification_status": "pending-human",
+      "surface_ids": [
+
+      ],
+      "behavior_ids": [
+
+      ]
+    },
+    {
+      "id": "anchor-pg-caba87bb09872e397297",
+      "locator": "#app-pgresetxlog",
+      "locator_kind": "fragment",
+      "raw_selector": "sgml-id-attribute",
+      "element_name": "sect1",
+      "parent_anchor_id": "anchor-pg-ca0ebfa50a8523bfbcfe",
+      "context_start": 167,
+      "context_end": 221,
+      "context_unit": "byte",
+      "context_digest": "sha256:af8b6c8cff3b5f59037a5a8faa77aef42f0289506840b9570e5969adff725c89",
+      "classification_status": "pending-human",
+      "surface_ids": [
+
+      ],
+      "behavior_ids": [
+
+      ]
+    }
+  ]
+}

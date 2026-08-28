@@ -1,0 +1,146 @@
+{
+  "document_id": "document-pg-e714e15f097fd46d",
+  "source_ids": [
+    "postgresql-source-rel-18.6"
+  ],
+  "authority_url": "https://github.com/postgres/postgres/tree/REL_18_6",
+  "document_locator": "git:724edf9bde9d356724ad384a2e196edc3c9f80f7:doc/src/sgml/earthdistance.sgml",
+  "locked_source_digest": "sha256:873c03070a2e8aae0768fb75d8d6739ae9589681c6cd50839e79d787a7aed222",
+  "locked_body_digest": "sha256:d3a7bb1732eca98d2b5d606f77fe09606a42565d16e329f386a62360e613f4fe",
+  "fetch": {
+    "status": "matched",
+    "fetched_digest": "sha256:d3a7bb1732eca98d2b5d606f77fe09606a42565d16e329f386a62360e613f4fe",
+    "locked_digest_match": true,
+    "error_digest": null
+  },
+  "schema_version": 1,
+  "extraction": {
+    "method": "sgml-raw-anchor-selector-v1",
+    "tool": "postgresql-reference-atlas-authority-body-inventory-v1",
+    "tool_digest": "sha256:097da35cf95014735db866fca94f5db07c0717353928b543bcf9c188ae005d2c",
+    "selector_contract": [
+      "document-root",
+      "sgml-id-attribute"
+    ],
+    "selector_exhaustive_for_locked_body": true,
+    "authority_semantics_exhaustive": false,
+    "review_status": "automated-unreviewed",
+    "body_storage": "digest-locator-and-offset-only"
+  },
+  "anchors": [
+    {
+      "id": "anchor-pg-e65e2d3965fe1a3a6f6e",
+      "locator": "document-root",
+      "locator_kind": "document-root",
+      "raw_selector": "document-root",
+      "element_name": "document",
+      "parent_anchor_id": null,
+      "context_start": 0,
+      "context_end": 9220,
+      "context_unit": "byte",
+      "context_digest": "sha256:d3a7bb1732eca98d2b5d606f77fe09606a42565d16e329f386a62360e613f4fe",
+      "classification_status": "pending-human",
+      "surface_ids": [
+
+      ],
+      "behavior_ids": [
+
+      ]
+    },
+    {
+      "id": "anchor-pg-a6401a74f33e55f3de66",
+      "locator": "#earthdistance",
+      "locator_kind": "fragment",
+      "raw_selector": "sgml-id-attribute",
+      "element_name": "sect1",
+      "parent_anchor_id": "anchor-pg-e65e2d3965fe1a3a6f6e",
+      "context_start": 42,
+      "context_end": 95,
+      "context_unit": "byte",
+      "context_digest": "sha256:1f2246e2079ce8ae708bd6ab92e0eb68fa39086f8c47cca8ecde3a9d16612bd1",
+      "classification_status": "pending-human",
+      "surface_ids": [
+
+      ],
+      "behavior_ids": [
+
+      ]
+    },
+    {
+      "id": "anchor-pg-02dde6edeb67418e97df",
+      "locator": "#earthdistance-cube-based",
+      "locator_kind": "fragment",
+      "raw_selector": "sgml-id-attribute",
+      "element_name": "sect2",
+      "parent_anchor_id": "anchor-pg-e65e2d3965fe1a3a6f6e",
+      "context_start": 1749,
+      "context_end": 1788,
+      "context_unit": "byte",
+      "context_digest": "sha256:196c76f8d18b9d2b58d79c686fae17be8faecf0b98bca618b0b31eda2a080d0c",
+      "classification_status": "pending-human",
+      "surface_ids": [
+
+      ],
+      "behavior_ids": [
+
+      ]
+    },
+    {
+      "id": "anchor-pg-5ed1845848720e909465",
+      "locator": "#earthdistance-cube-functions",
+      "locator_kind": "fragment",
+      "raw_selector": "sgml-id-attribute",
+      "element_name": "table",
+      "parent_anchor_id": "anchor-pg-e65e2d3965fe1a3a6f6e",
+      "context_start": 3217,
+      "context_end": 3261,
+      "context_unit": "byte",
+      "context_digest": "sha256:04f320816ec8e029f2fd49b66d14ff24fe237586013015dc7dfd2a102489ae90",
+      "classification_status": "pending-human",
+      "surface_ids": [
+
+      ],
+      "behavior_ids": [
+
+      ]
+    },
+    {
+      "id": "anchor-pg-cf1ae50840ba5f737c09",
+      "locator": "#earthdistance-point-based",
+      "locator_kind": "fragment",
+      "raw_selector": "sgml-id-attribute",
+      "element_name": "sect2",
+      "parent_anchor_id": "anchor-pg-e65e2d3965fe1a3a6f6e",
+      "context_start": 7335,
+      "context_end": 7375,
+      "context_unit": "byte",
+      "context_digest": "sha256:62267fb436b204346084002c9deba5ad03c22a0d3df09216dc165046b5c10768",
+      "classification_status": "pending-human",
+      "surface_ids": [
+
+      ],
+      "behavior_ids": [
+
+      ]
+    },
+    {
+      "id": "anchor-pg-db5d1a349176d97e020f",
+      "locator": "#earthdistance-point-operators",
+      "locator_kind": "fragment",
+      "raw_selector": "sgml-id-attribute",
+      "element_name": "table",
+      "parent_anchor_id": "anchor-pg-e65e2d3965fe1a3a6f6e",
+      "context_start": 7968,
+      "context_end": 8013,
+      "context_unit": "byte",
+      "context_digest": "sha256:0024fef343d7c63fa584c00442888180b21d4bd9108663d7e83bed2a059895a6",
+      "classification_status": "pending-human",
+      "surface_ids": [
+
+      ],
+      "behavior_ids": [
+
+      ]
+    }
+  ]
+}

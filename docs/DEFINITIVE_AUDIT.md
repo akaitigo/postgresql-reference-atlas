@@ -16,7 +16,7 @@
 
 主要件数はFunction 3,403、Type/Collation 1,536、Operator 800、GUC 400、SQL CommandのDocs/Source照合347、Cast 236、System Catalog 214、ExtensionのSource/Runtime照合115、Client-facing Reference 57、Protocol節46である。重複Authority Viewは同じ対象をDocs・Source・Runtime間で照合するため保持する。
 
-全11,340項目は56 Coverage Targetのいずれかへ分類され、未分類は0である。章ファイルMapはSource上の170件との完全一致を機械検証し、未知・重複・未分類Fileを許容しない。ただし分類済みは検証済みと同義ではない。
+11,340項目は56 Coverage Targetへ自動分類したmapping候補であり、Semantic Surface、Atomic behavior、Depth達成件数ではない。Authority母集団は別途、unique document 398件からfixed selectorでraw anchor 5,512件を抽出し、stable IDのReview Queue 255 batchへ全件接続する。全件`pending-human`で、Human review後に明示的に昇格されるまでSurface/Behaviorとして扱わない。queue件数、priority、cluster、batchもDepth達成へ算入しない。
 
 ## Proof Gap
 
@@ -25,7 +25,8 @@ Definitive v2ではBehaviorごとに専用Claim、Scenarioごとに専用Proof�
 現在のGapは次の通り。
 
 - 56 required Target中55 TargetがDefinitive未Closure
-- 11,340 Behavior中11,320件が専用covered Target・accepted Claimの組を持たない
+- 5,512 raw anchor候補は全件pending-humanで、Human-reviewed/promoted SurfaceとAtomic behaviorは0件
+- 11,340自動mapping候補中11,320件は専用covered Target・accepted Claimの組を持たない
 - 全Scenario分類113,400 Row中113,331 Rowが未作成。Surfaceから必須となる43,544 Scenarioのうち43,510 Rowが未接続
 - Subject全体として、必要Scenarioごとの専用Proof・Evidence・Artifact closureが未整備
 - Function、Operator、Cast、GUC、Protocol、Client Toolの全件Proofが未実装

@@ -1,0 +1,127 @@
+{
+  "document_id": "document-pg-2b9767fc485de72e",
+  "source_ids": [
+    "postgresql-source-rel-18.6"
+  ],
+  "authority_url": "https://github.com/postgres/postgres/tree/REL_18_6",
+  "document_locator": "git:724edf9bde9d356724ad384a2e196edc3c9f80f7:doc/src/sgml/ref/drop_collation.sgml",
+  "locked_source_digest": "sha256:873c03070a2e8aae0768fb75d8d6739ae9589681c6cd50839e79d787a7aed222",
+  "locked_body_digest": "sha256:5b512c74882e55a5cf82895e9e2007bfa3a48c6693c0d9bcb819b39de4d6fc2c",
+  "fetch": {
+    "status": "matched",
+    "fetched_digest": "sha256:5b512c74882e55a5cf82895e9e2007bfa3a48c6693c0d9bcb819b39de4d6fc2c",
+    "locked_digest_match": true,
+    "error_digest": null
+  },
+  "schema_version": 1,
+  "extraction": {
+    "method": "sgml-raw-anchor-selector-v1",
+    "tool": "postgresql-reference-atlas-authority-body-inventory-v1",
+    "tool_digest": "sha256:097da35cf95014735db866fca94f5db07c0717353928b543bcf9c188ae005d2c",
+    "selector_contract": [
+      "document-root",
+      "sgml-id-attribute"
+    ],
+    "selector_exhaustive_for_locked_body": true,
+    "authority_semantics_exhaustive": false,
+    "review_status": "automated-unreviewed",
+    "body_storage": "digest-locator-and-offset-only"
+  },
+  "anchors": [
+    {
+      "id": "anchor-pg-eca6abb579c2187b1bc4",
+      "locator": "document-root",
+      "locator_kind": "document-root",
+      "raw_selector": "document-root",
+      "element_name": "document",
+      "parent_anchor_id": null,
+      "context_start": 0,
+      "context_end": 2749,
+      "context_unit": "byte",
+      "context_digest": "sha256:5b512c74882e55a5cf82895e9e2007bfa3a48c6693c0d9bcb819b39de4d6fc2c",
+      "classification_status": "pending-human",
+      "surface_ids": [
+
+      ],
+      "behavior_ids": [
+
+      ]
+    },
+    {
+      "id": "anchor-pg-f68141916e538cb4f772",
+      "locator": "#sql-dropcollation",
+      "locator_kind": "fragment",
+      "raw_selector": "sgml-id-attribute",
+      "element_name": "refentry",
+      "parent_anchor_id": "anchor-pg-eca6abb579c2187b1bc4",
+      "context_start": 72,
+      "context_end": 106,
+      "context_unit": "byte",
+      "context_digest": "sha256:1ddf7e11e6f90811e6af797a48c6be14e4f72d5ea05e39b86712ab19b72f096c",
+      "classification_status": "pending-human",
+      "surface_ids": [
+
+      ],
+      "behavior_ids": [
+
+      ]
+    },
+    {
+      "id": "anchor-pg-bbeeba899549163385af",
+      "locator": "#sql-dropcollation-description",
+      "locator_kind": "fragment",
+      "raw_selector": "sgml-id-attribute",
+      "element_name": "refsect1",
+      "parent_anchor_id": "anchor-pg-eca6abb579c2187b1bc4",
+      "context_start": 606,
+      "context_end": 653,
+      "context_unit": "byte",
+      "context_digest": "sha256:206079b8f0a626303c7e2ce6bb527f3677ccf4436bd254f98032520b45d46584",
+      "classification_status": "pending-human",
+      "surface_ids": [
+
+      ],
+      "behavior_ids": [
+
+      ]
+    },
+    {
+      "id": "anchor-pg-a4e1e66df8627a9fc022",
+      "locator": "#sql-dropcollation-examples",
+      "locator_kind": "fragment",
+      "raw_selector": "sgml-id-attribute",
+      "element_name": "refsect1",
+      "parent_anchor_id": "anchor-pg-eca6abb579c2187b1bc4",
+      "context_start": 1984,
+      "context_end": 2028,
+      "context_unit": "byte",
+      "context_digest": "sha256:5524ba0566452e8ccbf9dde61326c1f6c4378769f71db1e60686d68565021cdf",
+      "classification_status": "pending-human",
+      "surface_ids": [
+
+      ],
+      "behavior_ids": [
+
+      ]
+    },
+    {
+      "id": "anchor-pg-92f77abedd0385155217",
+      "locator": "#sql-dropcollation-compat",
+      "locator_kind": "fragment",
+      "raw_selector": "sgml-id-attribute",
+      "element_name": "refsect1",
+      "parent_anchor_id": "anchor-pg-eca6abb579c2187b1bc4",
+      "context_start": 2201,
+      "context_end": 2243,
+      "context_unit": "byte",
+      "context_digest": "sha256:220a998e42680ac319535a3a00e9171ff0c8b3322e21f748df7a4369c15dbc22",
+      "classification_status": "pending-human",
+      "surface_ids": [
+
+      ],
+      "behavior_ids": [
+
+      ]
+    }
+  ]
+}

@@ -28,19 +28,54 @@ authority_locator_reference:
   files:
     - {path: scripts/lib/authority-extraction.ts, digest: "sha256:d0efb14e943384b363f6596cff32371368ad69d4aa319de4c7f5ecf189cb8c7c", size_bytes: 17508}
     - {path: scripts/verify-authority-extraction.ts, digest: "sha256:420acbe08bff848786c4a28febb4443c671afdd53ff1643413317a9ce175d9aa", size_bytes: 121}
+authority_body_denominator:
+  reference:
+    repository: frontend-behavior-atlas
+    commit: 841ec2fa399606a10305021a8bcd396713b8cee5
+    files:
+      - {path: scripts/lib/authority-body-inventory.ts, digest: "sha256:04f62a0b63981c62a7ab90f39637c71745642e84a3bdd4404ce715a0163ebe76", size_bytes: 20216}
+      - {path: scripts/lib/authority-body-baseline.ts, digest: "sha256:0dc48dc9e62fdc9cd8493e9b5827b4cf5948c4b72df3374d5ebcc73ac344009c", size_bytes: 8170}
+  inventory: {path: authority/body-inventory.snapshot.json, digest: "sha256:4a24e48677b013b4167a9894d5a61e8d08622aa8dde00aa40c49192ebf267659", size_bytes: 163244}
+  baseline: {path: baselines/authority-body-inventory-v1.json, digest: "sha256:d1cf42d6990288cf81f0211c2961441a3464c6f89d0e11a9ad057345cd4977c3", size_bytes: 366843}
+  migration: migrations/authority-body-inventory-v1.json
+  non_regression_report: evidence/authority-body-non-regression-report.json
+  promotion_policy:
+    initial_status: pending-human
+    count_raw_anchors_as_semantic_surfaces: false
+    count_raw_anchors_as_depth_achievement: false
+    require_human_decision_before_surface_or_behavior: true
+authority_review_queue:
+  reference:
+    repository: frontend-behavior-atlas
+    commit: de2f016b8b44ea67afdb08c0552044807505984e
+    files:
+      - {path: scripts/lib/authority-review-queue.ts, digest: "sha256:6a0d44da874e7332d2212416bcbaa9ca93ab7a2cda9d5c28b846fecb847c2187", size_bytes: 25181}
+      - {path: scripts/generate-authority-review-queue.ts, digest: "sha256:0ddb9e1ed3221c89e68449914e37a94a9104123d3ae0578b2e0a4aed3f57f291", size_bytes: 315}
+      - {path: scripts/verify-authority-review-queue.ts, digest: "sha256:3849bd25a409742acdcbb8e028a65cf0d51249ac29c23ba606a14d63b81524f9", size_bytes: 125}
+      - {path: scripts/test-authority-review-queue.ts, digest: "sha256:cd6ffd8860645b70f85feb262fffc903d3b0a0aa96c6f9a7181f6ed895e965ec", size_bytes: 2437}
+      - {path: docs/AUTHORITY_REVIEW_WORKFLOW.md, digest: "sha256:64c8dad6e3dc1366ad5afb27a7e785dd428de3c6f0f55f4311ff4d3278370fbd", size_bytes: 3272}
+  queue: {path: authority/review-queue.snapshot.json, digest: "sha256:d4106c13031f33913880c899e73e27730a5a44edcf972994f6d3aab49d1a23ae", size_bytes: 91717}
+  decision_ledger: {path: authority/reviews/decisions.json, digest: "sha256:036e2d58e44f6442254de200ccf5a6ff2f3ee8a3298f9684f7e4420855e91389", size_bytes: 199}
+  policy:
+    initial_status: pending-human
+    machine_priority_cluster_batch_are_semantic_decisions: false
+    require_manual_primary_source_review: true
+    require_reviewer_time_reason_digest_locator_mapping_result_consistency: true
+    stale_documents_are_held: true
+    count_queue_items_as_depth_achievement: false
 axes:
   - id: authority-body-digestion
     portable_criterion: 対象分野の母集団を自己申告Scopeではなく一次資料本文または固定Surface Artifactから導き、全本文をDigest固定し、Locator単位で分類・Reviewする。
-    postgresql_denominator: locked authority sources × extracted locator surfaces × classification review decisions
+    postgresql_denominator: unique Authority document × fixed raw selector anchor × explicit Human classification decision
     status: partial
-    evidence: [sources.lock.yaml, surface.inventory.yaml, authority/extraction.snapshot.json, authority/locator-extraction.snapshot.json, evidence/definitive-audit-report.json]
-    gaps: [生成候補11,340件のlocator metadataとoffset/digestは検証済みだが、Core広域Source rootはfetch failed 10 / deferred 10、公式Docs URL再取得はdeferred 183、Human reviewは0で、Authority本文全体のdenominatorは未Closureである。]
+    evidence: [sources.lock.yaml, authority/body-inventory.snapshot.json, authority/review-queue.snapshot.json, authority/reviews/decisions.json, baselines/authority-body-inventory-v1.json, evidence/authority-body-non-regression-report.json, authority/extraction.snapshot.json, authority/locator-extraction.snapshot.json]
+    gaps: [unique document 398件からfixed selectorでraw anchor 5,512件を列挙し全件Review queueへ接続したが、failed document hold 8件、pending-human 5,512件、Human review 0件、Surface/Atomic behavior昇格0件で、Authority semanticsとdenominatorは未Closureである。]
   - id: surface-atomic-behavior-variant
     portable_criterion: Authority Surfaceを一意なAtomic behavior、Target、Claimへ接続し、同じObservable Contractの実装差だけをVariantとして比較する。
-    postgresql_denominator: 11,340 authority-derived behaviors × applicable PostgreSQL implementation variants
+    postgresql_denominator: Human-reviewed raw anchor decisionsから昇格したAtomic behavior × applicable PostgreSQL implementation variants
     status: partial
     evidence: [surface.inventory.yaml, evidence/definitive-audit-report.json]
-    gaps: [11,320 Behaviorに専用accepted Claimと専用covered Targetがなく、Variant IDは0件である。]
+    gaps: [既存11,340件は自動生成mapping candidateでありSemantic Surface実績に算入しない。Human decision後の昇格Atomic behaviorは0件、Variant IDは0件である。]
   - id: real-runtime-lab
     portable_criterion: 各Behaviorを対象Runtime/Platform上で起動・操作・破棄し、Source/Harness digestと実Versionを記録する。Mock/static fixtureは実Runtime Profileの代替にしない。
     postgresql_denominator: required behavior × PostgreSQL version/runtime/profile

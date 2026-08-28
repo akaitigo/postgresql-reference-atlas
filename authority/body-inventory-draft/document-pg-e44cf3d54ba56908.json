@@ -1,0 +1,127 @@
+{
+  "document_id": "document-pg-e44cf3d54ba56908",
+  "source_ids": [
+    "postgresql-source-rel-18.6"
+  ],
+  "authority_url": "https://github.com/postgres/postgres/tree/REL_18_6",
+  "document_locator": "git:724edf9bde9d356724ad384a2e196edc3c9f80f7:doc/src/sgml/unaccent.sgml",
+  "locked_source_digest": "sha256:873c03070a2e8aae0768fb75d8d6739ae9589681c6cd50839e79d787a7aed222",
+  "locked_body_digest": "sha256:9ddcb159b6c0e4b80e0d020ae8bd7c0949a9958163141e295fac6cab81db9cc9",
+  "fetch": {
+    "status": "matched",
+    "fetched_digest": "sha256:9ddcb159b6c0e4b80e0d020ae8bd7c0949a9958163141e295fac6cab81db9cc9",
+    "locked_digest_match": true,
+    "error_digest": null
+  },
+  "schema_version": 1,
+  "extraction": {
+    "method": "sgml-raw-anchor-selector-v1",
+    "tool": "postgresql-reference-atlas-authority-body-inventory-v1",
+    "tool_digest": "sha256:097da35cf95014735db866fca94f5db07c0717353928b543bcf9c188ae005d2c",
+    "selector_contract": [
+      "document-root",
+      "sgml-id-attribute"
+    ],
+    "selector_exhaustive_for_locked_body": true,
+    "authority_semantics_exhaustive": false,
+    "review_status": "automated-unreviewed",
+    "body_storage": "digest-locator-and-offset-only"
+  },
+  "anchors": [
+    {
+      "id": "anchor-pg-09d850e4e7492b419d3a",
+      "locator": "document-root",
+      "locator_kind": "document-root",
+      "raw_selector": "document-root",
+      "element_name": "document",
+      "parent_anchor_id": null,
+      "context_start": 0,
+      "context_end": 6995,
+      "context_unit": "byte",
+      "context_digest": "sha256:9ddcb159b6c0e4b80e0d020ae8bd7c0949a9958163141e295fac6cab81db9cc9",
+      "classification_status": "pending-human",
+      "surface_ids": [
+
+      ],
+      "behavior_ids": [
+
+      ]
+    },
+    {
+      "id": "anchor-pg-330b8b431f3437bf9c27",
+      "locator": "#unaccent",
+      "locator_kind": "fragment",
+      "raw_selector": "sgml-id-attribute",
+      "element_name": "sect1",
+      "parent_anchor_id": "anchor-pg-09d850e4e7492b419d3a",
+      "context_start": 37,
+      "context_end": 80,
+      "context_unit": "byte",
+      "context_digest": "sha256:0bc3facda97e91906769c72977861708615dc41e81efda49509f718ed23294a6",
+      "classification_status": "pending-human",
+      "surface_ids": [
+
+      ],
+      "behavior_ids": [
+
+      ]
+    },
+    {
+      "id": "anchor-pg-df1de18e15d73646779d",
+      "locator": "#unaccent-configuration",
+      "locator_kind": "fragment",
+      "raw_selector": "sgml-id-attribute",
+      "element_name": "sect2",
+      "parent_anchor_id": "anchor-pg-09d850e4e7492b419d3a",
+      "context_start": 957,
+      "context_end": 994,
+      "context_unit": "byte",
+      "context_digest": "sha256:9a01c8d2aa3ad047fabe54cad266c3f3e67098f0021bee9935d1a6701750fa59",
+      "classification_status": "pending-human",
+      "surface_ids": [
+
+      ],
+      "behavior_ids": [
+
+      ]
+    },
+    {
+      "id": "anchor-pg-64b9acccc9f309a4820c",
+      "locator": "#unaccent-usage",
+      "locator_kind": "fragment",
+      "raw_selector": "sgml-id-attribute",
+      "element_name": "sect2",
+      "parent_anchor_id": "anchor-pg-09d850e4e7492b419d3a",
+      "context_start": 4282,
+      "context_end": 4311,
+      "context_unit": "byte",
+      "context_digest": "sha256:0cec3e2090e552608be36c31a3db5f783cb1e128d2689850a6f88148d89a2327",
+      "classification_status": "pending-human",
+      "surface_ids": [
+
+      ],
+      "behavior_ids": [
+
+      ]
+    },
+    {
+      "id": "anchor-pg-4f9ab96a53bfcdf4c512",
+      "locator": "#unaccent-functions",
+      "locator_kind": "fragment",
+      "raw_selector": "sgml-id-attribute",
+      "element_name": "sect2",
+      "parent_anchor_id": "anchor-pg-09d850e4e7492b419d3a",
+      "context_start": 5945,
+      "context_end": 5978,
+      "context_unit": "byte",
+      "context_digest": "sha256:f25e36ad4bf9f82cdd837cbc69a049024b3fecc70ac037b61434364eec203384",
+      "classification_status": "pending-human",
+      "surface_ids": [
+
+      ],
+      "behavior_ids": [
+
+      ]
+    }
+  ]
+}

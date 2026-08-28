@@ -24,3 +24,5 @@
 非後退Baselineをすべて保持したうえで、Targetは29から56、Claimは29から30、Proofは28から29、Evidenceは30から31、LabとCI Matrixは27から29へ増加した。Sourceと既存Skill Caseは不変である。新しいDefinitive Gapは既存Targetを格下げせず、別の追加Target、Inventory、Verification Matrixへ記録する。
 
 `make non-regression-audit`がBaseline、Mapping、Migration Evidence、現行Repositoryを照合する。結果は`evidence/non-regression-audit-report.json`へ固定する。
+
+Authority body denominatorには別の`baselines/authority-body-inventory-v1.json`を使う。unique document 398件、raw anchor stable ID 5,512件、selector contract、locked body digest、Source IDを固定し、削除や変更には`migrations/authority-body-inventory-v1.json`の旧ID→新ID Mappingと別々のExecution/Migration Evidenceを必須とする。`make authority-body-non-regression-audit`の現行結果はretained 5,512、replaced 0、added 0である。昇格は`authority/reviews/decisions.json`のHuman decisionだけを認め、`authority/review-queue.snapshot.json`と各batchをBody Inventory、Source、Tool digestへ固定する。

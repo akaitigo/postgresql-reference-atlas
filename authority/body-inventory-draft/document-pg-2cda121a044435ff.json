@@ -1,0 +1,33 @@
+{
+  "document_id": "document-pg-2cda121a044435ff",
+  "source_ids": [
+    "postgres-container-16.15-alpine"
+  ],
+  "authority_url": "https://hub.docker.com/_/postgres",
+  "document_locator": "https://hub.docker.com/_/postgres",
+  "locked_source_digest": "sha256:421b84e07a72bb8f3715f20501a1fdbe1219aad1fa4af7786a49d9a3f2480296",
+  "locked_body_digest": "sha256:421b84e07a72bb8f3715f20501a1fdbe1219aad1fa4af7786a49d9a3f2480296",
+  "fetch": {
+    "status": "failed",
+    "fetched_digest": null,
+    "locked_digest_match": false,
+    "error_digest": "sha256:ba8cd78ca838e57225cf3edd06d80ddc0da9e852df42f5da03d05b2e0e1f5032"
+  },
+  "schema_version": 1,
+  "extraction": {
+    "method": "sgml-raw-anchor-selector-v1",
+    "tool": "postgresql-reference-atlas-authority-body-inventory-v1",
+    "tool_digest": "sha256:097da35cf95014735db866fca94f5db07c0717353928b543bcf9c188ae005d2c",
+    "selector_contract": [
+      "document-root",
+      "sgml-id-attribute"
+    ],
+    "selector_exhaustive_for_locked_body": false,
+    "authority_semantics_exhaustive": false,
+    "review_status": "automated-unreviewed",
+    "body_storage": "digest-locator-and-offset-only"
+  },
+  "anchors": [
+
+  ]
+}

@@ -2,6 +2,8 @@ schema_version: 1
 artifacts:
   - {id: frontend-depth-reference, name: FE_DEPTH_REFERENCE.json, kind: source, version: 4a0b2df8e2091a963bd0e0e1bbccef9c84b49a45, source: https://github.com/akaitigo/frontend-behavior-atlas, license: Apache-2.0, redistribution: allowed}
   - {id: frontend-authority-locator-reference, name: Authority locator extraction contract, kind: source, version: cabf687bab769b17928d950acc416f3f77eb4ca3, source: https://github.com/akaitigo/frontend-behavior-atlas, license: Apache-2.0, redistribution: link-only}
+  - {id: frontend-authority-body-denominator-reference, name: Authority body denominator contract, kind: source, version: 841ec2fa399606a10305021a8bcd396713b8cee5, source: https://github.com/akaitigo/frontend-behavior-atlas, license: Apache-2.0, redistribution: link-only}
+  - {id: frontend-authority-review-queue-reference, name: Authority human review queue contract, kind: source, version: de2f016b8b44ea67afdb08c0552044807505984e, source: https://github.com/akaitigo/frontend-behavior-atlas, license: Apache-2.0, redistribution: link-only}
   - {id: postgresql-source, name: PostgreSQL, kind: source, version: "18.6", source: https://ftp.postgresql.org/pub/source/v18.6/postgresql-18.6.tar.bz2, license: PostgreSQL, redistribution: metadata-only}
   - {id: postgres-image-18, name: postgres:18.6-alpine, kind: asset, version: "18.6-alpine", source: https://hub.docker.com/_/postgres, license: PostgreSQL AND container-distribution-licenses, redistribution: metadata-only}
   - {id: postgres-image-17, name: postgres:17.11-alpine, kind: asset, version: "17.11-alpine", source: https://hub.docker.com/_/postgres, license: PostgreSQL AND container-distribution-licenses, redistribution: metadata-only}

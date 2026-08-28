@@ -1,0 +1,2450 @@
+{
+  "schema_version": 1,
+  "atlas_id": "postgresql-reference-atlas",
+  "generated_at": "2026-08-28T00:00:00+09:00",
+  "status": "incomplete-human-review-required",
+  "queue_id": "authority-review-pg-e4c9877a8fc101d28b42",
+  "input_digest": "sha256:fb175a8178ae3b05de163c985f8a6e5b03786316297457c9021c931d48026e8e",
+  "tool_digest": "sha256:555151bbd9256d534a12709f3c44a773c82d8ed72415fbf0ebfb840e0b6317ce",
+  "decision_ledger": "authority/reviews/decisions.json",
+  "body_storage": "digest-locator-and-offset-only",
+  "machine_assistance": "dedupe-candidate-cluster-priority-and-batch-only",
+  "semantic_decisions": "human-only",
+  "summary": {
+    "eligible_documents": 390,
+    "queued_anchors": 5512,
+    "pending_human": 5512,
+    "human_reviewed": 0,
+    "priority_counts": {
+      "0": 4352,
+      "1": 989,
+      "2": 171
+    },
+    "candidate_clusters": 0,
+    "clustered_anchors": 0,
+    "batches": 255,
+    "stale_document_holds": 0,
+    "unavailable_document_holds": 8,
+    "decisions": 0,
+    "included": 0,
+    "excluded": 0,
+    "merged": 0,
+    "split": 0,
+    "authority_semantics_exhaustive": false,
+    "queue_counts_as_depth_achievement": false
+  },
+  "batches": [
+    {
+      "id": "review-p0-document-root-00",
+      "path": "authority/review-queue-draft/review-p0-document-root-00.json",
+      "digest": "sha256:08bb172377e77fd60800f1232f9d1f461aa769245c96ab275aa87b3155867539",
+      "priority": 0,
+      "raw_selector": "document-root",
+      "bucket": "00",
+      "items": 5
+    },
+    {
+      "id": "review-p0-document-root-01",
+      "path": "authority/review-queue-draft/review-p0-document-root-01.json",
+      "digest": "sha256:aa55bf95368627789be68d12ee5ccbaa1299d9c8bf981e9a793e5ca59ebe9b48",
+      "priority": 0,
+      "raw_selector": "document-root",
+      "bucket": "01",
+      "items": 1
+    },
+    {
+      "id": "review-p0-document-root-02",
+      "path": "authority/review-queue-draft/review-p0-document-root-02.json",
+      "digest": "sha256:f62f43b23123df6a12be661e45ec559546ee591266e3f443a2353e13bbc00b1f",
+      "priority": 0,
+      "raw_selector": "document-root",
+      "bucket": "02",
+      "items": 5
+    },
+    {
+      "id": "review-p0-document-root-03",
+      "path": "authority/review-queue-draft/review-p0-document-root-03.json",
+      "digest": "sha256:6963b516c8072ca2c630a096bbd85a4f92988085f0e5b9639fef70c66465cc7f",
+      "priority": 0,
+      "raw_selector": "document-root",
+      "bucket": "03",
+      "items": 5
+    },
+    {
+      "id": "review-p0-document-root-04",
+      "path": "authority/review-queue-draft/review-p0-document-root-04.json",
+      "digest": "sha256:a4e34a8dd09d84eaeefdf353d20dcfe76fe6b8ccdee36c1e9081d8e6855c4389",
+      "priority": 0,
+      "raw_selector": "document-root",
+      "bucket": "04",
+      "items": 7
+    },
+    {
+      "id": "review-p0-document-root-05",
+      "path": "authority/review-queue-draft/review-p0-document-root-05.json",
+      "digest": "sha256:19d2e5356622cf1f9034328a373f96d20760ed003bb900b87f73a9bdcd0166e5",
+      "priority": 0,
+      "raw_selector": "document-root",
+      "bucket": "05",
+      "items": 3
+    },
+    {
+      "id": "review-p0-document-root-06",
+      "path": "authority/review-queue-draft/review-p0-document-root-06.json",
+      "digest": "sha256:5dd617ed3620bd79523724872071edcf0af9827e0fde1dd8abf08eef0c692e99",
+      "priority": 0,
+      "raw_selector": "document-root",
+      "bucket": "06",
+      "items": 3
+    },
+    {
+      "id": "review-p0-document-root-07",
+      "path": "authority/review-queue-draft/review-p0-document-root-07.json",
+      "digest": "sha256:82687b6020d836d024340b5aac36d3737347fc060c673344a01608a12ef1d265",
+      "priority": 0,
+      "raw_selector": "document-root",
+      "bucket": "07",
+      "items": 4
+    },
+    {
+      "id": "review-p0-document-root-08",
+      "path": "authority/review-queue-draft/review-p0-document-root-08.json",
+      "digest": "sha256:b4575c59ae87ec6666ec69ac936d6f814271dca4a2b45d13353254ace4dfe7ca",
+      "priority": 0,
+      "raw_selector": "document-root",
+      "bucket": "08",
+      "items": 2
+    },
+    {
+      "id": "review-p0-document-root-09",
+      "path": "authority/review-queue-draft/review-p0-document-root-09.json",
+      "digest": "sha256:307d3cf248a197ac60a99f4cc26ed4b2ff6b2cc6efad332bf8e429a575f2d5b3",
+      "priority": 0,
+      "raw_selector": "document-root",
+      "bucket": "09",
+      "items": 5
+    },
+    {
+      "id": "review-p0-document-root-0a",
+      "path": "authority/review-queue-draft/review-p0-document-root-0a.json",
+      "digest": "sha256:3c63e3a14390328a63c41273b02be656e07e670d1a98fd54eb65c164debf2182",
+      "priority": 0,
+      "raw_selector": "document-root",
+      "bucket": "0a",
+      "items": 1
+    },
+    {
+      "id": "review-p0-document-root-0b",
+      "path": "authority/review-queue-draft/review-p0-document-root-0b.json",
+      "digest": "sha256:3802c2070edd6da583daecd66a831f17624da9a6960f519b45b65291af1ded65",
+      "priority": 0,
+      "raw_selector": "document-root",
+      "bucket": "0b",
+      "items": 5
+    },
+    {
+      "id": "review-p0-document-root-0c",
+      "path": "authority/review-queue-draft/review-p0-document-root-0c.json",
+      "digest": "sha256:3a558a8100233e95042ce462ef33796589c769c01d2e0c1da32eecaba310257a",
+      "priority": 0,
+      "raw_selector": "document-root",
+      "bucket": "0c",
+      "items": 4
+    },
+    {
+      "id": "review-p0-document-root-0d",
+      "path": "authority/review-queue-draft/review-p0-document-root-0d.json",
+      "digest": "sha256:7f80ff3abc163d4b8838d5c6d576e4b7e3ffedcddecb0d355f608774a4e5f828",
+      "priority": 0,
+      "raw_selector": "document-root",
+      "bucket": "0d",
+      "items": 2
+    },
+    {
+      "id": "review-p0-document-root-0e",
+      "path": "authority/review-queue-draft/review-p0-document-root-0e.json",
+      "digest": "sha256:f645f744c5a60f47fad3b3e122c954d9a5a75857e6494b73e998293ec64f032c",
+      "priority": 0,
+      "raw_selector": "document-root",
+      "bucket": "0e",
+      "items": 6
+    },
+    {
+      "id": "review-p0-document-root-0f",
+      "path": "authority/review-queue-draft/review-p0-document-root-0f.json",
+      "digest": "sha256:7bb3ae29066713064b90cf7ead18680b73fd69b75f7f3ff8f4f46ce2dd7bb01a",
+      "priority": 0,
+      "raw_selector": "document-root",
+      "bucket": "0f",
+      "items": 4
+    },
+    {
+      "id": "review-p0-document-root-10",
+      "path": "authority/review-queue-draft/review-p0-document-root-10.json",
+      "digest": "sha256:b5f2af1bbac9eea71ed3168e9138cfb6bea064564f76e26774e11374b565e7dc",
+      "priority": 0,
+      "raw_selector": "document-root",
+      "bucket": "10",
+      "items": 5
+    },
+    {
+      "id": "review-p0-document-root-11",
+      "path": "authority/review-queue-draft/review-p0-document-root-11.json",
+      "digest": "sha256:2ba892c7732de627a873b9edc2d2bdbc94c87bbb0b567a2102bc880e9ba07ba3",
+      "priority": 0,
+      "raw_selector": "document-root",
+      "bucket": "11",
+      "items": 3
+    },
+    {
+      "id": "review-p0-document-root-12",
+      "path": "authority/review-queue-draft/review-p0-document-root-12.json",
+      "digest": "sha256:fea29fe211e03624a25468cfcc587a14dd9b25e65f3e81ec3940e7c607385a57",
+      "priority": 0,
+      "raw_selector": "document-root",
+      "bucket": "12",
+      "items": 4
+    },
+    {
+      "id": "review-p0-document-root-13",
+      "path": "authority/review-queue-draft/review-p0-document-root-13.json",
+      "digest": "sha256:7f9458d791a536d49187383fec3da53e5bcd9a5c41768b051ada7fdcb672cfcd",
+      "priority": 0,
+      "raw_selector": "document-root",
+      "bucket": "13",
+      "items": 3
+    },
+    {
+      "id": "review-p0-document-root-14",
+      "path": "authority/review-queue-draft/review-p0-document-root-14.json",
+      "digest": "sha256:bc7921d973f8c93e7805a54ed56d5b5ea6ecea62f51d9f83522dd98120bf227b",
+      "priority": 0,
+      "raw_selector": "document-root",
+      "bucket": "14",
+      "items": 4
+    },
+    {
+      "id": "review-p0-document-root-15",
+      "path": "authority/review-queue-draft/review-p0-document-root-15.json",
+      "digest": "sha256:a0acfa423b2f98cbfabe265075fa53afd1f368212271572a3cb84c2395f34e87",
+      "priority": 0,
+      "raw_selector": "document-root",
+      "bucket": "15",
+      "items": 3
+    },
+    {
+      "id": "review-p0-document-root-16",
+      "path": "authority/review-queue-draft/review-p0-document-root-16.json",
+      "digest": "sha256:ed02ecd3f979a6c82b95d10df278a0266dd5627e7aa4a28eb09352c6c3516e14",
+      "priority": 0,
+      "raw_selector": "document-root",
+      "bucket": "16",
+      "items": 4
+    },
+    {
+      "id": "review-p0-document-root-17",
+      "path": "authority/review-queue-draft/review-p0-document-root-17.json",
+      "digest": "sha256:ac86c9315d071ab96357591236b13ea0abdce3b4f9c7ea55c3f223660b048913",
+      "priority": 0,
+      "raw_selector": "document-root",
+      "bucket": "17",
+      "items": 3
+    },
+    {
+      "id": "review-p0-document-root-18",
+      "path": "authority/review-queue-draft/review-p0-document-root-18.json",
+      "digest": "sha256:e2ec62acd1c5ce1b9c139cfb664bb138cbdf61483f96bc2c5a97ef0953cc6f6a",
+      "priority": 0,
+      "raw_selector": "document-root",
+      "bucket": "18",
+      "items": 2
+    },
+    {
+      "id": "review-p0-document-root-19",
+      "path": "authority/review-queue-draft/review-p0-document-root-19.json",
+      "digest": "sha256:e976aa5fcb4d982564c75c375bb3cfca1c264d1e9157551d38b17d182bc6f7c6",
+      "priority": 0,
+      "raw_selector": "document-root",
+      "bucket": "19",
+      "items": 4
+    },
+    {
+      "id": "review-p0-document-root-1a",
+      "path": "authority/review-queue-draft/review-p0-document-root-1a.json",
+      "digest": "sha256:e95bd9122c09fb6a5942a192cd5530364bc45ed34f0383c2fcb192b228f1ad9e",
+      "priority": 0,
+      "raw_selector": "document-root",
+      "bucket": "1a",
+      "items": 5
+    },
+    {
+      "id": "review-p0-document-root-1b",
+      "path": "authority/review-queue-draft/review-p0-document-root-1b.json",
+      "digest": "sha256:177da828ce1f63a506357f138bcf68fbfdcde3c37ca131753bd215f55b13d4b9",
+      "priority": 0,
+      "raw_selector": "document-root",
+      "bucket": "1b",
+      "items": 5
+    },
+    {
+      "id": "review-p0-document-root-1c",
+      "path": "authority/review-queue-draft/review-p0-document-root-1c.json",
+      "digest": "sha256:1cc157de4c37d73090aafdd9b3cb11d8f220074db4f7ef237cc013ee058c9b61",
+      "priority": 0,
+      "raw_selector": "document-root",
+      "bucket": "1c",
+      "items": 1
+    },
+    {
+      "id": "review-p0-document-root-1d",
+      "path": "authority/review-queue-draft/review-p0-document-root-1d.json",
+      "digest": "sha256:9bb35395947b8b39110b1749ba85b5205708f3bb68ea8af7616aec35ab6b3bd9",
+      "priority": 0,
+      "raw_selector": "document-root",
+      "bucket": "1d",
+      "items": 5
+    },
+    {
+      "id": "review-p0-document-root-1e",
+      "path": "authority/review-queue-draft/review-p0-document-root-1e.json",
+      "digest": "sha256:30bb2ef64a1316d906bc12ded45992255a66e8a17514b644a44c173956d17004",
+      "priority": 0,
+      "raw_selector": "document-root",
+      "bucket": "1e",
+      "items": 4
+    },
+    {
+      "id": "review-p0-document-root-1f",
+      "path": "authority/review-queue-draft/review-p0-document-root-1f.json",
+      "digest": "sha256:dcd3851eab05a4298764a70d10d8addd0e4d9be648e700cd0bcdce374a7a8229",
+      "priority": 0,
+      "raw_selector": "document-root",
+      "bucket": "1f",
+      "items": 3
+    },
+    {
+      "id": "review-p0-document-root-20",
+      "path": "authority/review-queue-draft/review-p0-document-root-20.json",
+      "digest": "sha256:baef13864821a3bfb2e4e34743cda169e7ac5153ab0ac3708bf3058bb0e07a14",
+      "priority": 0,
+      "raw_selector": "document-root",
+      "bucket": "20",
+      "items": 6
+    },
+    {
+      "id": "review-p0-document-root-21",
+      "path": "authority/review-queue-draft/review-p0-document-root-21.json",
+      "digest": "sha256:93819b3d6be466ff32eec115fd9856354713460a3d4786953d688ed7c041e942",
+      "priority": 0,
+      "raw_selector": "document-root",
+      "bucket": "21",
+      "items": 2
+    },
+    {
+      "id": "review-p0-document-root-22",
+      "path": "authority/review-queue-draft/review-p0-document-root-22.json",
+      "digest": "sha256:c0812b7644a40e352272455d525430669ee7d9485c2a2605d930e578d8f35f17",
+      "priority": 0,
+      "raw_selector": "document-root",
+      "bucket": "22",
+      "items": 2
+    },
+    {
+      "id": "review-p0-document-root-23",
+      "path": "authority/review-queue-draft/review-p0-document-root-23.json",
+      "digest": "sha256:c4fed654f6ba27ecf845cfd854f377c329c33dcecab4887822b41187fd681f08",
+      "priority": 0,
+      "raw_selector": "document-root",
+      "bucket": "23",
+      "items": 2
+    },
+    {
+      "id": "review-p0-document-root-24",
+      "path": "authority/review-queue-draft/review-p0-document-root-24.json",
+      "digest": "sha256:fe4d12bb4980d7e558b94ad1d832a33aeebeb1b49aaa44f95db9723cb7f51109",
+      "priority": 0,
+      "raw_selector": "document-root",
+      "bucket": "24",
+      "items": 5
+    },
+    {
+      "id": "review-p0-document-root-25",
+      "path": "authority/review-queue-draft/review-p0-document-root-25.json",
+      "digest": "sha256:d738fc724b6a7d7284502e3976f51b36b32198b0d45af44aca9014891a985394",
+      "priority": 0,
+      "raw_selector": "document-root",
+      "bucket": "25",
+      "items": 4
+    },
+    {
+      "id": "review-p0-document-root-26",
+      "path": "authority/review-queue-draft/review-p0-document-root-26.json",
+      "digest": "sha256:5b7248dc3628fddb9c65abdc4dbcb38b861f8fa5adb882987fd7e400969de109",
+      "priority": 0,
+      "raw_selector": "document-root",
+      "bucket": "26",
+      "items": 2
+    },
+    {
+      "id": "review-p0-document-root-27",
+      "path": "authority/review-queue-draft/review-p0-document-root-27.json",
+      "digest": "sha256:73a428153cb13ce9e5ab826a3f05a2c7ea79a24204bcc97c7f0c656211f0a4e1",
+      "priority": 0,
+      "raw_selector": "document-root",
+      "bucket": "27",
+      "items": 4
+    },
+    {
+      "id": "review-p0-document-root-28",
+      "path": "authority/review-queue-draft/review-p0-document-root-28.json",
+      "digest": "sha256:79edb9ce279aa905f2630dc52c5043f7006ad14a14b150aa64e4edeec7829b08",
+      "priority": 0,
+      "raw_selector": "document-root",
+      "bucket": "28",
+      "items": 2
+    },
+    {
+      "id": "review-p0-document-root-29",
+      "path": "authority/review-queue-draft/review-p0-document-root-29.json",
+      "digest": "sha256:1ab57f163487b3554c5e80f921253759c703b68b597422514bca36addab1dfee",
+      "priority": 0,
+      "raw_selector": "document-root",
+      "bucket": "29",
+      "items": 4
+    },
+    {
+      "id": "review-p0-document-root-2a",
+      "path": "authority/review-queue-draft/review-p0-document-root-2a.json",
+      "digest": "sha256:fb2519aafdc42374e54b912f8bf37da65a3bbe1fbd83e3034224c5fee7d7a5ad",
+      "priority": 0,
+      "raw_selector": "document-root",
+      "bucket": "2a",
+      "items": 2
+    },
+    {
+      "id": "review-p0-document-root-2b",
+      "path": "authority/review-queue-draft/review-p0-document-root-2b.json",
+      "digest": "sha256:fdfd12b51bfdc6f87d76be606df0586843d46c41c504c53830de8d435e0ec31a",
+      "priority": 0,
+      "raw_selector": "document-root",
+      "bucket": "2b",
+      "items": 5
+    },
+    {
+      "id": "review-p0-document-root-2c",
+      "path": "authority/review-queue-draft/review-p0-document-root-2c.json",
+      "digest": "sha256:fc454852e34d7392f225128e2defc47b1898386a503f27c70aabbd0fb6db2bf5",
+      "priority": 0,
+      "raw_selector": "document-root",
+      "bucket": "2c",
+      "items": 5
+    },
+    {
+      "id": "review-p0-document-root-2d",
+      "path": "authority/review-queue-draft/review-p0-document-root-2d.json",
+      "digest": "sha256:91a7f3d9d127bbb9ca6a714453ec7f90fcd005f87e731814cb9af1de2bef7854",
+      "priority": 0,
+      "raw_selector": "document-root",
+      "bucket": "2d",
+      "items": 2
+    },
+    {
+      "id": "review-p0-document-root-2e",
+      "path": "authority/review-queue-draft/review-p0-document-root-2e.json",
+      "digest": "sha256:ea602cb6bd0f351d60e6bd188839560b0e5a8eb6656a4f0b088851f6aa483b00",
+      "priority": 0,
+      "raw_selector": "document-root",
+      "bucket": "2e",
+      "items": 7
+    },
+    {
+      "id": "review-p0-document-root-2f",
+      "path": "authority/review-queue-draft/review-p0-document-root-2f.json",
+      "digest": "sha256:330ecd4db0831379170ba2b728f7d2b823109d6d9780762b5969b2d14191095b",
+      "priority": 0,
+      "raw_selector": "document-root",
+      "bucket": "2f",
+      "items": 2
+    },
+    {
+      "id": "review-p0-document-root-30",
+      "path": "authority/review-queue-draft/review-p0-document-root-30.json",
+      "digest": "sha256:b3de8c36934d2075a16b6127d8810c89e60e5dd18bcd5db187d0f1915da58999",
+      "priority": 0,
+      "raw_selector": "document-root",
+      "bucket": "30",
+      "items": 5
+    },
+    {
+      "id": "review-p0-document-root-31",
+      "path": "authority/review-queue-draft/review-p0-document-root-31.json",
+      "digest": "sha256:c67b3a48e971642ffc5c65b7d4556b8965f8e11be1f12f3d20858a08d0500746",
+      "priority": 0,
+      "raw_selector": "document-root",
+      "bucket": "31",
+      "items": 3
+    },
+    {
+      "id": "review-p0-document-root-32",
+      "path": "authority/review-queue-draft/review-p0-document-root-32.json",
+      "digest": "sha256:35bbfa1ecb7029ba33a0030ca7f9cb2198f4c0cff1d6c08811ba25dcc55a6dc4",
+      "priority": 0,
+      "raw_selector": "document-root",
+      "bucket": "32",
+      "items": 4
+    },
+    {
+      "id": "review-p0-document-root-33",
+      "path": "authority/review-queue-draft/review-p0-document-root-33.json",
+      "digest": "sha256:f3b28239966ed93fed49173793b8389a3b73276341662ba34979daa10ffb4246",
+      "priority": 0,
+      "raw_selector": "document-root",
+      "bucket": "33",
+      "items": 6
+    },
+    {
+      "id": "review-p0-document-root-34",
+      "path": "authority/review-queue-draft/review-p0-document-root-34.json",
+      "digest": "sha256:3673bb8a8faceb4fc3ac46476a31b1622fd9a45c0b6c20d0715df715a32e61be",
+      "priority": 0,
+      "raw_selector": "document-root",
+      "bucket": "34",
+      "items": 3
+    },
+    {
+      "id": "review-p0-document-root-35",
+      "path": "authority/review-queue-draft/review-p0-document-root-35.json",
+      "digest": "sha256:699a11c93ec368b5aa0bfa66142837005fcbffa0832b13340af50d78cc9ae922",
+      "priority": 0,
+      "raw_selector": "document-root",
+      "bucket": "35",
+      "items": 4
+    },
+    {
+      "id": "review-p0-document-root-36",
+      "path": "authority/review-queue-draft/review-p0-document-root-36.json",
+      "digest": "sha256:33053451e21ba73e194648bb4c947e1ae5afebbd41040079ddfead9c8c1f20a3",
+      "priority": 0,
+      "raw_selector": "document-root",
+      "bucket": "36",
+      "items": 1
+    },
+    {
+      "id": "review-p0-document-root-37",
+      "path": "authority/review-queue-draft/review-p0-document-root-37.json",
+      "digest": "sha256:cc8c18d1426a1b8055cb54e6cf5fc69244f41e57bde709c6e24af8d200eb177a",
+      "priority": 0,
+      "raw_selector": "document-root",
+      "bucket": "37",
+      "items": 4
+    },
+    {
+      "id": "review-p0-document-root-38",
+      "path": "authority/review-queue-draft/review-p0-document-root-38.json",
+      "digest": "sha256:4753c31cad98ca561c0b4f98cc38230641a40324ecb5f92434aad65cf248e040",
+      "priority": 0,
+      "raw_selector": "document-root",
+      "bucket": "38",
+      "items": 1
+    },
+    {
+      "id": "review-p0-document-root-39",
+      "path": "authority/review-queue-draft/review-p0-document-root-39.json",
+      "digest": "sha256:c80b2cc7dd3315cd96c5102d4a031793405c54fbab4bb4304e1aa220065cb6fb",
+      "priority": 0,
+      "raw_selector": "document-root",
+      "bucket": "39",
+      "items": 2
+    },
+    {
+      "id": "review-p0-document-root-3a",
+      "path": "authority/review-queue-draft/review-p0-document-root-3a.json",
+      "digest": "sha256:efbf39bbcfb3b633965d079c88f0a5e19e51a745075cbb31830a30cfb4fe2abc",
+      "priority": 0,
+      "raw_selector": "document-root",
+      "bucket": "3a",
+      "items": 1
+    },
+    {
+      "id": "review-p0-document-root-3b",
+      "path": "authority/review-queue-draft/review-p0-document-root-3b.json",
+      "digest": "sha256:08013611e5dc9cec289fcfda02cbf11cbe3ae68144b81e22af2b9fe27a3d188d",
+      "priority": 0,
+      "raw_selector": "document-root",
+      "bucket": "3b",
+      "items": 1
+    },
+    {
+      "id": "review-p0-document-root-3c",
+      "path": "authority/review-queue-draft/review-p0-document-root-3c.json",
+      "digest": "sha256:53c7b8cc67325cb81596e880ee63fa50e3fa63038d5c9fc9f9a74ec56e82d539",
+      "priority": 0,
+      "raw_selector": "document-root",
+      "bucket": "3c",
+      "items": 1
+    },
+    {
+      "id": "review-p0-document-root-3d",
+      "path": "authority/review-queue-draft/review-p0-document-root-3d.json",
+      "digest": "sha256:707fbb47cdbee927fa7fde85ef2818fc792be378d542f19096e68fa7ab1f2061",
+      "priority": 0,
+      "raw_selector": "document-root",
+      "bucket": "3d",
+      "items": 3
+    },
+    {
+      "id": "review-p0-document-root-3e",
+      "path": "authority/review-queue-draft/review-p0-document-root-3e.json",
+      "digest": "sha256:0e7552059e7aa37bd7510cdbd65b253bcb64b115f251d14d6f05fdda8d59481c",
+      "priority": 0,
+      "raw_selector": "document-root",
+      "bucket": "3e",
+      "items": 4
+    },
+    {
+      "id": "review-p0-sgml-id-attribute-00",
+      "path": "authority/review-queue-draft/review-p0-sgml-id-attribute-00.json",
+      "digest": "sha256:aa3b64f4ee91e814b33d07ff7ffdf7dbb495d30d84d4ecce0ce8ba6e6cda4b7b",
+      "priority": 0,
+      "raw_selector": "sgml-id-attribute",
+      "bucket": "00",
+      "items": 60
+    },
+    {
+      "id": "review-p0-sgml-id-attribute-01",
+      "path": "authority/review-queue-draft/review-p0-sgml-id-attribute-01.json",
+      "digest": "sha256:b0c8094de7dafbb35ecdcf6ce6dad78569298265fec49fb369da7c37bffe7ede",
+      "priority": 0,
+      "raw_selector": "sgml-id-attribute",
+      "bucket": "01",
+      "items": 53
+    },
+    {
+      "id": "review-p0-sgml-id-attribute-02",
+      "path": "authority/review-queue-draft/review-p0-sgml-id-attribute-02.json",
+      "digest": "sha256:2cf716a923e173922139e7747b4a964b6d2c2d7eee0196e6e7192f83a204b016",
+      "priority": 0,
+      "raw_selector": "sgml-id-attribute",
+      "bucket": "02",
+      "items": 53
+    },
+    {
+      "id": "review-p0-sgml-id-attribute-03",
+      "path": "authority/review-queue-draft/review-p0-sgml-id-attribute-03.json",
+      "digest": "sha256:73eefc5bb5e0606d509001532544861181475a936cc62240b6090e26bdaee284",
+      "priority": 0,
+      "raw_selector": "sgml-id-attribute",
+      "bucket": "03",
+      "items": 60
+    },
+    {
+      "id": "review-p0-sgml-id-attribute-04",
+      "path": "authority/review-queue-draft/review-p0-sgml-id-attribute-04.json",
+      "digest": "sha256:71351c62052dc1ef48a21bab11fee5a0241233941f026b911a131e52947f1913",
+      "priority": 0,
+      "raw_selector": "sgml-id-attribute",
+      "bucket": "04",
+      "items": 63
+    },
+    {
+      "id": "review-p0-sgml-id-attribute-05",
+      "path": "authority/review-queue-draft/review-p0-sgml-id-attribute-05.json",
+      "digest": "sha256:2699010141e3856c698ac19ff226e5a9b09b01456b64d172b94368ee4f7086cf",
+      "priority": 0,
+      "raw_selector": "sgml-id-attribute",
+      "bucket": "05",
+      "items": 57
+    },
+    {
+      "id": "review-p0-sgml-id-attribute-06",
+      "path": "authority/review-queue-draft/review-p0-sgml-id-attribute-06.json",
+      "digest": "sha256:d8d411c22d975b218b6114877bfe9816c7792fed8c11e612c7b4769fe997e96c",
+      "priority": 0,
+      "raw_selector": "sgml-id-attribute",
+      "bucket": "06",
+      "items": 68
+    },
+    {
+      "id": "review-p0-sgml-id-attribute-07",
+      "path": "authority/review-queue-draft/review-p0-sgml-id-attribute-07.json",
+      "digest": "sha256:2df6e06194ac544eda1a986d6fbc6836f50906a0baee2c148f13219ad8f676c5",
+      "priority": 0,
+      "raw_selector": "sgml-id-attribute",
+      "bucket": "07",
+      "items": 65
+    },
+    {
+      "id": "review-p0-sgml-id-attribute-08",
+      "path": "authority/review-queue-draft/review-p0-sgml-id-attribute-08.json",
+      "digest": "sha256:01c47ebd5fcb6142409768fe5fcd3b2353dd165c534f744161fb725ff472079b",
+      "priority": 0,
+      "raw_selector": "sgml-id-attribute",
+      "bucket": "08",
+      "items": 75
+    },
+    {
+      "id": "review-p0-sgml-id-attribute-09",
+      "path": "authority/review-queue-draft/review-p0-sgml-id-attribute-09.json",
+      "digest": "sha256:f133bd61a9493e5c4f0541b449b9fea9920a34e06685190af86370339a827f40",
+      "priority": 0,
+      "raw_selector": "sgml-id-attribute",
+      "bucket": "09",
+      "items": 85
+    },
+    {
+      "id": "review-p0-sgml-id-attribute-0a",
+      "path": "authority/review-queue-draft/review-p0-sgml-id-attribute-0a.json",
+      "digest": "sha256:0ac8937209710fdb16b43d9590d503483cc4b62b80048d4c310636326de047be",
+      "priority": 0,
+      "raw_selector": "sgml-id-attribute",
+      "bucket": "0a",
+      "items": 71
+    },
+    {
+      "id": "review-p0-sgml-id-attribute-0b",
+      "path": "authority/review-queue-draft/review-p0-sgml-id-attribute-0b.json",
+      "digest": "sha256:fcb84c20547fa40820f3e020ee1a929560db1c565dde721116133a3355d665f1",
+      "priority": 0,
+      "raw_selector": "sgml-id-attribute",
+      "bucket": "0b",
+      "items": 77
+    },
+    {
+      "id": "review-p0-sgml-id-attribute-0c",
+      "path": "authority/review-queue-draft/review-p0-sgml-id-attribute-0c.json",
+      "digest": "sha256:a514e917c986b0e11a49fc04a965537dbe110289ba37b62c4ddb54f9bf2e8c4d",
+      "priority": 0,
+      "raw_selector": "sgml-id-attribute",
+      "bucket": "0c",
+      "items": 47
+    },
+    {
+      "id": "review-p0-sgml-id-attribute-0d",
+      "path": "authority/review-queue-draft/review-p0-sgml-id-attribute-0d.json",
+      "digest": "sha256:4ae3ca850c575685e1931388785a53e1dd52f133b389609efbc43c3c2f1d0ee2",
+      "priority": 0,
+      "raw_selector": "sgml-id-attribute",
+      "bucket": "0d",
+      "items": 73
+    },
+    {
+      "id": "review-p0-sgml-id-attribute-0e",
+      "path": "authority/review-queue-draft/review-p0-sgml-id-attribute-0e.json",
+      "digest": "sha256:6c5dc143f47cf3921e6ee61d01bd618da4c8c5e97dd741d09fbf57b4c7af5120",
+      "priority": 0,
+      "raw_selector": "sgml-id-attribute",
+      "bucket": "0e",
+      "items": 60
+    },
+    {
+      "id": "review-p0-sgml-id-attribute-0f",
+      "path": "authority/review-queue-draft/review-p0-sgml-id-attribute-0f.json",
+      "digest": "sha256:12054462d9c4379282b92bae7ad274b5939b855c9882aed0f32813dace8e3144",
+      "priority": 0,
+      "raw_selector": "sgml-id-attribute",
+      "bucket": "0f",
+      "items": 55
+    },
+    {
+      "id": "review-p0-sgml-id-attribute-10",
+      "path": "authority/review-queue-draft/review-p0-sgml-id-attribute-10.json",
+      "digest": "sha256:04ff2964819231acbea844d16264952344e510220cbfe8c84d92b132fe73cc03",
+      "priority": 0,
+      "raw_selector": "sgml-id-attribute",
+      "bucket": "10",
+      "items": 72
+    },
+    {
+      "id": "review-p0-sgml-id-attribute-11",
+      "path": "authority/review-queue-draft/review-p0-sgml-id-attribute-11.json",
+      "digest": "sha256:081bc11dfd4a1052f0b1126d4694050121dff8e8c825a78310558faa6bba85fe",
+      "priority": 0,
+      "raw_selector": "sgml-id-attribute",
+      "bucket": "11",
+      "items": 68
+    },
+    {
+      "id": "review-p0-sgml-id-attribute-12",
+      "path": "authority/review-queue-draft/review-p0-sgml-id-attribute-12.json",
+      "digest": "sha256:f4c18b3bb14a724950a5253a9011b206c0eee199242e8d3d1c37a1aa3809b8c2",
+      "priority": 0,
+      "raw_selector": "sgml-id-attribute",
+      "bucket": "12",
+      "items": 61
+    },
+    {
+      "id": "review-p0-sgml-id-attribute-13",
+      "path": "authority/review-queue-draft/review-p0-sgml-id-attribute-13.json",
+      "digest": "sha256:e7a26ad9141268dd7b8270d56295d1d777732d63de7c7da8a9adab71447af5ed",
+      "priority": 0,
+      "raw_selector": "sgml-id-attribute",
+      "bucket": "13",
+      "items": 69
+    },
+    {
+      "id": "review-p0-sgml-id-attribute-14",
+      "path": "authority/review-queue-draft/review-p0-sgml-id-attribute-14.json",
+      "digest": "sha256:721df96e53db7abfe63795f0ee53b3fb138818b7f711581d3a33db53464249a1",
+      "priority": 0,
+      "raw_selector": "sgml-id-attribute",
+      "bucket": "14",
+      "items": 57
+    },
+    {
+      "id": "review-p0-sgml-id-attribute-15",
+      "path": "authority/review-queue-draft/review-p0-sgml-id-attribute-15.json",
+      "digest": "sha256:eed6367f87657e680f5f9ea2584dede968246d7ccb13dad9bebc7ece1683add2",
+      "priority": 0,
+      "raw_selector": "sgml-id-attribute",
+      "bucket": "15",
+      "items": 54
+    },
+    {
+      "id": "review-p0-sgml-id-attribute-16",
+      "path": "authority/review-queue-draft/review-p0-sgml-id-attribute-16.json",
+      "digest": "sha256:fcce00fe515977f7aab9be86abe1033223c2ce6213b7c484277fc8fcf8a37fbd",
+      "priority": 0,
+      "raw_selector": "sgml-id-attribute",
+      "bucket": "16",
+      "items": 58
+    },
+    {
+      "id": "review-p0-sgml-id-attribute-17",
+      "path": "authority/review-queue-draft/review-p0-sgml-id-attribute-17.json",
+      "digest": "sha256:1e39aab32cd46b17d19cb1542a1cf47b90c462a498019577617f0e4e2b801ba0",
+      "priority": 0,
+      "raw_selector": "sgml-id-attribute",
+      "bucket": "17",
+      "items": 56
+    },
+    {
+      "id": "review-p0-sgml-id-attribute-18",
+      "path": "authority/review-queue-draft/review-p0-sgml-id-attribute-18.json",
+      "digest": "sha256:c8a86e9305a0e9c069d3e9293514c5d1d72ac76c3193e6c2f32b361c9662580b",
+      "priority": 0,
+      "raw_selector": "sgml-id-attribute",
+      "bucket": "18",
+      "items": 61
+    },
+    {
+      "id": "review-p0-sgml-id-attribute-19",
+      "path": "authority/review-queue-draft/review-p0-sgml-id-attribute-19.json",
+      "digest": "sha256:f465ebea2c88023ffa0c9026533edaa541eb8ba8d48c627654a9848f2ed73600",
+      "priority": 0,
+      "raw_selector": "sgml-id-attribute",
+      "bucket": "19",
+      "items": 66
+    },
+    {
+      "id": "review-p0-sgml-id-attribute-1a",
+      "path": "authority/review-queue-draft/review-p0-sgml-id-attribute-1a.json",
+      "digest": "sha256:7cee6ff74c3a8c9954794c223382963647cbc421ac83d335b388c94403fe8080",
+      "priority": 0,
+      "raw_selector": "sgml-id-attribute",
+      "bucket": "1a",
+      "items": 73
+    },
+    {
+      "id": "review-p0-sgml-id-attribute-1b",
+      "path": "authority/review-queue-draft/review-p0-sgml-id-attribute-1b.json",
+      "digest": "sha256:ddf9315e8aa74a785a02df1db9a9593d16f767f8d6978356c879e1c5cce21c15",
+      "priority": 0,
+      "raw_selector": "sgml-id-attribute",
+      "bucket": "1b",
+      "items": 58
+    },
+    {
+      "id": "review-p0-sgml-id-attribute-1c",
+      "path": "authority/review-queue-draft/review-p0-sgml-id-attribute-1c.json",
+      "digest": "sha256:6a6ddba4dfd408e02b590014fe8e3b0aa4e90664a187ed5a5c23bd57b804a0e2",
+      "priority": 0,
+      "raw_selector": "sgml-id-attribute",
+      "bucket": "1c",
+      "items": 64
+    },
+    {
+      "id": "review-p0-sgml-id-attribute-1d",
+      "path": "authority/review-queue-draft/review-p0-sgml-id-attribute-1d.json",
+      "digest": "sha256:0e7c6f70868d7c8000b72b8ca0813a1dc1413e8cc3b3b68ca0f51f1f95576191",
+      "priority": 0,
+      "raw_selector": "sgml-id-attribute",
+      "bucket": "1d",
+      "items": 62
+    },
+    {
+      "id": "review-p0-sgml-id-attribute-1e",
+      "path": "authority/review-queue-draft/review-p0-sgml-id-attribute-1e.json",
+      "digest": "sha256:e7507dd26546f0d04d536e067dd3038efcd858fa2b33701446b9511937f144d4",
+      "priority": 0,
+      "raw_selector": "sgml-id-attribute",
+      "bucket": "1e",
+      "items": 69
+    },
+    {
+      "id": "review-p0-sgml-id-attribute-1f",
+      "path": "authority/review-queue-draft/review-p0-sgml-id-attribute-1f.json",
+      "digest": "sha256:e397b4e76858ba69dd8f707f4c9cc87dd3f173ebf2293126985118157011e186",
+      "priority": 0,
+      "raw_selector": "sgml-id-attribute",
+      "bucket": "1f",
+      "items": 71
+    },
+    {
+      "id": "review-p0-sgml-id-attribute-20",
+      "path": "authority/review-queue-draft/review-p0-sgml-id-attribute-20.json",
+      "digest": "sha256:9856ecbc30969bad6c4e18342b9aa1c0b00ca585951022aea23c6eb4d225fee6",
+      "priority": 0,
+      "raw_selector": "sgml-id-attribute",
+      "bucket": "20",
+      "items": 65
+    },
+    {
+      "id": "review-p0-sgml-id-attribute-21",
+      "path": "authority/review-queue-draft/review-p0-sgml-id-attribute-21.json",
+      "digest": "sha256:81b751b9dbdcabf1ef5971afdb9e40b7bfcb463208797bdc8d4086cc5e62b966",
+      "priority": 0,
+      "raw_selector": "sgml-id-attribute",
+      "bucket": "21",
+      "items": 68
+    },
+    {
+      "id": "review-p0-sgml-id-attribute-22",
+      "path": "authority/review-queue-draft/review-p0-sgml-id-attribute-22.json",
+      "digest": "sha256:ec2e6d696df992cabd6941604618dc98f7cdd04017ea100ce40dd2272a4459ad",
+      "priority": 0,
+      "raw_selector": "sgml-id-attribute",
+      "bucket": "22",
+      "items": 50
+    },
+    {
+      "id": "review-p0-sgml-id-attribute-23",
+      "path": "authority/review-queue-draft/review-p0-sgml-id-attribute-23.json",
+      "digest": "sha256:e277f97506dddb3f0cd56fc4a21790a4ae8915c11a8256d8ca5761f34cbfc279",
+      "priority": 0,
+      "raw_selector": "sgml-id-attribute",
+      "bucket": "23",
+      "items": 67
+    },
+    {
+      "id": "review-p0-sgml-id-attribute-24",
+      "path": "authority/review-queue-draft/review-p0-sgml-id-attribute-24.json",
+      "digest": "sha256:89e223ecdb4293cc2e8f83258474cd037daaeef228bff466defcfd000f19e87b",
+      "priority": 0,
+      "raw_selector": "sgml-id-attribute",
+      "bucket": "24",
+      "items": 72
+    },
+    {
+      "id": "review-p0-sgml-id-attribute-25",
+      "path": "authority/review-queue-draft/review-p0-sgml-id-attribute-25.json",
+      "digest": "sha256:06ea34130fa72ca07f2a74e1b0733192d94fe69429fc476da4fd54a7047a4ee2",
+      "priority": 0,
+      "raw_selector": "sgml-id-attribute",
+      "bucket": "25",
+      "items": 81
+    },
+    {
+      "id": "review-p0-sgml-id-attribute-26",
+      "path": "authority/review-queue-draft/review-p0-sgml-id-attribute-26.json",
+      "digest": "sha256:f9cb6c2fc3cd1113182ca5a1195ac3beaceef3593e0d1e3ab6a14a8a34f7e0d3",
+      "priority": 0,
+      "raw_selector": "sgml-id-attribute",
+      "bucket": "26",
+      "items": 70
+    },
+    {
+      "id": "review-p0-sgml-id-attribute-27",
+      "path": "authority/review-queue-draft/review-p0-sgml-id-attribute-27.json",
+      "digest": "sha256:4f016ce97893d0db8ede20207cbdb59270bb6848857d12d896845f12dd2ca0b1",
+      "priority": 0,
+      "raw_selector": "sgml-id-attribute",
+      "bucket": "27",
+      "items": 74
+    },
+    {
+      "id": "review-p0-sgml-id-attribute-28",
+      "path": "authority/review-queue-draft/review-p0-sgml-id-attribute-28.json",
+      "digest": "sha256:fdf1a22e67e164f4003d534bda05314995d9e00c56f4c0e4922db16c1167c894",
+      "priority": 0,
+      "raw_selector": "sgml-id-attribute",
+      "bucket": "28",
+      "items": 81
+    },
+    {
+      "id": "review-p0-sgml-id-attribute-29",
+      "path": "authority/review-queue-draft/review-p0-sgml-id-attribute-29.json",
+      "digest": "sha256:0f8c1d2a1d3b39a4fb10cee2a1554e3b54f4ff1db96485bbf27afdaae36b31a3",
+      "priority": 0,
+      "raw_selector": "sgml-id-attribute",
+      "bucket": "29",
+      "items": 72
+    },
+    {
+      "id": "review-p0-sgml-id-attribute-2a",
+      "path": "authority/review-queue-draft/review-p0-sgml-id-attribute-2a.json",
+      "digest": "sha256:9366547dab421b58118663bfed130bb4b64ba46c43a0e04c4e752268bf8fe8ff",
+      "priority": 0,
+      "raw_selector": "sgml-id-attribute",
+      "bucket": "2a",
+      "items": 64
+    },
+    {
+      "id": "review-p0-sgml-id-attribute-2b",
+      "path": "authority/review-queue-draft/review-p0-sgml-id-attribute-2b.json",
+      "digest": "sha256:d6e8313da4fcd4ef4ca16e5b7b33d5d58eaad23f60efc16fe16823f79a2768d5",
+      "priority": 0,
+      "raw_selector": "sgml-id-attribute",
+      "bucket": "2b",
+      "items": 49
+    },
+    {
+      "id": "review-p0-sgml-id-attribute-2c",
+      "path": "authority/review-queue-draft/review-p0-sgml-id-attribute-2c.json",
+      "digest": "sha256:7c89be8f30acf31dff6dd39cf5e2086111295649dad9ae6679078fd793616c2c",
+      "priority": 0,
+      "raw_selector": "sgml-id-attribute",
+      "bucket": "2c",
+      "items": 63
+    },
+    {
+      "id": "review-p0-sgml-id-attribute-2d",
+      "path": "authority/review-queue-draft/review-p0-sgml-id-attribute-2d.json",
+      "digest": "sha256:82a30446d8ad8358858f915ee4ae5455b1364cf552a57dbf123c672461d5caac",
+      "priority": 0,
+      "raw_selector": "sgml-id-attribute",
+      "bucket": "2d",
+      "items": 79
+    },
+    {
+      "id": "review-p0-sgml-id-attribute-2e",
+      "path": "authority/review-queue-draft/review-p0-sgml-id-attribute-2e.json",
+      "digest": "sha256:47f01b9118b0fb32538edb8d8bc686879cac64af5d72fcfce754556f440cdd54",
+      "priority": 0,
+      "raw_selector": "sgml-id-attribute",
+      "bucket": "2e",
+      "items": 61
+    },
+    {
+      "id": "review-p0-sgml-id-attribute-2f",
+      "path": "authority/review-queue-draft/review-p0-sgml-id-attribute-2f.json",
+      "digest": "sha256:b9b42b342aca487500dcd1f028eaa2d9c775fb69e1611654398ab5b42419ba95",
+      "priority": 0,
+      "raw_selector": "sgml-id-attribute",
+      "bucket": "2f",
+      "items": 78
+    },
+    {
+      "id": "review-p0-sgml-id-attribute-30",
+      "path": "authority/review-queue-draft/review-p0-sgml-id-attribute-30.json",
+      "digest": "sha256:aeb7d3a3f8233fe85f0fe887308624ab4a9c4e5495f4d9cc5c8e1b28ffccbf12",
+      "priority": 0,
+      "raw_selector": "sgml-id-attribute",
+      "bucket": "30",
+      "items": 59
+    },
+    {
+      "id": "review-p0-sgml-id-attribute-31",
+      "path": "authority/review-queue-draft/review-p0-sgml-id-attribute-31.json",
+      "digest": "sha256:684b4044f71dc9b2472ecf8117fda9593732c9eb1be33c2ccc1ff8721265e982",
+      "priority": 0,
+      "raw_selector": "sgml-id-attribute",
+      "bucket": "31",
+      "items": 74
+    },
+    {
+      "id": "review-p0-sgml-id-attribute-32",
+      "path": "authority/review-queue-draft/review-p0-sgml-id-attribute-32.json",
+      "digest": "sha256:fb0802094cb6d58e52cb91100433ca77fee31d553dd0d01ef7f7837c09c75be5",
+      "priority": 0,
+      "raw_selector": "sgml-id-attribute",
+      "bucket": "32",
+      "items": 66
+    },
+    {
+      "id": "review-p0-sgml-id-attribute-33",
+      "path": "authority/review-queue-draft/review-p0-sgml-id-attribute-33.json",
+      "digest": "sha256:0ff31003b99a7dce786145484f6041b68b9dd6510f5bc6d137a5701d9d75c3e4",
+      "priority": 0,
+      "raw_selector": "sgml-id-attribute",
+      "bucket": "33",
+      "items": 56
+    },
+    {
+      "id": "review-p0-sgml-id-attribute-34",
+      "path": "authority/review-queue-draft/review-p0-sgml-id-attribute-34.json",
+      "digest": "sha256:cb4ba64a2692960062b8203c06f1794874f62993945bb63fec762c1dee99478c",
+      "priority": 0,
+      "raw_selector": "sgml-id-attribute",
+      "bucket": "34",
+      "items": 72
+    },
+    {
+      "id": "review-p0-sgml-id-attribute-35",
+      "path": "authority/review-queue-draft/review-p0-sgml-id-attribute-35.json",
+      "digest": "sha256:884d3c47d7b5e280d6e23895ba5cd757bc87a29ec9281b000d9901ef24147c5a",
+      "priority": 0,
+      "raw_selector": "sgml-id-attribute",
+      "bucket": "35",
+      "items": 58
+    },
+    {
+      "id": "review-p0-sgml-id-attribute-36",
+      "path": "authority/review-queue-draft/review-p0-sgml-id-attribute-36.json",
+      "digest": "sha256:4c74ff4145b46ffae313085f93ec75039ece50bf66dd9c6916db01773279c73b",
+      "priority": 0,
+      "raw_selector": "sgml-id-attribute",
+      "bucket": "36",
+      "items": 49
+    },
+    {
+      "id": "review-p0-sgml-id-attribute-37",
+      "path": "authority/review-queue-draft/review-p0-sgml-id-attribute-37.json",
+      "digest": "sha256:b7d3a74e49e6438c38c004fea6995ed57cdc8d7bf62913d2d0ebfabd712a0685",
+      "priority": 0,
+      "raw_selector": "sgml-id-attribute",
+      "bucket": "37",
+      "items": 53
+    },
+    {
+      "id": "review-p0-sgml-id-attribute-38",
+      "path": "authority/review-queue-draft/review-p0-sgml-id-attribute-38.json",
+      "digest": "sha256:43f8ef1dd6439c25df206d7386230e84d312f9f5ef4a7d7131ec85af59836b95",
+      "priority": 0,
+      "raw_selector": "sgml-id-attribute",
+      "bucket": "38",
+      "items": 67
+    },
+    {
+      "id": "review-p0-sgml-id-attribute-39",
+      "path": "authority/review-queue-draft/review-p0-sgml-id-attribute-39.json",
+      "digest": "sha256:472e3ecf678d4d1ae1a1b295462423484b70e3f79ac78d726fafdef354ec978a",
+      "priority": 0,
+      "raw_selector": "sgml-id-attribute",
+      "bucket": "39",
+      "items": 63
+    },
+    {
+      "id": "review-p0-sgml-id-attribute-3a",
+      "path": "authority/review-queue-draft/review-p0-sgml-id-attribute-3a.json",
+      "digest": "sha256:b9e7fb1af8c06b22e0522719259e08d5afb8722c484f30786bc2a540a80a7355",
+      "priority": 0,
+      "raw_selector": "sgml-id-attribute",
+      "bucket": "3a",
+      "items": 61
+    },
+    {
+      "id": "review-p0-sgml-id-attribute-3b",
+      "path": "authority/review-queue-draft/review-p0-sgml-id-attribute-3b.json",
+      "digest": "sha256:6f774f4c39916f301af953e7a49d60a87c6cca024bfefc3de808d12a9ffc67f9",
+      "priority": 0,
+      "raw_selector": "sgml-id-attribute",
+      "bucket": "3b",
+      "items": 69
+    },
+    {
+      "id": "review-p0-sgml-id-attribute-3c",
+      "path": "authority/review-queue-draft/review-p0-sgml-id-attribute-3c.json",
+      "digest": "sha256:c14c9142cf124946ef5b8b9d0230077aec338cbe62a3b00e6ba791c4723611d6",
+      "priority": 0,
+      "raw_selector": "sgml-id-attribute",
+      "bucket": "3c",
+      "items": 70
+    },
+    {
+      "id": "review-p0-sgml-id-attribute-3d",
+      "path": "authority/review-queue-draft/review-p0-sgml-id-attribute-3d.json",
+      "digest": "sha256:67ca706eb467a382b272bce75c67df3bac6f782b12a481058baca39d7ec32be9",
+      "priority": 0,
+      "raw_selector": "sgml-id-attribute",
+      "bucket": "3d",
+      "items": 59
+    },
+    {
+      "id": "review-p0-sgml-id-attribute-3e",
+      "path": "authority/review-queue-draft/review-p0-sgml-id-attribute-3e.json",
+      "digest": "sha256:f7e5c1bd1bef0ff136bd94fa270d65942566a44a1db7093b22fdbf88e6e487b2",
+      "priority": 0,
+      "raw_selector": "sgml-id-attribute",
+      "bucket": "3e",
+      "items": 62
+    },
+    {
+      "id": "review-p0-sgml-id-attribute-3f",
+      "path": "authority/review-queue-draft/review-p0-sgml-id-attribute-3f.json",
+      "digest": "sha256:fad81fe73ca61620acff1b03306417197cc7579f93955c1a2ebe09c7dbd845e9",
+      "priority": 0,
+      "raw_selector": "sgml-id-attribute",
+      "bucket": "3f",
+      "items": 60
+    },
+    {
+      "id": "review-p1-sgml-id-attribute-00",
+      "path": "authority/review-queue-draft/review-p1-sgml-id-attribute-00.json",
+      "digest": "sha256:b6767d4a305a4e3573e4c1f1169e3fcb2f0d520957bda7926d9ef62b6db1e133",
+      "priority": 1,
+      "raw_selector": "sgml-id-attribute",
+      "bucket": "00",
+      "items": 20
+    },
+    {
+      "id": "review-p1-sgml-id-attribute-01",
+      "path": "authority/review-queue-draft/review-p1-sgml-id-attribute-01.json",
+      "digest": "sha256:1e0185bbcc574b183e4dea7e2d5ac2929314bc670c68257d6152c75230d336e9",
+      "priority": 1,
+      "raw_selector": "sgml-id-attribute",
+      "bucket": "01",
+      "items": 16
+    },
+    {
+      "id": "review-p1-sgml-id-attribute-02",
+      "path": "authority/review-queue-draft/review-p1-sgml-id-attribute-02.json",
+      "digest": "sha256:9aa1c4b6c4e3dcd31be1dd67138f75fc5fc0626d27768a06c2c9b7964dca5a85",
+      "priority": 1,
+      "raw_selector": "sgml-id-attribute",
+      "bucket": "02",
+      "items": 21
+    },
+    {
+      "id": "review-p1-sgml-id-attribute-03",
+      "path": "authority/review-queue-draft/review-p1-sgml-id-attribute-03.json",
+      "digest": "sha256:31b141ad75d0905548df202d3a2d151c3f4be41c9d50fb64709f6d77877c809c",
+      "priority": 1,
+      "raw_selector": "sgml-id-attribute",
+      "bucket": "03",
+      "items": 10
+    },
+    {
+      "id": "review-p1-sgml-id-attribute-04",
+      "path": "authority/review-queue-draft/review-p1-sgml-id-attribute-04.json",
+      "digest": "sha256:9a1f50193d92f38930c56159c867b505d778fa91d5dcd8b39fe4235191bdfc74",
+      "priority": 1,
+      "raw_selector": "sgml-id-attribute",
+      "bucket": "04",
+      "items": 19
+    },
+    {
+      "id": "review-p1-sgml-id-attribute-05",
+      "path": "authority/review-queue-draft/review-p1-sgml-id-attribute-05.json",
+      "digest": "sha256:11714db89384d97096a2be022efc37ddd7f1292db87ff64813701fba74a6ee94",
+      "priority": 1,
+      "raw_selector": "sgml-id-attribute",
+      "bucket": "05",
+      "items": 20
+    },
+    {
+      "id": "review-p1-sgml-id-attribute-06",
+      "path": "authority/review-queue-draft/review-p1-sgml-id-attribute-06.json",
+      "digest": "sha256:e079f8501c39b6a0611fd56475707498ec4ed73ec6feb314dfa11cda6eef2701",
+      "priority": 1,
+      "raw_selector": "sgml-id-attribute",
+      "bucket": "06",
+      "items": 15
+    },
+    {
+      "id": "review-p1-sgml-id-attribute-07",
+      "path": "authority/review-queue-draft/review-p1-sgml-id-attribute-07.json",
+      "digest": "sha256:fa35aa434cace137ad14f74085d55d2449976c5bf42f938456f0184ce1f4b2eb",
+      "priority": 1,
+      "raw_selector": "sgml-id-attribute",
+      "bucket": "07",
+      "items": 20
+    },
+    {
+      "id": "review-p1-sgml-id-attribute-08",
+      "path": "authority/review-queue-draft/review-p1-sgml-id-attribute-08.json",
+      "digest": "sha256:bc18bbe2c08a922a0c9fac1136e53f70aa26f4b88b16cb2ca7490e26e2fa2ca1",
+      "priority": 1,
+      "raw_selector": "sgml-id-attribute",
+      "bucket": "08",
+      "items": 20
+    },
+    {
+      "id": "review-p1-sgml-id-attribute-09",
+      "path": "authority/review-queue-draft/review-p1-sgml-id-attribute-09.json",
+      "digest": "sha256:fe28b8adc2ad7ac65aa4d79dc3825c21bfc0753702408dd4a5dd443b52870d1d",
+      "priority": 1,
+      "raw_selector": "sgml-id-attribute",
+      "bucket": "09",
+      "items": 10
+    },
+    {
+      "id": "review-p1-sgml-id-attribute-0a",
+      "path": "authority/review-queue-draft/review-p1-sgml-id-attribute-0a.json",
+      "digest": "sha256:156d7f2fc442b2edd87ac75928207b95e7f3d18a0ae276206094a8621c55c13b",
+      "priority": 1,
+      "raw_selector": "sgml-id-attribute",
+      "bucket": "0a",
+      "items": 12
+    },
+    {
+      "id": "review-p1-sgml-id-attribute-0b",
+      "path": "authority/review-queue-draft/review-p1-sgml-id-attribute-0b.json",
+      "digest": "sha256:0cac0ebd5cff53fcbd7a037fe7ae741af7c01d340b2ec2ea9ada34c49a9cf506",
+      "priority": 1,
+      "raw_selector": "sgml-id-attribute",
+      "bucket": "0b",
+      "items": 19
+    },
+    {
+      "id": "review-p1-sgml-id-attribute-0c",
+      "path": "authority/review-queue-draft/review-p1-sgml-id-attribute-0c.json",
+      "digest": "sha256:219e707d0c054487b82832719ba2b8c4a51d2f942cc8ef950581528d018c26f2",
+      "priority": 1,
+      "raw_selector": "sgml-id-attribute",
+      "bucket": "0c",
+      "items": 5
+    },
+    {
+      "id": "review-p1-sgml-id-attribute-0d",
+      "path": "authority/review-queue-draft/review-p1-sgml-id-attribute-0d.json",
+      "digest": "sha256:54b92258eebd698ff8a1f257d24a5dd7345488d66363a235ce6ab6ed8e38a30b",
+      "priority": 1,
+      "raw_selector": "sgml-id-attribute",
+      "bucket": "0d",
+      "items": 15
+    },
+    {
+      "id": "review-p1-sgml-id-attribute-0e",
+      "path": "authority/review-queue-draft/review-p1-sgml-id-attribute-0e.json",
+      "digest": "sha256:4bd1a2c24c414b2d2067122509d31420e7b4bcc132b29dc11b5c69f1a1e7acc5",
+      "priority": 1,
+      "raw_selector": "sgml-id-attribute",
+      "bucket": "0e",
+      "items": 18
+    },
+    {
+      "id": "review-p1-sgml-id-attribute-0f",
+      "path": "authority/review-queue-draft/review-p1-sgml-id-attribute-0f.json",
+      "digest": "sha256:7918ecfd839878b855010ff785a2e87071068058215be62a4aa99d3e634bbd11",
+      "priority": 1,
+      "raw_selector": "sgml-id-attribute",
+      "bucket": "0f",
+      "items": 16
+    },
+    {
+      "id": "review-p1-sgml-id-attribute-10",
+      "path": "authority/review-queue-draft/review-p1-sgml-id-attribute-10.json",
+      "digest": "sha256:26036afdb31bab0ea1d1914832ae8df141f4bee02ecc0c7f77ac940a8cf0a79f",
+      "priority": 1,
+      "raw_selector": "sgml-id-attribute",
+      "bucket": "10",
+      "items": 12
+    },
+    {
+      "id": "review-p1-sgml-id-attribute-11",
+      "path": "authority/review-queue-draft/review-p1-sgml-id-attribute-11.json",
+      "digest": "sha256:d910bf2d2d6c3980c808ff67f7509245af21ec71ebd74a37d2d19dfd70383ca3",
+      "priority": 1,
+      "raw_selector": "sgml-id-attribute",
+      "bucket": "11",
+      "items": 10
+    },
+    {
+      "id": "review-p1-sgml-id-attribute-12",
+      "path": "authority/review-queue-draft/review-p1-sgml-id-attribute-12.json",
+      "digest": "sha256:dd8aee1aad361afa6fbfeba0add2eb3e0ee0411f4576f7ae5e22ddce4afe0616",
+      "priority": 1,
+      "raw_selector": "sgml-id-attribute",
+      "bucket": "12",
+      "items": 13
+    },
+    {
+      "id": "review-p1-sgml-id-attribute-13",
+      "path": "authority/review-queue-draft/review-p1-sgml-id-attribute-13.json",
+      "digest": "sha256:1f8b0b0c4f26a58378bf2a7141cde4561eaebe5f6bdd958b88b1475ca0d74cce",
+      "priority": 1,
+      "raw_selector": "sgml-id-attribute",
+      "bucket": "13",
+      "items": 14
+    },
+    {
+      "id": "review-p1-sgml-id-attribute-14",
+      "path": "authority/review-queue-draft/review-p1-sgml-id-attribute-14.json",
+      "digest": "sha256:a0a35c248d6f560ae851a836db916b9af472a7313bff8ae63609756c5e11459c",
+      "priority": 1,
+      "raw_selector": "sgml-id-attribute",
+      "bucket": "14",
+      "items": 20
+    },
+    {
+      "id": "review-p1-sgml-id-attribute-15",
+      "path": "authority/review-queue-draft/review-p1-sgml-id-attribute-15.json",
+      "digest": "sha256:7bf4ebcc0ec4cf5b868d17369c7c43af2d45c65bec697e1b3eae4b5edf2dcb30",
+      "priority": 1,
+      "raw_selector": "sgml-id-attribute",
+      "bucket": "15",
+      "items": 13
+    },
+    {
+      "id": "review-p1-sgml-id-attribute-16",
+      "path": "authority/review-queue-draft/review-p1-sgml-id-attribute-16.json",
+      "digest": "sha256:87946bd44adf86e068d955ef339167fb8a48100ceaf889ac0fad18ec4fd96b12",
+      "priority": 1,
+      "raw_selector": "sgml-id-attribute",
+      "bucket": "16",
+      "items": 18
+    },
+    {
+      "id": "review-p1-sgml-id-attribute-17",
+      "path": "authority/review-queue-draft/review-p1-sgml-id-attribute-17.json",
+      "digest": "sha256:2b5f54342e686733c7c358b1abae1664384c28f2aab743a2b2c26a62d5ece9fa",
+      "priority": 1,
+      "raw_selector": "sgml-id-attribute",
+      "bucket": "17",
+      "items": 11
+    },
+    {
+      "id": "review-p1-sgml-id-attribute-18",
+      "path": "authority/review-queue-draft/review-p1-sgml-id-attribute-18.json",
+      "digest": "sha256:80dc4d4e0d88dc7ab9e638dfe91da971286cce85b769219b967baf0123f9ac33",
+      "priority": 1,
+      "raw_selector": "sgml-id-attribute",
+      "bucket": "18",
+      "items": 23
+    },
+    {
+      "id": "review-p1-sgml-id-attribute-19",
+      "path": "authority/review-queue-draft/review-p1-sgml-id-attribute-19.json",
+      "digest": "sha256:6e3c4c620781b5150772f5ab10622d874e441a313d8cb10251f98e34087c4000",
+      "priority": 1,
+      "raw_selector": "sgml-id-attribute",
+      "bucket": "19",
+      "items": 16
+    },
+    {
+      "id": "review-p1-sgml-id-attribute-1a",
+      "path": "authority/review-queue-draft/review-p1-sgml-id-attribute-1a.json",
+      "digest": "sha256:a4e672651017187b31fce0370bcff134694400507d05340f19a372af5dcb9366",
+      "priority": 1,
+      "raw_selector": "sgml-id-attribute",
+      "bucket": "1a",
+      "items": 17
+    },
+    {
+      "id": "review-p1-sgml-id-attribute-1b",
+      "path": "authority/review-queue-draft/review-p1-sgml-id-attribute-1b.json",
+      "digest": "sha256:c231079e3317e2bf22caf12786770822f9f1087a1b12c65c600f4827adf4ff7f",
+      "priority": 1,
+      "raw_selector": "sgml-id-attribute",
+      "bucket": "1b",
+      "items": 16
+    },
+    {
+      "id": "review-p1-sgml-id-attribute-1c",
+      "path": "authority/review-queue-draft/review-p1-sgml-id-attribute-1c.json",
+      "digest": "sha256:94fde987aefeef9d3a1e77a4a63d682fcff243cc5c2117bcbb49d0352f466be5",
+      "priority": 1,
+      "raw_selector": "sgml-id-attribute",
+      "bucket": "1c",
+      "items": 13
+    },
+    {
+      "id": "review-p1-sgml-id-attribute-1d",
+      "path": "authority/review-queue-draft/review-p1-sgml-id-attribute-1d.json",
+      "digest": "sha256:7d3e054b7b2c6ef0d86d2a2ebc90d3c1465ae0200ad7e18cb07b90bffe676744",
+      "priority": 1,
+      "raw_selector": "sgml-id-attribute",
+      "bucket": "1d",
+      "items": 16
+    },
+    {
+      "id": "review-p1-sgml-id-attribute-1e",
+      "path": "authority/review-queue-draft/review-p1-sgml-id-attribute-1e.json",
+      "digest": "sha256:3d51fa21a23194665148fb90a1580474eee5d3419d9ca1c5d08132cfaac72f2a",
+      "priority": 1,
+      "raw_selector": "sgml-id-attribute",
+      "bucket": "1e",
+      "items": 9
+    },
+    {
+      "id": "review-p1-sgml-id-attribute-1f",
+      "path": "authority/review-queue-draft/review-p1-sgml-id-attribute-1f.json",
+      "digest": "sha256:e892a2ea1f3a1547f427c2e64231c30f63ff2f19c46a71755f737b278e84ab25",
+      "priority": 1,
+      "raw_selector": "sgml-id-attribute",
+      "bucket": "1f",
+      "items": 12
+    },
+    {
+      "id": "review-p1-sgml-id-attribute-20",
+      "path": "authority/review-queue-draft/review-p1-sgml-id-attribute-20.json",
+      "digest": "sha256:ef46df0f93050a4dc8e24ff69e9355318f9a526575b3d73208d169265c3d29f5",
+      "priority": 1,
+      "raw_selector": "sgml-id-attribute",
+      "bucket": "20",
+      "items": 16
+    },
+    {
+      "id": "review-p1-sgml-id-attribute-21",
+      "path": "authority/review-queue-draft/review-p1-sgml-id-attribute-21.json",
+      "digest": "sha256:d9e13333bd00de2175713ecdd24af4ce04d5f7728c454c43f8683d90d01052d2",
+      "priority": 1,
+      "raw_selector": "sgml-id-attribute",
+      "bucket": "21",
+      "items": 19
+    },
+    {
+      "id": "review-p1-sgml-id-attribute-22",
+      "path": "authority/review-queue-draft/review-p1-sgml-id-attribute-22.json",
+      "digest": "sha256:2bc16dc0d047b298abfe947011162b654e441477dc253aac032f19c9ede622da",
+      "priority": 1,
+      "raw_selector": "sgml-id-attribute",
+      "bucket": "22",
+      "items": 18
+    },
+    {
+      "id": "review-p1-sgml-id-attribute-23",
+      "path": "authority/review-queue-draft/review-p1-sgml-id-attribute-23.json",
+      "digest": "sha256:fbc7aaa44b98d0125905474b8aef5bcef3d9966a78845b6202625bfcb71c9375",
+      "priority": 1,
+      "raw_selector": "sgml-id-attribute",
+      "bucket": "23",
+      "items": 16
+    },
+    {
+      "id": "review-p1-sgml-id-attribute-24",
+      "path": "authority/review-queue-draft/review-p1-sgml-id-attribute-24.json",
+      "digest": "sha256:50bff38a2676010a09fc5e609f84be69e18cc8d7266e54f6fcbef245f4fe548d",
+      "priority": 1,
+      "raw_selector": "sgml-id-attribute",
+      "bucket": "24",
+      "items": 8
+    },
+    {
+      "id": "review-p1-sgml-id-attribute-25",
+      "path": "authority/review-queue-draft/review-p1-sgml-id-attribute-25.json",
+      "digest": "sha256:67cb08d0746e0926f156f742f1ee090360b4df0ed679878f32e3b4429d313149",
+      "priority": 1,
+      "raw_selector": "sgml-id-attribute",
+      "bucket": "25",
+      "items": 12
+    },
+    {
+      "id": "review-p1-sgml-id-attribute-26",
+      "path": "authority/review-queue-draft/review-p1-sgml-id-attribute-26.json",
+      "digest": "sha256:2fbd9635936f940ac00bf62b5b20bbd98dbb17c96827fbcdbd45edf3d59cc69a",
+      "priority": 1,
+      "raw_selector": "sgml-id-attribute",
+      "bucket": "26",
+      "items": 21
+    },
+    {
+      "id": "review-p1-sgml-id-attribute-27",
+      "path": "authority/review-queue-draft/review-p1-sgml-id-attribute-27.json",
+      "digest": "sha256:f3bed4ad66f66c4c7bce17cadffe80ec94296cd581de62caede7b396d0a3e36b",
+      "priority": 1,
+      "raw_selector": "sgml-id-attribute",
+      "bucket": "27",
+      "items": 15
+    },
+    {
+      "id": "review-p1-sgml-id-attribute-28",
+      "path": "authority/review-queue-draft/review-p1-sgml-id-attribute-28.json",
+      "digest": "sha256:476d96940afd65566bb19afa8cd8ee4c3ef10cf6fae1ef5ed15a12894f21ce3c",
+      "priority": 1,
+      "raw_selector": "sgml-id-attribute",
+      "bucket": "28",
+      "items": 16
+    },
+    {
+      "id": "review-p1-sgml-id-attribute-29",
+      "path": "authority/review-queue-draft/review-p1-sgml-id-attribute-29.json",
+      "digest": "sha256:201d393b0efcda12e45a51cc517ba2dc724cbc1e3c71f11e75308df2cba0f1c6",
+      "priority": 1,
+      "raw_selector": "sgml-id-attribute",
+      "bucket": "29",
+      "items": 16
+    },
+    {
+      "id": "review-p1-sgml-id-attribute-2a",
+      "path": "authority/review-queue-draft/review-p1-sgml-id-attribute-2a.json",
+      "digest": "sha256:68e15458991b7bc1245270e539e92833fe225ff5531bc9221e1ee145917af4a9",
+      "priority": 1,
+      "raw_selector": "sgml-id-attribute",
+      "bucket": "2a",
+      "items": 20
+    },
+    {
+      "id": "review-p1-sgml-id-attribute-2b",
+      "path": "authority/review-queue-draft/review-p1-sgml-id-attribute-2b.json",
+      "digest": "sha256:22c8e404fae912b1bf0bbf79f61df1422e2250a3a0945ec9548e2b233bdb8def",
+      "priority": 1,
+      "raw_selector": "sgml-id-attribute",
+      "bucket": "2b",
+      "items": 16
+    },
+    {
+      "id": "review-p1-sgml-id-attribute-2c",
+      "path": "authority/review-queue-draft/review-p1-sgml-id-attribute-2c.json",
+      "digest": "sha256:d16da89c9be3c515c7f9e4f2086b7257140cba8b72af2dc1f6684b71abdd7e4d",
+      "priority": 1,
+      "raw_selector": "sgml-id-attribute",
+      "bucket": "2c",
+      "items": 13
+    },
+    {
+      "id": "review-p1-sgml-id-attribute-2d",
+      "path": "authority/review-queue-draft/review-p1-sgml-id-attribute-2d.json",
+      "digest": "sha256:d60845ee536816b32b4f9bff83521fb719d3961fe171e1e37da1f688f069b606",
+      "priority": 1,
+      "raw_selector": "sgml-id-attribute",
+      "bucket": "2d",
+      "items": 18
+    },
+    {
+      "id": "review-p1-sgml-id-attribute-2e",
+      "path": "authority/review-queue-draft/review-p1-sgml-id-attribute-2e.json",
+      "digest": "sha256:3c6b05ab12429bff8c159731eb4212552bb45b0a86f5a0188a228fb9150d5e75",
+      "priority": 1,
+      "raw_selector": "sgml-id-attribute",
+      "bucket": "2e",
+      "items": 21
+    },
+    {
+      "id": "review-p1-sgml-id-attribute-2f",
+      "path": "authority/review-queue-draft/review-p1-sgml-id-attribute-2f.json",
+      "digest": "sha256:d02a1d308fe8fd9e25518604e12b1cc99a72ccb975280ad923bc123684219117",
+      "priority": 1,
+      "raw_selector": "sgml-id-attribute",
+      "bucket": "2f",
+      "items": 17
+    },
+    {
+      "id": "review-p1-sgml-id-attribute-30",
+      "path": "authority/review-queue-draft/review-p1-sgml-id-attribute-30.json",
+      "digest": "sha256:dda870a2f1401b05f3987177fcf597a261f42bd25c0c2a5627840885e69bec91",
+      "priority": 1,
+      "raw_selector": "sgml-id-attribute",
+      "bucket": "30",
+      "items": 11
+    },
+    {
+      "id": "review-p1-sgml-id-attribute-31",
+      "path": "authority/review-queue-draft/review-p1-sgml-id-attribute-31.json",
+      "digest": "sha256:af1b9406bf218fa7fb00caeae3a9fa2aebacb00203c261d451485f20a7231281",
+      "priority": 1,
+      "raw_selector": "sgml-id-attribute",
+      "bucket": "31",
+      "items": 12
+    },
+    {
+      "id": "review-p1-sgml-id-attribute-32",
+      "path": "authority/review-queue-draft/review-p1-sgml-id-attribute-32.json",
+      "digest": "sha256:cf0327fc6b63398961bd470ac8d541b13061747115dd117d3bb7f4f9849102d0",
+      "priority": 1,
+      "raw_selector": "sgml-id-attribute",
+      "bucket": "32",
+      "items": 22
+    },
+    {
+      "id": "review-p1-sgml-id-attribute-33",
+      "path": "authority/review-queue-draft/review-p1-sgml-id-attribute-33.json",
+      "digest": "sha256:3d0f7c6ae15556fabc46990bd922c24755ca5e2e02a15e7b0de84503f5a0778a",
+      "priority": 1,
+      "raw_selector": "sgml-id-attribute",
+      "bucket": "33",
+      "items": 14
+    },
+    {
+      "id": "review-p1-sgml-id-attribute-34",
+      "path": "authority/review-queue-draft/review-p1-sgml-id-attribute-34.json",
+      "digest": "sha256:e945d3a605f12f18d56580d33d29be7c5d31de61f6464d492dacc4501dd475dc",
+      "priority": 1,
+      "raw_selector": "sgml-id-attribute",
+      "bucket": "34",
+      "items": 19
+    },
+    {
+      "id": "review-p1-sgml-id-attribute-35",
+      "path": "authority/review-queue-draft/review-p1-sgml-id-attribute-35.json",
+      "digest": "sha256:539c3bc27a21e8ba4de6c80fe2c38a117f302abe87cfede58c75b4be09d28b54",
+      "priority": 1,
+      "raw_selector": "sgml-id-attribute",
+      "bucket": "35",
+      "items": 13
+    },
+    {
+      "id": "review-p1-sgml-id-attribute-36",
+      "path": "authority/review-queue-draft/review-p1-sgml-id-attribute-36.json",
+      "digest": "sha256:7e5c1170e76d9f053c89a2f772061ce4216b949a7bc9b02052094d983e0af0f6",
+      "priority": 1,
+      "raw_selector": "sgml-id-attribute",
+      "bucket": "36",
+      "items": 7
+    },
+    {
+      "id": "review-p1-sgml-id-attribute-37",
+      "path": "authority/review-queue-draft/review-p1-sgml-id-attribute-37.json",
+      "digest": "sha256:e3bf23cf9f324b10030da0577560affb49562591f6fde96119dc4cada4781ae7",
+      "priority": 1,
+      "raw_selector": "sgml-id-attribute",
+      "bucket": "37",
+      "items": 22
+    },
+    {
+      "id": "review-p1-sgml-id-attribute-38",
+      "path": "authority/review-queue-draft/review-p1-sgml-id-attribute-38.json",
+      "digest": "sha256:da5410540cb6e28fb441564ded1688adba558c9233cffed64a94bc5d2cc31061",
+      "priority": 1,
+      "raw_selector": "sgml-id-attribute",
+      "bucket": "38",
+      "items": 15
+    },
+    {
+      "id": "review-p1-sgml-id-attribute-39",
+      "path": "authority/review-queue-draft/review-p1-sgml-id-attribute-39.json",
+      "digest": "sha256:aee4c15cb9bcfe4abe2f4a7ad6ecc2ff0ab9986f0744be28f7ad51c27282e64c",
+      "priority": 1,
+      "raw_selector": "sgml-id-attribute",
+      "bucket": "39",
+      "items": 14
+    },
+    {
+      "id": "review-p1-sgml-id-attribute-3a",
+      "path": "authority/review-queue-draft/review-p1-sgml-id-attribute-3a.json",
+      "digest": "sha256:d945f433f525a266dc1b890f3624d59243c3b1aafc2e02d2364a9ea7445f5e2c",
+      "priority": 1,
+      "raw_selector": "sgml-id-attribute",
+      "bucket": "3a",
+      "items": 7
+    },
+    {
+      "id": "review-p1-sgml-id-attribute-3b",
+      "path": "authority/review-queue-draft/review-p1-sgml-id-attribute-3b.json",
+      "digest": "sha256:e6cd9e7414bb5ba5db30a80fbe14487a8c678f58b2642e7165510965302a007f",
+      "priority": 1,
+      "raw_selector": "sgml-id-attribute",
+      "bucket": "3b",
+      "items": 17
+    },
+    {
+      "id": "review-p1-sgml-id-attribute-3c",
+      "path": "authority/review-queue-draft/review-p1-sgml-id-attribute-3c.json",
+      "digest": "sha256:51fc7ccd2f97ae054d4fd08c763dce5554f3bf6657bc94c9a6ff5af0c537f989",
+      "priority": 1,
+      "raw_selector": "sgml-id-attribute",
+      "bucket": "3c",
+      "items": 17
+    },
+    {
+      "id": "review-p1-sgml-id-attribute-3d",
+      "path": "authority/review-queue-draft/review-p1-sgml-id-attribute-3d.json",
+      "digest": "sha256:c085a0df3d318618ca8454a257ce738bbc28eadbb1298489809c1e8a2b72f5d0",
+      "priority": 1,
+      "raw_selector": "sgml-id-attribute",
+      "bucket": "3d",
+      "items": 16
+    },
+    {
+      "id": "review-p1-sgml-id-attribute-3e",
+      "path": "authority/review-queue-draft/review-p1-sgml-id-attribute-3e.json",
+      "digest": "sha256:42e74e863c5f674ab54402ff97e801e36ef21d8894d5493e94f84889819f18fc",
+      "priority": 1,
+      "raw_selector": "sgml-id-attribute",
+      "bucket": "3e",
+      "items": 17
+    },
+    {
+      "id": "review-p1-sgml-id-attribute-3f",
+      "path": "authority/review-queue-draft/review-p1-sgml-id-attribute-3f.json",
+      "digest": "sha256:85af60c22f936a286a142318fb61a489d2de55cad4dd7417a693f98003201f50",
+      "priority": 1,
+      "raw_selector": "sgml-id-attribute",
+      "bucket": "3f",
+      "items": 15
+    },
+    {
+      "id": "review-p2-document-root-00",
+      "path": "authority/review-queue-draft/review-p2-document-root-00.json",
+      "digest": "sha256:a51bd60eedc9b0b53d3d07e5d7215c7e91419f5dcfe85f9a8476442f2932449b",
+      "priority": 2,
+      "raw_selector": "document-root",
+      "bucket": "00",
+      "items": 3
+    },
+    {
+      "id": "review-p2-document-root-01",
+      "path": "authority/review-queue-draft/review-p2-document-root-01.json",
+      "digest": "sha256:d948a465aeb20053956e0d7157a37667b2c3dd0b518edcf197f554143df7efd4",
+      "priority": 2,
+      "raw_selector": "document-root",
+      "bucket": "01",
+      "items": 1
+    },
+    {
+      "id": "review-p2-document-root-02",
+      "path": "authority/review-queue-draft/review-p2-document-root-02.json",
+      "digest": "sha256:4838c557b76b925f2972fb49accc97f709ab37b0bf62b43096e5358e6af1e406",
+      "priority": 2,
+      "raw_selector": "document-root",
+      "bucket": "02",
+      "items": 4
+    },
+    {
+      "id": "review-p2-document-root-03",
+      "path": "authority/review-queue-draft/review-p2-document-root-03.json",
+      "digest": "sha256:b9b52f90c68246ead7e43f01e6a81a2aa304a79e70c0ec380ceb78fed05a71aa",
+      "priority": 2,
+      "raw_selector": "document-root",
+      "bucket": "03",
+      "items": 2
+    },
+    {
+      "id": "review-p2-document-root-04",
+      "path": "authority/review-queue-draft/review-p2-document-root-04.json",
+      "digest": "sha256:c948197a327db9fb307d0da41191fae58bf30234eb6d3df12b3ec3ab19d3be4c",
+      "priority": 2,
+      "raw_selector": "document-root",
+      "bucket": "04",
+      "items": 3
+    },
+    {
+      "id": "review-p2-document-root-05",
+      "path": "authority/review-queue-draft/review-p2-document-root-05.json",
+      "digest": "sha256:e314646d085abc6b46de9a7e979da72ebe685fee3bbec136292b04ab2d0bc7f4",
+      "priority": 2,
+      "raw_selector": "document-root",
+      "bucket": "05",
+      "items": 3
+    },
+    {
+      "id": "review-p2-document-root-06",
+      "path": "authority/review-queue-draft/review-p2-document-root-06.json",
+      "digest": "sha256:ba902b771c707d5dea96e838113f0b0c08b1a8b46f9c7d3aee28ba1307f0b86e",
+      "priority": 2,
+      "raw_selector": "document-root",
+      "bucket": "06",
+      "items": 2
+    },
+    {
+      "id": "review-p2-document-root-07",
+      "path": "authority/review-queue-draft/review-p2-document-root-07.json",
+      "digest": "sha256:af44a237488f8b97ee3e3bc9cf8ce83ac19149c460b9bbc94f75a3548f0f9e2d",
+      "priority": 2,
+      "raw_selector": "document-root",
+      "bucket": "07",
+      "items": 1
+    },
+    {
+      "id": "review-p2-document-root-08",
+      "path": "authority/review-queue-draft/review-p2-document-root-08.json",
+      "digest": "sha256:c3fb5852137c5a2600b6077d27568b10712c0dedc5969c0537a8e4c8690b0566",
+      "priority": 2,
+      "raw_selector": "document-root",
+      "bucket": "08",
+      "items": 2
+    },
+    {
+      "id": "review-p2-document-root-09",
+      "path": "authority/review-queue-draft/review-p2-document-root-09.json",
+      "digest": "sha256:bc73959f43524ef55dca90cf374f5e8f8ca9eabec426e5e5cd776840826df7ec",
+      "priority": 2,
+      "raw_selector": "document-root",
+      "bucket": "09",
+      "items": 4
+    },
+    {
+      "id": "review-p2-document-root-0a",
+      "path": "authority/review-queue-draft/review-p2-document-root-0a.json",
+      "digest": "sha256:4286bad5329d1d013db317213d91f1a2204076fd5f245d954a97e15981bacc9f",
+      "priority": 2,
+      "raw_selector": "document-root",
+      "bucket": "0a",
+      "items": 3
+    },
+    {
+      "id": "review-p2-document-root-0b",
+      "path": "authority/review-queue-draft/review-p2-document-root-0b.json",
+      "digest": "sha256:f8f2bfee6d5be764efc3c9f123827f9e730bb828fb431d4926d1263cee9b15e5",
+      "priority": 2,
+      "raw_selector": "document-root",
+      "bucket": "0b",
+      "items": 2
+    },
+    {
+      "id": "review-p2-document-root-0c",
+      "path": "authority/review-queue-draft/review-p2-document-root-0c.json",
+      "digest": "sha256:567cba6c14e7e5f1fce379683f934084cbb20ef203b51fe478d73141a2c876c7",
+      "priority": 2,
+      "raw_selector": "document-root",
+      "bucket": "0c",
+      "items": 1
+    },
+    {
+      "id": "review-p2-document-root-0d",
+      "path": "authority/review-queue-draft/review-p2-document-root-0d.json",
+      "digest": "sha256:affb8c761e943d62bfdf11b28efbc79f737d91ea2bda1317e69c69a5f0a5c93a",
+      "priority": 2,
+      "raw_selector": "document-root",
+      "bucket": "0d",
+      "items": 2
+    },
+    {
+      "id": "review-p2-document-root-0e",
+      "path": "authority/review-queue-draft/review-p2-document-root-0e.json",
+      "digest": "sha256:dc42561c46deb916ee10ffd6b801b7ff633a6a5e2b5ea66bc1ef00c7f810c3e3",
+      "priority": 2,
+      "raw_selector": "document-root",
+      "bucket": "0e",
+      "items": 3
+    },
+    {
+      "id": "review-p2-document-root-0f",
+      "path": "authority/review-queue-draft/review-p2-document-root-0f.json",
+      "digest": "sha256:c4cfbd52782071941e4c00518f5d2338dfb8f0590799e971aa1956c21aba03e3",
+      "priority": 2,
+      "raw_selector": "document-root",
+      "bucket": "0f",
+      "items": 7
+    },
+    {
+      "id": "review-p2-document-root-10",
+      "path": "authority/review-queue-draft/review-p2-document-root-10.json",
+      "digest": "sha256:6610b97ee50e24c5c00e3c1a26d2517a64fff54a1b9079985d0a93ef33a038b4",
+      "priority": 2,
+      "raw_selector": "document-root",
+      "bucket": "10",
+      "items": 3
+    },
+    {
+      "id": "review-p2-document-root-11",
+      "path": "authority/review-queue-draft/review-p2-document-root-11.json",
+      "digest": "sha256:f56c0514ce9dd82ef2248ab97b41964707291f55564e28c1979dcf2f78fdb415",
+      "priority": 2,
+      "raw_selector": "document-root",
+      "bucket": "11",
+      "items": 3
+    },
+    {
+      "id": "review-p2-document-root-12",
+      "path": "authority/review-queue-draft/review-p2-document-root-12.json",
+      "digest": "sha256:411e1380e1551e3d9a30580fe4c2bf71a9d614ff0e52ec3ba65f5ea4d2c912c2",
+      "priority": 2,
+      "raw_selector": "document-root",
+      "bucket": "12",
+      "items": 1
+    },
+    {
+      "id": "review-p2-document-root-13",
+      "path": "authority/review-queue-draft/review-p2-document-root-13.json",
+      "digest": "sha256:300e866746b1db654841fb9da33ac73ba3d2f6a7f982f220867f6698167daa7a",
+      "priority": 2,
+      "raw_selector": "document-root",
+      "bucket": "13",
+      "items": 2
+    },
+    {
+      "id": "review-p2-document-root-14",
+      "path": "authority/review-queue-draft/review-p2-document-root-14.json",
+      "digest": "sha256:8ac82076d6f74886988007cd306c41a588204c34e6de88acc83f72f8f12a671a",
+      "priority": 2,
+      "raw_selector": "document-root",
+      "bucket": "14",
+      "items": 2
+    },
+    {
+      "id": "review-p2-document-root-15",
+      "path": "authority/review-queue-draft/review-p2-document-root-15.json",
+      "digest": "sha256:cf1cc6b298b52823924e8a89f8a41cee52fabd157b30219f73f2e4fde67685ac",
+      "priority": 2,
+      "raw_selector": "document-root",
+      "bucket": "15",
+      "items": 2
+    },
+    {
+      "id": "review-p2-document-root-16",
+      "path": "authority/review-queue-draft/review-p2-document-root-16.json",
+      "digest": "sha256:fd040f5488f5ad695a355706e70171de114f1a0e8aa0b6d57eaf6a5695224c43",
+      "priority": 2,
+      "raw_selector": "document-root",
+      "bucket": "16",
+      "items": 7
+    },
+    {
+      "id": "review-p2-document-root-17",
+      "path": "authority/review-queue-draft/review-p2-document-root-17.json",
+      "digest": "sha256:069e263cbdb9029295c080931ac2b3e7dbcf7b84f7a43d0d18b96d8e828ae605",
+      "priority": 2,
+      "raw_selector": "document-root",
+      "bucket": "17",
+      "items": 5
+    },
+    {
+      "id": "review-p2-document-root-18",
+      "path": "authority/review-queue-draft/review-p2-document-root-18.json",
+      "digest": "sha256:57c8eb0b84f50be9724a99db1e40aabe73d3d142e34c4b499b92ca5f033be090",
+      "priority": 2,
+      "raw_selector": "document-root",
+      "bucket": "18",
+      "items": 5
+    },
+    {
+      "id": "review-p2-document-root-19",
+      "path": "authority/review-queue-draft/review-p2-document-root-19.json",
+      "digest": "sha256:b029fd33deb95b1d84dd454fc3caed6e9cda3f2b4b41c6fb69d71d823b1a33b0",
+      "priority": 2,
+      "raw_selector": "document-root",
+      "bucket": "19",
+      "items": 2
+    },
+    {
+      "id": "review-p2-document-root-1a",
+      "path": "authority/review-queue-draft/review-p2-document-root-1a.json",
+      "digest": "sha256:d69a2a22526dec83a6d4d828f3ac050c2970e49a5b95ec69a7be43e1900bdd7b",
+      "priority": 2,
+      "raw_selector": "document-root",
+      "bucket": "1a",
+      "items": 3
+    },
+    {
+      "id": "review-p2-document-root-1b",
+      "path": "authority/review-queue-draft/review-p2-document-root-1b.json",
+      "digest": "sha256:b1a533d6b0a7ea0a8ffb174c5fb4e176e09946a1bcf2cb7b962539fcbbae91a0",
+      "priority": 2,
+      "raw_selector": "document-root",
+      "bucket": "1b",
+      "items": 6
+    },
+    {
+      "id": "review-p2-document-root-1c",
+      "path": "authority/review-queue-draft/review-p2-document-root-1c.json",
+      "digest": "sha256:f45573174b7ba3a31a378d99f76af27020ec2bbc478d47eed1c91237f86aa9b3",
+      "priority": 2,
+      "raw_selector": "document-root",
+      "bucket": "1c",
+      "items": 1
+    },
+    {
+      "id": "review-p2-document-root-1d",
+      "path": "authority/review-queue-draft/review-p2-document-root-1d.json",
+      "digest": "sha256:c1df20f23daeb7ec22e3a641a02c411feb5298c1dd385e5965559bb1fd716c56",
+      "priority": 2,
+      "raw_selector": "document-root",
+      "bucket": "1d",
+      "items": 4
+    },
+    {
+      "id": "review-p2-document-root-1e",
+      "path": "authority/review-queue-draft/review-p2-document-root-1e.json",
+      "digest": "sha256:95a8d18abf02598ef34eb8ca647c217ad138f95bd47dd84f1cd0b4cf7dca6476",
+      "priority": 2,
+      "raw_selector": "document-root",
+      "bucket": "1e",
+      "items": 2
+    },
+    {
+      "id": "review-p2-document-root-1f",
+      "path": "authority/review-queue-draft/review-p2-document-root-1f.json",
+      "digest": "sha256:b8e2474e84343e76f70f9eee223ff6b1979c99efea048ccb8b72b87818b3601c",
+      "priority": 2,
+      "raw_selector": "document-root",
+      "bucket": "1f",
+      "items": 6
+    },
+    {
+      "id": "review-p2-document-root-20",
+      "path": "authority/review-queue-draft/review-p2-document-root-20.json",
+      "digest": "sha256:3b7f77c412740ad7f8e613d23896bbfde5c4d1b44ec8ad4bed74e886641c23b9",
+      "priority": 2,
+      "raw_selector": "document-root",
+      "bucket": "20",
+      "items": 4
+    },
+    {
+      "id": "review-p2-document-root-21",
+      "path": "authority/review-queue-draft/review-p2-document-root-21.json",
+      "digest": "sha256:e621c06a9097db6140cbec50697270ac84c5b688e7ebe679dff5942b2b039137",
+      "priority": 2,
+      "raw_selector": "document-root",
+      "bucket": "21",
+      "items": 2
+    },
+    {
+      "id": "review-p2-document-root-22",
+      "path": "authority/review-queue-draft/review-p2-document-root-22.json",
+      "digest": "sha256:60b4ca8b3f3cd14840f161c482e1c63d53f3398a720d089d6b7ebdc7da289eb0",
+      "priority": 2,
+      "raw_selector": "document-root",
+      "bucket": "22",
+      "items": 2
+    },
+    {
+      "id": "review-p2-document-root-23",
+      "path": "authority/review-queue-draft/review-p2-document-root-23.json",
+      "digest": "sha256:c29ec4a254cef9b81ca49888387956d36cf59c0dddfad5de414e07fd8fd41d62",
+      "priority": 2,
+      "raw_selector": "document-root",
+      "bucket": "23",
+      "items": 3
+    },
+    {
+      "id": "review-p2-document-root-24",
+      "path": "authority/review-queue-draft/review-p2-document-root-24.json",
+      "digest": "sha256:c70279cc6d37e38506169d527024bb4e25ea43baa1420986ba16d64e380b9d1a",
+      "priority": 2,
+      "raw_selector": "document-root",
+      "bucket": "24",
+      "items": 4
+    },
+    {
+      "id": "review-p2-document-root-25",
+      "path": "authority/review-queue-draft/review-p2-document-root-25.json",
+      "digest": "sha256:b19269875965eac5bb4e4dfd610b963b6736f0db7c8269104932749e05d145bd",
+      "priority": 2,
+      "raw_selector": "document-root",
+      "bucket": "25",
+      "items": 4
+    },
+    {
+      "id": "review-p2-document-root-26",
+      "path": "authority/review-queue-draft/review-p2-document-root-26.json",
+      "digest": "sha256:d7aa513e2e965de6087c6055f738017861b33d867bfa0162be8e08825d79c43a",
+      "priority": 2,
+      "raw_selector": "document-root",
+      "bucket": "26",
+      "items": 2
+    },
+    {
+      "id": "review-p2-document-root-27",
+      "path": "authority/review-queue-draft/review-p2-document-root-27.json",
+      "digest": "sha256:31304c59e584e26a0fea8544fb80747da22679323d4db2c9146dfebc232b80b3",
+      "priority": 2,
+      "raw_selector": "document-root",
+      "bucket": "27",
+      "items": 1
+    },
+    {
+      "id": "review-p2-document-root-28",
+      "path": "authority/review-queue-draft/review-p2-document-root-28.json",
+      "digest": "sha256:77a344c1ce0335c840f3da7896ccf83877f9bc48e6c02ec0752cb173e159c3ac",
+      "priority": 2,
+      "raw_selector": "document-root",
+      "bucket": "28",
+      "items": 1
+    },
+    {
+      "id": "review-p2-document-root-29",
+      "path": "authority/review-queue-draft/review-p2-document-root-29.json",
+      "digest": "sha256:d3ee6d6311e24be14a2f15d3997aa63a7202fcd7507a63bb7fcade75c76c8b67",
+      "priority": 2,
+      "raw_selector": "document-root",
+      "bucket": "29",
+      "items": 1
+    },
+    {
+      "id": "review-p2-document-root-2a",
+      "path": "authority/review-queue-draft/review-p2-document-root-2a.json",
+      "digest": "sha256:6868d7ba9fc01e19eaadded39a65a75105477efa45a700e4e32c558b51622917",
+      "priority": 2,
+      "raw_selector": "document-root",
+      "bucket": "2a",
+      "items": 1
+    },
+    {
+      "id": "review-p2-document-root-2b",
+      "path": "authority/review-queue-draft/review-p2-document-root-2b.json",
+      "digest": "sha256:04c46bbdc6192fb2fc4830cb80bb47d83783339b74100c92400ac6b9cc69e654",
+      "priority": 2,
+      "raw_selector": "document-root",
+      "bucket": "2b",
+      "items": 3
+    },
+    {
+      "id": "review-p2-document-root-2c",
+      "path": "authority/review-queue-draft/review-p2-document-root-2c.json",
+      "digest": "sha256:0f2e109e740f636395913926db84501a5d828758f532a122c0ef35f26c0712a6",
+      "priority": 2,
+      "raw_selector": "document-root",
+      "bucket": "2c",
+      "items": 3
+    },
+    {
+      "id": "review-p2-document-root-2d",
+      "path": "authority/review-queue-draft/review-p2-document-root-2d.json",
+      "digest": "sha256:7e555cd48c1728377ad635b4ac3d7161af1781cd7d7e2dba7a8ba212349c298c",
+      "priority": 2,
+      "raw_selector": "document-root",
+      "bucket": "2d",
+      "items": 3
+    },
+    {
+      "id": "review-p2-document-root-2e",
+      "path": "authority/review-queue-draft/review-p2-document-root-2e.json",
+      "digest": "sha256:d19058f01ecc72eecdd3d584841659012ad4a0d176369c48a206ff017ba2a1e4",
+      "priority": 2,
+      "raw_selector": "document-root",
+      "bucket": "2e",
+      "items": 1
+    },
+    {
+      "id": "review-p2-document-root-2f",
+      "path": "authority/review-queue-draft/review-p2-document-root-2f.json",
+      "digest": "sha256:5a1983efd4d4c4e1772fb22c095c3edd868bb93035dc4615c9a175aed8111044",
+      "priority": 2,
+      "raw_selector": "document-root",
+      "bucket": "2f",
+      "items": 1
+    },
+    {
+      "id": "review-p2-document-root-30",
+      "path": "authority/review-queue-draft/review-p2-document-root-30.json",
+      "digest": "sha256:26b47af255d4d5c1ce2d8b54dea649eaa3f1246feda36747e32c9ecd7dc408e3",
+      "priority": 2,
+      "raw_selector": "document-root",
+      "bucket": "30",
+      "items": 1
+    },
+    {
+      "id": "review-p2-document-root-31",
+      "path": "authority/review-queue-draft/review-p2-document-root-31.json",
+      "digest": "sha256:0237ece054b93900df736839a1587520f37a5c6a37fe6acba2a112f038f8b6dc",
+      "priority": 2,
+      "raw_selector": "document-root",
+      "bucket": "31",
+      "items": 3
+    },
+    {
+      "id": "review-p2-document-root-32",
+      "path": "authority/review-queue-draft/review-p2-document-root-32.json",
+      "digest": "sha256:bcb606eb19bd65b5d460ec29531c0099bae54477af34cb346778a8641f2bde0d",
+      "priority": 2,
+      "raw_selector": "document-root",
+      "bucket": "32",
+      "items": 1
+    },
+    {
+      "id": "review-p2-document-root-33",
+      "path": "authority/review-queue-draft/review-p2-document-root-33.json",
+      "digest": "sha256:cec4dd6eb339b7f05d61c97f000d9017fc6bcb9ff3ac25fe5dcd66d039ec65ee",
+      "priority": 2,
+      "raw_selector": "document-root",
+      "bucket": "33",
+      "items": 3
+    },
+    {
+      "id": "review-p2-document-root-34",
+      "path": "authority/review-queue-draft/review-p2-document-root-34.json",
+      "digest": "sha256:0ea7ee86224762d6572dd8d26bbe0212ae6ab34bba732d9bd98e7222f0369924",
+      "priority": 2,
+      "raw_selector": "document-root",
+      "bucket": "34",
+      "items": 1
+    },
+    {
+      "id": "review-p2-document-root-35",
+      "path": "authority/review-queue-draft/review-p2-document-root-35.json",
+      "digest": "sha256:7bb3242b16ec8a62f8a723cc7f139179c03c3af6f395a517283b7c72a6b883e6",
+      "priority": 2,
+      "raw_selector": "document-root",
+      "bucket": "35",
+      "items": 5
+    },
+    {
+      "id": "review-p2-document-root-36",
+      "path": "authority/review-queue-draft/review-p2-document-root-36.json",
+      "digest": "sha256:6def6b28c4b0dc5867d7980b0e9165b292f2352de1e5860c593f7984196f0d3e",
+      "priority": 2,
+      "raw_selector": "document-root",
+      "bucket": "36",
+      "items": 1
+    },
+    {
+      "id": "review-p2-document-root-37",
+      "path": "authority/review-queue-draft/review-p2-document-root-37.json",
+      "digest": "sha256:ec8e174cefb847cfe0bbdd95feb2cf2f73cf86681bcfd1a7dcdda7f272f2c1aa",
+      "priority": 2,
+      "raw_selector": "document-root",
+      "bucket": "37",
+      "items": 5
+    },
+    {
+      "id": "review-p2-document-root-38",
+      "path": "authority/review-queue-draft/review-p2-document-root-38.json",
+      "digest": "sha256:a4d529873cef969f219b7b29c7734dab00af26d63b355f0674b8831f826e52fa",
+      "priority": 2,
+      "raw_selector": "document-root",
+      "bucket": "38",
+      "items": 1
+    },
+    {
+      "id": "review-p2-document-root-39",
+      "path": "authority/review-queue-draft/review-p2-document-root-39.json",
+      "digest": "sha256:6db3cc4df4a1bc5a280f63ceb886fa9366c0d17e259d2fd0b5ba749159217c5b",
+      "priority": 2,
+      "raw_selector": "document-root",
+      "bucket": "39",
+      "items": 2
+    },
+    {
+      "id": "review-p2-document-root-3a",
+      "path": "authority/review-queue-draft/review-p2-document-root-3a.json",
+      "digest": "sha256:67826ff705c6a6a6faef602121cc2c2492083da1087264d62378ab0a6d538105",
+      "priority": 2,
+      "raw_selector": "document-root",
+      "bucket": "3a",
+      "items": 4
+    },
+    {
+      "id": "review-p2-document-root-3b",
+      "path": "authority/review-queue-draft/review-p2-document-root-3b.json",
+      "digest": "sha256:adffe21c691c01e70bbbe369dd893f63ef47b1e66b4c975e75e85d82e3cc23fa",
+      "priority": 2,
+      "raw_selector": "document-root",
+      "bucket": "3b",
+      "items": 2
+    },
+    {
+      "id": "review-p2-document-root-3c",
+      "path": "authority/review-queue-draft/review-p2-document-root-3c.json",
+      "digest": "sha256:26b66fdcde5ac8c32033cb325006730682f17634b9b397f49a2fc773aa35d9a0",
+      "priority": 2,
+      "raw_selector": "document-root",
+      "bucket": "3c",
+      "items": 2
+    },
+    {
+      "id": "review-p2-document-root-3d",
+      "path": "authority/review-queue-draft/review-p2-document-root-3d.json",
+      "digest": "sha256:ec761177ccd45a64467ed2ffa31bedd7db74d994393f203ace3a1b58357d95d6",
+      "priority": 2,
+      "raw_selector": "document-root",
+      "bucket": "3d",
+      "items": 1
+    },
+    {
+      "id": "review-p2-document-root-3e",
+      "path": "authority/review-queue-draft/review-p2-document-root-3e.json",
+      "digest": "sha256:272f82c9c33c5afb5b80e126a7c953815ddaf1a7fda52f79642dac72e73091ef",
+      "priority": 2,
+      "raw_selector": "document-root",
+      "bucket": "3e",
+      "items": 2
+    },
+    {
+      "id": "review-p2-document-root-3f",
+      "path": "authority/review-queue-draft/review-p2-document-root-3f.json",
+      "digest": "sha256:3a356af19e135c78114f6bbee54e9d8f9c990e3882fba27d4317c30b3cd247ef",
+      "priority": 2,
+      "raw_selector": "document-root",
+      "bucket": "3f",
+      "items": 4
+    }
+  ],
+  "stale_holds": [
+
+  ],
+  "unavailable_holds": [
+    {
+      "document_id": "document-pg-013d4cebd7e4750f",
+      "authority_url": "https://www.postgresql.org/docs/18/",
+      "document_locator": "https://www.postgresql.org/docs/18/",
+      "source_ids": [
+        "postgresql-docs-18.6"
+      ],
+      "locked_source_digest": "sha256:c51c06f037afdb7563e2d98a5e59ebb380f103b13ce5b9eff5bc11128c330656",
+      "inventory_tool_digest": "sha256:097da35cf95014735db866fca94f5db07c0717353928b543bcf9c188ae005d2c",
+      "review_queue_tool_digest": "sha256:555151bbd9256d534a12709f3c44a773c82d8ed72415fbf0ebfb840e0b6317ce",
+      "error_digest": "sha256:5c10a1dc555229b8427a6943c4ec63054298cd1cac0bc7a673a7fdeea94711e3",
+      "status": "hold-unavailable-document-retrieval-required",
+      "reason": "locked-document-body-unavailable"
+    },
+    {
+      "document_id": "document-pg-0d3eb5f4a8cc9a57",
+      "authority_url": "https://ftp.postgresql.org/pub/source/v18.6/postgresql-18.6.tar.bz2.sha256",
+      "document_locator": "https://ftp.postgresql.org/pub/source/v18.6/postgresql-18.6.tar.bz2.sha256",
+      "source_ids": [
+        "postgresql-source-tarball-checksum-18.6"
+      ],
+      "locked_source_digest": "sha256:92b190ded4a002654768daa8ac41db530354b9be13c7c67059592ddf5bb0c43a",
+      "inventory_tool_digest": "sha256:097da35cf95014735db866fca94f5db07c0717353928b543bcf9c188ae005d2c",
+      "review_queue_tool_digest": "sha256:555151bbd9256d534a12709f3c44a773c82d8ed72415fbf0ebfb840e0b6317ce",
+      "error_digest": "sha256:ecbc65054069b8f922db2c042142bfbe8fa1bb7f8bf21f1c4fee4b95d15a3c84",
+      "status": "hold-unavailable-document-retrieval-required",
+      "reason": "locked-document-body-unavailable"
+    },
+    {
+      "document_id": "document-pg-21774f23a820948d",
+      "authority_url": "https://hub.docker.com/_/postgres",
+      "document_locator": "https://hub.docker.com/_/postgres",
+      "source_ids": [
+        "postgres-container-17.11-alpine"
+      ],
+      "locked_source_digest": "sha256:18cfe3ef5e6815560c98237d6216d1e5119702fb0f3894c8785dd58b8bbe5d73",
+      "inventory_tool_digest": "sha256:097da35cf95014735db866fca94f5db07c0717353928b543bcf9c188ae005d2c",
+      "review_queue_tool_digest": "sha256:555151bbd9256d534a12709f3c44a773c82d8ed72415fbf0ebfb840e0b6317ce",
+      "error_digest": "sha256:8f159dd0b0e5e2fdd401c21b657ee53d9738f271303e0a514a660a99cef06830",
+      "status": "hold-unavailable-document-retrieval-required",
+      "reason": "locked-document-body-unavailable"
+    },
+    {
+      "document_id": "document-pg-2cda121a044435ff",
+      "authority_url": "https://hub.docker.com/_/postgres",
+      "document_locator": "https://hub.docker.com/_/postgres",
+      "source_ids": [
+        "postgres-container-16.15-alpine"
+      ],
+      "locked_source_digest": "sha256:421b84e07a72bb8f3715f20501a1fdbe1219aad1fa4af7786a49d9a3f2480296",
+      "inventory_tool_digest": "sha256:097da35cf95014735db866fca94f5db07c0717353928b543bcf9c188ae005d2c",
+      "review_queue_tool_digest": "sha256:555151bbd9256d534a12709f3c44a773c82d8ed72415fbf0ebfb840e0b6317ce",
+      "error_digest": "sha256:ba8cd78ca838e57225cf3edd06d80ddc0da9e852df42f5da03d05b2e0e1f5032",
+      "status": "hold-unavailable-document-retrieval-required",
+      "reason": "locked-document-body-unavailable"
+    },
+    {
+      "document_id": "document-pg-ae232fc47fe867a1",
+      "authority_url": "https://hub.docker.com/_/postgres",
+      "document_locator": "https://hub.docker.com/_/postgres",
+      "source_ids": [
+        "postgres-container-14.24-alpine"
+      ],
+      "locked_source_digest": "sha256:727876d274666da0b92a445390ba093c84b8e9f8343e1c53cd4e9a7ab2d85310",
+      "inventory_tool_digest": "sha256:097da35cf95014735db866fca94f5db07c0717353928b543bcf9c188ae005d2c",
+      "review_queue_tool_digest": "sha256:555151bbd9256d534a12709f3c44a773c82d8ed72415fbf0ebfb840e0b6317ce",
+      "error_digest": "sha256:0d125da8136ae85788d3d0e2f082762dafaa50b25f471c2fa54f25ebab180310",
+      "status": "hold-unavailable-document-retrieval-required",
+      "reason": "locked-document-body-unavailable"
+    },
+    {
+      "document_id": "document-pg-d0f2a351676c6e1a",
+      "authority_url": "https://hub.docker.com/_/postgres",
+      "document_locator": "https://hub.docker.com/_/postgres",
+      "source_ids": [
+        "postgres-container-18.6-alpine"
+      ],
+      "locked_source_digest": "sha256:d3e1620b530c944afa6e887d22eb899824da68e19c52024bf98f5220c88a65b2",
+      "inventory_tool_digest": "sha256:097da35cf95014735db866fca94f5db07c0717353928b543bcf9c188ae005d2c",
+      "review_queue_tool_digest": "sha256:555151bbd9256d534a12709f3c44a773c82d8ed72415fbf0ebfb840e0b6317ce",
+      "error_digest": "sha256:8e5b07fd3b51ad28ac438918a2a1158dccc21d00c5d471551b45aa37798e58ce",
+      "status": "hold-unavailable-document-retrieval-required",
+      "reason": "locked-document-body-unavailable"
+    },
+    {
+      "document_id": "document-pg-dd84568a422ff30a",
+      "authority_url": "https://www.postgresql.org/docs/release/18.6/",
+      "document_locator": "https://www.postgresql.org/docs/release/18.6/",
+      "source_ids": [
+        "postgresql-release-18.6"
+      ],
+      "locked_source_digest": "sha256:4479466ad13c12bb916b83881db008f97f4905d8ee67286f5ddcf94adc9f94a7",
+      "inventory_tool_digest": "sha256:097da35cf95014735db866fca94f5db07c0717353928b543bcf9c188ae005d2c",
+      "review_queue_tool_digest": "sha256:555151bbd9256d534a12709f3c44a773c82d8ed72415fbf0ebfb840e0b6317ce",
+      "error_digest": "sha256:24fde8c19bf66c386808461d4508708970a4a13d9eec6006d669f2720bab219b",
+      "status": "hold-unavailable-document-retrieval-required",
+      "reason": "locked-document-body-unavailable"
+    },
+    {
+      "document_id": "document-pg-de7343ac21cc5e79",
+      "authority_url": "https://hub.docker.com/_/postgres",
+      "document_locator": "https://hub.docker.com/_/postgres",
+      "source_ids": [
+        "postgres-container-15.19-alpine"
+      ],
+      "locked_source_digest": "sha256:b0dc4a8dc256b963ee25867843d9fd366850e327e4a2a65ccb3c47262d092973",
+      "inventory_tool_digest": "sha256:097da35cf95014735db866fca94f5db07c0717353928b543bcf9c188ae005d2c",
+      "review_queue_tool_digest": "sha256:555151bbd9256d534a12709f3c44a773c82d8ed72415fbf0ebfb840e0b6317ce",
+      "error_digest": "sha256:276e297b37b9660ffc80cb42d00ff61f42b48a7c97e04d5da6c46f6a6a3e771c",
+      "status": "hold-unavailable-document-retrieval-required",
+      "reason": "locked-document-body-unavailable"
+    }
+  ]
+}

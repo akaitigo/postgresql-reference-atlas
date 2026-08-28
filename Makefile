@@ -3,7 +3,7 @@ CORE_DIR ?= ../reference-atlas-core
 LAB ?= sql
 ATLAS_ROOT := $(CURDIR)
 
-.PHONY: validate audit non-regression-audit core-non-regression-audit definitive-audit parity-audit depth-parity-audit authority-locator-verify core-authority-audit definitive-gate claims provenance certificate-verify test-static evidence-freshness lab eval refresh-evidence test
+.PHONY: validate audit non-regression-audit core-non-regression-audit authority-body-non-regression-audit definitive-audit parity-audit depth-parity-audit authority-locator-verify authority-body-verify authority-review-verify core-authority-audit definitive-gate claims provenance certificate-verify test-static evidence-freshness lab eval refresh-evidence test
 
 validate:
 	cd $(CORE_DIR) && GOCACHE=$(CURDIR)/.cache/go-build go run ./cmd/atlas validate \
@@ -53,6 +53,9 @@ non-regression-audit:
 core-non-regression-audit:
 	cd $(CORE_DIR) && GOCACHE=$(CURDIR)/.cache/go-build go run ./cmd/atlas audit $(ATLAS_ROOT) --gate non-regression
 
+authority-body-non-regression-audit:
+	ruby tools/verify-authority-body-baseline.rb
+
 definitive-audit:
 	ruby tools/audit-definitive.rb
 
@@ -64,6 +67,12 @@ depth-parity-audit:
 
 authority-locator-verify:
 	ruby tools/verify-authority-locators.rb
+
+authority-body-verify:
+	ruby tools/verify-authority-body-inventory.rb
+
+authority-review-verify:
+	ruby tools/verify-authority-review-queue.rb
 
 core-authority-audit:
 	cd $(CORE_DIR) && GOCACHE=$(CURDIR)/.cache/go-build go run ./cmd/atlas audit $(ATLAS_ROOT) --gate authority-extraction
@@ -94,4 +103,4 @@ certificate-verify:
 
 refresh-evidence: eval test-static provenance
 
-test: validate audit non-regression-audit core-non-regression-audit definitive-audit parity-audit authority-locator-verify core-authority-audit depth-parity-audit evidence-freshness certificate-verify
+test: validate audit non-regression-audit core-non-regression-audit authority-body-non-regression-audit definitive-audit parity-audit authority-locator-verify authority-body-verify authority-review-verify core-authority-audit depth-parity-audit evidence-freshness certificate-verify

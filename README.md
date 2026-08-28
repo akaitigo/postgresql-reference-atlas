@@ -21,6 +21,9 @@ PostgreSQL 18.6の公開機能について、一次資料、設計判断、再�
 - `atlas/`と`claims/`: Capability、集約索引、Core v1 Claim実体
 - `authority/`と`surface.inventory.yaml`: Docs、固定Source commit、Runtime Catalogから抽出したDefinitive v2 Inventory
 - `authority/locator-extraction.snapshot.json`と`authority/locator-draft/`: 一次資料locatorのURL、metadata、digest、byte offset。第三者本文と抜粋は保存しない
+- `authority/body-inventory.snapshot.json`と`authority/body-inventory-draft/`: unique documentと固定raw selectorで列挙したpending-human anchor。Human decision前はSurface/Behavior/Depth実績に算入しない
+- `authority/review-queue.snapshot.json`と`authority/review-queue-draft/`: stable raw anchor 5,512件を完全接続したHuman review queue。priority、cluster、batchは作業提案でありSemantic判断ではない
+- `authority/reviews/decisions.json`: 一次資料を人が確認したreviewer/time/reason/digest/locator/mapping/resultを記録する必須の昇格経路。初期状態はdecision 0件
 - `gaps/claims/`と`verification.matrix.yaml`: 未Closureの提案ClaimとScenario別Gap
 - `mastery.yaml`: 8 Outcomeと14 Surfaceを既存Coverageへ接続する契約
 - `versions/`: Version固定と互換性境界
@@ -39,6 +42,9 @@ PostgreSQL 18.6の公開機能について、一次資料、設計判断、再�
 make validate
 make audit
 make non-regression-audit
+make authority-body-non-regression-audit
+make authority-body-verify
+make authority-review-verify
 make definitive-audit
 make definitive-gate  # incomplete中は昇格拒否が正しい結果
 make lab LAB=sql

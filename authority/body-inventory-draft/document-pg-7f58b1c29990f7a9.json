@@ -1,0 +1,203 @@
+{
+  "document_id": "document-pg-7f58b1c29990f7a9",
+  "source_ids": [
+    "postgresql-source-rel-18.6"
+  ],
+  "authority_url": "https://github.com/postgres/postgres/tree/REL_18_6",
+  "document_locator": "git:724edf9bde9d356724ad384a2e196edc3c9f80f7:doc/src/sgml/xplang.sgml",
+  "locked_source_digest": "sha256:873c03070a2e8aae0768fb75d8d6739ae9589681c6cd50839e79d787a7aed222",
+  "locked_body_digest": "sha256:52efa13171855d610256c8453fca4a9a592c4ea054fef626e03fed4e6eceeaf9",
+  "fetch": {
+    "status": "matched",
+    "fetched_digest": "sha256:52efa13171855d610256c8453fca4a9a592c4ea054fef626e03fed4e6eceeaf9",
+    "locked_digest_match": true,
+    "error_digest": null
+  },
+  "schema_version": 1,
+  "extraction": {
+    "method": "sgml-raw-anchor-selector-v1",
+    "tool": "postgresql-reference-atlas-authority-body-inventory-v1",
+    "tool_digest": "sha256:097da35cf95014735db866fca94f5db07c0717353928b543bcf9c188ae005d2c",
+    "selector_contract": [
+      "document-root",
+      "sgml-id-attribute"
+    ],
+    "selector_exhaustive_for_locked_body": true,
+    "authority_semantics_exhaustive": false,
+    "review_status": "automated-unreviewed",
+    "body_storage": "digest-locator-and-offset-only"
+  },
+  "anchors": [
+    {
+      "id": "anchor-pg-56519fa4aa901814e32c",
+      "locator": "document-root",
+      "locator_kind": "document-root",
+      "raw_selector": "document-root",
+      "element_name": "document",
+      "parent_anchor_id": null,
+      "context_start": 0,
+      "context_end": 9603,
+      "context_unit": "byte",
+      "context_digest": "sha256:52efa13171855d610256c8453fca4a9a592c4ea054fef626e03fed4e6eceeaf9",
+      "classification_status": "pending-human",
+      "surface_ids": [
+
+      ],
+      "behavior_ids": [
+
+      ]
+    },
+    {
+      "id": "anchor-pg-64831e8a09446277349c",
+      "locator": "#xplang",
+      "locator_kind": "fragment",
+      "raw_selector": "sgml-id-attribute",
+      "element_name": "chapter",
+      "parent_anchor_id": "anchor-pg-56519fa4aa901814e32c",
+      "context_start": 35,
+      "context_end": 58,
+      "context_unit": "byte",
+      "context_digest": "sha256:379f970565f4798db1a749e48b3f6b17220088ef359fc17c91babdaafab278ef",
+      "classification_status": "pending-human",
+      "surface_ids": [
+
+      ],
+      "behavior_ids": [
+
+      ]
+    },
+    {
+      "id": "anchor-pg-c61b7b0fb59f3ed5c191",
+      "locator": "#xplang-install",
+      "locator_kind": "fragment",
+      "raw_selector": "sgml-id-attribute",
+      "element_name": "sect1",
+      "parent_anchor_id": "anchor-pg-56519fa4aa901814e32c",
+      "context_start": 1843,
+      "context_end": 1873,
+      "context_unit": "byte",
+      "context_digest": "sha256:6b901a831f9ce39a4ace894ac10f42b893e48ab1ddebee13d76667d0b88f15f0",
+      "classification_status": "pending-human",
+      "surface_ids": [
+
+      ],
+      "behavior_ids": [
+
+      ]
+    },
+    {
+      "id": "anchor-pg-8ee1dc36079ccabe5c81",
+      "locator": "#xplang-install-cr1",
+      "locator_kind": "fragment",
+      "raw_selector": "sgml-id-attribute",
+      "element_name": "step",
+      "parent_anchor_id": "anchor-pg-56519fa4aa901814e32c",
+      "context_start": 3302,
+      "context_end": 3360,
+      "context_unit": "byte",
+      "context_digest": "sha256:c0bbb1d32dbf9ddd033e12c29297f949a8f2442bcd068422eea6bbf493373c0f",
+      "classification_status": "pending-human",
+      "surface_ids": [
+
+      ],
+      "behavior_ids": [
+
+      ]
+    },
+    {
+      "id": "anchor-pg-7ba3cd033150e09c9ad0",
+      "locator": "#xplang-install-cr2",
+      "locator_kind": "fragment",
+      "raw_selector": "sgml-id-attribute",
+      "element_name": "step",
+      "parent_anchor_id": "anchor-pg-56519fa4aa901814e32c",
+      "context_start": 3840,
+      "context_end": 3898,
+      "context_unit": "byte",
+      "context_digest": "sha256:d52dc55f67c9a65fd3f058a575984f31fcaf2f07d2569be6a525be50594f7b47",
+      "classification_status": "pending-human",
+      "surface_ids": [
+
+      ],
+      "behavior_ids": [
+
+      ]
+    },
+    {
+      "id": "anchor-pg-087d7d76f6686341d0f2",
+      "locator": "#xplang-install-cr3",
+      "locator_kind": "fragment",
+      "raw_selector": "sgml-id-attribute",
+      "element_name": "step",
+      "parent_anchor_id": "anchor-pg-56519fa4aa901814e32c",
+      "context_start": 4441,
+      "context_end": 4499,
+      "context_unit": "byte",
+      "context_digest": "sha256:40a485a94300eb26cfa8ecde7e72772c3a6156d2a8426c6699350f09b84d9500",
+      "classification_status": "pending-human",
+      "surface_ids": [
+
+      ],
+      "behavior_ids": [
+
+      ]
+    },
+    {
+      "id": "anchor-pg-8d18700cc314c86439de",
+      "locator": "#xplang-install-cr4",
+      "locator_kind": "fragment",
+      "raw_selector": "sgml-id-attribute",
+      "element_name": "step",
+      "parent_anchor_id": "anchor-pg-56519fa4aa901814e32c",
+      "context_start": 5058,
+      "context_end": 5116,
+      "context_unit": "byte",
+      "context_digest": "sha256:01928c568b21109e92aeaf385b8aa392ce64513ed875b0bc2294d25490182963",
+      "classification_status": "pending-human",
+      "surface_ids": [
+
+      ],
+      "behavior_ids": [
+
+      ]
+    },
+    {
+      "id": "anchor-pg-b24cecf502fc79aa76d9",
+      "locator": "#xplang-install-cr5",
+      "locator_kind": "fragment",
+      "raw_selector": "sgml-id-attribute",
+      "element_name": "step",
+      "parent_anchor_id": "anchor-pg-56519fa4aa901814e32c",
+      "context_start": 5710,
+      "context_end": 5768,
+      "context_unit": "byte",
+      "context_digest": "sha256:8b0979515a3455e7230d07d799befe556dc9a557070cd87bdb7cb5f25c14e0d7",
+      "classification_status": "pending-human",
+      "surface_ids": [
+
+      ],
+      "behavior_ids": [
+
+      ]
+    },
+    {
+      "id": "anchor-pg-8de02dc3c84d3e98e07e",
+      "locator": "#xplang-install-example",
+      "locator_kind": "fragment",
+      "raw_selector": "sgml-id-attribute",
+      "element_name": "example",
+      "parent_anchor_id": "anchor-pg-56519fa4aa901814e32c",
+      "context_start": 7396,
+      "context_end": 7437,
+      "context_unit": "byte",
+      "context_digest": "sha256:8ffaccfcd4d1d9b432cae26983c622d47f9225d578268f45271fd01bd275ba5e",
+      "classification_status": "pending-human",
+      "surface_ids": [
+
+      ],
+      "behavior_ids": [
+
+      ]
+    }
+  ]
+}

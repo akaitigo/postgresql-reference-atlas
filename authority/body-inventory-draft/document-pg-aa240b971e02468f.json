@@ -1,0 +1,146 @@
+{
+  "document_id": "document-pg-aa240b971e02468f",
+  "source_ids": [
+    "postgresql-source-rel-18.6"
+  ],
+  "authority_url": "https://github.com/postgres/postgres/tree/REL_18_6",
+  "document_locator": "git:724edf9bde9d356724ad384a2e196edc3c9f80f7:doc/src/sgml/amcheck.sgml",
+  "locked_source_digest": "sha256:873c03070a2e8aae0768fb75d8d6739ae9589681c6cd50839e79d787a7aed222",
+  "locked_body_digest": "sha256:45a4a2c926a0321a5883fca8b606e426ebe2bf4cb686ee21ea5eb1912ef10dff",
+  "fetch": {
+    "status": "matched",
+    "fetched_digest": "sha256:45a4a2c926a0321a5883fca8b606e426ebe2bf4cb686ee21ea5eb1912ef10dff",
+    "locked_digest_match": true,
+    "error_digest": null
+  },
+  "schema_version": 1,
+  "extraction": {
+    "method": "sgml-raw-anchor-selector-v1",
+    "tool": "postgresql-reference-atlas-authority-body-inventory-v1",
+    "tool_digest": "sha256:097da35cf95014735db866fca94f5db07c0717353928b543bcf9c188ae005d2c",
+    "selector_contract": [
+      "document-root",
+      "sgml-id-attribute"
+    ],
+    "selector_exhaustive_for_locked_body": true,
+    "authority_semantics_exhaustive": false,
+    "review_status": "automated-unreviewed",
+    "body_storage": "digest-locator-and-offset-only"
+  },
+  "anchors": [
+    {
+      "id": "anchor-pg-80380786bfc8e2d89933",
+      "locator": "document-root",
+      "locator_kind": "document-root",
+      "raw_selector": "document-root",
+      "element_name": "document",
+      "parent_anchor_id": null,
+      "context_start": 0,
+      "context_end": 24698,
+      "context_unit": "byte",
+      "context_digest": "sha256:45a4a2c926a0321a5883fca8b606e426ebe2bf4cb686ee21ea5eb1912ef10dff",
+      "classification_status": "pending-human",
+      "surface_ids": [
+
+      ],
+      "behavior_ids": [
+
+      ]
+    },
+    {
+      "id": "anchor-pg-3c1546ddd64583574ea7",
+      "locator": "#amcheck",
+      "locator_kind": "fragment",
+      "raw_selector": "sgml-id-attribute",
+      "element_name": "sect1",
+      "parent_anchor_id": "anchor-pg-80380786bfc8e2d89933",
+      "context_start": 36,
+      "context_end": 77,
+      "context_unit": "byte",
+      "context_digest": "sha256:ab6a769707cac9f3be993da10d23d155f3e6cce80fabca6794484bebca91c76f",
+      "classification_status": "pending-human",
+      "surface_ids": [
+
+      ],
+      "behavior_ids": [
+
+      ]
+    },
+    {
+      "id": "anchor-pg-1185c033953b391cd7e9",
+      "locator": "#amcheck-functions",
+      "locator_kind": "fragment",
+      "raw_selector": "sgml-id-attribute",
+      "element_name": "sect2",
+      "parent_anchor_id": "anchor-pg-80380786bfc8e2d89933",
+      "context_start": 2761,
+      "context_end": 2793,
+      "context_unit": "byte",
+      "context_digest": "sha256:5424658134720d4e67541e7b77bcd6a90fc837749478702bb23b67f26d63cdbb",
+      "classification_status": "pending-human",
+      "surface_ids": [
+
+      ],
+      "behavior_ids": [
+
+      ]
+    },
+    {
+      "id": "anchor-pg-3347688e19ae29bd259d",
+      "locator": "#amcheck-optional-heapallindexed-verification",
+      "locator_kind": "fragment",
+      "raw_selector": "sgml-id-attribute",
+      "element_name": "sect2",
+      "parent_anchor_id": "anchor-pg-80380786bfc8e2d89933",
+      "context_start": 15350,
+      "context_end": 15409,
+      "context_unit": "byte",
+      "context_digest": "sha256:9bab539f556b1ecca52ef4db21060ab0d759b2503e4b3e7ffc0910c6f346d41a",
+      "classification_status": "pending-human",
+      "surface_ids": [
+
+      ],
+      "behavior_ids": [
+
+      ]
+    },
+    {
+      "id": "anchor-pg-09036ad5fbbfcaf3af68",
+      "locator": "#amcheck-using-amcheck-effectively",
+      "locator_kind": "fragment",
+      "raw_selector": "sgml-id-attribute",
+      "element_name": "sect2",
+      "parent_anchor_id": "anchor-pg-80380786bfc8e2d89933",
+      "context_start": 17470,
+      "context_end": 17518,
+      "context_unit": "byte",
+      "context_digest": "sha256:aad08bda8aac270209be70a377d508ef58589f76cbe9e3136da1ed64a2a3c4f8",
+      "classification_status": "pending-human",
+      "surface_ids": [
+
+      ],
+      "behavior_ids": [
+
+      ]
+    },
+    {
+      "id": "anchor-pg-64aa3e7ac6fb25f0e71a",
+      "locator": "#amcheck-repairing-corruption",
+      "locator_kind": "fragment",
+      "raw_selector": "sgml-id-attribute",
+      "element_name": "sect2",
+      "parent_anchor_id": "anchor-pg-80380786bfc8e2d89933",
+      "context_start": 23873,
+      "context_end": 23916,
+      "context_unit": "byte",
+      "context_digest": "sha256:88f4986b72144619d7eb1c5d94d829f925b8c4896d795977c7616cb27b380b7f",
+      "classification_status": "pending-human",
+      "surface_ids": [
+
+      ],
+      "behavior_ids": [
+
+      ]
+    }
+  ]
+}

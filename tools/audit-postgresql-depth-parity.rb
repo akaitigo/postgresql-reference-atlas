@@ -14,6 +14,10 @@ definitive = JSON.parse(File.read(File.join(root, "evidence/definitive-audit-rep
 non_regression = JSON.parse(File.read(File.join(root, "evidence/non-regression-audit-report.json")))
 locator_extraction = JSON.parse(File.read(File.join(root, "authority/locator-extraction.snapshot.json")))
 core_authority_extraction = JSON.parse(File.read(File.join(root, "authority/extraction.snapshot.json")))
+body_inventory = JSON.parse(File.read(File.join(root, "authority/body-inventory.snapshot.json")))
+review_queue = JSON.parse(File.read(File.join(root, "authority/review-queue.snapshot.json")))
+review_ledger = JSON.parse(File.read(File.join(root, "authority/reviews/decisions.json")))
+body_non_regression = JSON.parse(File.read(File.join(root, "evidence/authority-body-non-regression-report.json")))
 
 required_axes = %w[
   authority-body-digestion surface-atomic-behavior-variant real-runtime-lab
@@ -50,6 +54,63 @@ if File.directory?(File.join(frontend_repo, ".git"))
   end
   errors << "FE reference source verification" unless frontend_source_verified
 end
+body_denominator = mapping.fetch("authority_body_denominator")
+body_reference = body_denominator.fetch("reference")
+errors << "FE body denominator reference commit" unless body_reference.fetch("commit") == "841ec2fa399606a10305021a8bcd396713b8cee5"
+expected_body_reference_files = {
+  "scripts/lib/authority-body-inventory.ts"=>["sha256:04f62a0b63981c62a7ab90f39637c71745642e84a3bdd4404ce715a0163ebe76", 20_216],
+  "scripts/lib/authority-body-baseline.ts"=>["sha256:0dc48dc9e62fdc9cd8493e9b5827b4cf5948c4b72df3374d5ebcc73ac344009c", 8_170]
+}
+locked_body_reference_files = body_reference.fetch("files").to_h { |item| [item.fetch("path"), [item.fetch("digest"), item.fetch("size_bytes")]] }
+errors << "FE body denominator reference file lock" unless locked_body_reference_files == expected_body_reference_files
+if File.directory?(File.join(frontend_repo, ".git"))
+  body_reference_verified = expected_body_reference_files.all? do |relative, (expected_digest, expected_size)|
+    body, _stderr, status = Open3.capture3("git", "-C", frontend_repo, "show", "841ec2fa399606a10305021a8bcd396713b8cee5:#{relative}")
+    status.success? && body.bytesize == expected_size && "sha256:#{Digest::SHA256.hexdigest(body)}" == expected_digest
+  end
+  errors << "FE body denominator reference source verification" unless body_reference_verified
+end
+%w[inventory baseline].each do |key|
+  lock = body_denominator.fetch(key)
+  path = File.join(root, lock.fetch("path"))
+  errors << "Authority body #{key} file lock" unless File.file?(path) && "sha256:#{Digest::SHA256.file(path).hexdigest}" == lock.fetch("digest") && File.size(path) == lock.fetch("size_bytes")
+end
+promotion_policy = body_denominator.fetch("promotion_policy")
+errors << "Authority body pending-human policy" unless promotion_policy.fetch("initial_status") == "pending-human"
+errors << "Raw anchors cannot count as semantic surfaces" unless promotion_policy.fetch("count_raw_anchors_as_semantic_surfaces") == false
+errors << "Raw anchors cannot count as depth achievement" unless promotion_policy.fetch("count_raw_anchors_as_depth_achievement") == false
+errors << "Human decision promotion policy" unless promotion_policy.fetch("require_human_decision_before_surface_or_behavior") == true
+review_contract = mapping.fetch("authority_review_queue")
+review_reference = review_contract.fetch("reference")
+errors << "FE authority review reference commit" unless review_reference.fetch("commit") == "de2f016b8b44ea67afdb08c0552044807505984e"
+expected_review_reference_files = {
+  "scripts/lib/authority-review-queue.ts"=>["sha256:6a0d44da874e7332d2212416bcbaa9ca93ab7a2cda9d5c28b846fecb847c2187", 25_181],
+  "scripts/generate-authority-review-queue.ts"=>["sha256:0ddb9e1ed3221c89e68449914e37a94a9104123d3ae0578b2e0a4aed3f57f291", 315],
+  "scripts/verify-authority-review-queue.ts"=>["sha256:3849bd25a409742acdcbb8e028a65cf0d51249ac29c23ba606a14d63b81524f9", 125],
+  "scripts/test-authority-review-queue.ts"=>["sha256:cd6ffd8860645b70f85feb262fffc903d3b0a0aa96c6f9a7181f6ed895e965ec", 2_437],
+  "docs/AUTHORITY_REVIEW_WORKFLOW.md"=>["sha256:64c8dad6e3dc1366ad5afb27a7e785dd428de3c6f0f55f4311ff4d3278370fbd", 3_272]
+}
+locked_review_reference_files = review_reference.fetch("files").to_h { |item| [item.fetch("path"), [item.fetch("digest"), item.fetch("size_bytes")]] }
+errors << "FE authority review reference file lock" unless locked_review_reference_files == expected_review_reference_files
+if File.directory?(File.join(frontend_repo, ".git"))
+  review_reference_verified = expected_review_reference_files.all? do |relative, (expected_digest, expected_size)|
+    body, _stderr, status = Open3.capture3("git", "-C", frontend_repo, "show", "de2f016b8b44ea67afdb08c0552044807505984e:#{relative}")
+    status.success? && body.bytesize == expected_size && "sha256:#{Digest::SHA256.hexdigest(body)}" == expected_digest
+  end
+  errors << "FE authority review reference source verification" unless review_reference_verified
+end
+%w[queue decision_ledger].each do |key|
+  lock = review_contract.fetch(key)
+  path = File.join(root, lock.fetch("path"))
+  errors << "Authority review #{key} file lock" unless File.file?(path) && "sha256:#{Digest::SHA256.file(path).hexdigest}" == lock.fetch("digest") && File.size(path) == lock.fetch("size_bytes")
+end
+review_policy = review_contract.fetch("policy")
+errors << "Authority review pending-human policy" unless review_policy.fetch("initial_status") == "pending-human"
+errors << "Machine assistance cannot decide semantics" unless review_policy.fetch("machine_priority_cluster_batch_are_semantic_decisions") == false
+errors << "Manual primary-source review policy" unless review_policy.fetch("require_manual_primary_source_review") == true
+errors << "Review decision binding policy" unless review_policy.fetch("require_reviewer_time_reason_digest_locator_mapping_result_consistency") == true
+errors << "Stale hold policy" unless review_policy.fetch("stale_documents_are_held") == true
+errors << "Review queue cannot count as Depth" unless review_policy.fetch("count_queue_items_as_depth_achievement") == false
 axes = mapping.fetch("axes")
 errors << "18 axes" unless axes.map { |axis| axis.fetch("id") } == required_axes
 errors << "FE canonical axes" unless Array(reference_document["axes"]).map { |axis| axis.fetch("id") } == required_axes
@@ -99,6 +160,19 @@ core_locator_summary = core_authority_extraction.fetch("summary")
 errors << "Core authority text exhaustive boundary" unless core_locator_summary.fetch("authority_text_surfaces_exhaustive") == false
 errors << "Core authority human review count" unless core_locator_summary.fetch("human_reviewed_surfaces") == 0 && core_locator_summary.fetch("core_v2_eligible_surfaces") == 0
 errors << "Core authority failed/deferred disclosure" unless core_locator_summary.fetch("fetch_failed") == 10 && core_locator_summary.fetch("locator_evaluations_deferred") == 10
+body_summary = body_inventory.fetch("summary")
+errors << "Authority body unique document denominator" unless body_summary.fetch("source_entries") == 10 && body_summary.fetch("unique_documents") == 398
+errors << "Authority body stale/failure disclosure" unless body_summary.fetch("matched_documents") == 390 && body_summary.fetch("stale_documents") == 0 && body_summary.fetch("failed_documents") == 8
+errors << "Authority body raw pending boundary" unless body_summary.fetch("raw_anchor_candidates") == 5_512 && body_summary.fetch("pending_human_anchors") == 5_512 && body_summary.fetch("human_reviewed_anchors") == 0
+errors << "Authority body semantic promotion boundary" unless body_summary.fetch("promoted_surface_artifacts") == 0 && body_summary.fetch("promoted_atomic_behaviors") == 0
+errors << "Authority body denominator closure boundary" unless body_summary.fetch("authority_semantics_exhaustive") == false && body_summary.fetch("postgresql_authority_denominator_closed") == false
+errors << "Authority body non-regression" unless body_non_regression.fetch("status") == "pass" && body_non_regression.fetch("baseline_anchors") == 5_512 && body_non_regression.fetch("retained") == 5_512 && body_non_regression.fetch("replaced") == 0
+review_summary = review_queue.fetch("summary")
+errors << "Authority review queue identity" unless review_queue.fetch("atlas_id") == mapping.fetch("atlas_id") && review_queue.fetch("status") == "incomplete-human-review-required" && review_ledger.fetch("queue_id") == review_queue.fetch("queue_id")
+errors << "Authority review complete queue" unless review_summary.fetch("queued_anchors") == 5_512 && review_summary.fetch("pending_human") == 5_512 && review_summary.fetch("human_reviewed") == 0
+errors << "Authority review decisions start empty" unless review_ledger.fetch("decisions") == [] && review_summary.fetch("decisions") == 0
+errors << "Authority review hold disclosure" unless review_summary.fetch("stale_document_holds") == 0 && review_summary.fetch("unavailable_document_holds") == 8
+errors << "Authority review semantic boundary" unless review_queue.fetch("semantic_decisions") == "human-only" && review_summary.fetch("authority_semantics_exhaustive") == false && review_summary.fetch("queue_counts_as_depth_achievement") == false
 row_keys = matrix.fetch("rows").map { |row| [row.fetch("behavior_id"), row.fetch("scenario")] }.uniq
 surface_scenarios = {
   "failure-recovery"=>%w[failure recovery], "operations-observability"=>%w[operations],
@@ -120,12 +194,21 @@ report = {
   "authority_locator_reference"=>locator_reference,
   "authority_locator_extraction"=>locator_summary,
   "core_authority_extraction"=>core_locator_summary,
+  "authority_body_denominator"=>body_summary,
+  "authority_review_queue"=>review_summary,
+  "authority_body_non_regression"=>body_non_regression,
   "denominator"=>{
-    "authority_behaviors"=>items.length,
+    "generated_mapping_candidates"=>items.length,
+    "raw_anchor_candidates"=>body_summary.fetch("raw_anchor_candidates"),
+    "pending_human_anchors"=>body_summary.fetch("pending_human_anchors"),
+    "human_reviewed_anchors"=>body_summary.fetch("human_reviewed_anchors"),
+    "promoted_semantic_surfaces"=>body_summary.fetch("promoted_surface_artifacts"),
+    "promoted_atomic_behaviors"=>body_summary.fetch("promoted_atomic_behaviors"),
     "variant_ids"=>items.sum { |item| Array(item["variant_ids"]).length },
-    "runtime_proven_behaviors"=>runtime_behaviors,
-    "behaviors_without_dedicated_accepted_claim"=>definitive.dig("verification", "behaviors_without_dedicated_accepted_claim"),
-    "scenario_rows"=>scenario_metrics
+    "provisional_mapping_records_with_runtime_proof"=>runtime_behaviors,
+    "generated_mapping_records_without_dedicated_accepted_claim"=>definitive.dig("verification", "behaviors_without_dedicated_accepted_claim"),
+    "provisional_scenario_lower_bound"=>scenario_metrics,
+    "denominator_closed"=>false
   },
   "axes"=>axes.map { |axis| {"id"=>axis.fetch("id"), "status"=>axis.fetch("status"), "gap_count"=>axis.fetch("gaps").length, "denominator"=>axis.fetch("postgresql_denominator")} },
   "summary"=>{
@@ -138,4 +221,4 @@ report = {
 }
 File.write(File.join(root, "evidence/postgresql-depth-parity-report.json"), JSON.pretty_generate(report) + "\n")
 abort errors.join("\n") unless errors.empty?
-puts "PostgreSQL depth parity: axes=18 satisfied=#{report.dig("summary", "satisfied")} partial=#{report.dig("summary", "partial")} behaviors=#{items.length} verdict=incomplete"
+puts "PostgreSQL depth parity: axes=18 satisfied=#{report.dig("summary", "satisfied")} partial=#{report.dig("summary", "partial")} raw_anchors=#{body_summary.fetch("raw_anchor_candidates")} promoted_behaviors=0 verdict=incomplete"

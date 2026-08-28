@@ -8,11 +8,15 @@
 
 Authority locatorの参照設計は`frontend-behavior-atlas` commit `cabf687bab769b17928d950acc416f3f77eb4ca3`に固定する。`authority/locator-extraction.snapshot.json`と`authority/locator-draft/`は第三者本文・抜粋・引用を保存せず、Source URL、metadata、document/context digest、byte offsetだけを保持する。`make authority-locator-verify`は本文field混入と集計の過大評価を拒否する。
 
+Authority denominatorの参照はFE commit `841ec2fa399606a10305021a8bcd396713b8cee5`、Human review queueの参照は`de2f016b8b44ea67afdb08c0552044807505984e`である。PostgreSQL側はREL_18_6のunique SGML documentとCOPYRIGHT、未取得Source rootを母集団とし、`document-root`と`sgml-id-attribute`の固定selectorでraw anchor候補を列挙する。全anchorはstable IDのReview Queueへ接続し、Human decision後に明示昇格されるまでSemantic Surface、Atomic behavior、Depth達成に算入しない。priority、cluster、batchは作業提案に限る。
+
 ## 現在値
 
 - FE Depth軸: 18（satisfied 1 / partial 17 / missing 0）
 - satisfied: 非後退Gateのみ
-- PostgreSQL denominator: Authority Behavior 11,340 / Variant ID 0 / Runtime Proof接続Behavior 29 / 専用accepted Claim未接続11,320
+- PostgreSQL raw denominator: unique document 398 / raw anchor 5,512 / pending-human 5,512 / Human reviewed 0 / promoted Surface 0 / promoted Atomic behavior 0
+- Review queue: 5,512/5,512 anchor / 255 batch / stale hold 0 / unavailable hold 8 / Human decision 0
+- 既存生成mapping: 11,340候補 / Variant ID 0 / Runtime Proof接続候補29。Semantic Surface実績には非算入
 - 分野: 15
 - Gapを持つ分野: 15
 - 未Closure軸: 29
@@ -21,5 +25,6 @@ Authority locatorの参照設計は`frontend-behavior-atlas` commit `cabf687bab7
 - Authority locator: 生成候補11,340 / stale 0 / URL再取得deferred 183 / Human review 0
 - Core Authority root: matched 0 / stale 0 / fetch failed 10 / locator deferred 10 / Human review 0 / eligible 0
 - Authority本文全体exhaustive: false / PostgreSQL Authority denominator closed: false
+- Authority body専用非後退: baseline anchor 5,512 / retained 5,512 / replaced 0 / added 0 / pass
 
-統合Sliceは単独Artifact内で複数Surfaceを再現するが、全Authority Behaviorの専用Target/Claim/Proof、10 Scenario、方式比較、Backup/PITR/Replication/Upgrade統合、Skill全Surfaceを閉じない。このためSubject Gateの判定には使用しない。
+統合Sliceは単独Artifact内で複数Surfaceを再現するが、Authority raw anchorのHuman review、昇格後Atomic behaviorの専用Target/Claim/Proof、10 Scenario、方式比較、Backup/PITR/Replication/Upgrade統合、Skill全Surfaceを閉じない。このためSubject Gateの判定には使用しない。
