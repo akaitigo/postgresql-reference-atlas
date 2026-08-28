@@ -1,0 +1,19 @@
+schema_version: 1
+atlas_id: postgresql-reference-atlas
+operations:
+  - id: diagnose.query
+    title: 遅いQueryを証拠ベースで診断する
+    mode: read-only
+    references: [operations/diagnose-query.md]
+  - id: recover.logical-backup
+    title: 論理Backupを隔離先へ復元して検証する
+    mode: change-with-approval
+    references: [operations/backup-recovery.md]
+  - id: diagnose.replication-lag
+    title: Replication Lagを送信・受信・Replayへ分解する
+    mode: read-only
+    references: [operations/replication.md]
+  - id: plan.major-upgrade
+    title: Major Upgradeを計画しRollback境界を確認する
+    mode: plan-only
+    references: [operations/upgrade.md]

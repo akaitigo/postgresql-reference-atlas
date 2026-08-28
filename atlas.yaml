@@ -1,0 +1,44 @@
+schema_version: 1
+id: postgresql-reference-atlas
+title: PostgreSQL 技術実証アトラス
+owner:
+  github: akaitigo
+repository:
+  url: https://github.com/akaitigo/postgresql-reference-atlas
+  visibility: public
+  default_branch: main
+archetypes: [product]
+stage: 3
+status: incomplete
+language:
+  primary: ja
+  identifiers: en
+coverage:
+  epoch: "2026-08-28"
+  manifest: coverage.yaml
+authority:
+  lockfile: sources.lock.yaml
+  policy: primary-first
+scope:
+  statement: PostgreSQL 18.6公式配布物の公開機能を対象に、設計判断、SQL実行、並行制御、性能、運用、障害、復旧、移行を再実行可能な証拠へ接続する。
+  exclusions:
+    - PostgreSQL 19 Betaおよび開発中BranchはこのCoverage Epochの正式対象に含めない。
+    - PostGISやpgvectorなど公式配布物に含まれない外部Extensionは完全性の対象に含めない。
+    - Managed Service固有APIと外部HA・Pooler製品は別のProduct AtlasまたはInteroperability Labで扱う。
+skills:
+  router:
+    id: postgresql-atlas
+    path: .agents/skills/postgresql-atlas/SKILL.md
+  package_manifest: skill.package.yaml
+  evals: evals/
+completion:
+  policy_version: 1.0.0
+  required_profiles: [local, container, cluster]
+  certificate: evidence/completion-certificate.json
+license:
+  default: Apache-2.0
+  notice: NOTICE
+  third_party_manifest: third_party/manifest.yaml
+security:
+  disclosure: SECURITY.md
+  defensive_only: true

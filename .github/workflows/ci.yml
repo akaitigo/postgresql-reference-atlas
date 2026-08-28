@@ -1,0 +1,44 @@
+name: atlas-ci
+
+on:
+  push:
+  pull_request:
+
+permissions:
+  contents: read
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout PostgreSQL Atlas
+        uses: actions/checkout@v4
+        with:
+          path: postgresql-reference-atlas
+      - name: Checkout reference-atlas-core v1
+        uses: actions/checkout@v4
+        with:
+          repository: akaitigo/reference-atlas-core
+          ref: 1c85bed8d45a3daee3e5cda7fbbe144607ac1259
+          path: reference-atlas-core
+      - name: Validate common manifests
+        run: make -C postgresql-reference-atlas CORE_DIR=../reference-atlas-core validate
+      - name: Run static publication gates
+        run: make -C postgresql-reference-atlas test-static
+      - name: Evaluate router skill
+        run: make -C postgresql-reference-atlas eval
+
+  executable-labs:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    strategy:
+      fail-fast: false
+      matrix:
+        lab: [sql, mvcc, planner, index, backup-recovery, replication, upgrade]
+    steps:
+      - name: Checkout PostgreSQL Atlas
+        uses: actions/checkout@v4
+        with:
+          path: postgresql-reference-atlas
+      - name: Run ${{ matrix.lab }} lab
+        run: make -C postgresql-reference-atlas lab LAB=${{ matrix.lab }}

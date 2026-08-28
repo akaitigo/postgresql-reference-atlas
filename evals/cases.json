@@ -1,0 +1,10 @@
+[
+  {"id":"sql-constraint","input":"CHECK制約とRETURNINGを実装したい","capability":"query.sql-surface","mode":"implement"},
+  {"id":"mvcc-lock","input":"MVCCとロック待ちを診断したい","capability":"concurrency.mvcc","mode":"diagnose"},
+  {"id":"slow-plan","input":"遅いSQLのEXPLAINを調べたい","capability":"performance.planner","mode":"diagnose"},
+  {"id":"partial-index","input":"Partial Indexを設計したい","capability":"performance.index","mode":"design"},
+  {"id":"restore","input":"Backupを別クラスタへ復旧したい","capability":"operations.backup-recovery","mode":"recover"},
+  {"id":"replication-lag","input":"Replication lagを診断したい","capability":"operations.replication","mode":"diagnose"},
+  {"id":"major-upgrade","input":"17から18へUpgradeしたい","capability":"lifecycle.upgrade","mode":"migrate"},
+  {"id":"external-extension","input":"PostGISの空間Indexを設計したい","capability":"coverage-gap","mode":"review"}
+]

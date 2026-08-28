@@ -1,0 +1,33 @@
+schema_version: 1
+atlas_id: postgresql-reference-atlas
+proof_obligations:
+  - id: foundation.authority-digests
+    acceptance: sources.lock.yamlの全DigestがSchema適合し、CoverageがLockfile Digestへ束縛される。
+    command: make validate
+  - id: query.constraints-and-returning
+    acceptance: 正常INSERTはRETURNING値を返し、重複KeyとCHECK違反は期待SQLSTATEで拒否される。
+    command: make lab LAB=sql
+  - id: concurrency.repeatable-read-snapshot
+    acceptance: 制御された2 Sessionで、Readerの2回の読取り値が同一、Reader終了後の値がWriter確定値になる。
+    command: make lab LAB=mvcc
+  - id: performance.semantic-plan
+    acceptance: JSON PlanにIndex ScanまたはBitmap Index Scanが含まれ、対象結果件数がOracleと一致する。
+    command: make lab LAB=planner
+  - id: performance.partial-index
+    acceptance: Partial Index作成前後で結果Digestが同じで、作成後PlanがIndex名を参照する。
+    command: make lab LAB=index
+  - id: operations.logical-restore
+    acceptance: Dump元とRestore先の順序付き論理Digestが一致する。
+    command: make lab LAB=backup-recovery
+  - id: operations.physical-replication
+    acceptance: Primaryの確定行がStandbyへ到達し、Standbyがpg_is_in_recovery()をtrueとして返す。
+    command: make lab LAB=replication
+  - id: lifecycle.logical-upgrade
+    acceptance: 17.11から取得したDumpを18.6へRestoreし、Version境界と論理Digest一致を確認する。
+    command: make lab LAB=upgrade
+  - id: skill.routing
+    acceptance: 全Eval Caseが期待Capability、Authority優先、安全境界、Gap応答を満たす。
+    command: make eval
+  - id: publication.static-gates
+    acceptance: 必須権利File、SPDX SBOM、第三者Manifest、秘密Pattern検査が通る。
+    command: make test-static

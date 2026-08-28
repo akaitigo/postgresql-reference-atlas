@@ -1,0 +1,20 @@
+schema_version: 1
+id: lab.mvcc
+atlas_id: postgresql-reference-atlas
+claim_ids: [concurrency.mvcc]
+kind: test-report
+producer: postgresql-reference-atlas
+command: make lab LAB=mvcc
+created_at: "2026-08-28T05:48:24Z"
+environment:
+  profile: container
+  manifest_digest: sha256:3df4dbd82139e17c785348c281f26b54d7300662087baaeec3034acefedf36b9
+source_digest: sha256:89d1f94da2085fe535bf7acdd28a85f6cc251e079eb19f92d5eb1a07e8d467d0
+harness_digest: sha256:16c9e7a7c0b25e94a343eb8e0c12b36be022f8e93b8e7228bfb6eb506c97fe6a
+artifact:
+  uri: evidence/artifacts/mvcc.json
+  digest: sha256:e22131b26364018b3310bb5cf98a8a8c329f824ac42092d0f47d3aa9fc3a7f83
+  media_type: application/json
+  size_bytes: 132
+verdict: pass
+retention: git

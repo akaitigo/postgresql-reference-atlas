@@ -1,0 +1,20 @@
+schema_version: 1
+id: lab.planner
+atlas_id: postgresql-reference-atlas
+claim_ids: [performance.planner]
+kind: benchmark
+producer: postgresql-reference-atlas
+command: make lab LAB=planner
+created_at: "2026-08-28T05:48:26Z"
+environment:
+  profile: container
+  manifest_digest: sha256:3df4dbd82139e17c785348c281f26b54d7300662087baaeec3034acefedf36b9
+source_digest: sha256:89d1f94da2085fe535bf7acdd28a85f6cc251e079eb19f92d5eb1a07e8d467d0
+harness_digest: sha256:ef2b2c5cba1affc825c3e5776df7e14899f28ec059609ce6dc2eaf8afa256080
+artifact:
+  uri: evidence/artifacts/planner.json
+  digest: sha256:23996bd727c7fb1769ad10ef53f313c993b819edf65eed1dd00c0b1836f2ca15
+  media_type: application/json
+  size_bytes: 111
+verdict: pass
+retention: git

@@ -1,0 +1,20 @@
+schema_version: 1
+id: lab.upgrade
+atlas_id: postgresql-reference-atlas
+claim_ids: [lifecycle.upgrade]
+kind: migration
+producer: postgresql-reference-atlas
+command: make lab LAB=upgrade
+created_at: "2026-08-28T05:48:42Z"
+environment:
+  profile: cluster
+  manifest_digest: sha256:781e9d727707e277b21a986e1639ebc93af79a940b1ed618b75dc13a5467b17c
+source_digest: sha256:89d1f94da2085fe535bf7acdd28a85f6cc251e079eb19f92d5eb1a07e8d467d0
+harness_digest: sha256:d11b2533c5fc05aa1dc361bcf8c4a03d76e42d7f939012efb0810844128f0c5e
+artifact:
+  uri: evidence/artifacts/upgrade.json
+  digest: sha256:77db10fbe04af0ae85f0bbe526abbbbecf9c1e3ce3f8739ef55aa72fe1608268
+  media_type: application/json
+  size_bytes: 199
+verdict: pass
+retention: git

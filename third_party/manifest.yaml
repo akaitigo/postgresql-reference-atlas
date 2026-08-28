@@ -1,0 +1,34 @@
+schema_version: 1
+atlas_id: postgresql-reference-atlas
+generated_at: "2026-08-28"
+materials:
+  - id: postgresql-documentation
+    category: documentation-reference
+    title: PostgreSQL 18.6 Documentation
+    owner: The PostgreSQL Global Development Group
+    license: PostgreSQL License
+    source_id: postgresql-docs-18.6
+    bundled: false
+    use: URL、Version、取得日、DigestのみをProvenanceとして記録する。
+  - id: postgresql-source
+    category: source-reference
+    title: PostgreSQL REL_18_6 source
+    owner: The PostgreSQL Global Development Group and contributors
+    license: PostgreSQL License
+    source_id: postgresql-source-rel-18.6
+    bundled: false
+    use: Tag、Commit、Archive ChecksumのみをAuthority Lockとして記録する。
+  - id: postgres-container-image
+    category: runtime-dependency
+    title: Docker Official Image for postgres
+    owner: Docker Official Images contributors and PostgreSQL contributors
+    license: mixed; PostgreSQL License applies to PostgreSQL
+    source: https://hub.docker.com/_/postgres
+    bundled: false
+    use: 隔離LabのRuntimeとして18.6-alpineと17.11-alpineを取得する。
+trademarks:
+  - name: PostgreSQL
+    owner: PostgreSQL Community Association of Canada
+    usage: 対象製品を識別するための記述的利用のみ。公式、認定、提携を表示しない。
+datasets: []
+assets: []

@@ -1,0 +1,47 @@
+schema_version: 1
+atlas_id: postgresql-reference-atlas
+claims:
+  - id: foundation.version-lock
+    statement: このCoverage Epochの正式対象はPostgreSQL 18.6のREL_18_6である。
+    source_ids: [postgresql-release-18.6, postgresql-source-rel-18.6]
+    proof_obligation_ids: [foundation.authority-digests]
+  - id: foundation.authority-lock
+    statement: Authority Sourceは取得時点の内容DigestとVersionへ固定されている。
+    source_ids: [postgresql-docs-18.6, postgresql-release-18.6, postgresql-source-rel-18.6]
+    proof_obligation_ids: [foundation.authority-digests]
+  - id: query.sql-surface
+    statement: 制約違反は受理されず、成功したSQL操作だけが期待する状態変更を残す。
+    source_ids: [postgresql-docs-18.6]
+    proof_obligation_ids: [query.constraints-and-returning]
+  - id: concurrency.mvcc
+    statement: Repeatable Read Transactionは同一Transaction内でSnapshotを維持し、別Transactionの確定後も既読値を変えない。
+    source_ids: [postgresql-docs-18.6]
+    proof_obligation_ids: [concurrency.repeatable-read-snapshot]
+  - id: performance.planner
+    statement: 統計情報更新後、選択性の高いPredicateは固定FixtureでIndex Scan系Planを選択できる。
+    source_ids: [postgresql-docs-18.6]
+    proof_obligation_ids: [performance.semantic-plan]
+  - id: performance.index
+    statement: Partial Indexの有無は対象Queryの結果集合を変えず、Predicateが含意される場合に利用候補となる。
+    source_ids: [postgresql-docs-18.6]
+    proof_obligation_ids: [performance.partial-index]
+  - id: operations.backup-recovery
+    statement: PostgreSQL 18.6の論理Backupを別DatabaseへRestoreするとFixtureの論理Digestが一致する。
+    source_ids: [postgresql-docs-18.6]
+    proof_obligation_ids: [operations.logical-restore]
+  - id: operations.replication
+    statement: Physical StandbyはPrimaryで確定したFixtureをWAL Replay後にRead-onlyで参照できる。
+    source_ids: [postgresql-docs-18.6]
+    proof_obligation_ids: [operations.physical-replication]
+  - id: lifecycle.upgrade
+    statement: PostgreSQL 17.11の論理Backupは18.6へRestoreでき、Fixtureの論理Digestが一致する。
+    source_ids: [postgresql-docs-18.6, postgresql-release-18.6]
+    proof_obligation_ids: [lifecycle.logical-upgrade]
+  - id: skill.router
+    statement: Router Skillは依頼をCoverage内Capabilityへ案内し、Coverage外ならGapを明示する。
+    source_ids: [postgresql-docs-18.6]
+    proof_obligation_ids: [skill.routing]
+  - id: publication.provenance
+    statement: 独自成果物と第三者資料のLicenseと出典を分離して追跡できる。
+    source_ids: [postgresql-license-rel-18.6]
+    proof_obligation_ids: [publication.static-gates]

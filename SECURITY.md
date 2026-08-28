@@ -1,0 +1,7 @@
+# Security Policy
+
+このRepositoryのSecurity Labは防御、検証、教育目的です。Atlas Harnessが作成した隔離Containerと一時Network以外を標的にしません。
+
+脆弱性、秘密情報、危険な既定動作を発見した場合は公開Issueへ詳細を書かず、Repository ownerへ非公開経路で報告してください。報告には影響範囲、再現条件、対象Commitを含め、実在する第三者環境のCredentialやDataを含めないでください。
+
+診断は読み取り専用を既定とし、Promotion、WAL削除、`pg_resetwal`、Replica再構築、PITR、Major Upgradeなどの変更操作は、明示承認と検証済みRollback計画なしに実環境へ適用しません。

@@ -1,0 +1,161 @@
+schema_version: 1
+atlas_id: postgresql-reference-atlas
+epoch: "2026-08-28"
+authority_lock_digest: sha256:89d1f94da2085fe535bf7acdd28a85f6cc251e079eb19f92d5eb1a07e8d467d0
+target_sets:
+  - id: foundation
+    title: Versionと一次資料の固定
+    sequence: 1
+    completion_required: true
+    exit_criteria:
+      - PostgreSQL 18.6のSource、公式文書、Release Note、取得Digestが固定されていること。
+      - 公式文書、Runtime Catalog、Source、Binary、Release差分の未説明差異がゼロであること。
+  - id: query
+    title: SQL公開Surface
+    sequence: 2
+    completion_required: true
+    exit_criteria:
+      - SQLコマンド、型、関数、演算子、Catalogの全対象がCapabilityへ割り当てられていること。
+      - 正常、NULL、境界、不正入力の適用可能なEvidenceが存在すること。
+  - id: concurrency
+    title: MVCCと並行制御
+    sequence: 3
+    completion_required: true
+    exit_criteria:
+      - Transaction、Isolation、Lock、Deadlockの決定論的な複数Session Testが通ること。
+      - 期待SQLSTATEとSystem Viewによる観測証拠が存在すること。
+  - id: performance
+    title: PlannerとIndex
+    sequence: 4
+    completion_required: true
+    exit_criteria:
+      - PlannerとIndexの判断が固定データ分布とJSON Planの意味検証へ接続されていること。
+      - Index有無による結果集合不変性とアクセスパス差分が検証されていること。
+  - id: operations
+    title: Backup、Recovery、Replication
+    sequence: 5
+    completion_required: true
+    exit_criteria:
+      - Backupから隔離ClusterへRestoreし論理データ整合性を検証できること。
+      - Physical Replicationの送受信、追随、停止、再起動を再現できること。
+  - id: lifecycle
+    title: Upgradeと互換性
+    sequence: 6
+    completion_required: true
+    exit_criteria:
+      - PostgreSQL 17.11から18.6への論理Upgradeを再実行しデータ整合性を検証できること。
+      - 14.24から18.6までの互換性差分が一次資料へ接続されていること。
+  - id: skill
+    title: Router Skill
+    sequence: 7
+    completion_required: true
+    exit_criteria:
+      - Routerが設計、実装、診断、復旧、移行、Reviewを正しいCapabilityへ誘導すること。
+      - Coverage外の機能を捏造せずGapを返すこと。
+  - id: publication
+    title: 公開可能性
+    sequence: 8
+    completion_required: true
+    exit_criteria:
+      - License、NOTICE、第三者Manifest、SBOM、秘密情報検査が通ること。
+      - Completion Certificateが固定Digestと署名情報を含んで生成されること。
+targets:
+  - id: foundation.version-lock
+    title: PostgreSQL 18.6 Version固定
+    target_set: foundation
+    kind: compatibility
+    requirement: required
+    state: partial
+    rationale: 完全性の主張を有限にし、上流更新で過去Evidenceの意味が変わらないようにする。
+    claim_ids: [foundation.version-lock]
+    evidence_ids: [foundation.authority-lock]
+  - id: foundation.authority-lock
+    title: 複数一次資料のAuthority Lock
+    target_set: foundation
+    kind: concept
+    requirement: required
+    state: partial
+    rationale: 単一の抽出元の欠落を網羅性と誤認しないため、文書、Source、Runtime、Binary、差分を照合する。
+    claim_ids: [foundation.authority-lock]
+    evidence_ids: [foundation.authority-lock]
+  - id: query.sql-surface
+    title: SQL公開Surfaceと実行意味論
+    target_set: query
+    kind: capability
+    requirement: required
+    state: partial
+    rationale: SQLの構文一覧だけでなく、制約、型、戻り値、失敗時SQLSTATEを実行証拠へ接続する。
+    claim_ids: [query.sql-surface]
+    evidence_ids: [lab.sql]
+  - id: concurrency.mvcc
+    title: MVCC、Isolation、Lock
+    target_set: concurrency
+    kind: capability
+    requirement: required
+    state: partial
+    rationale: 並行処理の正しさは単一Sessionの成功例では証明できず、実行順序と観測点を固定する必要がある。
+    claim_ids: [concurrency.mvcc]
+    evidence_ids: [lab.mvcc]
+  - id: performance.planner
+    title: Plannerと統計情報
+    target_set: performance
+    kind: performance
+    requirement: required
+    state: partial
+    rationale: 実行時間の固定値ではなく、データ分布、推定行数、Plan Node、Scan Methodを意味的に評価する。
+    claim_ids: [performance.planner]
+    evidence_ids: [lab.planner]
+  - id: performance.index
+    title: Indexとアクセスパス
+    target_set: performance
+    kind: performance
+    requirement: required
+    state: partial
+    rationale: Index採用には検索結果不変性、利用条件、書込み費用、Planner判断の証拠が必要である。
+    claim_ids: [performance.index]
+    evidence_ids: [lab.index]
+  - id: operations.backup-recovery
+    title: BackupとRecovery
+    target_set: operations
+    kind: operation
+    requirement: required
+    state: partial
+    rationale: Backupの存在ではなく、別DatabaseへのRestoreと論理整合性検証までを成功条件とする。
+    claim_ids: [operations.backup-recovery]
+    evidence_ids: [lab.backup-recovery]
+  - id: operations.replication
+    title: Physical Replication
+    target_set: operations
+    kind: operation
+    requirement: required
+    state: partial
+    rationale: PrimaryとStandbyのWAL追随、Read-only境界、停止と再同期を隔離Clusterで証明する。
+    claim_ids: [operations.replication]
+    evidence_ids: [lab.replication]
+  - id: lifecycle.upgrade
+    title: Major Version Upgrade
+    target_set: lifecycle
+    kind: migration
+    requirement: required
+    state: partial
+    rationale: Version間移行は手順書だけでなく、固定した旧版から新版への再実行と検証を必要とする。
+    claim_ids: [lifecycle.upgrade]
+    evidence_ids: [lab.upgrade]
+  - id: skill.router-evaluation
+    title: PostgreSQL Router Skill評価
+    target_set: skill
+    kind: skill
+    requirement: required
+    state: partial
+    rationale: SkillがCoverage、一次資料、Evidenceへ到達し、権限外操作や存在しない機能を捏造しないことを評価する。
+    claim_ids: [skill.router]
+    evidence_ids: [skill.router-eval]
+  - id: publication.provenance
+    title: LicenseとProvenance
+    target_set: publication
+    kind: operation
+    requirement: required
+    state: partial
+    rationale: 公開前に独自成果物と第三者Sourceの権利、出典、SBOM、秘密情報を独立して確認する。
+    claim_ids: [publication.provenance]
+    evidence_ids: [publication.static-gates]

@@ -1,0 +1,38 @@
+schema_version: 1
+atlas_id: postgresql-reference-atlas
+capabilities:
+  - id: query.sql-surface
+    title: SQL公開Surfaceと実行意味論
+    disposition: recommended-default
+    lab: labs/sql
+    claim_ids: [query.sql-surface]
+  - id: concurrency.mvcc
+    title: MVCC、Isolation、Lock
+    disposition: conditional
+    lab: labs/mvcc
+    claim_ids: [concurrency.mvcc]
+  - id: performance.planner
+    title: Plannerと統計情報
+    disposition: conditional
+    lab: labs/planner
+    claim_ids: [performance.planner]
+  - id: performance.index
+    title: Indexとアクセスパス
+    disposition: conditional
+    lab: labs/index
+    claim_ids: [performance.index]
+  - id: operations.backup-recovery
+    title: BackupとRecovery
+    disposition: recommended-default
+    lab: labs/backup-recovery
+    claim_ids: [operations.backup-recovery]
+  - id: operations.replication
+    title: Physical Replication
+    disposition: specialized
+    lab: labs/replication
+    claim_ids: [operations.replication]
+  - id: lifecycle.upgrade
+    title: Major Version Upgrade
+    disposition: conditional
+    lab: labs/upgrade
+    claim_ids: [lifecycle.upgrade]

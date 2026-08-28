@@ -1,0 +1,17 @@
+schema_version: 1
+product: PostgreSQL
+normative_version: "18.6"
+source_ref: REL_18_6
+source_commit: 724edf9bde9d356724ad384a2e196edc3c9f80f7
+source_archive:
+  url: https://ftp.postgresql.org/pub/source/v18.6/postgresql-18.6.tar.bz2
+  digest: sha256:555610c24d53e4316da5b7d3fc25c279d96856d5e0e23ee308c328c5fa881d9f
+compatibility_versions:
+  - "17.11"
+  - "16.15"
+  - "15.19"
+  - "14.24"
+development_versions:
+  policy: excluded
+completeness: incomplete
+freshness: current

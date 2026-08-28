@@ -1,0 +1,68 @@
+schema_version: 1
+atlas_id: postgresql-reference-atlas
+epoch: "2026-08-28"
+generated_at: "2026-08-28T00:00:00+09:00"
+sources:
+  - id: postgresql-docs-18.6
+    kind: official-documentation
+    title: PostgreSQL 18.6 Documentation
+    url: https://www.postgresql.org/docs/18/
+    version: "18.6"
+    retrieved_at: "2026-08-28"
+    digest: sha256:c51c06f037afdb7563e2d98a5e59ebb380f103b13ce5b9eff5bc11128c330656
+    license: PostgreSQL License
+    redistribution: link-only
+  - id: postgresql-release-18.6
+    kind: release-notes
+    title: PostgreSQL 18.6 Release Notes
+    url: https://www.postgresql.org/docs/release/18.6/
+    version: "18.6"
+    retrieved_at: "2026-08-28"
+    digest: sha256:4479466ad13c12bb916b83881db008f97f4905d8ee67286f5ddcf94adc9f94a7
+    license: PostgreSQL License
+    redistribution: link-only
+  - id: postgresql-source-rel-18.6
+    kind: source
+    title: PostgreSQL source tag REL_18_6
+    url: https://github.com/postgres/postgres/tree/REL_18_6
+    version: 724edf9bde9d356724ad384a2e196edc3c9f80f7
+    retrieved_at: "2026-08-28"
+    digest: sha256:873c03070a2e8aae0768fb75d8d6739ae9589681c6cd50839e79d787a7aed222
+    license: PostgreSQL License
+    redistribution: metadata-only
+  - id: postgresql-source-tarball-checksum-18.6
+    kind: registry
+    title: PostgreSQL 18.6 source tarball SHA-256
+    url: https://ftp.postgresql.org/pub/source/v18.6/postgresql-18.6.tar.bz2.sha256
+    version: "18.6"
+    retrieved_at: "2026-08-28"
+    digest: sha256:92b190ded4a002654768daa8ac41db530354b9be13c7c67059592ddf5bb0c43a
+    license: null
+    redistribution: metadata-only
+  - id: postgresql-license-rel-18.6
+    kind: official-documentation
+    title: PostgreSQL REL_18_6 COPYRIGHT
+    url: https://raw.githubusercontent.com/postgres/postgres/REL_18_6/COPYRIGHT
+    version: REL_18_6
+    retrieved_at: "2026-08-28"
+    digest: sha256:3d6af92ff8a4c2cdf69afb1cf44edea727922f5cd0cf8b5f72b11cdecac8fdfd
+    license: PostgreSQL License
+    redistribution: allowed
+  - id: postgres-container-18.6-alpine
+    kind: runtime-inventory
+    title: Docker Official Image postgres 18.6 alpine
+    url: https://hub.docker.com/_/postgres
+    version: postgres:18.6-alpine
+    retrieved_at: "2026-08-28"
+    digest: sha256:d3e1620b530c944afa6e887d22eb899824da68e19c52024bf98f5220c88a65b2
+    license: PostgreSQL License and container distribution dependencies
+    redistribution: metadata-only
+  - id: postgres-container-17.11-alpine
+    kind: runtime-inventory
+    title: Docker Official Image postgres 17.11 alpine
+    url: https://hub.docker.com/_/postgres
+    version: postgres:17.11-alpine
+    retrieved_at: "2026-08-28"
+    digest: sha256:18cfe3ef5e6815560c98237d6216d1e5119702fb0f3894c8785dd58b8bbe5d73
+    license: PostgreSQL License and container distribution dependencies
+    redistribution: metadata-only

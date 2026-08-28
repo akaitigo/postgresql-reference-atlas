@@ -1,0 +1,56 @@
+{
+  "total": 8,
+  "passed": 8,
+  "pass_rate": 1.000,
+  "results": [
+    {
+      "id": "sql-constraint",
+      "capability": "query.sql-surface",
+      "mode": "implement",
+      "verdict": "pass"
+    },
+    {
+      "id": "mvcc-lock",
+      "capability": "concurrency.mvcc",
+      "mode": "diagnose",
+      "verdict": "pass"
+    },
+    {
+      "id": "slow-plan",
+      "capability": "performance.planner",
+      "mode": "diagnose",
+      "verdict": "pass"
+    },
+    {
+      "id": "partial-index",
+      "capability": "performance.index",
+      "mode": "design",
+      "verdict": "pass"
+    },
+    {
+      "id": "restore",
+      "capability": "operations.backup-recovery",
+      "mode": "recover",
+      "verdict": "pass"
+    },
+    {
+      "id": "replication-lag",
+      "capability": "operations.replication",
+      "mode": "diagnose",
+      "verdict": "pass"
+    },
+    {
+      "id": "major-upgrade",
+      "capability": "lifecycle.upgrade",
+      "mode": "migrate",
+      "verdict": "pass"
+    },
+    {
+      "id": "external-extension",
+      "capability": "coverage-gap",
+      "mode": "review",
+      "verdict": "pass"
+    }
+  ],
+  "verdict": "pass"
+}

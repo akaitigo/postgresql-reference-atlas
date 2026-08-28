@@ -1,0 +1,18 @@
+schema_version: 1
+atlas_id: postgresql-reference-atlas
+atlas_release: v0.0.0
+router:
+  id: postgresql-atlas
+  path: .agents/skills/postgresql-atlas/SKILL.md
+  description: PostgreSQL 18.6の設計、実装、診断、復旧、Upgradeについて、Coverageと実行証拠へ段階的に案内する。
+generated_from:
+  - coverage.yaml
+  - atlas/capabilities/index.yaml
+  - atlas/claims/index.yaml
+  - operations/index.yaml
+adapters:
+  - generic-agent-skills
+  - codex
+evals:
+  path: evals/
+  minimum_pass_rate: 0.9

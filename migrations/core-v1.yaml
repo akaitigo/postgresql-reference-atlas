@@ -1,0 +1,39 @@
+schema_version: 1
+core_repository: reference-atlas-core
+core_commit: 1c85bed8d45a3daee3e5cda7fbbe144607ac1259
+atlas_id: postgresql-reference-atlas
+migrated_at: "2026-08-28"
+repository_identity:
+  previous: null
+  canonical: postgresql-reference-atlas
+  title_ja: PostgreSQL 技術実証アトラス
+legacy_records:
+  - legacy_id: pg-fieldbook.scope
+    target_ids:
+      - foundation.version-lock
+      - foundation.authority-lock
+    disposition: retained
+  - legacy_id: pg-fieldbook.sql-and-queries
+    target_ids: [query.sql-surface]
+    disposition: retained
+  - legacy_id: pg-fieldbook.mvcc-transactions-locks
+    target_ids: [concurrency.mvcc]
+    disposition: retained
+  - legacy_id: pg-fieldbook.planner-performance
+    target_ids: [performance.planner]
+    disposition: retained
+  - legacy_id: pg-fieldbook.indexes-access-paths
+    target_ids: [performance.index]
+    disposition: retained
+  - legacy_id: pg-fieldbook.backup-recovery
+    target_ids: [operations.backup-recovery]
+    disposition: retained
+  - legacy_id: pg-fieldbook.replication
+    target_ids: [operations.replication]
+    disposition: retained
+  - legacy_id: pg-fieldbook.upgrade
+    target_ids: [lifecycle.upgrade]
+    disposition: retained
+notes:
+  - 以前の調査はGit Repositoryではなく設計Conversationだったため、破壊対象となるGit履歴や既存Evidenceは存在しない。
+  - pg-fieldbookという概念名は正式Repository IDへ改名し、Version固定・証拠駆動・有限完成の原則を維持した。

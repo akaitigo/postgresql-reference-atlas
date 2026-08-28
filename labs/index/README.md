@@ -1,0 +1,3 @@
+# Index Lab
+
+Partial Index作成前後で結果Digestが不変であり、Predicateが含意されるQueryのPlanがIndexを参照することを検証します。
