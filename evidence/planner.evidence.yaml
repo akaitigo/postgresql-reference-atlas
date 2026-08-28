@@ -5,12 +5,12 @@ claim_ids: [performance.planner]
 kind: benchmark
 producer: postgresql-reference-atlas
 command: make lab LAB=planner
-created_at: "2026-08-28T05:48:26Z"
+created_at: "2026-08-28T06:10:46Z"
 environment:
   profile: container
   manifest_digest: sha256:3df4dbd82139e17c785348c281f26b54d7300662087baaeec3034acefedf36b9
 source_digest: sha256:89d1f94da2085fe535bf7acdd28a85f6cc251e079eb19f92d5eb1a07e8d467d0
-harness_digest: sha256:ef2b2c5cba1affc825c3e5776df7e14899f28ec059609ce6dc2eaf8afa256080
+harness_digest: sha256:6a211c854f8e226d9ddb537ee63eae703ced8705cda720de705e5b98902e3654
 artifact:
   uri: evidence/artifacts/planner.json
   digest: sha256:23996bd727c7fb1769ad10ef53f313c993b819edf65eed1dd00c0b1836f2ca15

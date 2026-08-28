@@ -5,14 +5,15 @@ description: PostgreSQL 18.6の設計、SQL実装、MVCC、Planner、Index、Bac
 
 # PostgreSQL Atlas Router
 
-このSkillはPostgreSQL知識を複製せず、`postgresql-reference-atlas`のCoverage、Claim、Lab、Runbook、Evidenceへ依頼を案内する。
+このSkillはPostgreSQL知識を複製せず、`postgresql-reference-atlas`のMastery Outcome、Coverage、Claim、Lab、Runbook、Evidenceへ依頼を案内する。
 
 ## 最初に確認すること
 
 1. 対象Serverの`server_version`、環境、権限、Topologyを確認する。
-2. [Capability Index](references/capability-index.md)から対象Capabilityと現在のCoverage stateを選ぶ。
-3. 技術的主張は`atlas/claims/index.yaml`、一次資料は`sources.lock.yaml`、合格条件は`atlas/proof-obligations/index.yaml`へ戻る。
-4. 実行が必要なら対応する`labs/<capability>/`を隔離環境で再実行し、`evidence/*.evidence.yaml`を確認する。
+2. [Mastery Routing](references/mastery-routing.md)から利用者が求めるOutcomeとSurfaceを選ぶ。
+3. [Capability Index](references/capability-index.md)から対象Capabilityと現在のCoverage stateを選ぶ。
+4. 技術的主張は`atlas/claims/index.yaml`、一次資料は`sources.lock.yaml`、合格条件は`atlas/proof-obligations/index.yaml`へ戻る。
+5. 実行が必要なら対応する`labs/<capability>/`を隔離環境で再実行し、`evidence/*.evidence.yaml`を確認する。
 
 ## Mode
 
@@ -29,5 +30,6 @@ description: PostgreSQL 18.6の設計、SQL実装、MVCC、Planner、Index、Bac
 - PostGIS、pgvector、外部Pooler、HA製品、Managed Service固有APIはこのAtlasの完全性に含めない。必要なら外部Product AtlasまたはInteroperability Labを提案する。
 - 実環境のPromotion、Drop、WAL操作、Replica再構築、PITR、Major Upgradeを承認なしに実行しない。
 - Coverage Targetが`partial`なら、実装済み部分と未証明部分を明示し、`complete`と表現しない。
+- 8 Outcomeと14 SurfaceはPostgreSQL内の問いを閉じる契約であり、別分野を追加する理由にしない。
 
 決定論的なCapability検索には`scripts/route.sh "<依頼>"`を使える。該当しなければ`coverage-gap`を返す。

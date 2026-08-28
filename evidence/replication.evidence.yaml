@@ -5,12 +5,12 @@ claim_ids: [operations.replication]
 kind: recovery
 producer: postgresql-reference-atlas
 command: make lab LAB=replication
-created_at: "2026-08-28T05:48:37Z"
+created_at: "2026-08-28T06:10:57Z"
 environment:
   profile: cluster
   manifest_digest: sha256:781e9d727707e277b21a986e1639ebc93af79a940b1ed618b75dc13a5467b17c
 source_digest: sha256:89d1f94da2085fe535bf7acdd28a85f6cc251e079eb19f92d5eb1a07e8d467d0
-harness_digest: sha256:e89e03fc9b469d070cd13e56dd9b367e2d0edb010237d4f157b1c2903691a56b
+harness_digest: sha256:66e999b5b7fb4df79d5179b27886c2141f1ee217b4bc010aba8f1ec4ddddca86
 artifact:
   uri: evidence/artifacts/replication.json
   digest: sha256:b57e674b1c20c8ecb25984fa6bfdaf6f9b1aa2029c13d976d1f72b9253477367

@@ -5,12 +5,12 @@ claim_ids: [operations.backup-recovery]
 kind: recovery
 producer: postgresql-reference-atlas
 command: make lab LAB=backup-recovery
-created_at: "2026-08-28T05:48:32Z"
+created_at: "2026-08-28T06:10:51Z"
 environment:
   profile: container
   manifest_digest: sha256:3df4dbd82139e17c785348c281f26b54d7300662087baaeec3034acefedf36b9
 source_digest: sha256:89d1f94da2085fe535bf7acdd28a85f6cc251e079eb19f92d5eb1a07e8d467d0
-harness_digest: sha256:c26252581bb81bf6a51e0fa8c54c523121cee5e0ae929a1c04e8b82a46885d77
+harness_digest: sha256:db8431ec28ba330265a8407df40341034e3596f1f39ff90d96a09193a3b1ff5e
 artifact:
   uri: evidence/artifacts/backup-recovery.json
   digest: sha256:b31577e18ae2d41141b97c93d23f04b108ece978183b286a3baaa578bbe8f52d

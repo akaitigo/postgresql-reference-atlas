@@ -2,11 +2,12 @@ SHELL := /bin/bash
 CORE_DIR ?= ../reference-atlas-core
 LAB ?= sql
 
-.PHONY: validate test-static lab eval test
+.PHONY: validate audit test-static lab eval test
 
 validate:
 	cd $(CORE_DIR) && GOCACHE=$(CURDIR)/.cache/go-build go run ./cmd/atlas validate \
 		../postgresql-reference-atlas/atlas.yaml \
+		../postgresql-reference-atlas/mastery.yaml \
 		../postgresql-reference-atlas/sources.lock.yaml \
 		../postgresql-reference-atlas/coverage.yaml \
 		../postgresql-reference-atlas/skill.package.yaml
@@ -15,6 +16,9 @@ validate:
 			(cd $(CORE_DIR) && GOCACHE=$(CURDIR)/.cache/go-build go run ./cmd/atlas validate "../postgresql-reference-atlas/$$file") || exit 1; \
 		done; \
 	fi
+
+audit:
+	cd $(CORE_DIR) && GOCACHE=$(CURDIR)/.cache/go-build go run ./cmd/atlas audit ../postgresql-reference-atlas
 
 test-static:
 	bash scripts/static-gates.sh
@@ -25,4 +29,4 @@ lab:
 eval:
 	bash evals/run.sh
 
-test: validate test-static eval
+test: validate audit test-static eval

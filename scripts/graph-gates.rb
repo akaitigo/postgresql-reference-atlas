@@ -9,6 +9,7 @@ load_yaml = ->(path) { YAML.safe_load(File.read(File.join(root, path)), aliases:
 failures = []
 
 atlas = load_yaml.call("atlas.yaml")
+mastery = load_yaml.call("mastery.yaml")
 sources_lock = load_yaml.call("sources.lock.yaml")
 coverage = load_yaml.call("coverage.yaml")
 skill_package = load_yaml.call("skill.package.yaml")
@@ -17,9 +18,19 @@ proofs_document = load_yaml.call("atlas/proof-obligations/index.yaml")
 capabilities_document = load_yaml.call("atlas/capabilities/index.yaml")
 
 atlas_id = atlas.fetch("id")
-[sources_lock, coverage, skill_package, claims_document, proofs_document, capabilities_document].each do |document|
+[mastery, sources_lock, coverage, skill_package, claims_document, proofs_document, capabilities_document].each do |document|
   failures << "atlas_idが一致しません" unless document.fetch("atlas_id") == atlas_id
 end
+
+failures << "atlas.yamlのMastery参照が不正です" unless atlas.dig("mastery", "manifest") == "mastery.yaml" && atlas.dig("mastery", "contract_version") == "1.0.0"
+failures << "Mastery EpochがCoverage Epochと一致しません" unless mastery.fetch("epoch") == coverage.fetch("epoch")
+
+required_outcomes = %w[understand choose build verify operate troubleshoot evolve delegate]
+required_surfaces = %w[orientation-scope foundations-mechanics architecture-design implementation-construction testing-verification failure-recovery operations-observability security-privacy-safety performance-capacity-cost compatibility-integration migration-evolution-deprecation decision-comparison provenance-rights agent-skill]
+actual_outcomes = mastery.fetch("outcomes").map { |outcome| outcome.fetch("id") }
+actual_surfaces = mastery.fetch("surfaces").map { |surface| surface.fetch("id") }
+failures << "Mastery Outcomeが8種類の完全集合ではありません" unless actual_outcomes.sort == required_outcomes.sort
+failures << "Mastery Surfaceが14種類の完全集合ではありません" unless actual_surfaces.sort == required_surfaces.sort
 
 failures << "全Gate通過前はstatus: incompleteが必要です" unless atlas.fetch("status") == "incomplete"
 certificate = File.join(root, atlas.dig("completion", "certificate"))
@@ -38,6 +49,18 @@ failures << "Target IDが重複しています" unless target_ids.uniq.length ==
 targets.each do |target|
   failures << "未知のTarget Set: #{target.fetch("target_set")}" unless target_sets.include?(target.fetch("target_set"))
 end
+
+%w[outcomes surfaces].each do |collection|
+  mastery.fetch(collection).each do |item|
+    item.fetch("target_sets").each do |target_set|
+      failures << "Mastery #{item.fetch("id")}が未知のTarget Set #{target_set}を参照しています" unless target_sets.include?(target_set)
+    end
+  end
+end
+
+sbom_path = atlas.dig("license", "sbom")
+failures << "license.sbomがsbom.spdx.jsonを参照していません" unless sbom_path == "sbom.spdx.json"
+failures << "参照されたSBOMがありません" unless sbom_path && File.file?(File.join(root, sbom_path))
 
 claims = claims_document.fetch("claims")
 claim_ids = claims.map { |claim| claim.fetch("id") }

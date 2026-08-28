@@ -20,11 +20,14 @@ sha256_file() {
 
 directory_digest() {
   local directory="$1"
-  find "$directory" -type f -print0 \
-    | sort -z \
-    | xargs -0 shasum -a 256 \
-    | shasum -a 256 \
-    | awk '{print $1}'
+  (
+    cd "$directory"
+    find . -type f -print0 \
+      | sort -z \
+      | xargs -0 shasum -a 256 \
+      | shasum -a 256 \
+      | awk '{print $1}'
+  )
 }
 
 wait_postgres() {
@@ -50,11 +53,15 @@ record_evidence() {
   local verdict="$7"
   local harness_directory="${8:-$ATLAS_ROOT/labs/$lab}"
   local evidence_id="${9:-lab.$lab}"
+  local additional_harness_directory="${10:-}"
   local source_digest harness_digest environment_digest artifact_digest artifact_size created_at evidence_path
 
   source_digest="$(sha256_file "$ATLAS_ROOT/sources.lock.yaml")"
   harness_digest="$({
     directory_digest "$harness_directory"
+    if [[ -n "$additional_harness_directory" ]]; then
+      directory_digest "$additional_harness_directory"
+    fi
     sha256_file "$ATLAS_ROOT/scripts/lib.sh"
     sha256_file "$ATLAS_ROOT/scripts/run-lab.sh"
   } | shasum -a 256 | awk '{print $1}')"

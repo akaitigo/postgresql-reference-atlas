@@ -19,6 +19,9 @@ coverage:
 authority:
   lockfile: sources.lock.yaml
   policy: primary-first
+mastery:
+  manifest: mastery.yaml
+  contract_version: 1.0.0
 scope:
   statement: PostgreSQL 18.6公式配布物の公開機能を対象に、設計判断、SQL実行、並行制御、性能、運用、障害、復旧、移行を再実行可能な証拠へ接続する。
   exclusions:
@@ -39,6 +42,7 @@ license:
   default: Apache-2.0
   notice: NOTICE
   third_party_manifest: third_party/manifest.yaml
+  sbom: sbom.spdx.json
 security:
   disclosure: SECURITY.md
   defensive_only: true

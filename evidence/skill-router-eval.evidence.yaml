@@ -5,16 +5,16 @@ claim_ids: [skill.router]
 kind: skill-eval
 producer: postgresql-reference-atlas
 command: make eval
-created_at: "2026-08-28T05:49:25Z"
+created_at: "2026-08-28T06:11:15Z"
 environment:
   profile: local
   manifest_digest: sha256:56798a33c95014233b4f9465aa91ce1198673432edb9114da08dec932ab1331d
 source_digest: sha256:89d1f94da2085fe535bf7acdd28a85f6cc251e079eb19f92d5eb1a07e8d467d0
-harness_digest: sha256:8048401d374956237ffb3c44ced022f56328dadebb6aad7f0866c1eb065da274
+harness_digest: sha256:bba7e7bcda5f3043985df7091205b0bae33208c1ae9bc0437e6b1a5f16a521ed
 artifact:
   uri: evidence/artifacts/skill-router-eval.json
-  digest: sha256:d59969ffb1400f833c90acbdfa9d9de73ac61a51831200549637c9d51f4b3c1d
+  digest: sha256:495429e8fb81fe3bfea9f77dde9381c41b32ad596745bdaa67e4afda6c20917d
   media_type: application/json
-  size_bytes: 1157
+  size_bytes: 2162
 verdict: pass
 retention: git

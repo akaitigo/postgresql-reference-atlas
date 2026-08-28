@@ -2,6 +2,8 @@
 
 PostgreSQL 18.6の公開機能について、一次資料、設計判断、再実行可能なLab、運用手順、Evidenceを結び付けるProduct Atlasです。
 
+このAtlasのMastery Promiseは、PostgreSQLについて「理解する、選ぶ、構築する、検証する、運用する、診断する、進化させる、Agentへ委任する」の8 Outcomeを、14の技術Surfaceにわたって一次資料と実行証拠へ接続することです。対象分野を増やす契約ではありません。
+
 現在の状態は **`incomplete`** です。個別Labの成功はAtlas全体の完成を意味しません。固定したCoverage Epochに対して全Closureを通過し、生成済みCompletion Certificateが得られるまで`complete`を名乗りません。
 
 ## 固定境界
@@ -15,6 +17,7 @@ PostgreSQL 18.6の公開機能について、一次資料、設計判断、再�
 ## 構造
 
 - `atlas/`: Capability、Claim、Proof Obligation、判断、失敗、除外
+- `mastery.yaml`: 8 Outcomeと14 Surfaceを既存Coverageへ接続する契約
 - `versions/`: Version固定と互換性境界
 - `labs/`: SQL、MVCC、Planner、Index、Backup/Recovery、Replication、Upgradeの再実行Harness
 - `operations/`: 診断・変更・復旧Runbook
@@ -28,6 +31,7 @@ PostgreSQL 18.6の公開機能について、一次資料、設計判断、再�
 
 ```bash
 make validate
+make audit
 make test-static
 make lab LAB=sql
 make lab LAB=mvcc
@@ -43,4 +47,4 @@ Labは`pgra-<lab>-<pid>`という一時Resourceだけを使い、終了時に削
 
 ## 完成の意味
 
-`make validate`は共通ManifestのSchema適合を検証します。Atlas全体の完成には、Authority、Coverage、Claim、Execution、Operational、Skill、Publicationの7 Closureすべてが必要です。現時点の未完項目は[docs/STATUS.md](docs/STATUS.md)を参照してください。
+`make validate`は共通5 Manifest、`make audit`はID、Epoch、Target Set、Routerの横断整合を検証します。Atlas全体の完成には、Authority、Coverage、Claim、Execution、Operational、Skill、Publicationの7 Closureすべてが必要です。現時点の未完項目は[docs/STATUS.md](docs/STATUS.md)を参照してください。

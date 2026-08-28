@@ -2,18 +2,19 @@
 
 ## 現在地
 
-Core Architecture v1への移行実装です。Repository statusは`incomplete`です。
+Core Architecture v1とMastery Contract v1への移行実装です。Repository statusは`incomplete`です。
 
 実装済み:
 
-- 共通4 Manifest
+- 共通5 Manifest
+- 8 Outcomeと14 Surfaceを既存Coverageへ接続するMastery Contract
 - PostgreSQL 18.6の一次資料Lock
 - Version固定Coverage
 - 7分野の再実行可能Lab Harness
 - Claim、Proof Obligation、Evidenceの接続
 - Router Skillと構造Eval
 - Apache-2.0、NOTICE、第三者Manifest、SPDX SBOM
-- CIでの`atlas validate`
+- CIでの`atlas validate`と`atlas audit`
 
 Completion前に必要:
 

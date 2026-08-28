@@ -1,0 +1,26 @@
+schema_version: 1
+core_repository: reference-atlas-core
+core_commit: 6793642472d4011786c35b98fdb60cd4212e9699
+atlas_id: postgresql-reference-atlas
+migrated_at: "2026-08-28"
+intent: PostgreSQLという既存対象を増やさず、その分野で理解・選択・構築・検証・運用・診断・進化・委任まで答えられる決定版へ閉じる。
+outcome_target_sets:
+  understand: [foundation, query, concurrency, performance, operations, lifecycle]
+  choose: [query, concurrency, performance, operations, lifecycle]
+  build: [query, concurrency, performance, operations, lifecycle]
+  verify: [foundation, query, concurrency, performance, operations, lifecycle, publication]
+  operate: [performance, operations]
+  troubleshoot: [concurrency, performance, operations]
+  evolve: [foundation, lifecycle]
+  delegate: [skill]
+surface_count: 14
+added_target_sets: []
+preserved_artifacts:
+  - coverage.yaml
+  - atlas/capabilities/index.yaml
+  - atlas/claims/index.yaml
+  - atlas/proof-obligations/index.yaml
+  - labs/
+  - operations/
+  - evidence/
+  - evals/

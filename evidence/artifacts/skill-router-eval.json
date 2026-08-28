@@ -1,54 +1,90 @@
 {
-  "total": 8,
-  "passed": 8,
+  "total": 12,
+  "passed": 12,
   "pass_rate": 1.000,
   "results": [
     {
-      "id": "sql-constraint",
-      "capability": "query.sql-surface",
-      "mode": "implement",
-      "verdict": "pass"
-    },
-    {
-      "id": "mvcc-lock",
+      "id": "understand-mvcc",
       "capability": "concurrency.mvcc",
-      "mode": "diagnose",
+      "mode": "review",
+      "outcome": "understand",
       "verdict": "pass"
     },
     {
-      "id": "slow-plan",
-      "capability": "performance.planner",
-      "mode": "diagnose",
-      "verdict": "pass"
-    },
-    {
-      "id": "partial-index",
+      "id": "choose-partial-index",
       "capability": "performance.index",
       "mode": "design",
+      "outcome": "choose",
       "verdict": "pass"
     },
     {
-      "id": "restore",
+      "id": "build-sql-constraint",
+      "capability": "query.sql-surface",
+      "mode": "implement",
+      "outcome": "build",
+      "verdict": "pass"
+    },
+    {
+      "id": "verify-backup-evidence",
       "capability": "operations.backup-recovery",
-      "mode": "recover",
+      "mode": "review",
+      "outcome": "verify",
       "verdict": "pass"
     },
     {
-      "id": "replication-lag",
+      "id": "operate-replication",
       "capability": "operations.replication",
       "mode": "diagnose",
+      "outcome": "operate",
       "verdict": "pass"
     },
     {
-      "id": "major-upgrade",
+      "id": "troubleshoot-mvcc-lock",
+      "capability": "concurrency.mvcc",
+      "mode": "diagnose",
+      "outcome": "troubleshoot",
+      "verdict": "pass"
+    },
+    {
+      "id": "troubleshoot-slow-plan",
+      "capability": "performance.planner",
+      "mode": "diagnose",
+      "outcome": "troubleshoot",
+      "verdict": "pass"
+    },
+    {
+      "id": "troubleshoot-restore",
+      "capability": "operations.backup-recovery",
+      "mode": "recover",
+      "outcome": "troubleshoot",
+      "verdict": "pass"
+    },
+    {
+      "id": "troubleshoot-replication-lag",
+      "capability": "operations.replication",
+      "mode": "diagnose",
+      "outcome": "troubleshoot",
+      "verdict": "pass"
+    },
+    {
+      "id": "evolve-major-upgrade",
       "capability": "lifecycle.upgrade",
       "mode": "migrate",
+      "outcome": "evolve",
       "verdict": "pass"
     },
     {
-      "id": "external-extension",
+      "id": "delegate-index-review",
+      "capability": "performance.index",
+      "mode": "review",
+      "outcome": "delegate",
+      "verdict": "pass"
+    },
+    {
+      "id": "coverage-gap-external-extension",
       "capability": "coverage-gap",
       "mode": "review",
+      "outcome": "choose",
       "verdict": "pass"
     }
   ],

@@ -12,11 +12,14 @@
 
 `Authority Source -> Coverage Target -> Capability -> Claim -> Proof Obligation -> Lab -> Evidence -> Skill Eval`を維持する。孤立したClaimやEvidenceを追加しない。
 
+`mastery.yaml`は「この分野で答えられるべき問い」の正本であり、既存CoverageやDomain固有Manifestを置き換えない。8 Outcomeと14 Surfaceは既存Target Setへ接続し、件数合わせのために分野やTarget Setを追加しない。
+
 ## Version and completion
 
 - このEpochのNormative versionはPostgreSQL 18.6、Source tagは`REL_18_6`。
 - Versionや一次資料を更新するときは新しいCoverage Epochを作る。
 - 全Gate通過前は`atlas.yaml`の`status: incomplete`を維持する。
+- `complete`へ変更する前に`atlas audit .`を通す。
 - 未実行のLabを`covered`、未生成Evidenceを`pass`として記録しない。
 
 ## Safety

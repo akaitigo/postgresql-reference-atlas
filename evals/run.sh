@@ -16,15 +16,17 @@ while IFS= read -r case_json; do
   input="$(jq -r '.input' <<<"$case_json")"
   expected_capability="$(jq -r '.capability' <<<"$case_json")"
   expected_mode="$(jq -r '.mode' <<<"$case_json")"
+  expected_outcome="$(jq -r '.outcome' <<<"$case_json")"
   actual="$(bash "$router" "$input")"
   actual_capability="$(jq -r '.capability' <<<"$actual")"
   actual_mode="$(jq -r '.mode' <<<"$actual")"
+  actual_outcome="$(jq -r '.outcome' <<<"$actual")"
   verdict=fail
-  if [[ "$actual_capability" == "$expected_capability" && "$actual_mode" == "$expected_mode" ]]; then
+  if [[ "$actual_capability" == "$expected_capability" && "$actual_mode" == "$expected_mode" && "$actual_outcome" == "$expected_outcome" ]]; then
     verdict=pass
     passed=$((passed + 1))
   fi
-  results="$(jq -c --arg id "$id" --arg capability "$actual_capability" --arg mode "$actual_mode" --arg verdict "$verdict" '. + [{id:$id,capability:$capability,mode:$mode,verdict:$verdict}]' <<<"$results")"
+  results="$(jq -c --arg id "$id" --arg capability "$actual_capability" --arg mode "$actual_mode" --arg outcome "$actual_outcome" --arg verdict "$verdict" '. + [{id:$id,capability:$capability,mode:$mode,outcome:$outcome,verdict:$verdict}]' <<<"$results")"
 done < <(jq -c '.[]' "$cases")
 
 pass_rate="$(awk -v p="$passed" -v t="$total" 'BEGIN { printf "%.3f", p/t }')"
@@ -33,5 +35,5 @@ jq -n --argjson total "$total" --argjson passed "$passed" --argjson pass_rate "$
   '{total:$total,passed:$passed,pass_rate:$pass_rate,results:$results,verdict:(if $pass_rate >= 0.9 then "pass" else "fail" end)}' > "$report"
 jq -e '.verdict == "pass"' "$report" >/dev/null
 record_evidence skill-router-eval skill.router skill-eval local "make eval" "$report" pass \
-  "$ROOT/evals" skill.router-eval
+  "$ROOT/evals" skill.router-eval "$ROOT/.agents/skills/postgresql-atlas"
 echo "Router Skill Evalを通過しました: $passed/$total"

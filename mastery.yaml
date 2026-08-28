@@ -1,0 +1,118 @@
+schema_version: 1
+atlas_id: postgresql-reference-atlas
+epoch: "2026-08-28"
+promise: >-
+  PostgreSQL 18.6について、初学者が原理と境界を理解し、実務者が方式を選んで実装し、
+  運用者が観測・診断・復旧し、保守者が互換性を判断して安全に移行できるまでを、
+  固定した一次資料、再実行可能なLab、反証可能なClaim、検証済みEvidenceへ結び付けて提供する。
+audiences: [learner, practitioner, architect, operator, maintainer, reviewer, educator, agent]
+outcomes:
+  - id: understand
+    title: PostgreSQLの原理とVersion境界を説明できる
+    target_sets: [foundation, query, concurrency, performance, operations, lifecycle]
+  - id: choose
+    title: 条件とTrade-offから方式を選択できる
+    target_sets: [query, concurrency, performance, operations, lifecycle]
+  - id: build
+    title: Schema、Query、Clusterを構築できる
+    target_sets: [query, concurrency, performance, operations, lifecycle]
+  - id: verify
+    title: 主張をTestとEvidenceで検証できる
+    target_sets: [foundation, query, concurrency, performance, operations, lifecycle, publication]
+  - id: operate
+    title: Databaseを観測し安全に運用できる
+    target_sets: [performance, operations]
+  - id: troubleshoot
+    title: 性能、競合、障害を診断して回復できる
+    target_sets: [concurrency, performance, operations]
+  - id: evolve
+    title: 互換性を守ってUpgrade・移行・廃止できる
+    target_sets: [foundation, lifecycle]
+  - id: delegate
+    title: Agentへ安全に委任し証拠をReviewできる
+    target_sets: [skill]
+surfaces:
+  - id: orientation-scope
+    title: 定義・目的・Version境界
+    applicability: required
+    rationale: PostgreSQL本体、公式同梱物、外部Extension、Managed Serviceの境界を誤らず入口を選ぶために必要である。
+    target_sets: [foundation]
+    required_deliverables: [concept, decision]
+  - id: foundations-mechanics
+    title: SQL・MVCC・Storageの原理とInvariant
+    applicability: required
+    rationale: 構文の利用例だけでなく、Transaction、Snapshot、WAL、Catalogが結果を生む理由を説明するために必要である。
+    target_sets: [foundation, query, concurrency]
+    required_deliverables: [concept, lab]
+  - id: architecture-design
+    title: Schema・Transaction・Cluster Architecture
+    applicability: required
+    rationale: 整合性、権限、性能、可用性、復旧の責任境界を保守可能な構造へ分解するために必要である。
+    target_sets: [query, concurrency, performance, operations, lifecycle]
+    required_deliverables: [decision, reference-implementation]
+  - id: implementation-construction
+    title: SQL・Extension・Clusterの実装と構築
+    applicability: required
+    rationale: 選択した設計をSQL、設定、Client、複数Node構成として再現しObservableな結果へ結び付けるために必要である。
+    target_sets: [query, concurrency, performance, operations, lifecycle]
+    required_deliverables: [reference-implementation, lab]
+  - id: testing-verification
+    title: 正常・境界・競合・復旧の試験
+    applicability: required
+    rationale: Query結果、SQLSTATE、Plan、Transaction、Backup、Replication、Upgradeの主張を反復可能なOracleで確かめるために必要である。
+    target_sets: [query, concurrency, performance, operations, lifecycle]
+    required_deliverables: [test, evidence]
+  - id: failure-recovery
+    title: 障害・診断・Recovery
+    applicability: required
+    rationale: Lock、WAL、Storage、Replica、Backup、Migrationの失敗を隔離環境で再現し安全に回復するために必要である。
+    target_sets: [concurrency, operations, lifecycle]
+    required_deliverables: [failure-catalog, runbook, evidence]
+  - id: operations-observability
+    title: 運用・Observability・Capacity
+    applicability: required
+    rationale: Session、Wait Event、統計、WAL、Vacuum、Replication、Diskの状態から劣化と障害を診断するために必要である。
+    target_sets: [performance, operations]
+    required_deliverables: [runbook, evidence]
+  - id: security-privacy-safety
+    title: Role・認証・暗号化・安全境界
+    applicability: required
+    rationale: Role、Privilege、RLS、認証、暗号化、危険な管理Commandを最小権限と停止条件の下で扱うために必要である。
+    target_sets: [foundation, query, concurrency, operations]
+    required_deliverables: [security-review, test]
+  - id: performance-capacity-cost
+    title: Planner・Index・容量・Cost
+    applicability: required
+    rationale: Data分布、統計、Plan、I/O、Memory、WAL、Storage容量を測定し採否判断へ戻すために必要である。
+    target_sets: [performance, operations]
+    required_deliverables: [benchmark, evidence]
+  - id: compatibility-integration
+    title: Version・Client・Protocol・Extension互換性
+    applicability: required
+    rationale: PostgreSQL Version、Client、Protocol、Build Option、Extensionの差を検証して安全に統合するために必要である。
+    target_sets: [foundation, query, lifecycle]
+    required_deliverables: [test, evidence]
+  - id: migration-evolution-deprecation
+    title: Migration・Upgrade・廃止
+    applicability: required
+    rationale: Schema変更、Major Upgrade、Extension更新、廃止機能をデータと可用性を壊さず移行するために必要である。
+    target_sets: [lifecycle]
+    required_deliverables: [migration-guide, test]
+  - id: decision-comparison
+    title: 機能選択・代替案・Trade-off
+    applicability: required
+    rationale: 類似する型、Index、Isolation、Replication、Backup、Upgrade方式を同じ条件と証拠で比較するために必要である。
+    target_sets: [query, concurrency, performance, operations, lifecycle]
+    required_deliverables: [decision, benchmark]
+  - id: provenance-rights
+    title: 一次資料・来歴・License
+    applicability: required
+    rationale: 公式文書、Source、Runtime、生成Evidence、第三者依存のVersion、Digest、再配布条件を追跡するために必要である。
+    target_sets: [foundation, publication]
+    required_deliverables: [provenance-record, evidence]
+  - id: agent-skill
+    title: Agent Router Skill・評価
+    applicability: required
+    rationale: AgentがCoverage外を捏造せず、目的に合うClaim、Lab、Runbook、Evidenceへ段階的に到達するために必要である。
+    target_sets: [skill]
+    required_deliverables: [skill-reference, skill-eval]

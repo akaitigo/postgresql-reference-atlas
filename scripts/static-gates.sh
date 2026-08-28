@@ -9,11 +9,12 @@ required=(
   SECURITY.md
   CONTRIBUTING.md
   atlas.yaml
+  mastery.yaml
   sources.lock.yaml
   coverage.yaml
   skill.package.yaml
   third_party/manifest.yaml
-  sbom/postgresql-reference-atlas.spdx.json
+  sbom.spdx.json
 )
 
 for path in "${required[@]}"; do
@@ -32,7 +33,7 @@ if ! rg -q 'Apache License' "$ROOT/LICENSE"; then
 fi
 
 if ! jq -e '.spdxVersion == "SPDX-2.3" and .packages[0].licenseDeclared == "Apache-2.0"' \
-  "$ROOT/sbom/postgresql-reference-atlas.spdx.json" >/dev/null; then
+  "$ROOT/sbom.spdx.json" >/dev/null; then
   echo "SPDX SBOMが期待形式ではありません" >&2
   exit 1
 fi
