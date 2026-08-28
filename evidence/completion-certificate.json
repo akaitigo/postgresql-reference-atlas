@@ -1,0 +1,73 @@
+{
+  "atlas_id": "postgresql-reference-atlas",
+  "atlas_release": "v1.0.0",
+  "authority_lock_digest": "sha256:7a5097c6130472b193adb30fda89b4a607f1ae00a1ae87dbc1cf22ae5484eaef",
+  "commit": "9704d11b19a65755cb6d5738131d104d48309ef5",
+  "core_policy_version": "1.0.0",
+  "coverage_epoch": "2026-08-28",
+  "evidence_set_digest": "sha256:6ea8db97b8f06cf0a8e9ec0222fcd8559dcfc59f18772a6d68b3fd9a557f4dfd",
+  "graph_digest": "sha256:a7fe493551c00691f9ba3cf72801b9848e874a4732dbe955770c15fd97301d5a",
+  "issued_at": "2026-08-28T07:56:23Z",
+  "provenance_digest": "sha256:f1e448fe333d800c901f15733feddc58256e2dc1ff5ed3f67c8cb2d498378c29",
+  "required_profiles": [
+    {
+      "evidence_ids": [
+        "foundation.authority-lock",
+        "lab.authority-lock",
+        "lab.sql-surface",
+        "publication.static-gates",
+        "skill.router-eval"
+      ],
+      "profile": "local",
+      "result": "pass"
+    },
+    {
+      "evidence_ids": [
+        "lab.backup-recovery",
+        "lab.catalog-inventory",
+        "lab.deadlock",
+        "lab.extension",
+        "lab.failure-injection",
+        "lab.index",
+        "lab.locking",
+        "lab.maintenance",
+        "lab.migration",
+        "lab.mvcc",
+        "lab.observability",
+        "lab.partitioning",
+        "lab.performance",
+        "lab.planner",
+        "lab.security",
+        "lab.sql",
+        "lab.statistics",
+        "lab.types-constraints",
+        "lab.wal"
+      ],
+      "profile": "container",
+      "result": "pass"
+    },
+    {
+      "evidence_ids": [
+        "lab.compatibility-matrix",
+        "lab.logical-replication",
+        "lab.pg-upgrade",
+        "lab.pitr",
+        "lab.replication",
+        "lab.upgrade"
+      ],
+      "profile": "cluster",
+      "result": "pass"
+    }
+  ],
+  "sbom_digest": "sha256:9bbe0fc575eb2d0d79a8e79615b88d5ba720a92a568ae63ada0e115fe1c6f472",
+  "schema_version": 1,
+  "signature": {
+    "digest": "sha256:77a984638d1cb0b6faf313c8114629386fd5d7f43eb02686d8f4ec362f63671f",
+    "type": "payload-sha256"
+  },
+  "skill_eval": {
+    "digest": "sha256:0e09ab0c0855af117e1df58e166c2f207078fb62ffd0df6fb45863029cc6089a",
+    "pass_rate": 1
+  },
+  "skill_package_digest": "sha256:5eb7cba98dbaa87007a45a679f649d8e8c135cb10d2e9ac89a3eab0fb5961432"
+}
