@@ -20,6 +20,7 @@ review_ledger = JSON.parse(File.read(File.join(root, "authority/reviews/decision
 body_non_regression = JSON.parse(File.read(File.join(root, "evidence/authority-body-non-regression-report.json")))
 definitive_skill_routing = JSON.parse(File.read(File.join(root, "evals/postgresql-atlas.definitive-routing-eval.json")))
 forward_agent_eval = JSON.parse(File.read(File.join(root, "evals/postgresql-atlas.forward-agent-eval.json")))
+scenario_proofs = JSON.parse(File.read(File.join(root, "evidence/scenarios/index.json")))
 
 required_axes = %w[
   authority-body-digestion surface-atomic-behavior-variant real-runtime-lab
@@ -138,6 +139,43 @@ errors << "Skill human/stale boundary" unless skill_policy.fetch("human_authorit
 errors << "Skill ambiguous/unknown boundary" unless skill_policy.fetch("ambiguous_and_unknown_query_fail_closed") == true
 errors << "Skill all Target state policy" unless skill_policy.fetch("require_all_target_states") == true
 errors << "Skill independent Agent record policy" unless skill_policy.fetch("require_independent_agent_forward_eval_record") == true
+scenario_contract = mapping.fetch("reference_system_scenario_proof")
+scenario_reference = scenario_contract.fetch("reference")
+scenario_reference_commit = "f2e4c4b19156f8e993f48cdcbce23679ad881924"
+errors << "FE Reference System reference commit" unless scenario_reference.fetch("commit") == scenario_reference_commit
+expected_scenario_reference_files = {
+  "scripts/lib/scenario-proof.ts"=>["sha256:8b89ff8d0f042b181abe22a2fb1280546f7534f0525a931c6437a177fdb2432f", 20_748],
+  "scripts/generate-scenario-proofs.ts"=>["sha256:4b095074665cec1c66c80948baaafaaafeef31919b3afa6c3064681d7a951241", 392],
+  "scripts/verify-scenario-proofs.ts"=>["sha256:d6192f7da3b160300690f3a4168846711b366b77f8fc6c28918733db221005cd", 16_599],
+  "scripts/verify-pattern-scenario-evidence.ts"=>["sha256:3643d1dd6ab6830d1a729fc0684a6691e8fc7af4b2d85bae3e5ec01d89113469", 6_349],
+  "docs/REFERENCE_SYSTEM.md"=>["sha256:5562aa75e57c518c402c31d97885083bed3d1e3abc0af2ecade5c5cb3f188d49", 3_705]
+}
+locked_scenario_reference_files = scenario_reference.fetch("files").to_h { |item| [item.fetch("path"), [item.fetch("digest"), item.fetch("size_bytes")]] }
+errors << "FE Reference System file lock" unless locked_scenario_reference_files == expected_scenario_reference_files
+if File.directory?(File.join(frontend_repo, ".git"))
+  scenario_reference_verified = expected_scenario_reference_files.all? do |relative, (expected_digest, expected_size)|
+    body, _stderr, status = Open3.capture3("git", "-C", frontend_repo, "show", "#{scenario_reference_commit}:#{relative}")
+    status.success? && body.bytesize == expected_size && "sha256:#{Digest::SHA256.hexdigest(body)}" == expected_digest
+  end
+  errors << "FE Reference System source verification" unless scenario_reference_verified
+end
+scenario_policy = scenario_contract.fetch("policy")
+errors << "Scenario count policy" unless scenario_policy.fetch("scenarios") == 10
+errors << "Integrated/behavior proof separation" unless scenario_policy.fetch("separate_integrated_and_behavior_specific_proof") == true && scenario_policy.fetch("integrated_success_counts_as_behavior_proof") == false
+errors << "Scenario identity-or-gap policy" unless scenario_policy.fetch("require_server_client_version_runtime_identity_or_gap") == true
+errors << "Scenario artifact-or-gap policy" unless scenario_policy.fetch("require_sql_plan_wal_log_metric_artifact_or_gap") == true
+errors << "Scenario all-Variant runtime policy" unless scenario_policy.fetch("require_all_variants_dedicated_runtime") == true
+errors << "Scenario retry policy" unless scenario_policy.fetch("required_retry_count") == 0
+errors << "Scenario Oracle and digest policy" unless scenario_policy.fetch("require_dedicated_oracle") == true && scenario_policy.fetch("require_source_and_harness_digest") == true
+errors << "Scenario reuse policy" unless scenario_policy.fetch("integrated_reference_reuse_for_closure") == false && scenario_policy.fetch("foreign_artifact_metadata_reuse_for_closure") == false
+errors << "Scenario Authority completion policy" unless scenario_policy.fetch("authority_atomic_binding_required_for_completion") == true
+errors << "Scenario absolute count transplant policy" unless scenario_policy.fetch("absolute_counts_transplanted") == false
+scenario_summary = scenario_proofs.fetch("summary")
+errors << "PostgreSQL Scenario Proof identity" unless scenario_proofs.fetch("id") == "postgresql-scenario-proof-matrix-v1" && scenario_proofs.fetch("status") == "incomplete-authority-atomic-and-runtime-closure"
+errors << "PostgreSQL Scenario Proof denominator" unless scenario_summary.fetch("patterns") == 29 && scenario_summary.fetch("scenarios") == 10 && scenario_summary.fetch("rows") == 290
+errors << "PostgreSQL Scenario Proof non-reuse" unless scenario_summary.fetch("integrated_trace_rows") == 290 && scenario_proofs.fetch("files").all? { |item| item.fetch("status") != "completion-eligible-runtime-proof" }
+errors << "PostgreSQL strict Scenario closure" unless scenario_summary.fetch("pattern_specific_rows") == 0 && scenario_summary.fetch("pattern_specific_runtime_rows") == 0 && scenario_summary.fetch("pattern_specific_gaps") == 290
+errors << "PostgreSQL Scenario Proof completion boundary" unless scenario_summary.fetch("authority_atomic_rows") == 0 && scenario_summary.fetch("completion_eligible_rows") == 0
 axes = mapping.fetch("axes")
 errors << "18 axes" unless axes.map { |axis| axis.fetch("id") } == required_axes
 errors << "FE canonical axes" unless Array(reference_document["axes"]).map { |axis| axis.fetch("id") } == required_axes
@@ -233,6 +271,7 @@ report = {
   "authority_review_queue"=>review_summary,
   "authority_body_non_regression"=>body_non_regression,
   "definitive_skill_eval"=>skill_summary,
+  "reference_system_scenario_proof"=>scenario_proofs.slice("status", "denominator", "denominator_scope", "summary", "by_scenario", "completion_limits"),
   "independent_agent_forward_eval"=>forward_agent_eval.slice("status", "reviewer", "evaluated_commit", "prompt_digest", "result", "completion_credit"),
   "denominator"=>{
     "generated_mapping_candidates"=>items.length,

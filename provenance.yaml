@@ -1,8 +1,15 @@
 ---
 schema_version: 1
 atlas_id: postgresql-reference-atlas
-generated_at: '2026-08-28T13:26:43Z'
+generated_at: '2026-08-28T14:03:52Z'
 artifacts:
+- path: artifacts/reference-system/results.json
+  digest: sha256:17a34af2c52ef399f2ccfdcd9c47be5903efb49747e4fe7bccc2d3a0e74cd357
+  kind: test-report
+  license: Apache-2.0
+  source_ids:
+  - postgres-container-18.6-alpine
+  generated_by: make scenario-proofs-generate
 - path: authority/FE_DEPTH_REFERENCE.json
   digest: sha256:2452696f9807b7d4a8ffb22b3ba37f079a25a34ac2370d78423445b96064582a
   kind: document
@@ -161,7 +168,7 @@ artifacts:
   - postgresql-license-rel-18.6
   generated_by: ruby tools/generate-authority-body-baseline.rb
 - path: evals/definitive-skill-router.json
-  digest: sha256:42c2226ecd95184e0b0c8dc2233d80e9bb9c54ec9889b5fdcc96497c94c529b5
+  digest: sha256:60d24a7ee283614c3918a891fd1d133d3d9c6d0cf89c12f17cf05a10c44114f7
   kind: skill-eval
   license: Apache-2.0
   source_ids:
@@ -170,7 +177,7 @@ artifacts:
   - postgres-container-18.6-alpine
   generated_by: ruby tools/generate-definitive-skill-eval.rb
 - path: evals/postgresql-atlas.definitive-routing-eval.json
-  digest: sha256:670ead971aff5f8aa381ad7f61019803c860fe47eae2708e8edc6dfad1993da3
+  digest: sha256:d2c43e0a4d56477e9527f575b120931924b274af7400317a693101d45ad09c89
   kind: skill-eval
   license: Apache-2.0
   source_ids:
@@ -361,12 +368,19 @@ artifacts:
   - postgresql-license-rel-18.6
   generated_by: make test-static
 - path: evidence/artifacts/reference-system.json
-  digest: sha256:de2ae7ad02e3a393d356cab8e432b59659af7e8f1255303296ef02a475a00105
+  digest: sha256:9f88e1c842ccc8959ab319bafd17e0850ef81fe214664c3a7fbc52f23c62f03d
   kind: test-report
   license: Apache-2.0
   source_ids:
   - postgres-container-18.6-alpine
   - postgresql-docs-18.6
+  generated_by: make lab LAB=reference-system
+- path: evidence/artifacts/reference-system.server.log
+  digest: sha256:b81801ae51aef994472e9d06c117b38d7452a9497079efe3d6546d58c5e7f4fc
+  kind: capture
+  license: Apache-2.0
+  source_ids:
+  - postgres-container-18.6-alpine
   generated_by: make lab LAB=reference-system
 - path: evidence/artifacts/replication.json
   digest: sha256:917089c4219799f4d5100ffb2b70987f7478a9f3ceb622be7d510edddd3815bd
@@ -438,6 +452,22 @@ artifacts:
   license: Apache-2.0
   source_ids: []
   generated_by: make authority-body-non-regression-audit
+- path: evidence/scenarios/index.json
+  digest: sha256:e9ba73cfed15ad46c89c8b9130e0d967b79f1b1ed9e649c8d508485bf0f329ce
+  kind: test-report
+  license: Apache-2.0
+  source_ids:
+  - postgresql-docs-18.6
+  - postgresql-source-rel-18.6
+  - postgres-container-18.6-alpine
+  generated_by: make scenario-proofs-generate
+- path: integrations/reference-system/manifest.json
+  digest: sha256:93d8d68db6ed586e398259db0fb24a8a88c69d0f512ccc3fe751dc7c65447b3a
+  kind: document
+  license: Apache-2.0
+  source_ids:
+  - postgres-container-18.6-alpine
+  generated_by: make scenario-proofs-generate
 - path: migrations/authority-body-inventory-v1.json
   digest: sha256:644317374088227f48358b2b552c7d8f9cea0e98cb6f1fd9cffdff63c2e463e9
   kind: document
@@ -445,7 +475,7 @@ artifacts:
   source_ids: []
   generated_by: manual migration mapping
 - path: postgresql-depth-parity.yaml
-  digest: sha256:487746298296fba21052c163ff13a868de941e6cb3d87504b0e50d04d12898a1
+  digest: sha256:60256c13a5e75bb479f8e1da5859b68fca7232fad498bd1ca5260c58982315e3
   kind: generated
   license: Apache-2.0
   source_ids: []

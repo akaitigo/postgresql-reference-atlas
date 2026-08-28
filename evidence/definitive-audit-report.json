@@ -774,6 +774,103 @@
     ],
     "open_targets": 55
   },
+  "scenario_proofs": {
+    "status": "incomplete-authority-atomic-and-runtime-closure",
+    "denominator": "29-current-domain-behaviors-x-10-scenarios",
+    "summary": {
+      "patterns": 29,
+      "scenarios": 10,
+      "rows": 290,
+      "dedicated_artifacts": 290,
+      "pattern_specific_rows": 0,
+      "pattern_specific_runtime_rows": 0,
+      "pattern_specific_capture_rows": 0,
+      "pattern_specific_gaps": 290,
+      "integrated_trace_rows": 290,
+      "authority_atomic_rows": 0,
+      "completion_eligible_rows": 0
+    },
+    "by_scenario": {
+      "normal": {
+        "rows": 29,
+        "pattern_specific": 0,
+        "runtime_identity": 0,
+        "integrated_pattern_mapped": 0,
+        "gaps": 29
+      },
+      "boundary": {
+        "rows": 29,
+        "pattern_specific": 0,
+        "runtime_identity": 0,
+        "integrated_pattern_mapped": 0,
+        "gaps": 29
+      },
+      "refusal": {
+        "rows": 29,
+        "pattern_specific": 0,
+        "runtime_identity": 0,
+        "integrated_pattern_mapped": 0,
+        "gaps": 29
+      },
+      "failure": {
+        "rows": 29,
+        "pattern_specific": 0,
+        "runtime_identity": 0,
+        "integrated_pattern_mapped": 0,
+        "gaps": 29
+      },
+      "recovery": {
+        "rows": 29,
+        "pattern_specific": 0,
+        "runtime_identity": 0,
+        "integrated_pattern_mapped": 0,
+        "gaps": 29
+      },
+      "migration": {
+        "rows": 29,
+        "pattern_specific": 0,
+        "runtime_identity": 0,
+        "integrated_pattern_mapped": 0,
+        "gaps": 29
+      },
+      "operations": {
+        "rows": 29,
+        "pattern_specific": 0,
+        "runtime_identity": 0,
+        "integrated_pattern_mapped": 0,
+        "gaps": 29
+      },
+      "security": {
+        "rows": 29,
+        "pattern_specific": 0,
+        "runtime_identity": 0,
+        "integrated_pattern_mapped": 0,
+        "gaps": 29
+      },
+      "performance": {
+        "rows": 29,
+        "pattern_specific": 0,
+        "runtime_identity": 0,
+        "integrated_pattern_mapped": 0,
+        "gaps": 29
+      },
+      "compatibility": {
+        "rows": 29,
+        "pattern_specific": 0,
+        "runtime_identity": 0,
+        "integrated_pattern_mapped": 0,
+        "gaps": 29
+      }
+    },
+    "completion_limits": [
+      "frontend-behavior-atlas f2e4c4b19156f8e993f48cdcbce23679ad881924の方式を使用するが絶対件数は転用しない。",
+      "29 Behaviorは公開済みVerification Matrixの非後退分母でありAuthority由来Atomic behavior denominatorではない。",
+      "統合Reference Systemの10 Scenario成功、identity、ArtifactをBehavior固有Proofとして流用しない。",
+      "各Surface × Scenarioの全Variantを専用実server/clientでretry 0実行し、Oracle、Source/Harness digest、SQL/plan/WAL/log/metricを同じ専用実行へ結ぶまでgapを閉じない。",
+      "別Evidence Artifactのmetadataを専用実行Proofとして流用しない。",
+      "Authority Human reviewとAtomic behavior bindingがないrowのcompletion eligibleは0を維持する。"
+    ]
+  },
   "skill": {
     "core_cases": 118,
     "matrix_cells": 112,

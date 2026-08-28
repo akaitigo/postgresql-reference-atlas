@@ -7,6 +7,7 @@ authority_body_inventory: authority/body-inventory.snapshot.json
 authority_body_review: authority/review-queue.snapshot.json
 surface_inventory: surface.inventory.yaml
 verification_matrix: verification.matrix.yaml
+scenario_proofs: evidence/scenarios/index.json
 depth_parity: depth.parity.yaml
 skill_eval: evals/postgresql-atlas.definitive-skill-eval.json
 skill_router: evals/definitive-skill-router.json
@@ -18,7 +19,7 @@ historical_certificates:
 reference_systems:
   - id: order-runtime-slice
     path: evidence/artifacts/reference-system.json
-    digest: sha256:de2ae7ad02e3a393d356cab8e432b59659af7e8f1255303296ef02a475a00105
+    digest: sha256:9f88e1c842ccc8959ab319bafd17e0850ef81fe214664c3a7fbc52f23c62f03d
     behavior_ids:
       - definitive-domain.query.security
       - definitive-domain.query.partitioning

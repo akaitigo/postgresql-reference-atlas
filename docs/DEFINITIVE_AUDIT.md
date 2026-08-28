@@ -20,18 +20,18 @@
 
 ## Proof Gap
 
-Definitive v2ではBehaviorごとに専用Claim、Scenarioごとに専用Proof・Evidence・Artifactを要求する。v1の集約Claimと代表Labは69 Scenario Rowへ再利用できるが、正常、境界、拒否、障害、回復、運用、安全性、性能、互換性、移行の必要集合を閉じない。
+Definitive v2ではBehaviorごとに専用Claim、Scenarioごとに専用Proof・Evidence・Artifactを要求する。v1の集約Claimと代表Labは69 Scenario Rowのbounded補助Evidenceとして保持するが、全Variantの専用実server/client実行、retry 0、専用Oracle、Source/Harness digest、SQL/plan/WAL/log/metricを同一実行へ結ぶ条件を満たさず、正常、境界、拒否、障害、回復、運用、安全性、性能、互換性、移行の必要集合を閉じない。
 
 現在のGapは次の通り。
 
 - 56 required Target中55 TargetがDefinitive未Closure
 - 5,512 raw anchor候補は全件pending-humanで、Human-reviewed/promoted SurfaceとAtomic behaviorは0件
 - 11,340自動mapping候補中11,320件は専用covered Target・accepted Claimの組を持たない
-- 全Scenario分類113,400 Row中113,331 Rowが未作成。Surfaceから必須となる43,544 Scenarioのうち43,510 Rowが未接続
+- Authority由来11,340 mapping候補の全Scenario分類113,400 Row中113,331 Rowが未作成。別の非後退分母として、公開済み29 Behavior × 10 Scenarioは290専用Artifactへ分離し、既存69 rowをbounded補助Evidenceへ接続したが、strict Closureは0、Gapは290、Authority atomic bindingは0である
 - Subject全体として、必要Scenarioごとの専用Proof・Evidence・Artifact closureが未整備
 - Function、Operator、Cast、GUC、Protocol、Client Toolの全件Proofが未実装
 - Authentication、Resource Limit、Corruption Recoveryが未実装
-- 統合Reference SystemのSecurity、Partition、Planner、Lock、WAL、Observability Sliceは実行済み。Backup/PITR/Replication/Upgrade統合、複数方式Comparison、Runbook実地演習は未実装
+- 統合Reference Systemは10 ScenarioをPostgreSQL/psql 18.6で10/10実行し、SQL/Plan/WAL/Server log/Metricを保存した。各Behavior rowは専用identity/Artifactまたは明示gapを持ち、統合結果をBehavior固有Proofとして流用しない。Backup/PITR/Replication/Upgrade統合、複数方式Comparison、Runbook実地演習は未実装
 - Definitive Skill Evalは8 Outcome × 14 Surfaceを全件評価し、mutation authorization、人手Authority/stale relock、曖昧・未知Queryをfail-closedで停止する。112 Cellはcontract passだが72 bounded evidence route / 40 routing gapで、全56 Targetはcovered 29 / partial 16 / planned 11のまま記録する
 - 現行Definitive Certificateは未発行
 

@@ -19,10 +19,10 @@ Repository statusは`incomplete`。v1 Certificateは29 Targetに限定された`
 - SQL Command、Type、Function、Operator、Cast、Catalog、GUC、Extension、Protocol、Client Toolを細粒度分類
 - Inventory未分類0、Authority Artifact 5件のDigest固定
 - Coverageを56 required Targetへ細分化
-- v1 Evidenceから69 Scenario Rowを再利用したが、Definitive未Closure Targetは55件
+- v1 Evidenceの69 Scenario Row対応をbounded補助Evidenceとして維持し、公開済み29 Behavior × 10 Scenarioの290専用Proof Fileへ分離した。全Variant denominator、retry 0、専用server/client、Oracle、Source/Harness digest、SQL/plan/WAL/log/metricの全条件を同一専用実行で満たすstrict Closureは0、Gapは290、Authority atomic bindingは0である
 - 全Scenario分類113,400 Row中113,331 Row、必須Scenario 43,544 Row中43,510 Rowが未接続
 - Definitive Skill Matrixは112/112 contract passだが、bounded evidence route 72 / routing gap 40。Targetはcovered 29 / partial 16 / planned 11で、Matrix passをcompletionへ算入しない
-- 統合Reference SystemはSecurity、Partition、Planner、Lock、WAL、ObservabilityのRuntime Sliceを実装済み。Backup/PITR/Replication/Upgrade統合、複数方式Comparison、Runbook演習、現行Definitive Certificateは未実装
+- 統合Reference Systemは固定PostgreSQL/psql 18.6上で10 Scenarioを10/10実行し、SQL、Plan、WAL、Server log、Metricを保存する。統合成功は290個のBehavior固有Proofへ流用せず、Backup/PITR/Replication/Upgrade統合、複数方式Comparison、Runbook演習、現行Definitive Certificateは未実装
 - FE Depth Reference 18軸はsatisfied 1 / partial 17。PostgreSQL技術分野監査は15分野中15分野がincomplete、未Closure軸29。Core Depth Parityは`completion_status: incomplete`
 
 ## 非後退Baseline
@@ -31,7 +31,7 @@ Repository statusは`incomplete`。v1 Certificateは29 Targetに限定された`
 - Baseline: 29 Target / 29 Claim / 28 Proof / 30 Evidence / 10 Source / 27 Lab / 30 Skill Case / CI 27 Lab
 - 現在: 56 Target / 30 accepted Claim / 29 accepted Proof / 31 Evidence / 10 Source / 29 Lab / 30 v1 Skill Case / CI 29 Lab
 - 既存Proof-bearing File 219件のdigest照合と、Claim/Proof/Capability集約Indexの既存Entry完全一致: pass
-- Core非後退Gate: baseline 238 item / current 373 item / approved Replacement 2件 / pass
+- Core非後退Gate: baseline 239 item / current 871 item / approved Replacement 3件 / pass。Core v1.2のScenario Proof collection追加は同一公開commitを再捕捉し、旧全項目一致・公開時点Scenario row 0を確認した
 - Authority body専用非後退: baseline document 398 / anchor 5,512 / retained 5,512 / Replacement 0 / pass
 - approved Replacement: Certificate履歴移行、Core v1互換子孫commitへの前方更新の2件
 - 削除、skip/disabled、格下げ、CI縮小、Runtimeからstaticへの置換: 0件
@@ -40,7 +40,7 @@ Repository statusは`incomplete`。v1 Certificateは29 Targetに限定された`
 
 ## 再現性
 
-各v1 EvidenceはSource Lock、Environment Manifest、Harness Manifest、Artifact DigestとSizeを維持する。`make authority-body-verify`はunique document、tool/source digest、raw selector、stale/failed、pending-human、昇格0の境界を検査する。`make authority-review-verify`は全anchorのqueue接続、stale hold、priority/cluster/batchの提案境界、一次資料Human decisionのreviewer/time/reason/digest/locator/mapping/result整合を検査する。`make definitive-skill-eval-verify`は112 Cell、5停止境界、Target/Variant/Authority/Evidence、query plan/WAL/runtime binding、全Target state、独立Agent記録と非completion境界を検査する。`make definitive-audit`はGap Ledgerを検査し、`make definitive-gate`は全Proofが閉じるまで失敗する。
+各v1 EvidenceはSource Lock、Environment Manifest、Harness Manifest、Artifact DigestとSizeを維持する。`make authority-body-verify`はunique document、tool/source digest、raw selector、stale/failed、pending-human、昇格0の境界を検査する。`make authority-review-verify`は全anchorのqueue接続、stale hold、priority/cluster/batchの提案境界、一次資料Human decisionのreviewer/time/reason/digest/locator/mapping/result整合を検査する。`make definitive-skill-eval-verify`は112 Cell、5停止境界、Target/Variant/Authority/Evidence、query plan/WAL/runtime binding、全Target state、独立Agent記録と非completion境界を検査する。`make scenario-proofs-verify`は290専用File、全Variant/retry 0/専用Oracle/Source・Harness digest/実server・client/SQL・plan・WAL・log・metricのClosure条件、統合結果と別Artifact metadataの非流用、Authority completion eligible 0を検査する。`make definitive-audit`はGap Ledgerを検査し、`make definitive-gate`は全Proofが閉じるまで失敗する。
 
 ## 外部阻害要因
 

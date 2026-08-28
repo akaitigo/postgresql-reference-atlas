@@ -3,7 +3,7 @@ CORE_DIR ?= ../reference-atlas-core
 LAB ?= sql
 ATLAS_ROOT := $(CURDIR)
 
-.PHONY: validate audit non-regression-audit core-non-regression-audit authority-body-non-regression-audit definitive-audit parity-audit depth-parity-audit authority-locator-verify authority-body-verify authority-review-verify definitive-skill-eval-verify core-authority-audit core-authority-body-audit core-authority-review-audit core-skill-router-audit definitive-gate claims provenance certificate-verify test-static evidence-freshness lab eval refresh-evidence test
+.PHONY: validate audit non-regression-audit core-non-regression-audit authority-body-non-regression-audit definitive-audit parity-audit depth-parity-audit authority-locator-verify authority-body-verify authority-review-verify definitive-skill-eval-verify scenario-proofs-generate scenario-proofs-verify core-scenario-trace-audit core-authority-audit core-authority-body-audit core-authority-review-audit core-skill-router-audit definitive-gate claims provenance certificate-verify test-static evidence-freshness lab eval refresh-evidence test
 
 validate:
 	cd $(CORE_DIR) && GOCACHE=$(CURDIR)/.cache/go-build go run ./cmd/atlas validate \
@@ -27,6 +27,7 @@ validate:
 		$(ATLAS_ROOT)/migrations/authority-body-inventory-v1.json \
 		$(ATLAS_ROOT)/migrations/definitive-v2.yaml \
 		$(ATLAS_ROOT)/non-regression.yaml \
+		$(ATLAS_ROOT)/baselines/core-v1.2-v1.0.0.non-regression-baseline.json \
 		$(ATLAS_ROOT)/baselines/core-v1.1-v1.0.0.non-regression-baseline.json \
 		$(ATLAS_ROOT)/baselines/v1.0.0.non-regression-baseline.json \
 		$(ATLAS_ROOT)/evidence/history/v1.0.0/completion-certificate.json
@@ -84,6 +85,15 @@ authority-review-verify:
 definitive-skill-eval-verify:
 	ruby tools/verify-definitive-skill-eval.rb
 
+scenario-proofs-generate:
+	ruby tools/generate-scenario-proofs.rb
+
+scenario-proofs-verify:
+	ruby tools/verify-scenario-proofs.rb
+
+core-scenario-trace-audit:
+	cd $(CORE_DIR) && GOCACHE=$(CURDIR)/.cache/go-build go run ./cmd/atlas audit $(ATLAS_ROOT) --gate scenario-trace
+
 core-authority-audit:
 	cd $(CORE_DIR) && GOCACHE=$(CURDIR)/.cache/go-build go run ./cmd/atlas audit $(ATLAS_ROOT) --gate authority-extraction
 
@@ -122,4 +132,4 @@ certificate-verify:
 
 refresh-evidence: eval test-static provenance
 
-test: validate audit non-regression-audit core-non-regression-audit authority-body-non-regression-audit definitive-audit parity-audit authority-locator-verify authority-body-verify authority-review-verify definitive-skill-eval-verify core-authority-audit core-authority-body-audit core-authority-review-audit core-skill-router-audit depth-parity-audit evidence-freshness certificate-verify
+test: validate audit non-regression-audit core-non-regression-audit authority-body-non-regression-audit definitive-audit parity-audit authority-locator-verify authority-body-verify authority-review-verify definitive-skill-eval-verify scenario-proofs-verify core-scenario-trace-audit core-authority-audit core-authority-body-audit core-authority-review-audit core-skill-router-audit depth-parity-audit evidence-freshness certificate-verify

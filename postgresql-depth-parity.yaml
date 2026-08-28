@@ -81,6 +81,32 @@ definitive_skill_eval:
     ambiguous_and_unknown_query_fail_closed: true
     require_all_target_states: true
     require_independent_agent_forward_eval_record: true
+reference_system_scenario_proof:
+  reference:
+    repository: frontend-behavior-atlas
+    commit: f2e4c4b19156f8e993f48cdcbce23679ad881924
+    files:
+      - {path: scripts/lib/scenario-proof.ts, digest: "sha256:8b89ff8d0f042b181abe22a2fb1280546f7534f0525a931c6437a177fdb2432f", size_bytes: 20748}
+      - {path: scripts/generate-scenario-proofs.ts, digest: "sha256:4b095074665cec1c66c80948baaafaaafeef31919b3afa6c3064681d7a951241", size_bytes: 392}
+      - {path: scripts/verify-scenario-proofs.ts, digest: "sha256:d6192f7da3b160300690f3a4168846711b366b77f8fc6c28918733db221005cd", size_bytes: 16599}
+      - {path: scripts/verify-pattern-scenario-evidence.ts, digest: "sha256:3643d1dd6ab6830d1a729fc0684a6691e8fc7af4b2d85bae3e5ec01d89113469", size_bytes: 6349}
+      - {path: docs/REFERENCE_SYSTEM.md, digest: "sha256:5562aa75e57c518c402c31d97885083bed3d1e3abc0af2ecade5c5cb3f188d49", size_bytes: 3705}
+  index: evidence/scenarios/index.json
+  integrated_result: evidence/artifacts/reference-system.json
+  policy:
+    scenarios: 10
+    separate_integrated_and_behavior_specific_proof: true
+    require_server_client_version_runtime_identity_or_gap: true
+    require_sql_plan_wal_log_metric_artifact_or_gap: true
+    integrated_success_counts_as_behavior_proof: false
+    require_all_variants_dedicated_runtime: true
+    required_retry_count: 0
+    require_dedicated_oracle: true
+    require_source_and_harness_digest: true
+    integrated_reference_reuse_for_closure: false
+    foreign_artifact_metadata_reuse_for_closure: false
+    authority_atomic_binding_required_for_completion: true
+    absolute_counts_transplanted: false
 axes:
   - id: authority-body-digestion
     portable_criterion: 対象分野の母集団を自己申告Scopeではなく一次資料本文または固定Surface Artifactから導き、全本文をDigest固定し、Locator単位で分類・Reviewする。
@@ -98,8 +124,8 @@ axes:
     portable_criterion: 各Behaviorを対象Runtime/Platform上で起動・操作・破棄し、Source/Harness digestと実Versionを記録する。Mock/static fixtureは実Runtime Profileの代替にしない。
     postgresql_denominator: required behavior × PostgreSQL version/runtime/profile
     status: partial
-    evidence: [verification.matrix.yaml, evidence/reference-system.evidence.yaml, evidence/compatibility-matrix.evidence.yaml]
-    gaps: [全Behaviorと必要Profileの専用Runtime Evidenceへ未分割である。]
+    evidence: [verification.matrix.yaml, evidence/scenarios/index.json, evidence/reference-system.evidence.yaml, evidence/compatibility-matrix.evidence.yaml]
+    gaps: [29 Behavior × 10 Scenarioを専用Proofへ分割しbounded補助Evidence 69件を保持したが、全Variant、retry 0、専用server/client、Oracle、Source/Harness digest、SQL/plan/WAL/log/metricを同一実行へ結ぶstrict Closureは0件で、Authority由来全Behaviorと必要Profileの専用Runtime Evidenceは未Closureである。]
   - id: scenario-normal
     portable_criterion: 各Authority由来Atomic behaviorの正常系を専用Oracle、Runtime Profile、Artifactへ一対一接続する。
     postgresql_denominator: applicable authority-derived behaviors
@@ -164,14 +190,14 @@ axes:
     portable_criterion: 各Required ScenarioのOracle結果を専用Artifactへ固定し、Source、Harness、Runtime、Version、Attemptと追跡可能にする。
     postgresql_denominator: required scenario rows
     status: partial
-    evidence: [provenance.yaml, evidence/definitive-audit-report.json]
-    gaps: [既存Bundle Artifactは保持するが、Behavior × Scenario × Profile単位の一意ArtifactとTraceへ未分割である。]
+    evidence: [provenance.yaml, evidence/scenarios/index.json, evidence/definitive-audit-report.json]
+    gaps: [公開済み29 Behavior × 10 Scenarioは290一意Artifactへ分割したが、全Authority-derived Behavior × Scenario × Profileのidentity/SQL/plan/WAL/log/metric gapは未Closureである。]
   - id: integrated-reference-system
     portable_criterion: 複数Atomic behaviorを実責任境界で接続した統合SystemとCross-behavior failure/recoveryを証明する。
     postgresql_denominator: authority-derived architecture/integration behaviors
     status: partial
-    evidence: [evidence/reference-system.evidence.yaml, evidence/artifacts/reference-system.json]
-    gaps: [6 BehaviorのRuntime Sliceのみで、全Architecture/Integration BehaviorとBackup、PITR、Replication、Upgradeを統合していない。]
+    evidence: [evidence/reference-system.evidence.yaml, evidence/artifacts/reference-system.json, evidence/artifacts/reference-system.server.log, evidence/scenarios/index.json]
+    gaps: [10 ScenarioをPostgreSQL/psql 18.6で実行したが、統合成功はBehavior固有Proofへ流用せず、全Architecture/Integration BehaviorとBackup、PITR、Replication、Upgradeを統合していない。]
   - id: skill-eval
     portable_criterion: Skillが8 Outcome、14 Surface、曖昧Query、Coverage Gap、権限境界、実装・診断・移行・Reviewを実行Evidence付きで扱う。
     postgresql_denominator: outcome × surface × risk/coverage-gap class × task result
