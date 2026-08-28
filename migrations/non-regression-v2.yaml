@@ -13,12 +13,12 @@ replacements:
     reason: Core Definitive v2の履歴規約へ移し、v1 bounded Certificateの意味とbyte列を不変保存するため。
   - id: core-definitive-v2-forward-update
     old_id: ci:core-ref:cf9e6e2d981305c83f970c1f21a1ddc9c1109263
-    new_id: ci:core-ref:e8223295bd86f7400e154171dd1596b9e54f0835
+    new_id: ci:core-ref:d535b0802697edea73ca1c778a5b571e28fe0614
     old_value: cf9e6e2d981305c83f970c1f21a1ddc9c1109263
-    new_value: e8223295bd86f7400e154171dd1596b9e54f0835
+    new_value: d535b0802697edea73ca1c778a5b571e28fe0614
     proof_type: version-forward-compatible
     migration_evidence: evidence/migrations/non-regression-v2.json
-    reason: v1互換Gateを保持した子孫commitへ更新し、FE Depth ReferenceとDefinitive Gate v2を加法的に利用するため。
+    reason: v1互換Gateを保持した子孫commitへ更新し、Scenario Proof／Trace Schema、専用Runtime Closure predicate、Certificate scenario digestを含むDefinitive Gate v2を加法的に利用するため。
   - id: skill-instructions-definitive-eval-addition
     old_id: file:.agents/skills/postgresql-atlas/SKILL.md
     new_id: file:.agents/skills/postgresql-atlas/SKILL.md
