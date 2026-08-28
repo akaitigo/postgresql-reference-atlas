@@ -1,0 +1,66 @@
+{
+  "schema_version": 1,
+  "id": "postgresql-atlas.forward-agent-v1",
+  "status": "evaluated-not-completion-certificate",
+  "reviewer": "independent-codex-agent:/root/pg_skill_forward_eval",
+  "evaluated_commit": "b2ea671dcb86da27ca98c9c200b1b0c21bfbbb00; dirty-reviewed",
+  "prompt_digest": "sha256:9d298b117613de3e6042972bd41ffe8d297c347739502b485e41f828682d8b65",
+  "result": "pass",
+  "cases": [
+    {
+      "id": "forward.authorized-build",
+      "input": {"outcome": "build", "surface": "implementation-construction", "query": "SQL Constraintを隔離環境へ構築", "authorized_change": true},
+      "result": "pass",
+      "observed_status": "bounded-evidence-route",
+      "observed_blocked_reasons": [],
+      "target_id": "query.sql-surface"
+    },
+    {
+      "id": "forward.unauthorized-build",
+      "input": {"outcome": "build", "surface": "implementation-construction", "query": "SQL Constraintを隔離環境へ構築", "authorized_change": false},
+      "result": "pass",
+      "observed_status": "blocked",
+      "observed_blocked_reasons": ["unauthorized-mutation"],
+      "target_id": "query.sql-surface"
+    },
+    {
+      "id": "forward.human-authority-decision",
+      "input": {"outcome": "verify", "surface": "provenance-rights", "query": "PostgreSQL一次資料のSemantic Surface昇格を判断する", "authority_semantic_decision": true},
+      "result": "pass",
+      "observed_status": "blocked",
+      "observed_blocked_reasons": ["external-human-decision-required"],
+      "target_id": "publication.provenance"
+    },
+    {
+      "id": "forward.stale-relock",
+      "input": {"outcome": "verify", "surface": "provenance-rights", "query": "PostgreSQL一次資料のstale sourceを再固定する", "stale_source_relock": true},
+      "result": "pass",
+      "observed_status": "blocked",
+      "observed_blocked_reasons": ["stale-source-relock-explicit-procedure-required"],
+      "target_id": "publication.provenance"
+    },
+    {
+      "id": "forward.ambiguous-query",
+      "input": {"outcome": "verify", "surface": "testing-verification", "query": "SQL and WAL verification"},
+      "result": "pass",
+      "observed_status": "blocked",
+      "observed_blocked_reasons": ["ambiguous-or-unknown-query"],
+      "target_id": "query.sql-surface"
+    },
+    {
+      "id": "forward.unknown-query",
+      "input": {"outcome": "understand", "surface": "orientation-scope", "query": "frobnicate quux topology"},
+      "result": "pass",
+      "observed_status": "blocked",
+      "observed_blocked_reasons": ["ambiguous-or-unknown-query"],
+      "target_id": "foundation.version-lock"
+    }
+  ],
+  "findings": [
+    {"severity": "info", "id": "initial-wrapper-defect-recovered", "statement": "初回実査ではplanner wrapperのrelative pathが1階層過剰でLoadErrorとなり、実行bitも欠落していた。修正後、同一条件をwrapper実呼出して全6ケースの契約適合を確認した。"},
+    {"severity": "info", "id": "bindings-verified", "statement": "RouteはTarget、Variant、Authority、Evidence、source digestへ接続し、PostgreSQL 18.6 Reference Systemのquery-plan/WAL/runtime bindingを共有統合sliceとして明示し、Target専用完成Proofとは扱っていない。"},
+    {"severity": "info", "id": "states-and-gaps-honest", "statement": "Coverage 56 Targetとstate ledgerは一致し、covered 29、partial 16、planned 11を保持する。112 Matrix中40 routing gapを隠さず、matrix passのcompletion転用をfalseとしている。"}
+  ],
+  "completion_credit": false,
+  "reason": "Matrix passはOutcome×Surfaceのrouting契約と停止境界の成立だけを示し、partial/planned Target、Authority人手Review、Depth Gap、Target専用query-plan/WAL/runtime Proof、Subject全体のClosureを完成させないため。"
+}

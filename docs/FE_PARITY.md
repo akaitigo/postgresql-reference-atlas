@@ -10,6 +10,8 @@ Authority locatorの参照設計は`frontend-behavior-atlas` commit `cabf687bab7
 
 Authority denominatorの参照はFE commit `841ec2fa399606a10305021a8bcd396713b8cee5`、Human review queueの参照は`de2f016b8b44ea67afdb08c0552044807505984e`である。PostgreSQL側はREL_18_6のunique SGML documentとCOPYRIGHT、未取得Source rootを母集団とし、`document-root`と`sgml-id-attribute`の固定selectorでraw anchor候補を列挙する。全anchorはstable IDのReview Queueへ接続し、Human decision後に明示昇格されるまでSemantic Surface、Atomic behavior、Depth達成に算入しない。priority、cluster、batchは作業提案に限る。
 
+Skill Evalの参照はFE commit `8a9e34a89a55cc53702032783c06ede7246a286f`である。PostgreSQL側は8 Outcome × 14 Surfaceを全56 Target state、実Evidence、Authority、Variant、共有Reference Systemのquery plan/WAL/18.6 runtimeへ接続し、mutation authorization、人手Authority、stale relock、曖昧・未知Queryを停止境界として検証する。112 Cellのcontract passはTargetまたはSubject completionへ算入しない。
+
 ## 現在値
 
 - FE Depth軸: 18（satisfied 1 / partial 17 / missing 0）
@@ -26,5 +28,6 @@ Authority denominatorの参照はFE commit `841ec2fa399606a10305021a8bcd396713b8
 - Core Authority root: matched 0 / stale 0 / fetch failed 10 / locator deferred 10 / Human review 0 / eligible 0
 - Authority本文全体exhaustive: false / PostgreSQL Authority denominator closed: false
 - Authority body専用非後退: baseline anchor 5,512 / retained 5,512 / replaced 0 / added 0 / pass
+- Skill routing: 112/112 contract pass / bounded evidence route 72 / routing gap 40 / Target state covered 29・partial 16・planned 11 / completion credit false
 
 統合Sliceは単独Artifact内で複数Surfaceを再現するが、Authority raw anchorのHuman review、昇格後Atomic behaviorの専用Target/Claim/Proof、10 Scenario、方式比較、Backup/PITR/Replication/Upgrade統合、Skill全Surfaceを閉じない。このためSubject Gateの判定には使用しない。

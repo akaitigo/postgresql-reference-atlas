@@ -32,7 +32,7 @@ Definitive v2ではBehaviorごとに専用Claim、Scenarioごとに専用Proof�
 - Function、Operator、Cast、GUC、Protocol、Client Toolの全件Proofが未実装
 - Authentication、Resource Limit、Corruption Recoveryが未実装
 - 統合Reference SystemのSecurity、Partition、Planner、Lock、WAL、Observability Sliceは実行済み。Backup/PITR/Replication/Upgrade統合、複数方式Comparison、Runbook実地演習は未実装
-- Routerが28 Targetへ未到達。Definitive Skill Evalの4 Surfaceが不足
+- Definitive Skill Evalは8 Outcome × 14 Surfaceを全件評価し、mutation authorization、人手Authority/stale relock、曖昧・未知Queryをfail-closedで停止する。112 Cellはcontract passだが72 bounded evidence route / 40 routing gapで、全56 Targetはcovered 29 / partial 16 / planned 11のまま記録する
 - 現行Definitive Certificateは未発行
 
 ## Boundary

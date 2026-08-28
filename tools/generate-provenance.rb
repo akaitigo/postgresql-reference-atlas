@@ -30,6 +30,9 @@ end
 
 {
   "evals/postgresql-router.skill-eval.json" => ["skill-eval", ["postgresql-docs-18.6"], "make eval"],
+  "evals/postgresql-atlas.definitive-skill-eval.json" => ["skill-eval", ["postgresql-docs-18.6", "postgresql-source-rel-18.6"], "ruby tools/generate-definitive-skill-eval.rb"],
+  "evals/postgresql-atlas.definitive-routing-eval.json" => ["skill-eval", ["postgresql-docs-18.6", "postgresql-source-rel-18.6", "postgres-container-18.6-alpine"], "ruby tools/generate-definitive-skill-eval.rb"],
+  "evals/postgresql-atlas.forward-agent-eval.json" => ["skill-eval", ["postgresql-docs-18.6", "postgresql-source-rel-18.6"], "independent Agent forward evaluation"],
   "sbom.spdx.json" => ["sbom", ["postgresql-source-rel-18.6"], "make provenance"],
   "authority/FE_DEPTH_REFERENCE.json" => ["document", [], "frontend-behavior-atlas@4a0b2df8e2091a963bd0e0e1bbccef9c84b49a45"],
   "authority/locator-extraction.snapshot.json" => ["generated", ["postgresql-docs-18.6", "postgresql-source-rel-18.6"], "ruby tools/generate-authority-locators.rb <REL_18_6-checkout>"],

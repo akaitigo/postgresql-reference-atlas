@@ -11,6 +11,7 @@ inventory = YAML.safe_load(File.read(File.join(root, manifest.fetch("surface_inv
 matrix = YAML.safe_load(File.read(File.join(root, manifest.fetch("verification_matrix"))), aliases: false)
 coverage = YAML.safe_load(File.read(File.join(root, "coverage.yaml")), aliases: false)
 skill_eval = JSON.parse(File.read(File.join(root, manifest.fetch("skill_eval"))) )
+definitive_skill = JSON.parse(File.read(File.join(root, "evals/postgresql-atlas.definitive-routing-eval.json")))
 evidence_ids = Dir.glob(File.join(root, "evidence/*.evidence.yaml")).map { |path| YAML.safe_load(File.read(path), aliases: false).fetch("id") }
 
 artifact_errors = inventory.fetch("authority_artifacts").map do |artifact|
@@ -74,7 +75,8 @@ end
 
 capabilities = items.map { |item| item.fetch("target_id") }.uniq.sort
 routed = JSON.parse(File.read(File.join(root, "evidence/artifacts/skill-router-eval.json"))).fetch("results").map { |result| result.fetch("capability") }.uniq
-skill_target_gaps = capabilities.reject { |id| routed.include?(id) || %w[publication.provenance foundation.version-lock foundation.authority-lock].include?(id) }
+legacy_skill_target_gaps = capabilities.reject { |id| routed.include?(id) || %w[publication.provenance foundation.version-lock foundation.authority-lock].include?(id) }
+skill_target_gaps = definitive_skill.fetch("target_state_ledger").select { |target| target.fetch("matrix_routes") == 0 }.map { |target| target.fetch("id") }
 outcomes = skill_eval.fetch("cases").flat_map { |item| item.fetch("outcome_ids") }.uniq
 surfaces = skill_eval.fetch("cases").flat_map { |item| item.fetch("surface_ids") }.uniq
 required_outcomes = %w[understand choose build verify operate troubleshoot evolve delegate]
@@ -91,10 +93,10 @@ report = {
   "historical_certificate"=>manifest.fetch("historical_certificates").first,
   "inventory"=>{"items"=>items.length,"authority_artifacts"=>inventory.fetch("authority_artifacts").length,"by_target"=>items.group_by { |item| item.fetch("target_id") }.transform_values(&:length).sort.to_h,"unclassified"=>unclassified.length,"duplicate_ids"=>duplicate_items,"unknown_targets"=>unknown_targets,"target_mismatches"=>target_mismatches,"artifact_errors"=>artifact_errors},
   "verification"=>{"rows"=>matrix.fetch("rows").length,"expected_classification_rows"=>items.length*scenarios.length,"missing_classification_rows"=>items.length*scenarios.length-row_keys.length,"required_scenario_rows"=>required_scenario_rows,"missing_required_scenario_rows"=>(required_row_keys-row_keys).length,"behaviors_without_dedicated_accepted_claim"=>behavior_claim_gaps.length,"targets"=>target_by_id.length,"target_gaps"=>target_gaps,"open_targets"=>target_gaps.length},
-  "skill"=>{"cases"=>skill_eval.fetch("cases").length,"missing_outcomes"=>required_outcomes-outcomes,"missing_surfaces"=>required_surfaces-surfaces,"unrouted_targets"=>skill_target_gaps},
+  "skill"=>{"core_cases"=>skill_eval.fetch("cases").length,"matrix_cells"=>definitive_skill.dig("summary", "matrix_cells"),"bounded_evidence_routes"=>definitive_skill.dig("summary", "bounded_evidence_routes"),"routing_gaps"=>definitive_skill.dig("summary", "routing_gaps"),"boundary_cases"=>definitive_skill.dig("summary", "boundary_cases"),"independent_agent_forward_eval"=>definitive_skill.dig("summary", "independent_agent_forward_eval"),"matrix_pass_counts_as_completion"=>definitive_skill.dig("summary", "matrix_pass_counts_as_completion"),"missing_outcomes"=>required_outcomes-outcomes,"missing_surfaces"=>required_surfaces-surfaces,"unrouted_targets"=>skill_target_gaps,"legacy_router_unrouted_targets"=>legacy_skill_target_gaps,"target_states"=>definitive_skill.fetch("target_state_ledger")},
   "structural_gaps"=>structural_gaps,
   "promotion_blocked"=>true
 }
 File.write(File.join(root, "evidence/definitive-audit-report.json"), JSON.pretty_generate(report) + "\n")
 abort "Definitive Inventoryに構造違反があります" unless artifact_errors.empty? && unclassified.empty? && duplicate_items.empty? && unknown_targets.empty? && target_mismatches.empty?
-puts "Definitive audit: inventory=#{items.length} unclassified=0 targets=#{target_by_id.length} open_targets=#{target_gaps.length} unrouted_targets=#{skill_target_gaps.length} verdict=pending"
+puts "Definitive audit: inventory=#{items.length} unclassified=0 targets=#{target_by_id.length} open_targets=#{target_gaps.length} skill_routing_gaps=#{definitive_skill.dig('summary', 'routing_gaps')} verdict=pending"

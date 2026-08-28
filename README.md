@@ -32,7 +32,7 @@ PostgreSQL 18.6の公開機能について、一次資料、設計判断、再�
 - `operations/`: 診断・変更・復旧Runbook
 - `evidence/`: 実行結果とCore Evidence Record
 - `.agents/skills/postgresql-atlas/`: 一つのRouter Skill
-- `evals/`: Routerの挙動評価
+- `evals/`: 既存30 Case、8 Outcome × 14 Surface、停止境界、全Target state、独立Agent Forward Evalの機械記録
 
 ## 実行
 
@@ -45,6 +45,7 @@ make non-regression-audit
 make authority-body-non-regression-audit
 make authority-body-verify
 make authority-review-verify
+make definitive-skill-eval-verify
 make definitive-audit
 make definitive-gate  # incomplete中は昇格拒否が正しい結果
 make lab LAB=sql

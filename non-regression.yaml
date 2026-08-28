@@ -4,6 +4,13 @@ baseline:
   path: baselines/v1.0.0.non-regression-baseline.json
   digest: sha256:01ab1feaab1cbea85275a3422fba55a402c581df9b62f6dacbff4b4e3870cb8d
 replacements:
+  - collection: tests_labs
+    old_id: test-harness:evals/run.sh
+    new_ids: [test-harness:evals/run.sh]
+    equivalence: equal-or-stronger
+    reason: 既存30件のRouter Evalとpass閾値を保持し、112 Routing cell、5 fail-closed境界、独立Agent Forward Evalを後段へ加法接続した。
+    execution_proof_evidence_ids: [skill.router-eval]
+    migration_evidence_ids: [lab.migration]
   - collection: ci_jobs
     old_id: .github/workflows/ci.yml:validate
     new_ids: [.github/workflows/ci.yml:validate]

@@ -4,427 +4,1541 @@
   "atlas_id": "postgresql-reference-atlas",
   "atlas_release": "v1.0.0",
   "skill_id": "postgresql-atlas",
-  "generated_at": "2026-08-28T10:42:54Z",
+  "generated_at": "2026-08-28T00:00:00+09:00",
   "cases": [
     {
-      "id": "definitive.understand-mvcc",
+      "id": "skill.understand.orientation-scope",
       "result": "pass",
       "outcome_ids": [
         "understand"
       ],
       "surface_ids": [
-        "testing-verification",
-        "agent-skill"
-      ],
-      "gap_behavior": false,
-      "authorization_boundary": true,
-      "assertion": "understand-mvccはv1 Routerの期待Capabilityと安全境界へ到達する。"
-    },
-    {
-      "id": "definitive.choose-partial-index",
-      "result": "pass",
-      "outcome_ids": [
-        "choose"
-      ],
-      "surface_ids": [
-        "performance-capacity-cost",
-        "decision-comparison"
+        "orientation-scope"
       ],
       "gap_behavior": false,
       "authorization_boundary": false,
-      "assertion": "choose-partial-indexはv1 Routerの期待Capabilityと安全境界へ到達する。"
+      "assertion": "skill.understand.orientation-scopeはTarget stateと証拠境界を保持してRouteし、Matrix成功を完成判定へ転用しない。"
     },
     {
-      "id": "definitive.build-sql-constraint",
+      "id": "skill.understand.foundations-mechanics",
       "result": "pass",
       "outcome_ids": [
-        "build"
+        "understand"
       ],
       "surface_ids": [
-        "testing-verification",
-        "agent-skill"
+        "foundations-mechanics"
       ],
       "gap_behavior": false,
       "authorization_boundary": false,
-      "assertion": "build-sql-constraintはv1 Routerの期待Capabilityと安全境界へ到達する。"
+      "assertion": "skill.understand.foundations-mechanicsはTarget stateと証拠境界を保持してRouteし、Matrix成功を完成判定へ転用しない。"
     },
     {
-      "id": "definitive.build-domain-type",
+      "id": "skill.understand.architecture-design",
       "result": "pass",
       "outcome_ids": [
-        "build"
+        "understand"
       ],
       "surface_ids": [
-        "testing-verification",
-        "agent-skill"
+        "architecture-design"
       ],
       "gap_behavior": false,
       "authorization_boundary": false,
-      "assertion": "build-domain-typeはv1 Routerの期待Capabilityと安全境界へ到達する。"
+      "assertion": "skill.understand.architecture-designはTarget stateと証拠境界を保持してRouteし、Matrix成功を完成判定へ転用しない。"
     },
     {
-      "id": "definitive.verify-catalog-inventory",
+      "id": "skill.understand.implementation-construction",
       "result": "pass",
       "outcome_ids": [
-        "verify"
+        "understand"
       ],
       "surface_ids": [
-        "testing-verification",
-        "agent-skill"
-      ],
-      "gap_behavior": false,
-      "authorization_boundary": true,
-      "assertion": "verify-catalog-inventoryはv1 Routerの期待Capabilityと安全境界へ到達する。"
-    },
-    {
-      "id": "definitive.choose-partition",
-      "result": "pass",
-      "outcome_ids": [
-        "choose"
-      ],
-      "surface_ids": [
-        "testing-verification",
-        "agent-skill"
+        "implementation-construction"
       ],
       "gap_behavior": false,
       "authorization_boundary": false,
-      "assertion": "choose-partitionはv1 Routerの期待Capabilityと安全境界へ到達する。"
+      "assertion": "skill.understand.implementation-constructionはTarget stateと証拠境界を保持してRouteし、Matrix成功を完成判定へ転用しない。"
     },
     {
-      "id": "definitive.build-extension",
+      "id": "skill.understand.testing-verification",
       "result": "pass",
       "outcome_ids": [
-        "build"
+        "understand"
       ],
       "surface_ids": [
-        "testing-verification",
-        "agent-skill"
-      ],
-      "gap_behavior": false,
-      "authorization_boundary": false,
-      "assertion": "build-extensionはv1 Routerの期待Capabilityと安全境界へ到達する。"
-    },
-    {
-      "id": "definitive.choose-rls",
-      "result": "pass",
-      "outcome_ids": [
-        "choose"
-      ],
-      "surface_ids": [
-        "security-privacy-safety",
         "testing-verification"
       ],
       "gap_behavior": false,
       "authorization_boundary": false,
-      "assertion": "choose-rlsはv1 Routerの期待Capabilityと安全境界へ到達する。"
+      "assertion": "skill.understand.testing-verificationはTarget stateと証拠境界を保持してRouteし、Matrix成功を完成判定へ転用しない。"
     },
     {
-      "id": "definitive.verify-backup-evidence",
-      "result": "pass",
-      "outcome_ids": [
-        "verify"
-      ],
-      "surface_ids": [
-        "testing-verification",
-        "agent-skill"
-      ],
-      "gap_behavior": false,
-      "authorization_boundary": false,
-      "assertion": "verify-backup-evidenceはv1 Routerの期待Capabilityと安全境界へ到達する。"
-    },
-    {
-      "id": "definitive.operate-physical-replication",
-      "result": "pass",
-      "outcome_ids": [
-        "operate"
-      ],
-      "surface_ids": [
-        "operations-observability",
-        "failure-recovery"
-      ],
-      "gap_behavior": false,
-      "authorization_boundary": false,
-      "assertion": "operate-physical-replicationはv1 Routerの期待Capabilityと安全境界へ到達する。"
-    },
-    {
-      "id": "definitive.troubleshoot-logical-replication",
-      "result": "pass",
-      "outcome_ids": [
-        "troubleshoot"
-      ],
-      "surface_ids": [
-        "testing-verification",
-        "agent-skill"
-      ],
-      "gap_behavior": false,
-      "authorization_boundary": false,
-      "assertion": "troubleshoot-logical-replicationはv1 Routerの期待Capabilityと安全境界へ到達する。"
-    },
-    {
-      "id": "definitive.recover-pitr",
-      "result": "pass",
-      "outcome_ids": [
-        "troubleshoot"
-      ],
-      "surface_ids": [
-        "failure-recovery",
-        "operations-observability"
-      ],
-      "gap_behavior": false,
-      "authorization_boundary": false,
-      "assertion": "recover-pitrはv1 Routerの期待Capabilityと安全境界へ到達する。"
-    },
-    {
-      "id": "definitive.understand-wal",
+      "id": "skill.understand.failure-recovery",
       "result": "pass",
       "outcome_ids": [
         "understand"
       ],
       "surface_ids": [
-        "testing-verification",
-        "agent-skill"
-      ],
-      "gap_behavior": false,
-      "authorization_boundary": true,
-      "assertion": "understand-walはv1 Routerの期待Capabilityと安全境界へ到達する。"
-    },
-    {
-      "id": "definitive.verify-failure-injection",
-      "result": "pass",
-      "outcome_ids": [
-        "verify"
-      ],
-      "surface_ids": [
-        "testing-verification",
-        "agent-skill"
+        "failure-recovery"
       ],
       "gap_behavior": false,
       "authorization_boundary": false,
-      "assertion": "verify-failure-injectionはv1 Routerの期待Capabilityと安全境界へ到達する。"
+      "assertion": "skill.understand.failure-recoveryはTarget stateと証拠境界を保持してRouteし、Matrix成功を完成判定へ転用しない。"
     },
     {
-      "id": "definitive.operate-observability",
+      "id": "skill.understand.operations-observability",
       "result": "pass",
       "outcome_ids": [
-        "operate"
+        "understand"
       ],
       "surface_ids": [
-        "testing-verification",
-        "agent-skill"
-      ],
-      "gap_behavior": false,
-      "authorization_boundary": true,
-      "assertion": "operate-observabilityはv1 Routerの期待Capabilityと安全境界へ到達する。"
-    },
-    {
-      "id": "definitive.operate-maintenance",
-      "result": "pass",
-      "outcome_ids": [
-        "operate"
-      ],
-      "surface_ids": [
-        "testing-verification",
-        "agent-skill"
-      ],
-      "gap_behavior": false,
-      "authorization_boundary": true,
-      "assertion": "operate-maintenanceはv1 Routerの期待Capabilityと安全境界へ到達する。"
-    },
-    {
-      "id": "definitive.troubleshoot-deadlock",
-      "result": "pass",
-      "outcome_ids": [
-        "troubleshoot"
-      ],
-      "surface_ids": [
-        "testing-verification",
-        "agent-skill"
-      ],
-      "gap_behavior": false,
-      "authorization_boundary": true,
-      "assertion": "troubleshoot-deadlockはv1 Routerの期待Capabilityと安全境界へ到達する。"
-    },
-    {
-      "id": "definitive.troubleshoot-row-lock",
-      "result": "pass",
-      "outcome_ids": [
-        "troubleshoot"
-      ],
-      "surface_ids": [
-        "testing-verification",
-        "agent-skill"
-      ],
-      "gap_behavior": false,
-      "authorization_boundary": true,
-      "assertion": "troubleshoot-row-lockはv1 Routerの期待Capabilityと安全境界へ到達する。"
-    },
-    {
-      "id": "definitive.troubleshoot-slow-plan",
-      "result": "pass",
-      "outcome_ids": [
-        "troubleshoot"
-      ],
-      "surface_ids": [
-        "performance-capacity-cost",
         "operations-observability"
       ],
       "gap_behavior": false,
-      "authorization_boundary": true,
-      "assertion": "troubleshoot-slow-planはv1 Routerの期待Capabilityと安全境界へ到達する。"
+      "authorization_boundary": false,
+      "assertion": "skill.understand.operations-observabilityはTarget stateと証拠境界を保持してRouteし、Matrix成功を完成判定へ転用しない。"
     },
     {
-      "id": "definitive.verify-statistics",
+      "id": "skill.understand.security-privacy-safety",
       "result": "pass",
       "outcome_ids": [
-        "verify"
+        "understand"
       ],
       "surface_ids": [
-        "testing-verification",
-        "agent-skill"
-      ],
-      "gap_behavior": false,
-      "authorization_boundary": true,
-      "assertion": "verify-statisticsはv1 Routerの期待Capabilityと安全境界へ到達する。"
-    },
-    {
-      "id": "definitive.operate-capacity",
-      "result": "pass",
-      "outcome_ids": [
-        "operate"
-      ],
-      "surface_ids": [
-        "testing-verification",
-        "agent-skill"
-      ],
-      "gap_behavior": false,
-      "authorization_boundary": true,
-      "assertion": "operate-capacityはv1 Routerの期待Capabilityと安全境界へ到達する。"
-    },
-    {
-      "id": "definitive.evolve-schema-migration",
-      "result": "pass",
-      "outcome_ids": [
-        "evolve"
-      ],
-      "surface_ids": [
-        "testing-verification",
-        "agent-skill"
+        "security-privacy-safety"
       ],
       "gap_behavior": false,
       "authorization_boundary": false,
-      "assertion": "evolve-schema-migrationはv1 Routerの期待Capabilityと安全境界へ到達する。"
+      "assertion": "skill.understand.security-privacy-safetyはTarget stateと証拠境界を保持してRouteし、Matrix成功を完成判定へ転用しない。"
     },
     {
-      "id": "definitive.evolve-pg-upgrade",
+      "id": "skill.understand.performance-capacity-cost",
       "result": "pass",
       "outcome_ids": [
-        "evolve"
+        "understand"
       ],
       "surface_ids": [
-        "testing-verification",
-        "agent-skill"
+        "performance-capacity-cost"
       ],
       "gap_behavior": false,
       "authorization_boundary": false,
-      "assertion": "evolve-pg-upgradeはv1 Routerの期待Capabilityと安全境界へ到達する。"
+      "assertion": "skill.understand.performance-capacity-costはTarget stateと証拠境界を保持してRouteし、Matrix成功を完成判定へ転用しない。"
     },
     {
-      "id": "definitive.evolve-logical-upgrade",
+      "id": "skill.understand.compatibility-integration",
       "result": "pass",
       "outcome_ids": [
-        "evolve"
+        "understand"
       ],
       "surface_ids": [
-        "migration-evolution-deprecation",
         "compatibility-integration"
       ],
       "gap_behavior": false,
       "authorization_boundary": false,
-      "assertion": "evolve-logical-upgradeはv1 Routerの期待Capabilityと安全境界へ到達する。"
+      "assertion": "skill.understand.compatibility-integrationはTarget stateと証拠境界を保持してRouteし、Matrix成功を完成判定へ転用しない。"
     },
     {
-      "id": "definitive.verify-compatibility-matrix",
+      "id": "skill.understand.migration-evolution-deprecation",
+      "result": "pass",
+      "outcome_ids": [
+        "understand"
+      ],
+      "surface_ids": [
+        "migration-evolution-deprecation"
+      ],
+      "gap_behavior": false,
+      "authorization_boundary": false,
+      "assertion": "skill.understand.migration-evolution-deprecationはTarget stateと証拠境界を保持してRouteし、Matrix成功を完成判定へ転用しない。"
+    },
+    {
+      "id": "skill.understand.decision-comparison",
+      "result": "pass",
+      "outcome_ids": [
+        "understand"
+      ],
+      "surface_ids": [
+        "decision-comparison"
+      ],
+      "gap_behavior": false,
+      "authorization_boundary": false,
+      "assertion": "skill.understand.decision-comparisonはTarget stateと証拠境界を保持してRouteし、Matrix成功を完成判定へ転用しない。"
+    },
+    {
+      "id": "skill.understand.provenance-rights",
+      "result": "pass",
+      "outcome_ids": [
+        "understand"
+      ],
+      "surface_ids": [
+        "provenance-rights"
+      ],
+      "gap_behavior": false,
+      "authorization_boundary": false,
+      "assertion": "skill.understand.provenance-rightsはTarget stateと証拠境界を保持してRouteし、Matrix成功を完成判定へ転用しない。"
+    },
+    {
+      "id": "skill.understand.agent-skill",
+      "result": "pass",
+      "outcome_ids": [
+        "understand"
+      ],
+      "surface_ids": [
+        "agent-skill"
+      ],
+      "gap_behavior": true,
+      "authorization_boundary": false,
+      "assertion": "skill.understand.agent-skillはTarget stateと証拠境界を保持してRouteし、Matrix成功を完成判定へ転用しない。"
+    },
+    {
+      "id": "skill.choose.orientation-scope",
+      "result": "pass",
+      "outcome_ids": [
+        "choose"
+      ],
+      "surface_ids": [
+        "orientation-scope"
+      ],
+      "gap_behavior": true,
+      "authorization_boundary": false,
+      "assertion": "skill.choose.orientation-scopeはTarget stateと証拠境界を保持してRouteし、Matrix成功を完成判定へ転用しない。"
+    },
+    {
+      "id": "skill.choose.foundations-mechanics",
+      "result": "pass",
+      "outcome_ids": [
+        "choose"
+      ],
+      "surface_ids": [
+        "foundations-mechanics"
+      ],
+      "gap_behavior": false,
+      "authorization_boundary": false,
+      "assertion": "skill.choose.foundations-mechanicsはTarget stateと証拠境界を保持してRouteし、Matrix成功を完成判定へ転用しない。"
+    },
+    {
+      "id": "skill.choose.architecture-design",
+      "result": "pass",
+      "outcome_ids": [
+        "choose"
+      ],
+      "surface_ids": [
+        "architecture-design"
+      ],
+      "gap_behavior": false,
+      "authorization_boundary": false,
+      "assertion": "skill.choose.architecture-designはTarget stateと証拠境界を保持してRouteし、Matrix成功を完成判定へ転用しない。"
+    },
+    {
+      "id": "skill.choose.implementation-construction",
+      "result": "pass",
+      "outcome_ids": [
+        "choose"
+      ],
+      "surface_ids": [
+        "implementation-construction"
+      ],
+      "gap_behavior": false,
+      "authorization_boundary": false,
+      "assertion": "skill.choose.implementation-constructionはTarget stateと証拠境界を保持してRouteし、Matrix成功を完成判定へ転用しない。"
+    },
+    {
+      "id": "skill.choose.testing-verification",
+      "result": "pass",
+      "outcome_ids": [
+        "choose"
+      ],
+      "surface_ids": [
+        "testing-verification"
+      ],
+      "gap_behavior": false,
+      "authorization_boundary": false,
+      "assertion": "skill.choose.testing-verificationはTarget stateと証拠境界を保持してRouteし、Matrix成功を完成判定へ転用しない。"
+    },
+    {
+      "id": "skill.choose.failure-recovery",
+      "result": "pass",
+      "outcome_ids": [
+        "choose"
+      ],
+      "surface_ids": [
+        "failure-recovery"
+      ],
+      "gap_behavior": false,
+      "authorization_boundary": false,
+      "assertion": "skill.choose.failure-recoveryはTarget stateと証拠境界を保持してRouteし、Matrix成功を完成判定へ転用しない。"
+    },
+    {
+      "id": "skill.choose.operations-observability",
+      "result": "pass",
+      "outcome_ids": [
+        "choose"
+      ],
+      "surface_ids": [
+        "operations-observability"
+      ],
+      "gap_behavior": false,
+      "authorization_boundary": false,
+      "assertion": "skill.choose.operations-observabilityはTarget stateと証拠境界を保持してRouteし、Matrix成功を完成判定へ転用しない。"
+    },
+    {
+      "id": "skill.choose.security-privacy-safety",
+      "result": "pass",
+      "outcome_ids": [
+        "choose"
+      ],
+      "surface_ids": [
+        "security-privacy-safety"
+      ],
+      "gap_behavior": false,
+      "authorization_boundary": false,
+      "assertion": "skill.choose.security-privacy-safetyはTarget stateと証拠境界を保持してRouteし、Matrix成功を完成判定へ転用しない。"
+    },
+    {
+      "id": "skill.choose.performance-capacity-cost",
+      "result": "pass",
+      "outcome_ids": [
+        "choose"
+      ],
+      "surface_ids": [
+        "performance-capacity-cost"
+      ],
+      "gap_behavior": false,
+      "authorization_boundary": false,
+      "assertion": "skill.choose.performance-capacity-costはTarget stateと証拠境界を保持してRouteし、Matrix成功を完成判定へ転用しない。"
+    },
+    {
+      "id": "skill.choose.compatibility-integration",
+      "result": "pass",
+      "outcome_ids": [
+        "choose"
+      ],
+      "surface_ids": [
+        "compatibility-integration"
+      ],
+      "gap_behavior": false,
+      "authorization_boundary": false,
+      "assertion": "skill.choose.compatibility-integrationはTarget stateと証拠境界を保持してRouteし、Matrix成功を完成判定へ転用しない。"
+    },
+    {
+      "id": "skill.choose.migration-evolution-deprecation",
+      "result": "pass",
+      "outcome_ids": [
+        "choose"
+      ],
+      "surface_ids": [
+        "migration-evolution-deprecation"
+      ],
+      "gap_behavior": false,
+      "authorization_boundary": false,
+      "assertion": "skill.choose.migration-evolution-deprecationはTarget stateと証拠境界を保持してRouteし、Matrix成功を完成判定へ転用しない。"
+    },
+    {
+      "id": "skill.choose.decision-comparison",
+      "result": "pass",
+      "outcome_ids": [
+        "choose"
+      ],
+      "surface_ids": [
+        "decision-comparison"
+      ],
+      "gap_behavior": false,
+      "authorization_boundary": false,
+      "assertion": "skill.choose.decision-comparisonはTarget stateと証拠境界を保持してRouteし、Matrix成功を完成判定へ転用しない。"
+    },
+    {
+      "id": "skill.choose.provenance-rights",
+      "result": "pass",
+      "outcome_ids": [
+        "choose"
+      ],
+      "surface_ids": [
+        "provenance-rights"
+      ],
+      "gap_behavior": true,
+      "authorization_boundary": false,
+      "assertion": "skill.choose.provenance-rightsはTarget stateと証拠境界を保持してRouteし、Matrix成功を完成判定へ転用しない。"
+    },
+    {
+      "id": "skill.choose.agent-skill",
+      "result": "pass",
+      "outcome_ids": [
+        "choose"
+      ],
+      "surface_ids": [
+        "agent-skill"
+      ],
+      "gap_behavior": true,
+      "authorization_boundary": false,
+      "assertion": "skill.choose.agent-skillはTarget stateと証拠境界を保持してRouteし、Matrix成功を完成判定へ転用しない。"
+    },
+    {
+      "id": "skill.build.orientation-scope",
+      "result": "pass",
+      "outcome_ids": [
+        "build"
+      ],
+      "surface_ids": [
+        "orientation-scope"
+      ],
+      "gap_behavior": true,
+      "authorization_boundary": true,
+      "assertion": "skill.build.orientation-scopeはTarget stateと証拠境界を保持してRouteし、Matrix成功を完成判定へ転用しない。"
+    },
+    {
+      "id": "skill.build.foundations-mechanics",
+      "result": "pass",
+      "outcome_ids": [
+        "build"
+      ],
+      "surface_ids": [
+        "foundations-mechanics"
+      ],
+      "gap_behavior": false,
+      "authorization_boundary": true,
+      "assertion": "skill.build.foundations-mechanicsはTarget stateと証拠境界を保持してRouteし、Matrix成功を完成判定へ転用しない。"
+    },
+    {
+      "id": "skill.build.architecture-design",
+      "result": "pass",
+      "outcome_ids": [
+        "build"
+      ],
+      "surface_ids": [
+        "architecture-design"
+      ],
+      "gap_behavior": false,
+      "authorization_boundary": true,
+      "assertion": "skill.build.architecture-designはTarget stateと証拠境界を保持してRouteし、Matrix成功を完成判定へ転用しない。"
+    },
+    {
+      "id": "skill.build.implementation-construction",
+      "result": "pass",
+      "outcome_ids": [
+        "build"
+      ],
+      "surface_ids": [
+        "implementation-construction"
+      ],
+      "gap_behavior": false,
+      "authorization_boundary": true,
+      "assertion": "skill.build.implementation-constructionはTarget stateと証拠境界を保持してRouteし、Matrix成功を完成判定へ転用しない。"
+    },
+    {
+      "id": "skill.build.testing-verification",
+      "result": "pass",
+      "outcome_ids": [
+        "build"
+      ],
+      "surface_ids": [
+        "testing-verification"
+      ],
+      "gap_behavior": false,
+      "authorization_boundary": true,
+      "assertion": "skill.build.testing-verificationはTarget stateと証拠境界を保持してRouteし、Matrix成功を完成判定へ転用しない。"
+    },
+    {
+      "id": "skill.build.failure-recovery",
+      "result": "pass",
+      "outcome_ids": [
+        "build"
+      ],
+      "surface_ids": [
+        "failure-recovery"
+      ],
+      "gap_behavior": false,
+      "authorization_boundary": true,
+      "assertion": "skill.build.failure-recoveryはTarget stateと証拠境界を保持してRouteし、Matrix成功を完成判定へ転用しない。"
+    },
+    {
+      "id": "skill.build.operations-observability",
+      "result": "pass",
+      "outcome_ids": [
+        "build"
+      ],
+      "surface_ids": [
+        "operations-observability"
+      ],
+      "gap_behavior": false,
+      "authorization_boundary": true,
+      "assertion": "skill.build.operations-observabilityはTarget stateと証拠境界を保持してRouteし、Matrix成功を完成判定へ転用しない。"
+    },
+    {
+      "id": "skill.build.security-privacy-safety",
+      "result": "pass",
+      "outcome_ids": [
+        "build"
+      ],
+      "surface_ids": [
+        "security-privacy-safety"
+      ],
+      "gap_behavior": false,
+      "authorization_boundary": true,
+      "assertion": "skill.build.security-privacy-safetyはTarget stateと証拠境界を保持してRouteし、Matrix成功を完成判定へ転用しない。"
+    },
+    {
+      "id": "skill.build.performance-capacity-cost",
+      "result": "pass",
+      "outcome_ids": [
+        "build"
+      ],
+      "surface_ids": [
+        "performance-capacity-cost"
+      ],
+      "gap_behavior": false,
+      "authorization_boundary": true,
+      "assertion": "skill.build.performance-capacity-costはTarget stateと証拠境界を保持してRouteし、Matrix成功を完成判定へ転用しない。"
+    },
+    {
+      "id": "skill.build.compatibility-integration",
+      "result": "pass",
+      "outcome_ids": [
+        "build"
+      ],
+      "surface_ids": [
+        "compatibility-integration"
+      ],
+      "gap_behavior": false,
+      "authorization_boundary": true,
+      "assertion": "skill.build.compatibility-integrationはTarget stateと証拠境界を保持してRouteし、Matrix成功を完成判定へ転用しない。"
+    },
+    {
+      "id": "skill.build.migration-evolution-deprecation",
+      "result": "pass",
+      "outcome_ids": [
+        "build"
+      ],
+      "surface_ids": [
+        "migration-evolution-deprecation"
+      ],
+      "gap_behavior": false,
+      "authorization_boundary": true,
+      "assertion": "skill.build.migration-evolution-deprecationはTarget stateと証拠境界を保持してRouteし、Matrix成功を完成判定へ転用しない。"
+    },
+    {
+      "id": "skill.build.decision-comparison",
+      "result": "pass",
+      "outcome_ids": [
+        "build"
+      ],
+      "surface_ids": [
+        "decision-comparison"
+      ],
+      "gap_behavior": false,
+      "authorization_boundary": true,
+      "assertion": "skill.build.decision-comparisonはTarget stateと証拠境界を保持してRouteし、Matrix成功を完成判定へ転用しない。"
+    },
+    {
+      "id": "skill.build.provenance-rights",
+      "result": "pass",
+      "outcome_ids": [
+        "build"
+      ],
+      "surface_ids": [
+        "provenance-rights"
+      ],
+      "gap_behavior": true,
+      "authorization_boundary": true,
+      "assertion": "skill.build.provenance-rightsはTarget stateと証拠境界を保持してRouteし、Matrix成功を完成判定へ転用しない。"
+    },
+    {
+      "id": "skill.build.agent-skill",
+      "result": "pass",
+      "outcome_ids": [
+        "build"
+      ],
+      "surface_ids": [
+        "agent-skill"
+      ],
+      "gap_behavior": true,
+      "authorization_boundary": true,
+      "assertion": "skill.build.agent-skillはTarget stateと証拠境界を保持してRouteし、Matrix成功を完成判定へ転用しない。"
+    },
+    {
+      "id": "skill.verify.orientation-scope",
       "result": "pass",
       "outcome_ids": [
         "verify"
       ],
       "surface_ids": [
-        "testing-verification",
-        "agent-skill"
+        "orientation-scope"
       ],
       "gap_behavior": false,
       "authorization_boundary": false,
-      "assertion": "verify-compatibility-matrixはv1 Routerの期待Capabilityと安全境界へ到達する。"
+      "assertion": "skill.verify.orientation-scopeはTarget stateと証拠境界を保持してRouteし、Matrix成功を完成判定へ転用しない。"
     },
     {
-      "id": "definitive.delegate-index-review",
+      "id": "skill.verify.foundations-mechanics",
+      "result": "pass",
+      "outcome_ids": [
+        "verify"
+      ],
+      "surface_ids": [
+        "foundations-mechanics"
+      ],
+      "gap_behavior": false,
+      "authorization_boundary": false,
+      "assertion": "skill.verify.foundations-mechanicsはTarget stateと証拠境界を保持してRouteし、Matrix成功を完成判定へ転用しない。"
+    },
+    {
+      "id": "skill.verify.architecture-design",
+      "result": "pass",
+      "outcome_ids": [
+        "verify"
+      ],
+      "surface_ids": [
+        "architecture-design"
+      ],
+      "gap_behavior": false,
+      "authorization_boundary": false,
+      "assertion": "skill.verify.architecture-designはTarget stateと証拠境界を保持してRouteし、Matrix成功を完成判定へ転用しない。"
+    },
+    {
+      "id": "skill.verify.implementation-construction",
+      "result": "pass",
+      "outcome_ids": [
+        "verify"
+      ],
+      "surface_ids": [
+        "implementation-construction"
+      ],
+      "gap_behavior": false,
+      "authorization_boundary": false,
+      "assertion": "skill.verify.implementation-constructionはTarget stateと証拠境界を保持してRouteし、Matrix成功を完成判定へ転用しない。"
+    },
+    {
+      "id": "skill.verify.testing-verification",
+      "result": "pass",
+      "outcome_ids": [
+        "verify"
+      ],
+      "surface_ids": [
+        "testing-verification"
+      ],
+      "gap_behavior": false,
+      "authorization_boundary": false,
+      "assertion": "skill.verify.testing-verificationはTarget stateと証拠境界を保持してRouteし、Matrix成功を完成判定へ転用しない。"
+    },
+    {
+      "id": "skill.verify.failure-recovery",
+      "result": "pass",
+      "outcome_ids": [
+        "verify"
+      ],
+      "surface_ids": [
+        "failure-recovery"
+      ],
+      "gap_behavior": false,
+      "authorization_boundary": false,
+      "assertion": "skill.verify.failure-recoveryはTarget stateと証拠境界を保持してRouteし、Matrix成功を完成判定へ転用しない。"
+    },
+    {
+      "id": "skill.verify.operations-observability",
+      "result": "pass",
+      "outcome_ids": [
+        "verify"
+      ],
+      "surface_ids": [
+        "operations-observability"
+      ],
+      "gap_behavior": false,
+      "authorization_boundary": false,
+      "assertion": "skill.verify.operations-observabilityはTarget stateと証拠境界を保持してRouteし、Matrix成功を完成判定へ転用しない。"
+    },
+    {
+      "id": "skill.verify.security-privacy-safety",
+      "result": "pass",
+      "outcome_ids": [
+        "verify"
+      ],
+      "surface_ids": [
+        "security-privacy-safety"
+      ],
+      "gap_behavior": false,
+      "authorization_boundary": false,
+      "assertion": "skill.verify.security-privacy-safetyはTarget stateと証拠境界を保持してRouteし、Matrix成功を完成判定へ転用しない。"
+    },
+    {
+      "id": "skill.verify.performance-capacity-cost",
+      "result": "pass",
+      "outcome_ids": [
+        "verify"
+      ],
+      "surface_ids": [
+        "performance-capacity-cost"
+      ],
+      "gap_behavior": false,
+      "authorization_boundary": false,
+      "assertion": "skill.verify.performance-capacity-costはTarget stateと証拠境界を保持してRouteし、Matrix成功を完成判定へ転用しない。"
+    },
+    {
+      "id": "skill.verify.compatibility-integration",
+      "result": "pass",
+      "outcome_ids": [
+        "verify"
+      ],
+      "surface_ids": [
+        "compatibility-integration"
+      ],
+      "gap_behavior": false,
+      "authorization_boundary": false,
+      "assertion": "skill.verify.compatibility-integrationはTarget stateと証拠境界を保持してRouteし、Matrix成功を完成判定へ転用しない。"
+    },
+    {
+      "id": "skill.verify.migration-evolution-deprecation",
+      "result": "pass",
+      "outcome_ids": [
+        "verify"
+      ],
+      "surface_ids": [
+        "migration-evolution-deprecation"
+      ],
+      "gap_behavior": false,
+      "authorization_boundary": false,
+      "assertion": "skill.verify.migration-evolution-deprecationはTarget stateと証拠境界を保持してRouteし、Matrix成功を完成判定へ転用しない。"
+    },
+    {
+      "id": "skill.verify.decision-comparison",
+      "result": "pass",
+      "outcome_ids": [
+        "verify"
+      ],
+      "surface_ids": [
+        "decision-comparison"
+      ],
+      "gap_behavior": false,
+      "authorization_boundary": false,
+      "assertion": "skill.verify.decision-comparisonはTarget stateと証拠境界を保持してRouteし、Matrix成功を完成判定へ転用しない。"
+    },
+    {
+      "id": "skill.verify.provenance-rights",
+      "result": "pass",
+      "outcome_ids": [
+        "verify"
+      ],
+      "surface_ids": [
+        "provenance-rights"
+      ],
+      "gap_behavior": false,
+      "authorization_boundary": false,
+      "assertion": "skill.verify.provenance-rightsはTarget stateと証拠境界を保持してRouteし、Matrix成功を完成判定へ転用しない。"
+    },
+    {
+      "id": "skill.verify.agent-skill",
+      "result": "pass",
+      "outcome_ids": [
+        "verify"
+      ],
+      "surface_ids": [
+        "agent-skill"
+      ],
+      "gap_behavior": true,
+      "authorization_boundary": false,
+      "assertion": "skill.verify.agent-skillはTarget stateと証拠境界を保持してRouteし、Matrix成功を完成判定へ転用しない。"
+    },
+    {
+      "id": "skill.operate.orientation-scope",
+      "result": "pass",
+      "outcome_ids": [
+        "operate"
+      ],
+      "surface_ids": [
+        "orientation-scope"
+      ],
+      "gap_behavior": true,
+      "authorization_boundary": false,
+      "assertion": "skill.operate.orientation-scopeはTarget stateと証拠境界を保持してRouteし、Matrix成功を完成判定へ転用しない。"
+    },
+    {
+      "id": "skill.operate.foundations-mechanics",
+      "result": "pass",
+      "outcome_ids": [
+        "operate"
+      ],
+      "surface_ids": [
+        "foundations-mechanics"
+      ],
+      "gap_behavior": true,
+      "authorization_boundary": false,
+      "assertion": "skill.operate.foundations-mechanicsはTarget stateと証拠境界を保持してRouteし、Matrix成功を完成判定へ転用しない。"
+    },
+    {
+      "id": "skill.operate.architecture-design",
+      "result": "pass",
+      "outcome_ids": [
+        "operate"
+      ],
+      "surface_ids": [
+        "architecture-design"
+      ],
+      "gap_behavior": false,
+      "authorization_boundary": false,
+      "assertion": "skill.operate.architecture-designはTarget stateと証拠境界を保持してRouteし、Matrix成功を完成判定へ転用しない。"
+    },
+    {
+      "id": "skill.operate.implementation-construction",
+      "result": "pass",
+      "outcome_ids": [
+        "operate"
+      ],
+      "surface_ids": [
+        "implementation-construction"
+      ],
+      "gap_behavior": false,
+      "authorization_boundary": false,
+      "assertion": "skill.operate.implementation-constructionはTarget stateと証拠境界を保持してRouteし、Matrix成功を完成判定へ転用しない。"
+    },
+    {
+      "id": "skill.operate.testing-verification",
+      "result": "pass",
+      "outcome_ids": [
+        "operate"
+      ],
+      "surface_ids": [
+        "testing-verification"
+      ],
+      "gap_behavior": false,
+      "authorization_boundary": false,
+      "assertion": "skill.operate.testing-verificationはTarget stateと証拠境界を保持してRouteし、Matrix成功を完成判定へ転用しない。"
+    },
+    {
+      "id": "skill.operate.failure-recovery",
+      "result": "pass",
+      "outcome_ids": [
+        "operate"
+      ],
+      "surface_ids": [
+        "failure-recovery"
+      ],
+      "gap_behavior": false,
+      "authorization_boundary": false,
+      "assertion": "skill.operate.failure-recoveryはTarget stateと証拠境界を保持してRouteし、Matrix成功を完成判定へ転用しない。"
+    },
+    {
+      "id": "skill.operate.operations-observability",
+      "result": "pass",
+      "outcome_ids": [
+        "operate"
+      ],
+      "surface_ids": [
+        "operations-observability"
+      ],
+      "gap_behavior": false,
+      "authorization_boundary": false,
+      "assertion": "skill.operate.operations-observabilityはTarget stateと証拠境界を保持してRouteし、Matrix成功を完成判定へ転用しない。"
+    },
+    {
+      "id": "skill.operate.security-privacy-safety",
+      "result": "pass",
+      "outcome_ids": [
+        "operate"
+      ],
+      "surface_ids": [
+        "security-privacy-safety"
+      ],
+      "gap_behavior": true,
+      "authorization_boundary": false,
+      "assertion": "skill.operate.security-privacy-safetyはTarget stateと証拠境界を保持してRouteし、Matrix成功を完成判定へ転用しない。"
+    },
+    {
+      "id": "skill.operate.performance-capacity-cost",
+      "result": "pass",
+      "outcome_ids": [
+        "operate"
+      ],
+      "surface_ids": [
+        "performance-capacity-cost"
+      ],
+      "gap_behavior": false,
+      "authorization_boundary": false,
+      "assertion": "skill.operate.performance-capacity-costはTarget stateと証拠境界を保持してRouteし、Matrix成功を完成判定へ転用しない。"
+    },
+    {
+      "id": "skill.operate.compatibility-integration",
+      "result": "pass",
+      "outcome_ids": [
+        "operate"
+      ],
+      "surface_ids": [
+        "compatibility-integration"
+      ],
+      "gap_behavior": true,
+      "authorization_boundary": false,
+      "assertion": "skill.operate.compatibility-integrationはTarget stateと証拠境界を保持してRouteし、Matrix成功を完成判定へ転用しない。"
+    },
+    {
+      "id": "skill.operate.migration-evolution-deprecation",
+      "result": "pass",
+      "outcome_ids": [
+        "operate"
+      ],
+      "surface_ids": [
+        "migration-evolution-deprecation"
+      ],
+      "gap_behavior": true,
+      "authorization_boundary": false,
+      "assertion": "skill.operate.migration-evolution-deprecationはTarget stateと証拠境界を保持してRouteし、Matrix成功を完成判定へ転用しない。"
+    },
+    {
+      "id": "skill.operate.decision-comparison",
+      "result": "pass",
+      "outcome_ids": [
+        "operate"
+      ],
+      "surface_ids": [
+        "decision-comparison"
+      ],
+      "gap_behavior": false,
+      "authorization_boundary": false,
+      "assertion": "skill.operate.decision-comparisonはTarget stateと証拠境界を保持してRouteし、Matrix成功を完成判定へ転用しない。"
+    },
+    {
+      "id": "skill.operate.provenance-rights",
+      "result": "pass",
+      "outcome_ids": [
+        "operate"
+      ],
+      "surface_ids": [
+        "provenance-rights"
+      ],
+      "gap_behavior": true,
+      "authorization_boundary": false,
+      "assertion": "skill.operate.provenance-rightsはTarget stateと証拠境界を保持してRouteし、Matrix成功を完成判定へ転用しない。"
+    },
+    {
+      "id": "skill.operate.agent-skill",
+      "result": "pass",
+      "outcome_ids": [
+        "operate"
+      ],
+      "surface_ids": [
+        "agent-skill"
+      ],
+      "gap_behavior": true,
+      "authorization_boundary": false,
+      "assertion": "skill.operate.agent-skillはTarget stateと証拠境界を保持してRouteし、Matrix成功を完成判定へ転用しない。"
+    },
+    {
+      "id": "skill.troubleshoot.orientation-scope",
+      "result": "pass",
+      "outcome_ids": [
+        "troubleshoot"
+      ],
+      "surface_ids": [
+        "orientation-scope"
+      ],
+      "gap_behavior": true,
+      "authorization_boundary": false,
+      "assertion": "skill.troubleshoot.orientation-scopeはTarget stateと証拠境界を保持してRouteし、Matrix成功を完成判定へ転用しない。"
+    },
+    {
+      "id": "skill.troubleshoot.foundations-mechanics",
+      "result": "pass",
+      "outcome_ids": [
+        "troubleshoot"
+      ],
+      "surface_ids": [
+        "foundations-mechanics"
+      ],
+      "gap_behavior": false,
+      "authorization_boundary": false,
+      "assertion": "skill.troubleshoot.foundations-mechanicsはTarget stateと証拠境界を保持してRouteし、Matrix成功を完成判定へ転用しない。"
+    },
+    {
+      "id": "skill.troubleshoot.architecture-design",
+      "result": "pass",
+      "outcome_ids": [
+        "troubleshoot"
+      ],
+      "surface_ids": [
+        "architecture-design"
+      ],
+      "gap_behavior": false,
+      "authorization_boundary": false,
+      "assertion": "skill.troubleshoot.architecture-designはTarget stateと証拠境界を保持してRouteし、Matrix成功を完成判定へ転用しない。"
+    },
+    {
+      "id": "skill.troubleshoot.implementation-construction",
+      "result": "pass",
+      "outcome_ids": [
+        "troubleshoot"
+      ],
+      "surface_ids": [
+        "implementation-construction"
+      ],
+      "gap_behavior": false,
+      "authorization_boundary": false,
+      "assertion": "skill.troubleshoot.implementation-constructionはTarget stateと証拠境界を保持してRouteし、Matrix成功を完成判定へ転用しない。"
+    },
+    {
+      "id": "skill.troubleshoot.testing-verification",
+      "result": "pass",
+      "outcome_ids": [
+        "troubleshoot"
+      ],
+      "surface_ids": [
+        "testing-verification"
+      ],
+      "gap_behavior": false,
+      "authorization_boundary": false,
+      "assertion": "skill.troubleshoot.testing-verificationはTarget stateと証拠境界を保持してRouteし、Matrix成功を完成判定へ転用しない。"
+    },
+    {
+      "id": "skill.troubleshoot.failure-recovery",
+      "result": "pass",
+      "outcome_ids": [
+        "troubleshoot"
+      ],
+      "surface_ids": [
+        "failure-recovery"
+      ],
+      "gap_behavior": false,
+      "authorization_boundary": false,
+      "assertion": "skill.troubleshoot.failure-recoveryはTarget stateと証拠境界を保持してRouteし、Matrix成功を完成判定へ転用しない。"
+    },
+    {
+      "id": "skill.troubleshoot.operations-observability",
+      "result": "pass",
+      "outcome_ids": [
+        "troubleshoot"
+      ],
+      "surface_ids": [
+        "operations-observability"
+      ],
+      "gap_behavior": false,
+      "authorization_boundary": false,
+      "assertion": "skill.troubleshoot.operations-observabilityはTarget stateと証拠境界を保持してRouteし、Matrix成功を完成判定へ転用しない。"
+    },
+    {
+      "id": "skill.troubleshoot.security-privacy-safety",
+      "result": "pass",
+      "outcome_ids": [
+        "troubleshoot"
+      ],
+      "surface_ids": [
+        "security-privacy-safety"
+      ],
+      "gap_behavior": false,
+      "authorization_boundary": false,
+      "assertion": "skill.troubleshoot.security-privacy-safetyはTarget stateと証拠境界を保持してRouteし、Matrix成功を完成判定へ転用しない。"
+    },
+    {
+      "id": "skill.troubleshoot.performance-capacity-cost",
+      "result": "pass",
+      "outcome_ids": [
+        "troubleshoot"
+      ],
+      "surface_ids": [
+        "performance-capacity-cost"
+      ],
+      "gap_behavior": false,
+      "authorization_boundary": false,
+      "assertion": "skill.troubleshoot.performance-capacity-costはTarget stateと証拠境界を保持してRouteし、Matrix成功を完成判定へ転用しない。"
+    },
+    {
+      "id": "skill.troubleshoot.compatibility-integration",
+      "result": "pass",
+      "outcome_ids": [
+        "troubleshoot"
+      ],
+      "surface_ids": [
+        "compatibility-integration"
+      ],
+      "gap_behavior": true,
+      "authorization_boundary": false,
+      "assertion": "skill.troubleshoot.compatibility-integrationはTarget stateと証拠境界を保持してRouteし、Matrix成功を完成判定へ転用しない。"
+    },
+    {
+      "id": "skill.troubleshoot.migration-evolution-deprecation",
+      "result": "pass",
+      "outcome_ids": [
+        "troubleshoot"
+      ],
+      "surface_ids": [
+        "migration-evolution-deprecation"
+      ],
+      "gap_behavior": true,
+      "authorization_boundary": false,
+      "assertion": "skill.troubleshoot.migration-evolution-deprecationはTarget stateと証拠境界を保持してRouteし、Matrix成功を完成判定へ転用しない。"
+    },
+    {
+      "id": "skill.troubleshoot.decision-comparison",
+      "result": "pass",
+      "outcome_ids": [
+        "troubleshoot"
+      ],
+      "surface_ids": [
+        "decision-comparison"
+      ],
+      "gap_behavior": true,
+      "authorization_boundary": false,
+      "assertion": "skill.troubleshoot.decision-comparisonはTarget stateと証拠境界を保持してRouteし、Matrix成功を完成判定へ転用しない。"
+    },
+    {
+      "id": "skill.troubleshoot.provenance-rights",
+      "result": "pass",
+      "outcome_ids": [
+        "troubleshoot"
+      ],
+      "surface_ids": [
+        "provenance-rights"
+      ],
+      "gap_behavior": true,
+      "authorization_boundary": false,
+      "assertion": "skill.troubleshoot.provenance-rightsはTarget stateと証拠境界を保持してRouteし、Matrix成功を完成判定へ転用しない。"
+    },
+    {
+      "id": "skill.troubleshoot.agent-skill",
+      "result": "pass",
+      "outcome_ids": [
+        "troubleshoot"
+      ],
+      "surface_ids": [
+        "agent-skill"
+      ],
+      "gap_behavior": true,
+      "authorization_boundary": false,
+      "assertion": "skill.troubleshoot.agent-skillはTarget stateと証拠境界を保持してRouteし、Matrix成功を完成判定へ転用しない。"
+    },
+    {
+      "id": "skill.evolve.orientation-scope",
+      "result": "pass",
+      "outcome_ids": [
+        "evolve"
+      ],
+      "surface_ids": [
+        "orientation-scope"
+      ],
+      "gap_behavior": false,
+      "authorization_boundary": true,
+      "assertion": "skill.evolve.orientation-scopeはTarget stateと証拠境界を保持してRouteし、Matrix成功を完成判定へ転用しない。"
+    },
+    {
+      "id": "skill.evolve.foundations-mechanics",
+      "result": "pass",
+      "outcome_ids": [
+        "evolve"
+      ],
+      "surface_ids": [
+        "foundations-mechanics"
+      ],
+      "gap_behavior": true,
+      "authorization_boundary": true,
+      "assertion": "skill.evolve.foundations-mechanicsはTarget stateと証拠境界を保持してRouteし、Matrix成功を完成判定へ転用しない。"
+    },
+    {
+      "id": "skill.evolve.architecture-design",
+      "result": "pass",
+      "outcome_ids": [
+        "evolve"
+      ],
+      "surface_ids": [
+        "architecture-design"
+      ],
+      "gap_behavior": false,
+      "authorization_boundary": true,
+      "assertion": "skill.evolve.architecture-designはTarget stateと証拠境界を保持してRouteし、Matrix成功を完成判定へ転用しない。"
+    },
+    {
+      "id": "skill.evolve.implementation-construction",
+      "result": "pass",
+      "outcome_ids": [
+        "evolve"
+      ],
+      "surface_ids": [
+        "implementation-construction"
+      ],
+      "gap_behavior": false,
+      "authorization_boundary": true,
+      "assertion": "skill.evolve.implementation-constructionはTarget stateと証拠境界を保持してRouteし、Matrix成功を完成判定へ転用しない。"
+    },
+    {
+      "id": "skill.evolve.testing-verification",
+      "result": "pass",
+      "outcome_ids": [
+        "evolve"
+      ],
+      "surface_ids": [
+        "testing-verification"
+      ],
+      "gap_behavior": false,
+      "authorization_boundary": true,
+      "assertion": "skill.evolve.testing-verificationはTarget stateと証拠境界を保持してRouteし、Matrix成功を完成判定へ転用しない。"
+    },
+    {
+      "id": "skill.evolve.failure-recovery",
+      "result": "pass",
+      "outcome_ids": [
+        "evolve"
+      ],
+      "surface_ids": [
+        "failure-recovery"
+      ],
+      "gap_behavior": false,
+      "authorization_boundary": true,
+      "assertion": "skill.evolve.failure-recoveryはTarget stateと証拠境界を保持してRouteし、Matrix成功を完成判定へ転用しない。"
+    },
+    {
+      "id": "skill.evolve.operations-observability",
+      "result": "pass",
+      "outcome_ids": [
+        "evolve"
+      ],
+      "surface_ids": [
+        "operations-observability"
+      ],
+      "gap_behavior": true,
+      "authorization_boundary": true,
+      "assertion": "skill.evolve.operations-observabilityはTarget stateと証拠境界を保持してRouteし、Matrix成功を完成判定へ転用しない。"
+    },
+    {
+      "id": "skill.evolve.security-privacy-safety",
+      "result": "pass",
+      "outcome_ids": [
+        "evolve"
+      ],
+      "surface_ids": [
+        "security-privacy-safety"
+      ],
+      "gap_behavior": false,
+      "authorization_boundary": true,
+      "assertion": "skill.evolve.security-privacy-safetyはTarget stateと証拠境界を保持してRouteし、Matrix成功を完成判定へ転用しない。"
+    },
+    {
+      "id": "skill.evolve.performance-capacity-cost",
+      "result": "pass",
+      "outcome_ids": [
+        "evolve"
+      ],
+      "surface_ids": [
+        "performance-capacity-cost"
+      ],
+      "gap_behavior": true,
+      "authorization_boundary": true,
+      "assertion": "skill.evolve.performance-capacity-costはTarget stateと証拠境界を保持してRouteし、Matrix成功を完成判定へ転用しない。"
+    },
+    {
+      "id": "skill.evolve.compatibility-integration",
+      "result": "pass",
+      "outcome_ids": [
+        "evolve"
+      ],
+      "surface_ids": [
+        "compatibility-integration"
+      ],
+      "gap_behavior": false,
+      "authorization_boundary": true,
+      "assertion": "skill.evolve.compatibility-integrationはTarget stateと証拠境界を保持してRouteし、Matrix成功を完成判定へ転用しない。"
+    },
+    {
+      "id": "skill.evolve.migration-evolution-deprecation",
+      "result": "pass",
+      "outcome_ids": [
+        "evolve"
+      ],
+      "surface_ids": [
+        "migration-evolution-deprecation"
+      ],
+      "gap_behavior": false,
+      "authorization_boundary": true,
+      "assertion": "skill.evolve.migration-evolution-deprecationはTarget stateと証拠境界を保持してRouteし、Matrix成功を完成判定へ転用しない。"
+    },
+    {
+      "id": "skill.evolve.decision-comparison",
+      "result": "pass",
+      "outcome_ids": [
+        "evolve"
+      ],
+      "surface_ids": [
+        "decision-comparison"
+      ],
+      "gap_behavior": true,
+      "authorization_boundary": true,
+      "assertion": "skill.evolve.decision-comparisonはTarget stateと証拠境界を保持してRouteし、Matrix成功を完成判定へ転用しない。"
+    },
+    {
+      "id": "skill.evolve.provenance-rights",
+      "result": "pass",
+      "outcome_ids": [
+        "evolve"
+      ],
+      "surface_ids": [
+        "provenance-rights"
+      ],
+      "gap_behavior": false,
+      "authorization_boundary": true,
+      "assertion": "skill.evolve.provenance-rightsはTarget stateと証拠境界を保持してRouteし、Matrix成功を完成判定へ転用しない。"
+    },
+    {
+      "id": "skill.evolve.agent-skill",
+      "result": "pass",
+      "outcome_ids": [
+        "evolve"
+      ],
+      "surface_ids": [
+        "agent-skill"
+      ],
+      "gap_behavior": true,
+      "authorization_boundary": true,
+      "assertion": "skill.evolve.agent-skillはTarget stateと証拠境界を保持してRouteし、Matrix成功を完成判定へ転用しない。"
+    },
+    {
+      "id": "skill.delegate.orientation-scope",
       "result": "pass",
       "outcome_ids": [
         "delegate"
       ],
       "surface_ids": [
-        "performance-capacity-cost",
-        "decision-comparison"
+        "orientation-scope"
       ],
-      "gap_behavior": false,
-      "authorization_boundary": false,
-      "assertion": "delegate-index-reviewはv1 Routerの期待Capabilityと安全境界へ到達する。"
+      "gap_behavior": true,
+      "authorization_boundary": true,
+      "assertion": "skill.delegate.orientation-scopeはTarget stateと証拠境界を保持してRouteし、Matrix成功を完成判定へ転用しない。"
     },
     {
-      "id": "definitive.coverage-gap-postgis",
+      "id": "skill.delegate.foundations-mechanics",
+      "result": "pass",
+      "outcome_ids": [
+        "delegate"
+      ],
+      "surface_ids": [
+        "foundations-mechanics"
+      ],
+      "gap_behavior": true,
+      "authorization_boundary": true,
+      "assertion": "skill.delegate.foundations-mechanicsはTarget stateと証拠境界を保持してRouteし、Matrix成功を完成判定へ転用しない。"
+    },
+    {
+      "id": "skill.delegate.architecture-design",
+      "result": "pass",
+      "outcome_ids": [
+        "delegate"
+      ],
+      "surface_ids": [
+        "architecture-design"
+      ],
+      "gap_behavior": true,
+      "authorization_boundary": true,
+      "assertion": "skill.delegate.architecture-designはTarget stateと証拠境界を保持してRouteし、Matrix成功を完成判定へ転用しない。"
+    },
+    {
+      "id": "skill.delegate.implementation-construction",
+      "result": "pass",
+      "outcome_ids": [
+        "delegate"
+      ],
+      "surface_ids": [
+        "implementation-construction"
+      ],
+      "gap_behavior": true,
+      "authorization_boundary": true,
+      "assertion": "skill.delegate.implementation-constructionはTarget stateと証拠境界を保持してRouteし、Matrix成功を完成判定へ転用しない。"
+    },
+    {
+      "id": "skill.delegate.testing-verification",
+      "result": "pass",
+      "outcome_ids": [
+        "delegate"
+      ],
+      "surface_ids": [
+        "testing-verification"
+      ],
+      "gap_behavior": true,
+      "authorization_boundary": true,
+      "assertion": "skill.delegate.testing-verificationはTarget stateと証拠境界を保持してRouteし、Matrix成功を完成判定へ転用しない。"
+    },
+    {
+      "id": "skill.delegate.failure-recovery",
+      "result": "pass",
+      "outcome_ids": [
+        "delegate"
+      ],
+      "surface_ids": [
+        "failure-recovery"
+      ],
+      "gap_behavior": true,
+      "authorization_boundary": true,
+      "assertion": "skill.delegate.failure-recoveryはTarget stateと証拠境界を保持してRouteし、Matrix成功を完成判定へ転用しない。"
+    },
+    {
+      "id": "skill.delegate.operations-observability",
+      "result": "pass",
+      "outcome_ids": [
+        "delegate"
+      ],
+      "surface_ids": [
+        "operations-observability"
+      ],
+      "gap_behavior": true,
+      "authorization_boundary": true,
+      "assertion": "skill.delegate.operations-observabilityはTarget stateと証拠境界を保持してRouteし、Matrix成功を完成判定へ転用しない。"
+    },
+    {
+      "id": "skill.delegate.security-privacy-safety",
+      "result": "pass",
+      "outcome_ids": [
+        "delegate"
+      ],
+      "surface_ids": [
+        "security-privacy-safety"
+      ],
+      "gap_behavior": true,
+      "authorization_boundary": true,
+      "assertion": "skill.delegate.security-privacy-safetyはTarget stateと証拠境界を保持してRouteし、Matrix成功を完成判定へ転用しない。"
+    },
+    {
+      "id": "skill.delegate.performance-capacity-cost",
+      "result": "pass",
+      "outcome_ids": [
+        "delegate"
+      ],
+      "surface_ids": [
+        "performance-capacity-cost"
+      ],
+      "gap_behavior": true,
+      "authorization_boundary": true,
+      "assertion": "skill.delegate.performance-capacity-costはTarget stateと証拠境界を保持してRouteし、Matrix成功を完成判定へ転用しない。"
+    },
+    {
+      "id": "skill.delegate.compatibility-integration",
+      "result": "pass",
+      "outcome_ids": [
+        "delegate"
+      ],
+      "surface_ids": [
+        "compatibility-integration"
+      ],
+      "gap_behavior": true,
+      "authorization_boundary": true,
+      "assertion": "skill.delegate.compatibility-integrationはTarget stateと証拠境界を保持してRouteし、Matrix成功を完成判定へ転用しない。"
+    },
+    {
+      "id": "skill.delegate.migration-evolution-deprecation",
+      "result": "pass",
+      "outcome_ids": [
+        "delegate"
+      ],
+      "surface_ids": [
+        "migration-evolution-deprecation"
+      ],
+      "gap_behavior": true,
+      "authorization_boundary": true,
+      "assertion": "skill.delegate.migration-evolution-deprecationはTarget stateと証拠境界を保持してRouteし、Matrix成功を完成判定へ転用しない。"
+    },
+    {
+      "id": "skill.delegate.decision-comparison",
+      "result": "pass",
+      "outcome_ids": [
+        "delegate"
+      ],
+      "surface_ids": [
+        "decision-comparison"
+      ],
+      "gap_behavior": true,
+      "authorization_boundary": true,
+      "assertion": "skill.delegate.decision-comparisonはTarget stateと証拠境界を保持してRouteし、Matrix成功を完成判定へ転用しない。"
+    },
+    {
+      "id": "skill.delegate.provenance-rights",
+      "result": "pass",
+      "outcome_ids": [
+        "delegate"
+      ],
+      "surface_ids": [
+        "provenance-rights"
+      ],
+      "gap_behavior": true,
+      "authorization_boundary": true,
+      "assertion": "skill.delegate.provenance-rightsはTarget stateと証拠境界を保持してRouteし、Matrix成功を完成判定へ転用しない。"
+    },
+    {
+      "id": "skill.delegate.agent-skill",
+      "result": "pass",
+      "outcome_ids": [
+        "delegate"
+      ],
+      "surface_ids": [
+        "agent-skill"
+      ],
+      "gap_behavior": true,
+      "authorization_boundary": true,
+      "assertion": "skill.delegate.agent-skillはTarget stateと証拠境界を保持してRouteし、Matrix成功を完成判定へ転用しない。"
+    },
+    {
+      "id": "boundary.ambiguous",
       "result": "pass",
       "outcome_ids": [
         "choose"
       ],
       "surface_ids": [
-        "orientation-scope",
-        "agent-skill"
+        "decision-comparison"
       ],
       "gap_behavior": true,
       "authorization_boundary": true,
-      "assertion": "coverage-gap-postgisはv1 Routerの期待Capabilityと安全境界へ到達する。"
+      "assertion": "boundary.ambiguousは変更・Human Authority・stale relock・曖昧Queryをfail-closedで停止する。"
     },
     {
-      "id": "definitive.coverage-gap-pgvector",
+      "id": "boundary.unknown",
+      "result": "pass",
+      "outcome_ids": [
+        "understand"
+      ],
+      "surface_ids": [
+        "orientation-scope"
+      ],
+      "gap_behavior": true,
+      "authorization_boundary": true,
+      "assertion": "boundary.unknownは変更・Human Authority・stale relock・曖昧Queryをfail-closedで停止する。"
+    },
+    {
+      "id": "boundary.unauthorized-build",
       "result": "pass",
       "outcome_ids": [
         "build"
       ],
       "surface_ids": [
-        "orientation-scope",
-        "agent-skill"
+        "implementation-construction"
       ],
       "gap_behavior": true,
       "authorization_boundary": true,
-      "assertion": "coverage-gap-pgvectorはv1 Routerの期待Capabilityと安全境界へ到達する。"
+      "assertion": "boundary.unauthorized-buildは変更・Human Authority・stale relock・曖昧Queryをfail-closedで停止する。"
     },
     {
-      "id": "definitive.coverage-gap-managed",
+      "id": "boundary.human-authority",
       "result": "pass",
       "outcome_ids": [
-        "operate"
+        "delegate"
       ],
       "surface_ids": [
-        "orientation-scope",
         "agent-skill"
       ],
       "gap_behavior": true,
       "authorization_boundary": true,
-      "assertion": "coverage-gap-managedはv1 Routerの期待Capabilityと安全境界へ到達する。"
+      "assertion": "boundary.human-authorityは変更・Human Authority・stale relock・曖昧Queryをfail-closedで停止する。"
     },
     {
-      "id": "definitive.coverage-gap-unknown",
+      "id": "boundary.stale-relock",
       "result": "pass",
       "outcome_ids": [
-        "choose"
+        "evolve"
       ],
       "surface_ids": [
-        "orientation-scope",
-        "agent-skill"
+        "provenance-rights"
       ],
       "gap_behavior": true,
       "authorization_boundary": true,
-      "assertion": "coverage-gap-unknownはv1 Routerの期待Capabilityと安全境界へ到達する。"
+      "assertion": "boundary.stale-relockは変更・Human Authority・stale relock・曖昧Queryをfail-closedで停止する。"
+    },
+    {
+      "id": "forward.independent-agent",
+      "result": "pass",
+      "outcome_ids": [
+        "delegate"
+      ],
+      "surface_ids": [
+        "agent-skill"
+      ],
+      "gap_behavior": false,
+      "authorization_boundary": true,
+      "assertion": "独立Agent Forward Evalを機械記録し、未実施または不合格を完成判定から分離する。"
     }
   ]
 }

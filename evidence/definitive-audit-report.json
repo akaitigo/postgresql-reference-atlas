@@ -775,17 +775,57 @@
     "open_targets": 55
   },
   "skill": {
-    "cases": 30,
+    "core_cases": 118,
+    "matrix_cells": 112,
+    "bounded_evidence_routes": 72,
+    "routing_gaps": 40,
+    "boundary_cases": 5,
+    "independent_agent_forward_eval": "pass",
+    "matrix_pass_counts_as_completion": false,
     "missing_outcomes": [
 
     ],
     "missing_surfaces": [
-      "foundations-mechanics",
-      "architecture-design",
-      "implementation-construction",
-      "provenance-rights"
+
     ],
     "unrouted_targets": [
+      "query.types-constraints",
+      "query.catalog-inventory",
+      "query.extension",
+      "performance.statistics",
+      "operations.backup-recovery",
+      "operations.observability",
+      "operations.wal",
+      "operations.pitr-recovery",
+      "operations.replication",
+      "operations.logical-replication",
+      "operations.maintenance",
+      "lifecycle.pg-upgrade",
+      "skill.router-evaluation",
+      "query.sql-commands",
+      "query.runtime-types",
+      "query.runtime-functions",
+      "query.runtime-operators",
+      "query.runtime-casts",
+      "query.system-catalogs",
+      "operations.gucs",
+      "integration.protocol",
+      "integration.client-tools",
+      "performance.planner-methods",
+      "performance.index-methods",
+      "query.partition-methods",
+      "security.authentication",
+      "security.authorization",
+      "operations.checkpoint",
+      "operations.backup-methods",
+      "operations.replication-ha",
+      "operations.logical-modes",
+      "operations.vacuum-bloat",
+      "operations.resource-limits",
+      "operations.corruption-recovery",
+      "performance.capacity-comparison"
+    ],
+    "legacy_router_unrouted_targets": [
       "concurrency.transactions-isolation",
       "foundation.reference-system",
       "integration.client-tools",
@@ -814,6 +854,747 @@
       "security.authorization",
       "skill.definitive-proof-routing",
       "skill.router-evaluation"
+    ],
+    "target_states": [
+      {
+        "id": "foundation.version-lock",
+        "target_set": "foundation",
+        "requirement": "required",
+        "state": "covered",
+        "claim_ids": [
+          "foundation.version-lock"
+        ],
+        "evidence_ids": [
+          "foundation.authority-lock"
+        ],
+        "matrix_routes": 8
+      },
+      {
+        "id": "foundation.authority-lock",
+        "target_set": "foundation",
+        "requirement": "required",
+        "state": "covered",
+        "claim_ids": [
+          "foundation.authority-lock"
+        ],
+        "evidence_ids": [
+          "foundation.authority-lock",
+          "lab.authority-lock"
+        ],
+        "matrix_routes": 3
+      },
+      {
+        "id": "query.sql-surface",
+        "target_set": "query",
+        "requirement": "required",
+        "state": "covered",
+        "claim_ids": [
+          "query.sql-surface"
+        ],
+        "evidence_ids": [
+          "lab.sql",
+          "lab.sql-surface"
+        ],
+        "matrix_routes": 10
+      },
+      {
+        "id": "query.types-constraints",
+        "target_set": "query",
+        "requirement": "required",
+        "state": "covered",
+        "claim_ids": [
+          "query.types-constraints"
+        ],
+        "evidence_ids": [
+          "lab.types-constraints"
+        ],
+        "matrix_routes": 0
+      },
+      {
+        "id": "query.catalog-inventory",
+        "target_set": "query",
+        "requirement": "required",
+        "state": "covered",
+        "claim_ids": [
+          "query.catalog-inventory"
+        ],
+        "evidence_ids": [
+          "lab.catalog-inventory"
+        ],
+        "matrix_routes": 0
+      },
+      {
+        "id": "query.partitioning",
+        "target_set": "query",
+        "requirement": "required",
+        "state": "covered",
+        "claim_ids": [
+          "query.partitioning"
+        ],
+        "evidence_ids": [
+          "lab.partitioning"
+        ],
+        "matrix_routes": 9
+      },
+      {
+        "id": "query.extension",
+        "target_set": "query",
+        "requirement": "required",
+        "state": "covered",
+        "claim_ids": [
+          "query.extension"
+        ],
+        "evidence_ids": [
+          "lab.extension"
+        ],
+        "matrix_routes": 0
+      },
+      {
+        "id": "query.security",
+        "target_set": "query",
+        "requirement": "required",
+        "state": "covered",
+        "claim_ids": [
+          "query.security"
+        ],
+        "evidence_ids": [
+          "lab.security"
+        ],
+        "matrix_routes": 5
+      },
+      {
+        "id": "concurrency.mvcc",
+        "target_set": "concurrency",
+        "requirement": "required",
+        "state": "covered",
+        "claim_ids": [
+          "concurrency.mvcc"
+        ],
+        "evidence_ids": [
+          "lab.mvcc"
+        ],
+        "matrix_routes": 8
+      },
+      {
+        "id": "concurrency.locking",
+        "target_set": "concurrency",
+        "requirement": "required",
+        "state": "covered",
+        "claim_ids": [
+          "concurrency.locking"
+        ],
+        "evidence_ids": [
+          "lab.locking"
+        ],
+        "matrix_routes": 2
+      },
+      {
+        "id": "concurrency.deadlock",
+        "target_set": "concurrency",
+        "requirement": "required",
+        "state": "covered",
+        "claim_ids": [
+          "concurrency.deadlock"
+        ],
+        "evidence_ids": [
+          "lab.deadlock"
+        ],
+        "matrix_routes": 7
+      },
+      {
+        "id": "performance.planner",
+        "target_set": "performance",
+        "requirement": "required",
+        "state": "covered",
+        "claim_ids": [
+          "performance.planner"
+        ],
+        "evidence_ids": [
+          "lab.planner"
+        ],
+        "matrix_routes": 10
+      },
+      {
+        "id": "performance.statistics",
+        "target_set": "performance",
+        "requirement": "required",
+        "state": "covered",
+        "claim_ids": [
+          "performance.statistics"
+        ],
+        "evidence_ids": [
+          "lab.statistics"
+        ],
+        "matrix_routes": 0
+      },
+      {
+        "id": "performance.index",
+        "target_set": "performance",
+        "requirement": "required",
+        "state": "covered",
+        "claim_ids": [
+          "performance.index"
+        ],
+        "evidence_ids": [
+          "lab.index"
+        ],
+        "matrix_routes": 2
+      },
+      {
+        "id": "performance.execution",
+        "target_set": "performance",
+        "requirement": "required",
+        "state": "covered",
+        "claim_ids": [
+          "performance.execution"
+        ],
+        "evidence_ids": [
+          "lab.performance"
+        ],
+        "matrix_routes": 8
+      },
+      {
+        "id": "operations.backup-recovery",
+        "target_set": "operations",
+        "requirement": "required",
+        "state": "covered",
+        "claim_ids": [
+          "operations.backup-recovery"
+        ],
+        "evidence_ids": [
+          "lab.backup-recovery"
+        ],
+        "matrix_routes": 0
+      },
+      {
+        "id": "operations.observability",
+        "target_set": "operations",
+        "requirement": "required",
+        "state": "covered",
+        "claim_ids": [
+          "operations.observability"
+        ],
+        "evidence_ids": [
+          "lab.observability"
+        ],
+        "matrix_routes": 0
+      },
+      {
+        "id": "operations.wal",
+        "target_set": "operations",
+        "requirement": "required",
+        "state": "covered",
+        "claim_ids": [
+          "operations.wal"
+        ],
+        "evidence_ids": [
+          "lab.wal"
+        ],
+        "matrix_routes": 0
+      },
+      {
+        "id": "operations.pitr-recovery",
+        "target_set": "operations",
+        "requirement": "required",
+        "state": "covered",
+        "claim_ids": [
+          "operations.pitr-recovery"
+        ],
+        "evidence_ids": [
+          "lab.pitr"
+        ],
+        "matrix_routes": 0
+      },
+      {
+        "id": "operations.replication",
+        "target_set": "operations",
+        "requirement": "required",
+        "state": "covered",
+        "claim_ids": [
+          "operations.replication"
+        ],
+        "evidence_ids": [
+          "lab.replication"
+        ],
+        "matrix_routes": 0
+      },
+      {
+        "id": "operations.logical-replication",
+        "target_set": "operations",
+        "requirement": "required",
+        "state": "covered",
+        "claim_ids": [
+          "operations.logical-replication"
+        ],
+        "evidence_ids": [
+          "lab.logical-replication"
+        ],
+        "matrix_routes": 0
+      },
+      {
+        "id": "operations.failure-injection",
+        "target_set": "operations",
+        "requirement": "required",
+        "state": "covered",
+        "claim_ids": [
+          "operations.failure-injection"
+        ],
+        "evidence_ids": [
+          "lab.failure-injection"
+        ],
+        "matrix_routes": 1
+      },
+      {
+        "id": "operations.maintenance",
+        "target_set": "operations",
+        "requirement": "required",
+        "state": "covered",
+        "claim_ids": [
+          "operations.maintenance"
+        ],
+        "evidence_ids": [
+          "lab.maintenance"
+        ],
+        "matrix_routes": 0
+      },
+      {
+        "id": "lifecycle.schema-migration",
+        "target_set": "lifecycle",
+        "requirement": "required",
+        "state": "covered",
+        "claim_ids": [
+          "lifecycle.schema-migration"
+        ],
+        "evidence_ids": [
+          "lab.migration"
+        ],
+        "matrix_routes": 10
+      },
+      {
+        "id": "lifecycle.upgrade",
+        "target_set": "lifecycle",
+        "requirement": "required",
+        "state": "covered",
+        "claim_ids": [
+          "lifecycle.upgrade"
+        ],
+        "evidence_ids": [
+          "lab.upgrade"
+        ],
+        "matrix_routes": 1
+      },
+      {
+        "id": "lifecycle.pg-upgrade",
+        "target_set": "lifecycle",
+        "requirement": "required",
+        "state": "covered",
+        "claim_ids": [
+          "lifecycle.pg-upgrade"
+        ],
+        "evidence_ids": [
+          "lab.pg-upgrade"
+        ],
+        "matrix_routes": 0
+      },
+      {
+        "id": "lifecycle.compatibility-matrix",
+        "target_set": "lifecycle",
+        "requirement": "required",
+        "state": "covered",
+        "claim_ids": [
+          "lifecycle.compatibility-matrix"
+        ],
+        "evidence_ids": [
+          "lab.compatibility-matrix"
+        ],
+        "matrix_routes": 9
+      },
+      {
+        "id": "skill.router-evaluation",
+        "target_set": "skill",
+        "requirement": "required",
+        "state": "covered",
+        "claim_ids": [
+          "skill.router"
+        ],
+        "evidence_ids": [
+          "skill.router-eval"
+        ],
+        "matrix_routes": 0
+      },
+      {
+        "id": "publication.provenance",
+        "target_set": "publication",
+        "requirement": "required",
+        "state": "covered",
+        "claim_ids": [
+          "publication.provenance"
+        ],
+        "evidence_ids": [
+          "publication.static-gates"
+        ],
+        "matrix_routes": 6
+      },
+      {
+        "id": "query.sql-commands",
+        "target_set": "query",
+        "requirement": "required",
+        "state": "partial",
+        "claim_ids": [
+          "query.sql-surface"
+        ],
+        "evidence_ids": [
+          "lab.sql-surface",
+          "lab.sql"
+        ],
+        "matrix_routes": 0
+      },
+      {
+        "id": "query.runtime-types",
+        "target_set": "query",
+        "requirement": "required",
+        "state": "partial",
+        "claim_ids": [
+          "query.types-constraints"
+        ],
+        "evidence_ids": [
+          "lab.catalog-inventory",
+          "lab.types-constraints"
+        ],
+        "matrix_routes": 0
+      },
+      {
+        "id": "query.runtime-functions",
+        "target_set": "query",
+        "requirement": "required",
+        "state": "planned",
+        "claim_ids": [
+
+        ],
+        "evidence_ids": [
+
+        ],
+        "matrix_routes": 0
+      },
+      {
+        "id": "query.runtime-operators",
+        "target_set": "query",
+        "requirement": "required",
+        "state": "planned",
+        "claim_ids": [
+
+        ],
+        "evidence_ids": [
+
+        ],
+        "matrix_routes": 0
+      },
+      {
+        "id": "query.runtime-casts",
+        "target_set": "query",
+        "requirement": "required",
+        "state": "planned",
+        "claim_ids": [
+
+        ],
+        "evidence_ids": [
+
+        ],
+        "matrix_routes": 0
+      },
+      {
+        "id": "query.system-catalogs",
+        "target_set": "query",
+        "requirement": "required",
+        "state": "partial",
+        "claim_ids": [
+          "query.catalog-inventory"
+        ],
+        "evidence_ids": [
+          "lab.catalog-inventory"
+        ],
+        "matrix_routes": 0
+      },
+      {
+        "id": "operations.gucs",
+        "target_set": "operations",
+        "requirement": "required",
+        "state": "planned",
+        "claim_ids": [
+
+        ],
+        "evidence_ids": [
+
+        ],
+        "matrix_routes": 0
+      },
+      {
+        "id": "integration.protocol",
+        "target_set": "query",
+        "requirement": "required",
+        "state": "planned",
+        "claim_ids": [
+
+        ],
+        "evidence_ids": [
+
+        ],
+        "matrix_routes": 0
+      },
+      {
+        "id": "integration.client-tools",
+        "target_set": "lifecycle",
+        "requirement": "required",
+        "state": "partial",
+        "claim_ids": [
+          "lifecycle.compatibility-matrix"
+        ],
+        "evidence_ids": [
+          "lab.compatibility-matrix"
+        ],
+        "matrix_routes": 0
+      },
+      {
+        "id": "concurrency.transactions-isolation",
+        "target_set": "concurrency",
+        "requirement": "required",
+        "state": "partial",
+        "claim_ids": [
+          "concurrency.mvcc"
+        ],
+        "evidence_ids": [
+          "lab.mvcc"
+        ],
+        "matrix_routes": 1
+      },
+      {
+        "id": "performance.planner-methods",
+        "target_set": "performance",
+        "requirement": "required",
+        "state": "partial",
+        "claim_ids": [
+          "performance.planner"
+        ],
+        "evidence_ids": [
+          "lab.planner",
+          "lab.statistics"
+        ],
+        "matrix_routes": 0
+      },
+      {
+        "id": "performance.index-methods",
+        "target_set": "performance",
+        "requirement": "required",
+        "state": "partial",
+        "claim_ids": [
+          "performance.index"
+        ],
+        "evidence_ids": [
+          "lab.index",
+          "lab.extension"
+        ],
+        "matrix_routes": 0
+      },
+      {
+        "id": "query.partition-methods",
+        "target_set": "query",
+        "requirement": "required",
+        "state": "partial",
+        "claim_ids": [
+          "query.partitioning"
+        ],
+        "evidence_ids": [
+          "lab.partitioning"
+        ],
+        "matrix_routes": 0
+      },
+      {
+        "id": "security.authentication",
+        "target_set": "query",
+        "requirement": "required",
+        "state": "planned",
+        "claim_ids": [
+
+        ],
+        "evidence_ids": [
+
+        ],
+        "matrix_routes": 0
+      },
+      {
+        "id": "security.authorization",
+        "target_set": "query",
+        "requirement": "required",
+        "state": "partial",
+        "claim_ids": [
+          "query.security"
+        ],
+        "evidence_ids": [
+          "lab.security"
+        ],
+        "matrix_routes": 0
+      },
+      {
+        "id": "operations.checkpoint",
+        "target_set": "operations",
+        "requirement": "required",
+        "state": "partial",
+        "claim_ids": [
+          "operations.wal"
+        ],
+        "evidence_ids": [
+          "lab.wal"
+        ],
+        "matrix_routes": 0
+      },
+      {
+        "id": "operations.backup-methods",
+        "target_set": "operations",
+        "requirement": "required",
+        "state": "partial",
+        "claim_ids": [
+          "operations.backup-recovery"
+        ],
+        "evidence_ids": [
+          "lab.backup-recovery",
+          "lab.pitr"
+        ],
+        "matrix_routes": 0
+      },
+      {
+        "id": "operations.replication-ha",
+        "target_set": "operations",
+        "requirement": "required",
+        "state": "partial",
+        "claim_ids": [
+          "operations.replication"
+        ],
+        "evidence_ids": [
+          "lab.replication"
+        ],
+        "matrix_routes": 0
+      },
+      {
+        "id": "operations.logical-modes",
+        "target_set": "operations",
+        "requirement": "required",
+        "state": "partial",
+        "claim_ids": [
+          "operations.logical-replication"
+        ],
+        "evidence_ids": [
+          "lab.logical-replication"
+        ],
+        "matrix_routes": 0
+      },
+      {
+        "id": "operations.vacuum-bloat",
+        "target_set": "operations",
+        "requirement": "required",
+        "state": "partial",
+        "claim_ids": [
+          "operations.maintenance"
+        ],
+        "evidence_ids": [
+          "lab.maintenance"
+        ],
+        "matrix_routes": 0
+      },
+      {
+        "id": "operations.resource-limits",
+        "target_set": "operations",
+        "requirement": "required",
+        "state": "planned",
+        "claim_ids": [
+
+        ],
+        "evidence_ids": [
+
+        ],
+        "matrix_routes": 0
+      },
+      {
+        "id": "operations.corruption-recovery",
+        "target_set": "operations",
+        "requirement": "required",
+        "state": "planned",
+        "claim_ids": [
+
+        ],
+        "evidence_ids": [
+
+        ],
+        "matrix_routes": 0
+      },
+      {
+        "id": "lifecycle.upgrade-matrix",
+        "target_set": "lifecycle",
+        "requirement": "required",
+        "state": "partial",
+        "claim_ids": [
+          "lifecycle.upgrade",
+          "lifecycle.pg-upgrade",
+          "lifecycle.compatibility-matrix"
+        ],
+        "evidence_ids": [
+          "lab.upgrade",
+          "lab.pg-upgrade",
+          "lab.compatibility-matrix"
+        ],
+        "matrix_routes": 1
+      },
+      {
+        "id": "operations.runbook-exercises",
+        "target_set": "operations",
+        "requirement": "required",
+        "state": "planned",
+        "claim_ids": [
+
+        ],
+        "evidence_ids": [
+
+        ],
+        "matrix_routes": 1
+      },
+      {
+        "id": "foundation.reference-system",
+        "target_set": "foundation",
+        "requirement": "required",
+        "state": "partial",
+        "claim_ids": [
+          "foundation.reference-system.runtime-slice"
+        ],
+        "evidence_ids": [
+          "lab.reference-system"
+        ],
+        "matrix_routes": 2
+      },
+      {
+        "id": "performance.capacity-comparison",
+        "target_set": "performance",
+        "requirement": "required",
+        "state": "planned",
+        "claim_ids": [
+
+        ],
+        "evidence_ids": [
+
+        ],
+        "matrix_routes": 0
+      },
+      {
+        "id": "skill.definitive-proof-routing",
+        "target_set": "skill",
+        "requirement": "required",
+        "state": "planned",
+        "claim_ids": [
+
+        ],
+        "evidence_ids": [
+
+        ],
+        "matrix_routes": 8
+      }
     ]
   },
   "structural_gaps": [

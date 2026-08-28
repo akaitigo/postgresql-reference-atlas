@@ -8,7 +8,7 @@ Repository statusは`incomplete`。v1 Certificateは29 Targetに限定された`
 - Authority: PostgreSQL 18.6文書、Release、REL_18_6 Source、14.24〜18.6 RuntimeをDigestと実Versionで照合
 - Query: 公式SQL Command 183件を固定し、型、Constraint、Catalog、Partition、Extension、RLSの代表意味論Evidenceへ接続
 - Concurrency / Performance / Operations / Lifecycle: MVCC、Lock、Deadlock、Planner、Statistics、Index、WAL、Recovery、Backup、Replication、Failure Injection、Upgrade、MigrationをVersion固定Labで実証
-- Skill: v1 Router 30 Case、Core v1必須8 Category、合格率100%
+- Skill: v1 Router 30 Caseを保持。Definitive routingは8 Outcome × 14 Surfaceの112 Cell、mutation/Human Authority/stale relock/曖昧・未知Queryの5停止境界、全56 Target stateを機械記録
 - Publication: Apache-2.0、NOTICE、第三者Manifest、SPDX 2.3 SBOM、Provenance、秘密情報Gate
 
 ## Definitive再監査
@@ -21,7 +21,7 @@ Repository statusは`incomplete`。v1 Certificateは29 Targetに限定された`
 - Coverageを56 required Targetへ細分化
 - v1 Evidenceから69 Scenario Rowを再利用したが、Definitive未Closure Targetは55件
 - 全Scenario分類113,400 Row中113,331 Row、必須Scenario 43,544 Row中43,510 Rowが未接続
-- Router未到達Targetは28件。Skill Evalは14 Surface中4 Surfaceが不足
+- Definitive Skill Matrixは112/112 contract passだが、bounded evidence route 72 / routing gap 40。Targetはcovered 29 / partial 16 / planned 11で、Matrix passをcompletionへ算入しない
 - 統合Reference SystemはSecurity、Partition、Planner、Lock、WAL、ObservabilityのRuntime Sliceを実装済み。Backup/PITR/Replication/Upgrade統合、複数方式Comparison、Runbook演習、現行Definitive Certificateは未実装
 - FE Depth Reference 18軸はsatisfied 1 / partial 17。PostgreSQL技術分野監査は15分野中15分野がincomplete、未Closure軸29。Core Depth Parityは`completion_status: incomplete`
 
@@ -40,7 +40,7 @@ Repository statusは`incomplete`。v1 Certificateは29 Targetに限定された`
 
 ## 再現性
 
-各v1 EvidenceはSource Lock、Environment Manifest、Harness Manifest、Artifact DigestとSizeを維持する。`make authority-body-verify`はunique document、tool/source digest、raw selector、stale/failed、pending-human、昇格0の境界を検査する。`make authority-review-verify`は全anchorのqueue接続、stale hold、priority/cluster/batchの提案境界、一次資料Human decisionのreviewer/time/reason/digest/locator/mapping/result整合を検査する。`make authority-body-non-regression-audit`はDocument/anchor stable IDを専用Baselineと照合する。`make definitive-audit`はGap Ledgerを検査し、`make definitive-gate`は全Proofが閉じるまで失敗する。
+各v1 EvidenceはSource Lock、Environment Manifest、Harness Manifest、Artifact DigestとSizeを維持する。`make authority-body-verify`はunique document、tool/source digest、raw selector、stale/failed、pending-human、昇格0の境界を検査する。`make authority-review-verify`は全anchorのqueue接続、stale hold、priority/cluster/batchの提案境界、一次資料Human decisionのreviewer/time/reason/digest/locator/mapping/result整合を検査する。`make definitive-skill-eval-verify`は112 Cell、5停止境界、Target/Variant/Authority/Evidence、query plan/WAL/runtime binding、全Target state、独立Agent記録と非completion境界を検査する。`make definitive-audit`はGap Ledgerを検査し、`make definitive-gate`は全Proofが閉じるまで失敗する。
 
 ## 外部阻害要因
 

@@ -63,6 +63,24 @@ authority_review_queue:
     require_reviewer_time_reason_digest_locator_mapping_result_consistency: true
     stale_documents_are_held: true
     count_queue_items_as_depth_achievement: false
+definitive_skill_eval:
+  reference:
+    repository: frontend-behavior-atlas
+    commit: 8a9e34a89a55cc53702032783c06ede7246a286f
+    files:
+      - {path: scripts/lib/definitive-skill-eval.ts, digest: "sha256:8209f3deb47eff03a2f88822a7a2af52dd9a3a3d44b74e88e42e84e2c3d1b5b6", size_bytes: 14502}
+      - {path: .agents/skills/fe-behavior-advisor/scripts/advisor-router.mjs, digest: "sha256:993326210fecfafa4843d9c11929cddc5bd93c2c9fac6c85a79b9dcf43120c07", size_bytes: 11194}
+      - {path: .agents/skills/fe-behavior-advisor/references/mastery-contract.json, digest: "sha256:f2d6ec5bc979cacaee6a8086654449b739d1b88a36134ea8c72b109baf5f376e", size_bytes: 12132}
+      - {path: evals/fe-behavior-advisor.definitive-skill-eval.json, digest: "sha256:566c9f3cea248f49c24f769c88695b10c15bbdb956c08bcfa68dbe7e96c18d0a", size_bytes: 747614}
+  routing_eval: evals/postgresql-atlas.definitive-routing-eval.json
+  forward_eval: evals/postgresql-atlas.forward-agent-eval.json
+  policy:
+    matrix_pass_counts_as_completion: false
+    require_mutation_authorization: true
+    human_authority_and_stale_relock_fail_closed: true
+    ambiguous_and_unknown_query_fail_closed: true
+    require_all_target_states: true
+    require_independent_agent_forward_eval_record: true
 axes:
   - id: authority-body-digestion
     portable_criterion: 対象分野の母集団を自己申告Scopeではなく一次資料本文または固定Surface Artifactから導き、全本文をDigest固定し、Locator単位で分類・Reviewする。
@@ -158,8 +176,8 @@ axes:
     portable_criterion: Skillが8 Outcome、14 Surface、曖昧Query、Coverage Gap、権限境界、実装・診断・移行・Reviewを実行Evidence付きで扱う。
     postgresql_denominator: outcome × surface × risk/coverage-gap class × task result
     status: partial
-    evidence: [evals/postgresql-atlas.definitive-skill-eval.json, evidence/definitive-audit-report.json]
-    gaps: [4 Surfaceと28 Targetが未到達で、変更結果を判定する専用End-to-End Oracleがない。]
+    evidence: [evals/postgresql-atlas.definitive-skill-eval.json, evals/postgresql-atlas.definitive-routing-eval.json, evals/postgresql-atlas.forward-agent-eval.json, evidence/definitive-audit-report.json]
+    gaps: [112 Cellの契約評価、5停止境界、全56 Target stateは機械記録したが、40 CellはTarget-set、Target state、専用Evidenceのrouting gapである。Matrix passと独立Agent結果はSubject completionへ算入しない。]
   - id: rights-provenance
     portable_criterion: Code、Authority、Dependency、再配布義務を別々に追跡し、不明またはReview待ちなら公開をFail closedにする。
     postgresql_denominator: repository files × authority artifacts × runtime images × transitive publication dependencies

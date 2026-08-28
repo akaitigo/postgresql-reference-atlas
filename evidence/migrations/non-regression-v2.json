@@ -19,6 +19,54 @@
         "Core Go testとPostgreSQL make testが成功する",
         "公開mainのCI Stepと27 Lab Matrixを保持する"
       ]
+    },
+    {
+      "id": "skill-instructions-definitive-eval-addition",
+      "result": "pass",
+      "assertions": [
+        "既存Router Skillの参照・実行・安全境界を削除しない",
+        "Definitive Planは未知・曖昧・未承認変更・人手Authority判断・stale relockをfail-closedにする"
+      ]
+    },
+    {
+      "id": "skill-eval-runner-definitive-eval-addition",
+      "result": "pass",
+      "assertions": [
+        "既存30件のRouter Evalを変更せず先に実行する",
+        "112 Matrix、5 Boundary、独立Forward Evalを追加実行し、matrix passを完成判定へ転用しない"
+      ]
+    },
+    {
+      "id": "skill-package-definitive-eval-addition",
+      "result": "pass",
+      "assertions": [
+        "既存minimum_pass_rate 1.0を維持する",
+        "Definitive Routing EvalとForward Evalの生成物をpackageへ加法的に列挙する"
+      ]
+    },
+    {
+      "id": "skill-eval-entity-definitive-case-addition",
+      "result": "pass",
+      "assertions": [
+        "既存30件のCase IDとAssertionを保持する",
+        "30/30 passを再実行してSkill Eval entityへ記録する"
+      ]
+    },
+    {
+      "id": "skill-eval-harness-definitive-addition",
+      "result": "pass",
+      "assertions": [
+        "Harness entryを削除しない",
+        "変更されたSkill説明とEval runnerを現行SHA-256へ再固定する"
+      ]
+    },
+    {
+      "id": "skill-router-evidence-definitive-addition",
+      "result": "pass",
+      "assertions": [
+        "既存Router Artifactの30/30 passを保持する",
+        "Harness manifestとEvidence記録のdigest整合を検証する"
+      ]
     }
   ],
   "verdict": "pass"

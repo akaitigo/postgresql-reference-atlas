@@ -66,6 +66,47 @@ generated_at="$(date -u '+%Y-%m-%dT%H:%M:%SZ')"
 jq -n --arg generated_at "$generated_at" --argjson results "$results" \
   '{schema_version:1,id:"skill.postgresql-router",atlas_id:"postgresql-reference-atlas",atlas_release:"v1.0.0",skill_id:"postgresql-atlas",generated_at:$generated_at,cases:($results | map({id,category,result:.verdict,assertion:(.id + " は期待したCapability、Coverage、安全境界へ正しくRoutingされる。"),evidence_ids:["skill.router-eval"]}))}' \
   > "$eval_entity"
-record_evidence skill-router-eval skill.router skill-eval local "make eval" "$report" pass \
-  "$ROOT/evals" skill.router-eval "$ROOT/.agents/skills/postgresql-atlas"
+manifest="$ROOT/evidence/harnesses/skill-router-eval.manifest"
+paths_file="$(mktemp)"
+find "$ROOT/scripts" "$ROOT/.agents/skills/postgresql-atlas" -type f -print \
+  | sed "s#^$ROOT/##" >> "$paths_file"
+printf '%s\n' \
+  evals/cases.json \
+  evals/run.sh \
+  evals/postgresql-router.skill-eval.json >> "$paths_file"
+: > "$manifest"
+while IFS= read -r relative; do
+  printf '%s  %s\n' "$(sha256_file "$ROOT/$relative")" "$relative" >> "$manifest"
+done < <(LC_ALL=C sort -u "$paths_file")
+rm -f "$paths_file"
+source_digest="$(sha256_file "$ROOT/sources.lock.yaml")"
+environment_digest="$(sha256_file "$ROOT/environments/local.yaml")"
+harness_digest="$(sha256_file "$manifest")"
+artifact_digest="$(sha256_file "$report")"
+artifact_size="$(wc -c < "$report" | tr -d ' ')"
+cat > "$ROOT/evidence/skill-router-eval.evidence.yaml" <<EOF
+schema_version: 1
+id: skill.router-eval
+atlas_id: postgresql-reference-atlas
+claim_ids: [skill.router]
+kind: skill-eval
+producer: postgresql-reference-atlas
+command: make eval
+created_at: "${generated_at}"
+environment:
+  profile: local
+  manifest_digest: sha256:${environment_digest}
+source_digest: sha256:${source_digest}
+harness_digest: sha256:${harness_digest}
+harness_path: evidence/harnesses/skill-router-eval.manifest
+artifact:
+  uri: evidence/artifacts/skill-router-eval.json
+  digest: sha256:${artifact_digest}
+  media_type: application/json
+  size_bytes: ${artifact_size}
+verdict: pass
+retention: git
+EOF
 echo "Router Skill Evalを通過しました: $passed/$total"
+ruby "$ROOT/tools/generate-definitive-skill-eval.rb"
+ruby "$ROOT/tools/verify-definitive-skill-eval.rb"

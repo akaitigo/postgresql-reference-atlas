@@ -19,3 +19,51 @@ replacements:
     proof_type: version-forward-compatible
     migration_evidence: evidence/migrations/non-regression-v2.json
     reason: v1互換Gateを保持した子孫commitへ更新し、FE Depth ReferenceとDefinitive Gate v2を加法的に利用するため。
+  - id: skill-instructions-definitive-eval-addition
+    old_id: file:.agents/skills/postgresql-atlas/SKILL.md
+    new_id: file:.agents/skills/postgresql-atlas/SKILL.md
+    old_value: sha256:f51a7e7401d380e1677990a927d29f2b7fb500220e19ba56ef3bac9f22fcf104
+    new_value: sha256:5b4896d1d9511a5c551c557821606cb1651b244949fd3c4715ea6cb5ee1850f0
+    proof_type: runtime-equivalent
+    migration_evidence: evidence/migrations/non-regression-v2.json
+    reason: 既存Routerの安全境界と利用手順を保持したまま、Definitive Routing Planとfail-closed停止条件を加法的に明示するため。
+  - id: skill-eval-runner-definitive-eval-addition
+    old_id: file:evals/run.sh
+    new_id: file:evals/run.sh
+    old_value: sha256:599cb182ffabc6cada637578a76a387a2563288955f947f790103b3f8f32d984
+    new_value: sha256:700c4e4db8f7d9750efc7143c017b5c26a36470c41286976f3a03262fb779916
+    proof_type: runtime-equivalent
+    migration_evidence: evidence/migrations/non-regression-v2.json
+    reason: 既存30件のRouter Evalを先に全件実行し、その後に112セルと境界・Forward Eval検証を加法的に実行するため。
+  - id: skill-package-definitive-eval-addition
+    old_id: file:skill.package.yaml
+    new_id: file:skill.package.yaml
+    old_value: sha256:5eb7cba98dbaa87007a45a679f649d8e8c135cb10d2e9ac89a3eab0fb5961432
+    new_value: sha256:d6e756d443340f559a1e30aacb21b2e25de351b7cab763f0af2fefa8a8df9154
+    proof_type: runtime-equivalent
+    migration_evidence: evidence/migrations/non-regression-v2.json
+    reason: 既存Skill packageと合格閾値を維持し、Definitive Routing Evalと独立Forward Evalを生成物として追加するため。
+  - id: skill-eval-entity-definitive-case-addition
+    old_id: file:evals/postgresql-router.skill-eval.json
+    new_id: file:evals/postgresql-router.skill-eval.json
+    old_value: sha256:0e09ab0c0855af117e1df58e166c2f207078fb62ffd0df6fb45863029cc6089a
+    new_value: sha256:64b8a580e69e655b027f81f4de42c150350df3b9cb1a8c7d9349ee0bede73e2f
+    proof_type: runtime-equivalent
+    migration_evidence: evidence/migrations/non-regression-v2.json
+    reason: 既存30件のCase ID、Assertion、合格結果を維持し、再実行時刻だけを更新したSkill Eval entityへ再固定するため。
+  - id: skill-eval-harness-definitive-addition
+    old_id: file:evidence/harnesses/skill-router-eval.manifest
+    new_id: file:evidence/harnesses/skill-router-eval.manifest
+    old_value: sha256:6ae8427b29b0475de6bbd75a289c9e2c51f09aec9bff35e4a15af4c4426d2489
+    new_value: sha256:a0d9514a5747aaa22f22b941c88488dd5ee8b7caa6becfad33f15c62aba1d296
+    proof_type: runtime-equivalent
+    migration_evidence: evidence/migrations/non-regression-v2.json
+    reason: 既存Router Eval harnessを保持し、加法変更したSkill説明とEval runnerの現行digestへ再固定するため。
+  - id: skill-router-evidence-definitive-addition
+    old_id: file:evidence/skill-router-eval.evidence.yaml
+    new_id: file:evidence/skill-router-eval.evidence.yaml
+    old_value: sha256:dc5fc381bc3368137c7a4575756f8a4aa6cdb591485a00880f3e4e19f5b2f3b4
+    new_value: sha256:d0485b649d1782b276f25731e95183ccdaa3e6d718dfd53bb733ffa8f8f7d53f
+    proof_type: runtime-equivalent
+    migration_evidence: evidence/migrations/non-regression-v2.json
+    reason: 既存30件Router Evalのpass Artifactを再実行し、現行Harness Digestと生成時刻をEvidenceへ再固定するため。

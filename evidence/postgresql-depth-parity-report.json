@@ -153,6 +153,32 @@
     "document_floor": "398/398",
     "status": "pass"
   },
+  "definitive_skill_eval": {
+    "outcomes": 8,
+    "surfaces": 14,
+    "matrix_cells": 112,
+    "contract_passed": 112,
+    "contract_failed": 0,
+    "bounded_evidence_routes": 72,
+    "routing_gaps": 40,
+    "boundary_cases": 5,
+    "boundary_passed": 5,
+    "boundary_failed": 0,
+    "targets": 56,
+    "covered_targets": 29,
+    "partial_targets": 16,
+    "planned_targets": 11,
+    "independent_agent_forward_eval": "pass",
+    "matrix_pass_counts_as_completion": false
+  },
+  "independent_agent_forward_eval": {
+    "status": "evaluated-not-completion-certificate",
+    "reviewer": "independent-codex-agent:/root/pg_skill_forward_eval",
+    "evaluated_commit": "b2ea671dcb86da27ca98c9c200b1b0c21bfbbb00; dirty-reviewed",
+    "prompt_digest": "sha256:9d298b117613de3e6042972bd41ffe8d297c347739502b485e41f828682d8b65",
+    "result": "pass",
+    "completion_credit": false
+  },
   "denominator": {
     "generated_mapping_candidates": 11340,
     "raw_anchor_candidates": 5512,

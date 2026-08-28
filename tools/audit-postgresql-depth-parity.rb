@@ -18,6 +18,8 @@ body_inventory = JSON.parse(File.read(File.join(root, "authority/body-inventory.
 review_queue = JSON.parse(File.read(File.join(root, "authority/review-queue.snapshot.json")))
 review_ledger = JSON.parse(File.read(File.join(root, "authority/reviews/decisions.json")))
 body_non_regression = JSON.parse(File.read(File.join(root, "evidence/authority-body-non-regression-report.json")))
+definitive_skill_routing = JSON.parse(File.read(File.join(root, "evals/postgresql-atlas.definitive-routing-eval.json")))
+forward_agent_eval = JSON.parse(File.read(File.join(root, "evals/postgresql-atlas.forward-agent-eval.json")))
 
 required_axes = %w[
   authority-body-digestion surface-atomic-behavior-variant real-runtime-lab
@@ -111,6 +113,31 @@ errors << "Manual primary-source review policy" unless review_policy.fetch("requ
 errors << "Review decision binding policy" unless review_policy.fetch("require_reviewer_time_reason_digest_locator_mapping_result_consistency") == true
 errors << "Stale hold policy" unless review_policy.fetch("stale_documents_are_held") == true
 errors << "Review queue cannot count as Depth" unless review_policy.fetch("count_queue_items_as_depth_achievement") == false
+skill_contract = mapping.fetch("definitive_skill_eval")
+skill_reference = skill_contract.fetch("reference")
+errors << "FE definitive skill reference commit" unless skill_reference.fetch("commit") == "8a9e34a89a55cc53702032783c06ede7246a286f"
+expected_skill_reference_files = {
+  "scripts/lib/definitive-skill-eval.ts"=>["sha256:8209f3deb47eff03a2f88822a7a2af52dd9a3a3d44b74e88e42e84e2c3d1b5b6", 14_502],
+  ".agents/skills/fe-behavior-advisor/scripts/advisor-router.mjs"=>["sha256:993326210fecfafa4843d9c11929cddc5bd93c2c9fac6c85a79b9dcf43120c07", 11_194],
+  ".agents/skills/fe-behavior-advisor/references/mastery-contract.json"=>["sha256:f2d6ec5bc979cacaee6a8086654449b739d1b88a36134ea8c72b109baf5f376e", 12_132],
+  "evals/fe-behavior-advisor.definitive-skill-eval.json"=>["sha256:566c9f3cea248f49c24f769c88695b10c15bbdb956c08bcfa68dbe7e96c18d0a", 747_614]
+}
+locked_skill_reference_files = skill_reference.fetch("files").to_h { |item| [item.fetch("path"), [item.fetch("digest"), item.fetch("size_bytes")]] }
+errors << "FE definitive skill reference file lock" unless locked_skill_reference_files == expected_skill_reference_files
+if File.directory?(File.join(frontend_repo, ".git"))
+  skill_reference_verified = expected_skill_reference_files.all? do |relative, (expected_digest, expected_size)|
+    body, _stderr, status = Open3.capture3("git", "-C", frontend_repo, "show", "8a9e34a89a55cc53702032783c06ede7246a286f:#{relative}")
+    status.success? && body.bytesize == expected_size && "sha256:#{Digest::SHA256.hexdigest(body)}" == expected_digest
+  end
+  errors << "FE definitive skill reference source verification" unless skill_reference_verified
+end
+skill_policy = skill_contract.fetch("policy")
+errors << "Skill matrix completion boundary" unless skill_policy.fetch("matrix_pass_counts_as_completion") == false
+errors << "Skill authorization boundary" unless skill_policy.fetch("require_mutation_authorization") == true
+errors << "Skill human/stale boundary" unless skill_policy.fetch("human_authority_and_stale_relock_fail_closed") == true
+errors << "Skill ambiguous/unknown boundary" unless skill_policy.fetch("ambiguous_and_unknown_query_fail_closed") == true
+errors << "Skill all Target state policy" unless skill_policy.fetch("require_all_target_states") == true
+errors << "Skill independent Agent record policy" unless skill_policy.fetch("require_independent_agent_forward_eval_record") == true
 axes = mapping.fetch("axes")
 errors << "18 axes" unless axes.map { |axis| axis.fetch("id") } == required_axes
 errors << "FE canonical axes" unless Array(reference_document["axes"]).map { |axis| axis.fetch("id") } == required_axes
@@ -173,6 +200,14 @@ errors << "Authority review complete queue" unless review_summary.fetch("queued_
 errors << "Authority review decisions start empty" unless review_ledger.fetch("decisions") == [] && review_summary.fetch("decisions") == 0
 errors << "Authority review hold disclosure" unless review_summary.fetch("stale_document_holds") == 0 && review_summary.fetch("unavailable_document_holds") == 8
 errors << "Authority review semantic boundary" unless review_queue.fetch("semantic_decisions") == "human-only" && review_summary.fetch("authority_semantics_exhaustive") == false && review_summary.fetch("queue_counts_as_depth_achievement") == false
+skill_summary = definitive_skill_routing.fetch("summary")
+errors << "Definitive Skill 8x14 matrix" unless skill_summary.fetch("outcomes") == 8 && skill_summary.fetch("surfaces") == 14 && skill_summary.fetch("matrix_cells") == 112 && skill_summary.fetch("contract_passed") == 112 && skill_summary.fetch("contract_failed") == 0
+errors << "Definitive Skill routing gap disclosure" unless skill_summary.fetch("bounded_evidence_routes") + skill_summary.fetch("routing_gaps") == 112 && skill_summary.fetch("routing_gaps") > 0
+errors << "Definitive Skill Target states" unless skill_summary.fetch("targets") == 56 && skill_summary.fetch("covered_targets") == 29 && skill_summary.fetch("partial_targets") == 16 && skill_summary.fetch("planned_targets") == 11
+errors << "Definitive Skill Matrix cannot complete Subject" unless skill_summary.fetch("matrix_pass_counts_as_completion") == false
+errors << "Definitive Skill boundary cases" unless skill_summary.fetch("boundary_cases") == 5 && skill_summary.fetch("boundary_passed") == 5 && skill_summary.fetch("boundary_failed") == 0
+errors << "Independent Agent Forward Eval binding" unless definitive_skill_routing.fetch("independent_agent_forward_eval") == forward_agent_eval
+errors << "Independent Agent Forward Eval completion boundary" unless forward_agent_eval.fetch("completion_credit") == false && %w[pass fail inconclusive].include?(forward_agent_eval.fetch("result"))
 row_keys = matrix.fetch("rows").map { |row| [row.fetch("behavior_id"), row.fetch("scenario")] }.uniq
 surface_scenarios = {
   "failure-recovery"=>%w[failure recovery], "operations-observability"=>%w[operations],
@@ -197,6 +232,8 @@ report = {
   "authority_body_denominator"=>body_summary,
   "authority_review_queue"=>review_summary,
   "authority_body_non_regression"=>body_non_regression,
+  "definitive_skill_eval"=>skill_summary,
+  "independent_agent_forward_eval"=>forward_agent_eval.slice("status", "reviewer", "evaluated_commit", "prompt_digest", "result", "completion_credit"),
   "denominator"=>{
     "generated_mapping_candidates"=>items.length,
     "raw_anchor_candidates"=>body_summary.fetch("raw_anchor_candidates"),
