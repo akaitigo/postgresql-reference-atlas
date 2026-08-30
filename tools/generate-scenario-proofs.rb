@@ -15,7 +15,7 @@ files = proofs.map do |proof|
   relative = "evidence/scenarios/behaviors/#{proof.fetch("target_id")}/#{proof.fetch("scenario")}.proof.json"
   absolute = File.join(root, relative)
   FileUtils.mkdir_p(File.dirname(absolute))
-  output = JSON.pretty_generate(proof) + "\n"
+  output = ScenarioProofs.canonical_json(proof) + "\n"
   File.write(absolute, output)
   {
     "id"=>proof.fetch("id"), "behavior_id"=>proof.fetch("behavior_id"), "pattern_id"=>proof.fetch("pattern_id"),
@@ -81,6 +81,6 @@ index = {
   ]
 }
 FileUtils.mkdir_p(File.join(root, "evidence/scenarios"))
-File.write(File.join(root, "evidence/scenarios/index.json"), JSON.pretty_generate(index) + "\n")
+File.write(File.join(root, "evidence/scenarios/index.json"), ScenarioProofs.canonical_json(index) + "\n")
 supporting = proofs.count { |proof| proof.dig("pattern_evidence", "capture_environment_identity", "closure_contract", "bounded_supporting_evidence") }
 puts "Generated Scenario Proof Matrix: #{proofs.length} rows, #{supporting} bounded supporting evidence rows, #{index.dig("summary", "pattern_specific_rows")} strict closures, completion eligible=0"

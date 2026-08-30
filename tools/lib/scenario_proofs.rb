@@ -24,8 +24,29 @@ module ScenarioProofs
   def write_json(relative, document)
     absolute = File.join(ROOT, relative)
     FileUtils.mkdir_p(File.dirname(absolute))
-    File.write(absolute, JSON.pretty_generate(document) + "\n")
+    File.write(absolute, canonical_json(document) + "\n")
     {"path"=>relative, "digest"=>sha256(absolute), "bytes"=>File.size(absolute)}
+  end
+
+  def canonical_json(value, indent = 0)
+    case value
+    when Hash
+      return "{}" if value.empty?
+
+      inner = value.map do |key, child|
+        "#{' ' * (indent + 2)}#{JSON.generate(key.to_s)}: #{canonical_json(child, indent + 2)}"
+      end.join(",\n")
+      "{\n#{inner}\n#{' ' * indent}}"
+    when Array
+      return "[]" if value.empty?
+
+      inner = value.map do |child|
+        "#{' ' * (indent + 2)}#{canonical_json(child, indent + 2)}"
+      end.join(",\n")
+      "[\n#{inner}\n#{' ' * indent}]"
+    else
+      JSON.generate(value)
+    end
   end
 
   def prepare_integrated_reference

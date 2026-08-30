@@ -12,7 +12,7 @@
     "client_product": "psql",
     "client_version": "psql (PostgreSQL) 18.6",
     "runtime_image": "postgres:18.6-alpine",
-    "runtime_identity": "pg-atlas-security-16996-22e1fc",
+    "runtime_identity": "pg-atlas-security-80047-f5ea81",
     "workers": 1,
     "retries": 0,
     "trace_mode": "on",
@@ -22,7 +22,7 @@
         "18.6"
       ],
       "containers": [
-        "pg-atlas-security-16996-22e1fc"
+        "pg-atlas-security-80047-f5ea81"
       ]
     }
   },
@@ -122,12 +122,12 @@
     }
   ],
   "wal": {
-    "before_lsn": "0/1C138A0",
-    "after_lsn": "0/1C138A0"
+    "before_lsn": "0/1C12000",
+    "after_lsn": "0/1C18000"
   },
-  "log": "2026-08-30 19:30:58.781 UTC [306] LOG:  statement: BEGIN;\n2026-08-30 19:30:58.781 UTC [306] LOG:  statement: CREATE ROLE atlas_maintenance_reader;\n2026-08-30 19:30:58.781 UTC [306] LOG:  statement: CREATE TABLE atlas_maintenance_secure(id integer PRIMARY KEY, payload text NOT NULL);\n2026-08-30 19:30:58.784 UTC [306] LOG:  statement: INSERT INTO atlas_maintenance_secure VALUES (1, 'stable');\n2026-08-30 19:30:58.784 UTC [306] LOG:  statement: GRANT SELECT ON atlas_maintenance_secure TO atlas_maintenance_reader;\n2026-08-30 19:30:58.785 UTC [306] LOG:  statement: SET ROLE atlas_maintenance_reader;\n2026-08-30 19:30:58.785 UTC [306] LOG:  statement: DO $$ BEGIN\n\t        RAISE NOTICE 'ATLAS_SECURITY_PASS:operations.maintenance';\n2026-08-30 19:30:58.785 UTC [306] LOG:  statement: SELECT CASE WHEN count(*) = 1 AND min(payload) = 'stable'\n\t        THEN 'ATLAS_SECURITY_PASS:operations.maintenance'\n2026-08-30 19:30:58.786 UTC [306] LOG:  statement: RESET ROLE;\n2026-08-30 19:30:58.786 UTC [306] LOG:  statement: ROLLBACK;\n2026-08-30 19:30:58.828 UTC [313] LOG:  statement: SELECT pg_current_wal_lsn()\n2026-08-30 19:30:58.865 UTC [319] LOG:  statement: EXPLAIN (FORMAT JSON) SELECT relname, reloptions FROM pg_class WHERE relname = 'atlas_maintenance_secure'\n2026-08-30 19:30:58.925 UTC [327] LOG:  statement: SELECT pg_current_wal_lsn()\n2026-08-30 19:30:58.960 UTC [334] LOG:  statement: BEGIN;\n2026-08-30 19:30:58.960 UTC [334] LOG:  statement: CREATE ROLE atlas_observer;\n2026-08-30 19:30:58.960 UTC [334] LOG:  statement: GRANT pg_monitor TO atlas_observer;\n2026-08-30 19:30:58.961 UTC [334] LOG:  statement: CREATE TABLE atlas_observability_private(id integer PRIMARY KEY, payload text NOT NULL);\n2026-08-30 19:30:58.963 UTC [334] LOG:  statement: INSERT INTO atlas_observability_private VALUES (1, 'private');\n2026-08-30 19:30:58.963 UTC [334] LOG:  statement: REVOKE ALL ON atlas_observability_private FROM PUBLIC;\n2026-08-30 19:30:58.963 UTC [334] LOG:  statement: SET ROLE atlas_observer;\n2026-08-30 19:30:58.963 UTC [334] LOG:  statement: SELECT CASE WHEN pg_has_role(current_user, 'pg_monitor', 'MEMBER')\n\t        THEN 'ATLAS_SECURITY_PASS:operations.observability'\n2026-08-30 19:30:58.965 UTC [334] LOG:  statement: DO $$ BEGIN\n\t        RAISE NOTICE 'ATLAS_SECURITY_PASS:operations.observability';\n2026-08-30 19:30:58.966 UTC [334] LOG:  statement: RESET ROLE;\n2026-08-30 19:30:58.966 UTC [334] LOG:  statement: ROLLBACK;\n2026-08-30 19:30:59.000 UTC [341] LOG:  statement: SELECT pg_current_wal_lsn()\n2026-08-30 19:30:59.043 UTC [348] LOG:  statement: EXPLAIN (FORMAT JSON) SELECT pid, usename, state FROM pg_stat_activity WHERE datname = current_database()\n",
+  "log": "2026-08-30 19:49:49.636 UTC [324] LOG:  statement: BEGIN;\n2026-08-30 19:49:49.636 UTC [324] LOG:  statement: CREATE ROLE atlas_maintenance_reader;\n2026-08-30 19:49:49.637 UTC [324] LOG:  statement: CREATE TABLE atlas_maintenance_secure(id integer PRIMARY KEY, payload text NOT NULL);\n2026-08-30 19:49:49.640 UTC [324] LOG:  statement: INSERT INTO atlas_maintenance_secure VALUES (1, 'stable');\n2026-08-30 19:49:49.641 UTC [324] LOG:  statement: GRANT SELECT ON atlas_maintenance_secure TO atlas_maintenance_reader;\n2026-08-30 19:49:49.642 UTC [324] LOG:  statement: SET ROLE atlas_maintenance_reader;\n2026-08-30 19:49:49.642 UTC [324] LOG:  statement: DO $$ BEGIN\n\t        RAISE NOTICE 'ATLAS_SECURITY_PASS:operations.maintenance';\n2026-08-30 19:49:49.643 UTC [324] LOG:  statement: SELECT CASE WHEN count(*) = 1 AND min(payload) = 'stable'\n\t        THEN 'ATLAS_SECURITY_PASS:operations.maintenance'\n2026-08-30 19:49:49.643 UTC [324] LOG:  statement: RESET ROLE;\n2026-08-30 19:49:49.643 UTC [324] LOG:  statement: ROLLBACK;\n2026-08-30 19:49:49.684 UTC [331] LOG:  statement: SELECT pg_current_wal_lsn()\n2026-08-30 19:49:49.723 UTC [338] LOG:  statement: EXPLAIN (FORMAT JSON) SELECT relname, reloptions FROM pg_class WHERE relname = 'atlas_maintenance_secure'\n2026-08-30 19:49:49.803 UTC [345] LOG:  statement: SELECT pg_current_wal_lsn()\n2026-08-30 19:49:49.855 UTC [352] LOG:  statement: BEGIN;\n2026-08-30 19:49:49.856 UTC [352] LOG:  statement: CREATE ROLE atlas_observer;\n2026-08-30 19:49:49.856 UTC [352] LOG:  statement: GRANT pg_monitor TO atlas_observer;\n2026-08-30 19:49:49.857 UTC [352] LOG:  statement: CREATE TABLE atlas_observability_private(id integer PRIMARY KEY, payload text NOT NULL);\n2026-08-30 19:49:49.860 UTC [352] LOG:  statement: INSERT INTO atlas_observability_private VALUES (1, 'private');\n2026-08-30 19:49:49.860 UTC [352] LOG:  statement: REVOKE ALL ON atlas_observability_private FROM PUBLIC;\n2026-08-30 19:49:49.861 UTC [352] LOG:  statement: SET ROLE atlas_observer;\n2026-08-30 19:49:49.861 UTC [352] LOG:  statement: SELECT CASE WHEN pg_has_role(current_user, 'pg_monitor', 'MEMBER')\n\t        THEN 'ATLAS_SECURITY_PASS:operations.observability'\n2026-08-30 19:49:49.864 UTC [352] LOG:  statement: DO $$ BEGIN\n\t        RAISE NOTICE 'ATLAS_SECURITY_PASS:operations.observability';\n2026-08-30 19:49:49.864 UTC [352] LOG:  statement: RESET ROLE;\n2026-08-30 19:49:49.865 UTC [352] LOG:  statement: ROLLBACK;\n2026-08-30 19:49:49.918 UTC [359] LOG:  statement: SELECT pg_current_wal_lsn()\n2026-08-30 19:49:49.972 UTC [366] LOG:  statement: EXPLAIN (FORMAT JSON) SELECT pid, usename, state FROM pg_stat_activity WHERE datname = current_database()\n",
   "metric": {
-    "elapsed_ms": 40.293
+    "elapsed_ms": 61.802
   },
   "oracle": {
     "kind": "pg-monitor-observability-does-not-grant-private-table-access",

@@ -12,7 +12,7 @@
     "client_product": "psql",
     "client_version": "psql (PostgreSQL) 18.6",
     "runtime_image": "postgres:18.6-alpine",
-    "runtime_identity": "pg-atlas-security-16996-22e1fc",
+    "runtime_identity": "pg-atlas-security-80047-f5ea81",
     "workers": 1,
     "retries": 0,
     "trace_mode": "on",
@@ -22,7 +22,7 @@
         "18.6"
       ],
       "containers": [
-        "pg-atlas-security-16996-22e1fc"
+        "pg-atlas-security-80047-f5ea81"
       ]
     }
   },
@@ -47,11 +47,11 @@
   ],
   "wal": {
     "before_lsn": "0/1BA8BA8",
-    "after_lsn": "0/1BA8BA8"
+    "after_lsn": "0/1BDE000"
   },
-  "log": "2026-08-30 19:30:28.712 UTC [71] LOG:  statement: SELECT 1 FROM pg_database WHERE datname = 'atlas' ;\n2026-08-30 19:30:28.717 UTC [79] LOG:  statement: CREATE DATABASE \"atlas\" ;\n2026-08-30 19:30:29.025 UTC [98] LOG:  statement: SELECT 1\n2026-08-30 19:30:29.324 UTC [105] LOG:  statement: SELECT 1\n2026-08-30 19:30:29.361 UTC [112] LOG:  statement: SHOW server_version\n2026-08-30 19:30:29.399 UTC [119] LOG:  statement: SHOW server_version_num\n2026-08-30 19:30:29.470 UTC [132] LOG:  statement: SELECT pg_current_wal_lsn()\n2026-08-30 19:30:29.507 UTC [139] LOG:  statement: BEGIN;\n2026-08-30 19:30:29.507 UTC [139] LOG:  statement: CREATE ROLE atlas_deadlock_reader;\n2026-08-30 19:30:29.507 UTC [139] LOG:  statement: CREATE TABLE atlas_deadlock_private(id integer primary key, secret text);\n2026-08-30 19:30:29.513 UTC [139] LOG:  statement: INSERT INTO atlas_deadlock_private VALUES (1, 'private');\n2026-08-30 19:30:29.513 UTC [139] LOG:  statement: REVOKE ALL ON atlas_deadlock_private FROM PUBLIC;\n2026-08-30 19:30:29.514 UTC [139] LOG:  statement: SET ROLE atlas_deadlock_reader;\n2026-08-30 19:30:29.514 UTC [139] LOG:  statement: DO $$ BEGIN\n\t        RAISE NOTICE 'ATLAS_SECURITY_PASS:concurrency.deadlock';\n2026-08-30 19:30:29.515 UTC [139] LOG:  statement: RESET ROLE;\n2026-08-30 19:30:29.515 UTC [139] LOG:  statement: ROLLBACK;\n2026-08-30 19:30:29.549 UTC [146] LOG:  statement: SELECT pg_current_wal_lsn()\n2026-08-30 19:30:29.584 UTC [153] LOG:  statement: EXPLAIN (FORMAT JSON) SELECT 1 AS security_probe\n",
+  "log": "2026-08-30 19:49:12.216 UTC [82] LOG:  statement: SELECT 1 FROM pg_database WHERE datname = 'atlas' ;\n2026-08-30 19:49:12.226 UTC [85] LOG:  statement: CREATE DATABASE \"atlas\" ;\n2026-08-30 19:49:13.047 UTC [116] LOG:  statement: SELECT 1\n2026-08-30 19:49:13.409 UTC [123] LOG:  statement: SELECT 1\n2026-08-30 19:49:13.535 UTC [130] LOG:  statement: SHOW server_version\n2026-08-30 19:49:13.689 UTC [137] LOG:  statement: SHOW server_version_num\n2026-08-30 19:49:13.986 UTC [149] LOG:  statement: SELECT pg_current_wal_lsn()\n2026-08-30 19:49:14.057 UTC [156] LOG:  statement: BEGIN;\n2026-08-30 19:49:14.057 UTC [156] LOG:  statement: CREATE ROLE atlas_deadlock_reader;\n2026-08-30 19:49:14.059 UTC [156] LOG:  statement: CREATE TABLE atlas_deadlock_private(id integer primary key, secret text);\n2026-08-30 19:49:14.068 UTC [156] LOG:  statement: INSERT INTO atlas_deadlock_private VALUES (1, 'private');\n2026-08-30 19:49:14.071 UTC [156] LOG:  statement: REVOKE ALL ON atlas_deadlock_private FROM PUBLIC;\n2026-08-30 19:49:14.071 UTC [156] LOG:  statement: SET ROLE atlas_deadlock_reader;\n2026-08-30 19:49:14.072 UTC [156] LOG:  statement: DO $$ BEGIN\n\t        RAISE NOTICE 'ATLAS_SECURITY_PASS:concurrency.deadlock';\n2026-08-30 19:49:14.079 UTC [156] LOG:  statement: RESET ROLE;\n2026-08-30 19:49:14.080 UTC [156] LOG:  statement: ROLLBACK;\n2026-08-30 19:49:14.261 UTC [163] LOG:  statement: SELECT pg_current_wal_lsn()\n2026-08-30 19:49:14.363 UTC [170] LOG:  statement: EXPLAIN (FORMAT JSON) SELECT 1 AS security_probe\n",
   "metric": {
-    "elapsed_ms": 43.966
+    "elapsed_ms": 112.38
   },
   "oracle": {
     "kind": "permission-denied-private-relation",

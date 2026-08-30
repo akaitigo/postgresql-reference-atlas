@@ -10,6 +10,27 @@ root = TrackedGeneratedFreshness::ROOT
 failures = []
 
 TrackedGeneratedFreshness.with_tempdir("pgra-generated-freshness-test.") do |tmp|
+  left = File.join(tmp, "left")
+  right = File.join(tmp, "right")
+  FileUtils.mkdir_p(left)
+  FileUtils.mkdir_p(right)
+  TrackedGeneratedFreshness.copy_repo(root, left)
+  TrackedGeneratedFreshness.copy_repo(root, right)
+  commands = TrackedGeneratedFreshness.profile("scenario-proofs").fetch("commands")
+  TrackedGeneratedFreshness.run_generators!(left, commands)
+  TrackedGeneratedFreshness.run_generators!(right, commands)
+  begin
+    TrackedGeneratedFreshness.compare_roots!(left, right, "scenario-proofs")
+  rescue RuntimeError => e
+    failures << "scenario-proofs deterministic regeneration failed: #{e.message}"
+  end
+  proof = File.read(File.join(left, "evidence/scenarios/behaviors/concurrency.deadlock/boundary.proof.json"))
+  failures << "benchmark_records empty array was not canonically serialized" unless proof.include?('"benchmark_records": []')
+  failures << "compatibility_records empty array was not canonically serialized" unless proof.include?('"compatibility_records": []')
+  failures << "legacy blank-line empty array serialization remained" if proof.include?("\"benchmark_records\": [\n\n") || proof.include?("\"compatibility_records\": [\n\n")
+end
+
+TrackedGeneratedFreshness.with_tempdir("pgra-generated-freshness-test.") do |tmp|
   clone = File.join(tmp, "clone")
   FileUtils.mkdir_p(clone)
   TrackedGeneratedFreshness.copy_repo(root, clone)
@@ -52,4 +73,4 @@ TrackedGeneratedFreshness.with_tempdir("pgra-generated-freshness-test.") do |tmp
 end
 
 abort failures.join("\n") unless failures.empty?
-puts "Tracked generated freshness negative fixturesを検証しました: 3/3 rejected"
+puts "Tracked generated freshnessを検証しました: scenario-proofs 2 clean roots byte-identical; negative fixtures 3/3 rejected"
