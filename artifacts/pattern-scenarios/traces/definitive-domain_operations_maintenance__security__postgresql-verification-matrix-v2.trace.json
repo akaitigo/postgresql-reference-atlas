@@ -12,7 +12,7 @@
     "client_product": "psql",
     "client_version": "psql (PostgreSQL) 18.6",
     "runtime_image": "postgres:18.6-alpine",
-    "runtime_identity": "pg-atlas-security-64567-d04654",
+    "runtime_identity": "pg-atlas-security-87859-5f009d",
     "workers": 1,
     "retries": 0,
     "trace_mode": "on",
@@ -22,7 +22,7 @@
         "18.6"
       ],
       "containers": [
-        "pg-atlas-security-64567-d04654"
+        "pg-atlas-security-87859-5f009d"
       ]
     }
   },
@@ -51,12 +51,12 @@
     }
   ],
   "wal": {
-    "before_lsn": "0/1C4F6E0",
-    "after_lsn": "0/1C60000"
+    "before_lsn": "0/1C01988",
+    "after_lsn": "0/1C01988"
   },
-  "log": "2026-08-30 17:51:24.826 UTC [293] LOG:  statement: CREATE ROLE atlas_migration_reader;\n2026-08-30 17:51:24.827 UTC [293] LOG:  statement: CREATE SCHEMA atlas_migration AUTHORIZATION postgres;\n2026-08-30 17:51:24.829 UTC [293] LOG:  statement: CREATE TABLE atlas_migration.secure_record(id integer PRIMARY KEY, payload text NOT NULL);\n2026-08-30 17:51:24.834 UTC [293] LOG:  statement: INSERT INTO atlas_migration.secure_record VALUES (1, 'stable');\n2026-08-30 17:51:24.835 UTC [293] LOG:  statement: GRANT USAGE ON SCHEMA atlas_migration TO atlas_migration_reader;\n2026-08-30 17:51:24.835 UTC [293] LOG:  statement: GRANT SELECT ON atlas_migration.secure_record TO atlas_migration_reader;\n2026-08-30 17:51:24.835 UTC [293] LOG:  statement: SET ROLE atlas_migration_reader;\n2026-08-30 17:51:24.836 UTC [293] LOG:  statement: DO $$ BEGIN\n\t        RAISE NOTICE 'ATLAS_SECURITY_PASS:lifecycle.schema-migration';\n2026-08-30 17:51:24.838 UTC [293] LOG:  statement: SELECT CASE WHEN count(*) = 1 AND min(payload) = 'stable'\n\t        THEN 'ATLAS_SECURITY_PASS:lifecycle.schema-migration'\n2026-08-30 17:51:24.842 UTC [293] LOG:  statement: RESET ROLE;\n2026-08-30 17:51:24.842 UTC [293] LOG:  statement: ROLLBACK;\n2026-08-30 17:51:24.953 UTC [300] LOG:  statement: SELECT pg_current_wal_lsn()\n2026-08-30 17:51:25.024 UTC [307] LOG:  statement: EXPLAIN (FORMAT JSON) SELECT 1 AS security_probe\n2026-08-30 17:51:44.770 UTC [314] LOG:  statement: SELECT pg_current_wal_lsn()\n2026-08-30 17:51:44.896 UTC [321] LOG:  statement: BEGIN;\n2026-08-30 17:51:44.896 UTC [321] LOG:  statement: CREATE ROLE atlas_maintenance_reader;\n2026-08-30 17:51:44.896 UTC [321] LOG:  statement: CREATE TABLE atlas_maintenance_secure(id integer PRIMARY KEY, payload text NOT NULL);\n2026-08-30 17:51:44.907 UTC [321] LOG:  statement: INSERT INTO atlas_maintenance_secure VALUES (1, 'stable');\n2026-08-30 17:51:44.907 UTC [321] LOG:  statement: GRANT SELECT ON atlas_maintenance_secure TO atlas_maintenance_reader;\n2026-08-30 17:51:44.908 UTC [321] LOG:  statement: SET ROLE atlas_maintenance_reader;\n2026-08-30 17:51:44.908 UTC [321] LOG:  statement: DO $$ BEGIN\n\t        RAISE NOTICE 'ATLAS_SECURITY_PASS:operations.maintenance';\n2026-08-30 17:51:44.910 UTC [321] LOG:  statement: SELECT CASE WHEN count(*) = 1 AND min(payload) = 'stable'\n\t        THEN 'ATLAS_SECURITY_PASS:operations.maintenance'\n2026-08-30 17:51:44.913 UTC [321] LOG:  statement: RESET ROLE;\n2026-08-30 17:51:44.914 UTC [321] LOG:  statement: ROLLBACK;\n2026-08-30 17:51:45.020 UTC [327] LOG:  statement: SELECT pg_current_wal_lsn()\n2026-08-30 17:51:45.275 UTC [334] LOG:  statement: EXPLAIN (FORMAT JSON) SELECT relname, reloptions FROM pg_class WHERE relname = 'atlas_maintenance_secure'\n",
+  "log": "2026-08-30 18:30:51.171 UTC [284] LOG:  statement: CREATE ROLE atlas_migration_reader;\n2026-08-30 18:30:51.172 UTC [284] LOG:  statement: CREATE SCHEMA atlas_migration AUTHORIZATION postgres;\n2026-08-30 18:30:51.173 UTC [284] LOG:  statement: CREATE TABLE atlas_migration.secure_record(id integer PRIMARY KEY, payload text NOT NULL);\n2026-08-30 18:30:51.177 UTC [284] LOG:  statement: INSERT INTO atlas_migration.secure_record VALUES (1, 'stable');\n2026-08-30 18:30:51.177 UTC [284] LOG:  statement: GRANT USAGE ON SCHEMA atlas_migration TO atlas_migration_reader;\n2026-08-30 18:30:51.178 UTC [284] LOG:  statement: GRANT SELECT ON atlas_migration.secure_record TO atlas_migration_reader;\n2026-08-30 18:30:51.178 UTC [284] LOG:  statement: SET ROLE atlas_migration_reader;\n2026-08-30 18:30:51.178 UTC [284] LOG:  statement: DO $$ BEGIN\n\t        RAISE NOTICE 'ATLAS_SECURITY_PASS:lifecycle.schema-migration';\n2026-08-30 18:30:51.179 UTC [284] LOG:  statement: SELECT CASE WHEN count(*) = 1 AND min(payload) = 'stable'\n\t        THEN 'ATLAS_SECURITY_PASS:lifecycle.schema-migration'\n2026-08-30 18:30:51.180 UTC [284] LOG:  statement: RESET ROLE;\n2026-08-30 18:30:51.180 UTC [284] LOG:  statement: ROLLBACK;\n2026-08-30 18:30:51.230 UTC [291] LOG:  statement: SELECT pg_current_wal_lsn()\n2026-08-30 18:30:51.277 UTC [298] LOG:  statement: EXPLAIN (FORMAT JSON) SELECT 1 AS security_probe\n2026-08-30 18:31:03.570 UTC [307] LOG:  statement: SELECT pg_current_wal_lsn()\n2026-08-30 18:31:03.636 UTC [314] LOG:  statement: BEGIN;\n2026-08-30 18:31:03.636 UTC [314] LOG:  statement: CREATE ROLE atlas_maintenance_reader;\n2026-08-30 18:31:03.637 UTC [314] LOG:  statement: CREATE TABLE atlas_maintenance_secure(id integer PRIMARY KEY, payload text NOT NULL);\n2026-08-30 18:31:03.643 UTC [314] LOG:  statement: INSERT INTO atlas_maintenance_secure VALUES (1, 'stable');\n2026-08-30 18:31:03.643 UTC [314] LOG:  statement: GRANT SELECT ON atlas_maintenance_secure TO atlas_maintenance_reader;\n2026-08-30 18:31:03.644 UTC [314] LOG:  statement: SET ROLE atlas_maintenance_reader;\n2026-08-30 18:31:03.644 UTC [314] LOG:  statement: DO $$ BEGIN\n\t        RAISE NOTICE 'ATLAS_SECURITY_PASS:operations.maintenance';\n2026-08-30 18:31:03.646 UTC [314] LOG:  statement: SELECT CASE WHEN count(*) = 1 AND min(payload) = 'stable'\n\t        THEN 'ATLAS_SECURITY_PASS:operations.maintenance'\n2026-08-30 18:31:03.646 UTC [314] LOG:  statement: RESET ROLE;\n2026-08-30 18:31:03.647 UTC [314] LOG:  statement: ROLLBACK;\n2026-08-30 18:31:03.714 UTC [321] LOG:  statement: SELECT pg_current_wal_lsn()\n2026-08-30 18:31:03.774 UTC [328] LOG:  statement: EXPLAIN (FORMAT JSON) SELECT relname, reloptions FROM pg_class WHERE relname = 'atlas_maintenance_secure'\n",
   "metric": {
-    "elapsed_ms": 155.886
+    "elapsed_ms": 77.976
   },
   "oracle": {
     "kind": "maintenance-configuration-change-requires-table-owner",

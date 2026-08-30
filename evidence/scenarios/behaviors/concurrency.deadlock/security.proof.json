@@ -126,7 +126,7 @@
       "client_product": "psql",
       "client_version": "psql (PostgreSQL) 18.6",
       "runtime_image": "postgres:18.6-alpine",
-      "runtime_identity": "pg-atlas-security-64567-d04654",
+      "runtime_identity": "pg-atlas-security-87859-5f009d",
       "workers": 1,
       "retries": 0,
       "trace_mode": "on",
@@ -154,7 +154,7 @@
         },
         "trace": {
           "path": "artifacts/pattern-scenarios/traces/definitive-domain_concurrency_deadlock__security__postgresql-verification-matrix-v2.trace.json",
-          "digest": "sha256:a961cc8cba93b89dee27aa13d301f306b23af2af9984afac5a797b323f93dfbd",
+          "digest": "sha256:6b99fc0f3392cea8212b60d974e0d1a366cd7d0ef9de87b998b27e0371410778",
           "bytes": 3970,
           "action_stream": true,
           "network_stream": true,
@@ -183,7 +183,7 @@
     "attempts": 1,
     "trace": {
       "path": "artifacts/reference-system/traces/security.trace.json",
-      "digest": "sha256:a80c1732980c0e58a0119dacc4e0bb13f814a57b82b3098ed9cfdc5df90a53e3",
+      "digest": "sha256:508497732d4085e0797e79396493c26ea86de74cd4de5466019b10aa55f54a09",
       "bytes": 1418,
       "action_stream": true,
       "network_stream": true,

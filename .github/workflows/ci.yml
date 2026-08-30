@@ -12,12 +12,12 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout PostgreSQL Atlas
-        uses: actions/checkout@v4
+        uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
         with:
           path: postgresql-reference-atlas
           fetch-depth: 0
       - name: Checkout reference-atlas-core Definitive v2
-        uses: actions/checkout@v4
+        uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
         with:
           repository: akaitigo/reference-atlas-core
           ref: 072d7ca77981f51754e824d70c6d4ecd55ea67e5
@@ -30,6 +30,8 @@ jobs:
         run: make -C postgresql-reference-atlas CORE_DIR=../reference-atlas-core audit
       - name: Enforce published-main non-regression baseline
         run: make -C postgresql-reference-atlas CORE_DIR=../reference-atlas-core non-regression-audit core-non-regression-audit authority-body-non-regression-audit
+      - name: Verify workflow action pins
+        run: make -C postgresql-reference-atlas workflow-supply-chain-test
       - name: Audit Definitive inventory and open proof ledger
         run: make -C postgresql-reference-atlas CORE_DIR=../reference-atlas-core definitive-audit parity-audit authority-locator-verify authority-body-verify authority-review-verify authority-review-determinism-test definitive-skill-eval-verify scenario-proofs-verify scenario-closure-plan-verify scenario-evidence-atomicity-test core-scenario-trace-audit core-scenario-plan-audit core-evidence-durability-audit core-authority-audit core-authority-body-audit core-authority-review-audit core-skill-router-audit depth-parity-audit
       - name: Assert Definitive promotion remains blocked while incomplete
@@ -39,10 +41,16 @@ jobs:
             exit 1
           fi
       - name: Run static publication gates
+        env:
+          READ_ONLY_TRACKED_GENERATORS: "1"
         run: make -C postgresql-reference-atlas test-static
       - name: Evaluate router skill
+        env:
+          READ_ONLY_TRACKED_GENERATORS: "1"
         run: make -C postgresql-reference-atlas eval
       - name: Refresh Graph after tracked generators
+        env:
+          READ_ONLY_TRACKED_GENERATORS: "1"
         run: make -C postgresql-reference-atlas scenario-proofs-generate scenario-closure-plan-generate provenance ledger-output-verify evidence-dependency-generate
       - name: Verify Evidence Dependency Graph
         run: make -C postgresql-reference-atlas evidence-dependency-verify evidence-dependency-negative-test core-evidence-dependency-audit
@@ -65,7 +73,7 @@ jobs:
         lab: [authority-lock, definitive-inventory, sql-surface, sql, types-constraints, catalog-inventory, partitioning, extension, security, mvcc, locking, deadlock, planner, statistics, index, performance, wal, backup-recovery, pitr, replication, logical-replication, observability, maintenance, failure-injection, migration, upgrade, pg-upgrade, compatibility-matrix, reference-system]
     steps:
       - name: Checkout PostgreSQL Atlas
-        uses: actions/checkout@v4
+        uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
         with:
           path: postgresql-reference-atlas
       - name: Install CI dependencies

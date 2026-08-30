@@ -57,7 +57,7 @@ make lab LAB=pg-upgrade
 make eval
 ```
 
-v1 Certificateはbounded historicalとして独立検証する。現行の静的Gate Evidenceはfull-run ledgerへ結んでbyte deterministicに再生成し、Definitive移行中のGraphは`make audit`、`make definitive-audit`、`make evidence-pipeline-clean`で検証する。
+v1 Certificateはbounded historicalとして独立検証する。現行の静的Gate Evidenceはfull-run ledgerへ結んでbyte deterministicに再生成し、Definitive移行中のGraphは`make audit`、`make definitive-audit`、`make evidence-pipeline-clean`で検証する。`make evidence-pipeline-clean`はHEAD差分の無さではなく、ledger binding、Graph整合、temporary copy上のtracked generator再実行とのbyte一致を確認する。
 
 利用可能なLabは`authority-lock`、`definitive-inventory`、`sql-surface`、`sql`、`types-constraints`、`catalog-inventory`、`partitioning`、`extension`、`security`、`mvcc`、`locking`、`deadlock`、`planner`、`statistics`、`index`、`performance`、`wal`、`backup-recovery`、`pitr`、`replication`、`logical-replication`、`observability`、`maintenance`、`failure-injection`、`migration`、`upgrade`、`pg-upgrade`、`compatibility-matrix`、`reference-system`です。
 
