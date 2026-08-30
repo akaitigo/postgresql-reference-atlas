@@ -1,7 +1,7 @@
 {
   "schema_version": 1,
   "id": "postgresql-pattern-scenario-runtime-v1",
-  "created_at": "2026-08-30T15:57:56Z",
+  "created_at": "2026-08-30T16:26:38Z",
   "status": "passed",
   "command": "ruby tools/run-scenario-security-001.rb",
   "profile": "real-postgresql-18.6-container",
@@ -24,7 +24,7 @@
     "client_product": "psql",
     "client_version": "psql (PostgreSQL) 18.6",
     "runtime_image": "postgres:18.6-alpine",
-    "runtime_identity": "pg-atlas-security-41166-dcd91b",
+    "runtime_identity": "pg-atlas-security-16101-9f31dc",
     "workers": 1,
     "retries": 0,
     "trace_mode": "on",
@@ -57,8 +57,8 @@
       },
       "trace": {
         "path": "artifacts/pattern-scenarios/traces/definitive-domain_concurrency_deadlock__security__postgresql-verification-matrix-v2.trace.json",
-        "digest": "sha256:aaff1259834aa308456aa3179c3c978b53697ee1748b7ad4414f27a781c4ab77",
-        "bytes": 3971,
+        "digest": "sha256:c740232375443f81ecd99cb2c14bca1f00a8ce22d0e137d357336e5e3316639b",
+        "bytes": 3973,
         "action_stream": true,
         "network_stream": true,
         "resource_stream": true
@@ -90,8 +90,8 @@
       },
       "trace": {
         "path": "artifacts/pattern-scenarios/traces/definitive-domain_concurrency_locking__security__postgresql-verification-matrix-v2.trace.json",
-        "digest": "sha256:279d7540a0a5c033671a643af580e40ad3fa69b45f198575315a28ced8d06bc6",
-        "bytes": 4859,
+        "digest": "sha256:4212dcc9788357d8ea99d82797215541971d2bb7507618cece767295eb3f76a3",
+        "bytes": 4860,
         "action_stream": true,
         "network_stream": true,
         "resource_stream": true
@@ -123,8 +123,8 @@
       },
       "trace": {
         "path": "artifacts/pattern-scenarios/traces/definitive-domain_concurrency_mvcc__security__postgresql-verification-matrix-v2.trace.json",
-        "digest": "sha256:12e9be06044a1d082e14620cc0c3ce859c06bd5eaa9f51430a3aaea3049c0d8d",
-        "bytes": 5320,
+        "digest": "sha256:ef68e9c06aa4a2a0e97278b9ccaad1d5036401d4cb4bebd73b0527d26488df51",
+        "bytes": 5321,
         "action_stream": true,
         "network_stream": true,
         "resource_stream": true
@@ -156,8 +156,8 @@
       },
       "trace": {
         "path": "artifacts/pattern-scenarios/traces/definitive-domain_foundation_authority-lock__security__postgresql-verification-matrix-v2.trace.json",
-        "digest": "sha256:e109f7b3a5c1698b88bdc8416eb3a8f45ab585fca4dda11e277d76f08ced17da",
-        "bytes": 4778,
+        "digest": "sha256:12acd8f247d25b0c41ecf8ceaa0a4bde033cd923da5b10c9cfcb2bfcc45c959b",
+        "bytes": 4779,
         "action_stream": true,
         "network_stream": true,
         "resource_stream": true
@@ -189,8 +189,8 @@
       },
       "trace": {
         "path": "artifacts/pattern-scenarios/traces/definitive-domain_foundation_version-lock__security__postgresql-verification-matrix-v2.trace.json",
-        "digest": "sha256:631e1cee32a5cf4c58d1e27e6d570cd91bfaf1ebd76bbffb451f1a071fd4eb6e",
-        "bytes": 4786,
+        "digest": "sha256:bd46af17ac0ec2292c22794e5bfc8ac519af589861f669a1b0d5aa26cb2dc45c",
+        "bytes": 4787,
         "action_stream": true,
         "network_stream": true,
         "resource_stream": true
@@ -222,8 +222,8 @@
       },
       "trace": {
         "path": "artifacts/pattern-scenarios/traces/definitive-domain_lifecycle_compatibility-matrix__security__postgresql-verification-matrix-v2.trace.json",
-        "digest": "sha256:fcc1d4fe5eeba376638c050f8f48a82196c2a60aad7d03f0815aea9e95b967b8",
-        "bytes": 15606,
+        "digest": "sha256:44455042102fb3b2ab2264bdc47474d4ccd7d1fa90cbee6aca886b7df88aed5b",
+        "bytes": 15610,
         "action_stream": true,
         "network_stream": true,
         "resource_stream": true
@@ -255,7 +255,7 @@
       },
       "trace": {
         "path": "artifacts/pattern-scenarios/traces/definitive-domain_lifecycle_pg-upgrade__security__postgresql-verification-matrix-v2.trace.json",
-        "digest": "sha256:a5615d7f4a98339c5485d800fff19ec15a047ae907a464ab85a7f73a18543607",
+        "digest": "sha256:d390fba620dc10ad6f05723f414757bcaefdb8920d9309e86ab67efd3b2e0965",
         "bytes": 17224,
         "action_stream": true,
         "network_stream": true,
@@ -288,7 +288,7 @@
       },
       "trace": {
         "path": "artifacts/pattern-scenarios/traces/definitive-domain_lifecycle_schema-migration__security__postgresql-verification-matrix-v2.trace.json",
-        "digest": "sha256:04e19fa75e12a079fde2e1281028124867c568a76bed40bc3b025193c11aa5b1",
+        "digest": "sha256:c0af654a946fc0f60939622b9fad7c375cf107476af4d83de417d34adbb99aa7",
         "bytes": 5764,
         "action_stream": true,
         "network_stream": true,
@@ -321,8 +321,8 @@
       },
       "trace": {
         "path": "artifacts/pattern-scenarios/traces/definitive-domain_lifecycle_upgrade__security__postgresql-verification-matrix-v2.trace.json",
-        "digest": "sha256:79b8d92572d03f4c0da5eb4788be0dac593312cf7166ff70f8b56fa2ad0ed793",
-        "bytes": 6740,
+        "digest": "sha256:4470e31f68bb7fe55260543c546430417d9f4d0b31abbeeb5584aeaf9930b2c4",
+        "bytes": 6741,
         "action_stream": true,
         "network_stream": true,
         "resource_stream": true
@@ -354,7 +354,7 @@
       },
       "trace": {
         "path": "artifacts/pattern-scenarios/traces/definitive-domain_operations_backup-recovery__security__postgresql-verification-matrix-v2.trace.json",
-        "digest": "sha256:7aa320517f801e17296369fde7f95f1ded1a0d2cca973b3820e849b56fd7b24f",
+        "digest": "sha256:640121670cb96fe67d4bd6ae1b05a7ac62174f7006871879a6f8353ef9a6e09e",
         "bytes": 6798,
         "action_stream": true,
         "network_stream": true,
@@ -387,7 +387,7 @@
       },
       "trace": {
         "path": "artifacts/pattern-scenarios/traces/definitive-domain_operations_failure-injection__security__postgresql-verification-matrix-v2.trace.json",
-        "digest": "sha256:a591dba564717e75f56e6feafb9ce4c075d8a24069803a5f011ad7f2617a802a",
+        "digest": "sha256:7ca8881cabf8b44f94bc83b56dda0f3a401f82faa19bbb4b93d24cb1ed2ae3f2",
         "bytes": 6381,
         "action_stream": true,
         "network_stream": true,
@@ -420,8 +420,8 @@
       },
       "trace": {
         "path": "artifacts/pattern-scenarios/traces/definitive-domain_operations_logical-replication__security__postgresql-verification-matrix-v2.trace.json",
-        "digest": "sha256:faefed847bd096d97515fc9c3c04dfe72ece8c75592d775a46ae08455ee9ad20",
-        "bytes": 10580,
+        "digest": "sha256:e3002d661b87db139d3817576799bf8fd8f133b9b1f0384dda434e6ab5a748db",
+        "bytes": 10579,
         "action_stream": true,
         "network_stream": true,
         "resource_stream": true
@@ -453,7 +453,7 @@
       },
       "trace": {
         "path": "artifacts/pattern-scenarios/traces/definitive-domain_operations_maintenance__security__postgresql-verification-matrix-v2.trace.json",
-        "digest": "sha256:f3a258c9fb7dcec2c7a4e977b493b6a11a8af3e319731788dd9dd8ceae03fe66",
+        "digest": "sha256:adddc2872702f098ac503e4d530e46651910d378dc30b5527dab22063a5d6fd2",
         "bytes": 5907,
         "action_stream": true,
         "network_stream": true,
@@ -486,7 +486,7 @@
       },
       "trace": {
         "path": "artifacts/pattern-scenarios/traces/definitive-domain_operations_observability__security__postgresql-verification-matrix-v2.trace.json",
-        "digest": "sha256:79fbdffaf848da9a46d80dc265bd184c35b7d165112de53747618334c04b8571",
+        "digest": "sha256:32e65f92a84f81bd11567472b462c6fd49d990031203628be71c2f72271ddcbf",
         "bytes": 8253,
         "action_stream": true,
         "network_stream": true,
@@ -519,8 +519,8 @@
       },
       "trace": {
         "path": "artifacts/pattern-scenarios/traces/definitive-domain_operations_pitr-recovery__security__postgresql-verification-matrix-v2.trace.json",
-        "digest": "sha256:93a28f1534e8765d8a690885170305d2b07590eb0abcb0556ee648e24d2f8ce6",
-        "bytes": 13890,
+        "digest": "sha256:35d8c4422216b4df895fb88dc1a2faea714f3e9e41eccaf384b1b28ff1d7739e",
+        "bytes": 13889,
         "action_stream": true,
         "network_stream": true,
         "resource_stream": true
@@ -552,8 +552,8 @@
       },
       "trace": {
         "path": "artifacts/pattern-scenarios/traces/definitive-domain_operations_replication__security__postgresql-verification-matrix-v2.trace.json",
-        "digest": "sha256:c23b46d76681b86014b011961759b92f0d085290d108780bf929c93cbae5c413",
-        "bytes": 12549,
+        "digest": "sha256:e9a70f7967940a44d415924fd9c4960b1411180ae4d2576cbeb92ced6087289c",
+        "bytes": 12551,
         "action_stream": true,
         "network_stream": true,
         "resource_stream": true

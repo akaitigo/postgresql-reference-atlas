@@ -5,6 +5,13 @@ require_relative "lib/authority-review-queue"
 require "stringio"
 
 root = File.expand_path("..", __dir__)
+canonical_vector = {
+  "empty_array"=>[], "empty_object"=>{}, "control"=>"line\nseparator\u2028quote\"slash\\",
+  "values"=>[nil, true, false, 17, {"nested"=>[]}]
+}
+canonical_vector_digest = "sha256:261466b5c15af60664604677ff1e6623ff3cd61e556f2db04ff194ecb8a95177"
+abort "Canonical JSON contractがruntime間で一致しません" unless AuthorityReviewQueue.artifact_digest(canonical_vector) == canonical_vector_digest
+
 expected_index, expected_batches, ledger = AuthorityReviewQueue.build(root)
 index = JSON.parse(File.read(File.join(root, AuthorityReviewQueue::INDEX_PATH)))
 AuthorityReviewQueue.reject_body_fields!(index)
@@ -19,6 +26,7 @@ expected_batches.each do |batch|
   actual = JSON.parse(File.read(path))
   AuthorityReviewQueue.reject_body_fields!(actual, path)
   abort "Authority review batchが決定論生成値と一致しません: #{batch.fetch('batch_id')}" unless actual == batch
+  abort "Authority review batch bytesがcanonical JSONではありません: #{batch.fetch('batch_id')}" unless File.binread(path) == AuthorityReviewQueue.canonical_json(batch) + "\n"
   record = index.fetch("batches").find { |item| item.fetch("id") == batch.fetch("batch_id") }
   abort "Authority review batch digestが不正です" unless record && record.fetch("digest") == "sha256:#{Digest::SHA256.file(path).hexdigest}"
   queued_ids.concat(actual.fetch("items").map { |item| item.fetch("anchor_id") })

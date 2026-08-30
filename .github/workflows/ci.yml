@@ -31,7 +31,7 @@ jobs:
       - name: Enforce published-main non-regression baseline
         run: make -C postgresql-reference-atlas CORE_DIR=../reference-atlas-core non-regression-audit core-non-regression-audit authority-body-non-regression-audit
       - name: Audit Definitive inventory and open proof ledger
-        run: make -C postgresql-reference-atlas CORE_DIR=../reference-atlas-core definitive-audit parity-audit authority-locator-verify authority-body-verify authority-review-verify definitive-skill-eval-verify scenario-proofs-verify scenario-closure-plan-verify scenario-evidence-atomicity-test core-scenario-trace-audit core-scenario-plan-audit core-evidence-durability-audit core-authority-audit core-authority-body-audit core-authority-review-audit core-skill-router-audit depth-parity-audit
+        run: make -C postgresql-reference-atlas CORE_DIR=../reference-atlas-core definitive-audit parity-audit authority-locator-verify authority-body-verify authority-review-verify authority-review-determinism-test definitive-skill-eval-verify scenario-proofs-verify scenario-closure-plan-verify scenario-evidence-atomicity-test core-scenario-trace-audit core-scenario-plan-audit core-evidence-durability-audit core-authority-audit core-authority-body-audit core-authority-review-audit core-skill-router-audit depth-parity-audit
       - name: Assert Definitive promotion remains blocked while incomplete
         run: |
           if make -C postgresql-reference-atlas CORE_DIR=../reference-atlas-core definitive-gate; then
@@ -48,6 +48,9 @@ jobs:
         run: make -C postgresql-reference-atlas docker-volume-cleanup-test
       - name: Check committed evidence freshness
         run: make -C postgresql-reference-atlas evidence-freshness
+      - name: Verify pushed commit signature
+        if: github.event_name == 'push'
+        run: make -C postgresql-reference-atlas commit-signature-verify
 
   executable-labs:
     runs-on: ubuntu-latest

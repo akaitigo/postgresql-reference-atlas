@@ -3,7 +3,7 @@ CORE_DIR ?= ../reference-atlas-core
 LAB ?= sql
 ATLAS_ROOT := $(CURDIR)
 
-.PHONY: validate audit non-regression-audit core-non-regression-audit authority-body-non-regression-audit definitive-audit parity-audit depth-parity-audit authority-locator-verify authority-body-verify authority-review-verify definitive-skill-eval-verify scenario-proofs-generate scenario-proofs-verify scenario-closure-plan-generate scenario-closure-plan-verify scenario-security-001-run scenario-evidence-atomicity-test docker-volume-cleanup-test evidence-dependency-rerun evidence-dependency-generate evidence-dependency-verify evidence-dependency-negative-test core-evidence-dependency-audit core-scenario-trace-audit core-scenario-plan-audit core-evidence-durability-audit core-authority-audit core-authority-body-audit core-authority-review-audit core-skill-router-audit definitive-gate claims provenance certificate-verify test-static evidence-freshness lab eval refresh-evidence test
+.PHONY: validate audit non-regression-audit core-non-regression-audit authority-body-non-regression-audit definitive-audit parity-audit depth-parity-audit authority-locator-verify authority-body-verify authority-review-verify authority-review-determinism-test definitive-skill-eval-verify scenario-proofs-generate scenario-proofs-verify scenario-closure-plan-generate scenario-closure-plan-verify scenario-security-001-run scenario-evidence-atomicity-test docker-volume-cleanup-test evidence-dependency-rerun evidence-dependency-generate evidence-dependency-verify evidence-dependency-negative-test core-evidence-dependency-audit core-scenario-trace-audit core-scenario-plan-audit core-evidence-durability-audit core-authority-audit core-authority-body-audit core-authority-review-audit core-skill-router-audit definitive-gate claims provenance certificate-verify commit-signature-verify test-static evidence-freshness lab eval refresh-evidence test
 
 validate:
 	cd $(CORE_DIR) && GOCACHE=$(CURDIR)/.cache/go-build go run ./cmd/atlas validate \
@@ -86,6 +86,9 @@ authority-body-verify:
 
 authority-review-verify:
 	ruby tools/verify-authority-review-queue.rb
+
+authority-review-determinism-test:
+	ruby tests/authority-review-queue-determinism.rb
 
 definitive-skill-eval-verify:
 	ruby tools/verify-definitive-skill-eval.rb
@@ -171,6 +174,9 @@ provenance:
 certificate-verify:
 	ruby tools/verify-historical-certificate.rb
 
+commit-signature-verify:
+	git -c gpg.ssh.allowedSignersFile=$(CURDIR)/.github/allowed_signers verify-commit HEAD
+
 refresh-evidence: eval test-static provenance
 
-test: validate audit non-regression-audit core-non-regression-audit authority-body-non-regression-audit definitive-audit parity-audit authority-locator-verify authority-body-verify authority-review-verify definitive-skill-eval-verify scenario-proofs-verify scenario-closure-plan-verify scenario-evidence-atomicity-test docker-volume-cleanup-test evidence-dependency-verify evidence-dependency-negative-test core-evidence-dependency-audit core-scenario-trace-audit core-scenario-plan-audit core-evidence-durability-audit core-authority-audit core-authority-body-audit core-authority-review-audit core-skill-router-audit depth-parity-audit evidence-freshness certificate-verify
+test: validate audit non-regression-audit core-non-regression-audit authority-body-non-regression-audit definitive-audit parity-audit authority-locator-verify authority-body-verify authority-review-verify authority-review-determinism-test definitive-skill-eval-verify scenario-proofs-verify scenario-closure-plan-verify scenario-evidence-atomicity-test docker-volume-cleanup-test evidence-dependency-verify evidence-dependency-negative-test core-evidence-dependency-audit core-scenario-trace-audit core-scenario-plan-audit core-evidence-durability-audit core-authority-audit core-authority-body-audit core-authority-review-audit core-skill-router-audit depth-parity-audit evidence-freshness certificate-verify

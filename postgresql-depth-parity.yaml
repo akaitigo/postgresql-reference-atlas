@@ -54,8 +54,8 @@ authority_review_queue:
       - {path: scripts/verify-authority-review-queue.ts, digest: "sha256:3849bd25a409742acdcbb8e028a65cf0d51249ac29c23ba606a14d63b81524f9", size_bytes: 125}
       - {path: scripts/test-authority-review-queue.ts, digest: "sha256:cd6ffd8860645b70f85feb262fffc903d3b0a0aa96c6f9a7181f6ed895e965ec", size_bytes: 2437}
       - {path: docs/AUTHORITY_REVIEW_WORKFLOW.md, digest: "sha256:64c8dad6e3dc1366ad5afb27a7e785dd428de3c6f0f55f4311ff4d3278370fbd", size_bytes: 3272}
-  queue: {path: authority/review-queue.snapshot.json, digest: "sha256:d4106c13031f33913880c899e73e27730a5a44edcf972994f6d3aab49d1a23ae", size_bytes: 91717}
-  decision_ledger: {path: authority/reviews/decisions.json, digest: "sha256:036e2d58e44f6442254de200ccf5a6ff2f3ee8a3298f9684f7e4420855e91389", size_bytes: 199}
+  queue: {path: authority/review-queue.snapshot.json, digest: "sha256:a81c6a1a95f9072344b0d787cd647e5af49d4535767e7a7dca08f6d1107881e7", size_bytes: 91713}
+  decision_ledger: {path: authority/reviews/decisions.json, digest: "sha256:0d880fa74f9f98f0e9dd8565ddcb52fa03d9970f7051416fddf1630fd783b4af", size_bytes: 195}
   policy:
     initial_status: pending-human
     machine_priority_cluster_batch_are_semantic_decisions: false
