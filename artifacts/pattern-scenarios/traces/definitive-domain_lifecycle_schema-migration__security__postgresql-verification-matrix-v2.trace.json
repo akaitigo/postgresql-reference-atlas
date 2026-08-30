@@ -12,7 +12,7 @@
     "client_product": "psql",
     "client_version": "psql (PostgreSQL) 18.6",
     "runtime_image": "postgres:18.6-alpine",
-    "runtime_identity": "pg-atlas-security-76006-2cda90",
+    "runtime_identity": "pg-atlas-security-64567-d04654",
     "workers": 1,
     "retries": 0,
     "trace_mode": "on",
@@ -22,7 +22,7 @@
         "18.6"
       ],
       "containers": [
-        "pg-atlas-security-76006-2cda90"
+        "pg-atlas-security-64567-d04654"
       ]
     }
   },
@@ -47,11 +47,11 @@
   ],
   "wal": {
     "before_lsn": "0/1BF7F78",
-    "after_lsn": "0/1BF7F78"
+    "after_lsn": "0/1C00000"
   },
-  "log": "2026-08-30 16:48:15.593 UTC [206] LOG:  statement: ROLLBACK;\n2026-08-30 16:48:15.660 UTC [213] LOG:  statement: SELECT pg_current_wal_lsn()\n2026-08-30 16:48:15.737 UTC [220] LOG:  statement: EXPLAIN (FORMAT JSON) SELECT 1 AS security_probe\n2026-08-30 16:48:15.883 UTC [227] LOG:  statement: SELECT pg_current_wal_lsn()\n2026-08-30 16:48:15.963 UTC [234] LOG:  statement: SELECT CASE WHEN current_setting('server_version') LIKE '18.6%'\n\t        THEN 'ATLAS_SECURITY_PASS:foundation.authority-lock'\n2026-08-30 16:48:16.041 UTC [241] LOG:  statement: SELECT pg_current_wal_lsn()\n2026-08-30 16:48:16.119 UTC [248] LOG:  statement: EXPLAIN (FORMAT JSON) SELECT 1 AS security_probe\n2026-08-30 16:48:16.251 UTC [255] LOG:  statement: SELECT pg_current_wal_lsn()\n2026-08-30 16:48:16.347 UTC [262] LOG:  statement: SELECT CASE WHEN current_setting('server_version_num') = '180006'\n\t        THEN 'ATLAS_SECURITY_PASS:foundation.version-lock'\n2026-08-30 16:48:16.427 UTC [269] LOG:  statement: SELECT pg_current_wal_lsn()\n2026-08-30 16:48:16.492 UTC [275] LOG:  statement: EXPLAIN (FORMAT JSON) SELECT 1 AS security_probe\n2026-08-30 16:48:45.278 UTC [283] LOG:  statement: SELECT pg_current_wal_lsn()\n2026-08-30 16:48:45.350 UTC [290] LOG:  statement: BEGIN;\n2026-08-30 16:48:45.350 UTC [290] LOG:  statement: CREATE ROLE atlas_migration_reader;\n2026-08-30 16:48:45.350 UTC [290] LOG:  statement: CREATE SCHEMA atlas_migration AUTHORIZATION postgres;\n2026-08-30 16:48:45.351 UTC [290] LOG:  statement: CREATE TABLE atlas_migration.secure_record(id integer PRIMARY KEY, payload text NOT NULL);\n2026-08-30 16:48:45.355 UTC [290] LOG:  statement: INSERT INTO atlas_migration.secure_record VALUES (1, 'stable');\n2026-08-30 16:48:45.356 UTC [290] LOG:  statement: GRANT USAGE ON SCHEMA atlas_migration TO atlas_migration_reader;\n2026-08-30 16:48:45.356 UTC [290] LOG:  statement: GRANT SELECT ON atlas_migration.secure_record TO atlas_migration_reader;\n2026-08-30 16:48:45.356 UTC [290] LOG:  statement: SET ROLE atlas_migration_reader;\n2026-08-30 16:48:45.357 UTC [290] LOG:  statement: DO $$ BEGIN\n\t        RAISE NOTICE 'ATLAS_SECURITY_PASS:lifecycle.schema-migration';\n2026-08-30 16:48:45.358 UTC [290] LOG:  statement: SELECT CASE WHEN count(*) = 1 AND min(payload) = 'stable'\n\t        THEN 'ATLAS_SECURITY_PASS:lifecycle.schema-migration'\n2026-08-30 16:48:45.359 UTC [290] LOG:  statement: RESET ROLE;\n2026-08-30 16:48:45.359 UTC [290] LOG:  statement: ROLLBACK;\n2026-08-30 16:48:45.419 UTC [297] LOG:  statement: SELECT pg_current_wal_lsn()\n2026-08-30 16:48:45.489 UTC [304] LOG:  statement: EXPLAIN (FORMAT JSON) SELECT 1 AS security_probe\n",
+  "log": "2026-08-30 17:50:51.398 UTC [208] LOG:  statement: ROLLBACK;\n2026-08-30 17:50:51.519 UTC [215] LOG:  statement: SELECT pg_current_wal_lsn()\n2026-08-30 17:50:51.579 UTC [222] LOG:  statement: EXPLAIN (FORMAT JSON) SELECT 1 AS security_probe\n2026-08-30 17:50:51.679 UTC [229] LOG:  statement: SELECT pg_current_wal_lsn()\n2026-08-30 17:50:51.742 UTC [236] LOG:  statement: SELECT CASE WHEN current_setting('server_version') LIKE '18.6%'\n\t        THEN 'ATLAS_SECURITY_PASS:foundation.authority-lock'\n2026-08-30 17:50:51.801 UTC [243] LOG:  statement: SELECT pg_current_wal_lsn()\n2026-08-30 17:50:51.906 UTC [250] LOG:  statement: EXPLAIN (FORMAT JSON) SELECT 1 AS security_probe\n2026-08-30 17:50:52.025 UTC [257] LOG:  statement: SELECT pg_current_wal_lsn()\n2026-08-30 17:50:52.075 UTC [264] LOG:  statement: SELECT CASE WHEN current_setting('server_version_num') = '180006'\n\t        THEN 'ATLAS_SECURITY_PASS:foundation.version-lock'\n2026-08-30 17:50:52.129 UTC [271] LOG:  statement: SELECT pg_current_wal_lsn()\n2026-08-30 17:50:52.191 UTC [278] LOG:  statement: EXPLAIN (FORMAT JSON) SELECT 1 AS security_probe\n2026-08-30 17:51:24.584 UTC [286] LOG:  statement: SELECT pg_current_wal_lsn()\n2026-08-30 17:51:24.825 UTC [293] LOG:  statement: BEGIN;\n2026-08-30 17:51:24.826 UTC [293] LOG:  statement: CREATE ROLE atlas_migration_reader;\n2026-08-30 17:51:24.827 UTC [293] LOG:  statement: CREATE SCHEMA atlas_migration AUTHORIZATION postgres;\n2026-08-30 17:51:24.829 UTC [293] LOG:  statement: CREATE TABLE atlas_migration.secure_record(id integer PRIMARY KEY, payload text NOT NULL);\n2026-08-30 17:51:24.834 UTC [293] LOG:  statement: INSERT INTO atlas_migration.secure_record VALUES (1, 'stable');\n2026-08-30 17:51:24.835 UTC [293] LOG:  statement: GRANT USAGE ON SCHEMA atlas_migration TO atlas_migration_reader;\n2026-08-30 17:51:24.835 UTC [293] LOG:  statement: GRANT SELECT ON atlas_migration.secure_record TO atlas_migration_reader;\n2026-08-30 17:51:24.835 UTC [293] LOG:  statement: SET ROLE atlas_migration_reader;\n2026-08-30 17:51:24.836 UTC [293] LOG:  statement: DO $$ BEGIN\n\t        RAISE NOTICE 'ATLAS_SECURITY_PASS:lifecycle.schema-migration';\n2026-08-30 17:51:24.838 UTC [293] LOG:  statement: SELECT CASE WHEN count(*) = 1 AND min(payload) = 'stable'\n\t        THEN 'ATLAS_SECURITY_PASS:lifecycle.schema-migration'\n2026-08-30 17:51:24.842 UTC [293] LOG:  statement: RESET ROLE;\n2026-08-30 17:51:24.842 UTC [293] LOG:  statement: ROLLBACK;\n2026-08-30 17:51:24.953 UTC [300] LOG:  statement: SELECT pg_current_wal_lsn()\n2026-08-30 17:51:25.024 UTC [307] LOG:  statement: EXPLAIN (FORMAT JSON) SELECT 1 AS security_probe\n",
   "metric": {
-    "elapsed_ms": 79.731
+    "elapsed_ms": 245.894
   },
   "oracle": {
     "kind": "unauthorized-ddl-rejected-during-schema-migration",

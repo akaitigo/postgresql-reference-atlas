@@ -38,18 +38,20 @@ jobs:
             echo "incomplete repository unexpectedly passed Definitive promotion" >&2
             exit 1
           fi
-      - name: Evaluate router skill
-        run: make -C postgresql-reference-atlas eval
-      - name: Refresh Graph after router skill evaluation
-        run: make -C postgresql-reference-atlas evidence-dependency-generate evidence-dependency-verify eval-evidence-dependency-clean
       - name: Run static publication gates
         run: make -C postgresql-reference-atlas test-static
+      - name: Evaluate router skill
+        run: make -C postgresql-reference-atlas eval
+      - name: Refresh Graph after tracked generators
+        run: make -C postgresql-reference-atlas scenario-proofs-generate scenario-closure-plan-generate provenance ledger-output-verify evidence-dependency-generate
       - name: Verify Evidence Dependency Graph
         run: make -C postgresql-reference-atlas evidence-dependency-verify evidence-dependency-negative-test core-evidence-dependency-audit
       - name: Verify task-owned Docker volume cleanup
         run: make -C postgresql-reference-atlas docker-volume-cleanup-test
       - name: Check committed evidence freshness
         run: make -C postgresql-reference-atlas evidence-freshness
+      - name: Check committed evidence pipeline clean
+        run: make -C postgresql-reference-atlas evidence-pipeline-clean
       - name: Verify pushed commit signature
         if: github.event_name == 'push'
         run: make -C postgresql-reference-atlas commit-signature-verify

@@ -2,10 +2,13 @@
 # frozen_string_literal: true
 
 require "digest"
+require "json"
 require "time"
 require "yaml"
 
 root = File.expand_path("..", __dir__)
+ledger_time = ENV["EVIDENCE_LEDGER_TIME"] ||
+  JSON.parse(File.read(File.join(root, "evidence/dependency-rerun.json"))).fetch("started_at")
 claims = YAML.safe_load(File.read(File.join(root, "atlas/claims/index.yaml")), aliases: false)
   .fetch("claims").to_h { |claim| [claim.fetch("id"), claim] }
 records = Dir.glob(File.join(root, "evidence", "*.evidence.yaml")).sort.map do |path|
@@ -93,7 +96,7 @@ end
 document = {
   "schema_version" => 1,
   "atlas_id" => "postgresql-reference-atlas",
-  "generated_at" => Time.now.utc.iso8601,
+  "generated_at" => Time.iso8601(ledger_time).utc.iso8601(6),
   "artifacts" => records.sort_by { |record| record.fetch("path") }
 }
 File.write(File.join(root, "provenance.yaml"), document.to_yaml(line_width: -1))

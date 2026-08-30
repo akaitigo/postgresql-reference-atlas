@@ -5,12 +5,12 @@ claim_ids: [operations.failure-injection]
 kind: attack
 producer: postgresql-reference-atlas
 command: make lab LAB=failure-injection
-created_at: "2026-08-30T16:46:58Z"
+created_at: "2026-08-30T17:49:35Z"
 environment:
   profile: container
   manifest_digest: sha256:3df4dbd82139e17c785348c281f26b54d7300662087baaeec3034acefedf36b9
 source_digest: sha256:7a5097c6130472b193adb30fda89b4a607f1ae00a1ae87dbc1cf22ae5484eaef
-harness_digest: sha256:56d589eaae4f273bc7444791df0dbe6b2d99d116f1dbccfe57faee468c2e0e4b
+harness_digest: sha256:f33a07abd1236af83a47cf1d01490ce6f6186a4b2abbd9c9492b63bd6f81c3b5
 harness_path: evidence/harnesses/failure-injection.manifest
 artifact:
   uri: evidence/artifacts/failure-injection.json

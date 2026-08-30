@@ -1,10 +1,10 @@
 {
   "schema_version": 1,
-  "id": "postgresql-evidence-rerun-20260830t164408z",
+  "id": "postgresql-evidence-rerun-20260830t174639z",
   "command": "ruby tools/rerun-evidence-dependencies.rb",
-  "observed_at": "2026-08-30T16:44:04.088775Z",
-  "started_at": "2026-08-30T16:44:08.426974Z",
-  "completed_at": "2026-08-30T16:51:09.139532Z",
+  "observed_at": "2026-08-30T17:46:36.332617Z",
+  "started_at": "2026-08-30T17:46:39.304181Z",
+  "completed_at": "2026-08-30T17:53:32.282755Z",
   "result": "passed",
   "attempts": 1,
   "runtime_identity": {
@@ -25,31 +25,31 @@
     },
     {
       "input_id": "harness.sql-schema-correctness",
-      "digest": "sha256:c72ea26e9402a552d1ef480b1793a82911940090c5f2187e1e8706a680906340"
+      "digest": "sha256:1e49ff6d25080b81775a2d39d20f41fe96256135e4914757f0e32e9a7af55f1f"
     },
     {
       "input_id": "harness.concurrency-mvcc",
-      "digest": "sha256:2276ddef473d5463141e3c07c0ad7aadf332ce2a42531bab91e44c85d95ac585"
+      "digest": "sha256:d9584fb85c7098d60658dc9e1b8c5dfca5dff709efcdd89e013e139d8cce67fb"
     },
     {
       "input_id": "harness.wal-replication-backup",
-      "digest": "sha256:e66546ff1a3b335676c5a23298e494263faf157dfa913e204da182d32299c6ac"
+      "digest": "sha256:3ea37c183ee11e180b1657127b5ee36f361b660f34dc171d74b0c429290fbebd"
     },
     {
       "input_id": "harness.migration-compatibility",
-      "digest": "sha256:137233c4d9255e5f59524187791ef7a56e2ed7b94dee94fc05a40a10f01fe4e8"
+      "digest": "sha256:54637a6ea6d8a39c8411c7f35099b31a5a281a025e8b8bc289a7006ae650ff6e"
     },
     {
       "input_id": "harness.operations-performance-recovery",
-      "digest": "sha256:f7f49ac90ce61c132e0c00288482b0e679b19843c5c5623cbcdfa8951f6e6f65"
+      "digest": "sha256:69eda115369e584004cfbbf5b0636376c1b1a22cd8b29c5f18685dcfd4f80819"
     },
     {
       "input_id": "harness.scenario-skill-reporting",
-      "digest": "sha256:25628ff9a06ac1764c0f75b5fae9f8f85105557703b6558ea0e919a552451cae"
+      "digest": "sha256:6555935ef0cad418945fe2e204167aa8c3ca0538a9e97a32bd4d3ba065556ebd"
     },
     {
       "input_id": "runtime.postgresql-server-client",
-      "digest": "sha256:6aa5ce6956c82d9ebef2ffa5fc80bf7070ba612da397070b0d622c11a9f4709f"
+      "digest": "sha256:aeafdd90010ad55f7c55187b03e7f8f71373f135e72c6a797b21fe8ab13869dc"
     },
     {
       "input_id": "profile.local",
@@ -66,34 +66,1799 @@
   ],
   "output_bindings": [
     {
-      "path": "evals/postgresql-router.skill-eval.json",
-      "digest": "sha256:736673ce55d5f00f0a082c2b450f27516c513d10e6d86df5bb6ae397d9bd48fa"
+      "path": "artifacts/pattern-scenarios/observations/definitive-domain_concurrency_deadlock__security__postgresql-verification-matrix-v2.observable.json",
+      "digest": "sha256:74a90de43d249cef40fd22be6966559337769504ac062e501037f45099885153"
+    },
+    {
+      "path": "artifacts/pattern-scenarios/observations/definitive-domain_concurrency_locking__security__postgresql-verification-matrix-v2.observable.json",
+      "digest": "sha256:5921844f6629347d2f6c8fed428a128e9ebb654559885468b5cc67a3c309396f"
+    },
+    {
+      "path": "artifacts/pattern-scenarios/observations/definitive-domain_concurrency_mvcc__security__postgresql-verification-matrix-v2.observable.json",
+      "digest": "sha256:8f39c2d97108e0f4bb72379e0729bff62e8869b1535e7915bd1874c2e83685ef"
+    },
+    {
+      "path": "artifacts/pattern-scenarios/observations/definitive-domain_foundation_authority-lock__security__postgresql-verification-matrix-v2.observable.json",
+      "digest": "sha256:1c5482808ebf1546385817283c26a9f81568a1bec06d5451c28d49ee8bf6300c"
+    },
+    {
+      "path": "artifacts/pattern-scenarios/observations/definitive-domain_foundation_version-lock__security__postgresql-verification-matrix-v2.observable.json",
+      "digest": "sha256:1afbd0fb7dfe87ded2c1cf04d26a871e29ee9888d034818035b2662b10019e2a"
+    },
+    {
+      "path": "artifacts/pattern-scenarios/observations/definitive-domain_lifecycle_compatibility-matrix__security__postgresql-verification-matrix-v2.observable.json",
+      "digest": "sha256:00e1ca23dd1411c0f3404f9f4ab6d1530c4683f420bc7d19253785d2fb80e592"
+    },
+    {
+      "path": "artifacts/pattern-scenarios/observations/definitive-domain_lifecycle_pg-upgrade__security__postgresql-verification-matrix-v2.observable.json",
+      "digest": "sha256:36a77c30e6c32eff818e45b1060c8f6efd356cb84f18fc67c261fa1a8d84b046"
+    },
+    {
+      "path": "artifacts/pattern-scenarios/observations/definitive-domain_lifecycle_schema-migration__security__postgresql-verification-matrix-v2.observable.json",
+      "digest": "sha256:690140c6afcf54708d27f9a1980e0fe72832973269a1bc4281ae4d82ae922a73"
+    },
+    {
+      "path": "artifacts/pattern-scenarios/observations/definitive-domain_lifecycle_upgrade__security__postgresql-verification-matrix-v2.observable.json",
+      "digest": "sha256:0f64eb3e3f73eb1b5c7df232bf56e6a4ad5ec28cb62880d943932a46473449cd"
+    },
+    {
+      "path": "artifacts/pattern-scenarios/observations/definitive-domain_operations_backup-recovery__security__postgresql-verification-matrix-v2.observable.json",
+      "digest": "sha256:459725171ab388b4bfbdc12c82aabade183e6b3fd915114b6e1df1e123be0353"
+    },
+    {
+      "path": "artifacts/pattern-scenarios/observations/definitive-domain_operations_failure-injection__security__postgresql-verification-matrix-v2.observable.json",
+      "digest": "sha256:480c1f4e8467ea8f516e338ec6d02fb4fd6a1edb918cc4eced0d98368a4cc24c"
+    },
+    {
+      "path": "artifacts/pattern-scenarios/observations/definitive-domain_operations_logical-replication__security__postgresql-verification-matrix-v2.observable.json",
+      "digest": "sha256:cb02183c7468f34e5716dbf2c682a209aed07fee087165518371100e77d87988"
+    },
+    {
+      "path": "artifacts/pattern-scenarios/observations/definitive-domain_operations_maintenance__security__postgresql-verification-matrix-v2.observable.json",
+      "digest": "sha256:1a2f5ae12e793eb7250211d7fe165b30ed16960c3aee3d88fe718db8a8d6769e"
+    },
+    {
+      "path": "artifacts/pattern-scenarios/observations/definitive-domain_operations_observability__security__postgresql-verification-matrix-v2.observable.json",
+      "digest": "sha256:7189c7a182cdd51dc7ddb4ba27627534a855862b86a2f646d6b72731c2a2379b"
+    },
+    {
+      "path": "artifacts/pattern-scenarios/observations/definitive-domain_operations_pitr-recovery__security__postgresql-verification-matrix-v2.observable.json",
+      "digest": "sha256:9dbcad418c7247847a934845ffa6726c6681bb0dc15aa665c2f97fd015e9588f"
+    },
+    {
+      "path": "artifacts/pattern-scenarios/observations/definitive-domain_operations_replication__security__postgresql-verification-matrix-v2.observable.json",
+      "digest": "sha256:03a602c46ed092a509a0d709edbc390af58dc8e0ce44d99b178b2286b91e74f9"
+    },
+    {
+      "path": "artifacts/pattern-scenarios/results.json",
+      "digest": "sha256:3fb9172dc509c09fccbf38c5fe58976d9fa3c2bb7c87ab17292cd40b4ba5f032"
+    },
+    {
+      "path": "artifacts/pattern-scenarios/traces/definitive-domain_concurrency_deadlock__security__postgresql-verification-matrix-v2.trace.json",
+      "digest": "sha256:a961cc8cba93b89dee27aa13d301f306b23af2af9984afac5a797b323f93dfbd"
+    },
+    {
+      "path": "artifacts/pattern-scenarios/traces/definitive-domain_concurrency_locking__security__postgresql-verification-matrix-v2.trace.json",
+      "digest": "sha256:73452facffcbdd94e68ae3ca798ea38e13d374051fab87f8e50c1c76c30fd76d"
+    },
+    {
+      "path": "artifacts/pattern-scenarios/traces/definitive-domain_concurrency_mvcc__security__postgresql-verification-matrix-v2.trace.json",
+      "digest": "sha256:cef3a0cf5b8fbf8beb9f1cfdc649e6d594f4a287328234410740437817d16f0f"
+    },
+    {
+      "path": "artifacts/pattern-scenarios/traces/definitive-domain_foundation_authority-lock__security__postgresql-verification-matrix-v2.trace.json",
+      "digest": "sha256:5714c3b7b48b59e0f00279dea8dd111526ce87d23665fed568c6466d65864964"
+    },
+    {
+      "path": "artifacts/pattern-scenarios/traces/definitive-domain_foundation_version-lock__security__postgresql-verification-matrix-v2.trace.json",
+      "digest": "sha256:03888183ef5a81be48b2a24536cb682c93a6b69bc39c49e4efa8602c07d9489a"
+    },
+    {
+      "path": "artifacts/pattern-scenarios/traces/definitive-domain_lifecycle_compatibility-matrix__security__postgresql-verification-matrix-v2.trace.json",
+      "digest": "sha256:4364a43613797eca8f8734977fa137fbd34d1423818c41b3c72e37b3385d11f4"
+    },
+    {
+      "path": "artifacts/pattern-scenarios/traces/definitive-domain_lifecycle_pg-upgrade__security__postgresql-verification-matrix-v2.trace.json",
+      "digest": "sha256:53c07950edc803bb63e93d21906748f05ce18c306408ee97dd1e6a4537f30ccd"
+    },
+    {
+      "path": "artifacts/pattern-scenarios/traces/definitive-domain_lifecycle_schema-migration__security__postgresql-verification-matrix-v2.trace.json",
+      "digest": "sha256:0b1dca49bfc87398a6b5c2f839a12f0a24972eae3d206a7d0bc8b645f6f32a7e"
+    },
+    {
+      "path": "artifacts/pattern-scenarios/traces/definitive-domain_lifecycle_upgrade__security__postgresql-verification-matrix-v2.trace.json",
+      "digest": "sha256:c593cac729c1fbc808aabf9586d6bfada6daa1f45c52f5d6a6fcc093e1ddcb96"
+    },
+    {
+      "path": "artifacts/pattern-scenarios/traces/definitive-domain_operations_backup-recovery__security__postgresql-verification-matrix-v2.trace.json",
+      "digest": "sha256:1445f0b845e73e7111170f79224af2a2a092de95a8fc4c21aaf9f159fc67dd9f"
+    },
+    {
+      "path": "artifacts/pattern-scenarios/traces/definitive-domain_operations_failure-injection__security__postgresql-verification-matrix-v2.trace.json",
+      "digest": "sha256:3de38d1d4e3887e2c769c57e0d2585d6b784807936c9e16ccd0d5bf627b81e2b"
+    },
+    {
+      "path": "artifacts/pattern-scenarios/traces/definitive-domain_operations_logical-replication__security__postgresql-verification-matrix-v2.trace.json",
+      "digest": "sha256:647074a55a59a8e107bcf82f32a29cde044b4f730397446c80c6fd23751dbe12"
+    },
+    {
+      "path": "artifacts/pattern-scenarios/traces/definitive-domain_operations_maintenance__security__postgresql-verification-matrix-v2.trace.json",
+      "digest": "sha256:affe0d10f1fd2cd66896b842ac8dc9b41b99af9ea3a3a14d2724b11642acdbf4"
+    },
+    {
+      "path": "artifacts/pattern-scenarios/traces/definitive-domain_operations_observability__security__postgresql-verification-matrix-v2.trace.json",
+      "digest": "sha256:772d4d921f07429677b9ef9283ab50ec159adc7757939bed5272f397aa3fc1bb"
+    },
+    {
+      "path": "artifacts/pattern-scenarios/traces/definitive-domain_operations_pitr-recovery__security__postgresql-verification-matrix-v2.trace.json",
+      "digest": "sha256:bd0a9084fc1783884504db969a336be4003b362912444d4aa571de62a8b2b539"
+    },
+    {
+      "path": "artifacts/pattern-scenarios/traces/definitive-domain_operations_replication__security__postgresql-verification-matrix-v2.trace.json",
+      "digest": "sha256:8fa204fcf397990e5265bbd12e7ebe4148425bd209c386809997f15ca56df4a1"
+    },
+    {
+      "path": "artifacts/reference-system/observations/boundary.observable.json",
+      "digest": "sha256:21a3d45de36d36d6a4d589fb14275fc31b22192e2cfbd76e4738c85966fe0369"
+    },
+    {
+      "path": "artifacts/reference-system/observations/compatibility.observable.json",
+      "digest": "sha256:b913e15075fbe1b350d08dcd1fdfdc674e9a5529f84e95e3e0a92e9e40de5fe5"
+    },
+    {
+      "path": "artifacts/reference-system/observations/failure.observable.json",
+      "digest": "sha256:bde9b5f2c68628d3cb9c4000a2862ee9c5aba64dc331ed440586304a92d4ffb6"
+    },
+    {
+      "path": "artifacts/reference-system/observations/migration.observable.json",
+      "digest": "sha256:d76889de21f5c315c7a79b0602331e008a3989c49d94c62681717531d03fdb71"
+    },
+    {
+      "path": "artifacts/reference-system/observations/normal.observable.json",
+      "digest": "sha256:915910d32ddc9ed25d859286cbe0a2c2a6740349de1a288e17663cd4f2635e89"
+    },
+    {
+      "path": "artifacts/reference-system/observations/operations.observable.json",
+      "digest": "sha256:7b799488267488d8aa9ac8999362e3d041f47fcbeeb89bd5d08379e88c930ee1"
+    },
+    {
+      "path": "artifacts/reference-system/observations/performance.observable.json",
+      "digest": "sha256:efeb61759acf2b62ab19e9aefff2cc34075c0985a2a8b7a4fad8813d9b4c730f"
+    },
+    {
+      "path": "artifacts/reference-system/observations/recovery.observable.json",
+      "digest": "sha256:4b48e5e83fe21345567106ca4ff7f3ec2c12b09a5dc1180a0dd463ce3edbb24a"
+    },
+    {
+      "path": "artifacts/reference-system/observations/refusal.observable.json",
+      "digest": "sha256:2ee7797d2c183e2b08da682110f55f79580d02ac24b3a491d1cf67c0515b0023"
+    },
+    {
+      "path": "artifacts/reference-system/observations/security.observable.json",
+      "digest": "sha256:48fb9617d2bb14935af97abda4319d4c08a1f90512b6b76dd3dac1dac0c20c57"
+    },
+    {
+      "path": "artifacts/reference-system/results.json",
+      "digest": "sha256:1643891ce372fa4baaa2bc598839222b329445318c4b335c5bc8eddaf9cb74a6"
+    },
+    {
+      "path": "artifacts/reference-system/traces/boundary.trace.json",
+      "digest": "sha256:6ebde6ea71c5bbb6c666fb504b4569695b74b9b26ddd7fd12fae1e34eb909fb5"
+    },
+    {
+      "path": "artifacts/reference-system/traces/compatibility.trace.json",
+      "digest": "sha256:59fd9ad56c1c2e4c993920e212c525a293653ae24fd714df465261acd35e5451"
+    },
+    {
+      "path": "artifacts/reference-system/traces/failure.trace.json",
+      "digest": "sha256:fda15fa4630e6707457e63260e6515e13edd3ef1be4c8da715f7b3d77ae8cae1"
+    },
+    {
+      "path": "artifacts/reference-system/traces/migration.trace.json",
+      "digest": "sha256:1325d9a006e02081ef9f769f27bf9d311c75471c4df686fd8736ac7ff6b27173"
+    },
+    {
+      "path": "artifacts/reference-system/traces/normal.trace.json",
+      "digest": "sha256:5a9a573d64590988a3412cc9c38ea8987743fb5c5ca7099820d014b7f3215a47"
+    },
+    {
+      "path": "artifacts/reference-system/traces/operations.trace.json",
+      "digest": "sha256:5cf8c765765a602f2249372e2b595e94b6521a1f34a3d6c68f3282d065318fad"
+    },
+    {
+      "path": "artifacts/reference-system/traces/performance.trace.json",
+      "digest": "sha256:ba9101deffde48f145c0d0bdb9cf65731964521efbb352fa3f985eeae2c02178"
+    },
+    {
+      "path": "artifacts/reference-system/traces/recovery.trace.json",
+      "digest": "sha256:e56cc82689e0705b0e4ba379b1b2fd3ae8fa44b2f21d9207597475a529dff9ba"
+    },
+    {
+      "path": "artifacts/reference-system/traces/refusal.trace.json",
+      "digest": "sha256:76e5ac9ad5994f399a8af178f019a36e6786bc5fb1bbdd83eee4d8764d140324"
+    },
+    {
+      "path": "artifacts/reference-system/traces/security.trace.json",
+      "digest": "sha256:a80c1732980c0e58a0119dacc4e0bb13f814a57b82b3098ed9cfdc5df90a53e3"
+    },
+    {
+      "path": "evals/definitive-skill-router.json",
+      "digest": "sha256:bacc40def27bb061901fccaed0d8b7b1ba75b1bbbe1c10d7b66356d67111fc2e"
     },
     {
       "path": "evals/postgresql-atlas.definitive-routing-eval.json",
-      "digest": "sha256:dfaa9a8ab852d513e4a0c469f27c7b1102bca1f3cc9c002bd8b411df401fa491"
+      "digest": "sha256:0b777d6438c7d222966245d231a52ec4b151e58c306064f1be8e77e63668241e"
     },
     {
       "path": "evals/postgresql-atlas.definitive-skill-eval.json",
       "digest": "sha256:27027e74331738231819309fbd0f5efab4cb0e453efe60002017adbeed49d1e8"
     },
     {
-      "path": "evals/definitive-skill-router.json",
-      "digest": "sha256:00689bd86dce26431b9d6450d6050381c92a50c44287e1f92f2960acabbf4d19"
+      "path": "evals/postgresql-atlas.forward-agent-eval.json",
+      "digest": "sha256:ffd3d57586f91e1af23913ee20898c31279c0adb5e1952bfffe5c64f671261f1"
+    },
+    {
+      "path": "evals/postgresql-router.skill-eval.json",
+      "digest": "sha256:736673ce55d5f00f0a082c2b450f27516c513d10e6d86df5bb6ae397d9bd48fa"
+    },
+    {
+      "path": "evidence/artifacts/authority-lock.json",
+      "digest": "sha256:6dfa657fffa8bc98a2b44d097f19b8cb56eb3074c9b21651e73cc8ebb17ba892"
+    },
+    {
+      "path": "evidence/artifacts/backup-recovery.json",
+      "digest": "sha256:b31577e18ae2d41141b97c93d23f04b108ece978183b286a3baaa578bbe8f52d"
+    },
+    {
+      "path": "evidence/artifacts/catalog-inventory.json",
+      "digest": "sha256:e903f4785face57d318dcbda000ebf6d1679017f81590e6c35c5e0360c14df2e"
+    },
+    {
+      "path": "evidence/artifacts/compatibility-matrix.json",
+      "digest": "sha256:8db7e2c4d4a13a34f83b9acca0293c9f47e728a8ad8b359652e27338a36711c6"
+    },
+    {
+      "path": "evidence/artifacts/deadlock.json",
+      "digest": "sha256:8ff033c62a9ea8360237094c041c09603e342ab7f4be29e544ceadfd0e6beb0b"
+    },
+    {
+      "path": "evidence/artifacts/extension.json",
+      "digest": "sha256:fba8b0cb54d443047834079106273ce83b1f4ddf3a958b8662a47b1876e14f41"
+    },
+    {
+      "path": "evidence/artifacts/failure-injection.json",
+      "digest": "sha256:060807b83036b3fe84bca1567be86d4e6a2ee416186422e0d15c7201738179e0"
+    },
+    {
+      "path": "evidence/artifacts/foundation-authority-lock.json",
+      "digest": "sha256:cac7df52d6ca6f2dce96e11aaf865a0b13fce0cbc099ba2a330aa9e49d2bce43"
+    },
+    {
+      "path": "evidence/artifacts/index.json",
+      "digest": "sha256:ef9cba7954437c58c492b980e2da59a061f4e7c515a9c51248d99766f50dad85"
+    },
+    {
+      "path": "evidence/artifacts/locking.json",
+      "digest": "sha256:5c28cbc5dcf813b021dcd0027606f94cee70c5b207e67a033942903ef9499196"
+    },
+    {
+      "path": "evidence/artifacts/logical-replication.json",
+      "digest": "sha256:ea72f1ea4839b9e84d3222658f5154b7a8b6b821e59a28132ab144078e9906c7"
+    },
+    {
+      "path": "evidence/artifacts/maintenance.json",
+      "digest": "sha256:db36e8c0afcfd8a8a7fc11351cc4acf2546003e2545c02f94acd4f1b8bdc8b9a"
+    },
+    {
+      "path": "evidence/artifacts/migration.json",
+      "digest": "sha256:4ed7230db1679e677224428bebf1339b8c9a02d0b97ceb1d3944f6c5c6ad6557"
+    },
+    {
+      "path": "evidence/artifacts/mvcc.json",
+      "digest": "sha256:e22131b26364018b3310bb5cf98a8a8c329f824ac42092d0f47d3aa9fc3a7f83"
+    },
+    {
+      "path": "evidence/artifacts/observability.json",
+      "digest": "sha256:649bca2f8fea40fb7d9e14785cc5da2c4a8913cc5dc7fb39e748d6d87e665ed7"
+    },
+    {
+      "path": "evidence/artifacts/partitioning.json",
+      "digest": "sha256:a79da652c9d347f02856e3bd5047f46c69c88ac5df982125b95317c2bd833231"
+    },
+    {
+      "path": "evidence/artifacts/performance.json",
+      "digest": "sha256:a920b70cddef92935081f1970afdab11c8fa9ca7373d21f46b47ebeb6f3928d6"
+    },
+    {
+      "path": "evidence/artifacts/pg-upgrade.json",
+      "digest": "sha256:ade5856a457c34c0aaad66a80d48246020dc1013fbfc7f569eeb3ff207e0b0dd"
+    },
+    {
+      "path": "evidence/artifacts/pitr.json",
+      "digest": "sha256:d1b16f7d281d89516f5df4f3ffa9cac3bd48928669ae1f1011df36be3b1b8000"
+    },
+    {
+      "path": "evidence/artifacts/planner.json",
+      "digest": "sha256:23996bd727c7fb1769ad10ef53f313c993b819edf65eed1dd00c0b1836f2ca15"
+    },
+    {
+      "path": "evidence/artifacts/publication-static-gates.json",
+      "digest": "sha256:b329666dcf103149ae210611511c1331cf5d3bf9d78bff66d395c0b643837094"
+    },
+    {
+      "path": "evidence/artifacts/reference-system.json",
+      "digest": "sha256:cc6d584b6cf9a54958e1d36535e473439e840a22c6f7f630e3a1a3f308149bd9"
+    },
+    {
+      "path": "evidence/artifacts/reference-system.server.log",
+      "digest": "sha256:5b2b1f393cad5baaba9378ebe953a26dab65fb41e36273b6c4b244a74dead528"
+    },
+    {
+      "path": "evidence/artifacts/replication.json",
+      "digest": "sha256:917089c4219799f4d5100ffb2b70987f7478a9f3ceb622be7d510edddd3815bd"
+    },
+    {
+      "path": "evidence/artifacts/security.json",
+      "digest": "sha256:d33a405af1a47717a703b16db2ce412a003e2549f1260cbb068f280ce2e6432b"
     },
     {
       "path": "evidence/artifacts/skill-router-eval.json",
       "digest": "sha256:11e3d4301de73eca5ee25a01eb3c6f0c6f3a13552c19ffc4ce8a38fbc105e2d4"
     },
     {
+      "path": "evidence/artifacts/sql-surface.json",
+      "digest": "sha256:329b325937c6ffdb03b5ec622b3d5473f7c8f3d28a62d1eeb47006b1ddc6ebd1"
+    },
+    {
+      "path": "evidence/artifacts/sql.json",
+      "digest": "sha256:e7c5757fcff20b9de4f5256967c2ecbd595e02a9f2cdd5b70b6286a08c308191"
+    },
+    {
+      "path": "evidence/artifacts/statistics.json",
+      "digest": "sha256:1a8fa8d450e2dc28a3bf88006d9c6bbc3299aaf8fdb014caf3c23659c93c0129"
+    },
+    {
+      "path": "evidence/artifacts/types-constraints.json",
+      "digest": "sha256:ab534541b6eba2f13bcd5c0b918d02c9052ca1fc0a37909fbea9be9ebc086b0e"
+    },
+    {
+      "path": "evidence/artifacts/upgrade.json",
+      "digest": "sha256:77db10fbe04af0ae85f0bbe526abbbbecf9c1e3ce3f8739ef55aa72fe1608268"
+    },
+    {
+      "path": "evidence/artifacts/wal.json",
+      "digest": "sha256:ea97afb6a4d973a728fe6cb073ad9e5c8f256b52dc1e8aa5a0f7f7f2c9a41c85"
+    },
+    {
+      "path": "evidence/authority-lock.evidence.yaml",
+      "digest": "sha256:0bbc8b91a8a84997d5453c479c102dcedb45ad1266529486e461ef3370419f9a"
+    },
+    {
+      "path": "evidence/backup-recovery.evidence.yaml",
+      "digest": "sha256:e0aff2e051d01f8ede45ec3dc748957aab18e6d8d2db2027f9ff299c917389d2"
+    },
+    {
+      "path": "evidence/catalog-inventory.evidence.yaml",
+      "digest": "sha256:f0eab6f353440096266384d2bfdbb31c31a5147406cab98a88111a6f4724047e"
+    },
+    {
+      "path": "evidence/compatibility-matrix.evidence.yaml",
+      "digest": "sha256:90fe0a87bad7a9d418f10a73f49bde55f8aac3c4a842bc6021ede062f03bec1b"
+    },
+    {
+      "path": "evidence/deadlock.evidence.yaml",
+      "digest": "sha256:479b7eca128f7e87185f62fbea5dad7e50ec1cad849e7f868509dc3234c179b0"
+    },
+    {
+      "path": "evidence/dependency-graph.json",
+      "digest": "sha256:80d1242a339f094fdf3e955341c3f3d9839072657263eb42cc526e53ff15cabd"
+    },
+    {
+      "path": "evidence/extension.evidence.yaml",
+      "digest": "sha256:810f88fc9b6446e38a23303bb55e1fe848cc26e2147f174303b63a8363993f0c"
+    },
+    {
+      "path": "evidence/failure-injection.evidence.yaml",
+      "digest": "sha256:18b79d1e0d18e306504682bf1336aeea61d603e32c4095c5653de4a9a7ac7aab"
+    },
+    {
+      "path": "evidence/foundation-authority-lock.evidence.yaml",
+      "digest": "sha256:bcb6991a266de9a65f51ae0866317f4c1a59cfa1b1b8a966cb14d55d0c3416d0"
+    },
+    {
+      "path": "evidence/harnesses/authority-lock.manifest",
+      "digest": "sha256:74174154584d83849a01fba9cebca6b353b183f3158540375ac040ddac38c13b"
+    },
+    {
+      "path": "evidence/harnesses/backup-recovery.manifest",
+      "digest": "sha256:e93f5080fc641a5db5061b86aaa5041f2d725265f82a9b59a5dda8134a1ca0a3"
+    },
+    {
+      "path": "evidence/harnesses/catalog-inventory.manifest",
+      "digest": "sha256:e6c137bd9004e1f077a5a3b3d13fe439537178f98c4b617c604148ee7226707c"
+    },
+    {
+      "path": "evidence/harnesses/compatibility-matrix.manifest",
+      "digest": "sha256:bce0d5bcddc7d36151c682409bcff1fcd59345021c4ab0ec9386a5dbeadcfe45"
+    },
+    {
+      "path": "evidence/harnesses/deadlock.manifest",
+      "digest": "sha256:b828815be4cdd173be25fe4d6765f065132718e4c8864a75b46e7f853959cd10"
+    },
+    {
+      "path": "evidence/harnesses/extension.manifest",
+      "digest": "sha256:a73b3d61db91cf8cec59c2084700aad5082441ae245c42ab4e80092ccc35ca81"
+    },
+    {
+      "path": "evidence/harnesses/failure-injection.manifest",
+      "digest": "sha256:f33a07abd1236af83a47cf1d01490ce6f6186a4b2abbd9c9492b63bd6f81c3b5"
+    },
+    {
+      "path": "evidence/harnesses/foundation-authority-lock.manifest",
+      "digest": "sha256:6ec79af7a0170e304a7a39cc768543abd3c5da6d94cada9ebcfe0b1f96816cd2"
+    },
+    {
+      "path": "evidence/harnesses/index.manifest",
+      "digest": "sha256:cc2044aed3bce7e3e24a4bb033ba4b18246fcbc2388f462e2f4d3134d8ffbb9a"
+    },
+    {
+      "path": "evidence/harnesses/locking.manifest",
+      "digest": "sha256:e45bcb09cd9f11c614006f6e9ba2e70fb12db0640514ba95842435c01d972df8"
+    },
+    {
+      "path": "evidence/harnesses/logical-replication.manifest",
+      "digest": "sha256:276aeed412817486915abf567a5b89408271e21b53cf76eddbe9bc9b59e193dc"
+    },
+    {
+      "path": "evidence/harnesses/maintenance.manifest",
+      "digest": "sha256:3153893f1270460be3342b1e9bb9375b0ef81253f03c38c5796d6401ef24a420"
+    },
+    {
+      "path": "evidence/harnesses/migration.manifest",
+      "digest": "sha256:d0da18d6383f88776047c68df4f888ea3800b612ee01cdbe400873a65d16c232"
+    },
+    {
+      "path": "evidence/harnesses/mvcc.manifest",
+      "digest": "sha256:80a451f53aba7996ac7055bce648dd0db95ba094ccb87e4efbc6ccf87ea8e365"
+    },
+    {
+      "path": "evidence/harnesses/observability.manifest",
+      "digest": "sha256:78c33e75f19aefd7041cb387d73ed63dcb39b2545b500db9222106a5e5a29925"
+    },
+    {
+      "path": "evidence/harnesses/partitioning.manifest",
+      "digest": "sha256:3e081ff1187fc334b517476803db832efb8bb3392f099596013fa053f8238306"
+    },
+    {
+      "path": "evidence/harnesses/performance.manifest",
+      "digest": "sha256:a5e9169fdee790e152c38cde517dac5f8155cdaeaf10ca083fff837addb02b29"
+    },
+    {
+      "path": "evidence/harnesses/pg-upgrade.manifest",
+      "digest": "sha256:f7a90d015484d9319a91b432edddb90de4f2ef22bc3fcbdc74ea1f0bce88a92c"
+    },
+    {
+      "path": "evidence/harnesses/pitr.manifest",
+      "digest": "sha256:2a2941a4e842e6d833d493e287375da72cfa7af01ed85e7d75a8be0bc3bbe203"
+    },
+    {
+      "path": "evidence/harnesses/planner.manifest",
+      "digest": "sha256:4ae01bb7eb79591699a246ee1f52457ebefbab88b5823d850e02201f8a0fede4"
+    },
+    {
+      "path": "evidence/harnesses/publication-static-gates.manifest",
+      "digest": "sha256:6ec79af7a0170e304a7a39cc768543abd3c5da6d94cada9ebcfe0b1f96816cd2"
+    },
+    {
+      "path": "evidence/harnesses/reference-system.manifest",
+      "digest": "sha256:385a6ebb366fa305a8b1a5488dfcad434451c0901d94f2c73071fb04d7fa6964"
+    },
+    {
+      "path": "evidence/harnesses/replication.manifest",
+      "digest": "sha256:892c158344e75128631588c112a6bb7aa3e149df6bb9fb09053483683891a414"
+    },
+    {
+      "path": "evidence/harnesses/security.manifest",
+      "digest": "sha256:a287d6cd543265d0f3252b15b7b36a4a8693c1b3b158bd73f15e3b1acda1802d"
+    },
+    {
       "path": "evidence/harnesses/skill-router-eval.manifest",
-      "digest": "sha256:9e0a47f7d2ca24902911dbb4265ae75028c9bf5f414758ecb445234df2225ee8"
+      "digest": "sha256:346f757e07ff85f304f1d670b1ef8a8f598b3a871afff54c98fd72e9127f9aa5"
+    },
+    {
+      "path": "evidence/harnesses/sql-surface.manifest",
+      "digest": "sha256:c58be67d9c960a86b3157638f086fc3dc4731b14a4687cbf5e98ff2caf0245f1"
+    },
+    {
+      "path": "evidence/harnesses/sql.manifest",
+      "digest": "sha256:9934c45fc6612db3fd871c74df23dc22f9b28130b91b1a1a35068a509286d75e"
+    },
+    {
+      "path": "evidence/harnesses/statistics.manifest",
+      "digest": "sha256:774efd83c8f958f49c0776c249c0a9395d56131b98af7af71098a09caa081725"
+    },
+    {
+      "path": "evidence/harnesses/types-constraints.manifest",
+      "digest": "sha256:e5b5abaca9bb5e9c6abc40e11b21a71771ab6a1ef544a3d712fa5a23605045c5"
+    },
+    {
+      "path": "evidence/harnesses/upgrade.manifest",
+      "digest": "sha256:1d95eb9e2ad2832ba4ff05aa1844bd1e9969e991389fddf10a92055dd35f3f57"
+    },
+    {
+      "path": "evidence/harnesses/wal.manifest",
+      "digest": "sha256:f644c84d7426b89766d297f463673e597a93ee9868e676072171991fa93c568d"
+    },
+    {
+      "path": "evidence/index.evidence.yaml",
+      "digest": "sha256:c547f3580342e526fcf37d13f783574cc525a7a3b65d4bfe60427a8b6f781e55"
+    },
+    {
+      "path": "evidence/locking.evidence.yaml",
+      "digest": "sha256:ab54d0fffcf3f962544c96f230d6211c4e7129823b6ce97e7ec0739c0f1d8373"
+    },
+    {
+      "path": "evidence/logical-replication.evidence.yaml",
+      "digest": "sha256:5e310ed75ed59c1414cc500ba0ba6d5263227f28c99cf795530c03a84bba4074"
+    },
+    {
+      "path": "evidence/maintenance.evidence.yaml",
+      "digest": "sha256:9cd1b587f273003948c6e4ba1c3dbfa1d757775a813217c34c570f516b97856b"
+    },
+    {
+      "path": "evidence/migration.evidence.yaml",
+      "digest": "sha256:121342bd06b1bc01d27c96a97c5e42a40867ede1da5b3bbc7789f49a801a9bf3"
+    },
+    {
+      "path": "evidence/mvcc.evidence.yaml",
+      "digest": "sha256:07e505c5b7b316f2384131951ba8c024d2662c58e7f49b07b4fd4f8e3d9995b1"
+    },
+    {
+      "path": "evidence/observability.evidence.yaml",
+      "digest": "sha256:dfaaa4d9072c63daaa5dd83763e9062167c43cde21d87121a292e569140484c2"
+    },
+    {
+      "path": "evidence/partitioning.evidence.yaml",
+      "digest": "sha256:45d36e2c6cca7308d2bb06327648fddae118dd6dd12c99a16e71b19df4a94ccd"
+    },
+    {
+      "path": "evidence/performance.evidence.yaml",
+      "digest": "sha256:390b26f164ab095dbb82d7690123659afa6a23930d92f56eae12cf97ff825dd4"
+    },
+    {
+      "path": "evidence/pg-upgrade.evidence.yaml",
+      "digest": "sha256:bf276ce96db05ac9e6e3a5fdd70c6b8649ae7bfd311597f55ca50716e4603f4a"
+    },
+    {
+      "path": "evidence/pitr.evidence.yaml",
+      "digest": "sha256:c4967118e9adbbcef36648df8568ec92bd4c32892c78fc061876454b7869eee6"
+    },
+    {
+      "path": "evidence/planner.evidence.yaml",
+      "digest": "sha256:309aae8e64382b5c90d3603e910408476330baa933af4166e9cf5d47553c24fb"
+    },
+    {
+      "path": "evidence/publication-static-gates.evidence.yaml",
+      "digest": "sha256:2597cbd458814f979cf1e1658ff2b4c0c4c0211a91eae488c94b897f7213df4f"
+    },
+    {
+      "path": "evidence/reference-system.evidence.yaml",
+      "digest": "sha256:4465148795c3aa76f6c807be345f5b63c392498d9cab43d3d02dd08ba2fee682"
+    },
+    {
+      "path": "evidence/replication.evidence.yaml",
+      "digest": "sha256:2000640d1bd7d5518544aa103c02dfe1bea92ab2d05aacd881e9b1a6b425e9a5"
+    },
+    {
+      "path": "evidence/scenarios/behaviors/concurrency.deadlock/boundary.proof.json",
+      "digest": "sha256:75319198c11f91a349695fa29ba768402122b8b1597d178cc91c68f3692fb2f6"
+    },
+    {
+      "path": "evidence/scenarios/behaviors/concurrency.deadlock/compatibility.proof.json",
+      "digest": "sha256:872629c3537b2e8f391e0accd41c2dd12c2bda1f0fea0da03082d2918207cf6e"
+    },
+    {
+      "path": "evidence/scenarios/behaviors/concurrency.deadlock/failure.proof.json",
+      "digest": "sha256:17ddf296b8dbb9b94f34c16fa12f92d8ace3e83b9cca8fa6cb97572df5f11060"
+    },
+    {
+      "path": "evidence/scenarios/behaviors/concurrency.deadlock/migration.proof.json",
+      "digest": "sha256:95eaeb191babbe57c13ea9975b02b2b519834e1db816c9aeab58874c9f9729dc"
+    },
+    {
+      "path": "evidence/scenarios/behaviors/concurrency.deadlock/normal.proof.json",
+      "digest": "sha256:f049a62fb757e72b9bb0c31fc4075d73b986061be8630cf885db6ff77d77a026"
+    },
+    {
+      "path": "evidence/scenarios/behaviors/concurrency.deadlock/operations.proof.json",
+      "digest": "sha256:dbc9f10f90e6801f8050245e85910f9c1f6db5cb4facc48176bcf2d5cf0c0c86"
+    },
+    {
+      "path": "evidence/scenarios/behaviors/concurrency.deadlock/performance.proof.json",
+      "digest": "sha256:01f96ead04cb4ae5f88321848e8a2b71175083b627e04812a7019fd3e6a17b26"
+    },
+    {
+      "path": "evidence/scenarios/behaviors/concurrency.deadlock/recovery.proof.json",
+      "digest": "sha256:4ca1a3245b4275c8a6fe2aab0dab2f662e47cd705b520f413699d767efd4e9d7"
+    },
+    {
+      "path": "evidence/scenarios/behaviors/concurrency.deadlock/refusal.proof.json",
+      "digest": "sha256:7c332958b8ef38c87f730a963af6318a577d134a7b15e2ec0b69484a98fd63f9"
+    },
+    {
+      "path": "evidence/scenarios/behaviors/concurrency.deadlock/security.proof.json",
+      "digest": "sha256:dba9b479e987c9595d2868aee5af3439de1cc90f4554398480377c63967a1e40"
+    },
+    {
+      "path": "evidence/scenarios/behaviors/concurrency.locking/boundary.proof.json",
+      "digest": "sha256:404f44b313f03f5d23398dcd69f14091c79acb9889579850cec6e197f1c03870"
+    },
+    {
+      "path": "evidence/scenarios/behaviors/concurrency.locking/compatibility.proof.json",
+      "digest": "sha256:f65866e193fda0e67b55e34bb5091b42d9e246b30b5db48c3986a25548a91216"
+    },
+    {
+      "path": "evidence/scenarios/behaviors/concurrency.locking/failure.proof.json",
+      "digest": "sha256:b9091f3ffaaa5f49c1cd69dfdda89699468f184202cb09ea35f8ce50749baba8"
+    },
+    {
+      "path": "evidence/scenarios/behaviors/concurrency.locking/migration.proof.json",
+      "digest": "sha256:70ca89e73a10ddb6b4c3ff9b0a4ff81e0a0d881d5461315ae8ce5eac0c765bfd"
+    },
+    {
+      "path": "evidence/scenarios/behaviors/concurrency.locking/normal.proof.json",
+      "digest": "sha256:c69c859bca5b09f21d12bb95b3fdee9d83245af8c180221cb9bf76e8212734bb"
+    },
+    {
+      "path": "evidence/scenarios/behaviors/concurrency.locking/operations.proof.json",
+      "digest": "sha256:b4c79028da41b47e3356623162d0c74755006b6599d8c3df0a27f26443528fbb"
+    },
+    {
+      "path": "evidence/scenarios/behaviors/concurrency.locking/performance.proof.json",
+      "digest": "sha256:cffc28dd843c215f774d1c64010529e7338b1c5c552535b3c1c92d2cb0dfba53"
+    },
+    {
+      "path": "evidence/scenarios/behaviors/concurrency.locking/recovery.proof.json",
+      "digest": "sha256:8801467a1f4feeef4a99544c89964f7e62c9ad5b42e83f55504fb6e5f5bea4b5"
+    },
+    {
+      "path": "evidence/scenarios/behaviors/concurrency.locking/refusal.proof.json",
+      "digest": "sha256:135e70c266f347e1352417214f51d0a591b014dd852fcd08a76ef5c2af6abfbe"
+    },
+    {
+      "path": "evidence/scenarios/behaviors/concurrency.locking/security.proof.json",
+      "digest": "sha256:931a4901057a44a72b31b48ffef56f0f2d5942bcfc638539c6150f2b4ccd5e34"
+    },
+    {
+      "path": "evidence/scenarios/behaviors/concurrency.mvcc/boundary.proof.json",
+      "digest": "sha256:dad0214a71d6a8847ffa32d1bfd84c562d6c9b19e4443f35457d0c0f120488ea"
+    },
+    {
+      "path": "evidence/scenarios/behaviors/concurrency.mvcc/compatibility.proof.json",
+      "digest": "sha256:4a99b7b5d22c499a026b270276dc42e2be55581e56f5e69fe23f0fa76da3f905"
+    },
+    {
+      "path": "evidence/scenarios/behaviors/concurrency.mvcc/failure.proof.json",
+      "digest": "sha256:05fa549ea927108a8f4ff69482b8af90b1982a76a146a186bf80c743af0fb42f"
+    },
+    {
+      "path": "evidence/scenarios/behaviors/concurrency.mvcc/migration.proof.json",
+      "digest": "sha256:82b85f8a2783ce37f9bd699b52edeb0bfc3ec9d76dd1898f4a90be507067cea1"
+    },
+    {
+      "path": "evidence/scenarios/behaviors/concurrency.mvcc/normal.proof.json",
+      "digest": "sha256:8b2c051460f66716029ced5feadf09aead20b4204b9e2b797d8adfdf4bf49e8e"
+    },
+    {
+      "path": "evidence/scenarios/behaviors/concurrency.mvcc/operations.proof.json",
+      "digest": "sha256:708a903e394629a3efe410102a246c2f4d71d4e576f84bdcc684f5b870d912c9"
+    },
+    {
+      "path": "evidence/scenarios/behaviors/concurrency.mvcc/performance.proof.json",
+      "digest": "sha256:2a8e9f14badc774e5088709cb8563e9c740194bf0887ee38d973c77d738751fc"
+    },
+    {
+      "path": "evidence/scenarios/behaviors/concurrency.mvcc/recovery.proof.json",
+      "digest": "sha256:94ddd4ef4813150b783346120e1821deb7d95c9763a081c0dfc6739c175b2064"
+    },
+    {
+      "path": "evidence/scenarios/behaviors/concurrency.mvcc/refusal.proof.json",
+      "digest": "sha256:3486552a540e153735eb41757d817276de212d4b3732713eee8a440f525764d7"
+    },
+    {
+      "path": "evidence/scenarios/behaviors/concurrency.mvcc/security.proof.json",
+      "digest": "sha256:2e533e2903d442e3d6b9c600f8a34d255ae89377b1c15e022b6b48ceedcdc8d3"
+    },
+    {
+      "path": "evidence/scenarios/behaviors/foundation.authority-lock/boundary.proof.json",
+      "digest": "sha256:884631fb2c024cd4225696a03253a3c443031e7e9cd1f80710fe20136e5f5fe8"
+    },
+    {
+      "path": "evidence/scenarios/behaviors/foundation.authority-lock/compatibility.proof.json",
+      "digest": "sha256:3883a1e514c10a5f77d42a04a78592c94c9d8f6331b47d891a37248211905afd"
+    },
+    {
+      "path": "evidence/scenarios/behaviors/foundation.authority-lock/failure.proof.json",
+      "digest": "sha256:8191f113ed1e4a46e8f6305e153816534de698d1721b2727f3f72a80e84931a0"
+    },
+    {
+      "path": "evidence/scenarios/behaviors/foundation.authority-lock/migration.proof.json",
+      "digest": "sha256:075166a0481898dd08f04942e7feae2e368623074ce8b83b8729409f8e4f134f"
+    },
+    {
+      "path": "evidence/scenarios/behaviors/foundation.authority-lock/normal.proof.json",
+      "digest": "sha256:6af26b238a35cdd71a0ff0b2d7c47623b9549713d045e7a3bb9a9863240a84ae"
+    },
+    {
+      "path": "evidence/scenarios/behaviors/foundation.authority-lock/operations.proof.json",
+      "digest": "sha256:55688c8d849b23fa4ab2281a6318e687a3e410e56c4cfb7885008859ad15d1e2"
+    },
+    {
+      "path": "evidence/scenarios/behaviors/foundation.authority-lock/performance.proof.json",
+      "digest": "sha256:3a5e0af0fd9025a1aca937eefcd2c696379c89fd54f312963c3e8026d95a75d9"
+    },
+    {
+      "path": "evidence/scenarios/behaviors/foundation.authority-lock/recovery.proof.json",
+      "digest": "sha256:b6a3707804c52b9a271b82f31be25c24d20c7626cbe709644393704659b6f346"
+    },
+    {
+      "path": "evidence/scenarios/behaviors/foundation.authority-lock/refusal.proof.json",
+      "digest": "sha256:8bfd0bb612410d552e44a7adc313b05a59a9980494dd73f7fd4072ef2a8ed19b"
+    },
+    {
+      "path": "evidence/scenarios/behaviors/foundation.authority-lock/security.proof.json",
+      "digest": "sha256:028cd5d2fbd3700610e3fed83a06e9c2d70980149ac000df6a2ff29cea0141a3"
+    },
+    {
+      "path": "evidence/scenarios/behaviors/foundation.version-lock/boundary.proof.json",
+      "digest": "sha256:baa16022a45176cb088825f906e420d90c93b8a84f76c9d041c6c8632584fef3"
+    },
+    {
+      "path": "evidence/scenarios/behaviors/foundation.version-lock/compatibility.proof.json",
+      "digest": "sha256:f2478d5d6108a6850abe05b44f7fae91bf00f5295fa6249b3e02ee571edacbe0"
+    },
+    {
+      "path": "evidence/scenarios/behaviors/foundation.version-lock/failure.proof.json",
+      "digest": "sha256:4dbe03980c6f4587dd231ef72c2fa37b4b2f515aff62fac3c5cc294f5c9b3846"
+    },
+    {
+      "path": "evidence/scenarios/behaviors/foundation.version-lock/migration.proof.json",
+      "digest": "sha256:2368769fee7717f1197868ef0f076669d5d884f8f1bdf48018d7e4f57e0e358d"
+    },
+    {
+      "path": "evidence/scenarios/behaviors/foundation.version-lock/normal.proof.json",
+      "digest": "sha256:fc3aaa318bd025c024acc990d997aaabc59ab851b60c7c5964d4c42059cb2bf2"
+    },
+    {
+      "path": "evidence/scenarios/behaviors/foundation.version-lock/operations.proof.json",
+      "digest": "sha256:c4546d7937a01b8910c56c8a1fb49085ec908e74ed6d559383559b01751fbc15"
+    },
+    {
+      "path": "evidence/scenarios/behaviors/foundation.version-lock/performance.proof.json",
+      "digest": "sha256:f278bbd5b759bd8e692e3ee480ac450c8c97d46f811d468dc758f67cdc858445"
+    },
+    {
+      "path": "evidence/scenarios/behaviors/foundation.version-lock/recovery.proof.json",
+      "digest": "sha256:6e6a7d851235ac35208c742b75e63fa319bfc4ce92386043363af5670f68cb7f"
+    },
+    {
+      "path": "evidence/scenarios/behaviors/foundation.version-lock/refusal.proof.json",
+      "digest": "sha256:a04867a7aad1c03353cf79375c39f66a07d25f8d989dea8dc7a2f9dc2c0ea683"
+    },
+    {
+      "path": "evidence/scenarios/behaviors/foundation.version-lock/security.proof.json",
+      "digest": "sha256:355ee312441ade64e683945865cc65b5c6b6105f3db18e2a2503d4b4f4ee9c97"
+    },
+    {
+      "path": "evidence/scenarios/behaviors/lifecycle.compatibility-matrix/boundary.proof.json",
+      "digest": "sha256:062479a22afdd3b87830884c683e045ba8736d5fdd12022a3f3cbdf237189904"
+    },
+    {
+      "path": "evidence/scenarios/behaviors/lifecycle.compatibility-matrix/compatibility.proof.json",
+      "digest": "sha256:59c31ac4ffe777a04f322cb92743030d53c2d84ce62eb58cd76c817439388a89"
+    },
+    {
+      "path": "evidence/scenarios/behaviors/lifecycle.compatibility-matrix/failure.proof.json",
+      "digest": "sha256:5c57cc7acbbfd58ca386bf3df7438b06029315ad55f9eb6903d2f3e7907dc7aa"
+    },
+    {
+      "path": "evidence/scenarios/behaviors/lifecycle.compatibility-matrix/migration.proof.json",
+      "digest": "sha256:2d8956f302900402973840fd29f4ca6639f786f0dc8f5e2d0514aafdf1867bf8"
+    },
+    {
+      "path": "evidence/scenarios/behaviors/lifecycle.compatibility-matrix/normal.proof.json",
+      "digest": "sha256:e153923f1c630e232d651ca9b650cb74cff9df5ff06adebfc4534514607227b0"
+    },
+    {
+      "path": "evidence/scenarios/behaviors/lifecycle.compatibility-matrix/operations.proof.json",
+      "digest": "sha256:1cf11081e57a29880361e5bf04be41b14d7c16359d05b0dadd8037c513b95611"
+    },
+    {
+      "path": "evidence/scenarios/behaviors/lifecycle.compatibility-matrix/performance.proof.json",
+      "digest": "sha256:d950c7b07aeea7442fcec8efcbab18c8f4eb5cee2bbf6e02c633396ca23828d4"
+    },
+    {
+      "path": "evidence/scenarios/behaviors/lifecycle.compatibility-matrix/recovery.proof.json",
+      "digest": "sha256:af1d54c0f9c18d0bd47c7a47c09722ffb1defcb538bf253316e9382c312f9365"
+    },
+    {
+      "path": "evidence/scenarios/behaviors/lifecycle.compatibility-matrix/refusal.proof.json",
+      "digest": "sha256:89146c220ad6ea70e9bc13dc7433cd8cefa7452a9a3aa8c683823f598f873eed"
+    },
+    {
+      "path": "evidence/scenarios/behaviors/lifecycle.compatibility-matrix/security.proof.json",
+      "digest": "sha256:7cbaa474bb4da37b0f42afe0f15131ebde4755758101fe6ee6cdd01827534591"
+    },
+    {
+      "path": "evidence/scenarios/behaviors/lifecycle.pg-upgrade/boundary.proof.json",
+      "digest": "sha256:708701d59a7ccaa989471a6eb82d4dc06727761fb6082013c6733d69150b36da"
+    },
+    {
+      "path": "evidence/scenarios/behaviors/lifecycle.pg-upgrade/compatibility.proof.json",
+      "digest": "sha256:7d9ee033788e1ebf50fa508ddb6993272de4acce40083bb9ff6175613b5e98cd"
+    },
+    {
+      "path": "evidence/scenarios/behaviors/lifecycle.pg-upgrade/failure.proof.json",
+      "digest": "sha256:ad5b3f2c173dd55c9f1a88a3cebcfc96db585cfc1abb31494f2e1a8208b59680"
+    },
+    {
+      "path": "evidence/scenarios/behaviors/lifecycle.pg-upgrade/migration.proof.json",
+      "digest": "sha256:9d317d3a2087d852d9eaa361ac532d78e470538a7703d2663499952a74752830"
+    },
+    {
+      "path": "evidence/scenarios/behaviors/lifecycle.pg-upgrade/normal.proof.json",
+      "digest": "sha256:956f6cc626d39b8ef0797cfc994f532fdb5f14d08ee43976b8ebc30e80359d83"
+    },
+    {
+      "path": "evidence/scenarios/behaviors/lifecycle.pg-upgrade/operations.proof.json",
+      "digest": "sha256:a40a99ce9494af2ebbd1b00b9cfe0f5af80fd42f6903ad116f3ae6d1eebd5f96"
+    },
+    {
+      "path": "evidence/scenarios/behaviors/lifecycle.pg-upgrade/performance.proof.json",
+      "digest": "sha256:9c39cb51f986e318d951b57f285e56241be6a266f3cc6f9ad7a5e74468a2d82d"
+    },
+    {
+      "path": "evidence/scenarios/behaviors/lifecycle.pg-upgrade/recovery.proof.json",
+      "digest": "sha256:933a5b55fd44f5683d6fbd4bead1a271c47dc691560e9cc866ff089a0533bed4"
+    },
+    {
+      "path": "evidence/scenarios/behaviors/lifecycle.pg-upgrade/refusal.proof.json",
+      "digest": "sha256:701cd9d1925ab529636bdc0960d26c7eee1b6ff188d52d312e5d16ef7c0deda1"
+    },
+    {
+      "path": "evidence/scenarios/behaviors/lifecycle.pg-upgrade/security.proof.json",
+      "digest": "sha256:575b1813851e2ebd9be9652c0fc2c26b721f7e1fc9ac98e2746cad9b337501ba"
+    },
+    {
+      "path": "evidence/scenarios/behaviors/lifecycle.schema-migration/boundary.proof.json",
+      "digest": "sha256:ce9eaf41c24ccd292effe707e5e4d88ce0f745f52e9367b813b17a10baf2a48f"
+    },
+    {
+      "path": "evidence/scenarios/behaviors/lifecycle.schema-migration/compatibility.proof.json",
+      "digest": "sha256:7aa6ab78e77c1ceb2f4b7465224c7a9989dccc065d70e41a27e29159d31738b8"
+    },
+    {
+      "path": "evidence/scenarios/behaviors/lifecycle.schema-migration/failure.proof.json",
+      "digest": "sha256:52f88a93461c826db771d5a5f938ab64422b81198cb66b3e508681426cf53b8b"
+    },
+    {
+      "path": "evidence/scenarios/behaviors/lifecycle.schema-migration/migration.proof.json",
+      "digest": "sha256:27bebdbb81e2d6ade07e4b25f0477bc0d5289a00c64e11fe01618f9e2187ffc9"
+    },
+    {
+      "path": "evidence/scenarios/behaviors/lifecycle.schema-migration/normal.proof.json",
+      "digest": "sha256:aa56433e072d9a759331762eccdb2bbb219bd19a32007f1bc4705daa57814292"
+    },
+    {
+      "path": "evidence/scenarios/behaviors/lifecycle.schema-migration/operations.proof.json",
+      "digest": "sha256:0573fd1edff076c05804da1498a8e313c646023b7fbd86fd897a0f3ee4088f4c"
+    },
+    {
+      "path": "evidence/scenarios/behaviors/lifecycle.schema-migration/performance.proof.json",
+      "digest": "sha256:1faeb9ea92827af0db6df541adc36cd1592694786a7c5859bd8e98a630bcd8ce"
+    },
+    {
+      "path": "evidence/scenarios/behaviors/lifecycle.schema-migration/recovery.proof.json",
+      "digest": "sha256:a0d0cfafa5c1a4a37ee25659d2b6bf04817c7f9883555405c7bc653a3a5fae24"
+    },
+    {
+      "path": "evidence/scenarios/behaviors/lifecycle.schema-migration/refusal.proof.json",
+      "digest": "sha256:25be3274f4c8266a4d40c09e6e98def71f8141347680c10713a057c39c5bd0c6"
+    },
+    {
+      "path": "evidence/scenarios/behaviors/lifecycle.schema-migration/security.proof.json",
+      "digest": "sha256:cd45def9fccf06cb4b53e862ef7cc712211ba10fefd861dd0918d06a390fb46f"
+    },
+    {
+      "path": "evidence/scenarios/behaviors/lifecycle.upgrade/boundary.proof.json",
+      "digest": "sha256:a3dc676277edcddeb145599001bdb2e8618c9e1fead075560a8484219f393e93"
+    },
+    {
+      "path": "evidence/scenarios/behaviors/lifecycle.upgrade/compatibility.proof.json",
+      "digest": "sha256:893b50b430168420d6e8dbafeec2de913598d4b14d09d2fab67c11a4d44ed856"
+    },
+    {
+      "path": "evidence/scenarios/behaviors/lifecycle.upgrade/failure.proof.json",
+      "digest": "sha256:a035dff1e035155128c37a80de2dff1675219929c4ebd0940bd393ca1b185b82"
+    },
+    {
+      "path": "evidence/scenarios/behaviors/lifecycle.upgrade/migration.proof.json",
+      "digest": "sha256:9ada5ca510da981ee311c5e6d99b45a5f590e0e1ced82ae594dbb87891111fc9"
+    },
+    {
+      "path": "evidence/scenarios/behaviors/lifecycle.upgrade/normal.proof.json",
+      "digest": "sha256:5e9c24f7af101ea5c263ee2f41fe250ac3239ab2d7ab23f40541c91e0f4fc96c"
+    },
+    {
+      "path": "evidence/scenarios/behaviors/lifecycle.upgrade/operations.proof.json",
+      "digest": "sha256:156a96d068b765c23dc9e663cc76be15f8b4841ffcbe231551984be3562bcf9a"
+    },
+    {
+      "path": "evidence/scenarios/behaviors/lifecycle.upgrade/performance.proof.json",
+      "digest": "sha256:fb0d5ad23c971402fbc762db0ed971860cffd34f8e41ac9371631aaa3c35ae1d"
+    },
+    {
+      "path": "evidence/scenarios/behaviors/lifecycle.upgrade/recovery.proof.json",
+      "digest": "sha256:0284f03c64c23bc9df87a128c391ff077af5088a3f38f3b9a74a6167a625e77b"
+    },
+    {
+      "path": "evidence/scenarios/behaviors/lifecycle.upgrade/refusal.proof.json",
+      "digest": "sha256:3105d0ad4a62f0a0bc155503db41dd07787b88a583aaf8e44b384a386614643f"
+    },
+    {
+      "path": "evidence/scenarios/behaviors/lifecycle.upgrade/security.proof.json",
+      "digest": "sha256:f987a35a62f35ff82170901dbaa6efca67164703de5c8df5ef0aaaaa9a143f80"
+    },
+    {
+      "path": "evidence/scenarios/behaviors/operations.backup-recovery/boundary.proof.json",
+      "digest": "sha256:1f1dd6b58add06499fa3874c78dee9d269022fbd342088614c789d6b1c56fc39"
+    },
+    {
+      "path": "evidence/scenarios/behaviors/operations.backup-recovery/compatibility.proof.json",
+      "digest": "sha256:d538900f67b3544ef6250b4889aaeba552324a00e5b6f88d38b97227f7840f5b"
+    },
+    {
+      "path": "evidence/scenarios/behaviors/operations.backup-recovery/failure.proof.json",
+      "digest": "sha256:7935e2462c242906a1683f81a59742aeb6b29830f45595a91e7f80f0ba393d04"
+    },
+    {
+      "path": "evidence/scenarios/behaviors/operations.backup-recovery/migration.proof.json",
+      "digest": "sha256:ea900d1f58b963daeaefac7473fed1b8f8f5da55219ad69d926244ba69cbc5dc"
+    },
+    {
+      "path": "evidence/scenarios/behaviors/operations.backup-recovery/normal.proof.json",
+      "digest": "sha256:dd744f914e91c5071a6d9e658f89ccbb43a4e79eff587b49d820d36a34114ed5"
+    },
+    {
+      "path": "evidence/scenarios/behaviors/operations.backup-recovery/operations.proof.json",
+      "digest": "sha256:bf7c5e5c766493d63ccda604576f7b37c5ada195284debf9c780da4beaf45c27"
+    },
+    {
+      "path": "evidence/scenarios/behaviors/operations.backup-recovery/performance.proof.json",
+      "digest": "sha256:01e69eca98332e74666d62ccc0e604a2542dafc2c6f4e93792242af9b694c099"
+    },
+    {
+      "path": "evidence/scenarios/behaviors/operations.backup-recovery/recovery.proof.json",
+      "digest": "sha256:d97838945dbde1a80acddb6b55ccc0fa74dae2bb60c10c8378d2b7e41bb84f4e"
+    },
+    {
+      "path": "evidence/scenarios/behaviors/operations.backup-recovery/refusal.proof.json",
+      "digest": "sha256:422fadf86c17d82876076f6813d57b06eb69c466fcaa893681f26e153dc98bec"
+    },
+    {
+      "path": "evidence/scenarios/behaviors/operations.backup-recovery/security.proof.json",
+      "digest": "sha256:7cdcf444123429085cb0d671052eba1a70397cbfe192995802223c571943dbb5"
+    },
+    {
+      "path": "evidence/scenarios/behaviors/operations.failure-injection/boundary.proof.json",
+      "digest": "sha256:2fd2b338cae007ae64395cac9efcfc5257361dadb5031257a293f35e613b2770"
+    },
+    {
+      "path": "evidence/scenarios/behaviors/operations.failure-injection/compatibility.proof.json",
+      "digest": "sha256:6f1df0be53914ce637d0c568bac7ad117e02afd12fb0a8b4c290919b5cb4ae14"
+    },
+    {
+      "path": "evidence/scenarios/behaviors/operations.failure-injection/failure.proof.json",
+      "digest": "sha256:06e7720772dc0e23002e9a1dc5f21c9e1c827a7cd7529def4e427507c1c6e99a"
+    },
+    {
+      "path": "evidence/scenarios/behaviors/operations.failure-injection/migration.proof.json",
+      "digest": "sha256:f56b19a641809bc5ddcb61e4ba0a8422c914112202e80e0a13a1d64f0231c205"
+    },
+    {
+      "path": "evidence/scenarios/behaviors/operations.failure-injection/normal.proof.json",
+      "digest": "sha256:626fff8873f7bec4088fcb53a61d6327ec51d211083294f8fbf9fc83232971d0"
+    },
+    {
+      "path": "evidence/scenarios/behaviors/operations.failure-injection/operations.proof.json",
+      "digest": "sha256:0426daa0aea429b80fb0c376a6cc3ed0913e1b87f8214309d4d8070b5e807eb7"
+    },
+    {
+      "path": "evidence/scenarios/behaviors/operations.failure-injection/performance.proof.json",
+      "digest": "sha256:5e3b21c5a5e92121b75255ddf7b177a1af1e0ba70a639a4371961807ac5decb9"
+    },
+    {
+      "path": "evidence/scenarios/behaviors/operations.failure-injection/recovery.proof.json",
+      "digest": "sha256:47ead9f60c89005e224d2394cde3d2c1fd743ad0c75f725165a63470bd7e2c3c"
+    },
+    {
+      "path": "evidence/scenarios/behaviors/operations.failure-injection/refusal.proof.json",
+      "digest": "sha256:da96739049505eead76b602c1e1a6e0bdfaf3476ae1a7894a09e8fc871ec2c60"
+    },
+    {
+      "path": "evidence/scenarios/behaviors/operations.failure-injection/security.proof.json",
+      "digest": "sha256:2b8728543bf42cedbaaa4f8aa831784bcc39c059c15aab5f4b08a80084ea61b0"
+    },
+    {
+      "path": "evidence/scenarios/behaviors/operations.logical-replication/boundary.proof.json",
+      "digest": "sha256:8a89b6f32ab3def72aed53982b70ba06920c3e144b598981637cc0fbdfb209e7"
+    },
+    {
+      "path": "evidence/scenarios/behaviors/operations.logical-replication/compatibility.proof.json",
+      "digest": "sha256:b532bd7b48f7dad15d708fec9b7efbb933e02b720d58ec3255d0861af2e7c1b8"
+    },
+    {
+      "path": "evidence/scenarios/behaviors/operations.logical-replication/failure.proof.json",
+      "digest": "sha256:140a3fcb3012d7ad679f973b0bdb1ccc314430a2dcdfb6554bf3cd6647c5f98e"
+    },
+    {
+      "path": "evidence/scenarios/behaviors/operations.logical-replication/migration.proof.json",
+      "digest": "sha256:3d643d43b37e9534e1407ddd7ed4ac36b151db5f4a9f5a72662afc41cb35284f"
+    },
+    {
+      "path": "evidence/scenarios/behaviors/operations.logical-replication/normal.proof.json",
+      "digest": "sha256:7b7de02055b97ba7a40d30c7457069300b1f001cb39e2d9206681a855dbcfd89"
+    },
+    {
+      "path": "evidence/scenarios/behaviors/operations.logical-replication/operations.proof.json",
+      "digest": "sha256:3a94d68de085261f774586f3e853dea34b5cddfd7cff79e98f01978879c87ff3"
+    },
+    {
+      "path": "evidence/scenarios/behaviors/operations.logical-replication/performance.proof.json",
+      "digest": "sha256:e0593cd56e404d4382f98390d938841e2c95e372abe7c2cce629d7fb6faf292b"
+    },
+    {
+      "path": "evidence/scenarios/behaviors/operations.logical-replication/recovery.proof.json",
+      "digest": "sha256:a42a5a4ddf7596d341c626677f14d0f1e6ca29b6d319fbe2d55ec62382249edb"
+    },
+    {
+      "path": "evidence/scenarios/behaviors/operations.logical-replication/refusal.proof.json",
+      "digest": "sha256:9362c1e1704cc7862a6e32d8402ec744ed88bd18a11a57ee9337ac44cc290a85"
+    },
+    {
+      "path": "evidence/scenarios/behaviors/operations.logical-replication/security.proof.json",
+      "digest": "sha256:cd1f0f4544df42a8fd21cee0e1456a8497028b8afb116ba888e1f736902a12be"
+    },
+    {
+      "path": "evidence/scenarios/behaviors/operations.maintenance/boundary.proof.json",
+      "digest": "sha256:aa4eaf7eb0bc10806ad63dae3a1607fbdfcc6d7e7ac859d923afe39939199ddf"
+    },
+    {
+      "path": "evidence/scenarios/behaviors/operations.maintenance/compatibility.proof.json",
+      "digest": "sha256:9273c4cf37fe726f336422d191de5fa53ae30483eddd138c2242efae782f7134"
+    },
+    {
+      "path": "evidence/scenarios/behaviors/operations.maintenance/failure.proof.json",
+      "digest": "sha256:021e4c28cabc10e390d8cb00f9c235e95a25ed7962f440fb42d050219f7925f7"
+    },
+    {
+      "path": "evidence/scenarios/behaviors/operations.maintenance/migration.proof.json",
+      "digest": "sha256:29f0a0708a6d85075a013c3e5a307e5b1ca40136cc23c02e5a86361c29300fe7"
+    },
+    {
+      "path": "evidence/scenarios/behaviors/operations.maintenance/normal.proof.json",
+      "digest": "sha256:fe7fe9930fbce7c37318e593818e880f58aa96151ee304c931acb2bdc60a01a8"
+    },
+    {
+      "path": "evidence/scenarios/behaviors/operations.maintenance/operations.proof.json",
+      "digest": "sha256:8efcce7cefbcf2c44ad8ffeb94bc2f5e2f635ebe99ecbe49114fdf2258b263ef"
+    },
+    {
+      "path": "evidence/scenarios/behaviors/operations.maintenance/performance.proof.json",
+      "digest": "sha256:7a275cf606223366009782efc5229def06dfc32a38106c612fb1a9c536a5b42d"
+    },
+    {
+      "path": "evidence/scenarios/behaviors/operations.maintenance/recovery.proof.json",
+      "digest": "sha256:53fca4f93aadd5b2c2f0b550fd402be1392dddeef1cec2cf03be01f15c52fd43"
+    },
+    {
+      "path": "evidence/scenarios/behaviors/operations.maintenance/refusal.proof.json",
+      "digest": "sha256:f1634a75fd0a258cc89aaeb7f69c02534519ca1f00377c4e8dc572eda628bebb"
+    },
+    {
+      "path": "evidence/scenarios/behaviors/operations.maintenance/security.proof.json",
+      "digest": "sha256:20f5ec6e46a74a1435dbc3bb2f86dc64701b5c3a9964eb4496cdf8049e972d05"
+    },
+    {
+      "path": "evidence/scenarios/behaviors/operations.observability/boundary.proof.json",
+      "digest": "sha256:9da7296e64272e81d2689b437247936eb745d51b753ad36161ed1ac690518b56"
+    },
+    {
+      "path": "evidence/scenarios/behaviors/operations.observability/compatibility.proof.json",
+      "digest": "sha256:9ec212cbcffe2c197fc152cef051a796f74045da119a939eb0c523220d57629a"
+    },
+    {
+      "path": "evidence/scenarios/behaviors/operations.observability/failure.proof.json",
+      "digest": "sha256:0466e09e2b12ea55c245f745ae01ee6128e0fc54ab639ae774b9cadefa4077b9"
+    },
+    {
+      "path": "evidence/scenarios/behaviors/operations.observability/migration.proof.json",
+      "digest": "sha256:c223104feeba574ef692c4c652e22774737b9e854717d50492fe71fb9b34607f"
+    },
+    {
+      "path": "evidence/scenarios/behaviors/operations.observability/normal.proof.json",
+      "digest": "sha256:a3331a6735f61173b1a3ddb96e6c71b07098c74fdc1e024fb338402904848590"
+    },
+    {
+      "path": "evidence/scenarios/behaviors/operations.observability/operations.proof.json",
+      "digest": "sha256:20008d723edeb737c5a9a340943f2ac451fcd8963e5cf5481821f3d3823d5931"
+    },
+    {
+      "path": "evidence/scenarios/behaviors/operations.observability/performance.proof.json",
+      "digest": "sha256:0b0824abd937db499d553311287fbe54110004ba6804d0dfc221208f96ef68fc"
+    },
+    {
+      "path": "evidence/scenarios/behaviors/operations.observability/recovery.proof.json",
+      "digest": "sha256:39ba7c438bd47a745a47b018a20628a4a8e43e0a5c0bc0e4ed5a406cb91f15f4"
+    },
+    {
+      "path": "evidence/scenarios/behaviors/operations.observability/refusal.proof.json",
+      "digest": "sha256:47e970fa368140de80e78a90e8504695ef10b7d18ce5630bc3be3e205e597fe5"
+    },
+    {
+      "path": "evidence/scenarios/behaviors/operations.observability/security.proof.json",
+      "digest": "sha256:811e9028e75719f4cd4bdeed13850bae88530c462227335c6fb6add5896e19c3"
+    },
+    {
+      "path": "evidence/scenarios/behaviors/operations.pitr-recovery/boundary.proof.json",
+      "digest": "sha256:773daddab7db79c8a977d02936fee377ee92ef0cbfd97020e82a54acc56bdccb"
+    },
+    {
+      "path": "evidence/scenarios/behaviors/operations.pitr-recovery/compatibility.proof.json",
+      "digest": "sha256:da95d48b7aa47199fcb5af056ce4c3d38a68ae33a632131495d45aeb8dd7cc26"
+    },
+    {
+      "path": "evidence/scenarios/behaviors/operations.pitr-recovery/failure.proof.json",
+      "digest": "sha256:1d534b2ef0805e56c49da22a292ac6bd4db9a12ead8c3aa97ae4a8d5ab68cfe8"
+    },
+    {
+      "path": "evidence/scenarios/behaviors/operations.pitr-recovery/migration.proof.json",
+      "digest": "sha256:57dc8b6a62b2ab97bb9e920220cf349566343be15074a7bd3832efe6e83c74ba"
+    },
+    {
+      "path": "evidence/scenarios/behaviors/operations.pitr-recovery/normal.proof.json",
+      "digest": "sha256:59b7511a6bfd95d4a4e26e11d03ea9013062b43041a30975bbacb9578578dc43"
+    },
+    {
+      "path": "evidence/scenarios/behaviors/operations.pitr-recovery/operations.proof.json",
+      "digest": "sha256:b236b9caed231223665bb02ce62e9a5324694bd9e0b33e4df10705acaacf0ff4"
+    },
+    {
+      "path": "evidence/scenarios/behaviors/operations.pitr-recovery/performance.proof.json",
+      "digest": "sha256:f07f7c8870d0cdfb131813231b27e8bd93ed99b8306fd1554243ca4e3370047f"
+    },
+    {
+      "path": "evidence/scenarios/behaviors/operations.pitr-recovery/recovery.proof.json",
+      "digest": "sha256:6f42acdde4e50cf2953638923a62ee56a5f99fdf44a008a3b1d3e77e7421ea07"
+    },
+    {
+      "path": "evidence/scenarios/behaviors/operations.pitr-recovery/refusal.proof.json",
+      "digest": "sha256:410ea386d09b767fe4a0e9ff3e6ad053a9ce5719121f2022f8109b676f4103f3"
+    },
+    {
+      "path": "evidence/scenarios/behaviors/operations.pitr-recovery/security.proof.json",
+      "digest": "sha256:4cbb89d350b7f2f784c78c0da76ebf9f0bc4a1a082eff7fdb0eb3e184f032384"
+    },
+    {
+      "path": "evidence/scenarios/behaviors/operations.replication/boundary.proof.json",
+      "digest": "sha256:d007df8e40382f6814484daaf9886100b3a7909897893cd501117cfe221a8db4"
+    },
+    {
+      "path": "evidence/scenarios/behaviors/operations.replication/compatibility.proof.json",
+      "digest": "sha256:774dc9f2659833f1177aa3263eb45eb9233401dc794f1d9603c4c91349aed834"
+    },
+    {
+      "path": "evidence/scenarios/behaviors/operations.replication/failure.proof.json",
+      "digest": "sha256:d3e2eeb45a3a2a7716b61c1ac4e12e0e15bd1d885b70d4062c09e164184b802e"
+    },
+    {
+      "path": "evidence/scenarios/behaviors/operations.replication/migration.proof.json",
+      "digest": "sha256:d5772227260ae1584e1db2179ac4cf9113d17532c8c83ac04ad43c37e8018138"
+    },
+    {
+      "path": "evidence/scenarios/behaviors/operations.replication/normal.proof.json",
+      "digest": "sha256:3def989d8753e5a7aaaf354354d7473ec719bef20bc798a8a2e19d39a81a8fb6"
+    },
+    {
+      "path": "evidence/scenarios/behaviors/operations.replication/operations.proof.json",
+      "digest": "sha256:e232056f8915425e364d347c91841ba022b4cb8a2cbdbd56b69103620b23a1ee"
+    },
+    {
+      "path": "evidence/scenarios/behaviors/operations.replication/performance.proof.json",
+      "digest": "sha256:295b9d45e9cf7a3336ade26e62f5b06e6cd10215369a6c9d0906ae96d826ab86"
+    },
+    {
+      "path": "evidence/scenarios/behaviors/operations.replication/recovery.proof.json",
+      "digest": "sha256:cafa06a3572c9a1a053faafb77aaf845a7fe24af0eea486308a7aa2a09b3d6ca"
+    },
+    {
+      "path": "evidence/scenarios/behaviors/operations.replication/refusal.proof.json",
+      "digest": "sha256:fc9916cf4a438b3079b7c6553655e440150a42a432508110ed32c52e5bc10635"
+    },
+    {
+      "path": "evidence/scenarios/behaviors/operations.replication/security.proof.json",
+      "digest": "sha256:6baebc9ad1e7b139284fd41087855ef32dc6112d7027ec3eb93ba2555f4e2e2c"
+    },
+    {
+      "path": "evidence/scenarios/behaviors/operations.wal/boundary.proof.json",
+      "digest": "sha256:f32af5e67fe6029cd652c4347fcd0e531500cb344cb6a768ce322d0acf13d463"
+    },
+    {
+      "path": "evidence/scenarios/behaviors/operations.wal/compatibility.proof.json",
+      "digest": "sha256:49ff572da9fb563b6d4f0ab3c76493dc0a5539209336e6a9e175d711257cc1c6"
+    },
+    {
+      "path": "evidence/scenarios/behaviors/operations.wal/failure.proof.json",
+      "digest": "sha256:1b4d789ea6bcb4f23cccca79d7f10ce54014187e1b016097a28f3c04024f539f"
+    },
+    {
+      "path": "evidence/scenarios/behaviors/operations.wal/migration.proof.json",
+      "digest": "sha256:83ac954123454f8b73f2b6bb58e4b243810f56e53feb109a75ce3c0f8c6ffc7c"
+    },
+    {
+      "path": "evidence/scenarios/behaviors/operations.wal/normal.proof.json",
+      "digest": "sha256:248824d7afab4bc4cd73ae1176ec21f0391eb7b253206cffedb27892ca0e3fa1"
+    },
+    {
+      "path": "evidence/scenarios/behaviors/operations.wal/operations.proof.json",
+      "digest": "sha256:1b219e0c2ae8a09b32373d14c09f56904765aad8a3ee869b1ae3677d181a8545"
+    },
+    {
+      "path": "evidence/scenarios/behaviors/operations.wal/performance.proof.json",
+      "digest": "sha256:a19570d95b75a87fede28fbb240d3a915a474b81dbd93982948f677f17c54555"
+    },
+    {
+      "path": "evidence/scenarios/behaviors/operations.wal/recovery.proof.json",
+      "digest": "sha256:c62cac152f122ef8dbbcdf4cac48386269928bd946a18898c008ac2275b79e3d"
+    },
+    {
+      "path": "evidence/scenarios/behaviors/operations.wal/refusal.proof.json",
+      "digest": "sha256:00359ebb0fd74c56a3fabaf43233cfdfa27f9ef88fbd2ebdc0499d71e9cea168"
+    },
+    {
+      "path": "evidence/scenarios/behaviors/operations.wal/security.proof.json",
+      "digest": "sha256:0e1b8cc34bdc3f2646a483bbd2b89e49c12fe9772d8c12431ac689796cfcdf13"
+    },
+    {
+      "path": "evidence/scenarios/behaviors/performance.execution/boundary.proof.json",
+      "digest": "sha256:54de2a6a16fab80cde197fbd2dd150a61b68a96c2d685a188069d021f5814139"
+    },
+    {
+      "path": "evidence/scenarios/behaviors/performance.execution/compatibility.proof.json",
+      "digest": "sha256:4a4639d932c1ebbf06bed856cffe5ce9a52c4be1e39a95d33eac94b0738afb89"
+    },
+    {
+      "path": "evidence/scenarios/behaviors/performance.execution/failure.proof.json",
+      "digest": "sha256:1aa32bc4cfb926c40f97882e69ab9fe578f3c0b31df7d8ee40d5f8ad595a19da"
+    },
+    {
+      "path": "evidence/scenarios/behaviors/performance.execution/migration.proof.json",
+      "digest": "sha256:cb379c4a64bddc47b6ba4094d63580a7238ad8d8cf344265377dd131b539db09"
+    },
+    {
+      "path": "evidence/scenarios/behaviors/performance.execution/normal.proof.json",
+      "digest": "sha256:acbf56d6fb306938e50f2cc0de6d56c753ca768284663a15e106eec3c8b22938"
+    },
+    {
+      "path": "evidence/scenarios/behaviors/performance.execution/operations.proof.json",
+      "digest": "sha256:752ba047aa632e5cee7ad4093a44eaf4812c14aecbbbf8da6d83442179888b0f"
+    },
+    {
+      "path": "evidence/scenarios/behaviors/performance.execution/performance.proof.json",
+      "digest": "sha256:c245d96a53b13e9e0ee7b10fbd8ee0b83151ef545c88e0c5831a42c1d6bc4d91"
+    },
+    {
+      "path": "evidence/scenarios/behaviors/performance.execution/recovery.proof.json",
+      "digest": "sha256:bd6cd75da41442649d1ad2ddc15cc76e406657847eccdb51cfb321181db9f076"
+    },
+    {
+      "path": "evidence/scenarios/behaviors/performance.execution/refusal.proof.json",
+      "digest": "sha256:07daa30b849545b3ccbd06996f8ed2566ce1e74c03b5ac0f5f2959605bc466c9"
+    },
+    {
+      "path": "evidence/scenarios/behaviors/performance.execution/security.proof.json",
+      "digest": "sha256:3d3a0dfeb89c051fc594e6370591979f62ad3f47ce4540fb7d8e366046dabd13"
+    },
+    {
+      "path": "evidence/scenarios/behaviors/performance.index/boundary.proof.json",
+      "digest": "sha256:d83d4b2905af977c82dfc4c9ee27a5509a97f729ca3c09ffca23831702f0ee2f"
+    },
+    {
+      "path": "evidence/scenarios/behaviors/performance.index/compatibility.proof.json",
+      "digest": "sha256:1d2531faa989117a521c481feb3911d96a38f89d68f319b556e6236ca9e5054c"
+    },
+    {
+      "path": "evidence/scenarios/behaviors/performance.index/failure.proof.json",
+      "digest": "sha256:131e49bedb40aee9f2ff720f3d48a60e4d544514616a8fb8cda2aa6786ad5ad2"
+    },
+    {
+      "path": "evidence/scenarios/behaviors/performance.index/migration.proof.json",
+      "digest": "sha256:ff6f770019226056cd8e4772cf106a23d86c8ff3dfad44fcebfdc669711a54c3"
+    },
+    {
+      "path": "evidence/scenarios/behaviors/performance.index/normal.proof.json",
+      "digest": "sha256:c50ad34c135b2afe92fbc7c853ba173cf2626ec2300146a78e568bff2f50b0eb"
+    },
+    {
+      "path": "evidence/scenarios/behaviors/performance.index/operations.proof.json",
+      "digest": "sha256:83d8b36a28025a99d95de50f47d88ddc3eef44e68e87fbeafe7b5f08e5c828e1"
+    },
+    {
+      "path": "evidence/scenarios/behaviors/performance.index/performance.proof.json",
+      "digest": "sha256:dafe47959649ac4ab2f961913532df164f627fa77fa57302ebe47160b91ccfee"
+    },
+    {
+      "path": "evidence/scenarios/behaviors/performance.index/recovery.proof.json",
+      "digest": "sha256:b2a1b39396fc99dc5c0f0a05194cc44e567b257ab45617b41d5fb44f5705966e"
+    },
+    {
+      "path": "evidence/scenarios/behaviors/performance.index/refusal.proof.json",
+      "digest": "sha256:4f33ac14caf65df62ffa3c70cb767589fd1390b9139f07212b2190e1a4adec31"
+    },
+    {
+      "path": "evidence/scenarios/behaviors/performance.index/security.proof.json",
+      "digest": "sha256:3257f8c4925a1a36aca549e3b06a17229ede29d96ed7049b899fe883bdd90ad3"
+    },
+    {
+      "path": "evidence/scenarios/behaviors/performance.planner/boundary.proof.json",
+      "digest": "sha256:bed1088fbfabcb356b8ba0a1692c37d73c7c58a56634102c48fc33b39a9a8f56"
+    },
+    {
+      "path": "evidence/scenarios/behaviors/performance.planner/compatibility.proof.json",
+      "digest": "sha256:351c9fbe241c3f13ec62898ae5f4b267c00cb9759c0d8f872dc447a03cc347a5"
+    },
+    {
+      "path": "evidence/scenarios/behaviors/performance.planner/failure.proof.json",
+      "digest": "sha256:8149a4c5ebafd82d85452def815b9b754fcbb50a2361dd7e3f00277e3831c49c"
+    },
+    {
+      "path": "evidence/scenarios/behaviors/performance.planner/migration.proof.json",
+      "digest": "sha256:7e788a7683b50648b80f52b27047710465d17698237e197b1424e0b4a97eadd6"
+    },
+    {
+      "path": "evidence/scenarios/behaviors/performance.planner/normal.proof.json",
+      "digest": "sha256:6b95a3ff280e14f7e1aa898c0b7acf839e80e8b6880b1b6db53805388ae4666d"
+    },
+    {
+      "path": "evidence/scenarios/behaviors/performance.planner/operations.proof.json",
+      "digest": "sha256:0eaea60cd99399811d4dfbc29982a0df95d56c48795bf30c73be1db9aba32963"
+    },
+    {
+      "path": "evidence/scenarios/behaviors/performance.planner/performance.proof.json",
+      "digest": "sha256:459130ca1e946ff81ccb180262164e39f81c3ba370bf1942deae6bd33d0bd01d"
+    },
+    {
+      "path": "evidence/scenarios/behaviors/performance.planner/recovery.proof.json",
+      "digest": "sha256:2c786d6467ec1f836432dd87720839a2464fbec6e44d8ff0f9c8099ea002db1e"
+    },
+    {
+      "path": "evidence/scenarios/behaviors/performance.planner/refusal.proof.json",
+      "digest": "sha256:e407ce5ed696a410ff832aea478b8b235e6f4c231a13f2b634a039bc93333cfe"
+    },
+    {
+      "path": "evidence/scenarios/behaviors/performance.planner/security.proof.json",
+      "digest": "sha256:c49ab94b87127e04725002212afbf5b8a72c48d57f09484067a376b35daaedda"
+    },
+    {
+      "path": "evidence/scenarios/behaviors/performance.statistics/boundary.proof.json",
+      "digest": "sha256:cf69785ce4b1441d35f222ed4b9038b888c0e91f7674ffd3639746dd84e979f5"
+    },
+    {
+      "path": "evidence/scenarios/behaviors/performance.statistics/compatibility.proof.json",
+      "digest": "sha256:c0e2d8b3d2f60236c203d0e9fe3a72918cc0323a5179f988e25b61f228aa5dd4"
+    },
+    {
+      "path": "evidence/scenarios/behaviors/performance.statistics/failure.proof.json",
+      "digest": "sha256:8406d47eeb74e2610856ff74ec6a1ceada93f2ca711ee68a38bd049d5e0deb43"
+    },
+    {
+      "path": "evidence/scenarios/behaviors/performance.statistics/migration.proof.json",
+      "digest": "sha256:25eb24e3585d896824ab371cff363169e8b6f3d67bb2b40ea09f8130c507247e"
+    },
+    {
+      "path": "evidence/scenarios/behaviors/performance.statistics/normal.proof.json",
+      "digest": "sha256:803e1c7e83a3c2e74b36c045291f2746e1845743c8e8dfb129f08156e857c0d5"
+    },
+    {
+      "path": "evidence/scenarios/behaviors/performance.statistics/operations.proof.json",
+      "digest": "sha256:b2f2345b53f48fe90fb9d6a1a33ba305259e2f95e0ef4d94e3285d4b4c4788ce"
+    },
+    {
+      "path": "evidence/scenarios/behaviors/performance.statistics/performance.proof.json",
+      "digest": "sha256:c01343bcca8b7d52df3892855c5984e3746cb6e724b2f53434a2bab78799e904"
+    },
+    {
+      "path": "evidence/scenarios/behaviors/performance.statistics/recovery.proof.json",
+      "digest": "sha256:4082e332a6e3a9af41f4b74d04c820e1dccec67920ceb440510755ea05395f8b"
+    },
+    {
+      "path": "evidence/scenarios/behaviors/performance.statistics/refusal.proof.json",
+      "digest": "sha256:27643663f2ef7ea5d07b5bfe2982a802ea2e9edce5fac1b00abdcb0f8142e8ec"
+    },
+    {
+      "path": "evidence/scenarios/behaviors/performance.statistics/security.proof.json",
+      "digest": "sha256:8682d8f1210ded8957133b5c680cdcc48f9e50d0e59f360e8b292552822ca25e"
+    },
+    {
+      "path": "evidence/scenarios/behaviors/publication.provenance/boundary.proof.json",
+      "digest": "sha256:76734610595d0eb5b8aee7c211d9ba323c7b06bbc8ad7aa3a34ce4dd2cb6cb1c"
+    },
+    {
+      "path": "evidence/scenarios/behaviors/publication.provenance/compatibility.proof.json",
+      "digest": "sha256:17b5e4b1610ec03f241b329d15cc1334ced1465237914d5573e5e992f865ce89"
+    },
+    {
+      "path": "evidence/scenarios/behaviors/publication.provenance/failure.proof.json",
+      "digest": "sha256:f068e263193f98389143805f5a9e354429814181028db7b3860d4379b88ad916"
+    },
+    {
+      "path": "evidence/scenarios/behaviors/publication.provenance/migration.proof.json",
+      "digest": "sha256:b9bcb51d1eda24ff8a267b1bceb2a01e203536022e4fc0742244103fd67478e3"
+    },
+    {
+      "path": "evidence/scenarios/behaviors/publication.provenance/normal.proof.json",
+      "digest": "sha256:03b85c15253540410aa62a5de13dde58f3428b2c4011de752e5fedcbee4b4074"
+    },
+    {
+      "path": "evidence/scenarios/behaviors/publication.provenance/operations.proof.json",
+      "digest": "sha256:436c07894f6867d301275d6daec76dfb3c16a388bb9af5dec7c51e310b1c221e"
+    },
+    {
+      "path": "evidence/scenarios/behaviors/publication.provenance/performance.proof.json",
+      "digest": "sha256:e65d392e1b9378a8a2156a7a933de241026713bc802d94ab933605933d048e1b"
+    },
+    {
+      "path": "evidence/scenarios/behaviors/publication.provenance/recovery.proof.json",
+      "digest": "sha256:a6eafff3e5e7bade71ffbaf163660c2048e7e10b021eb9841e810b74fe602e68"
+    },
+    {
+      "path": "evidence/scenarios/behaviors/publication.provenance/refusal.proof.json",
+      "digest": "sha256:50faa2d0d6171bcbbbdf5b8d3de54fa2b5b6f73a52174b0410cf2bcc0d9f988c"
+    },
+    {
+      "path": "evidence/scenarios/behaviors/publication.provenance/security.proof.json",
+      "digest": "sha256:c8388ef24896dae294814ecd56212e84fe28c91b315a67013c4581484d433596"
+    },
+    {
+      "path": "evidence/scenarios/behaviors/query.catalog-inventory/boundary.proof.json",
+      "digest": "sha256:345c145144beeed6e41a08ef3e6f6afa678f9fd28caf08323e6b4f160ccc41af"
+    },
+    {
+      "path": "evidence/scenarios/behaviors/query.catalog-inventory/compatibility.proof.json",
+      "digest": "sha256:7aca96758c0df821870b8a9c1bd724e4277761c775ea651494c8a0477e55baad"
+    },
+    {
+      "path": "evidence/scenarios/behaviors/query.catalog-inventory/failure.proof.json",
+      "digest": "sha256:ded22d8b50803be54fd2ec2ace1696ed95b953aac6fb5cff020a094630b869bd"
+    },
+    {
+      "path": "evidence/scenarios/behaviors/query.catalog-inventory/migration.proof.json",
+      "digest": "sha256:177b543137b08f54e564af99cbe2612d99c7c0da2f1410ebfb8b6d1ff4c8645b"
+    },
+    {
+      "path": "evidence/scenarios/behaviors/query.catalog-inventory/normal.proof.json",
+      "digest": "sha256:95409935cd130fd39adda1647a25082d6a1c364a453498cdb08f4cbdf73171db"
+    },
+    {
+      "path": "evidence/scenarios/behaviors/query.catalog-inventory/operations.proof.json",
+      "digest": "sha256:079e18f42c90dd388f731bb369be8c876a438dcd6891aba55d87f5ecffb94a86"
+    },
+    {
+      "path": "evidence/scenarios/behaviors/query.catalog-inventory/performance.proof.json",
+      "digest": "sha256:97a05ae1489fc4f54d9bd7b613f8570bb9cb4cba83c16fb2ecbbda685113074b"
+    },
+    {
+      "path": "evidence/scenarios/behaviors/query.catalog-inventory/recovery.proof.json",
+      "digest": "sha256:bf6e272c5b61d016b4ae70bcf3a2d976b70a6011850a50663ac458cc62c8ddae"
+    },
+    {
+      "path": "evidence/scenarios/behaviors/query.catalog-inventory/refusal.proof.json",
+      "digest": "sha256:9a29d5b71285e5ba62bc35eb697c202a5b45fedaf34d11dc6ced51323b9c5d4d"
+    },
+    {
+      "path": "evidence/scenarios/behaviors/query.catalog-inventory/security.proof.json",
+      "digest": "sha256:54b86f7c5f54be69b355d207013e0ea195b36e5f2252b35c2ccbf8196ecfffc6"
+    },
+    {
+      "path": "evidence/scenarios/behaviors/query.extension/boundary.proof.json",
+      "digest": "sha256:4e26d8721964c1621f3af9ee3efde938997d57a6d7ad9b24917bf9c9ff34fb88"
+    },
+    {
+      "path": "evidence/scenarios/behaviors/query.extension/compatibility.proof.json",
+      "digest": "sha256:1336640fca2a552bf37f2423c459f06cc75a0a75297bc038383ab497c616aa88"
+    },
+    {
+      "path": "evidence/scenarios/behaviors/query.extension/failure.proof.json",
+      "digest": "sha256:fb4e11a641a0804c11d2b42902d39f470268b17ab70932454c07c578b38c2f6b"
+    },
+    {
+      "path": "evidence/scenarios/behaviors/query.extension/migration.proof.json",
+      "digest": "sha256:9793d05f3a69e4ad32d56cbc1e724a30e21551def7282283c05e5688961068fd"
+    },
+    {
+      "path": "evidence/scenarios/behaviors/query.extension/normal.proof.json",
+      "digest": "sha256:c7c6e59ed685041648ad3d6b8096a31e29766af0d7bf97641a2ad294c51d61b6"
+    },
+    {
+      "path": "evidence/scenarios/behaviors/query.extension/operations.proof.json",
+      "digest": "sha256:0d0f7536ac31aae7191c6facd32585bd55031b1f4d442e013e21787de171c0f5"
+    },
+    {
+      "path": "evidence/scenarios/behaviors/query.extension/performance.proof.json",
+      "digest": "sha256:5846383e098e0e0426ec49b612630de71b26bf5e6e596b93dedc1f0ca58074c9"
+    },
+    {
+      "path": "evidence/scenarios/behaviors/query.extension/recovery.proof.json",
+      "digest": "sha256:7adde18cc63f285aa7d7da33662715b2b0afa55322095b2a9a07fb465291d802"
+    },
+    {
+      "path": "evidence/scenarios/behaviors/query.extension/refusal.proof.json",
+      "digest": "sha256:69d4a8836269ff82dd1bb9e647612fd04ca67e7f28ade149e948e91075b06f76"
+    },
+    {
+      "path": "evidence/scenarios/behaviors/query.extension/security.proof.json",
+      "digest": "sha256:aa67829da17b197a045da5efdf9bb8831ebb0c521aa32122ad17d871a9d51d20"
+    },
+    {
+      "path": "evidence/scenarios/behaviors/query.partitioning/boundary.proof.json",
+      "digest": "sha256:8eb4f27deb3c406f55651689f2ac1dfbc3d30eee4ac3798a64b98ea7a96925e3"
+    },
+    {
+      "path": "evidence/scenarios/behaviors/query.partitioning/compatibility.proof.json",
+      "digest": "sha256:fb9e60c036d027961fe009994dd1fb8129242d2c96c61f71c4f39b71739d7a84"
+    },
+    {
+      "path": "evidence/scenarios/behaviors/query.partitioning/failure.proof.json",
+      "digest": "sha256:fdf09d00d2894966b9554ecda6fb65497efa2f3a330e313b57ff5a75d2504a38"
+    },
+    {
+      "path": "evidence/scenarios/behaviors/query.partitioning/migration.proof.json",
+      "digest": "sha256:46440b9b3f013f806b5e7f44108a278b1910e00cf06528b1ceef2a11ed0d51f5"
+    },
+    {
+      "path": "evidence/scenarios/behaviors/query.partitioning/normal.proof.json",
+      "digest": "sha256:29594b254794f8405e76d4e14d0e9e85b5d22c9c9868ad3acbb0e2c81a222f9f"
+    },
+    {
+      "path": "evidence/scenarios/behaviors/query.partitioning/operations.proof.json",
+      "digest": "sha256:1eef2e6f656a0afe416e9c09297fd9cc22f674b24e8a146a55de2f993330b36d"
+    },
+    {
+      "path": "evidence/scenarios/behaviors/query.partitioning/performance.proof.json",
+      "digest": "sha256:485f414f2decb1fac1b43c8001abc1c5fc3ca989b680d43c6eecb3c031588de5"
+    },
+    {
+      "path": "evidence/scenarios/behaviors/query.partitioning/recovery.proof.json",
+      "digest": "sha256:b15d5938c0a39f26f9f93b855340e5e099b16b46de5c258d20438be474ad51da"
+    },
+    {
+      "path": "evidence/scenarios/behaviors/query.partitioning/refusal.proof.json",
+      "digest": "sha256:e0fa9d5d2b0e4c0ed8cd2263c3af4d232ba9b70c94ae3d0033194c8c3b73606c"
+    },
+    {
+      "path": "evidence/scenarios/behaviors/query.partitioning/security.proof.json",
+      "digest": "sha256:5bf1d0115382683c3fe9aedf1add32fb4acd94773da3b450d4919fa89347a124"
+    },
+    {
+      "path": "evidence/scenarios/behaviors/query.security/boundary.proof.json",
+      "digest": "sha256:611f5aace56169f256f0ecab50c602022bac1ae78366d76300a333dbae9e6cff"
+    },
+    {
+      "path": "evidence/scenarios/behaviors/query.security/compatibility.proof.json",
+      "digest": "sha256:3a219227c6456ae1fffee7fb0dc141732318ff111e4c4545f17ca2c6d403d1f0"
+    },
+    {
+      "path": "evidence/scenarios/behaviors/query.security/failure.proof.json",
+      "digest": "sha256:0546105f0ae9eadfb89d85b012e47d12f28b8232b1dc769b439f3ee938b356d7"
+    },
+    {
+      "path": "evidence/scenarios/behaviors/query.security/migration.proof.json",
+      "digest": "sha256:6e64cb5e88cefe73db98e7efe8db3af8f121753fe3d5c8d6056f34a8b01e101a"
+    },
+    {
+      "path": "evidence/scenarios/behaviors/query.security/normal.proof.json",
+      "digest": "sha256:0c0a2d2bdceab47b1b491b370f45cb2e6f5e9909b5aaf71894bc4f58c93b957f"
+    },
+    {
+      "path": "evidence/scenarios/behaviors/query.security/operations.proof.json",
+      "digest": "sha256:3a77e21101ccf7605d3bc065a407516ec2080a56125e1d4ecc82fa59452daf0b"
+    },
+    {
+      "path": "evidence/scenarios/behaviors/query.security/performance.proof.json",
+      "digest": "sha256:cb61e958eb8995c180a2898f47ebf279f0bd354a762e0138fcf08da3ed6c8cb7"
+    },
+    {
+      "path": "evidence/scenarios/behaviors/query.security/recovery.proof.json",
+      "digest": "sha256:d620e40c097697926907dd23eeb8b6ac433c8cc8cfb6ff855f941721b41080ba"
+    },
+    {
+      "path": "evidence/scenarios/behaviors/query.security/refusal.proof.json",
+      "digest": "sha256:cd940367e77c9f75c2c3c077c5b597555d497cd6c28bc4ed7e3dfdd22322ee6e"
+    },
+    {
+      "path": "evidence/scenarios/behaviors/query.security/security.proof.json",
+      "digest": "sha256:88b3a8e466c9529620ab54624c214395bd8410c78f102a6c84f1a0d098b8b129"
+    },
+    {
+      "path": "evidence/scenarios/behaviors/query.sql-surface/boundary.proof.json",
+      "digest": "sha256:349dda5eb79a39e263573c4c80c5bfd43b5e80943df262fd78f4cf0b15971f31"
+    },
+    {
+      "path": "evidence/scenarios/behaviors/query.sql-surface/compatibility.proof.json",
+      "digest": "sha256:1a39ce2dbd8d8547e2f4d8471ab269cfda3dbddef172fa63cd4005d918a978a6"
+    },
+    {
+      "path": "evidence/scenarios/behaviors/query.sql-surface/failure.proof.json",
+      "digest": "sha256:eeeb1ee752c5b988bb63a4b8f5c1b37c9a9ccb4352187bfaa9de05ee7db658d1"
+    },
+    {
+      "path": "evidence/scenarios/behaviors/query.sql-surface/migration.proof.json",
+      "digest": "sha256:8753f3e928af4b4ea01945add834432e9a2eeb5c7c430bfd6b65738e66ecfe6d"
+    },
+    {
+      "path": "evidence/scenarios/behaviors/query.sql-surface/normal.proof.json",
+      "digest": "sha256:773e3087a445be444b2120e8892034c2636f76c0accddb0125f3b29d073f37bd"
+    },
+    {
+      "path": "evidence/scenarios/behaviors/query.sql-surface/operations.proof.json",
+      "digest": "sha256:751ffb0d1ebf35022c42fdda6d0a2c06f1d03033d3d4a8d518ad34b26cd61448"
+    },
+    {
+      "path": "evidence/scenarios/behaviors/query.sql-surface/performance.proof.json",
+      "digest": "sha256:4512d4702163955454e08767dfa474348b0956e4493b1a2e5ba96831ce5737fc"
+    },
+    {
+      "path": "evidence/scenarios/behaviors/query.sql-surface/recovery.proof.json",
+      "digest": "sha256:8018958a4cd5c35dc4fe9e37ff1bb13f74743051f59456741326c046312aac42"
+    },
+    {
+      "path": "evidence/scenarios/behaviors/query.sql-surface/refusal.proof.json",
+      "digest": "sha256:73052aa9277b8b1e33461d547fc79da51447aa041fd4f250f2dfc6f8e60e568b"
+    },
+    {
+      "path": "evidence/scenarios/behaviors/query.sql-surface/security.proof.json",
+      "digest": "sha256:2346cad0deb3b2289d3f448af324166cdee79c5c6ff8b431504eca7129e77347"
+    },
+    {
+      "path": "evidence/scenarios/behaviors/query.types-constraints/boundary.proof.json",
+      "digest": "sha256:dda292faa2874ce11dde43c3f711933a5c8212b247a9395d811990e688a7780c"
+    },
+    {
+      "path": "evidence/scenarios/behaviors/query.types-constraints/compatibility.proof.json",
+      "digest": "sha256:e6e123bf78db2b0b0f0483cb0ed5bdd647c5b2f047aa667c9f9f1863084e0819"
+    },
+    {
+      "path": "evidence/scenarios/behaviors/query.types-constraints/failure.proof.json",
+      "digest": "sha256:5bca1d1f0a009dfced82c25c447a411ba7063b58559d60bec7d9972f92875f93"
+    },
+    {
+      "path": "evidence/scenarios/behaviors/query.types-constraints/migration.proof.json",
+      "digest": "sha256:ce23335c89c5f1ea97d37e1ee7d6115ab466bafe074fdf5a85bd14075208b530"
+    },
+    {
+      "path": "evidence/scenarios/behaviors/query.types-constraints/normal.proof.json",
+      "digest": "sha256:cc46686ce1102b0b5aa4f7efc3509d70696713b955232644ecc34de939c2d4f1"
+    },
+    {
+      "path": "evidence/scenarios/behaviors/query.types-constraints/operations.proof.json",
+      "digest": "sha256:f5531bccdf216b12cd245eea00a29f07e3c15b224893b3f8654710ef1720f35e"
+    },
+    {
+      "path": "evidence/scenarios/behaviors/query.types-constraints/performance.proof.json",
+      "digest": "sha256:054296b4bff84bc2fecb7caa38e66d4f611b3971c39742f09e73999305969d75"
+    },
+    {
+      "path": "evidence/scenarios/behaviors/query.types-constraints/recovery.proof.json",
+      "digest": "sha256:a5cbbdf902b0817571658dff7e1c7660cb91d87f31748c76ea3f830e6fde656a"
+    },
+    {
+      "path": "evidence/scenarios/behaviors/query.types-constraints/refusal.proof.json",
+      "digest": "sha256:9d5b1e9e4c9c2e480b91ad5f7b0b827f94b34252c8ff095117d344b77ea921b4"
+    },
+    {
+      "path": "evidence/scenarios/behaviors/query.types-constraints/security.proof.json",
+      "digest": "sha256:93ec0a0af08f0013aeefadeefa71ec87b64b592153509815277e8c3adde74a4f"
+    },
+    {
+      "path": "evidence/scenarios/behaviors/skill.router-evaluation/boundary.proof.json",
+      "digest": "sha256:d2ec02b1e6dd55418b6bee78abe06d47d1b669aacc0e7a444b04a63876f9da7d"
+    },
+    {
+      "path": "evidence/scenarios/behaviors/skill.router-evaluation/compatibility.proof.json",
+      "digest": "sha256:e1edcb21aa83d6da90d2c81c91ce501d5d1bc42dcb17a4715bea502f2b9f10cf"
+    },
+    {
+      "path": "evidence/scenarios/behaviors/skill.router-evaluation/failure.proof.json",
+      "digest": "sha256:7b43efb0b29feb1cf4d3789569520a8fa65e31bbc7b797e078ccb1ff20b04063"
+    },
+    {
+      "path": "evidence/scenarios/behaviors/skill.router-evaluation/migration.proof.json",
+      "digest": "sha256:a005af247030c3e48a0ae800867dbdb57c68821cdea60b555968392149936bd1"
+    },
+    {
+      "path": "evidence/scenarios/behaviors/skill.router-evaluation/normal.proof.json",
+      "digest": "sha256:e7e4b07055024dec6f674cee4b2aa141165b46958b48537d0521cf403271e764"
+    },
+    {
+      "path": "evidence/scenarios/behaviors/skill.router-evaluation/operations.proof.json",
+      "digest": "sha256:e7c07846a8a53ac58f88da8a4a5018cb917190db4715c0c0b5e2c18d85ce838b"
+    },
+    {
+      "path": "evidence/scenarios/behaviors/skill.router-evaluation/performance.proof.json",
+      "digest": "sha256:50d459d8112ab5e17996770f3e4e0abcd598fbb9dc698ccd189b8ef0f3791562"
+    },
+    {
+      "path": "evidence/scenarios/behaviors/skill.router-evaluation/recovery.proof.json",
+      "digest": "sha256:a20ac23fef74aa379de8ccd9c6572b2b3bf9d6e7de82f628a3c427ea1ef7ae3d"
+    },
+    {
+      "path": "evidence/scenarios/behaviors/skill.router-evaluation/refusal.proof.json",
+      "digest": "sha256:89fa3f93bf4e0547cce14dc5b598535b88aa1c248f63e21e7b545aff2ec678ee"
+    },
+    {
+      "path": "evidence/scenarios/behaviors/skill.router-evaluation/security.proof.json",
+      "digest": "sha256:dbc651cc38b380809fd810c1617c7a39da6ca44f3adb3c678292e2a8b161b853"
+    },
+    {
+      "path": "evidence/scenarios/closure-plan.json",
+      "digest": "sha256:5af793a361adf7f3b0f7cbeeb2110a178e9b316f3141a22c4893c5852aa002ff"
+    },
+    {
+      "path": "evidence/scenarios/index.json",
+      "digest": "sha256:d27593867ab04683953f7c9d0973fbfa4e709fb0c5d889cd4e56fcb521ab7f31"
+    },
+    {
+      "path": "evidence/security.evidence.yaml",
+      "digest": "sha256:6c7e9f104795e1f6d36a23b7122e0655d0bf6e719f6150b503550d609cb17213"
     },
     {
       "path": "evidence/skill-router-eval.evidence.yaml",
-      "digest": "sha256:241fed8f28dff6546e100b7efe3757e437c62bb4bd9f8597fabafb41ec73bb0a"
+      "digest": "sha256:9c74f3debd6b39e0bafdd2b33e92a6d5e3457e1fd151bc7437ff024bed206d66"
+    },
+    {
+      "path": "evidence/sql-surface.evidence.yaml",
+      "digest": "sha256:8e3f9c2edf3a686da20f1d6197b46137a8a58841c1d79132bfdffb88612943ab"
+    },
+    {
+      "path": "evidence/sql.evidence.yaml",
+      "digest": "sha256:4167ca8f9fc397395fe76c7a354bbb74a1050d9ed35625aeea899427159d2651"
+    },
+    {
+      "path": "evidence/statistics.evidence.yaml",
+      "digest": "sha256:ecdafdb980964138e78751ec7010578488b13b95421e2900c3d8efc46169598c"
+    },
+    {
+      "path": "evidence/types-constraints.evidence.yaml",
+      "digest": "sha256:04913d7b03e73934cc475efb7ea0e2a8dc28dbadba71e337a79b69b983b2e825"
+    },
+    {
+      "path": "evidence/upgrade.evidence.yaml",
+      "digest": "sha256:218f09d26e391cdeb44ec9eac39db742271f3d99c15547a57af051dedabef164"
+    },
+    {
+      "path": "evidence/wal.evidence.yaml",
+      "digest": "sha256:beb19bf6e3201dec76b94cdb5d1021ade155e002179decbb3dc8a59df88d9a30"
+    },
+    {
+      "path": "provenance.yaml",
+      "digest": "sha256:98efe320d65d440217ebef9560ef9f27c9f55501ca4a6f146079af1b1ac0b9e1"
     }
   ],
+  "output_binding_policy": {
+    "denominator": "published-runtime-evidence-plus-tracked-generator-outputs",
+    "graph_binding": "added-by-final-single-graph-generation",
+    "digest_only_closure": false
+  },
   "commands": [
     {
       "id": "lab:authority-lock",
@@ -439,5 +2204,6 @@
       "attempts": 1,
       "result": "passed"
     }
-  ]
+  ],
+  "output_binding_phase": "final-graph-bound"
 }

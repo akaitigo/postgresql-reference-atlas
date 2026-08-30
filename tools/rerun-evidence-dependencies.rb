@@ -118,9 +118,11 @@ Dir.mktmpdir("postgresql-evidence-rerun-") do |temporary_root|
   end
   before = tree_state.call(stage_root)
   started_at = Time.now.utc.iso8601(6)
+  derived_labels = %w[skill-eval static-gates scenario-proofs scenario-closure-plan provenance]
   commands.each_with_index do |(label, argv), index|
     puts format("[%02d/%02d] %s", index + 1, commands.length, label)
-    success = system(*argv, chdir: stage_root)
+    environment = derived_labels.include?(label) ? {"EVIDENCE_LEDGER_TIME"=>started_at} : {}
+    success = system(environment, *argv, chdir: stage_root)
     abort "Evidence dependency rerun failed on first attempt: #{label}; prior generation retained" unless success
   end
   completed_at = Time.now.utc.iso8601(6)
@@ -130,9 +132,12 @@ Dir.mktmpdir("postgresql-evidence-rerun-") do |temporary_root|
     abort "Rerun中に入力が変化しました: #{input.fetch('id')}" unless actual == input.fetch("digest")
   end
   docker_version, = Open3.capture2("docker", "--version")
-  output_bindings = EvidenceDependencyGraph::SKILL_EVAL_OUTPUT_PATHS.map do |relative|
+  generated_outputs = tree_state.call(stage_root).keys.select do |relative|
+    EvidenceDependencyGraph.ledger_output_path?(relative)
+  end.sort
+  output_bindings = generated_outputs.map do |relative|
     path = File.join(stage_root, relative)
-    abort "Skill Eval rerun outputがありません: #{relative}" unless File.file?(path)
+    abort "Generated rerun outputがありません: #{relative}" unless File.file?(path)
 
     {"path"=>relative, "digest"=>"sha256:#{Digest::SHA256.file(path).hexdigest}"}
   end
@@ -154,6 +159,11 @@ Dir.mktmpdir("postgresql-evidence-rerun-") do |temporary_root|
     },
     "input_bindings"=>bindings,
     "output_bindings"=>output_bindings,
+    "output_binding_policy"=>{
+      "denominator"=>"published-runtime-evidence-plus-tracked-generator-outputs",
+      "graph_binding"=>"added-by-final-single-graph-generation",
+      "digest_only_closure"=>false
+    },
     "commands"=>commands.map { |label, argv| {"id"=>label, "argv"=>argv, "attempts"=>1, "result"=>"passed"} }
   }
   stage_ledger = File.join(stage_root, EvidenceDependencyGraph::LEDGER_PATH)

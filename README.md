@@ -57,7 +57,7 @@ make lab LAB=pg-upgrade
 make eval
 ```
 
-`scripts/static-gates.sh`はv1 Certificateに束縛された歴史Harnessとして変更せず保持する。Definitive移行中の現行Graphは`make audit`と`make definitive-audit`で検証する。
+v1 Certificateはbounded historicalとして独立検証する。現行の静的Gate Evidenceはfull-run ledgerへ結んでbyte deterministicに再生成し、Definitive移行中のGraphは`make audit`、`make definitive-audit`、`make evidence-pipeline-clean`で検証する。
 
 利用可能なLabは`authority-lock`、`definitive-inventory`、`sql-surface`、`sql`、`types-constraints`、`catalog-inventory`、`partitioning`、`extension`、`security`、`mvcc`、`locking`、`deadlock`、`planner`、`statistics`、`index`、`performance`、`wal`、`backup-recovery`、`pitr`、`replication`、`logical-replication`、`observability`、`maintenance`、`failure-injection`、`migration`、`upgrade`、`pg-upgrade`、`compatibility-matrix`、`reference-system`です。
 

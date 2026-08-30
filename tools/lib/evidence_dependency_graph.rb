@@ -9,15 +9,6 @@ module EvidenceDependencyGraph
   ROOT = File.expand_path("../..", __dir__)
   GRAPH_PATH = "evidence/dependency-graph.json"
   LEDGER_PATH = "evidence/dependency-rerun.json"
-  SKILL_EVAL_OUTPUT_PATHS = %w[
-    evals/postgresql-router.skill-eval.json
-    evals/postgresql-atlas.definitive-routing-eval.json
-    evals/postgresql-atlas.definitive-skill-eval.json
-    evals/definitive-skill-router.json
-    evidence/artifacts/skill-router-eval.json
-    evidence/harnesses/skill-router-eval.manifest
-    evidence/skill-router-eval.evidence.yaml
-  ].freeze
   POLICY = {
     "transitive_staleness"=>true,
     "digest_only_closure_forbidden"=>true,
@@ -144,6 +135,32 @@ module EvidenceDependencyGraph
     paths.select { |path| File.file?(absolute(path)) }.uniq.sort
   end
 
+  # Full-run ledger denominator. This tracks only files that the full rerun
+  # actually publishes or that the tracked generator phase rewrites before the
+  # final Graph step.
+  def ledger_output_paths
+    files(
+      "evidence/*.evidence.{json,yaml,yml}",
+      "evidence/artifacts/**/*",
+      "evidence/harnesses/*.manifest",
+      "evidence/scenarios/**/*",
+      "artifacts/**/*",
+      "evals/**/*.json",
+      "provenance.yaml"
+    )
+      .select { |path| ledger_output_path?(path) }
+      .uniq.sort
+  end
+
+  def ledger_output_path?(path)
+    return false if [LEDGER_PATH, GRAPH_PATH, "evals/cases.json"].include?(path)
+    return true if path == "provenance.yaml"
+    return true if path.start_with?("artifacts/")
+    return true if path.start_with?("evidence/artifacts/", "evidence/harnesses/", "evidence/scenarios/")
+    return true if path.start_with?("evidence/") && path.match?(%r{\Aevidence/[^/]+\.evidence\.(json|ya?ml)\z})
+    path.start_with?("evals/") && path.end_with?(".json")
+  end
+
   def output_id(path)
     "output.#{Digest::SHA256.hexdigest(path)[0, 20]}"
   end
@@ -199,7 +216,7 @@ module EvidenceDependencyGraph
 
   def build
     ledger = JSON.parse(File.read(absolute(LEDGER_PATH)))
-    verify_ledger_output_bindings!(ledger)
+    verify_ledger_output_bindings!(ledger, require_graph: false)
     prior = File.file?(absolute(GRAPH_PATH)) ? JSON.parse(File.read(absolute(GRAPH_PATH))) : nil
     prior_inputs = Array(prior&.fetch("inputs", [])).to_h { |item| [item.fetch("id"), item] }
     ledger_bindings = ledger.fetch("input_bindings").to_h { |item| [item.fetch("input_id"), item.fetch("digest")] }
@@ -245,7 +262,7 @@ module EvidenceDependencyGraph
 
   def verify!(graph)
     ledger = JSON.parse(File.read(absolute(LEDGER_PATH)))
-    verify_ledger_output_bindings!(ledger)
+    verify_ledger_output_bindings!(ledger, require_graph: true)
     raise "Dependency Graph policyが変化しています" unless graph.fetch("policy") == POLICY
     raise "Dependency Graphはstaleです" unless graph.fetch("status") == "current"
     inputs = graph.fetch("inputs").to_h { |item| [item.fetch("id"), item] }
@@ -287,12 +304,24 @@ module EvidenceDependencyGraph
     true
   end
 
-  def verify_ledger_output_bindings!(ledger)
+  def verify_ledger_output_bindings!(ledger, require_graph: true)
     bindings = Array(ledger["output_bindings"]).to_h { |item| [item.fetch("path"), item.fetch("digest")] }
-    missing = SKILL_EVAL_OUTPUT_PATHS - bindings.keys
-    raise "Eval rerun output bindingが不足しています: #{missing.first}" unless missing.empty?
-    SKILL_EVAL_OUTPUT_PATHS.each do |path|
-      raise "Eval outputがfull rerun ledgerと一致しません: #{path}" unless File.file?(absolute(path)) && bindings.fetch(path) == digest_file(path)
+    expected = ledger_output_paths
+    missing = expected - bindings.keys
+    raise "Generated output bindingが不足しています: #{missing.first}" unless missing.empty?
+    unexpected = bindings.keys - expected - [GRAPH_PATH]
+    raise "Generated output denominator外のbindingがあります: #{unexpected.first}" unless unexpected.empty?
+    expected.each do |path|
+      unless File.file?(absolute(path)) && bindings.fetch(path) == digest_file(path)
+        raise "Generated outputがfull rerun ledgerと一致しません: #{path}"
+      end
     end
+    if require_graph
+      raise "Final Graph output bindingが不足しています" unless bindings.key?(GRAPH_PATH)
+      unless File.file?(absolute(GRAPH_PATH)) && bindings.fetch(GRAPH_PATH) == digest_file(GRAPH_PATH)
+        raise "Final Graph outputがfull rerun ledgerと一致しません"
+      end
+    end
+    true
   end
 end

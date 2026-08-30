@@ -5,12 +5,12 @@ claim_ids: [operations.wal]
 kind: test-report
 producer: postgresql-reference-atlas
 command: make lab LAB=wal
-created_at: "2026-08-30T16:45:56Z"
+created_at: "2026-08-30T17:48:26Z"
 environment:
   profile: container
   manifest_digest: sha256:3df4dbd82139e17c785348c281f26b54d7300662087baaeec3034acefedf36b9
 source_digest: sha256:7a5097c6130472b193adb30fda89b4a607f1ae00a1ae87dbc1cf22ae5484eaef
-harness_digest: sha256:8238d6f33be089643f5e5b962e4380cb8d9d6a3fd1ccadadda64df688a3b7db8
+harness_digest: sha256:f644c84d7426b89766d297f463673e597a93ee9868e676072171991fa93c568d
 harness_path: evidence/harnesses/wal.manifest
 artifact:
   uri: evidence/artifacts/wal.json

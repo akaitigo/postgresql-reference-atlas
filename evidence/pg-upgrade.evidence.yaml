@@ -5,12 +5,12 @@ claim_ids: [lifecycle.pg-upgrade]
 kind: migration
 producer: postgresql-reference-atlas
 command: make lab LAB=pg-upgrade
-created_at: "2026-08-30T16:47:27Z"
+created_at: "2026-08-30T17:50:03Z"
 environment:
   profile: cluster
   manifest_digest: sha256:718afbefcc01162a74a85ae51d34b733849f4a6b6c28d17428beead9fcd11701
 source_digest: sha256:7a5097c6130472b193adb30fda89b4a607f1ae00a1ae87dbc1cf22ae5484eaef
-harness_digest: sha256:c11099b3d6cb863e3ca6a63bbba7b36ae393a4b9df09cde505e445640831b3b5
+harness_digest: sha256:f7a90d015484d9319a91b432edddb90de4f2ef22bc3fcbdc74ea1f0bce88a92c
 harness_path: evidence/harnesses/pg-upgrade.manifest
 artifact:
   uri: evidence/artifacts/pg-upgrade.json

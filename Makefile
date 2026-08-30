@@ -5,7 +5,7 @@ ATLAS_ROOT := $(CURDIR)
 
 .NOTPARALLEL: test
 
-.PHONY: validate audit non-regression-audit core-non-regression-audit authority-body-non-regression-audit definitive-audit parity-audit depth-parity-audit authority-locator-verify authority-body-verify authority-review-verify authority-review-determinism-test definitive-skill-eval-verify scenario-proofs-generate scenario-proofs-verify scenario-closure-plan-generate scenario-closure-plan-verify scenario-security-001-run scenario-evidence-atomicity-test docker-volume-cleanup-test evidence-dependency-rerun evidence-dependency-generate evidence-dependency-verify evidence-dependency-negative-test eval-evidence-dependency-refresh eval-evidence-dependency-clean core-evidence-dependency-audit core-scenario-trace-audit core-scenario-plan-audit core-evidence-durability-audit core-authority-audit core-authority-body-audit core-authority-review-audit core-skill-router-audit definitive-gate claims provenance certificate-verify commit-signature-verify test-static evidence-freshness lab eval refresh-evidence test
+.PHONY: validate audit non-regression-audit core-non-regression-audit authority-body-non-regression-audit definitive-audit parity-audit depth-parity-audit authority-locator-verify authority-body-verify authority-review-verify authority-review-determinism-test definitive-skill-eval-verify scenario-proofs-generate scenario-proofs-verify scenario-closure-plan-generate scenario-closure-plan-verify scenario-security-001-run scenario-evidence-atomicity-test docker-volume-cleanup-test evidence-dependency-rerun evidence-dependency-generate evidence-dependency-verify evidence-dependency-negative-test tracked-evidence-generate ledger-output-verify evidence-pipeline-refresh evidence-pipeline-clean eval-evidence-dependency-refresh eval-evidence-dependency-clean core-evidence-dependency-audit core-scenario-trace-audit core-scenario-plan-audit core-evidence-durability-audit core-authority-audit core-authority-body-audit core-authority-review-audit core-skill-router-audit definitive-gate claims provenance certificate-verify commit-signature-verify test-static evidence-freshness lab eval refresh-evidence test
 
 validate:
 	cd $(CORE_DIR) && GOCACHE=$(CURDIR)/.cache/go-build go run ./cmd/atlas validate \
@@ -138,20 +138,28 @@ evidence-dependency-negative-test:
 	ruby tools/test-evidence-dependency-graph.rb
 
 eval-evidence-dependency-refresh:
-	bash evals/run.sh
-	ruby tools/generate-evidence-dependency-graph.rb
-	ruby tools/verify-evidence-dependency-graph.rb
+	$(MAKE) evidence-pipeline-refresh
 
 eval-evidence-dependency-clean:
-	git diff --exit-code -- \
-		evals/postgresql-router.skill-eval.json \
-		evals/postgresql-atlas.definitive-routing-eval.json \
-		evals/postgresql-atlas.definitive-skill-eval.json \
-		evals/definitive-skill-router.json \
-		evidence/artifacts/skill-router-eval.json \
-		evidence/harnesses/skill-router-eval.manifest \
-		evidence/skill-router-eval.evidence.yaml \
-		evidence/dependency-graph.json
+	$(MAKE) evidence-pipeline-clean
+
+tracked-evidence-generate:
+	bash scripts/static-gates.sh
+	bash evals/run.sh
+	ruby tools/generate-scenario-proofs.rb
+	ruby tools/generate-scenario-closure-plan.rb
+	ruby tools/generate-provenance.rb
+
+ledger-output-verify:
+	ruby tools/verify-evidence-output-bindings.rb
+
+evidence-pipeline-refresh:
+	$(MAKE) tracked-evidence-generate
+	$(MAKE) ledger-output-verify
+	$(MAKE) evidence-dependency-generate
+
+evidence-pipeline-clean:
+	git diff --exit-code -- evidence artifacts evals provenance.yaml
 
 core-evidence-dependency-audit:
 	cd $(CORE_DIR) && GOCACHE=$(CURDIR)/.cache/go-build go run ./cmd/atlas audit $(ATLAS_ROOT) --gate evidence-dependency
@@ -197,4 +205,11 @@ commit-signature-verify:
 
 refresh-evidence: eval test-static provenance
 
-test: validate audit non-regression-audit core-non-regression-audit authority-body-non-regression-audit definitive-audit parity-audit authority-locator-verify authority-body-verify authority-review-verify authority-review-determinism-test eval-evidence-dependency-refresh eval-evidence-dependency-clean definitive-skill-eval-verify scenario-proofs-verify scenario-closure-plan-verify scenario-evidence-atomicity-test docker-volume-cleanup-test evidence-dependency-verify evidence-dependency-negative-test core-evidence-dependency-audit core-scenario-trace-audit core-scenario-plan-audit core-evidence-durability-audit core-authority-audit core-authority-body-audit core-authority-review-audit core-skill-router-audit depth-parity-audit evidence-freshness certificate-verify
+test:
+	$(MAKE) validate audit
+	$(MAKE) non-regression-audit core-non-regression-audit authority-body-non-regression-audit
+	$(MAKE) definitive-audit parity-audit authority-locator-verify authority-body-verify authority-review-verify authority-review-determinism-test definitive-skill-eval-verify scenario-proofs-verify scenario-closure-plan-verify scenario-evidence-atomicity-test core-scenario-trace-audit core-scenario-plan-audit core-evidence-durability-audit core-authority-audit core-authority-body-audit core-authority-review-audit core-skill-router-audit depth-parity-audit
+	@if $(MAKE) definitive-gate; then echo "incomplete repository unexpectedly passed Definitive promotion" >&2; exit 1; fi
+	$(MAKE) evidence-pipeline-refresh
+	$(MAKE) evidence-dependency-verify evidence-dependency-negative-test core-evidence-dependency-audit docker-volume-cleanup-test evidence-freshness certificate-verify
+	$(MAKE) evidence-pipeline-clean

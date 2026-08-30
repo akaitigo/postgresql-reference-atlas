@@ -102,6 +102,13 @@ replacements:
     reason: 既存30件のRouter Evalとpass閾値を保持し、112 Routing cell、5 fail-closed境界、独立Agent Forward Evalを後段へ加法接続した。
     execution_proof_evidence_ids: [skill.router-eval]
     migration_evidence_ids: [lab.migration]
+  - collection: tests_labs
+    old_id: test-harness:scripts/static-gates.sh
+    new_ids: [test-harness:scripts/static-gates.sh]
+    equivalence: equal-or-stronger
+    reason: 既存のstatic publication gatesとAssertionを保持し、ledger固定created_atによるbyte deterministic生成とpipeline clean確認を加えた。
+    execution_proof_evidence_ids: [foundation.authority-lock, publication.static-gates]
+    migration_evidence_ids: [lab.migration]
   - collection: ci_jobs
     old_id: .github/workflows/ci.yml:validate
     new_ids: [.github/workflows/ci.yml:validate]

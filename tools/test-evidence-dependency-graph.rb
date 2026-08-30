@@ -5,11 +5,13 @@ require_relative "lib/evidence_dependency_graph"
 
 root = EvidenceDependencyGraph::ROOT
 base = JSON.parse(File.read(File.join(root, EvidenceDependencyGraph::GRAPH_PATH)))
+base_ledger = JSON.parse(File.read(File.join(root, EvidenceDependencyGraph::LEDGER_PATH)))
 fixtures = Dir.glob(File.join(root, "fixtures/evidence-dependency/*.json")).sort.map { |path| JSON.parse(File.read(path)) }
 
 fixtures.each do |fixture|
   graph = Marshal.load(Marshal.dump(base))
   restore = nil
+  verification = -> { EvidenceDependencyGraph.verify!(graph) }
   case fixture.fetch("id")
   when "changed-input-digest-only"
     graph["inputs"][0]["baseline_digest"] = "sha256:#{'0' * 64}"
@@ -32,11 +34,27 @@ fixtures.each do |fixture|
     if fixture.fetch("id") == "eval-output-digest-only"
       graph.fetch("outputs").find { |item| item.fetch("path") == relative }["digest"] = "sha256:#{Digest::SHA256.hexdigest(tampered)}"
     end
+  when "generated-output-binding-omitted"
+    ledger = Marshal.load(Marshal.dump(base_ledger))
+    ledger.fetch("output_bindings").reject! do |binding|
+      binding.fetch("path") == "evidence/foundation-authority-lock.evidence.yaml"
+    end
+    verification = -> { EvidenceDependencyGraph.verify_ledger_output_bindings!(ledger, require_graph: true) }
+  when "post-graph-generated-output-mutation", "generated-output-digest-only"
+    relative = "evidence/foundation-authority-lock.evidence.yaml"
+    path = File.join(root, relative)
+    original = File.binread(path)
+    tampered = original.sub("verdict: pass", "verdict: fail")
+    File.binwrite(path, tampered)
+    restore = -> { File.binwrite(path, original) }
+    if fixture.fetch("id") == "generated-output-digest-only"
+      graph.fetch("outputs").find { |item| item.fetch("path") == relative }["digest"] = "sha256:#{Digest::SHA256.hexdigest(tampered)}"
+    end
   else
     raise "未知のnegative fixtureです: #{fixture.fetch('id')}"
   end
   begin
-    EvidenceDependencyGraph.verify!(graph)
+    verification.call
     raise "negative fixtureを拒否できませんでした: #{fixture.fetch('id')}"
   rescue RuntimeError => error
     raise "期待した拒否理由ではありません: #{fixture.fetch('id')}: #{error.message}" unless error.message.include?(fixture.fetch("expected_error"))

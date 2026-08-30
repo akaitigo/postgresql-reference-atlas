@@ -5,12 +5,12 @@ claim_ids: [operations.logical-replication]
 kind: recovery
 producer: postgresql-reference-atlas
 command: make lab LAB=logical-replication
-created_at: "2026-08-30T16:46:40Z"
+created_at: "2026-08-30T17:49:16Z"
 environment:
   profile: cluster
   manifest_digest: sha256:718afbefcc01162a74a85ae51d34b733849f4a6b6c28d17428beead9fcd11701
 source_digest: sha256:7a5097c6130472b193adb30fda89b4a607f1ae00a1ae87dbc1cf22ae5484eaef
-harness_digest: sha256:d87e2bd3006f597d13c2d9cd6ad1a8040dee03c807504f0f452627f0b7452137
+harness_digest: sha256:276aeed412817486915abf567a5b89408271e21b53cf76eddbe9bc9b59e193dc
 harness_path: evidence/harnesses/logical-replication.manifest
 artifact:
   uri: evidence/artifacts/logical-replication.json

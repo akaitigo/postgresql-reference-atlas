@@ -5,12 +5,12 @@ claim_ids: [performance.statistics]
 kind: benchmark
 producer: postgresql-reference-atlas
 command: make lab LAB=statistics
-created_at: "2026-08-30T16:45:40Z"
+created_at: "2026-08-30T17:48:08Z"
 environment:
   profile: container
   manifest_digest: sha256:3df4dbd82139e17c785348c281f26b54d7300662087baaeec3034acefedf36b9
 source_digest: sha256:7a5097c6130472b193adb30fda89b4a607f1ae00a1ae87dbc1cf22ae5484eaef
-harness_digest: sha256:177600124a0bd3a0176f51fe603e830d6c7836f23893ee7b621ca5934f408771
+harness_digest: sha256:774efd83c8f958f49c0776c249c0a9395d56131b98af7af71098a09caa081725
 harness_path: evidence/harnesses/statistics.manifest
 artifact:
   uri: evidence/artifacts/statistics.json

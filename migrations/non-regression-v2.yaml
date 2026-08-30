@@ -3,138 +3,655 @@ atlas_id: postgresql-reference-atlas
 baseline_commit: 8a4259d2de288178b8b87f09a09e5b57654c88e0
 policy: additive-only
 replacements:
-  - {id: docker-volume-cleanup-evidence-harnesses-authority-lock-manifest, old_id: "file:evidence/harnesses/authority-lock.manifest", new_id: "file:evidence/harnesses/authority-lock.manifest", old_value: "sha256:d49f210f3635dc60acd584a802e6dc3d3c78d6f819c4d886d30e6bdac8c9775d", new_value: "sha256:626a00e4e6c9ab82622222bf9fa2a5269e188172b0fdf777ad2b630fedec1c58", proof_type: runtime-equivalent, migration_evidence: evidence/migrations/docker-volume-cleanup-v1.json, reason: 既存HarnessとOracleを保持し、task-owned containerを成功・失敗双方でanonymous volumeとともに削除するため。}
-  - {id: docker-volume-cleanup-evidence-harnesses-backup-recovery-manifest, old_id: "file:evidence/harnesses/backup-recovery.manifest", new_id: "file:evidence/harnesses/backup-recovery.manifest", old_value: "sha256:21384fc596ceb52ba6fe16a17a7516775a5a4baab803e07dddc50242d33d563a", new_value: "sha256:ee4c331391c4ae1a57fa72d8683609a43ef1cd263b41bc1947fa31bf82b41973", proof_type: runtime-equivalent, migration_evidence: evidence/migrations/docker-volume-cleanup-v1.json, reason: 既存HarnessとOracleを保持し、task-owned containerを成功・失敗双方でanonymous volumeとともに削除するため。}
-  - {id: docker-volume-cleanup-evidence-harnesses-catalog-inventory-manifest, old_id: "file:evidence/harnesses/catalog-inventory.manifest", new_id: "file:evidence/harnesses/catalog-inventory.manifest", old_value: "sha256:76018e9feed09db82bae5bbf7a5dc4213dd3f24f8323053edcfe3a3371ea5048", new_value: "sha256:3cda5ab69f4c5f1e1c46660cbfacffbc0fbdcfccecc6b6c4b0ded396d2828852", proof_type: runtime-equivalent, migration_evidence: evidence/migrations/docker-volume-cleanup-v1.json, reason: 既存HarnessとOracleを保持し、task-owned containerを成功・失敗双方でanonymous volumeとともに削除するため。}
-  - {id: docker-volume-cleanup-evidence-harnesses-compatibility-matrix-manifest, old_id: "file:evidence/harnesses/compatibility-matrix.manifest", new_id: "file:evidence/harnesses/compatibility-matrix.manifest", old_value: "sha256:559ccd9ca37a6e52771de30993240c51baf2cdbea23ffa4b732f4e79b928b754", new_value: "sha256:84efe67850ccbb36c8a96bbb87e6fc015cd59f7c951b48436c8a74ac046b64b2", proof_type: runtime-equivalent, migration_evidence: evidence/migrations/docker-volume-cleanup-v1.json, reason: 既存HarnessとOracleを保持し、task-owned containerを成功・失敗双方でanonymous volumeとともに削除するため。}
-  - {id: docker-volume-cleanup-evidence-harnesses-deadlock-manifest, old_id: "file:evidence/harnesses/deadlock.manifest", new_id: "file:evidence/harnesses/deadlock.manifest", old_value: "sha256:60aa11d7a7e91ee501deebb8e555ee35cd8a316b55d2af53210dc132c7ed102c", new_value: "sha256:527ba0da8ad5e2089faef685b497c13ce71f65d9f5e4ebdf451fc70a88dcbc19", proof_type: runtime-equivalent, migration_evidence: evidence/migrations/docker-volume-cleanup-v1.json, reason: 既存HarnessとOracleを保持し、task-owned containerを成功・失敗双方でanonymous volumeとともに削除するため。}
-  - {id: docker-volume-cleanup-evidence-harnesses-extension-manifest, old_id: "file:evidence/harnesses/extension.manifest", new_id: "file:evidence/harnesses/extension.manifest", old_value: "sha256:c63ebf46bf53289b483f3d89a19b57fb4ef9f0b8df6641da3a90f88a3a50ba7b", new_value: "sha256:a2d0521f22814810d933abaa72db1920475b2aa54673fab0b3c3df14cb8a1aec", proof_type: runtime-equivalent, migration_evidence: evidence/migrations/docker-volume-cleanup-v1.json, reason: 既存HarnessとOracleを保持し、task-owned containerを成功・失敗双方でanonymous volumeとともに削除するため。}
-  - {id: docker-volume-cleanup-evidence-harnesses-failure-injection-manifest, old_id: "file:evidence/harnesses/failure-injection.manifest", new_id: "file:evidence/harnesses/failure-injection.manifest", old_value: "sha256:32c4edb7491edbe7f4c6937c8b1961e9f530a1ebec45d6f90cacee6092e271c7", new_value: "sha256:56d589eaae4f273bc7444791df0dbe6b2d99d116f1dbccfe57faee468c2e0e4b", proof_type: runtime-equivalent, migration_evidence: evidence/migrations/docker-volume-cleanup-v1.json, reason: 既存HarnessとOracleを保持し、task-owned containerを成功・失敗双方でanonymous volumeとともに削除するため。}
-  - {id: docker-volume-cleanup-evidence-harnesses-foundation-authority-lock-manifest, old_id: "file:evidence/harnesses/foundation-authority-lock.manifest", new_id: "file:evidence/harnesses/foundation-authority-lock.manifest", old_value: "sha256:d2aa18a4139816b81cbbc9350b929057ee636a5beed55410b1b35705df55f390", new_value: "sha256:807871e169769f131460ae3faf4c6709f8ce39bc7616d8a481f543a80c9adc64", proof_type: runtime-equivalent, migration_evidence: evidence/migrations/docker-volume-cleanup-v1.json, reason: 既存HarnessとOracleを保持し、task-owned containerを成功・失敗双方でanonymous volumeとともに削除するため。}
-  - {id: docker-volume-cleanup-evidence-harnesses-index-manifest, old_id: "file:evidence/harnesses/index.manifest", new_id: "file:evidence/harnesses/index.manifest", old_value: "sha256:679271160d478980c779e3efcdc73cdc25d2e1534b7cf800432477afcdb1bcac", new_value: "sha256:e5e48e65137166357d0bb48037aef9edf765d938ee4d3d6e3535aa7fbdd9161f", proof_type: runtime-equivalent, migration_evidence: evidence/migrations/docker-volume-cleanup-v1.json, reason: 既存HarnessとOracleを保持し、task-owned containerを成功・失敗双方でanonymous volumeとともに削除するため。}
-  - {id: docker-volume-cleanup-evidence-harnesses-locking-manifest, old_id: "file:evidence/harnesses/locking.manifest", new_id: "file:evidence/harnesses/locking.manifest", old_value: "sha256:dde173ada18b5b24fcc637b227d59259b055f00f8b44c3e1315be08093c5fac2", new_value: "sha256:f3bb0fa87a8a48ff28d07a121f17d54c64cfc0cb442c9eff2d186b53746e6ca2", proof_type: runtime-equivalent, migration_evidence: evidence/migrations/docker-volume-cleanup-v1.json, reason: 既存HarnessとOracleを保持し、task-owned containerを成功・失敗双方でanonymous volumeとともに削除するため。}
-  - {id: docker-volume-cleanup-evidence-harnesses-logical-replication-manifest, old_id: "file:evidence/harnesses/logical-replication.manifest", new_id: "file:evidence/harnesses/logical-replication.manifest", old_value: "sha256:e11530bdd38bd3a715cc74e4d0ce521950a36bbee31515e9989c5cfe3f70be2c", new_value: "sha256:d87e2bd3006f597d13c2d9cd6ad1a8040dee03c807504f0f452627f0b7452137", proof_type: runtime-equivalent, migration_evidence: evidence/migrations/docker-volume-cleanup-v1.json, reason: 既存HarnessとOracleを保持し、task-owned containerを成功・失敗双方でanonymous volumeとともに削除するため。}
-  - {id: docker-volume-cleanup-evidence-harnesses-maintenance-manifest, old_id: "file:evidence/harnesses/maintenance.manifest", new_id: "file:evidence/harnesses/maintenance.manifest", old_value: "sha256:9b12937f7ffde52a627ead1385b541625dedee19ba20e6a775a968956d5eafa9", new_value: "sha256:dd64e1dc79c7924b7e25d42abcdbd4cddce43f7eea513c9b973e98b1a60e02fd", proof_type: runtime-equivalent, migration_evidence: evidence/migrations/docker-volume-cleanup-v1.json, reason: 既存HarnessとOracleを保持し、task-owned containerを成功・失敗双方でanonymous volumeとともに削除するため。}
-  - {id: docker-volume-cleanup-evidence-harnesses-migration-manifest, old_id: "file:evidence/harnesses/migration.manifest", new_id: "file:evidence/harnesses/migration.manifest", old_value: "sha256:32122577b215926df8ee0361709b57dcc1838053eaa31584e29d3d363d4755f6", new_value: "sha256:0cfde8c68e2b2bc0932ae13e2114c5d61923860cb5f0f712fc98fd157af5bcf0", proof_type: runtime-equivalent, migration_evidence: evidence/migrations/docker-volume-cleanup-v1.json, reason: 既存HarnessとOracleを保持し、task-owned containerを成功・失敗双方でanonymous volumeとともに削除するため。}
-  - {id: docker-volume-cleanup-evidence-harnesses-mvcc-manifest, old_id: "file:evidence/harnesses/mvcc.manifest", new_id: "file:evidence/harnesses/mvcc.manifest", old_value: "sha256:447b882cef7a0120f13632dec50dcab0c9649f595d2aee6a498f5f5b5a2d1883", new_value: "sha256:f0cc2f79799e67937c8c5e2df7ab0f6f05d97374e7956541e599efc4e7fba89b", proof_type: runtime-equivalent, migration_evidence: evidence/migrations/docker-volume-cleanup-v1.json, reason: 既存HarnessとOracleを保持し、task-owned containerを成功・失敗双方でanonymous volumeとともに削除するため。}
-  - {id: docker-volume-cleanup-evidence-harnesses-observability-manifest, old_id: "file:evidence/harnesses/observability.manifest", new_id: "file:evidence/harnesses/observability.manifest", old_value: "sha256:0a74783abce0c78643523c9ba5ac1bde2ac7c25049ebeb0221872737b1d03f01", new_value: "sha256:6b6d2e681c26a0b2e7d2bda2a4488dad587a3ec3b79629795d7b9bdb6f5c8d9b", proof_type: runtime-equivalent, migration_evidence: evidence/migrations/docker-volume-cleanup-v1.json, reason: 既存HarnessとOracleを保持し、task-owned containerを成功・失敗双方でanonymous volumeとともに削除するため。}
-  - {id: docker-volume-cleanup-evidence-harnesses-partitioning-manifest, old_id: "file:evidence/harnesses/partitioning.manifest", new_id: "file:evidence/harnesses/partitioning.manifest", old_value: "sha256:da44ecb385cafb79536d3d5f7e4d1d2f9c9094ff9b0a7378bf83f902242b31f5", new_value: "sha256:9b8848ed9bc3093d940fc1f6d9f9041861b481104b1129fc1691170bd981fd7d", proof_type: runtime-equivalent, migration_evidence: evidence/migrations/docker-volume-cleanup-v1.json, reason: 既存HarnessとOracleを保持し、task-owned containerを成功・失敗双方でanonymous volumeとともに削除するため。}
-  - {id: docker-volume-cleanup-evidence-harnesses-performance-manifest, old_id: "file:evidence/harnesses/performance.manifest", new_id: "file:evidence/harnesses/performance.manifest", old_value: "sha256:a0b4c2abf4c26d33eeb96a06d1e41a9151fb2cd1970143c9d317864d63d10b7c", new_value: "sha256:42ac8b85b0d52226d6cd0508cbf8c4da82f8e9528f769c283feb3b460447a77e", proof_type: runtime-equivalent, migration_evidence: evidence/migrations/docker-volume-cleanup-v1.json, reason: 既存HarnessとOracleを保持し、task-owned containerを成功・失敗双方でanonymous volumeとともに削除するため。}
-  - {id: docker-volume-cleanup-evidence-harnesses-planner-manifest, old_id: "file:evidence/harnesses/planner.manifest", new_id: "file:evidence/harnesses/planner.manifest", old_value: "sha256:7fa62d96a6cb81f5e9d17004a8078337f2ae97811ecc2d24e9aa046e0b3c3bb1", new_value: "sha256:270254497596ca38e5a15a90c56162a41b625e22f8499fe59175fe660f5318af", proof_type: runtime-equivalent, migration_evidence: evidence/migrations/docker-volume-cleanup-v1.json, reason: 既存HarnessとOracleを保持し、task-owned containerを成功・失敗双方でanonymous volumeとともに削除するため。}
-  - {id: docker-volume-cleanup-evidence-harnesses-publication-static-gates-manifest, old_id: "file:evidence/harnesses/publication-static-gates.manifest", new_id: "file:evidence/harnesses/publication-static-gates.manifest", old_value: "sha256:d2aa18a4139816b81cbbc9350b929057ee636a5beed55410b1b35705df55f390", new_value: "sha256:807871e169769f131460ae3faf4c6709f8ce39bc7616d8a481f543a80c9adc64", proof_type: runtime-equivalent, migration_evidence: evidence/migrations/docker-volume-cleanup-v1.json, reason: 既存HarnessとOracleを保持し、task-owned containerを成功・失敗双方でanonymous volumeとともに削除するため。}
-  - {id: docker-volume-cleanup-evidence-harnesses-security-manifest, old_id: "file:evidence/harnesses/security.manifest", new_id: "file:evidence/harnesses/security.manifest", old_value: "sha256:0e93aad5e54bd09ced386ff86b880f90970bc4905dca6450d53d072d7f2c8468", new_value: "sha256:e2eb9511067be72bcf0f7137ae96bc4da4f84cab0dc922eb324a2315214d11d9", proof_type: runtime-equivalent, migration_evidence: evidence/migrations/docker-volume-cleanup-v1.json, reason: 既存HarnessとOracleを保持し、task-owned containerを成功・失敗双方でanonymous volumeとともに削除するため。}
-  - {id: docker-volume-cleanup-evidence-harnesses-sql-surface-manifest, old_id: "file:evidence/harnesses/sql-surface.manifest", new_id: "file:evidence/harnesses/sql-surface.manifest", old_value: "sha256:75afca61578d1f8fb76a09bed36f40733218b9c6daca264c09182454809e759e", new_value: "sha256:0d45802ce69114f9250d87959c7033c66798a70fb49c7f2c5a3f595eb393f4e5", proof_type: runtime-equivalent, migration_evidence: evidence/migrations/docker-volume-cleanup-v1.json, reason: 既存HarnessとOracleを保持し、task-owned containerを成功・失敗双方でanonymous volumeとともに削除するため。}
-  - {id: docker-volume-cleanup-evidence-harnesses-sql-manifest, old_id: "file:evidence/harnesses/sql.manifest", new_id: "file:evidence/harnesses/sql.manifest", old_value: "sha256:2909e4754d1ddf615fdeb248359b280af970d27d50b57b514a6e39443378a488", new_value: "sha256:959f86144bd5287d28f2de1ae86d1e714ecaa1847251139c7f1a1d414b1aa322", proof_type: runtime-equivalent, migration_evidence: evidence/migrations/docker-volume-cleanup-v1.json, reason: 既存HarnessとOracleを保持し、task-owned containerを成功・失敗双方でanonymous volumeとともに削除するため。}
-  - {id: docker-volume-cleanup-evidence-harnesses-statistics-manifest, old_id: "file:evidence/harnesses/statistics.manifest", new_id: "file:evidence/harnesses/statistics.manifest", old_value: "sha256:4e00721ef17c66e40725190e76116c2f9c67cbd806557164e7855bc2500a639f", new_value: "sha256:177600124a0bd3a0176f51fe603e830d6c7836f23893ee7b621ca5934f408771", proof_type: runtime-equivalent, migration_evidence: evidence/migrations/docker-volume-cleanup-v1.json, reason: 既存HarnessとOracleを保持し、task-owned containerを成功・失敗双方でanonymous volumeとともに削除するため。}
-  - {id: docker-volume-cleanup-evidence-harnesses-types-constraints-manifest, old_id: "file:evidence/harnesses/types-constraints.manifest", new_id: "file:evidence/harnesses/types-constraints.manifest", old_value: "sha256:6b233ae03fdc4708d55022e3259f742ff4cd46c87dbd0a57086a1a598a9471b9", new_value: "sha256:288d6fd9fbf35ba1e3df7174373786f330e6bde06317472915af88229f313920", proof_type: runtime-equivalent, migration_evidence: evidence/migrations/docker-volume-cleanup-v1.json, reason: 既存HarnessとOracleを保持し、task-owned containerを成功・失敗双方でanonymous volumeとともに削除するため。}
-  - {id: docker-volume-cleanup-evidence-harnesses-upgrade-manifest, old_id: "file:evidence/harnesses/upgrade.manifest", new_id: "file:evidence/harnesses/upgrade.manifest", old_value: "sha256:994e678394e20bba7ece80ca6b683c6500d2077127d644411fe31cee8baf4d8b", new_value: "sha256:6f0fa1e031704b88e855a3044bfb2e1e293b307e5692e1c981c361f1d5a04ca3", proof_type: runtime-equivalent, migration_evidence: evidence/migrations/docker-volume-cleanup-v1.json, reason: 既存HarnessとOracleを保持し、task-owned containerを成功・失敗双方でanonymous volumeとともに削除するため。}
-  - {id: docker-volume-cleanup-evidence-harnesses-wal-manifest, old_id: "file:evidence/harnesses/wal.manifest", new_id: "file:evidence/harnesses/wal.manifest", old_value: "sha256:48942d8755c08c3c18a30022fb44a2c334c26fd4aaf5c06215f0d275b9dbbd73", new_value: "sha256:8238d6f33be089643f5e5b962e4380cb8d9d6a3fd1ccadadda64df688a3b7db8", proof_type: runtime-equivalent, migration_evidence: evidence/migrations/docker-volume-cleanup-v1.json, reason: 既存HarnessとOracleを保持し、task-owned containerを成功・失敗双方でanonymous volumeとともに削除するため。}
-  - {id: docker-volume-cleanup-labs-backup-recovery-run-sh, old_id: "file:labs/backup-recovery/run.sh", new_id: "file:labs/backup-recovery/run.sh", old_value: "sha256:c4ff76813cfb2914caf256f6e79c273204d24bce2b34abeaf54820540d57f190", new_value: "sha256:857d30ec187131edef58ff7de859baa0dd50387cf80fb9040dfa458cd06096c0", proof_type: runtime-equivalent, migration_evidence: evidence/migrations/docker-volume-cleanup-v1.json, reason: 既存HarnessとOracleを保持し、task-owned containerを成功・失敗双方でanonymous volumeとともに削除するため。}
-  - {id: docker-volume-cleanup-labs-compatibility-matrix-run-sh, old_id: "file:labs/compatibility-matrix/run.sh", new_id: "file:labs/compatibility-matrix/run.sh", old_value: "sha256:087002f787391f1394fd45d5c9b07600675721a6b876a1ec06b2cb6395ca7388", new_value: "sha256:5c4471755da9693c1843f77b1d222026d5b7aef8cf6d2dd001f12fb9edadfe56", proof_type: runtime-equivalent, migration_evidence: evidence/migrations/docker-volume-cleanup-v1.json, reason: 既存HarnessとOracleを保持し、task-owned containerを成功・失敗双方でanonymous volumeとともに削除するため。}
-  - {id: docker-volume-cleanup-labs-deadlock-run-sh, old_id: "file:labs/deadlock/run.sh", new_id: "file:labs/deadlock/run.sh", old_value: "sha256:6be07e8b0fd1436f9667c4e637f480a99f2bdab606a454fe23501aad267e1611", new_value: "sha256:8f13cef3da9feffa59944f5c2288fdacc83131337d74b0c30756a0500eb2a31b", proof_type: runtime-equivalent, migration_evidence: evidence/migrations/docker-volume-cleanup-v1.json, reason: 既存HarnessとOracleを保持し、task-owned containerを成功・失敗双方でanonymous volumeとともに削除するため。}
-  - {id: docker-volume-cleanup-labs-index-run-sh, old_id: "file:labs/index/run.sh", new_id: "file:labs/index/run.sh", old_value: "sha256:facc655964bf5794aca4f050454cb05d17f0925f363aa723ef7ad9a10785a772", new_value: "sha256:8ab8d63403d716a9bc9f7ec9fcd207246f7e6f55e26673fbdfda0056dd831eca", proof_type: runtime-equivalent, migration_evidence: evidence/migrations/docker-volume-cleanup-v1.json, reason: 既存HarnessとOracleを保持し、task-owned containerを成功・失敗双方でanonymous volumeとともに削除するため。}
-  - {id: docker-volume-cleanup-labs-logical-replication-run-sh, old_id: "file:labs/logical-replication/run.sh", new_id: "file:labs/logical-replication/run.sh", old_value: "sha256:f83ef999000224bb673ca688eadb970e9f36348cb06287b9b2f800ab1eca3572", new_value: "sha256:55f8f711e3bd47e9976be4d77e996ca5051895732b9b50eb991b3a7a5a5f72ad", proof_type: runtime-equivalent, migration_evidence: evidence/migrations/docker-volume-cleanup-v1.json, reason: 既存HarnessとOracleを保持し、task-owned containerを成功・失敗双方でanonymous volumeとともに削除するため。}
-  - {id: docker-volume-cleanup-labs-mvcc-run-sh, old_id: "file:labs/mvcc/run.sh", new_id: "file:labs/mvcc/run.sh", old_value: "sha256:c7b18ba9b04324a3360f2a359dec7460db89c50935fb51be62b60b8d182d22fb", new_value: "sha256:ae1e2cc6e3af25ef05455cec5ec6ec2f295a3f12c72827984495baa00f855907", proof_type: runtime-equivalent, migration_evidence: evidence/migrations/docker-volume-cleanup-v1.json, reason: 既存HarnessとOracleを保持し、task-owned containerを成功・失敗双方でanonymous volumeとともに削除するため。}
-  - {id: docker-volume-cleanup-labs-planner-run-sh, old_id: "file:labs/planner/run.sh", new_id: "file:labs/planner/run.sh", old_value: "sha256:37dafb6a2b07c60c3b5341c9b5758374051e125e624dfd32d5292210901b9025", new_value: "sha256:a8c930651350a72b3c7efae9f79d962d9621875529029598b5517f18eebfb8ce", proof_type: runtime-equivalent, migration_evidence: evidence/migrations/docker-volume-cleanup-v1.json, reason: 既存HarnessとOracleを保持し、task-owned containerを成功・失敗双方でanonymous volumeとともに削除するため。}
-  - {id: docker-volume-cleanup-labs-replication-run-sh, old_id: "file:labs/replication/run.sh", new_id: "file:labs/replication/run.sh", old_value: "sha256:1a4b7deaf70c839a256a968daaa9744169266da7a802ac245f055599ca4c9773", new_value: "sha256:0915954c282273cb8759e0e3acefbff1ac88fc5b26a3046046add1f0aa840bfe", proof_type: runtime-equivalent, migration_evidence: evidence/migrations/docker-volume-cleanup-v1.json, reason: 既存HarnessとOracleを保持し、task-owned containerを成功・失敗双方でanonymous volumeとともに削除するため。}
-  - {id: docker-volume-cleanup-labs-sql-run-sh, old_id: "file:labs/sql/run.sh", new_id: "file:labs/sql/run.sh", old_value: "sha256:bdee2c627abac543e48bc2b5701f63ac847c708263b3f41f11db7f74351c0ae1", new_value: "sha256:1a8edc5d2bc71804762713680b61fc43627b19a6a11eb04af67302383fe39a98", proof_type: runtime-equivalent, migration_evidence: evidence/migrations/docker-volume-cleanup-v1.json, reason: 既存HarnessとOracleを保持し、task-owned containerを成功・失敗双方でanonymous volumeとともに削除するため。}
-  - {id: docker-volume-cleanup-labs-upgrade-run-sh, old_id: "file:labs/upgrade/run.sh", new_id: "file:labs/upgrade/run.sh", old_value: "sha256:d8f3168a4058df0fbb067aff04e6ccc788ce82b9de36d4b4b758e9a21f3384f5", new_value: "sha256:920ab678fa59359ddee876c2a8f9401b6254e023c3f9890c2313f9d0ff3978c4", proof_type: runtime-equivalent, migration_evidence: evidence/migrations/docker-volume-cleanup-v1.json, reason: 既存HarnessとOracleを保持し、task-owned containerを成功・失敗双方でanonymous volumeとともに削除するため。}
-  - {id: docker-volume-cleanup-scripts-run-sql-lab-sh, old_id: "file:scripts/run-sql-lab.sh", new_id: "file:scripts/run-sql-lab.sh", old_value: "sha256:7b9de9e17b429094daddf3b9fc2285c27c39e6d591036fd97aa2f0a215ea540c", new_value: "sha256:934392f2945d1a8fe65f78b6c507c497dcd42760ddc2c227902a379a2fe2d1b8", proof_type: runtime-equivalent, migration_evidence: evidence/migrations/docker-volume-cleanup-v1.json, reason: 既存HarnessとOracleを保持し、task-owned containerを成功・失敗双方でanonymous volumeとともに削除するため。}
-  - id: completion-certificate-history-copy
-    old_id: file:evidence/completion-certificate.json
-    new_id: file:evidence/history/v1.0.0/completion-certificate.json
-    old_value: sha256:7f88fc0e072438d84b296b51428e88983688eca85cf4f97d7bf819b0bde9a26a
-    new_value: sha256:7f88fc0e072438d84b296b51428e88983688eca85cf4f97d7bf819b0bde9a26a
-    proof_type: byte-identical
-    migration_evidence: evidence/migrations/non-regression-v2.json
-    reason: Core Definitive v2の履歴規約へ移し、v1 bounded Certificateの意味とbyte列を不変保存するため。
-  - id: core-definitive-v2-forward-update
-    old_id: ci:core-ref:cf9e6e2d981305c83f970c1f21a1ddc9c1109263
-    new_id: ci:core-ref:072d7ca77981f51754e824d70c6d4ecd55ea67e5
-    old_value: cf9e6e2d981305c83f970c1f21a1ddc9c1109263
-    new_value: 072d7ca77981f51754e824d70c6d4ecd55ea67e5
-    proof_type: version-forward-compatible
-    migration_evidence: evidence/migrations/non-regression-v2.json
-    reason: v1互換Gateを保持した子孫commitへ更新し、Scenario Closure Plan、原子的Evidence Durability、Evidence Dependency Graph共通Gateを含むDefinitive Gate v2を加法的に利用するため。
-  - id: skill-instructions-definitive-eval-addition
-    old_id: file:.agents/skills/postgresql-atlas/SKILL.md
-    new_id: file:.agents/skills/postgresql-atlas/SKILL.md
-    old_value: sha256:f51a7e7401d380e1677990a927d29f2b7fb500220e19ba56ef3bac9f22fcf104
-    new_value: sha256:5b4896d1d9511a5c551c557821606cb1651b244949fd3c4715ea6cb5ee1850f0
-    proof_type: runtime-equivalent
-    migration_evidence: evidence/migrations/non-regression-v2.json
-    reason: 既存Routerの安全境界と利用手順を保持したまま、Definitive Routing Planとfail-closed停止条件を加法的に明示するため。
-  - id: skill-eval-runner-definitive-eval-addition
-    old_id: file:evals/run.sh
-    new_id: file:evals/run.sh
-    old_value: sha256:599cb182ffabc6cada637578a76a387a2563288955f947f790103b3f8f32d984
-    new_value: sha256:c053c555562778538ee488e43c9aa4ade43f4d90083014925ee4859879b73c5a
-    proof_type: runtime-equivalent
-    migration_evidence: evidence/migrations/non-regression-v2.json
-    reason: 既存30件のRouter Evalを先に全件実行し、その後に112セルと境界・Forward Eval検証を加法的に実行するため。
-  - id: skill-package-definitive-eval-addition
-    old_id: file:skill.package.yaml
-    new_id: file:skill.package.yaml
-    old_value: sha256:5eb7cba98dbaa87007a45a679f649d8e8c135cb10d2e9ac89a3eab0fb5961432
-    new_value: sha256:0a977755eb1c565c504da823dbe5c13f748ea9d8753c6578b6e1fcde1689c68c
-    proof_type: runtime-equivalent
-    migration_evidence: evidence/migrations/non-regression-v2.json
-    reason: 既存Skill packageと合格閾値を維持し、Definitive Routing Evalと独立Forward Evalを生成物として追加するため。
-  - id: skill-eval-entity-definitive-case-addition
-    old_id: file:evals/postgresql-router.skill-eval.json
-    new_id: file:evals/postgresql-router.skill-eval.json
-    old_value: sha256:0e09ab0c0855af117e1df58e166c2f207078fb62ffd0df6fb45863029cc6089a
-    new_value: sha256:736673ce55d5f00f0a082c2b450f27516c513d10e6d86df5bb6ae397d9bd48fa
-    proof_type: runtime-equivalent
-    migration_evidence: evidence/migrations/non-regression-v2.json
-    reason: 既存30件のCase ID、Assertion、合格結果を維持し、再実行時刻だけを更新したSkill Eval entityへ再固定するため。
-  - id: skill-eval-harness-definitive-addition
-    old_id: file:evidence/harnesses/skill-router-eval.manifest
-    new_id: file:evidence/harnesses/skill-router-eval.manifest
-    old_value: sha256:6ae8427b29b0475de6bbd75a289c9e2c51f09aec9bff35e4a15af4c4426d2489
-    new_value: sha256:9e0a47f7d2ca24902911dbb4265ae75028c9bf5f414758ecb445234df2225ee8
-    proof_type: runtime-equivalent
-    migration_evidence: evidence/migrations/non-regression-v2.json
-    reason: 既存Router Eval harnessを保持し、加法変更したSkill説明とEval runnerの現行digestへ再固定するため。
-  - id: skill-router-evidence-definitive-addition
-    old_id: file:evidence/skill-router-eval.evidence.yaml
-    new_id: file:evidence/skill-router-eval.evidence.yaml
-    old_value: sha256:dc5fc381bc3368137c7a4575756f8a4aa6cdb591485a00880f3e4e19f5b2f3b4
-    new_value: sha256:241fed8f28dff6546e100b7efe3757e437c62bb4bd9f8597fabafb41ec73bb0a
-    proof_type: runtime-equivalent
-    migration_evidence: evidence/migrations/non-regression-v2.json
-    reason: 既存30件Router Evalのpass Artifactを再実行し、現行Harness Digestと生成時刻をEvidenceへ再固定するため。
-  - {id: pitr-artifact-tmpfs-harness, old_id: "file:evidence/artifacts/pitr.json", new_id: "file:evidence/artifacts/pitr.json", old_value: "sha256:ef5ed5e1f85239a5f9e9e54b3f9bb6cff112f79c443d747cedc2cf95c8d20a9d", new_value: "sha256:d1b16f7d281d89516f5df4f3ffa9cac3bd48928669ae1f1011df36be3b1b8000", proof_type: runtime-equivalent, migration_evidence: evidence/migrations/non-regression-v2.json, reason: 既存PITR判定を保持し、固有tmpfs上でrestore point以前のみを復元した実行Artifactへ再固定するため。}
-  - {id: pitr-manifest-tmpfs-harness, old_id: "file:evidence/harnesses/pitr.manifest", new_id: "file:evidence/harnesses/pitr.manifest", old_value: "sha256:35bfb7f21f59f8da139917259264890991ea8088dd4af54ae6e0c04155578ece", new_value: "sha256:8201b58ef59c4344b91b7f88728dce114d2bbbc2e41e40167b7f9b26f3a04553", proof_type: runtime-equivalent, migration_evidence: evidence/migrations/non-regression-v2.json, reason: 既存PITR Harness対象を削らず、固有tmpfs実行とSecurity Scenario専用Oracleを加法固定するため。}
-  - {id: pitr-runner-tmpfs-harness, old_id: "file:labs/pitr/run.sh", new_id: "file:labs/pitr/run.sh", old_value: "sha256:8dfc168e81d3265753e07065c5ee358e9c27d25aa0993ca124b974a0bea2fcc7", new_value: "sha256:9beffec74231f5290615546124f610553204c80a0bc07b33a9a12cce940eee9a", proof_type: runtime-equivalent, migration_evidence: evidence/migrations/non-regression-v2.json, reason: 既存PITR Oracleと実PostgreSQL復旧を保持し、永続Volumeを作らない固有tmpfs container方式へ置換するため。}
-  - {id: evidence-full-rerun-authority-lock, old_id: "file:evidence/authority-lock.evidence.yaml", new_id: "file:evidence/authority-lock.evidence.yaml", old_value: "sha256:b64d04c53352dd56af9f364915e457337ca4dcfeee751a10d698c7e40778d78c", new_value: "sha256:71a6f082b8ee1305eb84319b6fe35908b26a63633ee44091e3819dd89710bc38", proof_type: runtime-equivalent, migration_evidence: evidence/migrations/non-regression-v2.json, reason: 既存Evidence IDとpass判定を保持し、PostgreSQL実Runtimeの全35 Command first-attempt再実行結果へdigestを更新するため。}
-  - {id: evidence-full-rerun-backup-recovery, old_id: "file:evidence/backup-recovery.evidence.yaml", new_id: "file:evidence/backup-recovery.evidence.yaml", old_value: "sha256:ee15486c738337d56473db8fc3fc9647b49a38d46a90bdd3dbd0cfcaa1c5f64a", new_value: "sha256:003c0bafc253aa240f55f87894e027513152402f74e2b7bed9e039481e81a7c8", proof_type: runtime-equivalent, migration_evidence: evidence/migrations/non-regression-v2.json, reason: 既存Evidence IDとpass判定を保持し、PostgreSQL実Runtimeの全35 Command first-attempt再実行結果へdigestを更新するため。}
-  - {id: evidence-full-rerun-catalog-inventory, old_id: "file:evidence/catalog-inventory.evidence.yaml", new_id: "file:evidence/catalog-inventory.evidence.yaml", old_value: "sha256:67a7f00757c5eb227c6faffddc89b6e4cca5eb114df2496012f2d398dd3a6ed1", new_value: "sha256:c592bd46718a24a3501c620a238a211b1192d26ec2592dd9a5f7a39f44abc276", proof_type: runtime-equivalent, migration_evidence: evidence/migrations/non-regression-v2.json, reason: 既存Evidence IDとpass判定を保持し、PostgreSQL実Runtimeの全35 Command first-attempt再実行結果へdigestを更新するため。}
-  - {id: evidence-full-rerun-compatibility-matrix, old_id: "file:evidence/compatibility-matrix.evidence.yaml", new_id: "file:evidence/compatibility-matrix.evidence.yaml", old_value: "sha256:11cc5b56685961447883c29a57684d240656135857314e7493b0a15b78a396e5", new_value: "sha256:5bee6468752914f371b3ce2e6ebeed9f007374ebbc80c01c309e46f40b5fd781", proof_type: runtime-equivalent, migration_evidence: evidence/migrations/non-regression-v2.json, reason: 既存Evidence IDとpass判定を保持し、PostgreSQL実Runtimeの全35 Command first-attempt再実行結果へdigestを更新するため。}
-  - {id: evidence-full-rerun-deadlock, old_id: "file:evidence/deadlock.evidence.yaml", new_id: "file:evidence/deadlock.evidence.yaml", old_value: "sha256:a53e2f7560acd601598b8824159f5fb9e4edbe7613bfad197c8d13ef1e61923e", new_value: "sha256:2b2fd7852ed73eef200af15035ea51f336792f6c7e7c4b93678d7a957d910191", proof_type: runtime-equivalent, migration_evidence: evidence/migrations/non-regression-v2.json, reason: 既存Evidence IDとpass判定を保持し、PostgreSQL実Runtimeの全35 Command first-attempt再実行結果へdigestを更新するため。}
-  - {id: evidence-full-rerun-extension, old_id: "file:evidence/extension.evidence.yaml", new_id: "file:evidence/extension.evidence.yaml", old_value: "sha256:f252f46c71acd5d59e9dde7aacbc43508cd68e0cf234c3fd7cd0d6efa946996b", new_value: "sha256:e94a1b24f064e7c9ec16e661884d5dd1a2316307114a4a92d6a743f4eb592538", proof_type: runtime-equivalent, migration_evidence: evidence/migrations/non-regression-v2.json, reason: 既存Evidence IDとpass判定を保持し、PostgreSQL実Runtimeの全35 Command first-attempt再実行結果へdigestを更新するため。}
-  - {id: evidence-full-rerun-failure-injection, old_id: "file:evidence/failure-injection.evidence.yaml", new_id: "file:evidence/failure-injection.evidence.yaml", old_value: "sha256:7a0ae1d2679152ed8662fdc3b8dfd26ab434048e89428eb9aec723ed804a31e7", new_value: "sha256:2ee32230589fa71d75fc6dfe7a90d739cf21fdde510a06c35622b771f7248244", proof_type: runtime-equivalent, migration_evidence: evidence/migrations/non-regression-v2.json, reason: 既存Evidence IDとpass判定を保持し、PostgreSQL実Runtimeの全35 Command first-attempt再実行結果へdigestを更新するため。}
-  - {id: evidence-full-rerun-foundation-authority-lock, old_id: "file:evidence/foundation-authority-lock.evidence.yaml", new_id: "file:evidence/foundation-authority-lock.evidence.yaml", old_value: "sha256:742be0bbe51cd453e2f43ee5bd1ed1d0e8413d4ba62398ee22e71a13a680e752", new_value: "sha256:25f6d2eb0a3ed78b9db762ebb294066b3c1435e89dfce5472a7ae697184c2b9b", proof_type: runtime-equivalent, migration_evidence: evidence/migrations/non-regression-v2.json, reason: 既存Evidence IDとpass判定を保持し、PostgreSQL実Runtimeの全35 Command first-attempt再実行結果へdigestを更新するため。}
-  - {id: evidence-full-rerun-index, old_id: "file:evidence/index.evidence.yaml", new_id: "file:evidence/index.evidence.yaml", old_value: "sha256:03ae650880e9fdeb3f169b514f7b71a5b77bbf4daa621cdabe41d12313b4fa27", new_value: "sha256:e77989719a9301d1e846fdcaa52dc26cdceabf8a933dc64d0fb81d00530eeabe", proof_type: runtime-equivalent, migration_evidence: evidence/migrations/non-regression-v2.json, reason: 既存Evidence IDとpass判定を保持し、PostgreSQL実Runtimeの全35 Command first-attempt再実行結果へdigestを更新するため。}
-  - {id: evidence-full-rerun-locking, old_id: "file:evidence/locking.evidence.yaml", new_id: "file:evidence/locking.evidence.yaml", old_value: "sha256:3c802f46832c76d62a83f550b6bfa1c3f59d650b244147f4b37a02533485a3eb", new_value: "sha256:9aacb5b7550d1ece4583a625a359d06c1c3048432ec7e367a9ae64ed5deb2dcc", proof_type: runtime-equivalent, migration_evidence: evidence/migrations/non-regression-v2.json, reason: 既存Evidence IDとpass判定を保持し、PostgreSQL実Runtimeの全35 Command first-attempt再実行結果へdigestを更新するため。}
-  - {id: evidence-full-rerun-logical-replication, old_id: "file:evidence/logical-replication.evidence.yaml", new_id: "file:evidence/logical-replication.evidence.yaml", old_value: "sha256:76ea41bc3ed8c947e47a04e432c0e0d87074d1ffb1ffea00a9753e094e3288ab", new_value: "sha256:7e1d6dbe2821995edc7571835cb9836266b269eb0a3b7ceb5340d42a524723c3", proof_type: runtime-equivalent, migration_evidence: evidence/migrations/non-regression-v2.json, reason: 既存Evidence IDとpass判定を保持し、PostgreSQL実Runtimeの全35 Command first-attempt再実行結果へdigestを更新するため。}
-  - {id: evidence-full-rerun-maintenance, old_id: "file:evidence/maintenance.evidence.yaml", new_id: "file:evidence/maintenance.evidence.yaml", old_value: "sha256:75d4a9b260b33c34c2d6a8c3f624afb90caaaff8cdb5ca108afb47afd4ab2a81", new_value: "sha256:951d06dfbfb3bd41ab90f7bb07293bdb1831eb21665b46f48f86beab62af9560", proof_type: runtime-equivalent, migration_evidence: evidence/migrations/non-regression-v2.json, reason: 既存Evidence IDとpass判定を保持し、PostgreSQL実Runtimeの全35 Command first-attempt再実行結果へdigestを更新するため。}
-  - {id: evidence-full-rerun-migration, old_id: "file:evidence/migration.evidence.yaml", new_id: "file:evidence/migration.evidence.yaml", old_value: "sha256:e0b14a0e6bfa826e1897419efac9462f7dbd87fccf5deaf9530e64b5b44cefab", new_value: "sha256:653769b5c4d5fd5c168748278d9bc3d2429640e708a69fe4a187fa558da96012", proof_type: runtime-equivalent, migration_evidence: evidence/migrations/non-regression-v2.json, reason: 既存Evidence IDとpass判定を保持し、PostgreSQL実Runtimeの全35 Command first-attempt再実行結果へdigestを更新するため。}
-  - {id: evidence-full-rerun-mvcc, old_id: "file:evidence/mvcc.evidence.yaml", new_id: "file:evidence/mvcc.evidence.yaml", old_value: "sha256:ea7b6ef2b6a89d571300f19af060fc94bd004e66a815f78eba80ea3d3ba444a5", new_value: "sha256:927fb43fd7e8d48a8f0f2f4eceb78aa73b2aa14ebf1fd8c3a088dc3cb5d394af", proof_type: runtime-equivalent, migration_evidence: evidence/migrations/non-regression-v2.json, reason: 既存Evidence IDとpass判定を保持し、PostgreSQL実Runtimeの全35 Command first-attempt再実行結果へdigestを更新するため。}
-  - {id: evidence-full-rerun-observability, old_id: "file:evidence/observability.evidence.yaml", new_id: "file:evidence/observability.evidence.yaml", old_value: "sha256:d918cd5718e253b61a4c6d1b1d79d5a11e665dbfc55e02b957cdff63bcd423f8", new_value: "sha256:12ab8dde31378a24e2e3ddb9a3a5ddbbbfc67183c14b6abe5e4001f798261d37", proof_type: runtime-equivalent, migration_evidence: evidence/migrations/non-regression-v2.json, reason: 既存Evidence IDとpass判定を保持し、PostgreSQL実Runtimeの全35 Command first-attempt再実行結果へdigestを更新するため。}
-  - {id: evidence-full-rerun-partitioning, old_id: "file:evidence/partitioning.evidence.yaml", new_id: "file:evidence/partitioning.evidence.yaml", old_value: "sha256:1792f200be6b46337ab4f837bfda56d4c3a55d082964762821d0c91ac867cb84", new_value: "sha256:dd6896ea768f7c66051b8f5099b3887ce436f7faf0feb105f2d42fa187a87079", proof_type: runtime-equivalent, migration_evidence: evidence/migrations/non-regression-v2.json, reason: 既存Evidence IDとpass判定を保持し、PostgreSQL実Runtimeの全35 Command first-attempt再実行結果へdigestを更新するため。}
-  - {id: evidence-full-rerun-performance, old_id: "file:evidence/performance.evidence.yaml", new_id: "file:evidence/performance.evidence.yaml", old_value: "sha256:daee434368ea1a2b2c7a179a97d3bbd9659ec9ad40a70f610ad92f61599f7ae2", new_value: "sha256:e0c1295698da907c4926151ac9a16bf3654e74ab15d99e0edfe301bd0b1feaeb", proof_type: runtime-equivalent, migration_evidence: evidence/migrations/non-regression-v2.json, reason: 既存Evidence IDとpass判定を保持し、PostgreSQL実Runtimeの全35 Command first-attempt再実行結果へdigestを更新するため。}
-  - {id: evidence-full-rerun-pg-upgrade, old_id: "file:evidence/pg-upgrade.evidence.yaml", new_id: "file:evidence/pg-upgrade.evidence.yaml", old_value: "sha256:85d2c9347589e84a38c4068fdb2d453c6901ac7d8de31e6dd7032b31a5d30ff8", new_value: "sha256:b58caa627652f337e3a7be0a1e53cc9548c8fe8aad2e440a7e8b0beeb7d7352c", proof_type: runtime-equivalent, migration_evidence: evidence/migrations/non-regression-v2.json, reason: 既存Evidence IDとpass判定を保持し、PostgreSQL実Runtimeの全35 Command first-attempt再実行結果へdigestを更新するため。}
-  - {id: evidence-full-rerun-pitr, old_id: "file:evidence/pitr.evidence.yaml", new_id: "file:evidence/pitr.evidence.yaml", old_value: "sha256:9ac33af02862a4f808c78857ac2aa174783674410e2a9f6ea1fac60c246c9355", new_value: "sha256:3fcbe5a4a14f5a4aa8741b482c0190c838df9ea064f4658e8ec623696c2c146b", proof_type: runtime-equivalent, migration_evidence: evidence/migrations/non-regression-v2.json, reason: 既存Evidence IDとpass判定を保持し、PostgreSQL実Runtimeの全35 Command first-attempt再実行結果へdigestを更新するため。}
-  - {id: evidence-full-rerun-planner, old_id: "file:evidence/planner.evidence.yaml", new_id: "file:evidence/planner.evidence.yaml", old_value: "sha256:450b134f6fb64e5b52b3c0b775cc52fded6cad20765c1ca5d5f63cef21945802", new_value: "sha256:f3864c92f2538ac2670600f9d99ff03271527797ed72828d798fe0eae7618057", proof_type: runtime-equivalent, migration_evidence: evidence/migrations/non-regression-v2.json, reason: 既存Evidence IDとpass判定を保持し、PostgreSQL実Runtimeの全35 Command first-attempt再実行結果へdigestを更新するため。}
-  - {id: evidence-full-rerun-publication-static-gates, old_id: "file:evidence/publication-static-gates.evidence.yaml", new_id: "file:evidence/publication-static-gates.evidence.yaml", old_value: "sha256:9aa8e7333b5acd7daeb32c2a12ac25616e7b773f204e140cb1168c7147a3fb11", new_value: "sha256:e1ffff19fa5d150b9728aa64b311713a51a6da7f15818d85ac5a0f1931f0cdfa", proof_type: runtime-equivalent, migration_evidence: evidence/migrations/non-regression-v2.json, reason: 既存Evidence IDとpass判定を保持し、PostgreSQL実Runtimeの全35 Command first-attempt再実行結果へdigestを更新するため。}
-  - {id: evidence-full-rerun-replication, old_id: "file:evidence/replication.evidence.yaml", new_id: "file:evidence/replication.evidence.yaml", old_value: "sha256:13557b8fc06e0a919eaaa9e97f8a0c34bd73636bcdee66ba877f73cd43c4b413", new_value: "sha256:3d05579d9964d6dd1f4f953d9a0de746fb080b745a26352ca428939981c3b6f5", proof_type: runtime-equivalent, migration_evidence: evidence/migrations/non-regression-v2.json, reason: 既存Evidence IDとpass判定を保持し、PostgreSQL実Runtimeの全35 Command first-attempt再実行結果へdigestを更新するため。}
-  - {id: evidence-full-rerun-security, old_id: "file:evidence/security.evidence.yaml", new_id: "file:evidence/security.evidence.yaml", old_value: "sha256:2b7a3401cfba04cf77a1ef2fffa6f3a58e22fdf6f0a5c3f33b5c9221c47782df", new_value: "sha256:e0d1ccb72d36ad51dcbb93ec8d318ddca8f772d6f675ca1aa3cd287184c32364", proof_type: runtime-equivalent, migration_evidence: evidence/migrations/non-regression-v2.json, reason: 既存Evidence IDとpass判定を保持し、PostgreSQL実Runtimeの全35 Command first-attempt再実行結果へdigestを更新するため。}
-  - {id: evidence-full-rerun-sql-surface, old_id: "file:evidence/sql-surface.evidence.yaml", new_id: "file:evidence/sql-surface.evidence.yaml", old_value: "sha256:09e7e6577c67c63bfc595fec9f2653646283e12916b819dc54f7da992fd53aa4", new_value: "sha256:af3943fffc33a45caaecf9257acbfaa9710b955f4a1c07375f6786fbb5a09a41", proof_type: runtime-equivalent, migration_evidence: evidence/migrations/non-regression-v2.json, reason: 既存Evidence IDとpass判定を保持し、PostgreSQL実Runtimeの全35 Command first-attempt再実行結果へdigestを更新するため。}
-  - {id: evidence-full-rerun-sql, old_id: "file:evidence/sql.evidence.yaml", new_id: "file:evidence/sql.evidence.yaml", old_value: "sha256:10316ff051cca29b3efbd0ca6c51dce309754fc814d2a21bae03658a3fe53278", new_value: "sha256:ffa8753713bbea0cfe560adf0f88fdc1c6fe5470903e70f98cc1eabbc60c963b", proof_type: runtime-equivalent, migration_evidence: evidence/migrations/non-regression-v2.json, reason: 既存Evidence IDとpass判定を保持し、PostgreSQL実Runtimeの全35 Command first-attempt再実行結果へdigestを更新するため。}
-  - {id: evidence-full-rerun-statistics, old_id: "file:evidence/statistics.evidence.yaml", new_id: "file:evidence/statistics.evidence.yaml", old_value: "sha256:e3b8d2f1fe9cfbde084e1e463230e89af59d9fd936d3074921d4807fc2b2a093", new_value: "sha256:c5bc25b0f674ec5a7db9dd1aca1afcde7b57ca0ab08f785805f9a35a149b1cea", proof_type: runtime-equivalent, migration_evidence: evidence/migrations/non-regression-v2.json, reason: 既存Evidence IDとpass判定を保持し、PostgreSQL実Runtimeの全35 Command first-attempt再実行結果へdigestを更新するため。}
-  - {id: evidence-full-rerun-types-constraints, old_id: "file:evidence/types-constraints.evidence.yaml", new_id: "file:evidence/types-constraints.evidence.yaml", old_value: "sha256:d7f256533f59ec6d835f1dd3b5cf4498a74d73bb269aae37b073f0d3ec3c56d1", new_value: "sha256:579f85a59a8b1cc5bd194a3493f026356713afaa53c637378d9863b252ed654c", proof_type: runtime-equivalent, migration_evidence: evidence/migrations/non-regression-v2.json, reason: 既存Evidence IDとpass判定を保持し、PostgreSQL実Runtimeの全35 Command first-attempt再実行結果へdigestを更新するため。}
-  - {id: evidence-full-rerun-upgrade, old_id: "file:evidence/upgrade.evidence.yaml", new_id: "file:evidence/upgrade.evidence.yaml", old_value: "sha256:ea19e15718c3daf8dd64a637931192801b71071f257e43fb534a72566e6b19d2", new_value: "sha256:3c1408a253b6c1996136c2b74468d77f17fe20d5c1277baf2995b862a0dea1cc", proof_type: runtime-equivalent, migration_evidence: evidence/migrations/non-regression-v2.json, reason: 既存Evidence IDとpass判定を保持し、PostgreSQL実Runtimeの全35 Command first-attempt再実行結果へdigestを更新するため。}
-  - {id: evidence-full-rerun-wal, old_id: "file:evidence/wal.evidence.yaml", new_id: "file:evidence/wal.evidence.yaml", old_value: "sha256:331c0b012417811d14f386b7727d5e0d37a39a99ca01bb0e2208153fd31c836e", new_value: "sha256:8dbea9c605bec71e382150d161c165f23940c5015e041b8200a588455c5cd06a", proof_type: runtime-equivalent, migration_evidence: evidence/migrations/non-regression-v2.json, reason: 既存Evidence IDとpass判定を保持し、PostgreSQL実Runtimeの全35 Command first-attempt再実行結果へdigestを更新するため。}
-  - {id: replication-manifest-security-scenario-addition, old_id: "file:evidence/harnesses/replication.manifest", new_id: "file:evidence/harnesses/replication.manifest", old_value: "sha256:5c4e135b34858c7329afbbfb8b9c28b1a835a7b0dfdf3e751d7c4b035e734af9", new_value: "sha256:6a776cbd94aad31974c147c0b643746871f86fcb4e17fed6c04f7fe523bf8133", proof_type: runtime-equivalent, migration_evidence: evidence/migrations/non-regression-v2.json, reason: 既存Physical Replication harnessを保持し、Security Scenario専用standby Oracleを加法的に接続するため。}
-  - {id: pg-upgrade-manifest-security-scenario-addition, old_id: "file:evidence/harnesses/pg-upgrade.manifest", new_id: "file:evidence/harnesses/pg-upgrade.manifest", old_value: "sha256:fd25b6628f28659e6d879d0697a958a4c23060756420f03797e4c317758ad0c1", new_value: "sha256:c11099b3d6cb863e3ca6a63bbba7b36ae393a4b9df09cde505e445640831b3b5", proof_type: runtime-equivalent, migration_evidence: evidence/migrations/non-regression-v2.json, reason: 既存pg_upgrade harnessを保持し、17.11から18.6へのSecurity Scenario専用DockerfileとOracle scriptを加法的に接続するため。}
+- id: docker-volume-cleanup-evidence-harnesses-authority-lock-manifest
+  old_id: file:evidence/harnesses/authority-lock.manifest
+  new_id: file:evidence/harnesses/authority-lock.manifest
+  old_value: sha256:d49f210f3635dc60acd584a802e6dc3d3c78d6f819c4d886d30e6bdac8c9775d
+  new_value: sha256:74174154584d83849a01fba9cebca6b353b183f3158540375ac040ddac38c13b
+  proof_type: runtime-equivalent
+  migration_evidence: evidence/migrations/docker-volume-cleanup-v1.json
+  reason: 既存HarnessとOracleを保持し、task-owned containerを成功・失敗双方でanonymous volumeとともに削除するため。
+- id: docker-volume-cleanup-evidence-harnesses-backup-recovery-manifest
+  old_id: file:evidence/harnesses/backup-recovery.manifest
+  new_id: file:evidence/harnesses/backup-recovery.manifest
+  old_value: sha256:21384fc596ceb52ba6fe16a17a7516775a5a4baab803e07dddc50242d33d563a
+  new_value: sha256:e93f5080fc641a5db5061b86aaa5041f2d725265f82a9b59a5dda8134a1ca0a3
+  proof_type: runtime-equivalent
+  migration_evidence: evidence/migrations/docker-volume-cleanup-v1.json
+  reason: 既存HarnessとOracleを保持し、task-owned containerを成功・失敗双方でanonymous volumeとともに削除するため。
+- id: docker-volume-cleanup-evidence-harnesses-catalog-inventory-manifest
+  old_id: file:evidence/harnesses/catalog-inventory.manifest
+  new_id: file:evidence/harnesses/catalog-inventory.manifest
+  old_value: sha256:76018e9feed09db82bae5bbf7a5dc4213dd3f24f8323053edcfe3a3371ea5048
+  new_value: sha256:e6c137bd9004e1f077a5a3b3d13fe439537178f98c4b617c604148ee7226707c
+  proof_type: runtime-equivalent
+  migration_evidence: evidence/migrations/docker-volume-cleanup-v1.json
+  reason: 既存HarnessとOracleを保持し、task-owned containerを成功・失敗双方でanonymous volumeとともに削除するため。
+- id: docker-volume-cleanup-evidence-harnesses-compatibility-matrix-manifest
+  old_id: file:evidence/harnesses/compatibility-matrix.manifest
+  new_id: file:evidence/harnesses/compatibility-matrix.manifest
+  old_value: sha256:559ccd9ca37a6e52771de30993240c51baf2cdbea23ffa4b732f4e79b928b754
+  new_value: sha256:bce0d5bcddc7d36151c682409bcff1fcd59345021c4ab0ec9386a5dbeadcfe45
+  proof_type: runtime-equivalent
+  migration_evidence: evidence/migrations/docker-volume-cleanup-v1.json
+  reason: 既存HarnessとOracleを保持し、task-owned containerを成功・失敗双方でanonymous volumeとともに削除するため。
+- id: docker-volume-cleanup-evidence-harnesses-deadlock-manifest
+  old_id: file:evidence/harnesses/deadlock.manifest
+  new_id: file:evidence/harnesses/deadlock.manifest
+  old_value: sha256:60aa11d7a7e91ee501deebb8e555ee35cd8a316b55d2af53210dc132c7ed102c
+  new_value: sha256:b828815be4cdd173be25fe4d6765f065132718e4c8864a75b46e7f853959cd10
+  proof_type: runtime-equivalent
+  migration_evidence: evidence/migrations/docker-volume-cleanup-v1.json
+  reason: 既存HarnessとOracleを保持し、task-owned containerを成功・失敗双方でanonymous volumeとともに削除するため。
+- id: docker-volume-cleanup-evidence-harnesses-extension-manifest
+  old_id: file:evidence/harnesses/extension.manifest
+  new_id: file:evidence/harnesses/extension.manifest
+  old_value: sha256:c63ebf46bf53289b483f3d89a19b57fb4ef9f0b8df6641da3a90f88a3a50ba7b
+  new_value: sha256:a73b3d61db91cf8cec59c2084700aad5082441ae245c42ab4e80092ccc35ca81
+  proof_type: runtime-equivalent
+  migration_evidence: evidence/migrations/docker-volume-cleanup-v1.json
+  reason: 既存HarnessとOracleを保持し、task-owned containerを成功・失敗双方でanonymous volumeとともに削除するため。
+- id: docker-volume-cleanup-evidence-harnesses-failure-injection-manifest
+  old_id: file:evidence/harnesses/failure-injection.manifest
+  new_id: file:evidence/harnesses/failure-injection.manifest
+  old_value: sha256:32c4edb7491edbe7f4c6937c8b1961e9f530a1ebec45d6f90cacee6092e271c7
+  new_value: sha256:f33a07abd1236af83a47cf1d01490ce6f6186a4b2abbd9c9492b63bd6f81c3b5
+  proof_type: runtime-equivalent
+  migration_evidence: evidence/migrations/docker-volume-cleanup-v1.json
+  reason: 既存HarnessとOracleを保持し、task-owned containerを成功・失敗双方でanonymous volumeとともに削除するため。
+- id: docker-volume-cleanup-evidence-harnesses-foundation-authority-lock-manifest
+  old_id: file:evidence/harnesses/foundation-authority-lock.manifest
+  new_id: file:evidence/harnesses/foundation-authority-lock.manifest
+  old_value: sha256:d2aa18a4139816b81cbbc9350b929057ee636a5beed55410b1b35705df55f390
+  new_value: sha256:6ec79af7a0170e304a7a39cc768543abd3c5da6d94cada9ebcfe0b1f96816cd2
+  proof_type: runtime-equivalent
+  migration_evidence: evidence/migrations/docker-volume-cleanup-v1.json
+  reason: 既存HarnessとOracleを保持し、task-owned containerを成功・失敗双方でanonymous volumeとともに削除するため。
+- id: docker-volume-cleanup-evidence-harnesses-index-manifest
+  old_id: file:evidence/harnesses/index.manifest
+  new_id: file:evidence/harnesses/index.manifest
+  old_value: sha256:679271160d478980c779e3efcdc73cdc25d2e1534b7cf800432477afcdb1bcac
+  new_value: sha256:cc2044aed3bce7e3e24a4bb033ba4b18246fcbc2388f462e2f4d3134d8ffbb9a
+  proof_type: runtime-equivalent
+  migration_evidence: evidence/migrations/docker-volume-cleanup-v1.json
+  reason: 既存HarnessとOracleを保持し、task-owned containerを成功・失敗双方でanonymous volumeとともに削除するため。
+- id: docker-volume-cleanup-evidence-harnesses-locking-manifest
+  old_id: file:evidence/harnesses/locking.manifest
+  new_id: file:evidence/harnesses/locking.manifest
+  old_value: sha256:dde173ada18b5b24fcc637b227d59259b055f00f8b44c3e1315be08093c5fac2
+  new_value: sha256:e45bcb09cd9f11c614006f6e9ba2e70fb12db0640514ba95842435c01d972df8
+  proof_type: runtime-equivalent
+  migration_evidence: evidence/migrations/docker-volume-cleanup-v1.json
+  reason: 既存HarnessとOracleを保持し、task-owned containerを成功・失敗双方でanonymous volumeとともに削除するため。
+- id: docker-volume-cleanup-evidence-harnesses-logical-replication-manifest
+  old_id: file:evidence/harnesses/logical-replication.manifest
+  new_id: file:evidence/harnesses/logical-replication.manifest
+  old_value: sha256:e11530bdd38bd3a715cc74e4d0ce521950a36bbee31515e9989c5cfe3f70be2c
+  new_value: sha256:276aeed412817486915abf567a5b89408271e21b53cf76eddbe9bc9b59e193dc
+  proof_type: runtime-equivalent
+  migration_evidence: evidence/migrations/docker-volume-cleanup-v1.json
+  reason: 既存HarnessとOracleを保持し、task-owned containerを成功・失敗双方でanonymous volumeとともに削除するため。
+- id: docker-volume-cleanup-evidence-harnesses-maintenance-manifest
+  old_id: file:evidence/harnesses/maintenance.manifest
+  new_id: file:evidence/harnesses/maintenance.manifest
+  old_value: sha256:9b12937f7ffde52a627ead1385b541625dedee19ba20e6a775a968956d5eafa9
+  new_value: sha256:3153893f1270460be3342b1e9bb9375b0ef81253f03c38c5796d6401ef24a420
+  proof_type: runtime-equivalent
+  migration_evidence: evidence/migrations/docker-volume-cleanup-v1.json
+  reason: 既存HarnessとOracleを保持し、task-owned containerを成功・失敗双方でanonymous volumeとともに削除するため。
+- id: docker-volume-cleanup-evidence-harnesses-migration-manifest
+  old_id: file:evidence/harnesses/migration.manifest
+  new_id: file:evidence/harnesses/migration.manifest
+  old_value: sha256:32122577b215926df8ee0361709b57dcc1838053eaa31584e29d3d363d4755f6
+  new_value: sha256:d0da18d6383f88776047c68df4f888ea3800b612ee01cdbe400873a65d16c232
+  proof_type: runtime-equivalent
+  migration_evidence: evidence/migrations/docker-volume-cleanup-v1.json
+  reason: 既存HarnessとOracleを保持し、task-owned containerを成功・失敗双方でanonymous volumeとともに削除するため。
+- id: docker-volume-cleanup-evidence-harnesses-mvcc-manifest
+  old_id: file:evidence/harnesses/mvcc.manifest
+  new_id: file:evidence/harnesses/mvcc.manifest
+  old_value: sha256:447b882cef7a0120f13632dec50dcab0c9649f595d2aee6a498f5f5b5a2d1883
+  new_value: sha256:80a451f53aba7996ac7055bce648dd0db95ba094ccb87e4efbc6ccf87ea8e365
+  proof_type: runtime-equivalent
+  migration_evidence: evidence/migrations/docker-volume-cleanup-v1.json
+  reason: 既存HarnessとOracleを保持し、task-owned containerを成功・失敗双方でanonymous volumeとともに削除するため。
+- id: docker-volume-cleanup-evidence-harnesses-observability-manifest
+  old_id: file:evidence/harnesses/observability.manifest
+  new_id: file:evidence/harnesses/observability.manifest
+  old_value: sha256:0a74783abce0c78643523c9ba5ac1bde2ac7c25049ebeb0221872737b1d03f01
+  new_value: sha256:78c33e75f19aefd7041cb387d73ed63dcb39b2545b500db9222106a5e5a29925
+  proof_type: runtime-equivalent
+  migration_evidence: evidence/migrations/docker-volume-cleanup-v1.json
+  reason: 既存HarnessとOracleを保持し、task-owned containerを成功・失敗双方でanonymous volumeとともに削除するため。
+- id: docker-volume-cleanup-evidence-harnesses-partitioning-manifest
+  old_id: file:evidence/harnesses/partitioning.manifest
+  new_id: file:evidence/harnesses/partitioning.manifest
+  old_value: sha256:da44ecb385cafb79536d3d5f7e4d1d2f9c9094ff9b0a7378bf83f902242b31f5
+  new_value: sha256:3e081ff1187fc334b517476803db832efb8bb3392f099596013fa053f8238306
+  proof_type: runtime-equivalent
+  migration_evidence: evidence/migrations/docker-volume-cleanup-v1.json
+  reason: 既存HarnessとOracleを保持し、task-owned containerを成功・失敗双方でanonymous volumeとともに削除するため。
+- id: docker-volume-cleanup-evidence-harnesses-performance-manifest
+  old_id: file:evidence/harnesses/performance.manifest
+  new_id: file:evidence/harnesses/performance.manifest
+  old_value: sha256:a0b4c2abf4c26d33eeb96a06d1e41a9151fb2cd1970143c9d317864d63d10b7c
+  new_value: sha256:a5e9169fdee790e152c38cde517dac5f8155cdaeaf10ca083fff837addb02b29
+  proof_type: runtime-equivalent
+  migration_evidence: evidence/migrations/docker-volume-cleanup-v1.json
+  reason: 既存HarnessとOracleを保持し、task-owned containerを成功・失敗双方でanonymous volumeとともに削除するため。
+- id: docker-volume-cleanup-evidence-harnesses-planner-manifest
+  old_id: file:evidence/harnesses/planner.manifest
+  new_id: file:evidence/harnesses/planner.manifest
+  old_value: sha256:7fa62d96a6cb81f5e9d17004a8078337f2ae97811ecc2d24e9aa046e0b3c3bb1
+  new_value: sha256:4ae01bb7eb79591699a246ee1f52457ebefbab88b5823d850e02201f8a0fede4
+  proof_type: runtime-equivalent
+  migration_evidence: evidence/migrations/docker-volume-cleanup-v1.json
+  reason: 既存HarnessとOracleを保持し、task-owned containerを成功・失敗双方でanonymous volumeとともに削除するため。
+- id: docker-volume-cleanup-evidence-harnesses-publication-static-gates-manifest
+  old_id: file:evidence/harnesses/publication-static-gates.manifest
+  new_id: file:evidence/harnesses/publication-static-gates.manifest
+  old_value: sha256:d2aa18a4139816b81cbbc9350b929057ee636a5beed55410b1b35705df55f390
+  new_value: sha256:6ec79af7a0170e304a7a39cc768543abd3c5da6d94cada9ebcfe0b1f96816cd2
+  proof_type: runtime-equivalent
+  migration_evidence: evidence/migrations/docker-volume-cleanup-v1.json
+  reason: 既存HarnessとOracleを保持し、task-owned containerを成功・失敗双方でanonymous volumeとともに削除するため。
+- id: docker-volume-cleanup-evidence-harnesses-security-manifest
+  old_id: file:evidence/harnesses/security.manifest
+  new_id: file:evidence/harnesses/security.manifest
+  old_value: sha256:0e93aad5e54bd09ced386ff86b880f90970bc4905dca6450d53d072d7f2c8468
+  new_value: sha256:a287d6cd543265d0f3252b15b7b36a4a8693c1b3b158bd73f15e3b1acda1802d
+  proof_type: runtime-equivalent
+  migration_evidence: evidence/migrations/docker-volume-cleanup-v1.json
+  reason: 既存HarnessとOracleを保持し、task-owned containerを成功・失敗双方でanonymous volumeとともに削除するため。
+- id: docker-volume-cleanup-evidence-harnesses-sql-surface-manifest
+  old_id: file:evidence/harnesses/sql-surface.manifest
+  new_id: file:evidence/harnesses/sql-surface.manifest
+  old_value: sha256:75afca61578d1f8fb76a09bed36f40733218b9c6daca264c09182454809e759e
+  new_value: sha256:c58be67d9c960a86b3157638f086fc3dc4731b14a4687cbf5e98ff2caf0245f1
+  proof_type: runtime-equivalent
+  migration_evidence: evidence/migrations/docker-volume-cleanup-v1.json
+  reason: 既存HarnessとOracleを保持し、task-owned containerを成功・失敗双方でanonymous volumeとともに削除するため。
+- id: docker-volume-cleanup-evidence-harnesses-sql-manifest
+  old_id: file:evidence/harnesses/sql.manifest
+  new_id: file:evidence/harnesses/sql.manifest
+  old_value: sha256:2909e4754d1ddf615fdeb248359b280af970d27d50b57b514a6e39443378a488
+  new_value: sha256:9934c45fc6612db3fd871c74df23dc22f9b28130b91b1a1a35068a509286d75e
+  proof_type: runtime-equivalent
+  migration_evidence: evidence/migrations/docker-volume-cleanup-v1.json
+  reason: 既存HarnessとOracleを保持し、task-owned containerを成功・失敗双方でanonymous volumeとともに削除するため。
+- id: docker-volume-cleanup-evidence-harnesses-statistics-manifest
+  old_id: file:evidence/harnesses/statistics.manifest
+  new_id: file:evidence/harnesses/statistics.manifest
+  old_value: sha256:4e00721ef17c66e40725190e76116c2f9c67cbd806557164e7855bc2500a639f
+  new_value: sha256:774efd83c8f958f49c0776c249c0a9395d56131b98af7af71098a09caa081725
+  proof_type: runtime-equivalent
+  migration_evidence: evidence/migrations/docker-volume-cleanup-v1.json
+  reason: 既存HarnessとOracleを保持し、task-owned containerを成功・失敗双方でanonymous volumeとともに削除するため。
+- id: docker-volume-cleanup-evidence-harnesses-types-constraints-manifest
+  old_id: file:evidence/harnesses/types-constraints.manifest
+  new_id: file:evidence/harnesses/types-constraints.manifest
+  old_value: sha256:6b233ae03fdc4708d55022e3259f742ff4cd46c87dbd0a57086a1a598a9471b9
+  new_value: sha256:e5b5abaca9bb5e9c6abc40e11b21a71771ab6a1ef544a3d712fa5a23605045c5
+  proof_type: runtime-equivalent
+  migration_evidence: evidence/migrations/docker-volume-cleanup-v1.json
+  reason: 既存HarnessとOracleを保持し、task-owned containerを成功・失敗双方でanonymous volumeとともに削除するため。
+- id: docker-volume-cleanup-evidence-harnesses-upgrade-manifest
+  old_id: file:evidence/harnesses/upgrade.manifest
+  new_id: file:evidence/harnesses/upgrade.manifest
+  old_value: sha256:994e678394e20bba7ece80ca6b683c6500d2077127d644411fe31cee8baf4d8b
+  new_value: sha256:1d95eb9e2ad2832ba4ff05aa1844bd1e9969e991389fddf10a92055dd35f3f57
+  proof_type: runtime-equivalent
+  migration_evidence: evidence/migrations/docker-volume-cleanup-v1.json
+  reason: 既存HarnessとOracleを保持し、task-owned containerを成功・失敗双方でanonymous volumeとともに削除するため。
+- id: docker-volume-cleanup-evidence-harnesses-wal-manifest
+  old_id: file:evidence/harnesses/wal.manifest
+  new_id: file:evidence/harnesses/wal.manifest
+  old_value: sha256:48942d8755c08c3c18a30022fb44a2c334c26fd4aaf5c06215f0d275b9dbbd73
+  new_value: sha256:f644c84d7426b89766d297f463673e597a93ee9868e676072171991fa93c568d
+  proof_type: runtime-equivalent
+  migration_evidence: evidence/migrations/docker-volume-cleanup-v1.json
+  reason: 既存HarnessとOracleを保持し、task-owned containerを成功・失敗双方でanonymous volumeとともに削除するため。
+- id: docker-volume-cleanup-labs-backup-recovery-run-sh
+  old_id: file:labs/backup-recovery/run.sh
+  new_id: file:labs/backup-recovery/run.sh
+  old_value: sha256:c4ff76813cfb2914caf256f6e79c273204d24bce2b34abeaf54820540d57f190
+  new_value: sha256:857d30ec187131edef58ff7de859baa0dd50387cf80fb9040dfa458cd06096c0
+  proof_type: runtime-equivalent
+  migration_evidence: evidence/migrations/docker-volume-cleanup-v1.json
+  reason: 既存HarnessとOracleを保持し、task-owned containerを成功・失敗双方でanonymous volumeとともに削除するため。
+- id: docker-volume-cleanup-labs-compatibility-matrix-run-sh
+  old_id: file:labs/compatibility-matrix/run.sh
+  new_id: file:labs/compatibility-matrix/run.sh
+  old_value: sha256:087002f787391f1394fd45d5c9b07600675721a6b876a1ec06b2cb6395ca7388
+  new_value: sha256:5c4471755da9693c1843f77b1d222026d5b7aef8cf6d2dd001f12fb9edadfe56
+  proof_type: runtime-equivalent
+  migration_evidence: evidence/migrations/docker-volume-cleanup-v1.json
+  reason: 既存HarnessとOracleを保持し、task-owned containerを成功・失敗双方でanonymous volumeとともに削除するため。
+- id: docker-volume-cleanup-labs-deadlock-run-sh
+  old_id: file:labs/deadlock/run.sh
+  new_id: file:labs/deadlock/run.sh
+  old_value: sha256:6be07e8b0fd1436f9667c4e637f480a99f2bdab606a454fe23501aad267e1611
+  new_value: sha256:8f13cef3da9feffa59944f5c2288fdacc83131337d74b0c30756a0500eb2a31b
+  proof_type: runtime-equivalent
+  migration_evidence: evidence/migrations/docker-volume-cleanup-v1.json
+  reason: 既存HarnessとOracleを保持し、task-owned containerを成功・失敗双方でanonymous volumeとともに削除するため。
+- id: docker-volume-cleanup-labs-index-run-sh
+  old_id: file:labs/index/run.sh
+  new_id: file:labs/index/run.sh
+  old_value: sha256:facc655964bf5794aca4f050454cb05d17f0925f363aa723ef7ad9a10785a772
+  new_value: sha256:8ab8d63403d716a9bc9f7ec9fcd207246f7e6f55e26673fbdfda0056dd831eca
+  proof_type: runtime-equivalent
+  migration_evidence: evidence/migrations/docker-volume-cleanup-v1.json
+  reason: 既存HarnessとOracleを保持し、task-owned containerを成功・失敗双方でanonymous volumeとともに削除するため。
+- id: docker-volume-cleanup-labs-logical-replication-run-sh
+  old_id: file:labs/logical-replication/run.sh
+  new_id: file:labs/logical-replication/run.sh
+  old_value: sha256:f83ef999000224bb673ca688eadb970e9f36348cb06287b9b2f800ab1eca3572
+  new_value: sha256:55f8f711e3bd47e9976be4d77e996ca5051895732b9b50eb991b3a7a5a5f72ad
+  proof_type: runtime-equivalent
+  migration_evidence: evidence/migrations/docker-volume-cleanup-v1.json
+  reason: 既存HarnessとOracleを保持し、task-owned containerを成功・失敗双方でanonymous volumeとともに削除するため。
+- id: docker-volume-cleanup-labs-mvcc-run-sh
+  old_id: file:labs/mvcc/run.sh
+  new_id: file:labs/mvcc/run.sh
+  old_value: sha256:c7b18ba9b04324a3360f2a359dec7460db89c50935fb51be62b60b8d182d22fb
+  new_value: sha256:ae1e2cc6e3af25ef05455cec5ec6ec2f295a3f12c72827984495baa00f855907
+  proof_type: runtime-equivalent
+  migration_evidence: evidence/migrations/docker-volume-cleanup-v1.json
+  reason: 既存HarnessとOracleを保持し、task-owned containerを成功・失敗双方でanonymous volumeとともに削除するため。
+- id: docker-volume-cleanup-labs-planner-run-sh
+  old_id: file:labs/planner/run.sh
+  new_id: file:labs/planner/run.sh
+  old_value: sha256:37dafb6a2b07c60c3b5341c9b5758374051e125e624dfd32d5292210901b9025
+  new_value: sha256:a8c930651350a72b3c7efae9f79d962d9621875529029598b5517f18eebfb8ce
+  proof_type: runtime-equivalent
+  migration_evidence: evidence/migrations/docker-volume-cleanup-v1.json
+  reason: 既存HarnessとOracleを保持し、task-owned containerを成功・失敗双方でanonymous volumeとともに削除するため。
+- id: docker-volume-cleanup-labs-replication-run-sh
+  old_id: file:labs/replication/run.sh
+  new_id: file:labs/replication/run.sh
+  old_value: sha256:1a4b7deaf70c839a256a968daaa9744169266da7a802ac245f055599ca4c9773
+  new_value: sha256:0915954c282273cb8759e0e3acefbff1ac88fc5b26a3046046add1f0aa840bfe
+  proof_type: runtime-equivalent
+  migration_evidence: evidence/migrations/docker-volume-cleanup-v1.json
+  reason: 既存HarnessとOracleを保持し、task-owned containerを成功・失敗双方でanonymous volumeとともに削除するため。
+- id: docker-volume-cleanup-labs-sql-run-sh
+  old_id: file:labs/sql/run.sh
+  new_id: file:labs/sql/run.sh
+  old_value: sha256:bdee2c627abac543e48bc2b5701f63ac847c708263b3f41f11db7f74351c0ae1
+  new_value: sha256:1a8edc5d2bc71804762713680b61fc43627b19a6a11eb04af67302383fe39a98
+  proof_type: runtime-equivalent
+  migration_evidence: evidence/migrations/docker-volume-cleanup-v1.json
+  reason: 既存HarnessとOracleを保持し、task-owned containerを成功・失敗双方でanonymous volumeとともに削除するため。
+- id: docker-volume-cleanup-labs-upgrade-run-sh
+  old_id: file:labs/upgrade/run.sh
+  new_id: file:labs/upgrade/run.sh
+  old_value: sha256:d8f3168a4058df0fbb067aff04e6ccc788ce82b9de36d4b4b758e9a21f3384f5
+  new_value: sha256:920ab678fa59359ddee876c2a8f9401b6254e023c3f9890c2313f9d0ff3978c4
+  proof_type: runtime-equivalent
+  migration_evidence: evidence/migrations/docker-volume-cleanup-v1.json
+  reason: 既存HarnessとOracleを保持し、task-owned containerを成功・失敗双方でanonymous volumeとともに削除するため。
+- id: docker-volume-cleanup-scripts-run-sql-lab-sh
+  old_id: file:scripts/run-sql-lab.sh
+  new_id: file:scripts/run-sql-lab.sh
+  old_value: sha256:7b9de9e17b429094daddf3b9fc2285c27c39e6d591036fd97aa2f0a215ea540c
+  new_value: sha256:934392f2945d1a8fe65f78b6c507c497dcd42760ddc2c227902a379a2fe2d1b8
+  proof_type: runtime-equivalent
+  migration_evidence: evidence/migrations/docker-volume-cleanup-v1.json
+  reason: 既存HarnessとOracleを保持し、task-owned containerを成功・失敗双方でanonymous volumeとともに削除するため。
+- id: completion-certificate-history-copy
+  old_id: file:evidence/completion-certificate.json
+  new_id: file:evidence/history/v1.0.0/completion-certificate.json
+  old_value: sha256:7f88fc0e072438d84b296b51428e88983688eca85cf4f97d7bf819b0bde9a26a
+  new_value: sha256:7f88fc0e072438d84b296b51428e88983688eca85cf4f97d7bf819b0bde9a26a
+  proof_type: byte-identical
+  migration_evidence: evidence/migrations/non-regression-v2.json
+  reason: Core Definitive v2の履歴規約へ移し、v1 bounded Certificateの意味とbyte列を不変保存するため。
+- id: core-definitive-v2-forward-update
+  old_id: ci:core-ref:cf9e6e2d981305c83f970c1f21a1ddc9c1109263
+  new_id: ci:core-ref:072d7ca77981f51754e824d70c6d4ecd55ea67e5
+  old_value: cf9e6e2d981305c83f970c1f21a1ddc9c1109263
+  new_value: 072d7ca77981f51754e824d70c6d4ecd55ea67e5
+  proof_type: version-forward-compatible
+  migration_evidence: evidence/migrations/non-regression-v2.json
+  reason: v1互換Gateを保持した子孫commitへ更新し、Scenario Closure Plan、原子的Evidence Durability、Evidence
+    Dependency Graph共通Gateを含むDefinitive Gate v2を加法的に利用するため。
+- id: skill-instructions-definitive-eval-addition
+  old_id: file:.agents/skills/postgresql-atlas/SKILL.md
+  new_id: file:.agents/skills/postgresql-atlas/SKILL.md
+  old_value: sha256:f51a7e7401d380e1677990a927d29f2b7fb500220e19ba56ef3bac9f22fcf104
+  new_value: sha256:5b4896d1d9511a5c551c557821606cb1651b244949fd3c4715ea6cb5ee1850f0
+  proof_type: runtime-equivalent
+  migration_evidence: evidence/migrations/non-regression-v2.json
+  reason: 既存Routerの安全境界と利用手順を保持したまま、Definitive Routing Planとfail-closed停止条件を加法的に明示するため。
+- id: skill-eval-runner-definitive-eval-addition
+  old_id: file:evals/run.sh
+  new_id: file:evals/run.sh
+  old_value: sha256:599cb182ffabc6cada637578a76a387a2563288955f947f790103b3f8f32d984
+  new_value: sha256:c053c555562778538ee488e43c9aa4ade43f4d90083014925ee4859879b73c5a
+  proof_type: runtime-equivalent
+  migration_evidence: evidence/migrations/non-regression-v2.json
+  reason: 既存30件のRouter Evalを先に全件実行し、その後に112セルと境界・Forward Eval検証を加法的に実行するため。
+- id: skill-package-definitive-eval-addition
+  old_id: file:skill.package.yaml
+  new_id: file:skill.package.yaml
+  old_value: sha256:5eb7cba98dbaa87007a45a679f649d8e8c135cb10d2e9ac89a3eab0fb5961432
+  new_value: sha256:0a977755eb1c565c504da823dbe5c13f748ea9d8753c6578b6e1fcde1689c68c
+  proof_type: runtime-equivalent
+  migration_evidence: evidence/migrations/non-regression-v2.json
+  reason: 既存Skill packageと合格閾値を維持し、Definitive Routing Evalと独立Forward Evalを生成物として追加するため。
+- id: skill-eval-entity-definitive-case-addition
+  old_id: file:evals/postgresql-router.skill-eval.json
+  new_id: file:evals/postgresql-router.skill-eval.json
+  old_value: sha256:0e09ab0c0855af117e1df58e166c2f207078fb62ffd0df6fb45863029cc6089a
+  new_value: sha256:736673ce55d5f00f0a082c2b450f27516c513d10e6d86df5bb6ae397d9bd48fa
+  proof_type: runtime-equivalent
+  migration_evidence: evidence/migrations/non-regression-v2.json
+  reason: 既存30件のCase ID、Assertion、合格結果を維持し、再実行時刻だけを更新したSkill Eval entityへ再固定するため。
+- id: skill-eval-harness-definitive-addition
+  old_id: file:evidence/harnesses/skill-router-eval.manifest
+  new_id: file:evidence/harnesses/skill-router-eval.manifest
+  old_value: sha256:6ae8427b29b0475de6bbd75a289c9e2c51f09aec9bff35e4a15af4c4426d2489
+  new_value: sha256:346f757e07ff85f304f1d670b1ef8a8f598b3a871afff54c98fd72e9127f9aa5
+  proof_type: runtime-equivalent
+  migration_evidence: evidence/migrations/non-regression-v2.json
+  reason: 既存Router Eval harnessを保持し、加法変更したSkill説明とEval runnerの現行digestへ再固定するため。
+- id: skill-router-evidence-definitive-addition
+  old_id: file:evidence/skill-router-eval.evidence.yaml
+  new_id: file:evidence/skill-router-eval.evidence.yaml
+  old_value: sha256:dc5fc381bc3368137c7a4575756f8a4aa6cdb591485a00880f3e4e19f5b2f3b4
+  new_value: sha256:9c74f3debd6b39e0bafdd2b33e92a6d5e3457e1fd151bc7437ff024bed206d66
+  proof_type: runtime-equivalent
+  migration_evidence: evidence/migrations/non-regression-v2.json
+  reason: 既存30件Router Evalのpass Artifactを再実行し、現行Harness Digestと生成時刻をEvidenceへ再固定するため。
+- id: pitr-artifact-tmpfs-harness
+  old_id: file:evidence/artifacts/pitr.json
+  new_id: file:evidence/artifacts/pitr.json
+  old_value: sha256:ef5ed5e1f85239a5f9e9e54b3f9bb6cff112f79c443d747cedc2cf95c8d20a9d
+  new_value: sha256:d1b16f7d281d89516f5df4f3ffa9cac3bd48928669ae1f1011df36be3b1b8000
+  proof_type: runtime-equivalent
+  migration_evidence: evidence/migrations/non-regression-v2.json
+  reason: 既存PITR判定を保持し、固有tmpfs上でrestore point以前のみを復元した実行Artifactへ再固定するため。
+- id: pitr-manifest-tmpfs-harness
+  old_id: file:evidence/harnesses/pitr.manifest
+  new_id: file:evidence/harnesses/pitr.manifest
+  old_value: sha256:35bfb7f21f59f8da139917259264890991ea8088dd4af54ae6e0c04155578ece
+  new_value: sha256:2a2941a4e842e6d833d493e287375da72cfa7af01ed85e7d75a8be0bc3bbe203
+  proof_type: runtime-equivalent
+  migration_evidence: evidence/migrations/non-regression-v2.json
+  reason: 既存PITR Harness対象を削らず、固有tmpfs実行とSecurity Scenario専用Oracleを加法固定するため。
+- id: pitr-runner-tmpfs-harness
+  old_id: file:labs/pitr/run.sh
+  new_id: file:labs/pitr/run.sh
+  old_value: sha256:8dfc168e81d3265753e07065c5ee358e9c27d25aa0993ca124b974a0bea2fcc7
+  new_value: sha256:9beffec74231f5290615546124f610553204c80a0bc07b33a9a12cce940eee9a
+  proof_type: runtime-equivalent
+  migration_evidence: evidence/migrations/non-regression-v2.json
+  reason: 既存PITR Oracleと実PostgreSQL復旧を保持し、永続Volumeを作らない固有tmpfs container方式へ置換するため。
+- id: evidence-full-rerun-authority-lock
+  old_id: file:evidence/authority-lock.evidence.yaml
+  new_id: file:evidence/authority-lock.evidence.yaml
+  old_value: sha256:b64d04c53352dd56af9f364915e457337ca4dcfeee751a10d698c7e40778d78c
+  new_value: sha256:0bbc8b91a8a84997d5453c479c102dcedb45ad1266529486e461ef3370419f9a
+  proof_type: runtime-equivalent
+  migration_evidence: evidence/migrations/non-regression-v2.json
+  reason: 既存Evidence IDとpass判定を保持し、PostgreSQL実Runtimeの全35 Command first-attempt再実行結果へdigestを更新するため。
+- id: evidence-full-rerun-backup-recovery
+  old_id: file:evidence/backup-recovery.evidence.yaml
+  new_id: file:evidence/backup-recovery.evidence.yaml
+  old_value: sha256:ee15486c738337d56473db8fc3fc9647b49a38d46a90bdd3dbd0cfcaa1c5f64a
+  new_value: sha256:e0aff2e051d01f8ede45ec3dc748957aab18e6d8d2db2027f9ff299c917389d2
+  proof_type: runtime-equivalent
+  migration_evidence: evidence/migrations/non-regression-v2.json
+  reason: 既存Evidence IDとpass判定を保持し、PostgreSQL実Runtimeの全35 Command first-attempt再実行結果へdigestを更新するため。
+- id: evidence-full-rerun-catalog-inventory
+  old_id: file:evidence/catalog-inventory.evidence.yaml
+  new_id: file:evidence/catalog-inventory.evidence.yaml
+  old_value: sha256:67a7f00757c5eb227c6faffddc89b6e4cca5eb114df2496012f2d398dd3a6ed1
+  new_value: sha256:f0eab6f353440096266384d2bfdbb31c31a5147406cab98a88111a6f4724047e
+  proof_type: runtime-equivalent
+  migration_evidence: evidence/migrations/non-regression-v2.json
+  reason: 既存Evidence IDとpass判定を保持し、PostgreSQL実Runtimeの全35 Command first-attempt再実行結果へdigestを更新するため。
+- id: evidence-full-rerun-compatibility-matrix
+  old_id: file:evidence/compatibility-matrix.evidence.yaml
+  new_id: file:evidence/compatibility-matrix.evidence.yaml
+  old_value: sha256:11cc5b56685961447883c29a57684d240656135857314e7493b0a15b78a396e5
+  new_value: sha256:90fe0a87bad7a9d418f10a73f49bde55f8aac3c4a842bc6021ede062f03bec1b
+  proof_type: runtime-equivalent
+  migration_evidence: evidence/migrations/non-regression-v2.json
+  reason: 既存Evidence IDとpass判定を保持し、PostgreSQL実Runtimeの全35 Command first-attempt再実行結果へdigestを更新するため。
+- id: evidence-full-rerun-deadlock
+  old_id: file:evidence/deadlock.evidence.yaml
+  new_id: file:evidence/deadlock.evidence.yaml
+  old_value: sha256:a53e2f7560acd601598b8824159f5fb9e4edbe7613bfad197c8d13ef1e61923e
+  new_value: sha256:479b7eca128f7e87185f62fbea5dad7e50ec1cad849e7f868509dc3234c179b0
+  proof_type: runtime-equivalent
+  migration_evidence: evidence/migrations/non-regression-v2.json
+  reason: 既存Evidence IDとpass判定を保持し、PostgreSQL実Runtimeの全35 Command first-attempt再実行結果へdigestを更新するため。
+- id: evidence-full-rerun-extension
+  old_id: file:evidence/extension.evidence.yaml
+  new_id: file:evidence/extension.evidence.yaml
+  old_value: sha256:f252f46c71acd5d59e9dde7aacbc43508cd68e0cf234c3fd7cd0d6efa946996b
+  new_value: sha256:810f88fc9b6446e38a23303bb55e1fe848cc26e2147f174303b63a8363993f0c
+  proof_type: runtime-equivalent
+  migration_evidence: evidence/migrations/non-regression-v2.json
+  reason: 既存Evidence IDとpass判定を保持し、PostgreSQL実Runtimeの全35 Command first-attempt再実行結果へdigestを更新するため。
+- id: evidence-full-rerun-failure-injection
+  old_id: file:evidence/failure-injection.evidence.yaml
+  new_id: file:evidence/failure-injection.evidence.yaml
+  old_value: sha256:7a0ae1d2679152ed8662fdc3b8dfd26ab434048e89428eb9aec723ed804a31e7
+  new_value: sha256:18b79d1e0d18e306504682bf1336aeea61d603e32c4095c5653de4a9a7ac7aab
+  proof_type: runtime-equivalent
+  migration_evidence: evidence/migrations/non-regression-v2.json
+  reason: 既存Evidence IDとpass判定を保持し、PostgreSQL実Runtimeの全35 Command first-attempt再実行結果へdigestを更新するため。
+- id: evidence-full-rerun-foundation-authority-lock
+  old_id: file:evidence/foundation-authority-lock.evidence.yaml
+  new_id: file:evidence/foundation-authority-lock.evidence.yaml
+  old_value: sha256:742be0bbe51cd453e2f43ee5bd1ed1d0e8413d4ba62398ee22e71a13a680e752
+  new_value: sha256:bcb6991a266de9a65f51ae0866317f4c1a59cfa1b1b8a966cb14d55d0c3416d0
+  proof_type: runtime-equivalent
+  migration_evidence: evidence/migrations/non-regression-v2.json
+  reason: 既存Evidence IDとpass判定を保持し、PostgreSQL実Runtimeの全35 Command first-attempt再実行結果へdigestを更新するため。
+- id: evidence-full-rerun-index
+  old_id: file:evidence/index.evidence.yaml
+  new_id: file:evidence/index.evidence.yaml
+  old_value: sha256:03ae650880e9fdeb3f169b514f7b71a5b77bbf4daa621cdabe41d12313b4fa27
+  new_value: sha256:c547f3580342e526fcf37d13f783574cc525a7a3b65d4bfe60427a8b6f781e55
+  proof_type: runtime-equivalent
+  migration_evidence: evidence/migrations/non-regression-v2.json
+  reason: 既存Evidence IDとpass判定を保持し、PostgreSQL実Runtimeの全35 Command first-attempt再実行結果へdigestを更新するため。
+- id: evidence-full-rerun-locking
+  old_id: file:evidence/locking.evidence.yaml
+  new_id: file:evidence/locking.evidence.yaml
+  old_value: sha256:3c802f46832c76d62a83f550b6bfa1c3f59d650b244147f4b37a02533485a3eb
+  new_value: sha256:ab54d0fffcf3f962544c96f230d6211c4e7129823b6ce97e7ec0739c0f1d8373
+  proof_type: runtime-equivalent
+  migration_evidence: evidence/migrations/non-regression-v2.json
+  reason: 既存Evidence IDとpass判定を保持し、PostgreSQL実Runtimeの全35 Command first-attempt再実行結果へdigestを更新するため。
+- id: evidence-full-rerun-logical-replication
+  old_id: file:evidence/logical-replication.evidence.yaml
+  new_id: file:evidence/logical-replication.evidence.yaml
+  old_value: sha256:76ea41bc3ed8c947e47a04e432c0e0d87074d1ffb1ffea00a9753e094e3288ab
+  new_value: sha256:5e310ed75ed59c1414cc500ba0ba6d5263227f28c99cf795530c03a84bba4074
+  proof_type: runtime-equivalent
+  migration_evidence: evidence/migrations/non-regression-v2.json
+  reason: 既存Evidence IDとpass判定を保持し、PostgreSQL実Runtimeの全35 Command first-attempt再実行結果へdigestを更新するため。
+- id: evidence-full-rerun-maintenance
+  old_id: file:evidence/maintenance.evidence.yaml
+  new_id: file:evidence/maintenance.evidence.yaml
+  old_value: sha256:75d4a9b260b33c34c2d6a8c3f624afb90caaaff8cdb5ca108afb47afd4ab2a81
+  new_value: sha256:9cd1b587f273003948c6e4ba1c3dbfa1d757775a813217c34c570f516b97856b
+  proof_type: runtime-equivalent
+  migration_evidence: evidence/migrations/non-regression-v2.json
+  reason: 既存Evidence IDとpass判定を保持し、PostgreSQL実Runtimeの全35 Command first-attempt再実行結果へdigestを更新するため。
+- id: evidence-full-rerun-migration
+  old_id: file:evidence/migration.evidence.yaml
+  new_id: file:evidence/migration.evidence.yaml
+  old_value: sha256:e0b14a0e6bfa826e1897419efac9462f7dbd87fccf5deaf9530e64b5b44cefab
+  new_value: sha256:121342bd06b1bc01d27c96a97c5e42a40867ede1da5b3bbc7789f49a801a9bf3
+  proof_type: runtime-equivalent
+  migration_evidence: evidence/migrations/non-regression-v2.json
+  reason: 既存Evidence IDとpass判定を保持し、PostgreSQL実Runtimeの全35 Command first-attempt再実行結果へdigestを更新するため。
+- id: evidence-full-rerun-mvcc
+  old_id: file:evidence/mvcc.evidence.yaml
+  new_id: file:evidence/mvcc.evidence.yaml
+  old_value: sha256:ea7b6ef2b6a89d571300f19af060fc94bd004e66a815f78eba80ea3d3ba444a5
+  new_value: sha256:07e505c5b7b316f2384131951ba8c024d2662c58e7f49b07b4fd4f8e3d9995b1
+  proof_type: runtime-equivalent
+  migration_evidence: evidence/migrations/non-regression-v2.json
+  reason: 既存Evidence IDとpass判定を保持し、PostgreSQL実Runtimeの全35 Command first-attempt再実行結果へdigestを更新するため。
+- id: evidence-full-rerun-observability
+  old_id: file:evidence/observability.evidence.yaml
+  new_id: file:evidence/observability.evidence.yaml
+  old_value: sha256:d918cd5718e253b61a4c6d1b1d79d5a11e665dbfc55e02b957cdff63bcd423f8
+  new_value: sha256:dfaaa4d9072c63daaa5dd83763e9062167c43cde21d87121a292e569140484c2
+  proof_type: runtime-equivalent
+  migration_evidence: evidence/migrations/non-regression-v2.json
+  reason: 既存Evidence IDとpass判定を保持し、PostgreSQL実Runtimeの全35 Command first-attempt再実行結果へdigestを更新するため。
+- id: evidence-full-rerun-partitioning
+  old_id: file:evidence/partitioning.evidence.yaml
+  new_id: file:evidence/partitioning.evidence.yaml
+  old_value: sha256:1792f200be6b46337ab4f837bfda56d4c3a55d082964762821d0c91ac867cb84
+  new_value: sha256:45d36e2c6cca7308d2bb06327648fddae118dd6dd12c99a16e71b19df4a94ccd
+  proof_type: runtime-equivalent
+  migration_evidence: evidence/migrations/non-regression-v2.json
+  reason: 既存Evidence IDとpass判定を保持し、PostgreSQL実Runtimeの全35 Command first-attempt再実行結果へdigestを更新するため。
+- id: evidence-full-rerun-performance
+  old_id: file:evidence/performance.evidence.yaml
+  new_id: file:evidence/performance.evidence.yaml
+  old_value: sha256:daee434368ea1a2b2c7a179a97d3bbd9659ec9ad40a70f610ad92f61599f7ae2
+  new_value: sha256:390b26f164ab095dbb82d7690123659afa6a23930d92f56eae12cf97ff825dd4
+  proof_type: runtime-equivalent
+  migration_evidence: evidence/migrations/non-regression-v2.json
+  reason: 既存Evidence IDとpass判定を保持し、PostgreSQL実Runtimeの全35 Command first-attempt再実行結果へdigestを更新するため。
+- id: evidence-full-rerun-pg-upgrade
+  old_id: file:evidence/pg-upgrade.evidence.yaml
+  new_id: file:evidence/pg-upgrade.evidence.yaml
+  old_value: sha256:85d2c9347589e84a38c4068fdb2d453c6901ac7d8de31e6dd7032b31a5d30ff8
+  new_value: sha256:bf276ce96db05ac9e6e3a5fdd70c6b8649ae7bfd311597f55ca50716e4603f4a
+  proof_type: runtime-equivalent
+  migration_evidence: evidence/migrations/non-regression-v2.json
+  reason: 既存Evidence IDとpass判定を保持し、PostgreSQL実Runtimeの全35 Command first-attempt再実行結果へdigestを更新するため。
+- id: evidence-full-rerun-pitr
+  old_id: file:evidence/pitr.evidence.yaml
+  new_id: file:evidence/pitr.evidence.yaml
+  old_value: sha256:9ac33af02862a4f808c78857ac2aa174783674410e2a9f6ea1fac60c246c9355
+  new_value: sha256:c4967118e9adbbcef36648df8568ec92bd4c32892c78fc061876454b7869eee6
+  proof_type: runtime-equivalent
+  migration_evidence: evidence/migrations/non-regression-v2.json
+  reason: 既存Evidence IDとpass判定を保持し、PostgreSQL実Runtimeの全35 Command first-attempt再実行結果へdigestを更新するため。
+- id: evidence-full-rerun-planner
+  old_id: file:evidence/planner.evidence.yaml
+  new_id: file:evidence/planner.evidence.yaml
+  old_value: sha256:450b134f6fb64e5b52b3c0b775cc52fded6cad20765c1ca5d5f63cef21945802
+  new_value: sha256:309aae8e64382b5c90d3603e910408476330baa933af4166e9cf5d47553c24fb
+  proof_type: runtime-equivalent
+  migration_evidence: evidence/migrations/non-regression-v2.json
+  reason: 既存Evidence IDとpass判定を保持し、PostgreSQL実Runtimeの全35 Command first-attempt再実行結果へdigestを更新するため。
+- id: evidence-full-rerun-publication-static-gates
+  old_id: file:evidence/publication-static-gates.evidence.yaml
+  new_id: file:evidence/publication-static-gates.evidence.yaml
+  old_value: sha256:9aa8e7333b5acd7daeb32c2a12ac25616e7b773f204e140cb1168c7147a3fb11
+  new_value: sha256:2597cbd458814f979cf1e1658ff2b4c0c4c0211a91eae488c94b897f7213df4f
+  proof_type: runtime-equivalent
+  migration_evidence: evidence/migrations/non-regression-v2.json
+  reason: 既存Evidence IDとpass判定を保持し、PostgreSQL実Runtimeの全35 Command first-attempt再実行結果へdigestを更新するため。
+- id: evidence-full-rerun-replication
+  old_id: file:evidence/replication.evidence.yaml
+  new_id: file:evidence/replication.evidence.yaml
+  old_value: sha256:13557b8fc06e0a919eaaa9e97f8a0c34bd73636bcdee66ba877f73cd43c4b413
+  new_value: sha256:2000640d1bd7d5518544aa103c02dfe1bea92ab2d05aacd881e9b1a6b425e9a5
+  proof_type: runtime-equivalent
+  migration_evidence: evidence/migrations/non-regression-v2.json
+  reason: 既存Evidence IDとpass判定を保持し、PostgreSQL実Runtimeの全35 Command first-attempt再実行結果へdigestを更新するため。
+- id: evidence-full-rerun-security
+  old_id: file:evidence/security.evidence.yaml
+  new_id: file:evidence/security.evidence.yaml
+  old_value: sha256:2b7a3401cfba04cf77a1ef2fffa6f3a58e22fdf6f0a5c3f33b5c9221c47782df
+  new_value: sha256:6c7e9f104795e1f6d36a23b7122e0655d0bf6e719f6150b503550d609cb17213
+  proof_type: runtime-equivalent
+  migration_evidence: evidence/migrations/non-regression-v2.json
+  reason: 既存Evidence IDとpass判定を保持し、PostgreSQL実Runtimeの全35 Command first-attempt再実行結果へdigestを更新するため。
+- id: evidence-full-rerun-sql-surface
+  old_id: file:evidence/sql-surface.evidence.yaml
+  new_id: file:evidence/sql-surface.evidence.yaml
+  old_value: sha256:09e7e6577c67c63bfc595fec9f2653646283e12916b819dc54f7da992fd53aa4
+  new_value: sha256:8e3f9c2edf3a686da20f1d6197b46137a8a58841c1d79132bfdffb88612943ab
+  proof_type: runtime-equivalent
+  migration_evidence: evidence/migrations/non-regression-v2.json
+  reason: 既存Evidence IDとpass判定を保持し、PostgreSQL実Runtimeの全35 Command first-attempt再実行結果へdigestを更新するため。
+- id: evidence-full-rerun-sql
+  old_id: file:evidence/sql.evidence.yaml
+  new_id: file:evidence/sql.evidence.yaml
+  old_value: sha256:10316ff051cca29b3efbd0ca6c51dce309754fc814d2a21bae03658a3fe53278
+  new_value: sha256:4167ca8f9fc397395fe76c7a354bbb74a1050d9ed35625aeea899427159d2651
+  proof_type: runtime-equivalent
+  migration_evidence: evidence/migrations/non-regression-v2.json
+  reason: 既存Evidence IDとpass判定を保持し、PostgreSQL実Runtimeの全35 Command first-attempt再実行結果へdigestを更新するため。
+- id: evidence-full-rerun-statistics
+  old_id: file:evidence/statistics.evidence.yaml
+  new_id: file:evidence/statistics.evidence.yaml
+  old_value: sha256:e3b8d2f1fe9cfbde084e1e463230e89af59d9fd936d3074921d4807fc2b2a093
+  new_value: sha256:ecdafdb980964138e78751ec7010578488b13b95421e2900c3d8efc46169598c
+  proof_type: runtime-equivalent
+  migration_evidence: evidence/migrations/non-regression-v2.json
+  reason: 既存Evidence IDとpass判定を保持し、PostgreSQL実Runtimeの全35 Command first-attempt再実行結果へdigestを更新するため。
+- id: evidence-full-rerun-types-constraints
+  old_id: file:evidence/types-constraints.evidence.yaml
+  new_id: file:evidence/types-constraints.evidence.yaml
+  old_value: sha256:d7f256533f59ec6d835f1dd3b5cf4498a74d73bb269aae37b073f0d3ec3c56d1
+  new_value: sha256:04913d7b03e73934cc475efb7ea0e2a8dc28dbadba71e337a79b69b983b2e825
+  proof_type: runtime-equivalent
+  migration_evidence: evidence/migrations/non-regression-v2.json
+  reason: 既存Evidence IDとpass判定を保持し、PostgreSQL実Runtimeの全35 Command first-attempt再実行結果へdigestを更新するため。
+- id: evidence-full-rerun-upgrade
+  old_id: file:evidence/upgrade.evidence.yaml
+  new_id: file:evidence/upgrade.evidence.yaml
+  old_value: sha256:ea19e15718c3daf8dd64a637931192801b71071f257e43fb534a72566e6b19d2
+  new_value: sha256:218f09d26e391cdeb44ec9eac39db742271f3d99c15547a57af051dedabef164
+  proof_type: runtime-equivalent
+  migration_evidence: evidence/migrations/non-regression-v2.json
+  reason: 既存Evidence IDとpass判定を保持し、PostgreSQL実Runtimeの全35 Command first-attempt再実行結果へdigestを更新するため。
+- id: evidence-full-rerun-wal
+  old_id: file:evidence/wal.evidence.yaml
+  new_id: file:evidence/wal.evidence.yaml
+  old_value: sha256:331c0b012417811d14f386b7727d5e0d37a39a99ca01bb0e2208153fd31c836e
+  new_value: sha256:beb19bf6e3201dec76b94cdb5d1021ade155e002179decbb3dc8a59df88d9a30
+  proof_type: runtime-equivalent
+  migration_evidence: evidence/migrations/non-regression-v2.json
+  reason: 既存Evidence IDとpass判定を保持し、PostgreSQL実Runtimeの全35 Command first-attempt再実行結果へdigestを更新するため。
+- id: replication-manifest-security-scenario-addition
+  old_id: file:evidence/harnesses/replication.manifest
+  new_id: file:evidence/harnesses/replication.manifest
+  old_value: sha256:5c4e135b34858c7329afbbfb8b9c28b1a835a7b0dfdf3e751d7c4b035e734af9
+  new_value: sha256:892c158344e75128631588c112a6bb7aa3e149df6bb9fb09053483683891a414
+  proof_type: runtime-equivalent
+  migration_evidence: evidence/migrations/non-regression-v2.json
+  reason: 既存Physical Replication harnessを保持し、Security Scenario専用standby Oracleを加法的に接続するため。
+- id: pg-upgrade-manifest-security-scenario-addition
+  old_id: file:evidence/harnesses/pg-upgrade.manifest
+  new_id: file:evidence/harnesses/pg-upgrade.manifest
+  old_value: sha256:fd25b6628f28659e6d879d0697a958a4c23060756420f03797e4c317758ad0c1
+  new_value: sha256:f7a90d015484d9319a91b432edddb90de4f2ef22bc3fcbdc74ea1f0bce88a92c
+  proof_type: runtime-equivalent
+  migration_evidence: evidence/migrations/non-regression-v2.json
+  reason: 既存pg_upgrade harnessを保持し、17.11から18.6へのSecurity Scenario専用DockerfileとOracle
+    scriptを加法的に接続するため。
+- id: static-evidence-created-at-scripts-lib
+  old_id: file:scripts/lib.sh
+  new_id: file:scripts/lib.sh
+  proof_type: runtime-equivalent
+  migration_evidence: evidence/migrations/non-regression-v2.json
+  reason: record_evidenceのcreated_atをstatic derived evidenceだけledger時刻へ固定し、runtime
+    evidenceの実時刻採取は維持するため。
+  old_value: sha256:8e1401802b8378d1b39a785de3c27354842827c9f13cbbfb0d341bec53971e88
+  new_value: sha256:f3a08ce0b16bb0bacceba6890afb29d19f4f2859acaa04dfec2f4d9656250897
+- id: static-evidence-created-at-scripts-static-gates
+  old_id: file:scripts/static-gates.sh
+  new_id: file:scripts/static-gates.sh
+  proof_type: runtime-equivalent
+  migration_evidence: evidence/migrations/non-regression-v2.json
+  reason: foundation/publication static evidenceをledger started_atへ固定し、再現性とevidence
+    durabilityの両立を維持するため。
+  old_value: sha256:61ded41cb2f7020be6db8fd1ee1a174421e5e528a13291f75e701802f479bb30
+  new_value: sha256:d07e34dbf68b448f49cde225aa23267867c75f0c9113def1ca90e8b72fd4b520

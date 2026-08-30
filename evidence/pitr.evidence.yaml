@@ -5,12 +5,12 @@ claim_ids: [operations.pitr-recovery]
 kind: recovery
 producer: postgresql-reference-atlas
 command: make lab LAB=pitr
-created_at: "2026-08-30T16:46:18Z"
+created_at: "2026-08-30T17:48:46Z"
 environment:
   profile: cluster
   manifest_digest: sha256:718afbefcc01162a74a85ae51d34b733849f4a6b6c28d17428beead9fcd11701
 source_digest: sha256:7a5097c6130472b193adb30fda89b4a607f1ae00a1ae87dbc1cf22ae5484eaef
-harness_digest: sha256:8201b58ef59c4344b91b7f88728dce114d2bbbc2e41e40167b7f9b26f3a04553
+harness_digest: sha256:2a2941a4e842e6d833d493e287375da72cfa7af01ed85e7d75a8be0bc3bbe203
 harness_path: evidence/harnesses/pitr.manifest
 artifact:
   uri: evidence/artifacts/pitr.json

@@ -111,7 +111,7 @@ record_evidence() {
   environment_digest="$(sha256_file "$ATLAS_ROOT/environments/$profile.yaml")"
   artifact_digest="$(sha256_file "$artifact")"
   artifact_size="$(wc -c < "$artifact" | tr -d ' ')"
-  created_at="$(date -u '+%Y-%m-%dT%H:%M:%SZ')"
+  created_at="${EVIDENCE_CREATED_AT:-$(date -u '+%Y-%m-%dT%H:%M:%SZ')}"
   evidence_path="$ATLAS_ROOT/evidence/${lab}.evidence.yaml"
 
   mkdir -p "$ATLAS_ROOT/evidence/artifacts"

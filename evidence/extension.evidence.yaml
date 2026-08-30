@@ -5,12 +5,12 @@ claim_ids: [query.extension]
 kind: test-report
 producer: postgresql-reference-atlas
 command: make lab LAB=extension
-created_at: "2026-08-30T16:45:02Z"
+created_at: "2026-08-30T17:47:32Z"
 environment:
   profile: container
   manifest_digest: sha256:3df4dbd82139e17c785348c281f26b54d7300662087baaeec3034acefedf36b9
 source_digest: sha256:7a5097c6130472b193adb30fda89b4a607f1ae00a1ae87dbc1cf22ae5484eaef
-harness_digest: sha256:a2d0521f22814810d933abaa72db1920475b2aa54673fab0b3c3df14cb8a1aec
+harness_digest: sha256:a73b3d61db91cf8cec59c2084700aad5082441ae245c42ab4e80092ccc35ca81
 harness_path: evidence/harnesses/extension.manifest
 artifact:
   uri: evidence/artifacts/extension.json
