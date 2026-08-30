@@ -12,7 +12,7 @@
     "client_product": "psql",
     "client_version": "psql (PostgreSQL) 18.6",
     "runtime_image": "postgres:18.6-alpine",
-    "runtime_identity": "pg-atlas-security-22908-584ca1",
+    "runtime_identity": "pg-atlas-security-70618-a2a887",
     "workers": 1,
     "retries": 0,
     "trace_mode": "on",
@@ -22,7 +22,7 @@
         "18.6"
       ],
       "containers": [
-        "pg-atlas-security-22908-584ca1"
+        "pg-atlas-security-70618-a2a887"
       ]
     }
   },
@@ -46,12 +46,12 @@
     }
   ],
   "wal": {
-    "before_lsn": "0/1BEE000",
-    "after_lsn": "0/1BF6000"
+    "before_lsn": "0/1BEFFC0",
+    "after_lsn": "0/1BEFFC0"
   },
-  "log": "2026-08-30 14:23:58.978 UTC [164] LOG:  statement: EXPLAIN (FORMAT JSON) SELECT 1 AS security_probe\n2026-08-30 14:23:59.201 UTC [171] LOG:  statement: SELECT pg_current_wal_lsn()\n2026-08-30 14:23:59.275 UTC [178] LOG:  statement: BEGIN;\n2026-08-30 14:23:59.276 UTC [178] LOG:  statement: CREATE ROLE atlas_lock_reader;\n2026-08-30 14:23:59.276 UTC [178] LOG:  statement: CREATE TABLE atlas_lock_private(id integer primary key, value text);\n2026-08-30 14:23:59.286 UTC [178] LOG:  statement: INSERT INTO atlas_lock_private VALUES (1, 'stable');\n2026-08-30 14:23:59.287 UTC [178] LOG:  statement: GRANT SELECT ON atlas_lock_private TO atlas_lock_reader;\n2026-08-30 14:23:59.288 UTC [178] LOG:  statement: SET ROLE atlas_lock_reader;\n2026-08-30 14:23:59.288 UTC [178] LOG:  statement: DO $$ BEGIN\n\t        RAISE NOTICE 'ATLAS_SECURITY_PASS:concurrency.locking';\n2026-08-30 14:23:59.291 UTC [178] LOG:  statement: RESET ROLE;\n2026-08-30 14:23:59.292 UTC [178] LOG:  statement: ROLLBACK;\n2026-08-30 14:23:59.377 UTC [185] LOG:  statement: SELECT pg_current_wal_lsn()\n2026-08-30 14:23:59.463 UTC [193] LOG:  statement: EXPLAIN (FORMAT JSON) SELECT 1 AS security_probe\n2026-08-30 14:23:59.554 UTC [200] LOG:  statement: SELECT pg_current_wal_lsn()\n2026-08-30 14:23:59.686 UTC [207] LOG:  statement: BEGIN;\n2026-08-30 14:23:59.686 UTC [207] LOG:  statement: CREATE ROLE atlas_tenant_a;\n2026-08-30 14:23:59.687 UTC [207] LOG:  statement: CREATE ROLE atlas_tenant_b;\n2026-08-30 14:23:59.687 UTC [207] LOG:  statement: CREATE TABLE atlas_mvcc_tenant(tenant name, value text);\n2026-08-30 14:23:59.688 UTC [207] LOG:  statement: ALTER TABLE atlas_mvcc_tenant ENABLE ROW LEVEL SECURITY;\n2026-08-30 14:23:59.688 UTC [207] LOG:  statement: CREATE POLICY atlas_tenant_policy ON atlas_mvcc_tenant USING (tenant = current_user);\n2026-08-30 14:23:59.689 UTC [207] LOG:  statement: GRANT SELECT ON atlas_mvcc_tenant TO atlas_tenant_a, atlas_tenant_b;\n2026-08-30 14:23:59.689 UTC [207] LOG:  statement: INSERT INTO atlas_mvcc_tenant VALUES ('atlas_tenant_a', 'a'), ('atlas_tenant_b', 'b');\n2026-08-30 14:23:59.689 UTC [207] LOG:  statement: SET ROLE atlas_tenant_a;\n2026-08-30 14:23:59.689 UTC [207] LOG:  statement: SELECT CASE WHEN count(*) = 1 AND min(value) = 'a'\n\t        THEN 'ATLAS_SECURITY_PASS:concurrency.mvcc'\n2026-08-30 14:23:59.690 UTC [207] LOG:  statement: RESET ROLE;\n2026-08-30 14:23:59.690 UTC [207] LOG:  statement: ROLLBACK;\n2026-08-30 14:23:59.788 UTC [215] LOG:  statement: SELECT pg_current_wal_lsn()\n2026-08-30 14:23:59.890 UTC [222] LOG:  statement: EXPLAIN (FORMAT JSON) SELECT 1 AS security_probe\n",
+  "log": "2026-08-30 14:39:09.012 UTC [176] LOG:  statement: EXPLAIN (FORMAT JSON) SELECT 1 AS security_probe\n2026-08-30 14:39:09.169 UTC [183] LOG:  statement: SELECT pg_current_wal_lsn()\n2026-08-30 14:39:09.297 UTC [190] LOG:  statement: BEGIN;\n2026-08-30 14:39:09.297 UTC [190] LOG:  statement: CREATE ROLE atlas_lock_reader;\n2026-08-30 14:39:09.298 UTC [190] LOG:  statement: CREATE TABLE atlas_lock_private(id integer primary key, value text);\n2026-08-30 14:39:09.305 UTC [190] LOG:  statement: INSERT INTO atlas_lock_private VALUES (1, 'stable');\n2026-08-30 14:39:09.307 UTC [190] LOG:  statement: GRANT SELECT ON atlas_lock_private TO atlas_lock_reader;\n2026-08-30 14:39:09.307 UTC [190] LOG:  statement: SET ROLE atlas_lock_reader;\n2026-08-30 14:39:09.308 UTC [190] LOG:  statement: DO $$ BEGIN\n\t        RAISE NOTICE 'ATLAS_SECURITY_PASS:concurrency.locking';\n2026-08-30 14:39:09.310 UTC [190] LOG:  statement: RESET ROLE;\n2026-08-30 14:39:09.311 UTC [190] LOG:  statement: ROLLBACK;\n2026-08-30 14:39:09.428 UTC [196] LOG:  statement: SELECT pg_current_wal_lsn()\n2026-08-30 14:39:09.521 UTC [203] LOG:  statement: EXPLAIN (FORMAT JSON) SELECT 1 AS security_probe\n2026-08-30 14:39:09.685 UTC [210] LOG:  statement: SELECT pg_current_wal_lsn()\n2026-08-30 14:39:09.787 UTC [217] LOG:  statement: BEGIN;\n2026-08-30 14:39:09.788 UTC [217] LOG:  statement: CREATE ROLE atlas_tenant_a;\n2026-08-30 14:39:09.789 UTC [217] LOG:  statement: CREATE ROLE atlas_tenant_b;\n2026-08-30 14:39:09.790 UTC [217] LOG:  statement: CREATE TABLE atlas_mvcc_tenant(tenant name, value text);\n2026-08-30 14:39:09.796 UTC [217] LOG:  statement: ALTER TABLE atlas_mvcc_tenant ENABLE ROW LEVEL SECURITY;\n2026-08-30 14:39:09.797 UTC [217] LOG:  statement: CREATE POLICY atlas_tenant_policy ON atlas_mvcc_tenant USING (tenant = current_user);\n2026-08-30 14:39:09.799 UTC [217] LOG:  statement: GRANT SELECT ON atlas_mvcc_tenant TO atlas_tenant_a, atlas_tenant_b;\n2026-08-30 14:39:09.800 UTC [217] LOG:  statement: INSERT INTO atlas_mvcc_tenant VALUES ('atlas_tenant_a', 'a'), ('atlas_tenant_b', 'b');\n2026-08-30 14:39:09.801 UTC [217] LOG:  statement: SET ROLE atlas_tenant_a;\n2026-08-30 14:39:09.802 UTC [217] LOG:  statement: SELECT CASE WHEN count(*) = 1 AND min(value) = 'a'\n\t        THEN 'ATLAS_SECURITY_PASS:concurrency.mvcc'\n2026-08-30 14:39:09.807 UTC [217] LOG:  statement: RESET ROLE;\n2026-08-30 14:39:09.807 UTC [217] LOG:  statement: ROLLBACK;\n2026-08-30 14:39:09.924 UTC [224] LOG:  statement: SELECT pg_current_wal_lsn()\n2026-08-30 14:39:10.036 UTC [231] LOG:  statement: EXPLAIN (FORMAT JSON) SELECT 1 AS security_probe\n",
   "metric": {
-    "elapsed_ms": 136.184
+    "elapsed_ms": 128.361
   },
   "oracle": {
     "kind": "row-level-security-snapshot-isolation",

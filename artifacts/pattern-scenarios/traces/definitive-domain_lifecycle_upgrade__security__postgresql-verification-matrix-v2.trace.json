@@ -1,0 +1,87 @@
+{
+  "schema_version": 1,
+  "pattern_id": "definitive-domain.lifecycle.upgrade",
+  "target_id": "lifecycle.upgrade",
+  "scenario": "security",
+  "variant_id": "postgresql-verification-matrix-v2",
+  "environment": {
+    "subject": "PostgreSQL",
+    "server_product": "PostgreSQL",
+    "server_version": "18.6",
+    "server_version_num": "180006",
+    "client_product": "psql",
+    "client_version": "psql (PostgreSQL) 18.6",
+    "runtime_image": "postgres:18.6-alpine",
+    "runtime_identity": "pg-atlas-security-70618-a2a887",
+    "workers": 1,
+    "retries": 0,
+    "trace_mode": "on",
+    "execution_mode": "real-postgresql-server-client",
+    "row_runtime": {
+      "server_versions": [
+        "17.11",
+        "18.6"
+      ],
+      "images": [
+        "postgres:17.11-alpine@sha256:18cfe3ef5e6815560c98237d6216d1e5119702fb0f3894c8785dd58b8bbe5d73",
+        "postgres:18.6-alpine@sha256:d3e1620b530c944afa6e887d22eb899824da68e19c52024bf98f5220c88a65b2"
+      ],
+      "containers": [
+        "pg-atlas-security-upgrade-old-70618-ecacbb",
+        "pg-atlas-security-upgrade-new-70618-ecacbb"
+      ]
+    }
+  },
+  "sql": {
+    "source": "CREATE ROLE atlas_upgrade_reader;\nCREATE TABLE atlas_upgrade_secure(tenant name NOT NULL, payload text NOT NULL);\nALTER TABLE atlas_upgrade_secure ENABLE ROW LEVEL SECURITY;\nCREATE POLICY atlas_security_policy ON atlas_upgrade_secure USING (tenant = current_user);\nGRANT SELECT ON atlas_upgrade_secure TO atlas_upgrade_reader;\nINSERT INTO atlas_upgrade_secure VALUES ('atlas_upgrade_reader', 'visible'), ('postgres', 'hidden');\nSET ROLE atlas_upgrade_reader;\nSELECT CASE WHEN count(*) = 1 AND min(payload) = 'visible'\n  THEN 'ATLAS_SECURITY_PASS:lifecycle.upgrade'\n  ELSE 'ATLAS_SECURITY_FAIL:lifecycle.upgrade' END\nFROM atlas_upgrade_secure;\nDO $$ BEGIN\n  UPDATE atlas_upgrade_secure SET payload = 'forged';\n  RAISE EXCEPTION 'update unexpectedly allowed';\nEXCEPTION WHEN insufficient_privilege THEN\n  RAISE NOTICE 'ATLAS_SECURITY_PASS:lifecycle.upgrade';\nEND $$;\nRESET ROLE;\n",
+    "stdout": "SET\n                 case                  \n---------------------------------------\n ATLAS_SECURITY_PASS:lifecycle.upgrade\n(1 row)\n\nDO\nRESET\n",
+    "stderr": "NOTICE:  ATLAS_SECURITY_PASS:lifecycle.upgrade\n"
+  },
+  "plan": [
+    {
+      "Plan": {
+        "Node Type": "Seq Scan",
+        "Parallel Aware": false,
+        "Async Capable": false,
+        "Relation Name": "atlas_upgrade_secure",
+        "Alias": "atlas_upgrade_secure",
+        "Startup Cost": 0.0,
+        "Total Cost": 19.75,
+        "Plan Rows": 3,
+        "Plan Width": 96,
+        "Disabled": false,
+        "Filter": "(tenant = CURRENT_USER)"
+      }
+    }
+  ],
+  "wal": {
+    "old_lsn": "0/194C9C8",
+    "new_lsn": "0/1BE1758"
+  },
+  "log": "2026-08-30 14:39:49.809 UTC [78] LOG:  statement: SELECT 1\n2026-08-30 14:39:50.234 UTC [84] LOG:  statement: SELECT 1\n2026-08-30 14:39:50.371 UTC [91] LOG:  statement: CREATE ROLE atlas_upgrade_reader\n2026-08-30 14:39:50.801 UTC [99] LOG:  statement: SELECT pg_catalog.set_config('search_path', '', false);\n2026-08-30 14:39:50.802 UTC [99] LOG:  statement: SELECT pg_catalog.set_config('search_path', '', false);\n2026-08-30 14:39:50.802 UTC [99] LOG:  statement: SELECT pg_catalog.pg_is_in_recovery()\n2026-08-30 14:39:50.802 UTC [99] LOG:  statement: --\n2026-08-30 14:39:50.802 UTC [99] LOG:  statement: -- Dumped from database version 17.11\n2026-08-30 14:39:50.802 UTC [99] LOG:  statement: -- Dumped by pg_dump version 17.11\n2026-08-30 14:39:50.802 UTC [99] LOG:  statement: \n2026-08-30 14:39:50.802 UTC [99] LOG:  statement: SET statement_timeout = 0;\n2026-08-30 14:39:50.803 UTC [99] LOG:  statement: SET lock_timeout = 0;\n2026-08-30 14:39:50.803 UTC [99] LOG:  statement: SET idle_in_transaction_session_timeout = 0;\n2026-08-30 14:39:50.803 UTC [99] LOG:  statement: SET transaction_timeout = 0;\n2026-08-30 14:39:50.803 UTC [99] LOG:  statement: SET client_encoding = 'UTF8';\n2026-08-30 14:39:50.803 UTC [99] LOG:  statement: SET standard_conforming_strings = on;\n2026-08-30 14:39:50.803 UTC [99] LOG:  statement: SELECT pg_catalog.set_config('search_path', '', false);\n2026-08-30 14:39:50.803 UTC [99] LOG:  statement: SET check_function_bodies = false;\n2026-08-30 14:39:50.803 UTC [99] LOG:  statement: SET xmloption = content;\n2026-08-30 14:39:50.804 UTC [99] LOG:  statement: SET client_min_messages = warning;\n2026-08-30 14:39:50.804 UTC [99] LOG:  statement: SET row_security = off;\n2026-08-30 14:39:50.804 UTC [99] LOG:  statement: \n2026-08-30 14:39:50.804 UTC [99] LOG:  statement: SET default_tablespace = ''\n2026-08-30 14:39:50.804 UTC [99] LOG:  statement: SET default_table_access_method = heap;\n2026-08-30 14:39:50.804 UTC [99] LOG:  statement: CREATE TABLE public.atlas_upgrade_secure (\n2026-08-30 14:39:50.811 UTC [99] LOG:  statement: ALTER TABLE public.atlas_upgrade_secure OWNER TO postgres;\n2026-08-30 14:39:50.812 UTC [99] LOG:  statement: COPY public.atlas_upgrade_secure (tenant, payload) FROM stdin;\n2026-08-30 14:39:50.815 UTC [99] LOG:  statement: CREATE POLICY atlas_security_policy ON public.atlas_upgrade_secure USING ((tenant = CURRENT_USER));\n2026-08-30 14:39:50.818 UTC [99] LOG:  statement: ALTER TABLE public.atlas_upgrade_secure ENABLE ROW LEVEL SECURITY;\n2026-08-30 14:39:50.819 UTC [99] LOG:  statement: GRANT SELECT ON TABLE public.atlas_upgrade_secure TO atlas_upgrade_reader;\n2026-08-30 14:39:50.821 UTC [99] LOG:  statement: --\n2026-08-30 14:39:50.892 UTC [105] LOG:  statement: SET ROLE atlas_upgrade_reader;\n2026-08-30 14:39:50.892 UTC [105] LOG:  statement: SELECT CASE WHEN count(*) = 1 AND min(payload) = 'visible'\n\t  THEN 'ATLAS_SECURITY_PASS:lifecycle.upgrade'\n2026-08-30 14:39:50.895 UTC [105] LOG:  statement: DO $$ BEGIN\n\t  RAISE NOTICE 'ATLAS_SECURITY_PASS:lifecycle.upgrade';\n2026-08-30 14:39:50.897 UTC [105] LOG:  statement: RESET ROLE;\n2026-08-30 14:39:50.993 UTC [112] LOG:  statement: SELECT pg_current_wal_lsn()\n2026-08-30 14:39:51.110 UTC [119] LOG:  statement: SET ROLE atlas_upgrade_reader; EXPLAIN (FORMAT JSON) SELECT * FROM atlas_upgrade_secure; RESET ROLE\n2026-08-30 14:39:51.333 UTC [126] LOG:  statement: SHOW server_version\n",
+  "metric": {
+    "elapsed_ms": 8088.878,
+    "dump_bytes": 2214
+  },
+  "oracle": {
+    "kind": "acl-and-rls-survive-17-to-18-logical-upgrade",
+    "scenario": "security",
+    "marker": "ATLAS_SECURITY_PASS:lifecycle.upgrade",
+    "passed": true
+  },
+  "streams": {
+    "action": [
+      "psql security transaction"
+    ],
+    "network": [
+      "psql-to-PostgreSQL-session"
+    ],
+    "resource": [
+      "SQL",
+      "plan",
+      "WAL",
+      "server-log",
+      "elapsed-metric"
+    ]
+  }
+}

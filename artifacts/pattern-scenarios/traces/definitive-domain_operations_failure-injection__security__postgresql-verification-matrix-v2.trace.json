@@ -1,0 +1,85 @@
+{
+  "schema_version": 1,
+  "pattern_id": "definitive-domain.operations.failure-injection",
+  "target_id": "operations.failure-injection",
+  "scenario": "security",
+  "variant_id": "postgresql-verification-matrix-v2",
+  "environment": {
+    "subject": "PostgreSQL",
+    "server_product": "PostgreSQL",
+    "server_version": "18.6",
+    "server_version_num": "180006",
+    "client_product": "psql",
+    "client_version": "psql (PostgreSQL) 18.6",
+    "runtime_image": "postgres:18.6-alpine",
+    "runtime_identity": "pg-atlas-security-70618-a2a887",
+    "workers": 1,
+    "retries": 0,
+    "trace_mode": "on",
+    "execution_mode": "real-postgresql-server-client",
+    "row_runtime": {
+      "server_versions": [
+        "18.6"
+      ],
+      "images": [
+        "postgres:18.6-alpine@sha256:d3e1620b530c944afa6e887d22eb899824da68e19c52024bf98f5220c88a65b2"
+      ],
+      "containers": [
+        "pg-atlas-security-failure-70618-f45909"
+      ],
+      "failure": "SIGKILL"
+    }
+  },
+  "sql": {
+    "source": "CREATE ROLE atlas_failure_reader;\nCREATE TABLE atlas_failure_secure(tenant name NOT NULL, payload text NOT NULL);\nALTER TABLE atlas_failure_secure ENABLE ROW LEVEL SECURITY;\nCREATE POLICY atlas_security_policy ON atlas_failure_secure USING (tenant = current_user);\nGRANT SELECT ON atlas_failure_secure TO atlas_failure_reader;\nINSERT INTO atlas_failure_secure VALUES ('atlas_failure_reader', 'visible'), ('postgres', 'hidden');\nSET ROLE atlas_failure_reader;\nSELECT CASE WHEN count(*) = 1 AND min(payload) = 'visible'\n  THEN 'ATLAS_SECURITY_PASS:operations.failure-injection'\n  ELSE 'ATLAS_SECURITY_FAIL:operations.failure-injection' END\nFROM atlas_failure_secure;\nDO $$ BEGIN\n  UPDATE atlas_failure_secure SET payload = 'forged';\n  RAISE EXCEPTION 'update unexpectedly allowed';\nEXCEPTION WHEN insufficient_privilege THEN\n  RAISE NOTICE 'ATLAS_SECURITY_PASS:operations.failure-injection';\nEND $$;\nRESET ROLE;\n",
+    "stdout": "SET\n                       case                       \n--------------------------------------------------\n ATLAS_SECURITY_PASS:operations.failure-injection\n(1 row)\n\nDO\nRESET\n",
+    "stderr": "NOTICE:  ATLAS_SECURITY_PASS:operations.failure-injection\n"
+  },
+  "plan": [
+    {
+      "Plan": {
+        "Node Type": "Seq Scan",
+        "Parallel Aware": false,
+        "Async Capable": false,
+        "Relation Name": "atlas_failure_secure",
+        "Alias": "atlas_failure_secure",
+        "Startup Cost": 0.0,
+        "Total Cost": 19.75,
+        "Plan Rows": 3,
+        "Plan Width": 96,
+        "Disabled": false,
+        "Filter": "(tenant = CURRENT_USER)"
+      }
+    }
+  ],
+  "wal": {
+    "before_crash_lsn": "0/1BE1728",
+    "after_recovery_lsn": "0/1BE74D0"
+  },
+  "log": "2026-08-30 14:40:09.092 UTC [82] LOG:  database system is ready to accept connections\n2026-08-30 14:40:09.127 UTC [94] LOG:  statement: SELECT 1 FROM pg_database WHERE datname = 'atlas' ;\n2026-08-30 14:40:09.136 UTC [96] LOG:  statement: CREATE DATABASE \"atlas\" ;\n2026-08-30 14:40:09.401 UTC [86] LOG:  checkpoint complete: wrote 943 buffers (5.8%), wrote 3 SLRU buffers; 0 WAL file(s) added, 0 removed, 0 recycled; write=0.019 s, sync=0.043 s, total=0.069 s; sync files=303, longest=0.007 s, average=0.001 s; distance=4362 kB, estimate=4362 kB; lsn=0/1BA87F8, redo lsn=0/1BA87F8\n2026-08-30 14:40:09.467 UTC [1] LOG:  database system is ready to accept connections\n2026-08-30 14:40:09.711 UTC [120] LOG:  statement: SELECT 1\n2026-08-30 14:40:10.111 UTC [127] LOG:  statement: SELECT 1\n2026-08-30 14:40:10.256 UTC [133] LOG:  statement: CREATE ROLE atlas_failure_reader;\n2026-08-30 14:40:10.259 UTC [133] LOG:  statement: CREATE TABLE atlas_failure_secure(tenant name NOT NULL, payload text NOT NULL);\n2026-08-30 14:40:10.274 UTC [133] LOG:  statement: ALTER TABLE atlas_failure_secure ENABLE ROW LEVEL SECURITY;\n2026-08-30 14:40:10.276 UTC [133] LOG:  statement: CREATE POLICY atlas_security_policy ON atlas_failure_secure USING (tenant = current_user);\n2026-08-30 14:40:10.281 UTC [133] LOG:  statement: GRANT SELECT ON atlas_failure_secure TO atlas_failure_reader;\n2026-08-30 14:40:10.287 UTC [133] LOG:  statement: INSERT INTO atlas_failure_secure VALUES ('atlas_failure_reader', 'visible'), ('postgres', 'hidden');\n2026-08-30 14:40:10.423 UTC [140] LOG:  statement: SELECT pg_current_wal_lsn()\n2026-08-30 14:40:11.325 UTC [38] LOG:  database system was interrupted; last known up at 2026-08-30 14:40:09 UTC\n2026-08-30 14:40:11.514 UTC [38] LOG:  redo starts at 0/1BA8870\n2026-08-30 14:40:11.517 UTC [38] LOG:  redo done at 0/1BE1700 system usage: CPU: user: 0.00 s, system: 0.00 s, elapsed: 0.00 s\n2026-08-30 14:40:11.574 UTC [36] LOG:  checkpoint complete: wrote 54 buffers (0.3%), wrote 3 SLRU buffers; 0 WAL file(s) added, 0 removed, 0 recycled; write=0.006 s, sync=0.027 s, total=0.053 s; sync files=46, longest=0.004 s, average=0.001 s; distance=227 kB, estimate=227 kB; lsn=0/1BE1728, redo lsn=0/1BE1728\n2026-08-30 14:40:11.579 UTC [1] LOG:  database system is ready to accept connections\n2026-08-30 14:40:11.804 UTC [48] LOG:  statement: SELECT 1\n2026-08-30 14:40:12.235 UTC [55] LOG:  statement: SELECT 1\n2026-08-30 14:40:12.366 UTC [62] LOG:  statement: SET ROLE atlas_failure_reader;\n2026-08-30 14:40:12.366 UTC [62] LOG:  statement: SELECT CASE WHEN count(*) = 1 AND min(payload) = 'visible'\n\t  THEN 'ATLAS_SECURITY_PASS:operations.failure-injection'\n2026-08-30 14:40:12.369 UTC [62] LOG:  statement: DO $$ BEGIN\n\t  RAISE NOTICE 'ATLAS_SECURITY_PASS:operations.failure-injection';\n2026-08-30 14:40:12.374 UTC [62] LOG:  statement: RESET ROLE;\n2026-08-30 14:40:12.511 UTC [69] LOG:  statement: SELECT pg_current_wal_lsn()\n2026-08-30 14:40:13.008 UTC [76] LOG:  statement: SET ROLE atlas_failure_reader; EXPLAIN (FORMAT JSON) SELECT * FROM atlas_failure_secure; RESET ROLE\n",
+  "metric": {
+    "elapsed_ms": 8791.16,
+    "forced_kill_count": 1
+  },
+  "oracle": {
+    "kind": "acl-and-rls-survive-immediate-server-crash-recovery",
+    "scenario": "security",
+    "marker": "ATLAS_SECURITY_PASS:operations.failure-injection",
+    "passed": true
+  },
+  "streams": {
+    "action": [
+      "psql security transaction"
+    ],
+    "network": [
+      "psql-to-PostgreSQL-session"
+    ],
+    "resource": [
+      "SQL",
+      "plan",
+      "WAL",
+      "server-log",
+      "elapsed-metric"
+    ]
+  }
+}

@@ -1,10 +1,10 @@
 {
   "schema_version": 1,
-  "id": "postgresql-evidence-rerun-20260830t141705z",
+  "id": "postgresql-evidence-rerun-20260830t143427z",
   "command": "ruby tools/rerun-evidence-dependencies.rb",
-  "observed_at": "2026-08-30T14:16:59.597421Z",
-  "started_at": "2026-08-30T14:17:05.507555Z",
-  "completed_at": "2026-08-30T14:24:30.910193Z",
+  "observed_at": "2026-08-30T14:34:21.889303Z",
+  "started_at": "2026-08-30T14:34:27.228106Z",
+  "completed_at": "2026-08-30T14:40:33.073291Z",
   "result": "passed",
   "attempts": 1,
   "runtime_identity": {
@@ -45,7 +45,7 @@
     },
     {
       "input_id": "harness.scenario-skill-reporting",
-      "digest": "sha256:461279c73760571243431939639f0eecd7110311deb88b158276ba095a90a829"
+      "digest": "sha256:027daf1eb2f3048badc8d0f2d938ee6c31df163b43d5974462d345910e6b5be8"
     },
     {
       "input_id": "runtime.postgresql-server-client",

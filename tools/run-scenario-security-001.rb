@@ -162,6 +162,26 @@ PATTERNS = {
       RESET ROLE;
       ROLLBACK;
     }
+  },
+  "definitive-domain.lifecycle.upgrade"=>{
+    "target"=>"lifecycle.upgrade",
+    "oracle"=>"acl-and-rls-survive-17-to-18-logical-upgrade",
+    "executor"=>"logical-upgrade"
+  },
+  "definitive-domain.operations.backup-recovery"=>{
+    "target"=>"operations.backup-recovery",
+    "oracle"=>"acl-and-rls-survive-custom-backup-restore",
+    "executor"=>"backup-recovery"
+  },
+  "definitive-domain.operations.failure-injection"=>{
+    "target"=>"operations.failure-injection",
+    "oracle"=>"acl-and-rls-survive-immediate-server-crash-recovery",
+    "executor"=>"failure-injection"
+  },
+  "definitive-domain.operations.logical-replication"=>{
+    "target"=>"operations.logical-replication",
+    "oracle"=>"replicated-data-remains-bounded-by-subscriber-rls-and-acl",
+    "executor"=>"logical-replication"
   }
 }.freeze
 
@@ -286,6 +306,204 @@ def pg_upgrade_execution
   end
 end
 
+def role_boundary_sql(target, relation, role)
+  <<~SQL
+    SET ROLE #{role};
+    SELECT CASE WHEN count(*) = 1 AND min(payload) = 'visible'
+      THEN 'ATLAS_SECURITY_PASS:#{target}'
+      ELSE 'ATLAS_SECURITY_FAIL:#{target}' END
+    FROM #{relation};
+    DO $$ BEGIN
+      UPDATE #{relation} SET payload = 'forged';
+      RAISE EXCEPTION 'update unexpectedly allowed';
+    EXCEPTION WHEN insufficient_privilege THEN
+      RAISE NOTICE 'ATLAS_SECURITY_PASS:#{target}';
+    END $$;
+    RESET ROLE;
+  SQL
+end
+
+def security_fixture_sql(relation, role)
+  <<~SQL
+    CREATE ROLE #{role};
+    CREATE TABLE #{relation}(tenant name NOT NULL, payload text NOT NULL);
+    ALTER TABLE #{relation} ENABLE ROW LEVEL SECURITY;
+    CREATE POLICY atlas_security_policy ON #{relation} USING (tenant = current_user);
+    GRANT SELECT ON #{relation} TO #{role};
+    INSERT INTO #{relation} VALUES ('#{role}', 'visible'), ('postgres', 'hidden');
+  SQL
+end
+
+def logical_upgrade_execution
+  suffix = "#{Process.pid}-#{SecureRandom.hex(3)}"
+  network = "pg-atlas-security-upgrade-net-#{suffix}"
+  old = "pg-atlas-security-upgrade-old-#{suffix}"
+  new_server = "pg-atlas-security-upgrade-new-#{suffix}"
+  started_at = Process.clock_gettime(Process::CLOCK_MONOTONIC)
+  source = security_fixture_sql("atlas_upgrade_secure", "atlas_upgrade_reader")
+  verification = role_boundary_sql("lifecycle.upgrade", "atlas_upgrade_secure", "atlas_upgrade_reader")
+  begin
+    run!("docker", "network", "create", network)
+    run!("docker", "run", "--detach", "--name", old, "--network", network,
+         "--env", "POSTGRES_HOST_AUTH_METHOD=trust", "--env", "POSTGRES_DB=atlas",
+         PG17_IMAGE, "-c", "log_statement=all")
+    run!("docker", "run", "--detach", "--name", new_server, "--network", network,
+         "--env", "POSTGRES_HOST_AUTH_METHOD=trust", "--env", "POSTGRES_DB=atlas",
+         PG18_IMAGE, "-c", "log_statement=all")
+    wait_for_postgres(old)
+    wait_for_postgres(new_server)
+    run!("docker", "exec", "-i", old, "psql", "-X", "-v", "ON_ERROR_STOP=1", "-U", "postgres", "-d", "atlas", stdin_data: source)
+    run!("docker", "exec", new_server, "psql", "-X", "-v", "ON_ERROR_STOP=1", "-U", "postgres", "-d", "atlas", "-c", "CREATE ROLE atlas_upgrade_reader")
+    old_lsn = run!("docker", "exec", old, "psql", "-XAt", "-U", "postgres", "-d", "atlas", "-c", "SELECT pg_current_wal_lsn()").first.strip
+    dump, = run!("docker", "exec", old, "pg_dump", "-U", "postgres", "-d", "atlas", "-Fc")
+    run!("docker", "exec", "-i", new_server, "pg_restore", "-U", "postgres", "-d", "atlas", "--exit-on-error", stdin_data: dump)
+    stdout, stderr = run!("docker", "exec", "-i", new_server, "psql", "-X", "-v", "ON_ERROR_STOP=1", "-U", "postgres", "-d", "atlas", stdin_data: verification)
+    new_lsn = run!("docker", "exec", new_server, "psql", "-XAt", "-U", "postgres", "-d", "atlas", "-c", "SELECT pg_current_wal_lsn()").first.strip
+    plan = run!("docker", "exec", new_server, "psql", "-XqAt", "-U", "postgres", "-d", "atlas", "-c", "SET ROLE atlas_upgrade_reader; EXPLAIN (FORMAT JSON) SELECT * FROM atlas_upgrade_secure; RESET ROLE").first.strip
+    old_version = run!("docker", "exec", old, "psql", "-XAt", "-U", "postgres", "-d", "atlas", "-c", "SHOW server_version").first.strip
+    new_version = run!("docker", "exec", new_server, "psql", "-XAt", "-U", "postgres", "-d", "atlas", "-c", "SHOW server_version").first.strip
+    raise "logical upgrade version denominator mismatch" unless old_version == "17.11" && new_version == "18.6"
+    marker = "ATLAS_SECURITY_PASS:lifecycle.upgrade"
+    raise "logical upgrade security markers missing" unless (stdout + stderr).scan(marker).length >= 2
+    old_log = run!("docker", "logs", old).join
+    new_log = run!("docker", "logs", new_server).join
+    {
+      "sql"=>{"source"=>source + verification, "stdout"=>stdout, "stderr"=>stderr},
+      "plan"=>JSON.parse(plan), "wal"=>{"old_lsn"=>old_lsn, "new_lsn"=>new_lsn},
+      "log"=>(old_log + new_log).lines.grep(/statement:|ATLAS_SECURITY_PASS/).last(40).join,
+      "metric"=>{"elapsed_ms"=>((Process.clock_gettime(Process::CLOCK_MONOTONIC) - started_at) * 1000).round(3), "dump_bytes"=>dump.bytesize},
+      "oracle_output"=>marker,
+      "runtime"=>{"server_versions"=>[old_version, new_version], "images"=>[PG17_IMAGE, PG18_IMAGE], "containers"=>[old, new_server]}
+    }
+  ensure
+    system("docker", "rm", "-f", old, new_server, out: File::NULL, err: File::NULL)
+    system("docker", "network", "rm", network, out: File::NULL, err: File::NULL)
+  end
+end
+
+def backup_recovery_execution
+  container = "pg-atlas-security-backup-#{Process.pid}-#{SecureRandom.hex(3)}"
+  started_at = Process.clock_gettime(Process::CLOCK_MONOTONIC)
+  source = security_fixture_sql("atlas_backup_secure", "atlas_backup_reader")
+  verification = role_boundary_sql("operations.backup-recovery", "atlas_backup_secure", "atlas_backup_reader")
+  begin
+    run!("docker", "run", "--detach", "--name", container,
+         "--env", "POSTGRES_HOST_AUTH_METHOD=trust", "--env", "POSTGRES_DB=atlas",
+         PG18_IMAGE, "-c", "log_statement=all")
+    wait_for_postgres(container)
+    run!("docker", "exec", "-i", container, "psql", "-X", "-v", "ON_ERROR_STOP=1", "-U", "postgres", "-d", "atlas", stdin_data: source)
+    before_lsn = run!("docker", "exec", container, "psql", "-XAt", "-U", "postgres", "-d", "atlas", "-c", "SELECT pg_current_wal_lsn()").first.strip
+    dump, = run!("docker", "exec", container, "pg_dump", "-U", "postgres", "-d", "atlas", "-Fc")
+    run!("docker", "exec", container, "createdb", "-U", "postgres", "atlas_restore")
+    run!("docker", "exec", "-i", container, "pg_restore", "-U", "postgres", "-d", "atlas_restore", "--exit-on-error", stdin_data: dump)
+    stdout, stderr = run!("docker", "exec", "-i", container, "psql", "-X", "-v", "ON_ERROR_STOP=1", "-U", "postgres", "-d", "atlas_restore", stdin_data: verification)
+    after_lsn = run!("docker", "exec", container, "psql", "-XAt", "-U", "postgres", "-d", "atlas_restore", "-c", "SELECT pg_current_wal_lsn()").first.strip
+    plan = run!("docker", "exec", container, "psql", "-XqAt", "-U", "postgres", "-d", "atlas_restore", "-c", "SET ROLE atlas_backup_reader; EXPLAIN (FORMAT JSON) SELECT * FROM atlas_backup_secure; RESET ROLE").first.strip
+    marker = "ATLAS_SECURITY_PASS:operations.backup-recovery"
+    raise "backup recovery security markers missing" unless (stdout + stderr).scan(marker).length >= 2
+    log = run!("docker", "logs", container).join
+    {
+      "sql"=>{"source"=>source + verification, "stdout"=>stdout, "stderr"=>stderr},
+      "plan"=>JSON.parse(plan), "wal"=>{"before_lsn"=>before_lsn, "after_lsn"=>after_lsn},
+      "log"=>log.lines.grep(/statement:|ATLAS_SECURITY_PASS/).last(40).join,
+      "metric"=>{"elapsed_ms"=>((Process.clock_gettime(Process::CLOCK_MONOTONIC) - started_at) * 1000).round(3), "dump_bytes"=>dump.bytesize},
+      "oracle_output"=>marker,
+      "runtime"=>{"server_versions"=>["18.6"], "images"=>[PG18_IMAGE], "containers"=>[container], "restored_database"=>"atlas_restore"}
+    }
+  ensure
+    system("docker", "rm", "-f", container, out: File::NULL, err: File::NULL)
+  end
+end
+
+def failure_injection_execution
+  container = "pg-atlas-security-failure-#{Process.pid}-#{SecureRandom.hex(3)}"
+  started_at = Process.clock_gettime(Process::CLOCK_MONOTONIC)
+  source = security_fixture_sql("atlas_failure_secure", "atlas_failure_reader")
+  verification = role_boundary_sql("operations.failure-injection", "atlas_failure_secure", "atlas_failure_reader")
+  begin
+    run!("docker", "run", "--detach", "--name", container,
+         "--env", "POSTGRES_HOST_AUTH_METHOD=trust", "--env", "POSTGRES_DB=atlas",
+         PG18_IMAGE, "-c", "log_statement=all")
+    wait_for_postgres(container)
+    run!("docker", "exec", "-i", container, "psql", "-X", "-v", "ON_ERROR_STOP=1", "-U", "postgres", "-d", "atlas", stdin_data: source)
+    before_lsn = run!("docker", "exec", container, "psql", "-XAt", "-U", "postgres", "-d", "atlas", "-c", "SELECT pg_current_wal_lsn()").first.strip
+    run!("docker", "kill", "--signal=KILL", container)
+    run!("docker", "start", container)
+    wait_for_postgres(container)
+    stdout, stderr = run!("docker", "exec", "-i", container, "psql", "-X", "-v", "ON_ERROR_STOP=1", "-U", "postgres", "-d", "atlas", stdin_data: verification)
+    after_lsn = run!("docker", "exec", container, "psql", "-XAt", "-U", "postgres", "-d", "atlas", "-c", "SELECT pg_current_wal_lsn()").first.strip
+    plan = run!("docker", "exec", container, "psql", "-XqAt", "-U", "postgres", "-d", "atlas", "-c", "SET ROLE atlas_failure_reader; EXPLAIN (FORMAT JSON) SELECT * FROM atlas_failure_secure; RESET ROLE").first.strip
+    marker = "ATLAS_SECURITY_PASS:operations.failure-injection"
+    raise "failure recovery security markers missing" unless (stdout + stderr).scan(marker).length >= 2
+    log = run!("docker", "logs", container).join
+    raise "crash recovery log marker missing" unless log.include?("database system was interrupted") || log.include?("redo")
+    {
+      "sql"=>{"source"=>source + verification, "stdout"=>stdout, "stderr"=>stderr},
+      "plan"=>JSON.parse(plan), "wal"=>{"before_crash_lsn"=>before_lsn, "after_recovery_lsn"=>after_lsn},
+      "log"=>log.lines.grep(/interrupted|redo|ready to accept|statement:|ATLAS_SECURITY_PASS/).last(60).join,
+      "metric"=>{"elapsed_ms"=>((Process.clock_gettime(Process::CLOCK_MONOTONIC) - started_at) * 1000).round(3), "forced_kill_count"=>1},
+      "oracle_output"=>marker,
+      "runtime"=>{"server_versions"=>["18.6"], "images"=>[PG18_IMAGE], "containers"=>[container], "failure"=>"SIGKILL"}
+    }
+  ensure
+    system("docker", "rm", "-f", container, out: File::NULL, err: File::NULL)
+  end
+end
+
+def logical_replication_execution
+  suffix = "#{Process.pid}-#{SecureRandom.hex(3)}"
+  network = "pg-atlas-security-logical-net-#{suffix}"
+  publisher = "pg-atlas-security-logical-publisher-#{suffix}"
+  subscriber = "pg-atlas-security-logical-subscriber-#{suffix}"
+  started_at = Process.clock_gettime(Process::CLOCK_MONOTONIC)
+  fixture = security_fixture_sql("atlas_logical_secure", "atlas_logical_reader")
+  verification = role_boundary_sql("operations.logical-replication", "atlas_logical_secure", "atlas_logical_reader")
+  begin
+    run!("docker", "network", "create", network)
+    run!("docker", "run", "--detach", "--name", publisher, "--network", network, "--network-alias", "publisher",
+         "--env", "POSTGRES_HOST_AUTH_METHOD=trust", "--env", "POSTGRES_DB=atlas", PG18_IMAGE,
+         "-c", "wal_level=logical", "-c", "max_wal_senders=5", "-c", "max_replication_slots=5", "-c", "log_statement=all")
+    run!("docker", "run", "--detach", "--name", subscriber, "--network", network,
+         "--env", "POSTGRES_HOST_AUTH_METHOD=trust", "--env", "POSTGRES_DB=atlas", PG18_IMAGE, "-c", "log_statement=all")
+    wait_for_postgres(publisher)
+    wait_for_postgres(subscriber)
+    run!("docker", "exec", "-i", publisher, "psql", "-X", "-v", "ON_ERROR_STOP=1", "-U", "postgres", "-d", "atlas", stdin_data: fixture + "CREATE PUBLICATION atlas_security_publication FOR TABLE atlas_logical_secure;\n")
+    subscriber_schema = security_fixture_sql("atlas_logical_secure", "atlas_logical_reader").sub(/INSERT INTO atlas_logical_secure.*\n/, "")
+    run!("docker", "exec", "-i", subscriber, "psql", "-X", "-v", "ON_ERROR_STOP=1", "-U", "postgres", "-d", "atlas", stdin_data: subscriber_schema)
+    before_lsn = run!("docker", "exec", publisher, "psql", "-XAt", "-U", "postgres", "-d", "atlas", "-c", "SELECT pg_current_wal_lsn()").first.strip
+    run!("docker", "exec", subscriber, "psql", "-X", "-v", "ON_ERROR_STOP=1", "-U", "postgres", "-d", "atlas", "-c", "CREATE SUBSCRIPTION atlas_security_subscription CONNECTION 'host=publisher dbname=atlas user=postgres' PUBLICATION atlas_security_publication WITH (copy_data=true, create_slot=true, enabled=true)")
+    replicated = false
+    60.times do
+      count, _err, state = Open3.capture3("docker", "exec", subscriber, "psql", "-XAt", "-U", "postgres", "-d", "atlas", "-c", "SELECT count(*) FROM atlas_logical_secure")
+      if state.success? && count.strip == "2"
+        replicated = true
+        break
+      end
+      sleep 0.5
+    end
+    raise "logical replication did not copy both rows" unless replicated
+    stdout, stderr = run!("docker", "exec", "-i", subscriber, "psql", "-X", "-v", "ON_ERROR_STOP=1", "-U", "postgres", "-d", "atlas", stdin_data: verification)
+    after_lsn = run!("docker", "exec", publisher, "psql", "-XAt", "-U", "postgres", "-d", "atlas", "-c", "SELECT pg_current_wal_lsn()").first.strip
+    plan = run!("docker", "exec", subscriber, "psql", "-XqAt", "-U", "postgres", "-d", "atlas", "-c", "SET ROLE atlas_logical_reader; EXPLAIN (FORMAT JSON) SELECT * FROM atlas_logical_secure; RESET ROLE").first.strip
+    slot_active = run!("docker", "exec", publisher, "psql", "-XAt", "-U", "postgres", "-d", "atlas", "-c", "SELECT active FROM pg_replication_slots WHERE slot_name='atlas_security_subscription'").first.strip
+    marker = "ATLAS_SECURITY_PASS:operations.logical-replication"
+    raise "logical replication security markers missing" unless (stdout + stderr).scan(marker).length >= 2
+    raise "logical replication slot is not active" unless slot_active == "t"
+    logs = run!("docker", "logs", publisher).join + run!("docker", "logs", subscriber).join
+    {
+      "sql"=>{"source"=>fixture + subscriber_schema + verification, "stdout"=>stdout, "stderr"=>stderr},
+      "plan"=>JSON.parse(plan), "wal"=>{"publisher_before_lsn"=>before_lsn, "publisher_after_lsn"=>after_lsn},
+      "log"=>logs.lines.grep(/logical|statement:|ATLAS_SECURITY_PASS/).last(60).join,
+      "metric"=>{"elapsed_ms"=>((Process.clock_gettime(Process::CLOCK_MONOTONIC) - started_at) * 1000).round(3), "replicated_rows"=>2, "slot_active"=>true},
+      "oracle_output"=>marker,
+      "runtime"=>{"server_versions"=>["18.6"], "images"=>[PG18_IMAGE], "containers"=>[publisher, subscriber], "network"=>network}
+    }
+  ensure
+    system("docker", "rm", "-f", subscriber, publisher, out: File::NULL, err: File::NULL)
+    system("docker", "network", "rm", network, out: File::NULL, err: File::NULL)
+  end
+end
+
 container = "pg-atlas-security-#{Process.pid}-#{SecureRandom.hex(3)}"
 started = false
 begin
@@ -328,6 +546,10 @@ begin
       execution = case definition["executor"]
                   when "compatibility-matrix" then compatibility_execution(definition)
                   when "pg-upgrade" then pg_upgrade_execution
+                  when "logical-upgrade" then logical_upgrade_execution
+                  when "backup-recovery" then backup_recovery_execution
+                  when "failure-injection" then failure_injection_execution
+                  when "logical-replication" then logical_replication_execution
                   else default_execution(container, definition)
                   end
       raise "Scenario Oracle marker missing: #{target}" unless execution.fetch("oracle_output").include?(marker)

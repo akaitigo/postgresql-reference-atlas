@@ -1,21 +1,21 @@
 {
   "schema_version": 1,
   "id": "postgresql-pattern-scenario-runtime-v1",
-  "created_at": "2026-08-30T14:24:27Z",
+  "created_at": "2026-08-30T14:40:28Z",
   "status": "passed",
   "command": "ruby tools/run-scenario-security-001.rb",
   "profile": "real-postgresql-18.6-container",
   "counts": {
-    "rows": 8,
-    "variants": 8,
-    "total": 8,
-    "passed": 8,
+    "rows": 12,
+    "variants": 12,
+    "total": 12,
+    "passed": 12,
     "failed": 0,
     "flaky": 0,
     "skipped": 0
   },
   "source_digest": "sha256:b8734bc90dcefeb02b28f1858c73e8aba0452cf78d0d27349b708e16a4e14ad9",
-  "harness_digest": "sha256:a69eb571c038a20614c7db51b154fc4e8390794f68e9863ecf026bc89094ce9a",
+  "harness_digest": "sha256:148281978ae54e80ad61886fe83e92858d4c1ba5d9969a1c2a94cdf29d282df4",
   "environment": {
     "subject": "PostgreSQL",
     "server_product": "PostgreSQL",
@@ -24,7 +24,7 @@
     "client_product": "psql",
     "client_version": "psql (PostgreSQL) 18.6",
     "runtime_image": "postgres:18.6-alpine",
-    "runtime_identity": "pg-atlas-security-22908-584ca1",
+    "runtime_identity": "pg-atlas-security-70618-a2a887",
     "workers": 1,
     "retries": 0,
     "trace_mode": "on",
@@ -57,7 +57,7 @@
       },
       "trace": {
         "path": "artifacts/pattern-scenarios/traces/definitive-domain_concurrency_deadlock__security__postgresql-verification-matrix-v2.trace.json",
-        "digest": "sha256:a7e9619b3a7549b5770dc6eb2501c22126f52c834ccb4ce47026e5411357334c",
+        "digest": "sha256:a52b8c05dda42090d5bf974371669eced5e1676a66d73846b26812cb848517fa",
         "bytes": 3971,
         "action_stream": true,
         "network_stream": true,
@@ -90,8 +90,8 @@
       },
       "trace": {
         "path": "artifacts/pattern-scenarios/traces/definitive-domain_concurrency_locking__security__postgresql-verification-matrix-v2.trace.json",
-        "digest": "sha256:70918d2027b0c83dc9147737fd8f26cf195519c6a17b517d280493195d622606",
-        "bytes": 4859,
+        "digest": "sha256:f7591150e3ab9a6d9404e58055cc2cf80fd535d527c7e948fc0d83636fbe7763",
+        "bytes": 4860,
         "action_stream": true,
         "network_stream": true,
         "resource_stream": true
@@ -123,7 +123,7 @@
       },
       "trace": {
         "path": "artifacts/pattern-scenarios/traces/definitive-domain_concurrency_mvcc__security__postgresql-verification-matrix-v2.trace.json",
-        "digest": "sha256:3a5fa075342cbd3338cf9634633dac32e2449e845cd15b7973305613d798333d",
+        "digest": "sha256:6a50d658a6d229e3de1536a57d49953908d9cee49135b5649b1ab469327f2bec",
         "bytes": 5321,
         "action_stream": true,
         "network_stream": true,
@@ -156,8 +156,8 @@
       },
       "trace": {
         "path": "artifacts/pattern-scenarios/traces/definitive-domain_foundation_authority-lock__security__postgresql-verification-matrix-v2.trace.json",
-        "digest": "sha256:53ba5c8e5384759f4babfaea46c3f9707da73ba00c724112df245de98ccf01f5",
-        "bytes": 4779,
+        "digest": "sha256:a894f25e4a6bb72fb8f99e906acb03cd596af9e6336c78cb37321d14de0a7efa",
+        "bytes": 4778,
         "action_stream": true,
         "network_stream": true,
         "resource_stream": true
@@ -189,7 +189,7 @@
       },
       "trace": {
         "path": "artifacts/pattern-scenarios/traces/definitive-domain_foundation_version-lock__security__postgresql-verification-matrix-v2.trace.json",
-        "digest": "sha256:30204a155853199547fe4f720671190e365917bfbef5847337cccc7f530d83d3",
+        "digest": "sha256:8b2f163b6250788b5f03d981664dec5f0ca8a536a65b02182606ee57e4387f9b",
         "bytes": 4787,
         "action_stream": true,
         "network_stream": true,
@@ -222,8 +222,8 @@
       },
       "trace": {
         "path": "artifacts/pattern-scenarios/traces/definitive-domain_lifecycle_compatibility-matrix__security__postgresql-verification-matrix-v2.trace.json",
-        "digest": "sha256:65c840c355c5ae1e0da3c4813eef4c65e632c7e59c9dbd30dc08e6ea5400d603",
-        "bytes": 15607,
+        "digest": "sha256:06491e58e774c4929053ad05eabf964231d12c8c66e7a4b7dd519ba1a615e333",
+        "bytes": 15609,
         "action_stream": true,
         "network_stream": true,
         "resource_stream": true
@@ -255,8 +255,8 @@
       },
       "trace": {
         "path": "artifacts/pattern-scenarios/traces/definitive-domain_lifecycle_pg-upgrade__security__postgresql-verification-matrix-v2.trace.json",
-        "digest": "sha256:332f2006985f5791feeb5a81033a0229dea6612ae85f208820cf5234c0f24fe9",
-        "bytes": 17223,
+        "digest": "sha256:e8b89b26b348b6cb5f7277e46469d4d439fe9f0c92a9a2535d0ad7de594cae70",
+        "bytes": 17225,
         "action_stream": true,
         "network_stream": true,
         "resource_stream": true
@@ -288,7 +288,7 @@
       },
       "trace": {
         "path": "artifacts/pattern-scenarios/traces/definitive-domain_lifecycle_schema-migration__security__postgresql-verification-matrix-v2.trace.json",
-        "digest": "sha256:f10ac9492e61dffcf8a3a14951564c6e90d4d929b5c91a646c3e1c15123e2ad5",
+        "digest": "sha256:14346b619e496d287c47837258a961c6ed6ea501e2b67545e5d8f63b2197876f",
         "bytes": 5764,
         "action_stream": true,
         "network_stream": true,
@@ -298,6 +298,138 @@
         "path": "artifacts/pattern-scenarios/observations/definitive-domain_lifecycle_schema-migration__security__postgresql-verification-matrix-v2.observable.json",
         "digest": "sha256:690140c6afcf54708d27f9a1980e0fe72832973269a1bc4281ae4d82ae922a73",
         "bytes": 309
+      }
+    },
+    {
+      "id": "security-runtime.lifecycle.upgrade",
+      "pattern_id": "definitive-domain.lifecycle.upgrade",
+      "variant_id": "postgresql-verification-matrix-v2",
+      "scenario": "security",
+      "title": "lifecycle.upgrade dedicated PostgreSQL security scenario",
+      "file": "tools/run-scenario-security-001.rb",
+      "line": 1,
+      "source_digest": "sha256:b8734bc90dcefeb02b28f1858c73e8aba0452cf78d0d27349b708e16a4e14ad9",
+      "outcome": "expected",
+      "attempts": 1,
+      "final_status": "passed",
+      "error": null,
+      "oracle": {
+        "kind": "acl-and-rls-survive-17-to-18-logical-upgrade",
+        "scenario": "security",
+        "marker": "ATLAS_SECURITY_PASS:lifecycle.upgrade",
+        "passed": true
+      },
+      "trace": {
+        "path": "artifacts/pattern-scenarios/traces/definitive-domain_lifecycle_upgrade__security__postgresql-verification-matrix-v2.trace.json",
+        "digest": "sha256:b5ee395a00eff13b0b5d677c5bb0b65e80e04a0b3ad677dc641d7b5f6565c62c",
+        "bytes": 6712,
+        "action_stream": true,
+        "network_stream": true,
+        "resource_stream": true
+      },
+      "screenshot": {
+        "path": "artifacts/pattern-scenarios/observations/definitive-domain_lifecycle_upgrade__security__postgresql-verification-matrix-v2.observable.json",
+        "digest": "sha256:0f64eb3e3f73eb1b5c7df232bf56e6a4ad5ec28cb62880d943932a46473449cd",
+        "bytes": 300
+      }
+    },
+    {
+      "id": "security-runtime.operations.backup-recovery",
+      "pattern_id": "definitive-domain.operations.backup-recovery",
+      "variant_id": "postgresql-verification-matrix-v2",
+      "scenario": "security",
+      "title": "operations.backup-recovery dedicated PostgreSQL security scenario",
+      "file": "tools/run-scenario-security-001.rb",
+      "line": 1,
+      "source_digest": "sha256:b8734bc90dcefeb02b28f1858c73e8aba0452cf78d0d27349b708e16a4e14ad9",
+      "outcome": "expected",
+      "attempts": 1,
+      "final_status": "passed",
+      "error": null,
+      "oracle": {
+        "kind": "acl-and-rls-survive-custom-backup-restore",
+        "scenario": "security",
+        "marker": "ATLAS_SECURITY_PASS:operations.backup-recovery",
+        "passed": true
+      },
+      "trace": {
+        "path": "artifacts/pattern-scenarios/traces/definitive-domain_operations_backup-recovery__security__postgresql-verification-matrix-v2.trace.json",
+        "digest": "sha256:27971b8329b670f24d8877c41de6cff0dcc9768b68c0ffce1a2944718a9f2056",
+        "bytes": 6798,
+        "action_stream": true,
+        "network_stream": true,
+        "resource_stream": true
+      },
+      "screenshot": {
+        "path": "artifacts/pattern-scenarios/observations/definitive-domain_operations_backup-recovery__security__postgresql-verification-matrix-v2.observable.json",
+        "digest": "sha256:459725171ab388b4bfbdc12c82aabade183e6b3fd915114b6e1df1e123be0353",
+        "bytes": 309
+      }
+    },
+    {
+      "id": "security-runtime.operations.failure-injection",
+      "pattern_id": "definitive-domain.operations.failure-injection",
+      "variant_id": "postgresql-verification-matrix-v2",
+      "scenario": "security",
+      "title": "operations.failure-injection dedicated PostgreSQL security scenario",
+      "file": "tools/run-scenario-security-001.rb",
+      "line": 1,
+      "source_digest": "sha256:b8734bc90dcefeb02b28f1858c73e8aba0452cf78d0d27349b708e16a4e14ad9",
+      "outcome": "expected",
+      "attempts": 1,
+      "final_status": "passed",
+      "error": null,
+      "oracle": {
+        "kind": "acl-and-rls-survive-immediate-server-crash-recovery",
+        "scenario": "security",
+        "marker": "ATLAS_SECURITY_PASS:operations.failure-injection",
+        "passed": true
+      },
+      "trace": {
+        "path": "artifacts/pattern-scenarios/traces/definitive-domain_operations_failure-injection__security__postgresql-verification-matrix-v2.trace.json",
+        "digest": "sha256:a42fb242c77e761a5d76c631a4a46b0c3dc9ac612a5f23b78da197cf435a11f6",
+        "bytes": 6380,
+        "action_stream": true,
+        "network_stream": true,
+        "resource_stream": true
+      },
+      "screenshot": {
+        "path": "artifacts/pattern-scenarios/observations/definitive-domain_operations_failure-injection__security__postgresql-verification-matrix-v2.observable.json",
+        "digest": "sha256:480c1f4e8467ea8f516e338ec6d02fb4fd6a1edb918cc4eced0d98368a4cc24c",
+        "bytes": 311
+      }
+    },
+    {
+      "id": "security-runtime.operations.logical-replication",
+      "pattern_id": "definitive-domain.operations.logical-replication",
+      "variant_id": "postgresql-verification-matrix-v2",
+      "scenario": "security",
+      "title": "operations.logical-replication dedicated PostgreSQL security scenario",
+      "file": "tools/run-scenario-security-001.rb",
+      "line": 1,
+      "source_digest": "sha256:b8734bc90dcefeb02b28f1858c73e8aba0452cf78d0d27349b708e16a4e14ad9",
+      "outcome": "expected",
+      "attempts": 1,
+      "final_status": "passed",
+      "error": null,
+      "oracle": {
+        "kind": "replicated-data-remains-bounded-by-subscriber-rls-and-acl",
+        "scenario": "security",
+        "marker": "ATLAS_SECURITY_PASS:operations.logical-replication",
+        "passed": true
+      },
+      "trace": {
+        "path": "artifacts/pattern-scenarios/traces/definitive-domain_operations_logical-replication__security__postgresql-verification-matrix-v2.trace.json",
+        "digest": "sha256:dfbb91eba302d7c8461b23bb28fce5273accaf339fb3e7999168914ae167d425",
+        "bytes": 10579,
+        "action_stream": true,
+        "network_stream": true,
+        "resource_stream": true
+      },
+      "screenshot": {
+        "path": "artifacts/pattern-scenarios/observations/definitive-domain_operations_logical-replication__security__postgresql-verification-matrix-v2.observable.json",
+        "digest": "sha256:cb02183c7468f34e5716dbf2c682a209aed07fee087165518371100e77d87988",
+        "bytes": 313
       }
     }
   ]

@@ -19,10 +19,10 @@ Repository statusは`incomplete`。v1 Certificateは29 Targetに限定された`
 - SQL Command、Type、Function、Operator、Cast、Catalog、GUC、Extension、Protocol、Client Toolを細粒度分類
 - Inventory未分類0、Authority Artifact 5件のDigest固定
 - Coverageを56 required Targetへ細分化
-- v1 Evidenceの69 Scenario Row対応をbounded補助Evidenceとして維持し、公開済み29 Behavior × 10 Scenarioの290専用Proof Fileへ分離した。Security trancheの8 rowは固定PostgreSQL/psql runtime、全Variant、retry 0、専用Oracle、Source/Harness digest、SQL/plan/WAL/log/metricを同一実行へ固定した。追加4 rowはversion lock、14.24〜18.6 compatibility、17.11→18.6 pg_upgrade、schema migrationの権限境界を実行した。strict Closureは8、Gapは282、Authority atomic bindingは0である
+- v1 Evidenceの69 Scenario Row対応をbounded補助Evidenceとして維持し、公開済み29 Behavior × 10 Scenarioの290専用Proof Fileへ分離した。Security trancheの12 rowは固定PostgreSQL/psql runtime、全Variant、retry 0、専用Oracle、Source/Harness digest、SQL/plan/WAL/log/metricを同一実行へ固定した。version lock、14.24〜18.6 compatibility、17.11→18.6 pg_upgrade、schema migrationに加え、17.11→18.6 logical upgrade、backup/restore、SIGKILL recovery、logical replicationの権限境界を実行した。strict Closureは12、Gapは278、Authority atomic bindingは0である
 - 全Scenario分類113,400 Row中113,331 Row、必須Scenario 43,544 Row中43,510 Rowが未接続
 - Definitive Skill Matrixは112/112 contract passだが、bounded evidence route 72 / routing gap 40。Targetはcovered 29 / partial 16 / planned 11で、Matrix passをcompletionへ算入しない
-- 統合Reference Systemは固定PostgreSQL/psql 18.6上で10 Scenarioを10/10実行し、SQL、Plan、WAL、Server log、Metricを保存する。統合成功は290個のBehavior固有Proofへ流用しない。Scenario Closure PlanはPostgreSQL固有分母から残り282 rowをrisk順78 tranche（各最大4 row）へ分割した。Backup/PITR/Replication/Upgrade統合、複数方式Comparison、Runbook演習、現行Definitive Certificateは未実装
+- 統合Reference Systemは固定PostgreSQL/psql 18.6上で10 Scenarioを10/10実行し、SQL、Plan、WAL、Server log、Metricを保存する。統合成功は290個のBehavior固有Proofへ流用しない。Scenario Closure PlanはPostgreSQL固有分母から残り278 rowをrisk順77 tranche（各最大4 row）へ分割した。Backup/PITR/Replication/Upgradeの個別Security Proofは追加したが、全Scenario統合、複数方式Comparison、Runbook演習、現行Definitive Certificateは未実装
 - FE Depth Reference 18軸はsatisfied 1 / partial 17。PostgreSQL技術分野監査は15分野中15分野がincomplete、未Closure軸29。Core Depth Parityは`completion_status: incomplete`
 
 ## 非後退Baseline
@@ -31,7 +31,7 @@ Repository statusは`incomplete`。v1 Certificateは29 Targetに限定された`
 - Baseline: 29 Target / 29 Claim / 28 Proof / 30 Evidence / 10 Source / 27 Lab / 30 Skill Case / CI 27 Lab
 - 現在: 56 Target / 30 accepted Claim / 29 accepted Proof / 31 Evidence / 10 Source / 29 Lab / 30 v1 Skill Case / CI 29 Lab
 - 既存Proof-bearing File 219件のdigest照合と、Claim/Proof/Capability集約Indexの既存Entry完全一致: pass
-- Core非後退Gate: baseline 239 item / current 1,700 item / approved Replacement 4件 / pass。Core v1.3 capture契約は同一公開commitを再捕捉し、旧全項目一致に加えて公開時点Scenario Closure Plan / Evidence Durability 0件を確認した
+- Core非後退Gate: baseline 239 item / current 1,715 item / approved Replacement 4件 / pass。Core v1.3 capture契約は同一公開commitを再捕捉し、旧全項目一致に加えて公開時点Scenario Closure Plan / Evidence Durability 0件を確認した
 - Authority body専用非後退: baseline document 398 / anchor 5,512 / retained 5,512 / Replacement 0 / pass
 - approved Replacement: Certificate履歴移行、Core v1互換子孫commitへの前方更新の2件
 - 削除、skip/disabled、格下げ、CI縮小、Runtimeからstaticへの置換: 0件

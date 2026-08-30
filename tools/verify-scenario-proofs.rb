@@ -23,6 +23,10 @@ expected_closed = %w[
   definitive-domain.lifecycle.compatibility-matrix
   definitive-domain.lifecycle.pg-upgrade
   definitive-domain.lifecycle.schema-migration
+  definitive-domain.lifecycle.upgrade
+  definitive-domain.operations.backup-recovery
+  definitive-domain.operations.failure-injection
+  definitive-domain.operations.logical-replication
 ].map { |behavior_id| [behavior_id, "security"] }.sort
 runtime_report_path = File.join(root, "artifacts/pattern-scenarios/results.json")
 runtime_report = JSON.parse(File.read(runtime_report_path))
@@ -90,6 +94,16 @@ index.fetch("files").each do |entry|
         errors << "pg_upgrade security image pin" unless trace.dig("environment", "row_runtime", "base_images") == ["postgres:17.11-alpine@sha256:18cfe3ef5e6815560c98237d6216d1e5119702fb0f3894c8785dd58b8bbe5d73", "postgres:18.6-alpine@sha256:d3e1620b530c944afa6e887d22eb899824da68e19c52024bf98f5220c88a65b2"]
       when "definitive-domain.lifecycle.schema-migration"
         errors << "schema migration security Oracle" unless trace.dig("sql", "stdout").include?("ATLAS_SECURITY_PASS:lifecycle.schema-migration") && trace.dig("sql", "stderr").include?("ATLAS_SECURITY_PASS:lifecycle.schema-migration")
+      when "definitive-domain.lifecycle.upgrade"
+        errors << "logical upgrade security version Oracle" unless trace.dig("environment", "row_runtime", "server_versions") == %w[17.11 18.6]
+        errors << "logical upgrade security preservation Oracle" unless trace.dig("sql", "stdout").include?("ATLAS_SECURITY_PASS:lifecycle.upgrade") && trace.dig("sql", "stderr").include?("ATLAS_SECURITY_PASS:lifecycle.upgrade") && trace.dig("metric", "dump_bytes").to_i.positive?
+        errors << "logical upgrade plan/WAL Oracle" unless trace.fetch("plan").is_a?(Array) && trace.dig("wal", "old_lsn").to_s.include?("/") && trace.dig("wal", "new_lsn").to_s.include?("/")
+      when "definitive-domain.operations.backup-recovery"
+        errors << "backup recovery security Oracle" unless trace.dig("environment", "row_runtime", "restored_database") == "atlas_restore" && trace.dig("sql", "stdout").include?("ATLAS_SECURITY_PASS:operations.backup-recovery") && trace.dig("sql", "stderr").include?("ATLAS_SECURITY_PASS:operations.backup-recovery") && trace.dig("metric", "dump_bytes").to_i.positive?
+      when "definitive-domain.operations.failure-injection"
+        errors << "failure injection recovery Oracle" unless trace.dig("environment", "row_runtime", "failure") == "SIGKILL" && trace.dig("metric", "forced_kill_count") == 1 && trace.fetch("log").match?(/interrupted|redo/) && trace.dig("sql", "stdout").include?("ATLAS_SECURITY_PASS:operations.failure-injection")
+      when "definitive-domain.operations.logical-replication"
+        errors << "logical replication security Oracle" unless trace.dig("metric", "replicated_rows") == 2 && trace.dig("metric", "slot_active") == true && trace.dig("sql", "stdout").include?("ATLAS_SECURITY_PASS:operations.logical-replication") && trace.dig("sql", "stderr").include?("ATLAS_SECURITY_PASS:operations.logical-replication")
       end
     end
   else
@@ -150,7 +164,7 @@ end
 errors << "completion boundary" unless summary.fetch("integrated_trace_rows") == 290 && summary.fetch("authority_atomic_rows") == 0 && summary.fetch("completion_eligible_rows") == 0
 actual_closed = actual_proofs.select { |proof| proof.dig("closure", "pattern_specific_evidence") }.map { |proof| [proof.fetch("behavior_id"), proof.fetch("scenario")] }.sort
 errors << "strict Scenario closure set" unless actual_closed == expected_closed
-errors << "strict Scenario closure boundary" unless summary.fetch("pattern_specific_rows") == 8 && summary.fetch("pattern_specific_runtime_rows") == 8 && summary.fetch("pattern_specific_gaps") == 282
+errors << "strict Scenario closure boundary" unless summary.fetch("pattern_specific_rows") == 12 && summary.fetch("pattern_specific_runtime_rows") == 12 && summary.fetch("pattern_specific_gaps") == 278
 errors << "completion limits" unless index.fetch("completion_limits").length >= 4
 
 abort errors.uniq.join("\n") unless errors.empty?

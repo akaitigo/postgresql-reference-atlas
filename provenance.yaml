@@ -1,17 +1,17 @@
 ---
 schema_version: 1
 atlas_id: postgresql-reference-atlas
-generated_at: '2026-08-30T14:24:30Z'
+generated_at: '2026-08-30T14:40:33Z'
 artifacts:
 - path: artifacts/pattern-scenarios/results.json
-  digest: sha256:e718ac77e2d9c752ed2750c5af5249878d5471610c65a078396866f3a49ce379
+  digest: sha256:4146f75aa2fdaae85048995d28214c2ae2a4a925ccb696ad1b57d4b7dccc67a0
   kind: test-report
   license: Apache-2.0
   source_ids:
   - postgres-container-18.6-alpine
   generated_by: ruby tools/run-scenario-security-001.rb
 - path: artifacts/reference-system/results.json
-  digest: sha256:8fe645ac9be03706ca45303fe3c8a761eda91b39055f6029d700c536d4dacb23
+  digest: sha256:d36c74387476d77c071d3652fcdd8a82444996c1677f08024e74e8b032366113
   kind: test-report
   license: Apache-2.0
   source_ids:
@@ -181,7 +181,7 @@ artifacts:
   source_ids: []
   generated_by: manual contract documentation
 - path: evals/definitive-skill-router.json
-  digest: sha256:9ff98edce02df4a32bb970fa8de14b56c106eafdf6f8149cf8773a8cd7a70ba3
+  digest: sha256:4962872bdf96852147a8640994916405e3d02a2a73f5ad808272aa824fdcf8c4
   kind: skill-eval
   license: Apache-2.0
   source_ids:
@@ -190,7 +190,7 @@ artifacts:
   - postgres-container-18.6-alpine
   generated_by: ruby tools/generate-definitive-skill-eval.rb
 - path: evals/postgresql-atlas.definitive-routing-eval.json
-  digest: sha256:33654ce2051ab21eed22a8c8c0ceb1b1dc35cc40f5a4b40096384dda01a5fa77
+  digest: sha256:af5b345e1bdc77a806586a7b50e15b8bc6736ba2d255f6e974ba2fb8076c36f3
   kind: skill-eval
   license: Apache-2.0
   source_ids:
@@ -215,7 +215,7 @@ artifacts:
   - postgresql-source-rel-18.6
   generated_by: independent Agent forward evaluation
 - path: evals/postgresql-router.skill-eval.json
-  digest: sha256:31b0b8b06ac9d0a1c53c16e1b30ce5105347ecf036e6ab961fdb5607399569d3
+  digest: sha256:640382dc864aad2aac8790f046228175c6115b58d796c9273d8d969d983c0202
   kind: skill-eval
   license: Apache-2.0
   source_ids:
@@ -381,7 +381,7 @@ artifacts:
   - postgresql-license-rel-18.6
   generated_by: make test-static
 - path: evidence/artifacts/reference-system.json
-  digest: sha256:4a196c29e55c1c9d60407f178db3d7d18b382952bb4bdb7bc4c2426a5edb9f76
+  digest: sha256:b9d33afb6d2f50d3cba015aba1d214c56345c7541e03ebe5d3dd0b7dc8719193
   kind: test-report
   license: Apache-2.0
   source_ids:
@@ -389,7 +389,7 @@ artifacts:
   - postgresql-docs-18.6
   generated_by: make lab LAB=reference-system
 - path: evidence/artifacts/reference-system.server.log
-  digest: sha256:050cbf55f73c5d5ffa30fcec27959650c211c35ed8008a8bef9088e758e2809d
+  digest: sha256:9ab876b1431424a88dc00d19778325020f799d347d6a303427beaba3865cbdef
   kind: capture
   license: Apache-2.0
   source_ids:
@@ -466,14 +466,14 @@ artifacts:
   source_ids: []
   generated_by: make authority-body-non-regression-audit
 - path: evidence/scenarios/closure-plan.json
-  digest: sha256:6c77ee22f705d85d10e6ea6afd8384ecc2e808e7cea155417025491cfb5dbbb0
+  digest: sha256:f4d9bb447ec831334ffa74909c5bee9f00f3547523110cedc56f9f34ea8773fa
   kind: test-report
   license: Apache-2.0
   source_ids:
   - postgres-container-18.6-alpine
   generated_by: make scenario-closure-plan-generate
 - path: evidence/scenarios/index.json
-  digest: sha256:9bf9082f222b8cc70c8deb9a577e564d768c5bd69702292b026c01c0ef0fb9be
+  digest: sha256:60542db1af9dcd6a58c1ee20c934fbcc3fada68753aa8127d14bd8d5a9ce0e86
   kind: test-report
   license: Apache-2.0
   source_ids:
@@ -495,7 +495,7 @@ artifacts:
   source_ids: []
   generated_by: manual migration mapping
 - path: postgresql-depth-parity.yaml
-  digest: sha256:76d77c94472396ee2b921007e643828e289de3a07b66ea01c743612ea93bba2e
+  digest: sha256:791f3409a18c0a152379897ed28a50c4c811f0ae95ac930230c129993eb65859
   kind: generated
   license: Apache-2.0
   source_ids: []
@@ -514,7 +514,7 @@ artifacts:
   source_ids: []
   generated_by: manual implementation; verified by make scenario-evidence-atomicity-test
 - path: tools/run-scenario-security-001.rb
-  digest: sha256:a69eb571c038a20614c7db51b154fc4e8390794f68e9863ecf026bc89094ce9a
+  digest: sha256:148281978ae54e80ad61886fe83e92858d4c1ba5d9969a1c2a94cdf29d282df4
   kind: document
   license: Apache-2.0
   source_ids:
