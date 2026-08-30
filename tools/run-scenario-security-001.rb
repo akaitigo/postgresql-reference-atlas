@@ -9,9 +9,16 @@ require "open3"
 require "securerandom"
 require "time"
 require_relative "lib/atomic_evidence_publisher"
+require_relative "lib/security_failure_diagnostics"
+require_relative "lib/security_scenario_oracles"
+require_relative "lib/security_scenario_tranche"
 
 ROOT = File.expand_path("..", __dir__)
 OUTPUT = File.join(ROOT, "artifacts/pattern-scenarios")
+FAILURE_DIAGNOSTICS_OUTPUT = File.join(ROOT, "artifacts/pattern-scenario-failures")
+WAL_SEGMENT_SWITCH_PREDICATE = "switched_lsn >= end_lsn"
+PERFORMANCE_EXECUTION_LITERAL_TENANT = "atlas_perf_execution_reader"
+PERFORMANCE_INDEX_LITERAL_TENANT = "atlas_perf_index_reader"
 IMAGE = "postgres:18.6-alpine"
 PG18_IMAGE = "postgres:18.6-alpine@sha256:d3e1620b530c944afa6e887d22eb899824da68e19c52024bf98f5220c88a65b2"
 PG17_IMAGE = "postgres:17.11-alpine@sha256:18cfe3ef5e6815560c98237d6216d1e5119702fb0f3894c8785dd58b8bbe5d73"
@@ -234,6 +241,26 @@ PATTERNS = {
       ROLLBACK;
     }
   },
+  "definitive-domain.operations.wal"=>{
+    "target"=>"operations.wal",
+    "oracle"=>"rls-bounded-20k-write-advances-wal-and-switches-segment",
+    "executor"=>"wal-security"
+  },
+  "definitive-domain.performance.execution"=>{
+    "target"=>"performance.execution",
+    "oracle"=>"rls-bounded-index-plan-emits-actual-rows-buffers-and-relation-sizes",
+    "executor"=>"performance-execution-security"
+  },
+  "definitive-domain.performance.index"=>{
+    "target"=>"performance.index",
+    "oracle"=>"partial-index-preserves-results-and-serves-rls-bounded-query",
+    "executor"=>"performance-index-security"
+  },
+  "definitive-domain.performance.planner"=>{
+    "target"=>"performance.planner",
+    "oracle"=>"analyzed-rls-bounded-selective-query-uses-index-plan",
+    "executor"=>"performance-planner-security"
+  },
   "definitive-domain.operations.pitr-recovery"=>{
     "target"=>"operations.pitr-recovery",
     "oracle"=>"pitr-restores-pre-target-rls-and-acl-boundary",
@@ -295,6 +322,13 @@ def default_execution(container, definition)
     "metric"=>{"elapsed_ms"=>elapsed_ms}, "oracle_output"=>stdout + stderr,
     "runtime"=>{"server_versions"=>["18.6"], "containers"=>[container]}
   }
+end
+
+def psql_json_execution(container, sql)
+  stdout, stderr = run!("docker", "exec", "-i", container, "psql", "-XAt", "-v", "ON_ERROR_STOP=1", "-U", "postgres", "-d", "atlas", stdin_data: sql)
+  json_line = stdout.lines.reverse.map(&:strip).find { |line| line.start_with?("{") && line.end_with?("}") }
+  raise "JSON result missing from scenario execution" unless json_line&.start_with?("{")
+  [JSON.parse(json_line), stdout, stderr]
 end
 
 def compatibility_execution(definition)
@@ -514,6 +548,506 @@ def failure_injection_execution
   end
 end
 
+def wal_security_execution(container)
+  marker = "ATLAS_SECURITY_PASS:operations.wal"
+  sql = <<~SQL
+    BEGIN;
+    CREATE ROLE atlas_wal_writer;
+    CREATE TABLE atlas_wal_secure(
+      id bigint PRIMARY KEY,
+      tenant text NOT NULL,
+      payload text NOT NULL
+    );
+    ALTER TABLE atlas_wal_secure ENABLE ROW LEVEL SECURITY;
+    CREATE POLICY atlas_wal_policy ON atlas_wal_secure
+      USING (tenant = current_user)
+      WITH CHECK (tenant = current_user);
+    GRANT SELECT, INSERT ON atlas_wal_secure TO atlas_wal_writer;
+
+    CREATE TEMP TABLE atlas_wal_observation(
+      plan jsonb,
+      visible_rows bigint,
+      security_rejected boolean DEFAULT false,
+      end_lsn pg_lsn,
+      switched_lsn pg_lsn
+    );
+    INSERT INTO atlas_wal_observation DEFAULT VALUES;
+    GRANT ALL ON atlas_wal_observation TO atlas_wal_writer;
+
+    SET ROLE atlas_wal_writer;
+    INSERT INTO atlas_wal_secure(id, tenant, payload)
+    SELECT g, current_user, repeat(md5(g::text), 8)
+    FROM generate_series(1, 20000) AS g;
+
+    DO $atlas$
+    DECLARE observed jsonb;
+    BEGIN
+      EXECUTE 'EXPLAIN (FORMAT JSON) SELECT count(*) FROM atlas_wal_secure WHERE tenant = current_user' INTO observed;
+      UPDATE atlas_wal_observation SET plan = observed;
+    END
+    $atlas$;
+
+    UPDATE atlas_wal_observation
+    SET visible_rows = (SELECT count(*) FROM atlas_wal_secure WHERE tenant = current_user);
+
+    DO $atlas$
+    BEGIN
+      INSERT INTO atlas_wal_secure(id, tenant, payload) VALUES (20001, 'postgres', 'forged');
+      RAISE EXCEPTION 'RLS unexpectedly allowed cross-tenant insert';
+    EXCEPTION WHEN insufficient_privilege THEN
+      UPDATE atlas_wal_observation SET security_rejected = true;
+      RAISE NOTICE '#{marker}';
+    END
+    $atlas$;
+    RESET ROLE;
+
+    UPDATE atlas_wal_observation SET end_lsn = pg_current_wal_insert_lsn();
+    UPDATE atlas_wal_observation SET switched_lsn = pg_switch_wal();
+
+    SELECT json_build_object(
+      'server_version', current_setting('server_version'),
+      'wal_level', current_setting('wal_level'),
+      'rows_written', 20000,
+      'visible_rows', visible_rows,
+      'end_lsn', end_lsn,
+      'switched_lsn', switched_lsn,
+      'wal_records_observed', (SELECT wal_records > 0 FROM pg_stat_wal),
+      'segment_switched', #{WAL_SEGMENT_SWITCH_PREDICATE},
+      'security_rejected', security_rejected,
+      'plan', plan,
+      'oracle_marker', CASE WHEN security_rejected THEN '#{marker}' ELSE 'ATLAS_SECURITY_FAIL:operations.wal' END,
+      'verdict', CASE
+        WHEN visible_rows = 20000
+          AND security_rejected
+          AND (SELECT wal_records > 0 FROM pg_stat_wal)
+          AND #{WAL_SEGMENT_SWITCH_PREDICATE}
+        THEN 'pass'
+        ELSE 'fail'
+      END
+    )
+    FROM atlas_wal_observation;
+    ROLLBACK;
+  SQL
+
+  before_lsn = run!("docker", "exec", container, "psql", "-XAt", "-U", "postgres", "-d", "atlas", "-c", "SELECT pg_current_wal_insert_lsn()").first.strip
+  started_at = Process.clock_gettime(Process::CLOCK_MONOTONIC)
+  result, stdout, stderr = psql_json_execution(container, sql)
+  elapsed_ms = ((Process.clock_gettime(Process::CLOCK_MONOTONIC) - started_at) * 1000).round(3)
+  after_lsn = run!("docker", "exec", container, "psql", "-XAt", "-U", "postgres", "-d", "atlas", "-c", "SELECT pg_current_wal_insert_lsn()").first.strip
+  unless result.fetch("verdict") == "pass" &&
+         result.fetch("server_version") == "18.6" && result.fetch("rows_written") == 20_000 &&
+         result.fetch("visible_rows") == 20_000 && result.fetch("wal_records_observed") == true &&
+         result.fetch("security_rejected") == true && result.fetch("oracle_marker") == marker &&
+         result.fetch("segment_switched") == true && result.fetch("plan").is_a?(Array)
+    raise "operations.wal security Oracle failed: #{JSON.generate(result)}"
+  end
+  log = run!("docker", "logs", container).join
+  {
+    "sql"=>{"source"=>sql, "stdout"=>stdout, "stderr"=>stderr},
+    "plan"=>result.fetch("plan"),
+    "wal"=>{
+      "before_lsn"=>before_lsn,
+      "after_lsn"=>after_lsn,
+      "end_lsn"=>result.fetch("end_lsn"),
+      "switched_lsn"=>result.fetch("switched_lsn"),
+      "wal_records_observed"=>result.fetch("wal_records_observed")
+    },
+    "log"=>log.lines.grep(/statement:|ATLAS_SECURITY_PASS/).last(40).join,
+    "metric"=>{"elapsed_ms"=>elapsed_ms, "rows_written"=>result.fetch("rows_written"), "visible_rows"=>result.fetch("visible_rows")},
+    "oracle_output"=>stdout + stderr,
+    "runtime"=>{"server_versions"=>["18.6"], "containers"=>[container]}
+  }
+end
+
+def performance_execution_security_execution(container)
+  marker = "ATLAS_SECURITY_PASS:performance.execution"
+  sql = <<~SQL
+    BEGIN;
+    CREATE ROLE atlas_perf_execution_reader;
+    CREATE TABLE atlas_perf_execution_secure(
+      id bigint PRIMARY KEY,
+      tenant text NOT NULL,
+      payload text NOT NULL
+    );
+    ALTER TABLE atlas_perf_execution_secure ENABLE ROW LEVEL SECURITY;
+    CREATE POLICY atlas_perf_execution_policy ON atlas_perf_execution_secure
+      TO atlas_perf_execution_reader
+      USING (tenant = '#{PERFORMANCE_EXECUTION_LITERAL_TENANT}')
+      WITH CHECK (tenant = '#{PERFORMANCE_EXECUTION_LITERAL_TENANT}');
+    GRANT SELECT, INSERT ON atlas_perf_execution_secure TO atlas_perf_execution_reader;
+
+    INSERT INTO atlas_perf_execution_secure(id, tenant, payload)
+    SELECT g,
+      CASE WHEN g % 1000 = 42 THEN 'atlas_perf_execution_reader' ELSE format('tenant_%s', g % 1000) END,
+      repeat(md5(g::text), 2)
+    FROM generate_series(1, 200000) AS g;
+    CREATE INDEX atlas_perf_execution_tenant_idx ON atlas_perf_execution_secure(tenant, id) INCLUDE (payload);
+    ANALYZE atlas_perf_execution_secure;
+
+    CREATE TEMP TABLE atlas_perf_execution_observation(
+      plan jsonb,
+      fixture_rows bigint,
+      visible_rows bigint,
+      security_rejected boolean DEFAULT false
+    );
+    INSERT INTO atlas_perf_execution_observation(fixture_rows)
+    SELECT count(*) FROM atlas_perf_execution_secure;
+    GRANT ALL ON atlas_perf_execution_observation TO atlas_perf_execution_reader;
+
+    SET ROLE atlas_perf_execution_reader;
+    DO $atlas$
+    DECLARE observed jsonb;
+    BEGIN
+      EXECUTE 'EXPLAIN (ANALYZE, BUFFERS, WAL, FORMAT JSON) SELECT id FROM atlas_perf_execution_secure WHERE tenant = ''#{PERFORMANCE_EXECUTION_LITERAL_TENANT}'' ORDER BY id' INTO observed;
+      UPDATE atlas_perf_execution_observation SET plan = observed;
+    END
+    $atlas$;
+    UPDATE atlas_perf_execution_observation
+    SET visible_rows = (SELECT count(*) FROM atlas_perf_execution_secure WHERE tenant = '#{PERFORMANCE_EXECUTION_LITERAL_TENANT}');
+
+    DO $atlas$
+    BEGIN
+      INSERT INTO atlas_perf_execution_secure(id, tenant, payload) VALUES (300001, 'postgres', 'forged');
+      RAISE EXCEPTION 'RLS unexpectedly allowed cross-tenant insert';
+    EXCEPTION WHEN insufficient_privilege THEN
+      UPDATE atlas_perf_execution_observation SET security_rejected = true;
+      RAISE NOTICE '#{marker}';
+    END
+    $atlas$;
+    RESET ROLE;
+
+    SELECT json_build_object(
+      'server_version', current_setting('server_version'),
+      'fixture_rows', fixture_rows,
+      'visible_rows', visible_rows,
+      'index_bytes', pg_relation_size('atlas_perf_execution_tenant_idx'),
+      'heap_bytes', pg_relation_size('atlas_perf_execution_secure'),
+      'plan', plan,
+      'plan_has_index', plan::text LIKE '%atlas_perf_execution_tenant_idx%',
+      'plan_has_actual_rows', plan::text LIKE '%Actual Rows%',
+      'plan_has_buffers', plan::text LIKE '%Shared Hit Blocks%',
+      'security_rejected', security_rejected,
+      'oracle_marker', CASE WHEN security_rejected THEN '#{marker}' ELSE 'ATLAS_SECURITY_FAIL:performance.execution' END,
+      'verdict', CASE
+        WHEN fixture_rows = 200000
+          AND visible_rows = 200
+          AND security_rejected
+          AND plan::text LIKE '%atlas_perf_execution_tenant_idx%'
+          AND plan::text LIKE '%Actual Rows%'
+          AND plan::text LIKE '%Shared Hit Blocks%'
+          AND pg_relation_size('atlas_perf_execution_tenant_idx') > 0
+          AND pg_relation_size('atlas_perf_execution_secure') > 0
+        THEN 'pass'
+        ELSE 'fail'
+      END
+    )
+    FROM atlas_perf_execution_observation;
+    ROLLBACK;
+  SQL
+
+  before_lsn = run!("docker", "exec", container, "psql", "-XAt", "-U", "postgres", "-d", "atlas", "-c", "SELECT pg_current_wal_lsn()").first.strip
+  started_at = Process.clock_gettime(Process::CLOCK_MONOTONIC)
+  result, stdout, stderr = psql_json_execution(container, sql)
+  elapsed_ms = ((Process.clock_gettime(Process::CLOCK_MONOTONIC) - started_at) * 1000).round(3)
+  after_lsn = run!("docker", "exec", container, "psql", "-XAt", "-U", "postgres", "-d", "atlas", "-c", "SELECT pg_current_wal_lsn()").first.strip
+  predicates = SecurityScenarioOracles.performance_execution_predicates(result, marker: marker)
+  unless predicates.values.all?
+    raise SecurityFailureDiagnostics::ScenarioOracleFailure.new(
+      failed_row: "closure.definitive-domain.performance.execution.security",
+      target: "performance.execution",
+      oracle_error: "performance.execution security Oracle failed",
+      actual_result: result,
+      oracle_predicates: predicates
+    )
+  end
+  log = run!("docker", "logs", container).join
+  {
+    "sql"=>{"source"=>sql, "stdout"=>stdout, "stderr"=>stderr},
+    "plan"=>result.fetch("plan"),
+    "wal"=>{"before_lsn"=>before_lsn, "after_lsn"=>after_lsn},
+    "log"=>log.lines.grep(/statement:|ATLAS_SECURITY_PASS/).last(40).join,
+    "metric"=>{
+      "elapsed_ms"=>elapsed_ms,
+      "fixture_rows"=>result.fetch("fixture_rows"),
+      "visible_rows"=>result.fetch("visible_rows"),
+      "index_bytes"=>result.fetch("index_bytes"),
+      "heap_bytes"=>result.fetch("heap_bytes")
+    },
+    "oracle_output"=>stdout + stderr,
+    "runtime"=>{"server_versions"=>["18.6"], "containers"=>[container]}
+  }
+end
+
+def performance_index_security_execution(container)
+  marker = "ATLAS_SECURITY_PASS:performance.index"
+  sql = <<~SQL
+    BEGIN;
+    CREATE ROLE atlas_perf_index_reader;
+    CREATE TABLE atlas_perf_index_secure(
+      id bigint PRIMARY KEY,
+      tenant text NOT NULL,
+      billed boolean NOT NULL,
+      payload text NOT NULL
+    );
+    ALTER TABLE atlas_perf_index_secure ENABLE ROW LEVEL SECURITY;
+    CREATE POLICY atlas_perf_index_policy ON atlas_perf_index_secure
+      TO atlas_perf_index_reader
+      USING (tenant = '#{PERFORMANCE_INDEX_LITERAL_TENANT}')
+      WITH CHECK (tenant = '#{PERFORMANCE_INDEX_LITERAL_TENANT}');
+    GRANT SELECT, INSERT ON atlas_perf_index_secure TO atlas_perf_index_reader;
+
+    INSERT INTO atlas_perf_index_secure(id, tenant, billed, payload)
+    SELECT g,
+      CASE WHEN g % 1000 = 42 THEN 'atlas_perf_index_reader' ELSE format('tenant_%s', g % 1000) END,
+      ((g / 1000) % 2 = 0),
+      repeat(md5(g::text), 2)
+    FROM generate_series(1, 200000) AS g;
+
+    CREATE TEMP TABLE atlas_perf_index_observation(
+      plan jsonb,
+      before_digest text,
+      after_digest text,
+      tenant_rows bigint,
+      billed_visible_rows bigint,
+      security_rejected boolean DEFAULT false
+    );
+    INSERT INTO atlas_perf_index_observation DEFAULT VALUES;
+    GRANT ALL ON atlas_perf_index_observation TO atlas_perf_index_reader;
+
+    SET ROLE atlas_perf_index_reader;
+    UPDATE atlas_perf_index_observation
+    SET before_digest = (
+      SELECT md5(string_agg(id::text, ',' ORDER BY id))
+      FROM atlas_perf_index_secure
+      WHERE tenant = '#{PERFORMANCE_INDEX_LITERAL_TENANT}' AND billed
+    );
+    RESET ROLE;
+
+    CREATE INDEX atlas_perf_index_billed_idx ON atlas_perf_index_secure(tenant, id) WHERE billed;
+    ANALYZE atlas_perf_index_secure;
+
+    SET ROLE atlas_perf_index_reader;
+    DO $atlas$
+    DECLARE observed jsonb;
+    BEGIN
+      EXECUTE 'EXPLAIN (ANALYZE, BUFFERS, WAL, FORMAT JSON) SELECT id FROM atlas_perf_index_secure WHERE tenant = ''#{PERFORMANCE_INDEX_LITERAL_TENANT}'' AND billed ORDER BY id' INTO observed;
+      UPDATE atlas_perf_index_observation SET plan = observed;
+    END
+    $atlas$;
+    UPDATE atlas_perf_index_observation
+    SET after_digest = (
+          SELECT md5(string_agg(id::text, ',' ORDER BY id))
+          FROM atlas_perf_index_secure
+          WHERE tenant = '#{PERFORMANCE_INDEX_LITERAL_TENANT}' AND billed
+        ),
+        tenant_rows = (
+          SELECT count(*)
+          FROM atlas_perf_index_secure
+          WHERE tenant = '#{PERFORMANCE_INDEX_LITERAL_TENANT}'
+        ),
+        billed_visible_rows = (
+          SELECT count(*)
+          FROM atlas_perf_index_secure
+          WHERE tenant = '#{PERFORMANCE_INDEX_LITERAL_TENANT}' AND billed
+        );
+
+    DO $atlas$
+    BEGIN
+      INSERT INTO atlas_perf_index_secure(id, tenant, billed, payload) VALUES (300001, 'postgres', true, 'forged');
+      RAISE EXCEPTION 'RLS unexpectedly allowed cross-tenant insert';
+    EXCEPTION WHEN insufficient_privilege THEN
+      UPDATE atlas_perf_index_observation SET security_rejected = true;
+      RAISE NOTICE '#{marker}';
+    END
+    $atlas$;
+    RESET ROLE;
+
+    SELECT json_build_object(
+      'server_version', current_setting('server_version'),
+      'before_digest', before_digest,
+      'after_digest', after_digest,
+      'tenant_rows', tenant_rows,
+      'billed_visible_rows', billed_visible_rows,
+      'index_bytes', pg_relation_size('atlas_perf_index_billed_idx'),
+      'heap_bytes', pg_relation_size('atlas_perf_index_secure'),
+      'index_predicate', (
+        SELECT pg_get_expr(i.indpred, i.indrelid)
+        FROM pg_index AS i
+        JOIN pg_class AS c ON c.oid = i.indexrelid
+        WHERE c.relname = 'atlas_perf_index_billed_idx'
+      ),
+      'plan', plan,
+      'plan_has_index', plan::text LIKE '%atlas_perf_index_billed_idx%',
+      'security_rejected', security_rejected,
+      'oracle_marker', CASE WHEN security_rejected THEN '#{marker}' ELSE 'ATLAS_SECURITY_FAIL:performance.index' END,
+      'verdict', CASE
+        WHEN before_digest = after_digest
+          AND before_digest IS NOT NULL
+          AND tenant_rows = 200
+          AND billed_visible_rows = 100
+          AND security_rejected
+          AND plan::text LIKE '%atlas_perf_index_billed_idx%'
+          AND (
+            SELECT pg_get_expr(i.indpred, i.indrelid)
+            FROM pg_index AS i
+            JOIN pg_class AS c ON c.oid = i.indexrelid
+            WHERE c.relname = 'atlas_perf_index_billed_idx'
+          ) = 'billed'
+          AND pg_relation_size('atlas_perf_index_billed_idx') > 0
+          AND pg_relation_size('atlas_perf_index_secure') > 0
+        THEN 'pass'
+        ELSE 'fail'
+      END
+    )
+    FROM atlas_perf_index_observation;
+    ROLLBACK;
+  SQL
+
+  before_lsn = run!("docker", "exec", container, "psql", "-XAt", "-U", "postgres", "-d", "atlas", "-c", "SELECT pg_current_wal_lsn()").first.strip
+  started_at = Process.clock_gettime(Process::CLOCK_MONOTONIC)
+  result, stdout, stderr = psql_json_execution(container, sql)
+  elapsed_ms = ((Process.clock_gettime(Process::CLOCK_MONOTONIC) - started_at) * 1000).round(3)
+  after_lsn = run!("docker", "exec", container, "psql", "-XAt", "-U", "postgres", "-d", "atlas", "-c", "SELECT pg_current_wal_lsn()").first.strip
+  predicates = SecurityScenarioOracles.performance_index_predicates(result, marker: marker)
+  unless predicates.values.all?
+    raise SecurityFailureDiagnostics::ScenarioOracleFailure.new(
+      failed_row: "closure.definitive-domain.performance.index.security",
+      target: "performance.index",
+      oracle_error: "performance.index security Oracle failed",
+      actual_result: result,
+      oracle_predicates: predicates
+    )
+  end
+  log = run!("docker", "logs", container).join
+  {
+    "sql"=>{"source"=>sql, "stdout"=>stdout, "stderr"=>stderr},
+    "plan"=>result.fetch("plan"),
+    "wal"=>{"before_lsn"=>before_lsn, "after_lsn"=>after_lsn},
+    "log"=>log.lines.grep(/statement:|ATLAS_SECURITY_PASS/).last(40).join,
+    "metric"=>{
+      "elapsed_ms"=>elapsed_ms,
+      "tenant_rows"=>result.fetch("tenant_rows"),
+      "billed_visible_rows"=>result.fetch("billed_visible_rows"),
+      "index_bytes"=>result.fetch("index_bytes"),
+      "heap_bytes"=>result.fetch("heap_bytes"),
+      "index_predicate"=>result.fetch("index_predicate"),
+      "before_digest"=>result.fetch("before_digest"),
+      "after_digest"=>result.fetch("after_digest")
+    },
+    "oracle_output"=>stdout + stderr,
+    "runtime"=>{"server_versions"=>["18.6"], "containers"=>[container]}
+  }
+end
+
+def performance_planner_security_execution(container)
+  marker = "ATLAS_SECURITY_PASS:performance.planner"
+  sql = <<~SQL
+    BEGIN;
+    CREATE ROLE atlas_perf_planner_reader;
+    CREATE TABLE atlas_perf_planner_secure(
+      id bigint PRIMARY KEY,
+      tenant text NOT NULL,
+      category integer NOT NULL,
+      payload text NOT NULL
+    );
+    ALTER TABLE atlas_perf_planner_secure ENABLE ROW LEVEL SECURITY;
+    CREATE POLICY atlas_perf_planner_policy ON atlas_perf_planner_secure
+      USING (tenant = current_user)
+      WITH CHECK (tenant = current_user);
+    GRANT SELECT, INSERT ON atlas_perf_planner_secure TO atlas_perf_planner_reader;
+
+    INSERT INTO atlas_perf_planner_secure(id, tenant, category, payload)
+    SELECT g,
+      CASE WHEN g = 42424 THEN 'atlas_perf_planner_reader' ELSE format('tenant_%s', g) END,
+      g % 100,
+      repeat(md5(g::text), 4)
+    FROM generate_series(1, 100000) AS g;
+    ANALYZE atlas_perf_planner_secure;
+
+    CREATE TEMP TABLE atlas_perf_planner_observation(
+      plan jsonb,
+      fixture_rows bigint,
+      visible_rows bigint,
+      security_rejected boolean DEFAULT false
+    );
+    INSERT INTO atlas_perf_planner_observation(fixture_rows)
+    SELECT count(*) FROM atlas_perf_planner_secure;
+    GRANT ALL ON atlas_perf_planner_observation TO atlas_perf_planner_reader;
+
+    SET ROLE atlas_perf_planner_reader;
+    DO $atlas$
+    DECLARE observed jsonb;
+    BEGIN
+      EXECUTE 'EXPLAIN (ANALYZE, BUFFERS, WAL, FORMAT JSON) SELECT payload FROM atlas_perf_planner_secure WHERE id = 42424' INTO observed;
+      UPDATE atlas_perf_planner_observation SET plan = observed;
+    END
+    $atlas$;
+    UPDATE atlas_perf_planner_observation
+    SET visible_rows = (SELECT count(*) FROM atlas_perf_planner_secure WHERE id = 42424);
+
+    DO $atlas$
+    BEGIN
+      INSERT INTO atlas_perf_planner_secure(id, tenant, category, payload) VALUES (100001, 'postgres', 0, 'forged');
+      RAISE EXCEPTION 'RLS unexpectedly allowed cross-tenant insert';
+    EXCEPTION WHEN insufficient_privilege THEN
+      UPDATE atlas_perf_planner_observation SET security_rejected = true;
+      RAISE NOTICE '#{marker}';
+    END
+    $atlas$;
+    RESET ROLE;
+
+    SELECT json_build_object(
+      'server_version', current_setting('server_version'),
+      'fixture_rows', fixture_rows,
+      'visible_rows', visible_rows,
+      'plan', plan,
+      'plan_uses_index', plan::text ~ 'Index Scan|Index Only Scan|Bitmap Index Scan',
+      'plan_has_actual_rows', plan::text LIKE '%Actual Rows%',
+      'plan_has_buffers', plan::text LIKE '%Shared Hit Blocks%',
+      'security_rejected', security_rejected,
+      'oracle_marker', CASE WHEN security_rejected THEN '#{marker}' ELSE 'ATLAS_SECURITY_FAIL:performance.planner' END,
+      'verdict', CASE
+        WHEN fixture_rows = 100000
+          AND visible_rows = 1
+          AND security_rejected
+          AND plan::text ~ 'Index Scan|Index Only Scan|Bitmap Index Scan'
+          AND plan::text LIKE '%Actual Rows%'
+          AND plan::text LIKE '%Shared Hit Blocks%'
+        THEN 'pass'
+        ELSE 'fail'
+      END
+    )
+    FROM atlas_perf_planner_observation;
+    ROLLBACK;
+  SQL
+
+  before_lsn = run!("docker", "exec", container, "psql", "-XAt", "-U", "postgres", "-d", "atlas", "-c", "SELECT pg_current_wal_lsn()").first.strip
+  started_at = Process.clock_gettime(Process::CLOCK_MONOTONIC)
+  result, stdout, stderr = psql_json_execution(container, sql)
+  elapsed_ms = ((Process.clock_gettime(Process::CLOCK_MONOTONIC) - started_at) * 1000).round(3)
+  after_lsn = run!("docker", "exec", container, "psql", "-XAt", "-U", "postgres", "-d", "atlas", "-c", "SELECT pg_current_wal_lsn()").first.strip
+  predicates = SecurityScenarioOracles.performance_planner_predicates(result, marker: marker)
+  unless predicates.values.all?
+    raise SecurityFailureDiagnostics::ScenarioOracleFailure.new(
+      failed_row: "closure.definitive-domain.performance.planner.security",
+      target: "performance.planner",
+      oracle_error: "performance.planner security Oracle failed",
+      actual_result: result,
+      oracle_predicates: predicates
+    )
+  end
+  log = run!("docker", "logs", container).join
+  {
+    "sql"=>{"source"=>sql, "stdout"=>stdout, "stderr"=>stderr},
+    "plan"=>result.fetch("plan"),
+    "wal"=>{"before_lsn"=>before_lsn, "after_lsn"=>after_lsn},
+    "log"=>log.lines.grep(/statement:|ATLAS_SECURITY_PASS/).last(40).join,
+    "metric"=>{"elapsed_ms"=>elapsed_ms, "fixture_rows"=>result.fetch("fixture_rows"), "visible_rows"=>result.fetch("visible_rows")},
+    "oracle_output"=>stdout + stderr,
+    "runtime"=>{"server_versions"=>["18.6"], "containers"=>[container]}
+  }
+end
+
 def logical_replication_execution
   suffix = "#{Process.pid}-#{SecureRandom.hex(3)}"
   network = "pg-atlas-security-logical-net-#{suffix}"
@@ -645,75 +1179,127 @@ begin
   matrix_path = File.join(ROOT, "verification.matrix.yaml")
   source_digest = digest_file(matrix_path)
   harness_digest = digest_file(__FILE__)
-  publisher = AtomicEvidencePublisher.new(OUTPUT, validator: lambda do |staging|
-    report = JSON.parse(File.read(File.join(staging, "results.json")))
-    expected = PATTERNS.length
-    raise "staged report does not contain every completed security row" unless report.dig("counts", "rows") == expected && report.dig("counts", "passed") == expected
-    report.fetch("tests").each do |test|
-      %w[trace screenshot].each do |field|
-        relative = test.dig(field, "path").delete_prefix("artifacts/pattern-scenarios/")
-        raise "missing staged #{field}" unless File.file?(File.join(staging, relative))
+  canonical_snapshot_before = SecurityFailureDiagnostics.canonical_artifact_snapshot(ROOT)
+  selected_patterns = SecurityScenarioTranche.runtime_pattern_ids.to_h do |pattern_id|
+    [pattern_id, PATTERNS.fetch(pattern_id)]
+  end
+  begin
+    publisher = AtomicEvidencePublisher.new(OUTPUT, validator: lambda do |staging|
+      report = JSON.parse(File.read(File.join(staging, "results.json")))
+      expected = selected_patterns.length
+      raise "staged report does not contain every completed security row" unless report.dig("counts", "rows") == expected && report.dig("counts", "passed") == expected
+      report.fetch("tests").each do |test|
+        %w[trace screenshot].each do |field|
+          relative = test.dig(field, "path").delete_prefix("artifacts/pattern-scenarios/")
+          raise "missing staged #{field}" unless File.file?(File.join(staging, relative))
+        end
       end
-    end
-  end)
-  result = publisher.publish(run_status: "passed") do |staging|
-    trace_root = File.join(staging, "traces")
-    observation_root = File.join(staging, "observations")
-    FileUtils.mkdir_p(trace_root)
-    FileUtils.mkdir_p(observation_root)
-    tests = PATTERNS.map do |pattern_id, definition|
-      target = definition.fetch("target")
-      marker = "ATLAS_SECURITY_PASS:#{target}"
-      execution = case definition["executor"]
-                  when "compatibility-matrix" then compatibility_execution(definition)
-                  when "pg-upgrade" then pg_upgrade_execution
-                  when "logical-upgrade" then logical_upgrade_execution
-                  when "backup-recovery" then backup_recovery_execution
-                  when "failure-injection" then failure_injection_execution
-                  when "logical-replication" then logical_replication_execution
-                  when "pitr-recovery" then pitr_security_execution
-                  when "physical-replication" then physical_replication_security_execution
-                  else default_execution(container, definition)
-                  end
-      raise "Scenario Oracle marker missing: #{target}" unless execution.fetch("oracle_output").include?(marker)
-      basename = "#{pattern_id.tr('.', '_')}__security__postgresql-verification-matrix-v2"
-      trace_document = {
-        "schema_version"=>1, "pattern_id"=>pattern_id, "target_id"=>target, "scenario"=>"security",
-        "variant_id"=>"postgresql-verification-matrix-v2", "environment"=>environment.merge("row_runtime"=>execution.fetch("runtime")),
-        "sql"=>execution.fetch("sql"), "plan"=>execution.fetch("plan"), "wal"=>execution.fetch("wal"),
-        "log"=>execution.fetch("log"), "metric"=>execution.fetch("metric"),
-        "oracle"=>{"kind"=>definition.fetch("oracle"), "scenario"=>"security", "marker"=>marker, "passed"=>true},
-        "streams"=>{"action"=>["psql security transaction"], "network"=>["psql-to-PostgreSQL-session"], "resource"=>["SQL", "plan", "WAL", "server-log", "elapsed-metric"]}
+    end)
+    result = publisher.publish(run_status: "passed") do |staging|
+      trace_root = File.join(staging, "traces")
+      observation_root = File.join(staging, "observations")
+      FileUtils.mkdir_p(trace_root)
+      FileUtils.mkdir_p(observation_root)
+      tests = selected_patterns.map do |pattern_id, definition|
+        target = definition.fetch("target")
+        marker = "ATLAS_SECURITY_PASS:#{target}"
+        execution = case definition["executor"]
+                    when "compatibility-matrix" then compatibility_execution(definition)
+                    when "pg-upgrade" then pg_upgrade_execution
+                    when "logical-upgrade" then logical_upgrade_execution
+                    when "backup-recovery" then backup_recovery_execution
+                    when "failure-injection" then failure_injection_execution
+                    when "logical-replication" then logical_replication_execution
+                    when "wal-security" then wal_security_execution(container)
+                    when "performance-execution-security" then performance_execution_security_execution(container)
+                    when "performance-index-security" then performance_index_security_execution(container)
+                    when "performance-planner-security" then performance_planner_security_execution(container)
+                    when "pitr-recovery" then pitr_security_execution
+                    when "physical-replication" then physical_replication_security_execution
+                    else default_execution(container, definition)
+                    end
+        raise "Scenario Oracle marker missing: #{target}" unless execution.fetch("oracle_output").include?(marker)
+        basename = "#{pattern_id.tr('.', '_')}__security__postgresql-verification-matrix-v2"
+        trace_document = {
+          "schema_version"=>1, "pattern_id"=>pattern_id, "target_id"=>target, "scenario"=>"security",
+          "variant_id"=>"postgresql-verification-matrix-v2", "environment"=>environment.merge("row_runtime"=>execution.fetch("runtime")),
+          "sql"=>execution.fetch("sql"), "plan"=>execution.fetch("plan"), "wal"=>execution.fetch("wal"),
+          "log"=>execution.fetch("log"), "metric"=>execution.fetch("metric"),
+          "oracle"=>{"kind"=>definition.fetch("oracle"), "scenario"=>"security", "marker"=>marker, "passed"=>true},
+          "streams"=>{"action"=>["psql security transaction"], "network"=>["psql-to-PostgreSQL-session"], "resource"=>["SQL", "plan", "WAL", "server-log", "elapsed-metric"]}
+        }
+        trace_path = File.join(trace_root, "#{basename}.trace.json")
+        File.write(trace_path, JSON.pretty_generate(trace_document) + "\n")
+        observation_document = {"schema_version"=>1, "kind"=>"postgresql-observable-state", "pattern_id"=>pattern_id, "scenario"=>"security", "variant_id"=>"postgresql-verification-matrix-v2", "oracle_passed"=>true, "server_version"=>server_version, "client_version"=>client_version}
+        observation_path = File.join(observation_root, "#{basename}.observable.json")
+        File.write(observation_path, JSON.pretty_generate(observation_document) + "\n")
+        final_trace = "artifacts/pattern-scenarios/traces/#{File.basename(trace_path)}"
+        final_observation = "artifacts/pattern-scenarios/observations/#{File.basename(observation_path)}"
+        {
+          "id"=>"security-runtime.#{target}", "pattern_id"=>pattern_id, "variant_id"=>"postgresql-verification-matrix-v2",
+          "scenario"=>"security", "title"=>"#{target} dedicated PostgreSQL security scenario",
+          "file"=>definition.fetch("file", "tools/run-scenario-security-001.rb"), "line"=>1, "source_digest"=>source_digest,
+          "outcome"=>"expected", "attempts"=>1, "final_status"=>"passed", "error"=>nil,
+          "oracle"=>trace_document.fetch("oracle"),
+          "trace"=>{"path"=>final_trace, "digest"=>digest_file(trace_path), "bytes"=>File.size(trace_path), "action_stream"=>true, "network_stream"=>true, "resource_stream"=>true},
+          "screenshot"=>{"path"=>final_observation, "digest"=>digest_file(observation_path), "bytes"=>File.size(observation_path)}
+        }
+      end
+      report = {
+        "schema_version"=>1, "id"=>"postgresql-pattern-scenario-runtime-v1", "created_at"=>Time.now.utc.iso8601,
+        "status"=>"passed", "command"=>"ruby tools/run-scenario-security-001.rb", "profile"=>"real-postgresql-18.6-container",
+        "counts"=>{"rows"=>selected_patterns.length, "variants"=>selected_patterns.length, "total"=>selected_patterns.length, "passed"=>selected_patterns.length, "failed"=>0, "flaky"=>0, "skipped"=>0},
+        "source_digest"=>source_digest, "harness_digest"=>harness_digest, "environment"=>environment,
+        "retention_contract"=>{"publish_on"=>"full-run-passed", "failed_run"=>"retain-prior-success", "swap"=>"staged-directory-rename-with-rollback"},
+        "tests"=>tests
       }
-      trace_path = File.join(trace_root, "#{basename}.trace.json")
-      File.write(trace_path, JSON.pretty_generate(trace_document) + "\n")
-      observation_document = {"schema_version"=>1, "kind"=>"postgresql-observable-state", "pattern_id"=>pattern_id, "scenario"=>"security", "variant_id"=>"postgresql-verification-matrix-v2", "oracle_passed"=>true, "server_version"=>server_version, "client_version"=>client_version}
-      observation_path = File.join(observation_root, "#{basename}.observable.json")
-      File.write(observation_path, JSON.pretty_generate(observation_document) + "\n")
-      final_trace = "artifacts/pattern-scenarios/traces/#{File.basename(trace_path)}"
-      final_observation = "artifacts/pattern-scenarios/observations/#{File.basename(observation_path)}"
-      {
-        "id"=>"security-runtime.#{target}", "pattern_id"=>pattern_id, "variant_id"=>"postgresql-verification-matrix-v2",
-        "scenario"=>"security", "title"=>"#{target} dedicated PostgreSQL security scenario",
-        "file"=>definition.fetch("file", "tools/run-scenario-security-001.rb"), "line"=>1, "source_digest"=>source_digest,
-        "outcome"=>"expected", "attempts"=>1, "final_status"=>"passed", "error"=>nil,
-        "oracle"=>trace_document.fetch("oracle"),
-        "trace"=>{"path"=>final_trace, "digest"=>digest_file(trace_path), "bytes"=>File.size(trace_path), "action_stream"=>true, "network_stream"=>true, "resource_stream"=>true},
-        "screenshot"=>{"path"=>final_observation, "digest"=>digest_file(observation_path), "bytes"=>File.size(observation_path)}
-      }
+      File.write(File.join(staging, "results.json"), JSON.pretty_generate(report) + "\n")
     end
-    report = {
-      "schema_version"=>1, "id"=>"postgresql-pattern-scenario-runtime-v1", "created_at"=>Time.now.utc.iso8601,
-      "status"=>"passed", "command"=>"ruby tools/run-scenario-security-001.rb", "profile"=>"real-postgresql-18.6-container",
-      "counts"=>{"rows"=>PATTERNS.length, "variants"=>PATTERNS.length, "total"=>PATTERNS.length, "passed"=>PATTERNS.length, "failed"=>0, "flaky"=>0, "skipped"=>0},
-      "source_digest"=>source_digest, "harness_digest"=>harness_digest, "environment"=>environment,
-      "retention_contract"=>{"publish_on"=>"full-run-passed", "failed_run"=>"retain-prior-success", "swap"=>"staged-directory-rename-with-rollback"},
-      "tests"=>tests
-    }
-    File.write(File.join(staging, "results.json"), JSON.pretty_generate(report) + "\n")
+  rescue SecurityFailureDiagnostics::ScenarioOracleFailure => error
+    canonical_snapshot_after = SecurityFailureDiagnostics.canonical_artifact_snapshot(ROOT)
+    run_id = "security-001-#{Time.now.utc.strftime("%Y%m%dT%H%M%SZ")}-#{Process.pid}"
+    document = SecurityFailureDiagnostics.generic_failure_document(
+      run_id: run_id,
+      recorded_at: Time.now.utc.iso8601,
+      failure: error,
+      source_digest: source_digest,
+      harness_digest: harness_digest,
+      canonical_pre: canonical_snapshot_before,
+      canonical_post: canonical_snapshot_after
+    )
+    SecurityFailureDiagnostics.record_failure(
+      output_root: FAILURE_DIAGNOSTICS_OUTPUT,
+      document: document,
+      original_error: error
+    )
+    raise error
+  rescue RuntimeError => error
+    canonical_snapshot_after = SecurityFailureDiagnostics.canonical_artifact_snapshot(ROOT)
+    run_id = "security-001-#{Time.now.utc.strftime("%Y%m%dT%H%M%SZ")}-#{Process.pid}"
+    document = SecurityFailureDiagnostics.generic_failure_document(
+      run_id: run_id,
+      recorded_at: Time.now.utc.iso8601,
+      failure: SecurityFailureDiagnostics::ScenarioOracleFailure.new(
+        failed_row: "closure.unknown.security",
+        target: "unknown",
+        oracle_error: error.message,
+        actual_result: {},
+        oracle_predicates: {}
+      ),
+      source_digest: source_digest,
+      harness_digest: harness_digest,
+      canonical_pre: canonical_snapshot_before,
+      canonical_post: canonical_snapshot_after
+    )
+    SecurityFailureDiagnostics.record_failure(
+      output_root: FAILURE_DIAGNOSTICS_OUTPUT,
+      document: document,
+      original_error: error
+    )
+    raise error
   end
   raise "Scenario Evidence was not published" unless result == :published
-  puts "Published atomic PostgreSQL security Evidence: #{PATTERNS.length} rows / #{PATTERNS.length} first-attempt Variant runs."
+  puts "Published atomic PostgreSQL security Evidence: #{selected_patterns.length} rows / #{selected_patterns.length} first-attempt Variant runs."
 ensure
   system("docker", "rm", "-f", "-v", container, out: File::NULL, err: File::NULL) if started
 end

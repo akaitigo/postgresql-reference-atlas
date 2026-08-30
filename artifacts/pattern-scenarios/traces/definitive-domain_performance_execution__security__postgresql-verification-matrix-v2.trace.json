@@ -1,0 +1,193 @@
+{
+  "schema_version": 1,
+  "pattern_id": "definitive-domain.performance.execution",
+  "target_id": "performance.execution",
+  "scenario": "security",
+  "variant_id": "postgresql-verification-matrix-v2",
+  "environment": {
+    "subject": "PostgreSQL",
+    "server_product": "PostgreSQL",
+    "server_version": "18.6",
+    "server_version_num": "180006",
+    "client_product": "psql",
+    "client_version": "psql (PostgreSQL) 18.6",
+    "runtime_image": "postgres:18.6-alpine",
+    "runtime_identity": "pg-atlas-security-72438-23077a",
+    "workers": 1,
+    "retries": 0,
+    "trace_mode": "on",
+    "execution_mode": "real-postgresql-server-client",
+    "row_runtime": {
+      "server_versions": [
+        "18.6"
+      ],
+      "containers": [
+        "pg-atlas-security-72438-23077a"
+      ]
+    }
+  },
+  "sql": {
+    "source": "BEGIN;\nCREATE ROLE atlas_perf_execution_reader;\nCREATE TABLE atlas_perf_execution_secure(\n  id bigint PRIMARY KEY,\n  tenant text NOT NULL,\n  payload text NOT NULL\n);\nALTER TABLE atlas_perf_execution_secure ENABLE ROW LEVEL SECURITY;\nCREATE POLICY atlas_perf_execution_policy ON atlas_perf_execution_secure\n  TO atlas_perf_execution_reader\n  USING (tenant = 'atlas_perf_execution_reader')\n  WITH CHECK (tenant = 'atlas_perf_execution_reader');\nGRANT SELECT, INSERT ON atlas_perf_execution_secure TO atlas_perf_execution_reader;\n\nINSERT INTO atlas_perf_execution_secure(id, tenant, payload)\nSELECT g,\n  CASE WHEN g % 1000 = 42 THEN 'atlas_perf_execution_reader' ELSE format('tenant_%s', g % 1000) END,\n  repeat(md5(g::text), 2)\nFROM generate_series(1, 200000) AS g;\nCREATE INDEX atlas_perf_execution_tenant_idx ON atlas_perf_execution_secure(tenant, id) INCLUDE (payload);\nANALYZE atlas_perf_execution_secure;\n\nCREATE TEMP TABLE atlas_perf_execution_observation(\n  plan jsonb,\n  fixture_rows bigint,\n  visible_rows bigint,\n  security_rejected boolean DEFAULT false\n);\nINSERT INTO atlas_perf_execution_observation(fixture_rows)\nSELECT count(*) FROM atlas_perf_execution_secure;\nGRANT ALL ON atlas_perf_execution_observation TO atlas_perf_execution_reader;\n\nSET ROLE atlas_perf_execution_reader;\nDO $atlas$\nDECLARE observed jsonb;\nBEGIN\n  EXECUTE 'EXPLAIN (ANALYZE, BUFFERS, WAL, FORMAT JSON) SELECT id FROM atlas_perf_execution_secure WHERE tenant = ''atlas_perf_execution_reader'' ORDER BY id' INTO observed;\n  UPDATE atlas_perf_execution_observation SET plan = observed;\nEND\n$atlas$;\nUPDATE atlas_perf_execution_observation\nSET visible_rows = (SELECT count(*) FROM atlas_perf_execution_secure WHERE tenant = 'atlas_perf_execution_reader');\n\nDO $atlas$\nBEGIN\n  INSERT INTO atlas_perf_execution_secure(id, tenant, payload) VALUES (300001, 'postgres', 'forged');\n  RAISE EXCEPTION 'RLS unexpectedly allowed cross-tenant insert';\nEXCEPTION WHEN insufficient_privilege THEN\n  UPDATE atlas_perf_execution_observation SET security_rejected = true;\n  RAISE NOTICE 'ATLAS_SECURITY_PASS:performance.execution';\nEND\n$atlas$;\nRESET ROLE;\n\nSELECT json_build_object(\n  'server_version', current_setting('server_version'),\n  'fixture_rows', fixture_rows,\n  'visible_rows', visible_rows,\n  'index_bytes', pg_relation_size('atlas_perf_execution_tenant_idx'),\n  'heap_bytes', pg_relation_size('atlas_perf_execution_secure'),\n  'plan', plan,\n  'plan_has_index', plan::text LIKE '%atlas_perf_execution_tenant_idx%',\n  'plan_has_actual_rows', plan::text LIKE '%Actual Rows%',\n  'plan_has_buffers', plan::text LIKE '%Shared Hit Blocks%',\n  'security_rejected', security_rejected,\n  'oracle_marker', CASE WHEN security_rejected THEN 'ATLAS_SECURITY_PASS:performance.execution' ELSE 'ATLAS_SECURITY_FAIL:performance.execution' END,\n  'verdict', CASE\n    WHEN fixture_rows = 200000\n      AND visible_rows = 200\n      AND security_rejected\n      AND plan::text LIKE '%atlas_perf_execution_tenant_idx%'\n      AND plan::text LIKE '%Actual Rows%'\n      AND plan::text LIKE '%Shared Hit Blocks%'\n      AND pg_relation_size('atlas_perf_execution_tenant_idx') > 0\n      AND pg_relation_size('atlas_perf_execution_secure') > 0\n    THEN 'pass'\n    ELSE 'fail'\n  END\n)\nFROM atlas_perf_execution_observation;\nROLLBACK;\n",
+    "stdout": "BEGIN\nCREATE ROLE\nCREATE TABLE\nALTER TABLE\nCREATE POLICY\nGRANT\nINSERT 0 200000\nCREATE INDEX\nANALYZE\nCREATE TABLE\nINSERT 0 1\nGRANT\nSET\nDO\nUPDATE 1\nDO\nRESET\n{\"server_version\" : \"18.6\", \"fixture_rows\" : 200000, \"visible_rows\" : 200, \"index_bytes\" : 24633344, \"heap_bytes\" : 23412736, \"plan\" : [{\"Plan\": {\"Plans\": [{\"Alias\": \"atlas_perf_execution_secure\", \"Plans\": [{\"WAL FPI\": 0, \"Disabled\": false, \"Node Type\": \"Bitmap Index Scan\", \"Plan Rows\": 199, \"WAL Bytes\": 0, \"Index Cond\": \"(tenant = 'atlas_perf_execution_reader'::text)\", \"Index Name\": \"atlas_perf_execution_tenant_idx\", \"Plan Width\": 0, \"Total Cost\": 13.91, \"Actual Rows\": 200.00, \"WAL Records\": 0, \"Actual Loops\": 1, \"Startup Cost\": 0.00, \"Async Capable\": false, \"Index Searches\": 1, \"Parallel Aware\": false, \"Local Hit Blocks\": 0, \"Temp Read Blocks\": 0, \"WAL Buffers Full\": 0, \"Actual Total Time\": 0.038, \"Local Read Blocks\": 0, \"Shared Hit Blocks\": 0, \"Shared Read Blocks\": 6, \"Actual Startup Time\": 0.037, \"Parent Relationship\": \"Outer\", \"Temp Written Blocks\": 0, \"Local Dirtied Blocks\": 0, \"Local Written Blocks\": 0, \"Shared Dirtied Blocks\": 0, \"Shared Written Blocks\": 0}], \"WAL FPI\": 0, \"Disabled\": false, \"Node Type\": \"Bitmap Heap Scan\", \"Plan Rows\": 199, \"WAL Bytes\": 0, \"Plan Width\": 8, \"Total Cost\": 637.99, \"Actual Rows\": 200.00, \"WAL Records\": 0, \"Actual Loops\": 1, \"Recheck Cond\": \"(tenant = 'atlas_perf_execution_reader'::text)\", \"Startup Cost\": 13.96, \"Async Capable\": false, \"Relation Name\": \"atlas_perf_execution_secure\", \"Parallel Aware\": false, \"Local Hit Blocks\": 0, \"Temp Read Blocks\": 0, \"WAL Buffers Full\": 0, \"Actual Total Time\": 0.133, \"Exact Heap Blocks\": 200, \"Local Read Blocks\": 0, \"Lossy Heap Blocks\": 0, \"Shared Hit Blocks\": 200, \"Shared Read Blocks\": 6, \"Actual Startup Time\": 0.057, \"Parent Relationship\": \"Outer\", \"Temp Written Blocks\": 0, \"Local Dirtied Blocks\": 0, \"Local Written Blocks\": 0, \"Shared Dirtied Blocks\": 0, \"Shared Written Blocks\": 0, \"Rows Removed by Index Recheck\": 0}], \"WAL FPI\": 0, \"Disabled\": false, \"Sort Key\": [\"id\"], \"Node Type\": \"Sort\", \"Plan Rows\": 199, \"WAL Bytes\": 0, \"Plan Width\": 8, \"Total Cost\": 646.08, \"Actual Rows\": 200.00, \"Sort Method\": \"quicksort\", \"WAL Records\": 0, \"Actual Loops\": 1, \"Startup Cost\": 645.59, \"Async Capable\": false, \"Parallel Aware\": false, \"Sort Space Type\": \"Memory\", \"Sort Space Used\": 25, \"Local Hit Blocks\": 0, \"Temp Read Blocks\": 0, \"WAL Buffers Full\": 0, \"Actual Total Time\": 0.163, \"Local Read Blocks\": 0, \"Shared Hit Blocks\": 200, \"Shared Read Blocks\": 6, \"Actual Startup Time\": 0.158, \"Temp Written Blocks\": 0, \"Local Dirtied Blocks\": 0, \"Local Written Blocks\": 0, \"Shared Dirtied Blocks\": 0, \"Shared Written Blocks\": 0}, \"Planning\": {\"Local Hit Blocks\": 0, \"Temp Read Blocks\": 0, \"Local Read Blocks\": 0, \"Shared Hit Blocks\": 19, \"Shared Read Blocks\": 0, \"Temp Written Blocks\": 0, \"Local Dirtied Blocks\": 0, \"Local Written Blocks\": 0, \"Shared Dirtied Blocks\": 0, \"Shared Written Blocks\": 0}, \"Triggers\": [], \"Planning Time\": 0.076, \"Execution Time\": 0.195}], \"plan_has_index\" : true, \"plan_has_actual_rows\" : true, \"plan_has_buffers\" : true, \"security_rejected\" : true, \"oracle_marker\" : \"ATLAS_SECURITY_PASS:performance.execution\", \"verdict\" : \"pass\"}\nROLLBACK\n",
+    "stderr": "NOTICE:  ATLAS_SECURITY_PASS:performance.execution\n"
+  },
+  "plan": [
+    {
+      "Plan": {
+        "Plans": [
+          {
+            "Alias": "atlas_perf_execution_secure",
+            "Plans": [
+              {
+                "WAL FPI": 0,
+                "Disabled": false,
+                "Node Type": "Bitmap Index Scan",
+                "Plan Rows": 199,
+                "WAL Bytes": 0,
+                "Index Cond": "(tenant = 'atlas_perf_execution_reader'::text)",
+                "Index Name": "atlas_perf_execution_tenant_idx",
+                "Plan Width": 0,
+                "Total Cost": 13.91,
+                "Actual Rows": 200.0,
+                "WAL Records": 0,
+                "Actual Loops": 1,
+                "Startup Cost": 0.0,
+                "Async Capable": false,
+                "Index Searches": 1,
+                "Parallel Aware": false,
+                "Local Hit Blocks": 0,
+                "Temp Read Blocks": 0,
+                "WAL Buffers Full": 0,
+                "Actual Total Time": 0.038,
+                "Local Read Blocks": 0,
+                "Shared Hit Blocks": 0,
+                "Shared Read Blocks": 6,
+                "Actual Startup Time": 0.037,
+                "Parent Relationship": "Outer",
+                "Temp Written Blocks": 0,
+                "Local Dirtied Blocks": 0,
+                "Local Written Blocks": 0,
+                "Shared Dirtied Blocks": 0,
+                "Shared Written Blocks": 0
+              }
+            ],
+            "WAL FPI": 0,
+            "Disabled": false,
+            "Node Type": "Bitmap Heap Scan",
+            "Plan Rows": 199,
+            "WAL Bytes": 0,
+            "Plan Width": 8,
+            "Total Cost": 637.99,
+            "Actual Rows": 200.0,
+            "WAL Records": 0,
+            "Actual Loops": 1,
+            "Recheck Cond": "(tenant = 'atlas_perf_execution_reader'::text)",
+            "Startup Cost": 13.96,
+            "Async Capable": false,
+            "Relation Name": "atlas_perf_execution_secure",
+            "Parallel Aware": false,
+            "Local Hit Blocks": 0,
+            "Temp Read Blocks": 0,
+            "WAL Buffers Full": 0,
+            "Actual Total Time": 0.133,
+            "Exact Heap Blocks": 200,
+            "Local Read Blocks": 0,
+            "Lossy Heap Blocks": 0,
+            "Shared Hit Blocks": 200,
+            "Shared Read Blocks": 6,
+            "Actual Startup Time": 0.057,
+            "Parent Relationship": "Outer",
+            "Temp Written Blocks": 0,
+            "Local Dirtied Blocks": 0,
+            "Local Written Blocks": 0,
+            "Shared Dirtied Blocks": 0,
+            "Shared Written Blocks": 0,
+            "Rows Removed by Index Recheck": 0
+          }
+        ],
+        "WAL FPI": 0,
+        "Disabled": false,
+        "Sort Key": [
+          "id"
+        ],
+        "Node Type": "Sort",
+        "Plan Rows": 199,
+        "WAL Bytes": 0,
+        "Plan Width": 8,
+        "Total Cost": 646.08,
+        "Actual Rows": 200.0,
+        "Sort Method": "quicksort",
+        "WAL Records": 0,
+        "Actual Loops": 1,
+        "Startup Cost": 645.59,
+        "Async Capable": false,
+        "Parallel Aware": false,
+        "Sort Space Type": "Memory",
+        "Sort Space Used": 25,
+        "Local Hit Blocks": 0,
+        "Temp Read Blocks": 0,
+        "WAL Buffers Full": 0,
+        "Actual Total Time": 0.163,
+        "Local Read Blocks": 0,
+        "Shared Hit Blocks": 200,
+        "Shared Read Blocks": 6,
+        "Actual Startup Time": 0.158,
+        "Temp Written Blocks": 0,
+        "Local Dirtied Blocks": 0,
+        "Local Written Blocks": 0,
+        "Shared Dirtied Blocks": 0,
+        "Shared Written Blocks": 0
+      },
+      "Planning": {
+        "Local Hit Blocks": 0,
+        "Temp Read Blocks": 0,
+        "Local Read Blocks": 0,
+        "Shared Hit Blocks": 19,
+        "Shared Read Blocks": 0,
+        "Temp Written Blocks": 0,
+        "Local Dirtied Blocks": 0,
+        "Local Written Blocks": 0,
+        "Shared Dirtied Blocks": 0,
+        "Shared Written Blocks": 0
+      },
+      "Triggers": [
+
+      ],
+      "Planning Time": 0.076,
+      "Execution Time": 0.195
+    }
+  ],
+  "wal": {
+    "before_lsn": "0/30000F8",
+    "after_lsn": "0/6D54000"
+  },
+  "log": "2026-08-30 22:15:01.261 UTC [372] LOG:  statement: GRANT SELECT, INSERT ON atlas_wal_secure TO atlas_wal_writer;\n2026-08-30 22:15:01.262 UTC [372] LOG:  statement: CREATE TEMP TABLE atlas_wal_observation(\n2026-08-30 22:15:01.263 UTC [372] LOG:  statement: INSERT INTO atlas_wal_observation DEFAULT VALUES;\n2026-08-30 22:15:01.264 UTC [372] LOG:  statement: GRANT ALL ON atlas_wal_observation TO atlas_wal_writer;\n2026-08-30 22:15:01.264 UTC [372] LOG:  statement: SET ROLE atlas_wal_writer;\n2026-08-30 22:15:01.264 UTC [372] LOG:  statement: INSERT INTO atlas_wal_secure(id, tenant, payload)\n2026-08-30 22:15:01.340 UTC [372] LOG:  statement: DO $atlas$\n2026-08-30 22:15:01.342 UTC [372] LOG:  statement: UPDATE atlas_wal_observation\n2026-08-30 22:15:01.344 UTC [372] LOG:  statement: DO $atlas$\n\t  RAISE NOTICE 'ATLAS_SECURITY_PASS:operations.wal';\n2026-08-30 22:15:01.345 UTC [372] LOG:  statement: RESET ROLE;\n2026-08-30 22:15:01.345 UTC [372] LOG:  statement: UPDATE atlas_wal_observation SET end_lsn = pg_current_wal_insert_lsn();\n2026-08-30 22:15:01.345 UTC [372] LOG:  statement: UPDATE atlas_wal_observation SET switched_lsn = pg_switch_wal();\n2026-08-30 22:15:01.351 UTC [372] LOG:  statement: SELECT json_build_object(\n\t  'oracle_marker', CASE WHEN security_rejected THEN 'ATLAS_SECURITY_PASS:operations.wal' ELSE 'ATLAS_SECURITY_FAIL:operations.wal' END,\n2026-08-30 22:15:01.352 UTC [372] LOG:  statement: ROLLBACK;\n2026-08-30 22:15:01.404 UTC [379] LOG:  statement: SELECT pg_current_wal_insert_lsn()\n2026-08-30 22:15:01.464 UTC [386] LOG:  statement: SELECT pg_current_wal_lsn()\n2026-08-30 22:15:01.503 UTC [393] LOG:  statement: BEGIN;\n2026-08-30 22:15:01.503 UTC [393] LOG:  statement: CREATE ROLE atlas_perf_execution_reader;\n2026-08-30 22:15:01.504 UTC [393] LOG:  statement: CREATE TABLE atlas_perf_execution_secure(\n2026-08-30 22:15:01.506 UTC [393] LOG:  statement: ALTER TABLE atlas_perf_execution_secure ENABLE ROW LEVEL SECURITY;\n2026-08-30 22:15:01.506 UTC [393] LOG:  statement: CREATE POLICY atlas_perf_execution_policy ON atlas_perf_execution_secure\n2026-08-30 22:15:01.507 UTC [393] LOG:  statement: GRANT SELECT, INSERT ON atlas_perf_execution_secure TO atlas_perf_execution_reader;\n2026-08-30 22:15:01.507 UTC [393] LOG:  statement: INSERT INTO atlas_perf_execution_secure(id, tenant, payload)\n2026-08-30 22:15:01.811 UTC [393] LOG:  statement: CREATE INDEX atlas_perf_execution_tenant_idx ON atlas_perf_execution_secure(tenant, id) INCLUDE (payload);\n2026-08-30 22:15:01.944 UTC [393] LOG:  statement: ANALYZE atlas_perf_execution_secure;\n2026-08-30 22:15:01.986 UTC [393] LOG:  statement: CREATE TEMP TABLE atlas_perf_execution_observation(\n2026-08-30 22:15:01.991 UTC [393] LOG:  statement: INSERT INTO atlas_perf_execution_observation(fixture_rows)\n2026-08-30 22:15:01.996 UTC [393] LOG:  statement: GRANT ALL ON atlas_perf_execution_observation TO atlas_perf_execution_reader;\n2026-08-30 22:15:01.996 UTC [393] LOG:  statement: SET ROLE atlas_perf_execution_reader;\n2026-08-30 22:15:01.996 UTC [393] LOG:  statement: DO $atlas$\n2026-08-30 22:15:01.997 UTC [393] LOG:  statement: UPDATE atlas_perf_execution_observation\n2026-08-30 22:15:01.997 UTC [393] LOG:  statement: DO $atlas$\n\t  RAISE NOTICE 'ATLAS_SECURITY_PASS:performance.execution';\n2026-08-30 22:15:01.997 UTC [393] LOG:  statement: RESET ROLE;\n2026-08-30 22:15:01.998 UTC [393] LOG:  statement: SELECT json_build_object(\n\t  'oracle_marker', CASE WHEN security_rejected THEN 'ATLAS_SECURITY_PASS:performance.execution' ELSE 'ATLAS_SECURITY_FAIL:performance.execution' END,\n2026-08-30 22:15:01.998 UTC [393] LOG:  statement: ROLLBACK;\n2026-08-30 22:15:02.049 UTC [401] LOG:  statement: SELECT pg_current_wal_lsn()\n",
+  "metric": {
+    "elapsed_ms": 543.655,
+    "fixture_rows": 200000,
+    "visible_rows": 200,
+    "index_bytes": 24633344,
+    "heap_bytes": 23412736
+  },
+  "oracle": {
+    "kind": "rls-bounded-index-plan-emits-actual-rows-buffers-and-relation-sizes",
+    "scenario": "security",
+    "marker": "ATLAS_SECURITY_PASS:performance.execution",
+    "passed": true
+  },
+  "streams": {
+    "action": [
+      "psql security transaction"
+    ],
+    "network": [
+      "psql-to-PostgreSQL-session"
+    ],
+    "resource": [
+      "SQL",
+      "plan",
+      "WAL",
+      "server-log",
+      "elapsed-metric"
+    ]
+  }
+}

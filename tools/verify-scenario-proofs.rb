@@ -31,6 +31,10 @@ expected_closed = %w[
   definitive-domain.operations.observability
   definitive-domain.operations.pitr-recovery
   definitive-domain.operations.replication
+  definitive-domain.operations.wal
+  definitive-domain.performance.execution
+  definitive-domain.performance.index
+  definitive-domain.performance.planner
 ].map { |behavior_id| [behavior_id, "security"] }.sort
 runtime_report_path = File.join(root, "artifacts/pattern-scenarios/results.json")
 runtime_report = JSON.parse(File.read(runtime_report_path))
@@ -112,6 +116,18 @@ index.fetch("files").each do |entry|
         errors << "maintenance security Oracle" unless trace.dig("sql", "stdout").include?("ATLAS_SECURITY_PASS:operations.maintenance") && trace.dig("sql", "stderr").include?("ATLAS_SECURITY_PASS:operations.maintenance") && trace.fetch("plan").is_a?(Array)
       when "definitive-domain.operations.observability"
         errors << "observability security Oracle" unless trace.dig("sql", "stdout").include?("ATLAS_SECURITY_PASS:operations.observability") && trace.dig("sql", "stderr").include?("ATLAS_SECURITY_PASS:operations.observability") && trace.fetch("plan").is_a?(Array)
+      when "definitive-domain.operations.wal"
+        errors << "operations.wal security Oracle" unless trace.dig("metric", "rows_written") == 20_000 && trace.dig("metric", "visible_rows") == 20_000 && trace.dig("sql", "stderr").include?("ATLAS_SECURITY_PASS:operations.wal")
+        errors << "operations.wal security plan/WAL Oracle" unless trace.fetch("plan").is_a?(Array) && trace.dig("wal", "before_lsn").to_s.include?("/") && trace.dig("wal", "after_lsn").to_s.include?("/") && [true, false].include?(trace.dig("wal", "wal_records_observed"))
+      when "definitive-domain.performance.execution"
+        errors << "performance.execution security Oracle" unless trace.dig("metric", "fixture_rows") == 200_000 && trace.dig("metric", "visible_rows") == 200 && trace.dig("metric", "index_bytes").to_i.positive? && trace.dig("metric", "heap_bytes").to_i.positive? && trace.dig("sql", "stderr").include?("ATLAS_SECURITY_PASS:performance.execution")
+        errors << "performance.execution security plan/WAL Oracle" unless trace.fetch("plan").is_a?(Array) && trace.fetch("plan").to_s.include?("atlas_perf_execution_tenant_idx") && trace.dig("wal", "before_lsn").to_s.include?("/") && trace.dig("wal", "after_lsn").to_s.include?("/")
+      when "definitive-domain.performance.index"
+        errors << "performance.index security Oracle" unless trace.dig("metric", "tenant_rows") == 200 && trace.dig("metric", "billed_visible_rows") == 100 && trace.dig("metric", "index_bytes").to_i.positive? && trace.dig("metric", "before_digest") == trace.dig("metric", "after_digest") && trace.dig("sql", "stderr").include?("ATLAS_SECURITY_PASS:performance.index")
+        errors << "performance.index security plan/WAL Oracle" unless trace.fetch("plan").is_a?(Array) && trace.fetch("plan").to_s.include?("atlas_perf_index_billed_idx") && trace.dig("wal", "before_lsn").to_s.include?("/") && trace.dig("wal", "after_lsn").to_s.include?("/")
+      when "definitive-domain.performance.planner"
+        errors << "performance.planner security Oracle" unless trace.dig("metric", "fixture_rows") == 100_000 && trace.dig("metric", "visible_rows") == 1 && trace.dig("sql", "stderr").include?("ATLAS_SECURITY_PASS:performance.planner")
+        errors << "performance.planner security plan/WAL Oracle" unless trace.fetch("plan").is_a?(Array) && trace.fetch("plan").to_s.match?(/Index Scan|Index Only Scan|Bitmap Index Scan/) && trace.dig("wal", "before_lsn").to_s.include?("/") && trace.dig("wal", "after_lsn").to_s.include?("/")
       when "definitive-domain.operations.pitr-recovery"
         result = JSON.parse(trace.dig("sql", "stdout"))
         errors << "PITR security preservation Oracle" unless result.fetch("visible_rows") == 1 && result.fetch("after_target_rows") == 0 && result.fetch("select_acl") == "t" && result.fetch("rls_enabled") == "t" && result.fetch("update_denied") == true && result.fetch("verdict") == "pass"
@@ -180,7 +196,7 @@ end
 errors << "completion boundary" unless summary.fetch("integrated_trace_rows") == 290 && summary.fetch("authority_atomic_rows") == 0 && summary.fetch("completion_eligible_rows") == 0
 actual_closed = actual_proofs.select { |proof| proof.dig("closure", "pattern_specific_evidence") }.map { |proof| [proof.fetch("behavior_id"), proof.fetch("scenario")] }.sort
 errors << "strict Scenario closure set" unless actual_closed == expected_closed
-errors << "strict Scenario closure boundary" unless summary.fetch("pattern_specific_rows") == 16 && summary.fetch("pattern_specific_runtime_rows") == 16 && summary.fetch("pattern_specific_gaps") == 274
+errors << "strict Scenario closure boundary" unless summary.fetch("pattern_specific_rows") == 20 && summary.fetch("pattern_specific_runtime_rows") == 20 && summary.fetch("pattern_specific_gaps") == 270
 errors << "completion limits" unless index.fetch("completion_limits").length >= 4
 
 abort errors.uniq.join("\n") unless errors.empty?

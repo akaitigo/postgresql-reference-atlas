@@ -22,8 +22,8 @@
     "mass_closure_forbidden": true
   },
   "source_digests": {
-    "evidence/scenarios/index.json": "sha256:67ff700f75c26ac74714bbecb1c1df378e29a063a80e01126069953aa74f3593",
-    "artifacts/pattern-scenarios/results.json": "sha256:48498bbef08e9d36a223f7aaa045d8753437abb72d1224586de65244b040743a"
+    "evidence/scenarios/index.json": "sha256:89d4fb51b0558c4cff3220eb76ccd5f1a17c8d18ee002b07c6264e1a10873a31",
+    "artifacts/pattern-scenarios/results.json": "sha256:93077286664997b9f7b4800172278ea64c0993837f91c4a1e29ca87fc1d7baa6"
   },
   "baseline": {
     "inherited_gap_rows_at_bc41912f": 290,
@@ -32,11 +32,11 @@
     "scenarios": 10
   },
   "summary": {
-    "completed_dedicated_rows": 16,
-    "remaining_rows": 274,
-    "planned_tranches": 76,
+    "completed_dedicated_rows": 20,
+    "remaining_rows": 270,
+    "planned_tranches": 75,
     "by_scenario": {
-      "security": 13,
+      "security": 9,
       "refusal": 29,
       "failure": 29,
       "recovery": 29,
@@ -250,6 +250,54 @@
       ],
       "all_first_attempt_pass": true,
       "all_trace_streams": true
+    },
+    {
+      "pattern_id": "definitive-domain.operations.wal",
+      "scenario": "security",
+      "oracle_kinds": [
+        "rls-bounded-20k-write-advances-wal-and-switches-segment"
+      ],
+      "variant_ids": [
+        "postgresql-verification-matrix-v2"
+      ],
+      "all_first_attempt_pass": true,
+      "all_trace_streams": true
+    },
+    {
+      "pattern_id": "definitive-domain.performance.execution",
+      "scenario": "security",
+      "oracle_kinds": [
+        "rls-bounded-index-plan-emits-actual-rows-buffers-and-relation-sizes"
+      ],
+      "variant_ids": [
+        "postgresql-verification-matrix-v2"
+      ],
+      "all_first_attempt_pass": true,
+      "all_trace_streams": true
+    },
+    {
+      "pattern_id": "definitive-domain.performance.index",
+      "scenario": "security",
+      "oracle_kinds": [
+        "partial-index-preserves-results-and-serves-rls-bounded-query"
+      ],
+      "variant_ids": [
+        "postgresql-verification-matrix-v2"
+      ],
+      "all_first_attempt_pass": true,
+      "all_trace_streams": true
+    },
+    {
+      "pattern_id": "definitive-domain.performance.planner",
+      "scenario": "security",
+      "oracle_kinds": [
+        "analyzed-rls-bounded-selective-query-uses-index-plan"
+      ],
+      "variant_ids": [
+        "postgresql-verification-matrix-v2"
+      ],
+      "all_first_attempt_pass": true,
+      "all_trace_streams": true
     }
   ],
   "next_tranche": {
@@ -258,10 +306,10 @@
     "scenario": "security",
     "status": "planned",
     "row_ids": [
-      "closure.definitive-domain.operations.wal.security",
-      "closure.definitive-domain.performance.execution.security",
-      "closure.definitive-domain.performance.index.security",
-      "closure.definitive-domain.performance.planner.security"
+      "closure.definitive-domain.performance.statistics.security",
+      "closure.definitive-domain.publication.provenance.security",
+      "closure.definitive-domain.query.catalog-inventory.security",
+      "closure.definitive-domain.query.extension.security"
     ],
     "pattern_rows": 4,
     "variant_runs": 4,
@@ -270,21 +318,6 @@
   "tranches": [
     {
       "id": "security-001",
-      "risk_rank": 1,
-      "scenario": "security",
-      "status": "planned",
-      "row_ids": [
-        "closure.definitive-domain.operations.wal.security",
-        "closure.definitive-domain.performance.execution.security",
-        "closure.definitive-domain.performance.index.security",
-        "closure.definitive-domain.performance.planner.security"
-      ],
-      "pattern_rows": 4,
-      "variant_runs": 4,
-      "commit_policy": "one-reviewed-tranche-with-non-regression-runtime-identity-and-oracle-validation"
-    },
-    {
-      "id": "security-002",
       "risk_rank": 1,
       "scenario": "security",
       "status": "planned",
@@ -299,7 +332,7 @@
       "commit_policy": "one-reviewed-tranche-with-non-regression-runtime-identity-and-oracle-validation"
     },
     {
-      "id": "security-003",
+      "id": "security-002",
       "risk_rank": 1,
       "scenario": "security",
       "status": "planned",
@@ -314,7 +347,7 @@
       "commit_policy": "one-reviewed-tranche-with-non-regression-runtime-identity-and-oracle-validation"
     },
     {
-      "id": "security-004",
+      "id": "security-003",
       "risk_rank": 1,
       "scenario": "security",
       "status": "planned",
@@ -1380,230 +1413,6 @@
     }
   ],
   "rows": [
-    {
-      "id": "closure.definitive-domain.operations.wal.security",
-      "pattern_id": "definitive-domain.operations.wal",
-      "target_id": "operations.wal",
-      "scenario": "security",
-      "risk_rank": 1,
-      "proof": {
-        "path": "evidence/scenarios/behaviors/operations.wal/security.proof.json",
-        "digest": "sha256:087e50b23a309d75151ffe5ff5807e4000654cc9babadd7fc8526f3b97a2d0ca"
-      },
-      "variant_ids": [
-        "postgresql-verification-matrix-v2"
-      ],
-      "required_closure": {
-        "drive_pattern_scenario_and_every_variant": true,
-        "first_attempt_only": true,
-        "retries": 0,
-        "dedicated_runtime_identity": true,
-        "dedicated_oracle": true,
-        "separate_trace_per_variant": true,
-        "required_trace_streams": [
-          "action",
-          "network",
-          "resource"
-        ],
-        "separate_screenshot_per_variant": true,
-        "source_and_harness_digests": true,
-        "forbidden_substitutions": [
-          "metadata-only",
-          "capture-reuse",
-          "integrated-trace-reuse",
-          "mock-or-static-runtime"
-        ]
-      },
-      "gaps": [
-        "既存Verification MatrixにこのBehavior × Scenario専用rowがない。",
-        "専用Evidence Artifactがない。",
-        "全Variantのstable denominatorと専用実行記録がない。",
-        "専用実行のretry count 0を機械記録していない。",
-        "専用Oracleと期待結果の対応がない。",
-        "専用Source digestがない。",
-        "専用Harness digestまたはHarness pathがない。",
-        "server identity gap: 専用Evidenceにserver identityが固定されていない。",
-        "client identity gap: 専用Evidenceにclient identityが固定されていない。",
-        "version identity gap: 専用Evidenceにversion identityが固定されていない。",
-        "runtime identity gap: 専用EvidenceまたはEnvironment profileがない。",
-        "sql artifact gap: このBehavior × Scenarioに既存Verification Matrix Evidenceがない。",
-        "plan artifact gap: 専用PLAN Artifactまたは機械参照可能なpointerがない。",
-        "wal artifact gap: 専用WAL Artifactまたは機械参照可能なpointerがない。",
-        "log artifact gap: 専用Behavior × Scenario Server/Client Log Artifactがない。統合Reference System Logは流用しない。",
-        "metric artifact gap: 専用METRIC Artifactまたは機械参照可能なpointerがない。",
-        "統合Reference Systemの結果は専用Surface × Scenario × Variant Closureへ流用しない。",
-        "別Evidence Artifactのmetadataだけでは専用実行Proofを閉じない。",
-        "Authority raw anchorのHuman reviewとAtomic behavior bindingが未完了でCompletion対象外。"
-      ]
-    },
-    {
-      "id": "closure.definitive-domain.performance.execution.security",
-      "pattern_id": "definitive-domain.performance.execution",
-      "target_id": "performance.execution",
-      "scenario": "security",
-      "risk_rank": 1,
-      "proof": {
-        "path": "evidence/scenarios/behaviors/performance.execution/security.proof.json",
-        "digest": "sha256:84f660464e4ea0f8ec65c4599e2001c3cd0a52af0f34d0fcfedb4893877f3fdc"
-      },
-      "variant_ids": [
-        "postgresql-verification-matrix-v2"
-      ],
-      "required_closure": {
-        "drive_pattern_scenario_and_every_variant": true,
-        "first_attempt_only": true,
-        "retries": 0,
-        "dedicated_runtime_identity": true,
-        "dedicated_oracle": true,
-        "separate_trace_per_variant": true,
-        "required_trace_streams": [
-          "action",
-          "network",
-          "resource"
-        ],
-        "separate_screenshot_per_variant": true,
-        "source_and_harness_digests": true,
-        "forbidden_substitutions": [
-          "metadata-only",
-          "capture-reuse",
-          "integrated-trace-reuse",
-          "mock-or-static-runtime"
-        ]
-      },
-      "gaps": [
-        "既存Verification MatrixにこのBehavior × Scenario専用rowがない。",
-        "専用Evidence Artifactがない。",
-        "全Variantのstable denominatorと専用実行記録がない。",
-        "専用実行のretry count 0を機械記録していない。",
-        "専用Oracleと期待結果の対応がない。",
-        "専用Source digestがない。",
-        "専用Harness digestまたはHarness pathがない。",
-        "server identity gap: 専用Evidenceにserver identityが固定されていない。",
-        "client identity gap: 専用Evidenceにclient identityが固定されていない。",
-        "version identity gap: 専用Evidenceにversion identityが固定されていない。",
-        "runtime identity gap: 専用EvidenceまたはEnvironment profileがない。",
-        "sql artifact gap: このBehavior × Scenarioに既存Verification Matrix Evidenceがない。",
-        "plan artifact gap: 専用PLAN Artifactまたは機械参照可能なpointerがない。",
-        "wal artifact gap: 専用WAL Artifactまたは機械参照可能なpointerがない。",
-        "log artifact gap: 専用Behavior × Scenario Server/Client Log Artifactがない。統合Reference System Logは流用しない。",
-        "metric artifact gap: 専用METRIC Artifactまたは機械参照可能なpointerがない。",
-        "統合Reference Systemの結果は専用Surface × Scenario × Variant Closureへ流用しない。",
-        "別Evidence Artifactのmetadataだけでは専用実行Proofを閉じない。",
-        "Authority raw anchorのHuman reviewとAtomic behavior bindingが未完了でCompletion対象外。"
-      ]
-    },
-    {
-      "id": "closure.definitive-domain.performance.index.security",
-      "pattern_id": "definitive-domain.performance.index",
-      "target_id": "performance.index",
-      "scenario": "security",
-      "risk_rank": 1,
-      "proof": {
-        "path": "evidence/scenarios/behaviors/performance.index/security.proof.json",
-        "digest": "sha256:7564f1ecc2155f09f323b11e24902a4e7d8f71edc3d3186cd135baf210a6ea62"
-      },
-      "variant_ids": [
-        "postgresql-verification-matrix-v2"
-      ],
-      "required_closure": {
-        "drive_pattern_scenario_and_every_variant": true,
-        "first_attempt_only": true,
-        "retries": 0,
-        "dedicated_runtime_identity": true,
-        "dedicated_oracle": true,
-        "separate_trace_per_variant": true,
-        "required_trace_streams": [
-          "action",
-          "network",
-          "resource"
-        ],
-        "separate_screenshot_per_variant": true,
-        "source_and_harness_digests": true,
-        "forbidden_substitutions": [
-          "metadata-only",
-          "capture-reuse",
-          "integrated-trace-reuse",
-          "mock-or-static-runtime"
-        ]
-      },
-      "gaps": [
-        "既存Verification MatrixにこのBehavior × Scenario専用rowがない。",
-        "専用Evidence Artifactがない。",
-        "全Variantのstable denominatorと専用実行記録がない。",
-        "専用実行のretry count 0を機械記録していない。",
-        "専用Oracleと期待結果の対応がない。",
-        "専用Source digestがない。",
-        "専用Harness digestまたはHarness pathがない。",
-        "server identity gap: 専用Evidenceにserver identityが固定されていない。",
-        "client identity gap: 専用Evidenceにclient identityが固定されていない。",
-        "version identity gap: 専用Evidenceにversion identityが固定されていない。",
-        "runtime identity gap: 専用EvidenceまたはEnvironment profileがない。",
-        "sql artifact gap: このBehavior × Scenarioに既存Verification Matrix Evidenceがない。",
-        "plan artifact gap: 専用PLAN Artifactまたは機械参照可能なpointerがない。",
-        "wal artifact gap: 専用WAL Artifactまたは機械参照可能なpointerがない。",
-        "log artifact gap: 専用Behavior × Scenario Server/Client Log Artifactがない。統合Reference System Logは流用しない。",
-        "metric artifact gap: 専用METRIC Artifactまたは機械参照可能なpointerがない。",
-        "統合Reference Systemの結果は専用Surface × Scenario × Variant Closureへ流用しない。",
-        "別Evidence Artifactのmetadataだけでは専用実行Proofを閉じない。",
-        "Authority raw anchorのHuman reviewとAtomic behavior bindingが未完了でCompletion対象外。"
-      ]
-    },
-    {
-      "id": "closure.definitive-domain.performance.planner.security",
-      "pattern_id": "definitive-domain.performance.planner",
-      "target_id": "performance.planner",
-      "scenario": "security",
-      "risk_rank": 1,
-      "proof": {
-        "path": "evidence/scenarios/behaviors/performance.planner/security.proof.json",
-        "digest": "sha256:9c476490d3836d2f0d008a51e9e12ab59b53439fb760974f70c636ad44f085ba"
-      },
-      "variant_ids": [
-        "postgresql-verification-matrix-v2"
-      ],
-      "required_closure": {
-        "drive_pattern_scenario_and_every_variant": true,
-        "first_attempt_only": true,
-        "retries": 0,
-        "dedicated_runtime_identity": true,
-        "dedicated_oracle": true,
-        "separate_trace_per_variant": true,
-        "required_trace_streams": [
-          "action",
-          "network",
-          "resource"
-        ],
-        "separate_screenshot_per_variant": true,
-        "source_and_harness_digests": true,
-        "forbidden_substitutions": [
-          "metadata-only",
-          "capture-reuse",
-          "integrated-trace-reuse",
-          "mock-or-static-runtime"
-        ]
-      },
-      "gaps": [
-        "既存Verification MatrixにこのBehavior × Scenario専用rowがない。",
-        "専用Evidence Artifactがない。",
-        "全Variantのstable denominatorと専用実行記録がない。",
-        "専用実行のretry count 0を機械記録していない。",
-        "専用Oracleと期待結果の対応がない。",
-        "専用Source digestがない。",
-        "専用Harness digestまたはHarness pathがない。",
-        "server identity gap: 専用Evidenceにserver identityが固定されていない。",
-        "client identity gap: 専用Evidenceにclient identityが固定されていない。",
-        "version identity gap: 専用Evidenceにversion identityが固定されていない。",
-        "runtime identity gap: 専用EvidenceまたはEnvironment profileがない。",
-        "sql artifact gap: このBehavior × Scenarioに既存Verification Matrix Evidenceがない。",
-        "plan artifact gap: 専用PLAN Artifactまたは機械参照可能なpointerがない。",
-        "wal artifact gap: 専用WAL Artifactまたは機械参照可能なpointerがない。",
-        "log artifact gap: 専用Behavior × Scenario Server/Client Log Artifactがない。統合Reference System Logは流用しない。",
-        "metric artifact gap: 専用METRIC Artifactまたは機械参照可能なpointerがない。",
-        "統合Reference Systemの結果は専用Surface × Scenario × Variant Closureへ流用しない。",
-        "別Evidence Artifactのmetadataだけでは専用実行Proofを閉じない。",
-        "Authority raw anchorのHuman reviewとAtomic behavior bindingが未完了でCompletion対象外。"
-      ]
-    },
     {
       "id": "closure.definitive-domain.performance.statistics.security",
       "pattern_id": "definitive-domain.performance.statistics",

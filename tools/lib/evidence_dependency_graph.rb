@@ -65,6 +65,9 @@ module EvidenceDependencyGraph
     legacy_scenario_skill_reporting_members = files(
       "tools/**/*.rb", "evals/run.sh", "evals/cases.json", ".agents/skills/postgresql-atlas/**/*"
     )
+    scenario_reporting_required_members = %w[
+      tools/lib/security_scenario_tranche.rb
+    ].freeze
     specs = [
       ["source.contract-and-authority", "source", %w[
         atlas.yaml mastery.yaml sources.lock.yaml coverage.yaml skill.package.yaml
@@ -88,7 +91,7 @@ module EvidenceDependencyGraph
         "labs/{performance,observability,maintenance,failure-injection,reference-system}/**/*",
         "scripts/{lib.sh,run-lab.sh,run-sql-lab.sh,static-gates.sh,graph-gates.rb}"
       )],
-      ["harness.scenario-skill-reporting", "harness", legacy_scenario_skill_reporting_members - evidence_dependency_control_plane_members],
+      ["harness.scenario-skill-reporting", "harness", (legacy_scenario_skill_reporting_members - evidence_dependency_control_plane_members + scenario_reporting_required_members).uniq.sort],
       ["harness.evidence-dependency-control-plane", "harness", evidence_dependency_control_plane_members],
       ["runtime.postgresql-server-client", "runtime", %w[sources.lock.yaml go.mod scripts/lib.sh]],
       ["profile.local", "profile", %w[environments/local.yaml]],
@@ -174,6 +177,16 @@ module EvidenceDependencyGraph
     path.start_with?("evals/") && path.end_with?(".json")
   end
 
+  def current_output_bindings(include_graph: true)
+    bindings = ledger_output_paths.map do |path|
+      {"path"=>path, "digest"=>digest_file(path)}
+    end
+    if include_graph && File.file?(absolute(GRAPH_PATH))
+      bindings << {"path"=>GRAPH_PATH, "digest"=>digest_file(GRAPH_PATH)}
+    end
+    bindings.sort_by { |binding| binding.fetch("path") }
+  end
+
   def output_id(path)
     "output.#{Digest::SHA256.hexdigest(path)[0, 20]}"
   end
@@ -233,16 +246,24 @@ module EvidenceDependencyGraph
     prior = File.file?(absolute(GRAPH_PATH)) ? JSON.parse(File.read(absolute(GRAPH_PATH))) : nil
     prior_inputs = Array(prior&.fetch("inputs", [])).to_h { |item| [item.fetch("id"), item] }
     ledger_bindings = ledger.fetch("input_bindings").to_h { |item| [item.fetch("input_id"), item.fetch("digest")] }
+    rebound_inputs = Array(ledger.dig("refresh_context", "allowed_input_drift"))
     inputs = current_input_bindings.map do |binding|
       id, current = binding.fetch("id"), binding.fetch("digest")
       raise "Rerun ledgerが現在の入力へ結ばれていません: #{id}" unless ledger_bindings[id] == current
       previous = prior_inputs[id]
       changed_now = previous && previous.fetch("current_digest") != current
+      observed_at = if rebound_inputs.include?(id)
+                      ledger.fetch("observed_at")
+                    elsif changed_now
+                      ledger.fetch("observed_at")
+                    else
+                      previous&.fetch("observed_at") || ledger.fetch("observed_at")
+                    end
       {
         "id"=>id, "kind"=>binding.fetch("kind"), "members"=>binding.fetch("members"),
         "baseline_digest"=>previous ? previous.fetch("baseline_digest") : current,
         "current_digest"=>current,
-        "observed_at"=>changed_now ? ledger.fetch("observed_at") : (previous&.fetch("observed_at") || ledger.fetch("observed_at"))
+        "observed_at"=>observed_at
       }
     end
     paths = required_output_paths

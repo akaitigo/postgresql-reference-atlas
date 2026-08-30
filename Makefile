@@ -5,7 +5,7 @@ ATLAS_ROOT := $(CURDIR)
 
 .NOTPARALLEL: test
 
-.PHONY: validate audit non-regression-audit core-non-regression-audit authority-body-non-regression-audit definitive-audit parity-audit depth-parity-audit authority-locator-verify authority-body-verify authority-review-verify authority-review-determinism-test definitive-skill-eval-verify scenario-proofs-generate scenario-proofs-verify scenario-closure-plan-generate scenario-closure-plan-verify scenario-security-001-run scenario-evidence-atomicity-test docker-volume-cleanup-test workflow-supply-chain-test evidence-dependency-inputs-test evidence-dependency-rerun evidence-dependency-generate evidence-dependency-verify evidence-dependency-negative-test tracked-evidence-generate tracked-generated-freshness tracked-generated-freshness-test ledger-output-verify evidence-pipeline-refresh evidence-pipeline-clean evidence-pipeline-clean-test eval-evidence-dependency-refresh eval-evidence-dependency-clean core-evidence-dependency-audit core-scenario-trace-audit core-scenario-plan-audit core-evidence-durability-audit core-authority-audit core-authority-body-audit core-authority-review-audit core-skill-router-audit definitive-gate claims provenance certificate-verify commit-signature-verify test-static evidence-freshness lab eval refresh-evidence test
+.PHONY: validate audit non-regression-audit core-non-regression-audit authority-body-non-regression-audit definitive-audit parity-audit depth-parity-audit authority-locator-verify authority-body-verify authority-review-verify authority-review-determinism-test definitive-skill-eval-verify scenario-proofs-generate scenario-proofs-verify scenario-closure-plan-generate scenario-closure-plan-verify security-tranche-contract-test security-runtime-contract-test security-runtime-failure-retention-test security-failure-diagnostic-test security-wal-oracle-contract-test security-performance-execution-oracle-contract-test security-performance-execution-sql-contract-test security-performance-index-oracle-contract-test security-performance-index-sql-contract-test security-performance-index-fixture-math-test security-performance-structured-failure-contract-test scenario-security-001-run scenario-evidence-atomicity-test docker-volume-cleanup-test workflow-supply-chain-test evidence-dependency-inputs-test evidence-dependency-rerun evidence-dependency-generate evidence-dependency-verify evidence-dependency-negative-test tracked-evidence-generate tracked-generated-freshness tracked-generated-freshness-test ledger-output-refresh ledger-output-refresh-test ledger-output-verify evidence-pipeline-refresh evidence-pipeline-clean evidence-pipeline-clean-test eval-evidence-dependency-refresh eval-evidence-dependency-clean core-evidence-dependency-audit core-scenario-trace-audit core-scenario-plan-audit core-evidence-durability-audit core-authority-audit core-authority-body-audit core-authority-review-audit core-skill-router-audit definitive-gate claims provenance certificate-verify commit-signature-verify test-static evidence-freshness lab eval refresh-evidence test
 
 validate:
 	cd $(CORE_DIR) && GOCACHE=$(CURDIR)/.cache/go-build go run ./cmd/atlas validate \
@@ -115,6 +115,39 @@ endif
 scenario-closure-plan-verify:
 	ruby tools/verify-scenario-closure-plan.rb
 
+security-tranche-contract-test:
+	ruby tests/security-scenario-tranche.rb
+
+security-runtime-contract-test:
+	ruby tests/security-runtime-contract.rb
+
+security-runtime-failure-retention-test:
+	ruby tests/security-runtime-failure-retention.rb
+
+security-failure-diagnostic-test:
+	ruby tests/security-failure-diagnostics.rb
+
+security-performance-execution-oracle-contract-test:
+	ruby tests/security-performance-execution-oracle.rb
+
+security-performance-execution-sql-contract-test:
+	ruby tests/security-performance-execution-sql-contract.rb
+
+security-performance-index-oracle-contract-test:
+	ruby tests/security-performance-index-oracle.rb
+
+security-performance-index-sql-contract-test:
+	ruby tests/security-performance-index-sql-contract.rb
+
+security-performance-index-fixture-math-test:
+	ruby tests/security-performance-index-fixture-math.rb
+
+security-performance-structured-failure-contract-test:
+	ruby tests/security-performance-structured-failures.rb
+
+security-wal-oracle-contract-test:
+	ruby tests/security-wal-oracle.rb
+
 scenario-security-001-run:
 	ruby tools/run-scenario-security-001.rb
 
@@ -172,6 +205,12 @@ tracked-evidence-generate:
 	ruby tools/generate-scenario-closure-plan.rb
 	ruby tools/generate-provenance.rb
 
+ledger-output-refresh:
+	ruby tools/refresh-evidence-output-bindings.rb
+
+ledger-output-refresh-test:
+	ruby tools/test-refresh-evidence-output-bindings.rb
+
 ledger-output-verify:
 	ruby tools/verify-evidence-output-bindings.rb
 
@@ -183,6 +222,7 @@ tracked-generated-freshness-test:
 
 evidence-pipeline-refresh:
 	$(MAKE) tracked-evidence-generate
+	$(MAKE) ledger-output-refresh
 	$(MAKE) ledger-output-verify
 	$(MAKE) evidence-dependency-generate
 
@@ -253,9 +293,10 @@ refresh-evidence: eval test-static provenance
 test:
 	$(MAKE) validate audit
 	$(MAKE) non-regression-audit core-non-regression-audit authority-body-non-regression-audit workflow-supply-chain-test
-	$(MAKE) definitive-audit parity-audit authority-locator-verify authority-body-verify authority-review-verify authority-review-determinism-test definitive-skill-eval-verify scenario-proofs-verify scenario-closure-plan-verify scenario-evidence-atomicity-test core-scenario-trace-audit core-scenario-plan-audit core-evidence-durability-audit core-authority-audit core-authority-body-audit core-authority-review-audit core-skill-router-audit depth-parity-audit
+	$(MAKE) definitive-audit parity-audit authority-locator-verify authority-body-verify authority-review-verify authority-review-determinism-test definitive-skill-eval-verify security-tranche-contract-test security-runtime-contract-test security-runtime-failure-retention-test security-failure-diagnostic-test security-performance-execution-oracle-contract-test security-performance-execution-sql-contract-test security-performance-index-oracle-contract-test security-performance-index-sql-contract-test security-performance-index-fixture-math-test security-performance-structured-failure-contract-test security-wal-oracle-contract-test scenario-proofs-verify scenario-closure-plan-verify scenario-evidence-atomicity-test core-scenario-trace-audit core-scenario-plan-audit core-evidence-durability-audit core-authority-audit core-authority-body-audit core-authority-review-audit core-skill-router-audit depth-parity-audit
 	@if $(MAKE) definitive-gate; then echo "incomplete repository unexpectedly passed Definitive promotion" >&2; exit 1; fi
 	$(MAKE) evidence-pipeline-refresh
+	$(MAKE) ledger-output-refresh-test
 	$(MAKE) tracked-generated-freshness
 	$(MAKE) evidence-dependency-verify evidence-dependency-negative-test core-evidence-dependency-audit docker-volume-cleanup-test evidence-freshness certificate-verify
 	$(MAKE) evidence-pipeline-clean

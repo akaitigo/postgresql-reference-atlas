@@ -210,10 +210,15 @@
         "tools/lib/postgresql-skill-routing.rb",
         "tools/lib/scenario_closure_plan.rb",
         "tools/lib/scenario_proofs.rb",
+        "tools/lib/security_failure_diagnostics.rb",
+        "tools/lib/security_scenario_oracles.rb",
+        "tools/lib/security_scenario_tranche.rb",
+        "tools/refresh-evidence-output-bindings.rb",
         "tools/rerun-evidence-dependencies.rb",
         "tools/run-scenario-security-001.rb",
         "tools/test-atomic-evidence-publisher.rb",
         "tools/test-evidence-dependency-graph.rb",
+        "tools/test-refresh-evidence-output-bindings.rb",
         "tools/verify-authority-body-baseline.rb",
         "tools/verify-authority-body-inventory.rb",
         "tools/verify-authority-locators.rb",
@@ -227,7 +232,7 @@
         "tools/verify-sql-surface.rb"
       ],
       "baseline_digest": "sha256:775c67f607e6f8ab3ce84c702630472b46dbdd925fb51fda573f8e5148084040",
-      "current_digest": "sha256:e4d12654582fe3539cb8e7861b2d0b8a27b40e85268fe7459ff29b1b7888f008",
+      "current_digest": "sha256:638f59fa668a38a865e8088e8a9d6b6377b65879c78abd68996a63c6e15648a6",
       "observed_at": "2026-08-30T19:45:22.402577Z"
     },
     {
@@ -245,7 +250,7 @@
         "tools/verify-tracked-generated-freshness.rb"
       ],
       "baseline_digest": "sha256:fa08459f23c6fa59861b2636b0002ff8a7ae4996c1e3c2b748d9828c81d3276c",
-      "current_digest": "sha256:fb9368c4f56418a434201e950c80dbc3a28d57260332642cce57fda1caff7d55",
+      "current_digest": "sha256:82e6e6578d18bd619a0fd6d34aa4dc37d1474ad72324cd349bb7fcc3c7eb7c70",
       "observed_at": "2026-08-30T19:45:22.402577Z"
     },
     {
@@ -645,10 +650,98 @@
       "run_id": "postgresql-evidence-rerun-20260830t194524z"
     },
     {
+      "id": "output.abc82cfbf680e810f080",
+      "kind": "scenario-proof",
+      "path": "artifacts/pattern-scenarios/observations/definitive-domain_operations_wal__security__postgresql-verification-matrix-v2.observable.json",
+      "digest": "sha256:6ab2d56927205052bf3723b087319337ac984dd254bbce8efbaa432b734f8181",
+      "depends_on": [
+        "source.contract-and-authority",
+        "harness.sql-schema-correctness",
+        "harness.concurrency-mvcc",
+        "harness.wal-replication-backup",
+        "harness.migration-compatibility",
+        "harness.operations-performance-recovery",
+        "harness.scenario-skill-reporting",
+        "harness.evidence-dependency-control-plane",
+        "runtime.postgresql-server-client",
+        "profile.local",
+        "profile.container",
+        "profile.cluster"
+      ],
+      "status": "current",
+      "run_id": "postgresql-evidence-rerun-20260830t194524z"
+    },
+    {
+      "id": "output.9eb5485bbf7ceabbb557",
+      "kind": "scenario-proof",
+      "path": "artifacts/pattern-scenarios/observations/definitive-domain_performance_execution__security__postgresql-verification-matrix-v2.observable.json",
+      "digest": "sha256:337ff2998f754fa103fed7d5611a52da18acc667f516439a99e7abca01744040",
+      "depends_on": [
+        "source.contract-and-authority",
+        "harness.sql-schema-correctness",
+        "harness.concurrency-mvcc",
+        "harness.wal-replication-backup",
+        "harness.migration-compatibility",
+        "harness.operations-performance-recovery",
+        "harness.scenario-skill-reporting",
+        "harness.evidence-dependency-control-plane",
+        "runtime.postgresql-server-client",
+        "profile.local",
+        "profile.container",
+        "profile.cluster"
+      ],
+      "status": "current",
+      "run_id": "postgresql-evidence-rerun-20260830t194524z"
+    },
+    {
+      "id": "output.abe77f4c75c79ae00e04",
+      "kind": "scenario-proof",
+      "path": "artifacts/pattern-scenarios/observations/definitive-domain_performance_index__security__postgresql-verification-matrix-v2.observable.json",
+      "digest": "sha256:f3b2d9711419f89c7280d3dd51b720e43db60858f01094fe525af423477528fc",
+      "depends_on": [
+        "source.contract-and-authority",
+        "harness.sql-schema-correctness",
+        "harness.concurrency-mvcc",
+        "harness.wal-replication-backup",
+        "harness.migration-compatibility",
+        "harness.operations-performance-recovery",
+        "harness.scenario-skill-reporting",
+        "harness.evidence-dependency-control-plane",
+        "runtime.postgresql-server-client",
+        "profile.local",
+        "profile.container",
+        "profile.cluster"
+      ],
+      "status": "current",
+      "run_id": "postgresql-evidence-rerun-20260830t194524z"
+    },
+    {
+      "id": "output.8a0dc38cf342f60585e4",
+      "kind": "scenario-proof",
+      "path": "artifacts/pattern-scenarios/observations/definitive-domain_performance_planner__security__postgresql-verification-matrix-v2.observable.json",
+      "digest": "sha256:4427b1e4f1f3c108d67d1d7a54d5f5aa18c4227d9a8ccc325b342f032b286ee2",
+      "depends_on": [
+        "source.contract-and-authority",
+        "harness.sql-schema-correctness",
+        "harness.concurrency-mvcc",
+        "harness.wal-replication-backup",
+        "harness.migration-compatibility",
+        "harness.operations-performance-recovery",
+        "harness.scenario-skill-reporting",
+        "harness.evidence-dependency-control-plane",
+        "runtime.postgresql-server-client",
+        "profile.local",
+        "profile.container",
+        "profile.cluster"
+      ],
+      "status": "current",
+      "run_id": "postgresql-evidence-rerun-20260830t194524z"
+    },
+    {
       "id": "output.f1e503f23f699ec4792a",
       "kind": "scenario-proof",
       "path": "artifacts/pattern-scenarios/results.json",
-      "digest": "sha256:48498bbef08e9d36a223f7aaa045d8753437abb72d1224586de65244b040743a",
+      "digest": "sha256:93077286664997b9f7b4800172278ea64c0993837f91c4a1e29ca87fc1d7baa6",
       "depends_on": [
         "source.contract-and-authority",
         "harness.sql-schema-correctness",
@@ -670,7 +763,7 @@
       "id": "output.c2ae4a2be1eb3646f70d",
       "kind": "scenario-proof",
       "path": "artifacts/pattern-scenarios/traces/definitive-domain_concurrency_deadlock__security__postgresql-verification-matrix-v2.trace.json",
-      "digest": "sha256:1a5d7fb6307b60e7c41a4bbbe4e9277f5e707c3d157d3c99a3b09c9e8c236197",
+      "digest": "sha256:905ca5084622bbe2aeefeab37311f9e6abf76174eeb3731c3b592f30c255c110",
       "depends_on": [
         "source.contract-and-authority",
         "harness.sql-schema-correctness",
@@ -692,7 +785,7 @@
       "id": "output.7f7f1fb3190fee19bdb2",
       "kind": "scenario-proof",
       "path": "artifacts/pattern-scenarios/traces/definitive-domain_concurrency_locking__security__postgresql-verification-matrix-v2.trace.json",
-      "digest": "sha256:49c5637634c142d8da4bd8ff114cc8e66ed07bf0c73b1fff1c974d3a0abbb6e5",
+      "digest": "sha256:1e9f1567c24ac9ecb20ab39654d804cd1cc4ab0b18ff0558b520e5b51085e712",
       "depends_on": [
         "source.contract-and-authority",
         "harness.sql-schema-correctness",
@@ -714,7 +807,7 @@
       "id": "output.693881a04c3393b6410b",
       "kind": "scenario-proof",
       "path": "artifacts/pattern-scenarios/traces/definitive-domain_concurrency_mvcc__security__postgresql-verification-matrix-v2.trace.json",
-      "digest": "sha256:3ba2a53dbce31b3a62deb531f92601c1bfc20588b72025c113d09e3c30de7db7",
+      "digest": "sha256:01f47dbc053eea299868d10029211daf219071d885f4152092012c46fb057403",
       "depends_on": [
         "source.contract-and-authority",
         "harness.sql-schema-correctness",
@@ -736,7 +829,7 @@
       "id": "output.5b5d69f5f471d2b5c8fd",
       "kind": "scenario-proof",
       "path": "artifacts/pattern-scenarios/traces/definitive-domain_foundation_authority-lock__security__postgresql-verification-matrix-v2.trace.json",
-      "digest": "sha256:8d0c86d96438a2859e6caba3d014929286fcf2d2aba14f74f0e8185833e3bf50",
+      "digest": "sha256:3baa043fba2776418bc39322b85c678812c32f304849bff621103ce27816ea86",
       "depends_on": [
         "source.contract-and-authority",
         "harness.sql-schema-correctness",
@@ -758,7 +851,7 @@
       "id": "output.3e8029c1a3a27e5716c1",
       "kind": "scenario-proof",
       "path": "artifacts/pattern-scenarios/traces/definitive-domain_foundation_version-lock__security__postgresql-verification-matrix-v2.trace.json",
-      "digest": "sha256:08902035cb08665b163f060f50fbc1e0ebbd8697809f70b4c9abc71f25ed3ed3",
+      "digest": "sha256:dad3464ebceae2c0044be453643e982bb975690f1bd6dbd5e4756ec74fd09843",
       "depends_on": [
         "source.contract-and-authority",
         "harness.sql-schema-correctness",
@@ -780,7 +873,7 @@
       "id": "output.5e451c465a5fda23a502",
       "kind": "scenario-proof",
       "path": "artifacts/pattern-scenarios/traces/definitive-domain_lifecycle_compatibility-matrix__security__postgresql-verification-matrix-v2.trace.json",
-      "digest": "sha256:e7e737935f38bb0cc4777cfc0eb5d2c4c83bb33442f5c05ea3ad23c1e2aa0a9e",
+      "digest": "sha256:e1be28dae05a3de84b1bf2a245bff19cb6132b8bf7f1d381bfe592e88bd6762f",
       "depends_on": [
         "source.contract-and-authority",
         "harness.sql-schema-correctness",
@@ -802,7 +895,7 @@
       "id": "output.5bc43876a81c8ac679bc",
       "kind": "scenario-proof",
       "path": "artifacts/pattern-scenarios/traces/definitive-domain_lifecycle_pg-upgrade__security__postgresql-verification-matrix-v2.trace.json",
-      "digest": "sha256:bb9784e016995a667083466fea24a769106ececfd0c889768f75d30a4591cccd",
+      "digest": "sha256:369a5bd2f26f067de571fe51528a9aa789f3bae55e8fec2ccbe95a1892eafc94",
       "depends_on": [
         "source.contract-and-authority",
         "harness.sql-schema-correctness",
@@ -824,7 +917,7 @@
       "id": "output.29a5bbe3e58dc3ad3b31",
       "kind": "scenario-proof",
       "path": "artifacts/pattern-scenarios/traces/definitive-domain_lifecycle_schema-migration__security__postgresql-verification-matrix-v2.trace.json",
-      "digest": "sha256:b369524b3c5276520f83f4dcac1ae740963d8bc7cb97bef3a7737dd40caa4800",
+      "digest": "sha256:9ac07ea5956d458a032f6e99c9418ae319e53082507ae4c43f0a14c133b40677",
       "depends_on": [
         "source.contract-and-authority",
         "harness.sql-schema-correctness",
@@ -846,7 +939,7 @@
       "id": "output.ad5412aa73028d32e34f",
       "kind": "scenario-proof",
       "path": "artifacts/pattern-scenarios/traces/definitive-domain_lifecycle_upgrade__security__postgresql-verification-matrix-v2.trace.json",
-      "digest": "sha256:56287b1abb6d4f0a0c1f1347f033cd52ba192eb2c3684ea105976f02764f330f",
+      "digest": "sha256:35e5201a30d41c8caa45d9702feda9fce9ed6fe36c506fa358a2b3baf00e60ba",
       "depends_on": [
         "source.contract-and-authority",
         "harness.sql-schema-correctness",
@@ -868,7 +961,7 @@
       "id": "output.173b1f92c42ce3f0a4df",
       "kind": "scenario-proof",
       "path": "artifacts/pattern-scenarios/traces/definitive-domain_operations_backup-recovery__security__postgresql-verification-matrix-v2.trace.json",
-      "digest": "sha256:4e01a1dc4893e8eb9011b820ba64b3950ff8d6fcb984a671fd703c7498587ece",
+      "digest": "sha256:f12430d9c609f930473c18b390eabea5005b3cee11a176f5e872a155ba65b595",
       "depends_on": [
         "source.contract-and-authority",
         "harness.sql-schema-correctness",
@@ -890,7 +983,7 @@
       "id": "output.e83318eb1edb103cf2a6",
       "kind": "scenario-proof",
       "path": "artifacts/pattern-scenarios/traces/definitive-domain_operations_failure-injection__security__postgresql-verification-matrix-v2.trace.json",
-      "digest": "sha256:6161c33a1a02fc865d220f84fd547a5a18893be7f5100fbd45acb802d6d08bd6",
+      "digest": "sha256:c5d65eb7aba3d20bde053be1eab46cdacf60e026554a86bf702d54c53cb20623",
       "depends_on": [
         "source.contract-and-authority",
         "harness.sql-schema-correctness",
@@ -912,7 +1005,7 @@
       "id": "output.f99d69df2f5d81c10f7b",
       "kind": "scenario-proof",
       "path": "artifacts/pattern-scenarios/traces/definitive-domain_operations_logical-replication__security__postgresql-verification-matrix-v2.trace.json",
-      "digest": "sha256:82bc308b532fc3eef0787228a539abf71c4a66ed362073ce6673b438037b7aeb",
+      "digest": "sha256:0e760cd969a219c92503c18d94aab827bbbec23088f2a6c6afc5fc1b2db04e8d",
       "depends_on": [
         "source.contract-and-authority",
         "harness.sql-schema-correctness",
@@ -934,7 +1027,7 @@
       "id": "output.06a5a22a3cfafcb7f589",
       "kind": "scenario-proof",
       "path": "artifacts/pattern-scenarios/traces/definitive-domain_operations_maintenance__security__postgresql-verification-matrix-v2.trace.json",
-      "digest": "sha256:79e3b764307b1e58c4664ff54289f5c01994f6c2a96a3e08b2694781048e50b7",
+      "digest": "sha256:532d619c0fc8a331fdd86edc3625f4707d4dc1dac891c119cb7eaea0a2f770c7",
       "depends_on": [
         "source.contract-and-authority",
         "harness.sql-schema-correctness",
@@ -956,7 +1049,7 @@
       "id": "output.d6d91e70db8f23bfd5f2",
       "kind": "scenario-proof",
       "path": "artifacts/pattern-scenarios/traces/definitive-domain_operations_observability__security__postgresql-verification-matrix-v2.trace.json",
-      "digest": "sha256:c5d7715db91c0841740bca2975750739c026c676e157a6d5dcde4b611a54960c",
+      "digest": "sha256:fbdfb64ac05bc5ab275333c01059cf2993df2d485036a8da93a594083b5f4731",
       "depends_on": [
         "source.contract-and-authority",
         "harness.sql-schema-correctness",
@@ -978,7 +1071,7 @@
       "id": "output.baa117c7e396876082c1",
       "kind": "scenario-proof",
       "path": "artifacts/pattern-scenarios/traces/definitive-domain_operations_pitr-recovery__security__postgresql-verification-matrix-v2.trace.json",
-      "digest": "sha256:decb2248bbea42cf46291e24f4c6d99eca6f0b56d7f46cc9cf5eb11d7a355b13",
+      "digest": "sha256:c68c6482b7b5bbccefc13d4d5b11f4125fb53e02d7bb519e1369883a49232a4e",
       "depends_on": [
         "source.contract-and-authority",
         "harness.sql-schema-correctness",
@@ -1000,7 +1093,95 @@
       "id": "output.f85a76f8b8d5845ec9e8",
       "kind": "scenario-proof",
       "path": "artifacts/pattern-scenarios/traces/definitive-domain_operations_replication__security__postgresql-verification-matrix-v2.trace.json",
-      "digest": "sha256:52612a4289310e04cb2d5dbd0f178e86fe5f469547caa052bc522811f8421e98",
+      "digest": "sha256:8666928c53d6071e3c3e0a12840c4e7fc664f3af19472a586f268e52788048c2",
+      "depends_on": [
+        "source.contract-and-authority",
+        "harness.sql-schema-correctness",
+        "harness.concurrency-mvcc",
+        "harness.wal-replication-backup",
+        "harness.migration-compatibility",
+        "harness.operations-performance-recovery",
+        "harness.scenario-skill-reporting",
+        "harness.evidence-dependency-control-plane",
+        "runtime.postgresql-server-client",
+        "profile.local",
+        "profile.container",
+        "profile.cluster"
+      ],
+      "status": "current",
+      "run_id": "postgresql-evidence-rerun-20260830t194524z"
+    },
+    {
+      "id": "output.2a85d8b93dcaa38dba7e",
+      "kind": "scenario-proof",
+      "path": "artifacts/pattern-scenarios/traces/definitive-domain_operations_wal__security__postgresql-verification-matrix-v2.trace.json",
+      "digest": "sha256:ae71c3ee0a0ca796c84c1dd83d399fc02af3c1b6fe4249cd555fc4813ad42023",
+      "depends_on": [
+        "source.contract-and-authority",
+        "harness.sql-schema-correctness",
+        "harness.concurrency-mvcc",
+        "harness.wal-replication-backup",
+        "harness.migration-compatibility",
+        "harness.operations-performance-recovery",
+        "harness.scenario-skill-reporting",
+        "harness.evidence-dependency-control-plane",
+        "runtime.postgresql-server-client",
+        "profile.local",
+        "profile.container",
+        "profile.cluster"
+      ],
+      "status": "current",
+      "run_id": "postgresql-evidence-rerun-20260830t194524z"
+    },
+    {
+      "id": "output.cf282c83f00079b81a24",
+      "kind": "scenario-proof",
+      "path": "artifacts/pattern-scenarios/traces/definitive-domain_performance_execution__security__postgresql-verification-matrix-v2.trace.json",
+      "digest": "sha256:e8a665ab68237df562c2c252345decbb95cf315adc3a1b27fce91971605d63db",
+      "depends_on": [
+        "source.contract-and-authority",
+        "harness.sql-schema-correctness",
+        "harness.concurrency-mvcc",
+        "harness.wal-replication-backup",
+        "harness.migration-compatibility",
+        "harness.operations-performance-recovery",
+        "harness.scenario-skill-reporting",
+        "harness.evidence-dependency-control-plane",
+        "runtime.postgresql-server-client",
+        "profile.local",
+        "profile.container",
+        "profile.cluster"
+      ],
+      "status": "current",
+      "run_id": "postgresql-evidence-rerun-20260830t194524z"
+    },
+    {
+      "id": "output.2a9c0f556bd03c572126",
+      "kind": "scenario-proof",
+      "path": "artifacts/pattern-scenarios/traces/definitive-domain_performance_index__security__postgresql-verification-matrix-v2.trace.json",
+      "digest": "sha256:35485b9a3501980b0c0da1393928fedfa54560642c5d6790d4cf501f453af064",
+      "depends_on": [
+        "source.contract-and-authority",
+        "harness.sql-schema-correctness",
+        "harness.concurrency-mvcc",
+        "harness.wal-replication-backup",
+        "harness.migration-compatibility",
+        "harness.operations-performance-recovery",
+        "harness.scenario-skill-reporting",
+        "harness.evidence-dependency-control-plane",
+        "runtime.postgresql-server-client",
+        "profile.local",
+        "profile.container",
+        "profile.cluster"
+      ],
+      "status": "current",
+      "run_id": "postgresql-evidence-rerun-20260830t194524z"
+    },
+    {
+      "id": "output.84deebe18a96963f93ec",
+      "kind": "scenario-proof",
+      "path": "artifacts/pattern-scenarios/traces/definitive-domain_performance_planner__security__postgresql-verification-matrix-v2.trace.json",
+      "digest": "sha256:69df6c078bf4a87cce05b5ec79f3cb8eb14aab8e1008280a093a8deba2888b01",
       "depends_on": [
         "source.contract-and-authority",
         "harness.sql-schema-correctness",
@@ -3618,7 +3799,7 @@
       "id": "output.cf0dc2a29847936b52f3",
       "kind": "scenario-proof",
       "path": "evidence/scenarios/behaviors/concurrency.deadlock/security.proof.json",
-      "digest": "sha256:afb1751c2b83f4a74d6110898d2a1f716856c0d5a07f940e9826e2ce34ebe120",
+      "digest": "sha256:f50a1d2f501825e679cc33e9c193fba994113e9d00973201673388f8ab08316e",
       "depends_on": [
         "source.contract-and-authority",
         "harness.sql-schema-correctness",
@@ -3838,7 +4019,7 @@
       "id": "output.3e720a811d9ec467edef",
       "kind": "scenario-proof",
       "path": "evidence/scenarios/behaviors/concurrency.locking/security.proof.json",
-      "digest": "sha256:9c9ba3f07a97331455c1f9c3adb767694db9fe94820fa29ff25fe26cce74f548",
+      "digest": "sha256:84108f9fcc6212e386d72d8605a7814d468a1946b16c5132f57978fbd3bcf0e2",
       "depends_on": [
         "source.contract-and-authority",
         "harness.sql-schema-correctness",
@@ -4058,7 +4239,7 @@
       "id": "output.a24fae8c545c17851e49",
       "kind": "scenario-proof",
       "path": "evidence/scenarios/behaviors/concurrency.mvcc/security.proof.json",
-      "digest": "sha256:8224ea65da4d1d4354503a5948777d5502f86e79188ccd770dd0a6b0e43825f7",
+      "digest": "sha256:c478cad8f50ef38fc8c13f6b889c5eab8c493543f3aba09bf399eb0158cf9df2",
       "depends_on": [
         "source.contract-and-authority",
         "harness.sql-schema-correctness",
@@ -4278,7 +4459,7 @@
       "id": "output.014bca9587de3ccbc9c8",
       "kind": "scenario-proof",
       "path": "evidence/scenarios/behaviors/foundation.authority-lock/security.proof.json",
-      "digest": "sha256:ee2ad1f8083872e77f0327fa29e5614491f21a40cdbd58a544f21fbeb945ceaf",
+      "digest": "sha256:36e84fae8f1ddc5703a4f317e3f1c5c59a10123b9b6ab7e81cd42315a7ce5db3",
       "depends_on": [
         "source.contract-and-authority",
         "harness.sql-schema-correctness",
@@ -4498,7 +4679,7 @@
       "id": "output.69f641d546875efb21e0",
       "kind": "scenario-proof",
       "path": "evidence/scenarios/behaviors/foundation.version-lock/security.proof.json",
-      "digest": "sha256:9461f8630bab311f488073ee033fec68da467c699be8dfcb81398dddd794029d",
+      "digest": "sha256:71ea40ae1a2f9f1d88c31024745a23b7ac4465de77984f6a00bdf788401404b2",
       "depends_on": [
         "source.contract-and-authority",
         "harness.sql-schema-correctness",
@@ -4718,7 +4899,7 @@
       "id": "output.cb52f7d91dd94e46b3c5",
       "kind": "scenario-proof",
       "path": "evidence/scenarios/behaviors/lifecycle.compatibility-matrix/security.proof.json",
-      "digest": "sha256:38fede68f7d38fa99093422e09e22c48b693766d865bbd527fde168873cc9521",
+      "digest": "sha256:fbe03f0706a7aa6f25cc6fbdbddee8024faf5c1590b5cd4cc7edc850b73ae832",
       "depends_on": [
         "source.contract-and-authority",
         "harness.sql-schema-correctness",
@@ -4938,7 +5119,7 @@
       "id": "output.3065c018df1f312b87e7",
       "kind": "scenario-proof",
       "path": "evidence/scenarios/behaviors/lifecycle.pg-upgrade/security.proof.json",
-      "digest": "sha256:b4b54bcaee607dd3c211c0b301566fe1561749abf5b6ea2b135278b00d7998cd",
+      "digest": "sha256:600fcff31dd1bf0dc39ffce788474580e483f2b97f0b5f7b6fdeb291b5dcb6a8",
       "depends_on": [
         "source.contract-and-authority",
         "harness.sql-schema-correctness",
@@ -5158,7 +5339,7 @@
       "id": "output.549e4cf532aac00410db",
       "kind": "scenario-proof",
       "path": "evidence/scenarios/behaviors/lifecycle.schema-migration/security.proof.json",
-      "digest": "sha256:570c30aa7c657232a01095f5d146ee94d7f0218698117499bee88e441e329f23",
+      "digest": "sha256:66b35d297d8e711fdb1c0df5a01ce6c0587f915438115f80869dc7ebcb390b19",
       "depends_on": [
         "source.contract-and-authority",
         "harness.sql-schema-correctness",
@@ -5378,7 +5559,7 @@
       "id": "output.a2ca1e87b63bf3c4f9e3",
       "kind": "scenario-proof",
       "path": "evidence/scenarios/behaviors/lifecycle.upgrade/security.proof.json",
-      "digest": "sha256:a44dc98053cb8c7547c3fb3dff4ab17c43f30438363045ed5644bbb73cc73618",
+      "digest": "sha256:f7e061229d66f935bd919c0cd0af5f8473fe76d6f971f261bbad53f424178a5c",
       "depends_on": [
         "source.contract-and-authority",
         "harness.sql-schema-correctness",
@@ -5598,7 +5779,7 @@
       "id": "output.2c96d8b238318c2e3cc0",
       "kind": "scenario-proof",
       "path": "evidence/scenarios/behaviors/operations.backup-recovery/security.proof.json",
-      "digest": "sha256:50d0c55cf88b5615ccdfcc1c950830cda81a4fcc7dd8b828803fb305e8a6281f",
+      "digest": "sha256:f0b8576c714be42ca85bd9ba37d494c8004905e790ffd8feb1ddbce232a77b8b",
       "depends_on": [
         "source.contract-and-authority",
         "harness.sql-schema-correctness",
@@ -5818,7 +5999,7 @@
       "id": "output.3651936a831643fcb56a",
       "kind": "scenario-proof",
       "path": "evidence/scenarios/behaviors/operations.failure-injection/security.proof.json",
-      "digest": "sha256:2e92594d07a303e341ae95ca77292035de10479d85494046bf3372d22f128c66",
+      "digest": "sha256:621b9e6def41cd462c4209f9cdb8480b76c78702510ea2aea0e23f80bc306ae8",
       "depends_on": [
         "source.contract-and-authority",
         "harness.sql-schema-correctness",
@@ -6038,7 +6219,7 @@
       "id": "output.6121ab3bb482a6a0f4c6",
       "kind": "scenario-proof",
       "path": "evidence/scenarios/behaviors/operations.logical-replication/security.proof.json",
-      "digest": "sha256:2096c2aa8ca3ec4d55ea514027e5730d4a79e9daa0c07b3dac39aa3fd1290c67",
+      "digest": "sha256:c327d086f07cfbe0e363feb096734662430596a4f59a2e42edfa41ae08528cf4",
       "depends_on": [
         "source.contract-and-authority",
         "harness.sql-schema-correctness",
@@ -6258,7 +6439,7 @@
       "id": "output.deeaaa5b070b59184c53",
       "kind": "scenario-proof",
       "path": "evidence/scenarios/behaviors/operations.maintenance/security.proof.json",
-      "digest": "sha256:f0e0a3402ff0c1af5510b93bf4f008585711f57b1ff186a1f84300075a5bd349",
+      "digest": "sha256:aae1eacf58797620729200a36bb907c1c256f5e28ef887df99aadaecf40ca2fb",
       "depends_on": [
         "source.contract-and-authority",
         "harness.sql-schema-correctness",
@@ -6478,7 +6659,7 @@
       "id": "output.82a7491ea1330d5a5397",
       "kind": "scenario-proof",
       "path": "evidence/scenarios/behaviors/operations.observability/security.proof.json",
-      "digest": "sha256:d9dea838eb6fc9b5514ff73c8dc91d7e3b1e5abe1b3b6195a40fd1edf9edb54a",
+      "digest": "sha256:96455d695a9dcadf8ec292765b1970dbac146f840c6bc827550cb9324e163922",
       "depends_on": [
         "source.contract-and-authority",
         "harness.sql-schema-correctness",
@@ -6698,7 +6879,7 @@
       "id": "output.595760b094d2dc83af88",
       "kind": "scenario-proof",
       "path": "evidence/scenarios/behaviors/operations.pitr-recovery/security.proof.json",
-      "digest": "sha256:eaad6710a184fa7e30e5b65e4649f93ff0cafc7f25f68391b23cb81363ab8a73",
+      "digest": "sha256:0a30d2ab9fff0d26b58852d2af09ca27a05b9d03ec8d8cf682f54a03c9d99abe",
       "depends_on": [
         "source.contract-and-authority",
         "harness.sql-schema-correctness",
@@ -6918,7 +7099,7 @@
       "id": "output.ea6560690deeb16fef6c",
       "kind": "scenario-proof",
       "path": "evidence/scenarios/behaviors/operations.replication/security.proof.json",
-      "digest": "sha256:8f93e956cbfad75bec3b2d5e33d1587cbb67f9c08bfb6368c9454c532d116a2b",
+      "digest": "sha256:2d40c4b4371192e94f12a2223083ea8a5a4af4882aab42f36af0c1fb4de38945",
       "depends_on": [
         "source.contract-and-authority",
         "harness.sql-schema-correctness",
@@ -7138,7 +7319,7 @@
       "id": "output.7fcea79a68ab40fb58bf",
       "kind": "scenario-proof",
       "path": "evidence/scenarios/behaviors/operations.wal/security.proof.json",
-      "digest": "sha256:087e50b23a309d75151ffe5ff5807e4000654cc9babadd7fc8526f3b97a2d0ca",
+      "digest": "sha256:84acf1527e64b1ee1bfa8bdddce04716bae6e24ddc4bdb2f4756ac253d5d1eb0",
       "depends_on": [
         "source.contract-and-authority",
         "harness.sql-schema-correctness",
@@ -7358,7 +7539,7 @@
       "id": "output.58a54908fe4a9765911d",
       "kind": "scenario-proof",
       "path": "evidence/scenarios/behaviors/performance.execution/security.proof.json",
-      "digest": "sha256:84f660464e4ea0f8ec65c4599e2001c3cd0a52af0f34d0fcfedb4893877f3fdc",
+      "digest": "sha256:f9fbc5cc2968f062956a95ad423f94df083043897184aae6154332206c565cc5",
       "depends_on": [
         "source.contract-and-authority",
         "harness.sql-schema-correctness",
@@ -7578,7 +7759,7 @@
       "id": "output.d44ab300d7b047030407",
       "kind": "scenario-proof",
       "path": "evidence/scenarios/behaviors/performance.index/security.proof.json",
-      "digest": "sha256:7564f1ecc2155f09f323b11e24902a4e7d8f71edc3d3186cd135baf210a6ea62",
+      "digest": "sha256:0bf556722441d1aeb2de65b86343e5da9e6de5e57f14824ab100afd2bc59283c",
       "depends_on": [
         "source.contract-and-authority",
         "harness.sql-schema-correctness",
@@ -7798,7 +7979,7 @@
       "id": "output.38fc05f9a2afdc77e44d",
       "kind": "scenario-proof",
       "path": "evidence/scenarios/behaviors/performance.planner/security.proof.json",
-      "digest": "sha256:9c476490d3836d2f0d008a51e9e12ab59b53439fb760974f70c636ad44f085ba",
+      "digest": "sha256:2cdc9df82e15f4c7fec3a7e8df98f1b6abf199b1cb190e7e92b8323e23766667",
       "depends_on": [
         "source.contract-and-authority",
         "harness.sql-schema-correctness",
@@ -9800,7 +9981,7 @@
       "id": "output.703bfb6faf213aabdc5a",
       "kind": "closure-plan",
       "path": "evidence/scenarios/closure-plan.json",
-      "digest": "sha256:5e137e3891a8b5a8b5c0650be01bef07ee7de3b84b6513d8d47fdb50b876c054",
+      "digest": "sha256:6116ca064864563cadc4f30919268218cf3c5ca50a52df3c73cd62d87c3cfac9",
       "depends_on": [
         "source.contract-and-authority",
         "harness.sql-schema-correctness",
@@ -9822,7 +10003,7 @@
       "id": "output.19b0da01d983148f2dbc",
       "kind": "scenario-proof",
       "path": "evidence/scenarios/index.json",
-      "digest": "sha256:67ff700f75c26ac74714bbecb1c1df378e29a063a80e01126069953aa74f3593",
+      "digest": "sha256:89d4fb51b0558c4cff3220eb76ccd5f1a17c8d18ee002b07c6264e1a10873a31",
       "depends_on": [
         "source.contract-and-authority",
         "harness.sql-schema-correctness",
@@ -10020,7 +10201,7 @@
       "id": "output.a859f137cb315aeae3b6",
       "kind": "derived-evidence",
       "path": "provenance.yaml",
-      "digest": "sha256:35cd9d1bc9932cdf2f20a8393f62b514e7e748a53e4d8ed1212433de0f0b7998",
+      "digest": "sha256:a1ff5dc6e70d1583ef0f0aa2870c6ebe5c91edba057540a4ef6e85f5e09672f2",
       "depends_on": [
         "source.contract-and-authority",
         "harness.sql-schema-correctness",
@@ -10086,11 +10267,11 @@
         },
         {
           "input_id": "harness.scenario-skill-reporting",
-          "digest": "sha256:e4d12654582fe3539cb8e7861b2d0b8a27b40e85268fe7459ff29b1b7888f008"
+          "digest": "sha256:638f59fa668a38a865e8088e8a9d6b6377b65879c78abd68996a63c6e15648a6"
         },
         {
           "input_id": "harness.evidence-dependency-control-plane",
-          "digest": "sha256:fb9368c4f56418a434201e950c80dbc3a28d57260332642cce57fda1caff7d55"
+          "digest": "sha256:82e6e6578d18bd619a0fd6d34aa4dc37d1474ad72324cd349bb7fcc3c7eb7c70"
         },
         {
           "input_id": "runtime.postgresql-server-client",
@@ -10126,6 +10307,10 @@
         "output.9c4f3a1303eea4e74279",
         "output.9c3d6bc68171498cef3d",
         "output.a5053d3c4e560369ef48",
+        "output.abc82cfbf680e810f080",
+        "output.9eb5485bbf7ceabbb557",
+        "output.abe77f4c75c79ae00e04",
+        "output.8a0dc38cf342f60585e4",
         "output.f1e503f23f699ec4792a",
         "output.c2ae4a2be1eb3646f70d",
         "output.7f7f1fb3190fee19bdb2",
@@ -10143,6 +10328,10 @@
         "output.d6d91e70db8f23bfd5f2",
         "output.baa117c7e396876082c1",
         "output.f85a76f8b8d5845ec9e8",
+        "output.2a85d8b93dcaa38dba7e",
+        "output.cf282c83f00079b81a24",
+        "output.2a9c0f556bd03c572126",
+        "output.84deebe18a96963f93ec",
         "output.651c2576eb17d7ded5f8",
         "output.ee9d070173a7bc76cd49",
         "output.9c1363dabc1242e6f502",
@@ -10573,6 +10762,10 @@
     "artifacts/pattern-scenarios/observations/definitive-domain_operations_observability__security__postgresql-verification-matrix-v2.observable.json",
     "artifacts/pattern-scenarios/observations/definitive-domain_operations_pitr-recovery__security__postgresql-verification-matrix-v2.observable.json",
     "artifacts/pattern-scenarios/observations/definitive-domain_operations_replication__security__postgresql-verification-matrix-v2.observable.json",
+    "artifacts/pattern-scenarios/observations/definitive-domain_operations_wal__security__postgresql-verification-matrix-v2.observable.json",
+    "artifacts/pattern-scenarios/observations/definitive-domain_performance_execution__security__postgresql-verification-matrix-v2.observable.json",
+    "artifacts/pattern-scenarios/observations/definitive-domain_performance_index__security__postgresql-verification-matrix-v2.observable.json",
+    "artifacts/pattern-scenarios/observations/definitive-domain_performance_planner__security__postgresql-verification-matrix-v2.observable.json",
     "artifacts/pattern-scenarios/results.json",
     "artifacts/pattern-scenarios/traces/definitive-domain_concurrency_deadlock__security__postgresql-verification-matrix-v2.trace.json",
     "artifacts/pattern-scenarios/traces/definitive-domain_concurrency_locking__security__postgresql-verification-matrix-v2.trace.json",
@@ -10590,6 +10783,10 @@
     "artifacts/pattern-scenarios/traces/definitive-domain_operations_observability__security__postgresql-verification-matrix-v2.trace.json",
     "artifacts/pattern-scenarios/traces/definitive-domain_operations_pitr-recovery__security__postgresql-verification-matrix-v2.trace.json",
     "artifacts/pattern-scenarios/traces/definitive-domain_operations_replication__security__postgresql-verification-matrix-v2.trace.json",
+    "artifacts/pattern-scenarios/traces/definitive-domain_operations_wal__security__postgresql-verification-matrix-v2.trace.json",
+    "artifacts/pattern-scenarios/traces/definitive-domain_performance_execution__security__postgresql-verification-matrix-v2.trace.json",
+    "artifacts/pattern-scenarios/traces/definitive-domain_performance_index__security__postgresql-verification-matrix-v2.trace.json",
+    "artifacts/pattern-scenarios/traces/definitive-domain_performance_planner__security__postgresql-verification-matrix-v2.trace.json",
     "artifacts/reference-system/observations/boundary.observable.json",
     "artifacts/reference-system/observations/compatibility.observable.json",
     "artifacts/reference-system/observations/failure.observable.json",
@@ -11012,7 +11209,7 @@
       "id": "postgresql-scenario-closure-topology-v1",
       "kind": "scenario-closure-plan",
       "path": "evidence/scenarios/closure-plan.json",
-      "baseline_digest": "sha256:968aa0beb022e6cfcf1d82b85d5689f40d00fa0290bd737b5cbf44c1303c1426"
+      "baseline_digest": "sha256:f69adc4abb57bf8f4423daf0060afb795d2e3f61ba250241ad5dc10473513554"
     }
   ]
 }

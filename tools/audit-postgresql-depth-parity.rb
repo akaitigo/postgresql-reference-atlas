@@ -176,7 +176,7 @@ scenario_summary = scenario_proofs.fetch("summary")
 errors << "PostgreSQL Scenario Proof identity" unless scenario_proofs.fetch("id") == "postgresql-scenario-proof-matrix-v1" && scenario_proofs.fetch("status") == "incomplete-authority-atomic-and-runtime-closure"
 errors << "PostgreSQL Scenario Proof denominator" unless scenario_summary.fetch("patterns") == 29 && scenario_summary.fetch("scenarios") == 10 && scenario_summary.fetch("rows") == 290
 errors << "PostgreSQL Scenario Proof non-reuse" unless scenario_summary.fetch("integrated_trace_rows") == 290 && scenario_proofs.fetch("files").all? { |item| item.fetch("status") != "completion-eligible-runtime-proof" }
-errors << "PostgreSQL strict Scenario closure" unless scenario_summary.fetch("pattern_specific_rows") == 16 && scenario_summary.fetch("pattern_specific_runtime_rows") == 16 && scenario_summary.fetch("pattern_specific_gaps") == 274
+errors << "PostgreSQL strict Scenario closure" unless scenario_summary.fetch("pattern_specific_rows") == 20 && scenario_summary.fetch("pattern_specific_runtime_rows") == 20 && scenario_summary.fetch("pattern_specific_gaps") == 270
 errors << "PostgreSQL Scenario Proof completion boundary" unless scenario_summary.fetch("authority_atomic_rows") == 0 && scenario_summary.fetch("completion_eligible_rows") == 0
 closure_plan_contract = mapping.fetch("scenario_closure_plan")
 closure_plan_reference = closure_plan_contract.fetch("reference")
@@ -202,7 +202,7 @@ errors << "Scenario Closure risk order" unless closure_plan_policy.fetch("risk_o
 errors << "Scenario Closure tranche size" unless closure_plan_policy.fetch("maximum_pattern_rows_per_tranche") == 4
 errors << "Scenario Closure Subject denominator" unless closure_plan_policy.fetch("derive_counts_from_postgresql_denominator") == true && closure_plan_policy.fetch("transplant_frontend_absolute_counts") == false
 closure_plan_summary = scenario_closure_plan.fetch("summary")
-errors << "PostgreSQL Scenario Closure Plan denominator" unless closure_plan_summary.fetch("remaining_rows") == 274 && closure_plan_summary.fetch("completed_dedicated_rows") == 16 && closure_plan_summary.fetch("planned_tranches") == 76
+errors << "PostgreSQL Scenario Closure Plan denominator" unless closure_plan_summary.fetch("remaining_rows") == 270 && closure_plan_summary.fetch("completed_dedicated_rows") == 20 && closure_plan_summary.fetch("planned_tranches") == 75
 errors << "PostgreSQL Scenario Closure Plan next tranche" unless scenario_closure_plan.dig("next_tranche", "id") == "security-001" && scenario_closure_plan.fetch("tranches").all? { |tranche| tranche.fetch("pattern_rows") <= 4 }
 
 atomic_contract = mapping.fetch("atomic_scenario_evidence_publishing")
@@ -225,7 +225,7 @@ end
 atomic_policy = atomic_contract.fetch("policy")
 errors << "Atomic Evidence policy" unless atomic_policy.values.all? { |value| value == true }
 errors << "Atomic Evidence implementation" unless File.file?(File.join(root, atomic_contract.fetch("implementation"))) && File.file?(File.join(root, atomic_contract.fetch("negative_test")))
-errors << "Atomic Evidence runtime report" unless scenario_runtime_report.fetch("status") == "passed" && scenario_runtime_report.fetch("retention_contract") == {"publish_on"=>"full-run-passed", "failed_run"=>"retain-prior-success", "swap"=>"staged-directory-rename-with-rollback"} && scenario_runtime_report.fetch("tests").length == 16
+errors << "Atomic Evidence runtime report" unless scenario_runtime_report.fetch("status") == "passed" && scenario_runtime_report.fetch("retention_contract") == {"publish_on"=>"full-run-passed", "failed_run"=>"retain-prior-success", "swap"=>"staged-directory-rename-with-rollback"} && scenario_runtime_report.fetch("tests").length == 20
 axes = mapping.fetch("axes")
 errors << "18 axes" unless axes.map { |axis| axis.fetch("id") } == required_axes
 errors << "FE canonical axes" unless Array(reference_document["axes"]).map { |axis| axis.fetch("id") } == required_axes

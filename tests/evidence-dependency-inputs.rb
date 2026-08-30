@@ -26,6 +26,7 @@ def validate_partition!(bindings)
   tools/lib/atomic_evidence_publisher.rb
   tools/lib/canonical-json.rb
   tools/lib/postgresql-skill-routing.rb
+  tools/lib/security_scenario_tranche.rb
   tools/lib/scenario_closure_plan.rb
   tools/lib/scenario_proofs.rb
 ].freeze
@@ -88,6 +89,16 @@ rescue SystemExit => e
   raise unless e.status == 1
 end
 
+scenario_missing_member = Marshal.load(Marshal.dump(bindings))
+scenario = locate(scenario_missing_member, "harness.scenario-skill-reporting")
+scenario.fetch("members").delete("tools/lib/security_scenario_tranche.rb")
+begin
+  validate_partition!(scenario_missing_member)
+  abort "scenario tranche selector member removal was accepted"
+rescue SystemExit => e
+  raise unless e.status == 1
+end
+
 ledger_bindings = bindings.to_h { |binding| [binding.fetch("id"), binding.fetch("digest")] }
 stale_bindings = ledger_bindings.dup
 stale_bindings["harness.evidence-dependency-control-plane"] = "sha256:#{'0' * 64}"
@@ -98,4 +109,13 @@ rescue RuntimeError => e
   abort e.message unless e.message.include?("harness.evidence-dependency-control-plane")
 end
 
-puts "Evidence dependency input contractを検証しました: legacy member set partitioned without shrink; group-removal/member-loss and control-plane stale-digest fixtures rejected"
+scenario_stale_bindings = ledger_bindings.dup
+scenario_stale_bindings["harness.scenario-skill-reporting"] = "sha256:#{'f' * 64}"
+begin
+  EvidenceDependencyGraph.verify_ledger_input_bindings!(scenario_stale_bindings, bindings)
+  abort "scenario-skill-reporting stale ledger digest was accepted"
+rescue RuntimeError => e
+  abort e.message unless e.message.include?("harness.scenario-skill-reporting")
+end
+
+puts "Evidence dependency input contractを検証しました: legacy member set partitioned without shrink; group-removal/member-loss and scenario/control-plane stale-digest fixtures rejected"

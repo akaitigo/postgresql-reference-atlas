@@ -37,9 +37,23 @@ Dir.mktmpdir("postgresql-atomic-evidence-") do |tmp|
   publisher = AtomicEvidencePublisher.new(output, validator: validator)
   result = publisher.publish(run_status: "failed") { |staging| write_tree(staging, "new") }
   abort "failed run removed or changed prior success" unless result == :retained_prior_success && snapshot(output) == baseline
+  abort "failed run leaked staging directories" if Dir.exist?(publisher.staging_root) || Dir.exist?(publisher.backup_root)
 
   result = publisher.publish(run_status: "failed") { |staging| write_tree(staging, "new", partial: true) }
   abort "partial failed run removed or changed prior success" unless result == :retained_prior_success && snapshot(output) == baseline
+  abort "partial failed run leaked staging directories" if Dir.exist?(publisher.staging_root) || Dir.exist?(publisher.backup_root)
+
+  begin
+    publisher.publish(run_status: "passed") do |staging|
+      write_tree(staging, "new")
+      raise "oracle failed before publish"
+    end
+    abort "oracle failure was not raised"
+  rescue RuntimeError => e
+    raise unless e.message == "oracle failed before publish"
+    abort "oracle failure changed prior success digests" unless snapshot(output) == baseline
+    abort "oracle failure leaked staging directories" if Dir.exist?(publisher.staging_root) || Dir.exist?(publisher.backup_root)
+  end
 
   begin
     publisher.publish(run_status: "passed") do |staging|
@@ -48,6 +62,7 @@ Dir.mktmpdir("postgresql-atomic-evidence-") do |tmp|
     abort "partial staged generation was published"
   rescue AtomicEvidencePublisher::PublicationError
     abort "partial generation changed prior success" unless snapshot(output) == baseline
+    abort "partial generation leaked staging directories" if Dir.exist?(publisher.staging_root) || Dir.exist?(publisher.backup_root)
   end
 
   %i[before_promote after_promote].each do |failpoint|
@@ -56,6 +71,7 @@ Dir.mktmpdir("postgresql-atomic-evidence-") do |tmp|
       abort "swap failure was not raised: #{failpoint}"
     rescue AtomicEvidencePublisher::PublicationError
       abort "swap rollback did not restore prior success: #{failpoint}" unless snapshot(output) == baseline
+      abort "swap rollback leaked staging directories: #{failpoint}" if Dir.exist?(publisher.staging_root) || Dir.exist?(publisher.backup_root)
     end
   end
 
@@ -66,4 +82,4 @@ Dir.mktmpdir("postgresql-atomic-evidence-") do |tmp|
   abort "temporary swap directories leaked" if Dir.exist?(publisher.staging_root) || Dir.exist?(publisher.backup_root)
 end
 
-puts "Verified atomic Scenario Evidence publication: failed/partial runs retain prior success, swap failures roll back, successful generations do not mix."
+puts "Verified atomic Scenario Evidence publication: failed/partial/oracle-error runs retain prior success, swap failures roll back, successful generations do not mix."

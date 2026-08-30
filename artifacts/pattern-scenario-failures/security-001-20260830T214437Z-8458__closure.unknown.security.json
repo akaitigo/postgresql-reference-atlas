@@ -1,0 +1,372 @@
+{
+  "schema_version": 1,
+  "kind": "postgresql-scenario-runtime-failure-diagnostic",
+  "run_id": "security-001-20260830T214437Z-8458",
+  "recorded_at": "2026-08-30T21:44:37Z",
+  "failed_row": "closure.unknown.security",
+  "target": "unknown",
+  "oracle_error": "performance.index security Oracle failed",
+  "command": "ruby tools/run-scenario-security-001.rb",
+  "profile": "real-postgresql-18.6-container",
+  "attempt_policy": {
+    "workers": 1,
+    "retries": 0,
+    "first_attempt_only": true
+  },
+  "bindings": {
+    "source_digest": "sha256:b8734bc90dcefeb02b28f1858c73e8aba0452cf78d0d27349b708e16a4e14ad9",
+    "harness_digest": "sha256:8abfeb45b55c7f7722f05ca143909fc18e6b09b83db738b408ce7d1f5c2de836"
+  },
+  "actual_result": {
+  },
+  "oracle_predicates": {
+  },
+  "plan_nodes": [
+
+  ],
+  "canonical_artifacts": {
+    "pre": {
+      "count": 33,
+      "collection_digest": "sha256:fcb84cb43d47d2659f6c791a150f4e627affe3ff91ef72f0713fb151402bb527",
+      "artifacts": [
+        {
+          "path": "artifacts/pattern-scenarios/observations/definitive-domain_concurrency_deadlock__security__postgresql-verification-matrix-v2.observable.json",
+          "digest": "sha256:74a90de43d249cef40fd22be6966559337769504ac062e501037f45099885153",
+          "bytes": 303
+        },
+        {
+          "path": "artifacts/pattern-scenarios/observations/definitive-domain_concurrency_locking__security__postgresql-verification-matrix-v2.observable.json",
+          "digest": "sha256:5921844f6629347d2f6c8fed428a128e9ebb654559885468b5cc67a3c309396f",
+          "bytes": 302
+        },
+        {
+          "path": "artifacts/pattern-scenarios/observations/definitive-domain_concurrency_mvcc__security__postgresql-verification-matrix-v2.observable.json",
+          "digest": "sha256:8f39c2d97108e0f4bb72379e0729bff62e8869b1535e7915bd1874c2e83685ef",
+          "bytes": 299
+        },
+        {
+          "path": "artifacts/pattern-scenarios/observations/definitive-domain_foundation_authority-lock__security__postgresql-verification-matrix-v2.observable.json",
+          "digest": "sha256:1c5482808ebf1546385817283c26a9f81568a1bec06d5451c28d49ee8bf6300c",
+          "bytes": 308
+        },
+        {
+          "path": "artifacts/pattern-scenarios/observations/definitive-domain_foundation_version-lock__security__postgresql-verification-matrix-v2.observable.json",
+          "digest": "sha256:1afbd0fb7dfe87ded2c1cf04d26a871e29ee9888d034818035b2662b10019e2a",
+          "bytes": 306
+        },
+        {
+          "path": "artifacts/pattern-scenarios/observations/definitive-domain_lifecycle_compatibility-matrix__security__postgresql-verification-matrix-v2.observable.json",
+          "digest": "sha256:00e1ca23dd1411c0f3404f9f4ab6d1530c4683f420bc7d19253785d2fb80e592",
+          "bytes": 313
+        },
+        {
+          "path": "artifacts/pattern-scenarios/observations/definitive-domain_lifecycle_pg-upgrade__security__postgresql-verification-matrix-v2.observable.json",
+          "digest": "sha256:36a77c30e6c32eff818e45b1060c8f6efd356cb84f18fc67c261fa1a8d84b046",
+          "bytes": 303
+        },
+        {
+          "path": "artifacts/pattern-scenarios/observations/definitive-domain_lifecycle_schema-migration__security__postgresql-verification-matrix-v2.observable.json",
+          "digest": "sha256:690140c6afcf54708d27f9a1980e0fe72832973269a1bc4281ae4d82ae922a73",
+          "bytes": 309
+        },
+        {
+          "path": "artifacts/pattern-scenarios/observations/definitive-domain_lifecycle_upgrade__security__postgresql-verification-matrix-v2.observable.json",
+          "digest": "sha256:0f64eb3e3f73eb1b5c7df232bf56e6a4ad5ec28cb62880d943932a46473449cd",
+          "bytes": 300
+        },
+        {
+          "path": "artifacts/pattern-scenarios/observations/definitive-domain_operations_backup-recovery__security__postgresql-verification-matrix-v2.observable.json",
+          "digest": "sha256:459725171ab388b4bfbdc12c82aabade183e6b3fd915114b6e1df1e123be0353",
+          "bytes": 309
+        },
+        {
+          "path": "artifacts/pattern-scenarios/observations/definitive-domain_operations_failure-injection__security__postgresql-verification-matrix-v2.observable.json",
+          "digest": "sha256:480c1f4e8467ea8f516e338ec6d02fb4fd6a1edb918cc4eced0d98368a4cc24c",
+          "bytes": 311
+        },
+        {
+          "path": "artifacts/pattern-scenarios/observations/definitive-domain_operations_logical-replication__security__postgresql-verification-matrix-v2.observable.json",
+          "digest": "sha256:cb02183c7468f34e5716dbf2c682a209aed07fee087165518371100e77d87988",
+          "bytes": 313
+        },
+        {
+          "path": "artifacts/pattern-scenarios/observations/definitive-domain_operations_maintenance__security__postgresql-verification-matrix-v2.observable.json",
+          "digest": "sha256:1a2f5ae12e793eb7250211d7fe165b30ed16960c3aee3d88fe718db8a8d6769e",
+          "bytes": 305
+        },
+        {
+          "path": "artifacts/pattern-scenarios/observations/definitive-domain_operations_observability__security__postgresql-verification-matrix-v2.observable.json",
+          "digest": "sha256:7189c7a182cdd51dc7ddb4ba27627534a855862b86a2f646d6b72731c2a2379b",
+          "bytes": 307
+        },
+        {
+          "path": "artifacts/pattern-scenarios/observations/definitive-domain_operations_pitr-recovery__security__postgresql-verification-matrix-v2.observable.json",
+          "digest": "sha256:9dbcad418c7247847a934845ffa6726c6681bb0dc15aa665c2f97fd015e9588f",
+          "bytes": 307
+        },
+        {
+          "path": "artifacts/pattern-scenarios/observations/definitive-domain_operations_replication__security__postgresql-verification-matrix-v2.observable.json",
+          "digest": "sha256:03a602c46ed092a509a0d709edbc390af58dc8e0ce44d99b178b2286b91e74f9",
+          "bytes": 305
+        },
+        {
+          "path": "artifacts/pattern-scenarios/results.json",
+          "digest": "sha256:48498bbef08e9d36a223f7aaa045d8753437abb72d1224586de65244b040743a",
+          "bytes": 24901
+        },
+        {
+          "path": "artifacts/pattern-scenarios/traces/definitive-domain_concurrency_deadlock__security__postgresql-verification-matrix-v2.trace.json",
+          "digest": "sha256:1a5d7fb6307b60e7c41a4bbbe4e9277f5e707c3d157d3c99a3b09c9e8c236197",
+          "bytes": 3970
+        },
+        {
+          "path": "artifacts/pattern-scenarios/traces/definitive-domain_concurrency_locking__security__postgresql-verification-matrix-v2.trace.json",
+          "digest": "sha256:49c5637634c142d8da4bd8ff114cc8e66ed07bf0c73b1fff1c974d3a0abbb6e5",
+          "bytes": 4859
+        },
+        {
+          "path": "artifacts/pattern-scenarios/traces/definitive-domain_concurrency_mvcc__security__postgresql-verification-matrix-v2.trace.json",
+          "digest": "sha256:3ba2a53dbce31b3a62deb531f92601c1bfc20588b72025c113d09e3c30de7db7",
+          "bytes": 5320
+        },
+        {
+          "path": "artifacts/pattern-scenarios/traces/definitive-domain_foundation_authority-lock__security__postgresql-verification-matrix-v2.trace.json",
+          "digest": "sha256:8d0c86d96438a2859e6caba3d014929286fcf2d2aba14f74f0e8185833e3bf50",
+          "bytes": 4778
+        },
+        {
+          "path": "artifacts/pattern-scenarios/traces/definitive-domain_foundation_version-lock__security__postgresql-verification-matrix-v2.trace.json",
+          "digest": "sha256:08902035cb08665b163f060f50fbc1e0ebbd8697809f70b4c9abc71f25ed3ed3",
+          "bytes": 4787
+        },
+        {
+          "path": "artifacts/pattern-scenarios/traces/definitive-domain_lifecycle_compatibility-matrix__security__postgresql-verification-matrix-v2.trace.json",
+          "digest": "sha256:e7e737935f38bb0cc4777cfc0eb5d2c4c83bb33442f5c05ea3ad23c1e2aa0a9e",
+          "bytes": 15606
+        },
+        {
+          "path": "artifacts/pattern-scenarios/traces/definitive-domain_lifecycle_pg-upgrade__security__postgresql-verification-matrix-v2.trace.json",
+          "digest": "sha256:bb9784e016995a667083466fea24a769106ececfd0c889768f75d30a4591cccd",
+          "bytes": 17225
+        },
+        {
+          "path": "artifacts/pattern-scenarios/traces/definitive-domain_lifecycle_schema-migration__security__postgresql-verification-matrix-v2.trace.json",
+          "digest": "sha256:b369524b3c5276520f83f4dcac1ae740963d8bc7cb97bef3a7737dd40caa4800",
+          "bytes": 5763
+        },
+        {
+          "path": "artifacts/pattern-scenarios/traces/definitive-domain_lifecycle_upgrade__security__postgresql-verification-matrix-v2.trace.json",
+          "digest": "sha256:56287b1abb6d4f0a0c1f1347f033cd52ba192eb2c3684ea105976f02764f330f",
+          "bytes": 6712
+        },
+        {
+          "path": "artifacts/pattern-scenarios/traces/definitive-domain_operations_backup-recovery__security__postgresql-verification-matrix-v2.trace.json",
+          "digest": "sha256:4e01a1dc4893e8eb9011b820ba64b3950ff8d6fcb984a671fd703c7498587ece",
+          "bytes": 6798
+        },
+        {
+          "path": "artifacts/pattern-scenarios/traces/definitive-domain_operations_failure-injection__security__postgresql-verification-matrix-v2.trace.json",
+          "digest": "sha256:6161c33a1a02fc865d220f84fd547a5a18893be7f5100fbd45acb802d6d08bd6",
+          "bytes": 6380
+        },
+        {
+          "path": "artifacts/pattern-scenarios/traces/definitive-domain_operations_logical-replication__security__postgresql-verification-matrix-v2.trace.json",
+          "digest": "sha256:82bc308b532fc3eef0787228a539abf71c4a66ed362073ce6673b438037b7aeb",
+          "bytes": 10578
+        },
+        {
+          "path": "artifacts/pattern-scenarios/traces/definitive-domain_operations_maintenance__security__postgresql-verification-matrix-v2.trace.json",
+          "digest": "sha256:79e3b764307b1e58c4664ff54289f5c01994f6c2a96a3e08b2694781048e50b7",
+          "bytes": 5906
+        },
+        {
+          "path": "artifacts/pattern-scenarios/traces/definitive-domain_operations_observability__security__postgresql-verification-matrix-v2.trace.json",
+          "digest": "sha256:c5d7715db91c0841740bca2975750739c026c676e157a6d5dcde4b611a54960c",
+          "bytes": 8252
+        },
+        {
+          "path": "artifacts/pattern-scenarios/traces/definitive-domain_operations_pitr-recovery__security__postgresql-verification-matrix-v2.trace.json",
+          "digest": "sha256:decb2248bbea42cf46291e24f4c6d99eca6f0b56d7f46cc9cf5eb11d7a355b13",
+          "bytes": 13891
+        },
+        {
+          "path": "artifacts/pattern-scenarios/traces/definitive-domain_operations_replication__security__postgresql-verification-matrix-v2.trace.json",
+          "digest": "sha256:52612a4289310e04cb2d5dbd0f178e86fe5f469547caa052bc522811f8421e98",
+          "bytes": 12550
+        }
+      ]
+    },
+    "post": {
+      "count": 33,
+      "collection_digest": "sha256:fcb84cb43d47d2659f6c791a150f4e627affe3ff91ef72f0713fb151402bb527",
+      "artifacts": [
+        {
+          "path": "artifacts/pattern-scenarios/observations/definitive-domain_concurrency_deadlock__security__postgresql-verification-matrix-v2.observable.json",
+          "digest": "sha256:74a90de43d249cef40fd22be6966559337769504ac062e501037f45099885153",
+          "bytes": 303
+        },
+        {
+          "path": "artifacts/pattern-scenarios/observations/definitive-domain_concurrency_locking__security__postgresql-verification-matrix-v2.observable.json",
+          "digest": "sha256:5921844f6629347d2f6c8fed428a128e9ebb654559885468b5cc67a3c309396f",
+          "bytes": 302
+        },
+        {
+          "path": "artifacts/pattern-scenarios/observations/definitive-domain_concurrency_mvcc__security__postgresql-verification-matrix-v2.observable.json",
+          "digest": "sha256:8f39c2d97108e0f4bb72379e0729bff62e8869b1535e7915bd1874c2e83685ef",
+          "bytes": 299
+        },
+        {
+          "path": "artifacts/pattern-scenarios/observations/definitive-domain_foundation_authority-lock__security__postgresql-verification-matrix-v2.observable.json",
+          "digest": "sha256:1c5482808ebf1546385817283c26a9f81568a1bec06d5451c28d49ee8bf6300c",
+          "bytes": 308
+        },
+        {
+          "path": "artifacts/pattern-scenarios/observations/definitive-domain_foundation_version-lock__security__postgresql-verification-matrix-v2.observable.json",
+          "digest": "sha256:1afbd0fb7dfe87ded2c1cf04d26a871e29ee9888d034818035b2662b10019e2a",
+          "bytes": 306
+        },
+        {
+          "path": "artifacts/pattern-scenarios/observations/definitive-domain_lifecycle_compatibility-matrix__security__postgresql-verification-matrix-v2.observable.json",
+          "digest": "sha256:00e1ca23dd1411c0f3404f9f4ab6d1530c4683f420bc7d19253785d2fb80e592",
+          "bytes": 313
+        },
+        {
+          "path": "artifacts/pattern-scenarios/observations/definitive-domain_lifecycle_pg-upgrade__security__postgresql-verification-matrix-v2.observable.json",
+          "digest": "sha256:36a77c30e6c32eff818e45b1060c8f6efd356cb84f18fc67c261fa1a8d84b046",
+          "bytes": 303
+        },
+        {
+          "path": "artifacts/pattern-scenarios/observations/definitive-domain_lifecycle_schema-migration__security__postgresql-verification-matrix-v2.observable.json",
+          "digest": "sha256:690140c6afcf54708d27f9a1980e0fe72832973269a1bc4281ae4d82ae922a73",
+          "bytes": 309
+        },
+        {
+          "path": "artifacts/pattern-scenarios/observations/definitive-domain_lifecycle_upgrade__security__postgresql-verification-matrix-v2.observable.json",
+          "digest": "sha256:0f64eb3e3f73eb1b5c7df232bf56e6a4ad5ec28cb62880d943932a46473449cd",
+          "bytes": 300
+        },
+        {
+          "path": "artifacts/pattern-scenarios/observations/definitive-domain_operations_backup-recovery__security__postgresql-verification-matrix-v2.observable.json",
+          "digest": "sha256:459725171ab388b4bfbdc12c82aabade183e6b3fd915114b6e1df1e123be0353",
+          "bytes": 309
+        },
+        {
+          "path": "artifacts/pattern-scenarios/observations/definitive-domain_operations_failure-injection__security__postgresql-verification-matrix-v2.observable.json",
+          "digest": "sha256:480c1f4e8467ea8f516e338ec6d02fb4fd6a1edb918cc4eced0d98368a4cc24c",
+          "bytes": 311
+        },
+        {
+          "path": "artifacts/pattern-scenarios/observations/definitive-domain_operations_logical-replication__security__postgresql-verification-matrix-v2.observable.json",
+          "digest": "sha256:cb02183c7468f34e5716dbf2c682a209aed07fee087165518371100e77d87988",
+          "bytes": 313
+        },
+        {
+          "path": "artifacts/pattern-scenarios/observations/definitive-domain_operations_maintenance__security__postgresql-verification-matrix-v2.observable.json",
+          "digest": "sha256:1a2f5ae12e793eb7250211d7fe165b30ed16960c3aee3d88fe718db8a8d6769e",
+          "bytes": 305
+        },
+        {
+          "path": "artifacts/pattern-scenarios/observations/definitive-domain_operations_observability__security__postgresql-verification-matrix-v2.observable.json",
+          "digest": "sha256:7189c7a182cdd51dc7ddb4ba27627534a855862b86a2f646d6b72731c2a2379b",
+          "bytes": 307
+        },
+        {
+          "path": "artifacts/pattern-scenarios/observations/definitive-domain_operations_pitr-recovery__security__postgresql-verification-matrix-v2.observable.json",
+          "digest": "sha256:9dbcad418c7247847a934845ffa6726c6681bb0dc15aa665c2f97fd015e9588f",
+          "bytes": 307
+        },
+        {
+          "path": "artifacts/pattern-scenarios/observations/definitive-domain_operations_replication__security__postgresql-verification-matrix-v2.observable.json",
+          "digest": "sha256:03a602c46ed092a509a0d709edbc390af58dc8e0ce44d99b178b2286b91e74f9",
+          "bytes": 305
+        },
+        {
+          "path": "artifacts/pattern-scenarios/results.json",
+          "digest": "sha256:48498bbef08e9d36a223f7aaa045d8753437abb72d1224586de65244b040743a",
+          "bytes": 24901
+        },
+        {
+          "path": "artifacts/pattern-scenarios/traces/definitive-domain_concurrency_deadlock__security__postgresql-verification-matrix-v2.trace.json",
+          "digest": "sha256:1a5d7fb6307b60e7c41a4bbbe4e9277f5e707c3d157d3c99a3b09c9e8c236197",
+          "bytes": 3970
+        },
+        {
+          "path": "artifacts/pattern-scenarios/traces/definitive-domain_concurrency_locking__security__postgresql-verification-matrix-v2.trace.json",
+          "digest": "sha256:49c5637634c142d8da4bd8ff114cc8e66ed07bf0c73b1fff1c974d3a0abbb6e5",
+          "bytes": 4859
+        },
+        {
+          "path": "artifacts/pattern-scenarios/traces/definitive-domain_concurrency_mvcc__security__postgresql-verification-matrix-v2.trace.json",
+          "digest": "sha256:3ba2a53dbce31b3a62deb531f92601c1bfc20588b72025c113d09e3c30de7db7",
+          "bytes": 5320
+        },
+        {
+          "path": "artifacts/pattern-scenarios/traces/definitive-domain_foundation_authority-lock__security__postgresql-verification-matrix-v2.trace.json",
+          "digest": "sha256:8d0c86d96438a2859e6caba3d014929286fcf2d2aba14f74f0e8185833e3bf50",
+          "bytes": 4778
+        },
+        {
+          "path": "artifacts/pattern-scenarios/traces/definitive-domain_foundation_version-lock__security__postgresql-verification-matrix-v2.trace.json",
+          "digest": "sha256:08902035cb08665b163f060f50fbc1e0ebbd8697809f70b4c9abc71f25ed3ed3",
+          "bytes": 4787
+        },
+        {
+          "path": "artifacts/pattern-scenarios/traces/definitive-domain_lifecycle_compatibility-matrix__security__postgresql-verification-matrix-v2.trace.json",
+          "digest": "sha256:e7e737935f38bb0cc4777cfc0eb5d2c4c83bb33442f5c05ea3ad23c1e2aa0a9e",
+          "bytes": 15606
+        },
+        {
+          "path": "artifacts/pattern-scenarios/traces/definitive-domain_lifecycle_pg-upgrade__security__postgresql-verification-matrix-v2.trace.json",
+          "digest": "sha256:bb9784e016995a667083466fea24a769106ececfd0c889768f75d30a4591cccd",
+          "bytes": 17225
+        },
+        {
+          "path": "artifacts/pattern-scenarios/traces/definitive-domain_lifecycle_schema-migration__security__postgresql-verification-matrix-v2.trace.json",
+          "digest": "sha256:b369524b3c5276520f83f4dcac1ae740963d8bc7cb97bef3a7737dd40caa4800",
+          "bytes": 5763
+        },
+        {
+          "path": "artifacts/pattern-scenarios/traces/definitive-domain_lifecycle_upgrade__security__postgresql-verification-matrix-v2.trace.json",
+          "digest": "sha256:56287b1abb6d4f0a0c1f1347f033cd52ba192eb2c3684ea105976f02764f330f",
+          "bytes": 6712
+        },
+        {
+          "path": "artifacts/pattern-scenarios/traces/definitive-domain_operations_backup-recovery__security__postgresql-verification-matrix-v2.trace.json",
+          "digest": "sha256:4e01a1dc4893e8eb9011b820ba64b3950ff8d6fcb984a671fd703c7498587ece",
+          "bytes": 6798
+        },
+        {
+          "path": "artifacts/pattern-scenarios/traces/definitive-domain_operations_failure-injection__security__postgresql-verification-matrix-v2.trace.json",
+          "digest": "sha256:6161c33a1a02fc865d220f84fd547a5a18893be7f5100fbd45acb802d6d08bd6",
+          "bytes": 6380
+        },
+        {
+          "path": "artifacts/pattern-scenarios/traces/definitive-domain_operations_logical-replication__security__postgresql-verification-matrix-v2.trace.json",
+          "digest": "sha256:82bc308b532fc3eef0787228a539abf71c4a66ed362073ce6673b438037b7aeb",
+          "bytes": 10578
+        },
+        {
+          "path": "artifacts/pattern-scenarios/traces/definitive-domain_operations_maintenance__security__postgresql-verification-matrix-v2.trace.json",
+          "digest": "sha256:79e3b764307b1e58c4664ff54289f5c01994f6c2a96a3e08b2694781048e50b7",
+          "bytes": 5906
+        },
+        {
+          "path": "artifacts/pattern-scenarios/traces/definitive-domain_operations_observability__security__postgresql-verification-matrix-v2.trace.json",
+          "digest": "sha256:c5d7715db91c0841740bca2975750739c026c676e157a6d5dcde4b611a54960c",
+          "bytes": 8252
+        },
+        {
+          "path": "artifacts/pattern-scenarios/traces/definitive-domain_operations_pitr-recovery__security__postgresql-verification-matrix-v2.trace.json",
+          "digest": "sha256:decb2248bbea42cf46291e24f4c6d99eca6f0b56d7f46cc9cf5eb11d7a355b13",
+          "bytes": 13891
+        },
+        {
+          "path": "artifacts/pattern-scenarios/traces/definitive-domain_operations_replication__security__postgresql-verification-matrix-v2.trace.json",
+          "digest": "sha256:52612a4289310e04cb2d5dbd0f178e86fe5f469547caa052bc522811f8421e98",
+          "bytes": 12550
+        }
+      ]
+    },
+    "unchanged": true
+  }
+}
