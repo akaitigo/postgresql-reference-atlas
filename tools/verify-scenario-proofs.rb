@@ -19,6 +19,10 @@ expected_closed = %w[
   definitive-domain.concurrency.locking
   definitive-domain.concurrency.mvcc
   definitive-domain.foundation.authority-lock
+  definitive-domain.foundation.version-lock
+  definitive-domain.lifecycle.compatibility-matrix
+  definitive-domain.lifecycle.pg-upgrade
+  definitive-domain.lifecycle.schema-migration
 ].map { |behavior_id| [behavior_id, "security"] }.sort
 runtime_report_path = File.join(root, "artifacts/pattern-scenarios/results.json")
 runtime_report = JSON.parse(File.read(runtime_report_path))
@@ -69,6 +73,24 @@ index.fetch("files").each do |entry|
       trace = JSON.parse(File.read(File.join(root, record.dig("trace", "path"))))
       errors << "runtime PostgreSQL Artifact set: #{proof.fetch("id")}" unless %w[sql plan wal log metric].all? { |key| trace.key?(key) }
       errors << "integrated runtime reuse: #{proof.fetch("id")}" if record.dig("trace", "path") == proof.dig("integrated_reference", "trace", "path") || record.dig("trace", "digest") == proof.dig("integrated_reference", "trace", "digest")
+      case proof.fetch("behavior_id")
+      when "definitive-domain.foundation.version-lock"
+        errors << "version-lock security Oracle" unless trace.dig("environment", "server_version_num") == "180006" && trace.dig("sql", "stdout").include?("ATLAS_SECURITY_PASS:foundation.version-lock")
+      when "definitive-domain.lifecycle.compatibility-matrix"
+        versions = trace.dig("environment", "row_runtime", "server_versions")
+        observations = JSON.parse(trace.dig("sql", "stdout"))
+        errors << "compatibility security version denominator" unless versions == %w[14.24 15.19 16.15 17.11 18.6] && observations.map { |item| item.fetch("server_version") } == versions
+        errors << "compatibility security SCRAM/role Oracle" unless observations.all? { |item| item.fetch("password_encryption") == "scram-sha-256" && item.fetch("role_boundary_passed") == true }
+        errors << "compatibility security plan denominator" unless trace.fetch("plan").map { |item| item.fetch("server_version") } == versions
+      when "definitive-domain.lifecycle.pg-upgrade"
+        result = JSON.parse(trace.dig("sql", "stdout"))
+        errors << "pg_upgrade security version Oracle" unless result.values_at("old_version", "new_version") == %w[17.11 18.6]
+        errors << "pg_upgrade security preservation Oracle" unless result.fetch("verifier_digest_preserved") == true && result.fetch("visible_rows") == 1 && result.fetch("select_acl") == "t" && result.fetch("rls_enabled") == "t" && result.fetch("update_denied") == true && result.fetch("verdict") == "pass"
+        errors << "pg_upgrade security plan/WAL Oracle" unless trace.fetch("plan").is_a?(Array) && trace.dig("wal", "old_lsn").to_s.include?("/") && trace.dig("wal", "new_lsn").to_s.include?("/")
+        errors << "pg_upgrade security image pin" unless trace.dig("environment", "row_runtime", "base_images") == ["postgres:17.11-alpine@sha256:18cfe3ef5e6815560c98237d6216d1e5119702fb0f3894c8785dd58b8bbe5d73", "postgres:18.6-alpine@sha256:d3e1620b530c944afa6e887d22eb899824da68e19c52024bf98f5220c88a65b2"]
+      when "definitive-domain.lifecycle.schema-migration"
+        errors << "schema migration security Oracle" unless trace.dig("sql", "stdout").include?("ATLAS_SECURITY_PASS:lifecycle.schema-migration") && trace.dig("sql", "stderr").include?("ATLAS_SECURITY_PASS:lifecycle.schema-migration")
+      end
     end
   else
     errors << "strict closure state: #{proof.fetch("id")}" unless proof.fetch("status") == "pattern-specific-gap" && proof.dig("closure", "real_runtime_identity") == false && closure_contract.fetch("gap_closed") == false
@@ -128,7 +150,7 @@ end
 errors << "completion boundary" unless summary.fetch("integrated_trace_rows") == 290 && summary.fetch("authority_atomic_rows") == 0 && summary.fetch("completion_eligible_rows") == 0
 actual_closed = actual_proofs.select { |proof| proof.dig("closure", "pattern_specific_evidence") }.map { |proof| [proof.fetch("behavior_id"), proof.fetch("scenario")] }.sort
 errors << "strict Scenario closure set" unless actual_closed == expected_closed
-errors << "strict Scenario closure boundary" unless summary.fetch("pattern_specific_rows") == 4 && summary.fetch("pattern_specific_runtime_rows") == 4 && summary.fetch("pattern_specific_gaps") == 286
+errors << "strict Scenario closure boundary" unless summary.fetch("pattern_specific_rows") == 8 && summary.fetch("pattern_specific_runtime_rows") == 8 && summary.fetch("pattern_specific_gaps") == 282
 errors << "completion limits" unless index.fetch("completion_limits").length >= 4
 
 abort errors.uniq.join("\n") unless errors.empty?

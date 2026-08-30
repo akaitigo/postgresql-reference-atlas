@@ -101,6 +101,6 @@ report = {
 }
 File.write(File.join(root, "evidence/definitive-audit-report.json"), JSON.pretty_generate(report) + "\n")
 scenario_summary = scenario_proofs.fetch("summary")
-scenario_contract_valid = scenario_summary.fetch("rows") == 290 && scenario_summary.fetch("pattern_specific_rows") == 4 && scenario_summary.fetch("pattern_specific_runtime_rows") == 4 && scenario_summary.fetch("pattern_specific_gaps") == 286 && scenario_summary.fetch("integrated_trace_rows") == 290 && scenario_summary.fetch("authority_atomic_rows") == 0 && scenario_summary.fetch("completion_eligible_rows") == 0
+scenario_contract_valid = scenario_summary.fetch("rows") == 290 && scenario_summary.fetch("pattern_specific_rows") == 8 && scenario_summary.fetch("pattern_specific_runtime_rows") == 8 && scenario_summary.fetch("pattern_specific_gaps") == 282 && scenario_summary.fetch("integrated_trace_rows") == 290 && scenario_summary.fetch("authority_atomic_rows") == 0 && scenario_summary.fetch("completion_eligible_rows") == 0
 abort "Definitive InventoryまたはScenario Proofに構造違反があります" unless artifact_errors.empty? && unclassified.empty? && duplicate_items.empty? && unknown_targets.empty? && target_mismatches.empty? && scenario_contract_valid
 puts "Definitive audit: inventory=#{items.length} unclassified=0 targets=#{target_by_id.length} open_targets=#{target_gaps.length} scenario_proofs=#{scenario_summary.fetch('rows')} completion_eligible=0 skill_routing_gaps=#{definitive_skill.dig('summary', 'routing_gaps')} verdict=pending"

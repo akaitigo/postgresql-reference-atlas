@@ -27,7 +27,7 @@ Definitive v2ではBehaviorごとに専用Claim、Scenarioごとに専用Proof�
 - 56 required Target中55 TargetがDefinitive未Closure
 - 5,512 raw anchor候補は全件pending-humanで、Human-reviewed/promoted SurfaceとAtomic behaviorは0件
 - 11,340自動mapping候補中11,320件は専用covered Target・accepted Claimの組を持たない
-- Authority由来11,340 mapping候補の全Scenario分類113,400 Row中113,331 Rowが未作成。別の非後退分母として、公開済み29 Behavior × 10 Scenarioは290専用Artifactへ分離し、既存69 rowをbounded補助Evidenceへ接続した。Security 4 rowを専用PostgreSQL 18.6実行で閉じ、strict Closureは4、Gapは286、Authority atomic bindingは0である
+- Authority由来11,340 mapping候補の全Scenario分類113,400 Row中113,331 Rowが未作成。別の非後退分母として、公開済み29 Behavior × 10 Scenarioは290専用Artifactへ分離し、既存69 rowをbounded補助Evidenceへ接続した。Security 8 rowを固定PostgreSQL runtimeで閉じ、version lock、14.24〜18.6 compatibility、17.11→18.6 pg_upgrade、schema migrationの権限境界を含めた。strict Closureは8、Gapは282、Authority atomic bindingは0である
 - Subject全体として、必要Scenarioごとの専用Proof・Evidence・Artifact closureが未整備
 - Function、Operator、Cast、GUC、Protocol、Client Toolの全件Proofが未実装
 - Authentication、Resource Limit、Corruption Recoveryが未実装

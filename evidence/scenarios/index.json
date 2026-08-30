@@ -8,25 +8,25 @@
   "source_digests": {
     "tools/lib/scenario_proofs.rb": "sha256:7d37150778c22e5a107e49391cecb5ac710364907c378a70d04ac44c6fd7be4a",
     "tools/generate-scenario-proofs.rb": "sha256:bfe89969ada019e4b539fc9abc2c9b8acef34d438fb29911610ccc507508b4e8",
-    "tools/verify-scenario-proofs.rb": "sha256:107aee1a9330324d6c2e3a574ab924548815f49a13593a57e48473bf5b1b2316",
+    "tools/verify-scenario-proofs.rb": "sha256:74056e68488e46dae783829c7876d2ba6f8206cd3b71b20386404301123b84b6",
     "verification.matrix.yaml": "sha256:b8734bc90dcefeb02b28f1858c73e8aba0452cf78d0d27349b708e16a4e14ad9",
     "coverage.yaml": "sha256:6c431b536f6e3ac640c547188749fae5082c8ead2e2b893f1ca057113f7e0865",
     "authority/reviews/decisions.json": "sha256:036e2d58e44f6442254de200ccf5a6ff2f3ee8a3298f9684f7e4420855e91389",
-    "evidence/artifacts/reference-system.json": "sha256:4a18b6beb5c58c9a448abe6da41d130383d4f1316e3a97a2b9cdc2742d580081",
+    "evidence/artifacts/reference-system.json": "sha256:4a196c29e55c1c9d60407f178db3d7d18b382952bb4bdb7bc4c2426a5edb9f76",
     "integrations/reference-system/manifest.json": "sha256:93d8d68db6ed586e398259db0fb24a8a88c69d0f512ccc3fe751dc7c65447b3a",
-    "artifacts/reference-system/results.json": "sha256:1d8515da9db508aa8ebeb72027c1ea7cb95af17fc63a07a1bb5c5b4baae7f3c3",
-    "artifacts/pattern-scenarios/results.json": "sha256:575c9a424c11d67a724a8e34f9c1271875712b825efd9b39e5e63748d5e1419a"
+    "artifacts/reference-system/results.json": "sha256:8fe645ac9be03706ca45303fe3c8a761eda91b39055f6029d700c536d4dacb23",
+    "artifacts/pattern-scenarios/results.json": "sha256:e718ac77e2d9c752ed2750c5af5249878d5471610c65a078396866f3a49ce379"
   },
-  "tool_digest": "sha256:43be764dbb176cc07e491e4b840cfa7294c00664f1de1b1c88513984973db976",
+  "tool_digest": "sha256:755d2daeef1a8adc05a3c5561b389e5f0ab5070fef0a1eaf18be0c8d880f7ab9",
   "summary": {
     "patterns": 29,
     "scenarios": 10,
     "rows": 290,
     "dedicated_artifacts": 290,
-    "pattern_specific_rows": 4,
-    "pattern_specific_runtime_rows": 4,
+    "pattern_specific_rows": 8,
+    "pattern_specific_runtime_rows": 8,
     "pattern_specific_capture_rows": 0,
-    "pattern_specific_gaps": 286,
+    "pattern_specific_gaps": 282,
     "integrated_trace_rows": 290,
     "authority_atomic_rows": 0,
     "completion_eligible_rows": 0
@@ -83,10 +83,10 @@
     },
     "security": {
       "rows": 29,
-      "pattern_specific": 4,
-      "runtime_identity": 4,
+      "pattern_specific": 8,
+      "runtime_identity": 8,
       "integrated_pattern_mapped": 0,
-      "gaps": 25
+      "gaps": 21
     },
     "performance": {
       "rows": 29,
@@ -110,7 +110,7 @@
       "pattern_id": "definitive-domain.concurrency.deadlock",
       "scenario": "normal",
       "path": "evidence/scenarios/behaviors/concurrency.deadlock/normal.proof.json",
-      "digest": "sha256:c7e9cc9adfa7c129133480fee6c0ebe503a0a81c6e13d6aff31ff57b13d601b0",
+      "digest": "sha256:9a919639d4027c83cb8aa9781d81c769b7a047af2583d1ab7084bda59d119f63",
       "status": "pattern-specific-gap"
     },
     {
@@ -119,7 +119,7 @@
       "pattern_id": "definitive-domain.concurrency.deadlock",
       "scenario": "boundary",
       "path": "evidence/scenarios/behaviors/concurrency.deadlock/boundary.proof.json",
-      "digest": "sha256:05e334ab3abc9ab8ab4a6b2024469e05450b1d9c6d5158c14b92c0c05bdd2749",
+      "digest": "sha256:26c3d138cc37d8878e8b49fd8ea7bd88272431ac33937cc1e6ef6a3e77b5612f",
       "status": "pattern-specific-gap"
     },
     {
@@ -128,7 +128,7 @@
       "pattern_id": "definitive-domain.concurrency.deadlock",
       "scenario": "refusal",
       "path": "evidence/scenarios/behaviors/concurrency.deadlock/refusal.proof.json",
-      "digest": "sha256:266e1b9391abd2b625c08b3d63f72188c4aff8f7ce29654a7b74c4a5eb22eb0b",
+      "digest": "sha256:2b631b6f4abbcb1ee07475925b79bc7981ac8c27d8bea900309d04a6a761acae",
       "status": "pattern-specific-gap"
     },
     {
@@ -137,7 +137,7 @@
       "pattern_id": "definitive-domain.concurrency.deadlock",
       "scenario": "failure",
       "path": "evidence/scenarios/behaviors/concurrency.deadlock/failure.proof.json",
-      "digest": "sha256:b986ec2eaeb0c35b8800134f2d3beab7b9c080b11037018017c9c2f1b0af8d3e",
+      "digest": "sha256:3259cca33ba5fa100c11fff22fe23afe9942cf52c9e84936669e0fd12ad6c3de",
       "status": "pattern-specific-gap"
     },
     {
@@ -146,7 +146,7 @@
       "pattern_id": "definitive-domain.concurrency.deadlock",
       "scenario": "recovery",
       "path": "evidence/scenarios/behaviors/concurrency.deadlock/recovery.proof.json",
-      "digest": "sha256:159a946a1497036a3edcf5a1f836d15b5fd46360aa4bb11061f426f3c5d595d6",
+      "digest": "sha256:2f22b9e42b89654bdb3e5f4f1f4e93ca8095ed4f0a9fadac151e8dea7727c8e6",
       "status": "pattern-specific-gap"
     },
     {
@@ -155,7 +155,7 @@
       "pattern_id": "definitive-domain.concurrency.deadlock",
       "scenario": "migration",
       "path": "evidence/scenarios/behaviors/concurrency.deadlock/migration.proof.json",
-      "digest": "sha256:07ef54bde6805c01d699e0984b514d43452a502407b695437ada6dbbd87e9992",
+      "digest": "sha256:63e803b374ec79f7993d74c3b70e069213ae29a3673d24deef2a68667a37296b",
       "status": "pattern-specific-gap"
     },
     {
@@ -164,7 +164,7 @@
       "pattern_id": "definitive-domain.concurrency.deadlock",
       "scenario": "operations",
       "path": "evidence/scenarios/behaviors/concurrency.deadlock/operations.proof.json",
-      "digest": "sha256:6cab447b992557dcf6a8842d640fa176abd53bf32f6210d132242245c2a8200d",
+      "digest": "sha256:3ea815d2da476ec3d9d8b981137d5b8e9a028baa83ebe285b372114e57006441",
       "status": "pattern-specific-gap"
     },
     {
@@ -173,7 +173,7 @@
       "pattern_id": "definitive-domain.concurrency.deadlock",
       "scenario": "security",
       "path": "evidence/scenarios/behaviors/concurrency.deadlock/security.proof.json",
-      "digest": "sha256:f1e0368a63e66244437ebaef309be23518f35a469490e46500c3cf5129ef9b8c",
+      "digest": "sha256:2fb5798a78aafb591f9c6e6951b32d6a7f492db4a02b99f811354d6f399e2008",
       "status": "bounded-runtime-proof"
     },
     {
@@ -182,7 +182,7 @@
       "pattern_id": "definitive-domain.concurrency.deadlock",
       "scenario": "performance",
       "path": "evidence/scenarios/behaviors/concurrency.deadlock/performance.proof.json",
-      "digest": "sha256:0fe554d4e7deae4d1815a2805217904906e9f0a7e8c003a8157ed8f863a5c079",
+      "digest": "sha256:4b9aa4846cb45f860a3b90a48935a3eed67cc2631c2ff64a86ca446898db39e4",
       "status": "pattern-specific-gap"
     },
     {
@@ -191,7 +191,7 @@
       "pattern_id": "definitive-domain.concurrency.deadlock",
       "scenario": "compatibility",
       "path": "evidence/scenarios/behaviors/concurrency.deadlock/compatibility.proof.json",
-      "digest": "sha256:f1000558871d9bb20c7fd964b01325be692124b426991ad6206e512dbce8a401",
+      "digest": "sha256:f28e9cdb86c3a42cd805c7c304163509610a9a9f336e3cdf49025677e1c2d0c4",
       "status": "pattern-specific-gap"
     },
     {
@@ -200,7 +200,7 @@
       "pattern_id": "definitive-domain.concurrency.locking",
       "scenario": "normal",
       "path": "evidence/scenarios/behaviors/concurrency.locking/normal.proof.json",
-      "digest": "sha256:8aa5a50e6f386a064cc4c97dffaef6bd13a0cb0bf0da2a3900858633058fe93f",
+      "digest": "sha256:e90decf98b9f1b3583f4cf5e287a82ee5764a5b602092452b6215d831728a12a",
       "status": "pattern-specific-gap"
     },
     {
@@ -209,7 +209,7 @@
       "pattern_id": "definitive-domain.concurrency.locking",
       "scenario": "boundary",
       "path": "evidence/scenarios/behaviors/concurrency.locking/boundary.proof.json",
-      "digest": "sha256:12df84df63da06d9d4b467e07e593ba14f822fe8f0127964a75b68d5750a631e",
+      "digest": "sha256:c978437c1a422830079ba8bab6cf295991f1b4e7085f0610d3731e05d586280b",
       "status": "pattern-specific-gap"
     },
     {
@@ -218,7 +218,7 @@
       "pattern_id": "definitive-domain.concurrency.locking",
       "scenario": "refusal",
       "path": "evidence/scenarios/behaviors/concurrency.locking/refusal.proof.json",
-      "digest": "sha256:41fff51635046ccec92d15a8fb5063bf2b7fa82d61f478388f973132a3c314c3",
+      "digest": "sha256:6bc1bf000e9f59f6f5f8f77d41f8496e79b8b5857a14b54c91a836513af3602a",
       "status": "pattern-specific-gap"
     },
     {
@@ -227,7 +227,7 @@
       "pattern_id": "definitive-domain.concurrency.locking",
       "scenario": "failure",
       "path": "evidence/scenarios/behaviors/concurrency.locking/failure.proof.json",
-      "digest": "sha256:af56339258e4cd882edff9db0145435cd1face6ebed9cbaf88efa55ebbd8c864",
+      "digest": "sha256:8efe2e97c7ec67bfefad57b150ee90fd5bd68d3a1112c57bd863f9249938db4a",
       "status": "pattern-specific-gap"
     },
     {
@@ -236,7 +236,7 @@
       "pattern_id": "definitive-domain.concurrency.locking",
       "scenario": "recovery",
       "path": "evidence/scenarios/behaviors/concurrency.locking/recovery.proof.json",
-      "digest": "sha256:3049a0ef8eeb5b208d68618411a5a9746ef5171817ee3613a359b2d357c99bef",
+      "digest": "sha256:b2b3773fc007df5827a7685f26411af1c79a0d59b9896d0207193de1f3411381",
       "status": "pattern-specific-gap"
     },
     {
@@ -245,7 +245,7 @@
       "pattern_id": "definitive-domain.concurrency.locking",
       "scenario": "migration",
       "path": "evidence/scenarios/behaviors/concurrency.locking/migration.proof.json",
-      "digest": "sha256:1139aa58220f779537e748342a0a777f231ee110ed106e8bd449152f7ceea147",
+      "digest": "sha256:7d472eaa4cfef087bda20526e56e654ee73308909b17d56a47bfff112ae3698f",
       "status": "pattern-specific-gap"
     },
     {
@@ -254,7 +254,7 @@
       "pattern_id": "definitive-domain.concurrency.locking",
       "scenario": "operations",
       "path": "evidence/scenarios/behaviors/concurrency.locking/operations.proof.json",
-      "digest": "sha256:c033c2e08f385f5f3747ebdbcb5ccf26ab7fc9df45f04e007f45642b9fd7f1ad",
+      "digest": "sha256:64452c4ebb33107448a7605832c8b0c09c8d14c8434f8640c29341fa3aa8d434",
       "status": "pattern-specific-gap"
     },
     {
@@ -263,7 +263,7 @@
       "pattern_id": "definitive-domain.concurrency.locking",
       "scenario": "security",
       "path": "evidence/scenarios/behaviors/concurrency.locking/security.proof.json",
-      "digest": "sha256:606d53899131ce7af672b3b96d73bbff5ee1450b3a67c83c78b6693d7749d275",
+      "digest": "sha256:4841c9450b56b40847c9289b393ae6e86216c4e2315220f492ed37a954ed8cf9",
       "status": "bounded-runtime-proof"
     },
     {
@@ -272,7 +272,7 @@
       "pattern_id": "definitive-domain.concurrency.locking",
       "scenario": "performance",
       "path": "evidence/scenarios/behaviors/concurrency.locking/performance.proof.json",
-      "digest": "sha256:fef81abf17ea713f720b8a7e662880fc10d5b35b3597448f75934992e62449c2",
+      "digest": "sha256:046e81061467c7af0e99b2e494b8564fb42aa9cddf703f534f198c1560e42571",
       "status": "pattern-specific-gap"
     },
     {
@@ -281,7 +281,7 @@
       "pattern_id": "definitive-domain.concurrency.locking",
       "scenario": "compatibility",
       "path": "evidence/scenarios/behaviors/concurrency.locking/compatibility.proof.json",
-      "digest": "sha256:946425f95f46095606555fdb3ee56911c4edc826febc7f6ac0cbf8337508cdd6",
+      "digest": "sha256:392309bcd70dc060d3867eb20b340dcc561459b2eed1d39fd223546fe5759cb4",
       "status": "pattern-specific-gap"
     },
     {
@@ -290,7 +290,7 @@
       "pattern_id": "definitive-domain.concurrency.mvcc",
       "scenario": "normal",
       "path": "evidence/scenarios/behaviors/concurrency.mvcc/normal.proof.json",
-      "digest": "sha256:bf46de5ae0b28afb62da419e21d75276328923e17843ad440b1302bb723133dd",
+      "digest": "sha256:d59b64f7465dccc253aa84a7046a40bd9a3654e992e8318f228fd78c818bfd79",
       "status": "pattern-specific-gap"
     },
     {
@@ -299,7 +299,7 @@
       "pattern_id": "definitive-domain.concurrency.mvcc",
       "scenario": "boundary",
       "path": "evidence/scenarios/behaviors/concurrency.mvcc/boundary.proof.json",
-      "digest": "sha256:98566e6e10520ea1ebb4f66c80f08dc3d379349b2160f972bb07ad5765365815",
+      "digest": "sha256:7ab02f70b99da6eb70d3f5e189d3ebb83683382d6f38c7109a516bc0cdfa6134",
       "status": "pattern-specific-gap"
     },
     {
@@ -308,7 +308,7 @@
       "pattern_id": "definitive-domain.concurrency.mvcc",
       "scenario": "refusal",
       "path": "evidence/scenarios/behaviors/concurrency.mvcc/refusal.proof.json",
-      "digest": "sha256:39a0abd93c718eefe5d3e5992ccdac449f35756291329688fc7b1c6aca423b21",
+      "digest": "sha256:b37098369466cc021a865af3aefa1158e317f6f1c62da2f342c799720ecc8bea",
       "status": "pattern-specific-gap"
     },
     {
@@ -317,7 +317,7 @@
       "pattern_id": "definitive-domain.concurrency.mvcc",
       "scenario": "failure",
       "path": "evidence/scenarios/behaviors/concurrency.mvcc/failure.proof.json",
-      "digest": "sha256:5c3f965d32288e93252392b8fceb7ea5cf0bc4b779469f324f25a41eab88aee1",
+      "digest": "sha256:259cc123cf97a17bdb62e793ecf762137d877a26b59132ce17f6a48fd24051ad",
       "status": "pattern-specific-gap"
     },
     {
@@ -326,7 +326,7 @@
       "pattern_id": "definitive-domain.concurrency.mvcc",
       "scenario": "recovery",
       "path": "evidence/scenarios/behaviors/concurrency.mvcc/recovery.proof.json",
-      "digest": "sha256:ad2e9f6f5e343ab7c52b72e44acca4c682e25a5096c8a919dd24fa0fc555ebf0",
+      "digest": "sha256:c02e938903e37fe808518ec57578ff41ca45134ccb0dcee3b14a4560951e68b5",
       "status": "pattern-specific-gap"
     },
     {
@@ -335,7 +335,7 @@
       "pattern_id": "definitive-domain.concurrency.mvcc",
       "scenario": "migration",
       "path": "evidence/scenarios/behaviors/concurrency.mvcc/migration.proof.json",
-      "digest": "sha256:f1bfdad927785c2382983786ff980a015825c22720cbe83022ec1bbf431ab17b",
+      "digest": "sha256:09e5334fea53237de52241004e975c50b537a94c6a7f9a32cc51e2fe2ace8574",
       "status": "pattern-specific-gap"
     },
     {
@@ -344,7 +344,7 @@
       "pattern_id": "definitive-domain.concurrency.mvcc",
       "scenario": "operations",
       "path": "evidence/scenarios/behaviors/concurrency.mvcc/operations.proof.json",
-      "digest": "sha256:85921062c26b20f8943d65c8b3d26b19dff23785c1bee43359685652db7c1b04",
+      "digest": "sha256:e6a65fe824ba942431a774e5a732f62bf79d4d87528419d09951c75e76a59885",
       "status": "pattern-specific-gap"
     },
     {
@@ -353,7 +353,7 @@
       "pattern_id": "definitive-domain.concurrency.mvcc",
       "scenario": "security",
       "path": "evidence/scenarios/behaviors/concurrency.mvcc/security.proof.json",
-      "digest": "sha256:dbf678fe34d67c881bf874655937989d201e175fa18a19397fd28cc548bd2158",
+      "digest": "sha256:6a94f33b700d63b33cc834ae83b27eff0b36045e823ca696f16fccb147217c96",
       "status": "bounded-runtime-proof"
     },
     {
@@ -362,7 +362,7 @@
       "pattern_id": "definitive-domain.concurrency.mvcc",
       "scenario": "performance",
       "path": "evidence/scenarios/behaviors/concurrency.mvcc/performance.proof.json",
-      "digest": "sha256:8d29c576a134b4571e51704a561c1bfc6186fdbca531a6e87d23eed71c5bbc4a",
+      "digest": "sha256:3fe82092f2007cebd0aefcf6f6cf5aec43c1170f5c7b2ba0639d515d1dd1e326",
       "status": "pattern-specific-gap"
     },
     {
@@ -371,7 +371,7 @@
       "pattern_id": "definitive-domain.concurrency.mvcc",
       "scenario": "compatibility",
       "path": "evidence/scenarios/behaviors/concurrency.mvcc/compatibility.proof.json",
-      "digest": "sha256:0c317a649ff678998fbf281846162d6abb5439505cc7ea02308cb6c81cf16161",
+      "digest": "sha256:07672cc41a0e84c54869d14e98a7b4188248c803bf0dbc64eb3bccf277059e43",
       "status": "pattern-specific-gap"
     },
     {
@@ -380,7 +380,7 @@
       "pattern_id": "definitive-domain.foundation.authority-lock",
       "scenario": "normal",
       "path": "evidence/scenarios/behaviors/foundation.authority-lock/normal.proof.json",
-      "digest": "sha256:7ac6a64bd1951c4c664f5981116e5a96821254f79519f33893f6ba4ed5ef7379",
+      "digest": "sha256:80cf791d61d4c7ab8fa2ec8d58f5dc38f2d2e8e05f23f876d30cbbfdec328f24",
       "status": "pattern-specific-gap"
     },
     {
@@ -389,7 +389,7 @@
       "pattern_id": "definitive-domain.foundation.authority-lock",
       "scenario": "boundary",
       "path": "evidence/scenarios/behaviors/foundation.authority-lock/boundary.proof.json",
-      "digest": "sha256:3ec9c797925d4e776691692742b5c9cdd2b0cf75fe53332038c9fe54f4ff55cb",
+      "digest": "sha256:6dc7870a4b542cd27de63ad1762cbd1d29d06d1515c95344df49f82b9b873288",
       "status": "pattern-specific-gap"
     },
     {
@@ -398,7 +398,7 @@
       "pattern_id": "definitive-domain.foundation.authority-lock",
       "scenario": "refusal",
       "path": "evidence/scenarios/behaviors/foundation.authority-lock/refusal.proof.json",
-      "digest": "sha256:a87ed1840e42535956f0ff1ba668fd45c976fec8b109890ae6734db0860739fc",
+      "digest": "sha256:4d4822677cb839dbbd5aa735e77543b976e24c11c06ae9f6506fee26a214cdaa",
       "status": "pattern-specific-gap"
     },
     {
@@ -407,7 +407,7 @@
       "pattern_id": "definitive-domain.foundation.authority-lock",
       "scenario": "failure",
       "path": "evidence/scenarios/behaviors/foundation.authority-lock/failure.proof.json",
-      "digest": "sha256:64286d2c329672f043f7afaa4f0772a4532ec2476fd12cbc23c611a5fc8b0cf6",
+      "digest": "sha256:9bfb02357e74b5ab7be7c5fb38bd045a58f9a442ff7e40d8e88a9b1425222cb0",
       "status": "pattern-specific-gap"
     },
     {
@@ -416,7 +416,7 @@
       "pattern_id": "definitive-domain.foundation.authority-lock",
       "scenario": "recovery",
       "path": "evidence/scenarios/behaviors/foundation.authority-lock/recovery.proof.json",
-      "digest": "sha256:0744637dd361c734624d5fe2f5df28bb7b14d44bd178d929be16b66cc4397ef1",
+      "digest": "sha256:c20cf1aaf3cdb2b328f6da86f2b3261a67105d86301240d4a21f19d198c52f57",
       "status": "pattern-specific-gap"
     },
     {
@@ -425,7 +425,7 @@
       "pattern_id": "definitive-domain.foundation.authority-lock",
       "scenario": "migration",
       "path": "evidence/scenarios/behaviors/foundation.authority-lock/migration.proof.json",
-      "digest": "sha256:b51f043e0ed8be2058c3c4173b2ca75568264606df41ccc88f84531b2385da2a",
+      "digest": "sha256:8cf32bf0e52916e797f4c71b82bdb5e794f8bf5693baaa48ce3ceb237584cced",
       "status": "pattern-specific-gap"
     },
     {
@@ -434,7 +434,7 @@
       "pattern_id": "definitive-domain.foundation.authority-lock",
       "scenario": "operations",
       "path": "evidence/scenarios/behaviors/foundation.authority-lock/operations.proof.json",
-      "digest": "sha256:dfa81b48e5a4d9c947119afb69a8bbcfe49ff21537dc60b9fe8c693c438c2b63",
+      "digest": "sha256:0aaebd31d9e503e6e897852fd597e16eed90396b0df6e8813d8e672218414585",
       "status": "pattern-specific-gap"
     },
     {
@@ -443,7 +443,7 @@
       "pattern_id": "definitive-domain.foundation.authority-lock",
       "scenario": "security",
       "path": "evidence/scenarios/behaviors/foundation.authority-lock/security.proof.json",
-      "digest": "sha256:798aebd5f4f5b90bebb39ffab46f74383b44a0e7c7c5d6cb1f5ccfcefc1c292d",
+      "digest": "sha256:8380e54a1ac2474439e4ea1920067a801a6cc1a59679a83f057e44c910babc5e",
       "status": "bounded-runtime-proof"
     },
     {
@@ -452,7 +452,7 @@
       "pattern_id": "definitive-domain.foundation.authority-lock",
       "scenario": "performance",
       "path": "evidence/scenarios/behaviors/foundation.authority-lock/performance.proof.json",
-      "digest": "sha256:c8b924e98cad4fc2470f7ecbf85432f813f79352b7c96bcb048da4f4c5e96cc3",
+      "digest": "sha256:5a51654ccf5715230c6e766fb9fce9013cf18b0a8ecfdf7b82358e99fe4aeab3",
       "status": "pattern-specific-gap"
     },
     {
@@ -461,7 +461,7 @@
       "pattern_id": "definitive-domain.foundation.authority-lock",
       "scenario": "compatibility",
       "path": "evidence/scenarios/behaviors/foundation.authority-lock/compatibility.proof.json",
-      "digest": "sha256:d567444c0ec246be919f74975a277254006be0d1e1f1b832314ee3323efc7099",
+      "digest": "sha256:80aea9c1bc733cf8d67929c235f02271aec7eeff1fae2a33dcec661a5a0b9b6c",
       "status": "pattern-specific-gap"
     },
     {
@@ -470,7 +470,7 @@
       "pattern_id": "definitive-domain.foundation.version-lock",
       "scenario": "normal",
       "path": "evidence/scenarios/behaviors/foundation.version-lock/normal.proof.json",
-      "digest": "sha256:b8ffb47075cbea9e9a6fd83c12cc8bfe9442a37e2fb9c96b7251ed875c70f5fd",
+      "digest": "sha256:57e41cec189e6ef08ca5aa73d59c747f95bd14861ee4b8baecddff70b8314593",
       "status": "pattern-specific-gap"
     },
     {
@@ -479,7 +479,7 @@
       "pattern_id": "definitive-domain.foundation.version-lock",
       "scenario": "boundary",
       "path": "evidence/scenarios/behaviors/foundation.version-lock/boundary.proof.json",
-      "digest": "sha256:aef17fada26e0ed76758e41cc5d3b54fa0f253e3c76663cc049d6feb618ed645",
+      "digest": "sha256:3a451c1853d92ccc315061d3e96c2117cef91eca8631da408d8256e305305213",
       "status": "pattern-specific-gap"
     },
     {
@@ -488,7 +488,7 @@
       "pattern_id": "definitive-domain.foundation.version-lock",
       "scenario": "refusal",
       "path": "evidence/scenarios/behaviors/foundation.version-lock/refusal.proof.json",
-      "digest": "sha256:a00015223e8d39ceb79552b0b442a9e7392259408fa5cb9e4a533deecd088093",
+      "digest": "sha256:e917ca65cd5d30c9fc70412ca9944c768c3ee379d32a3b77cc4fbd40a2821374",
       "status": "pattern-specific-gap"
     },
     {
@@ -497,7 +497,7 @@
       "pattern_id": "definitive-domain.foundation.version-lock",
       "scenario": "failure",
       "path": "evidence/scenarios/behaviors/foundation.version-lock/failure.proof.json",
-      "digest": "sha256:74fad6a96fbf4d5d010e30072f5712223a9d0825c0562250ef7f275a1e512830",
+      "digest": "sha256:8646e6e8f91087311678b7040d86f4d93aac560f70dbff96a4aa82d77a3f8106",
       "status": "pattern-specific-gap"
     },
     {
@@ -506,7 +506,7 @@
       "pattern_id": "definitive-domain.foundation.version-lock",
       "scenario": "recovery",
       "path": "evidence/scenarios/behaviors/foundation.version-lock/recovery.proof.json",
-      "digest": "sha256:c0e6ac25746f7f8040a6b0a08be0c97f9a0682fd690bec4c68aaf6b32d25915c",
+      "digest": "sha256:5236214920e9226976309dbaa0ac018b09ee8e6a1b92216edd7b0ed92742df13",
       "status": "pattern-specific-gap"
     },
     {
@@ -515,7 +515,7 @@
       "pattern_id": "definitive-domain.foundation.version-lock",
       "scenario": "migration",
       "path": "evidence/scenarios/behaviors/foundation.version-lock/migration.proof.json",
-      "digest": "sha256:ba356afd6c659fdd1a03245e2a70a9244135fed2c9039dc0e578ecb198a6a046",
+      "digest": "sha256:ecb4a0510e750c3fc7973f642b0031077baedb958e0ec16dd654113f0bbf3493",
       "status": "pattern-specific-gap"
     },
     {
@@ -524,7 +524,7 @@
       "pattern_id": "definitive-domain.foundation.version-lock",
       "scenario": "operations",
       "path": "evidence/scenarios/behaviors/foundation.version-lock/operations.proof.json",
-      "digest": "sha256:525164c0aa08a2408440bf92335ba2446fa637502605e124b372672690a1b702",
+      "digest": "sha256:3315fe3f8762ca27002c04427509e59d949f02aa53d4eb6367c24d9f87cd1d32",
       "status": "pattern-specific-gap"
     },
     {
@@ -533,8 +533,8 @@
       "pattern_id": "definitive-domain.foundation.version-lock",
       "scenario": "security",
       "path": "evidence/scenarios/behaviors/foundation.version-lock/security.proof.json",
-      "digest": "sha256:7a8de876737f3ae2b110342d9f505c7bbc284e70706fa1dbe1d87e2319d688e9",
-      "status": "pattern-specific-gap"
+      "digest": "sha256:d6f41f142e851410989125023c4ebacee754aa8906c2a56633380d09d6c6ca7e",
+      "status": "bounded-runtime-proof"
     },
     {
       "id": "proof.behavior.foundation.version-lock.performance",
@@ -542,7 +542,7 @@
       "pattern_id": "definitive-domain.foundation.version-lock",
       "scenario": "performance",
       "path": "evidence/scenarios/behaviors/foundation.version-lock/performance.proof.json",
-      "digest": "sha256:b84079e9688388cc870340daa4cdc0a9b2241be02d307f5e610c4ae47f79eb32",
+      "digest": "sha256:b56862466241cadf894d066890594df1e44833a7846cdba4050eade8ce09d776",
       "status": "pattern-specific-gap"
     },
     {
@@ -551,7 +551,7 @@
       "pattern_id": "definitive-domain.foundation.version-lock",
       "scenario": "compatibility",
       "path": "evidence/scenarios/behaviors/foundation.version-lock/compatibility.proof.json",
-      "digest": "sha256:1d6c360461cc1040139d22cba37e44e996486c7e81f915aaa98fdb54e9079cc5",
+      "digest": "sha256:c72c5672277bf46ff60797f040afbea9d896bff5672bc7a9bcc03f7724565d73",
       "status": "pattern-specific-gap"
     },
     {
@@ -560,7 +560,7 @@
       "pattern_id": "definitive-domain.lifecycle.compatibility-matrix",
       "scenario": "normal",
       "path": "evidence/scenarios/behaviors/lifecycle.compatibility-matrix/normal.proof.json",
-      "digest": "sha256:aa46e1d5348c9d81e7e123f85dd3b55129fbb9e939d75d58a5da95ebe1981cf3",
+      "digest": "sha256:a6704e1e246f4d054f700a2b46a7fc891534f83947d3ae9093645ac88f7e784b",
       "status": "pattern-specific-gap"
     },
     {
@@ -569,7 +569,7 @@
       "pattern_id": "definitive-domain.lifecycle.compatibility-matrix",
       "scenario": "boundary",
       "path": "evidence/scenarios/behaviors/lifecycle.compatibility-matrix/boundary.proof.json",
-      "digest": "sha256:655d7cec9c27c87e08217b21c86b88e9573c7567b68b4aee1a3911c8b785489f",
+      "digest": "sha256:a02bc18659957d89fe5517fac855d9eb13a3d20609848b075965c87f4bbe476e",
       "status": "pattern-specific-gap"
     },
     {
@@ -578,7 +578,7 @@
       "pattern_id": "definitive-domain.lifecycle.compatibility-matrix",
       "scenario": "refusal",
       "path": "evidence/scenarios/behaviors/lifecycle.compatibility-matrix/refusal.proof.json",
-      "digest": "sha256:b0ca6ebf0fc0cf2620bca7b7df30c370b2236ba3618de9846776fad411341e11",
+      "digest": "sha256:5a47954fe63d912b6189292308381ccf1947612ce46d180271238b83db681248",
       "status": "pattern-specific-gap"
     },
     {
@@ -587,7 +587,7 @@
       "pattern_id": "definitive-domain.lifecycle.compatibility-matrix",
       "scenario": "failure",
       "path": "evidence/scenarios/behaviors/lifecycle.compatibility-matrix/failure.proof.json",
-      "digest": "sha256:d4de6e5a655b92f5b2894b370115f33e15771cd14a6af78324dd5eda1131bb97",
+      "digest": "sha256:432eb76a8aa45f919672c65af26e46b4af785ceedb1cfa78257849e27eb674bd",
       "status": "pattern-specific-gap"
     },
     {
@@ -596,7 +596,7 @@
       "pattern_id": "definitive-domain.lifecycle.compatibility-matrix",
       "scenario": "recovery",
       "path": "evidence/scenarios/behaviors/lifecycle.compatibility-matrix/recovery.proof.json",
-      "digest": "sha256:365afa0714acfbd0d9469be0e5d5d2d5ddd2d76e05e1677aeef572286aeb5af4",
+      "digest": "sha256:a44b98944ecb9696f5c147bbe2cd85aa0ec22a91ec4478b433a0a225edb7c4a4",
       "status": "pattern-specific-gap"
     },
     {
@@ -605,7 +605,7 @@
       "pattern_id": "definitive-domain.lifecycle.compatibility-matrix",
       "scenario": "migration",
       "path": "evidence/scenarios/behaviors/lifecycle.compatibility-matrix/migration.proof.json",
-      "digest": "sha256:5e43d7e9f21eb61e458cacf706a7c784412b26602c56b6bf84344a8414f7911d",
+      "digest": "sha256:6701cb2d45ddb1c9d749c32bc36e16160daf1035c1b64fb55c193b5b9a4f27b6",
       "status": "pattern-specific-gap"
     },
     {
@@ -614,7 +614,7 @@
       "pattern_id": "definitive-domain.lifecycle.compatibility-matrix",
       "scenario": "operations",
       "path": "evidence/scenarios/behaviors/lifecycle.compatibility-matrix/operations.proof.json",
-      "digest": "sha256:319e5b79f9da42f9edd795501efb0d6402f0fc3ae33d4eef5c2487a37005eb5f",
+      "digest": "sha256:47971e156125749d3231d5cde64ea0a2128fbcdd7417610a65e62dc97e2fdff6",
       "status": "pattern-specific-gap"
     },
     {
@@ -623,8 +623,8 @@
       "pattern_id": "definitive-domain.lifecycle.compatibility-matrix",
       "scenario": "security",
       "path": "evidence/scenarios/behaviors/lifecycle.compatibility-matrix/security.proof.json",
-      "digest": "sha256:4b24918df396763dfb7860ab15127f8da6dc8bbc06c876d075675c959dc6b55d",
-      "status": "pattern-specific-gap"
+      "digest": "sha256:60985db0b50b0d3476fc5f587633ed797f0537292c0a918762605954f26d1a23",
+      "status": "bounded-runtime-proof"
     },
     {
       "id": "proof.behavior.lifecycle.compatibility-matrix.performance",
@@ -632,7 +632,7 @@
       "pattern_id": "definitive-domain.lifecycle.compatibility-matrix",
       "scenario": "performance",
       "path": "evidence/scenarios/behaviors/lifecycle.compatibility-matrix/performance.proof.json",
-      "digest": "sha256:6f4a827e40348ab1ee493caff204b5b7d1dfd8ee5b4bf9447e89b60c30254eff",
+      "digest": "sha256:384438e1b5b26b89f23c5fccee50a4c3f2fdcccab67257651f48cf977b93d0ee",
       "status": "pattern-specific-gap"
     },
     {
@@ -641,7 +641,7 @@
       "pattern_id": "definitive-domain.lifecycle.compatibility-matrix",
       "scenario": "compatibility",
       "path": "evidence/scenarios/behaviors/lifecycle.compatibility-matrix/compatibility.proof.json",
-      "digest": "sha256:aafafc056c8c38995a16dce023dad6bdbaa33b76b45706b361e7f259c6e729ee",
+      "digest": "sha256:a3be0e7f61d7348559348e17fcac44b3a9bc0654f134d07aa1dd24ea4c55e37a",
       "status": "pattern-specific-gap"
     },
     {
@@ -650,7 +650,7 @@
       "pattern_id": "definitive-domain.lifecycle.pg-upgrade",
       "scenario": "normal",
       "path": "evidence/scenarios/behaviors/lifecycle.pg-upgrade/normal.proof.json",
-      "digest": "sha256:7e1db56cca03d1d22c92018ccbcd55bf7388201aab00516296e95ded911c3692",
+      "digest": "sha256:2cac919a3f7391b18c6129544b9331f0d87bc27faa59cd1480741547fed5b59e",
       "status": "pattern-specific-gap"
     },
     {
@@ -659,7 +659,7 @@
       "pattern_id": "definitive-domain.lifecycle.pg-upgrade",
       "scenario": "boundary",
       "path": "evidence/scenarios/behaviors/lifecycle.pg-upgrade/boundary.proof.json",
-      "digest": "sha256:60429f3bcac7d704146918b0e0987604f0801f966a86281fb8c95d67ac1fe425",
+      "digest": "sha256:199f790e4ad22ebc99332439e67a790d8d8a670289bffbaa0d62b2247cf41d68",
       "status": "pattern-specific-gap"
     },
     {
@@ -668,7 +668,7 @@
       "pattern_id": "definitive-domain.lifecycle.pg-upgrade",
       "scenario": "refusal",
       "path": "evidence/scenarios/behaviors/lifecycle.pg-upgrade/refusal.proof.json",
-      "digest": "sha256:6c84c60a71b21e89fee37744f7631ee0ffa4ee365497739aab7546cad1e07f9d",
+      "digest": "sha256:a3a345309b37c3e1bba53f014c394e447d3b6ef968aa85aa2f9ed332940cb7c1",
       "status": "pattern-specific-gap"
     },
     {
@@ -677,7 +677,7 @@
       "pattern_id": "definitive-domain.lifecycle.pg-upgrade",
       "scenario": "failure",
       "path": "evidence/scenarios/behaviors/lifecycle.pg-upgrade/failure.proof.json",
-      "digest": "sha256:3e5b49be86070eac55bc701a124b97b1744b9f67450645f7168a2e36607a9fab",
+      "digest": "sha256:f520912fa77063ad23316151f7ccc292f23d9cd41d430ada78dac1b5a4074128",
       "status": "pattern-specific-gap"
     },
     {
@@ -686,7 +686,7 @@
       "pattern_id": "definitive-domain.lifecycle.pg-upgrade",
       "scenario": "recovery",
       "path": "evidence/scenarios/behaviors/lifecycle.pg-upgrade/recovery.proof.json",
-      "digest": "sha256:fec0f5c8a7b860b90fdedb43e952e081b6a3d51f86ee6ced39469ba9ea2badfd",
+      "digest": "sha256:e0dc3668d9b94f0f712d1f394abc44890fcb9127748a6b59c54e73a0c888ed5a",
       "status": "pattern-specific-gap"
     },
     {
@@ -695,7 +695,7 @@
       "pattern_id": "definitive-domain.lifecycle.pg-upgrade",
       "scenario": "migration",
       "path": "evidence/scenarios/behaviors/lifecycle.pg-upgrade/migration.proof.json",
-      "digest": "sha256:807dc10565b65b1f1996ee8768f1f869538bbc2e63692bc50db6d2867bf3e6a6",
+      "digest": "sha256:bce97ffc0bcfdbeee0501edd9278506a819dbd1aaa50dc639f193ebcad48df8b",
       "status": "pattern-specific-gap"
     },
     {
@@ -704,7 +704,7 @@
       "pattern_id": "definitive-domain.lifecycle.pg-upgrade",
       "scenario": "operations",
       "path": "evidence/scenarios/behaviors/lifecycle.pg-upgrade/operations.proof.json",
-      "digest": "sha256:0aa9b8286679ac62cf4d7888c1df2e861dfa4cc4678f7bb9a1fc2fd46133161b",
+      "digest": "sha256:d8d2cdd86b02ae87e573ba0b0b739e9f52e878e10bb08806a9118092c72344de",
       "status": "pattern-specific-gap"
     },
     {
@@ -713,8 +713,8 @@
       "pattern_id": "definitive-domain.lifecycle.pg-upgrade",
       "scenario": "security",
       "path": "evidence/scenarios/behaviors/lifecycle.pg-upgrade/security.proof.json",
-      "digest": "sha256:2190e6e8db4e76d4069a316a49db4cb4a0b91534b57366aa07c152b16955e729",
-      "status": "pattern-specific-gap"
+      "digest": "sha256:988c3095e0511efe2898868505ff5dffdf107ac9277af7d236f0f91936e95bdd",
+      "status": "bounded-runtime-proof"
     },
     {
       "id": "proof.behavior.lifecycle.pg-upgrade.performance",
@@ -722,7 +722,7 @@
       "pattern_id": "definitive-domain.lifecycle.pg-upgrade",
       "scenario": "performance",
       "path": "evidence/scenarios/behaviors/lifecycle.pg-upgrade/performance.proof.json",
-      "digest": "sha256:a5ed4d42da5d9c604bfeaf337388e430ea0cff680a9d02fa50a1f92e77adca87",
+      "digest": "sha256:5d15ca371c99e47b0fac314507e8617e73f8ebf9daffbbccf935b6959f0c6e80",
       "status": "pattern-specific-gap"
     },
     {
@@ -731,7 +731,7 @@
       "pattern_id": "definitive-domain.lifecycle.pg-upgrade",
       "scenario": "compatibility",
       "path": "evidence/scenarios/behaviors/lifecycle.pg-upgrade/compatibility.proof.json",
-      "digest": "sha256:f42a735bd08eba7f88e0a5f77314c1d0eef0e642fca4f2bb5d0094ed9fc9ad07",
+      "digest": "sha256:9428e43b2c790f9d7fc16721c85d4a124d0f256031e73e17b9580966082abc40",
       "status": "pattern-specific-gap"
     },
     {
@@ -740,7 +740,7 @@
       "pattern_id": "definitive-domain.lifecycle.schema-migration",
       "scenario": "normal",
       "path": "evidence/scenarios/behaviors/lifecycle.schema-migration/normal.proof.json",
-      "digest": "sha256:46363467e90d4fb2ab09b0dfbff3baa3e7633737a672ef9afcae9873150fa28d",
+      "digest": "sha256:0d0f53864490c830cc9b0f2d4d5d97c7f1a0b12f864d092cbddc0b8c60dc1175",
       "status": "pattern-specific-gap"
     },
     {
@@ -749,7 +749,7 @@
       "pattern_id": "definitive-domain.lifecycle.schema-migration",
       "scenario": "boundary",
       "path": "evidence/scenarios/behaviors/lifecycle.schema-migration/boundary.proof.json",
-      "digest": "sha256:d866f567b84d340911bf32e81be799c58d52187e5b06723da46370050a2140b3",
+      "digest": "sha256:0b4809c2299050d1cc5884680f1cd5c6ecc7a24b41599951cf5b3dbe2bd73483",
       "status": "pattern-specific-gap"
     },
     {
@@ -758,7 +758,7 @@
       "pattern_id": "definitive-domain.lifecycle.schema-migration",
       "scenario": "refusal",
       "path": "evidence/scenarios/behaviors/lifecycle.schema-migration/refusal.proof.json",
-      "digest": "sha256:e715580e6173f44d916c7246aedf49ace4f1a6963815f4cd6181b8842562fb59",
+      "digest": "sha256:b4a53b2285baff107a60f32ae3146d081eade39ae9d773a25d9af99085eade6b",
       "status": "pattern-specific-gap"
     },
     {
@@ -767,7 +767,7 @@
       "pattern_id": "definitive-domain.lifecycle.schema-migration",
       "scenario": "failure",
       "path": "evidence/scenarios/behaviors/lifecycle.schema-migration/failure.proof.json",
-      "digest": "sha256:739719039362fe047785150bc268318aaf4443f78ee9f9b623271817c1f86404",
+      "digest": "sha256:4b334f4fc74c9833ea15128dd5aaf87440b6dee5586e1c88e5d1622c99b755be",
       "status": "pattern-specific-gap"
     },
     {
@@ -776,7 +776,7 @@
       "pattern_id": "definitive-domain.lifecycle.schema-migration",
       "scenario": "recovery",
       "path": "evidence/scenarios/behaviors/lifecycle.schema-migration/recovery.proof.json",
-      "digest": "sha256:ae61bf672d915cb5ea9054516502203ebc505f53230b9f52bc745781f638eff4",
+      "digest": "sha256:e339ae587a75395eb639359353e216a68961177a09ccceecb7db3cdccf529ede",
       "status": "pattern-specific-gap"
     },
     {
@@ -785,7 +785,7 @@
       "pattern_id": "definitive-domain.lifecycle.schema-migration",
       "scenario": "migration",
       "path": "evidence/scenarios/behaviors/lifecycle.schema-migration/migration.proof.json",
-      "digest": "sha256:0b13a9323eab94e1c467845c671bb7ae8c9f3555d1b877ffe5bd8d7f3a45cece",
+      "digest": "sha256:0dedaf66d89c06eeace5cdf833161c8ef17367aff9685d3e470037704e8bbe8f",
       "status": "pattern-specific-gap"
     },
     {
@@ -794,7 +794,7 @@
       "pattern_id": "definitive-domain.lifecycle.schema-migration",
       "scenario": "operations",
       "path": "evidence/scenarios/behaviors/lifecycle.schema-migration/operations.proof.json",
-      "digest": "sha256:d3540af9ab7d0b94262f57c53a56578e43a9a30ad8b779a72865907bfe0f4373",
+      "digest": "sha256:5278131ec907f150e5720ffbd0d5f3eb47a4574a86251c46f8e618f610c9db35",
       "status": "pattern-specific-gap"
     },
     {
@@ -803,8 +803,8 @@
       "pattern_id": "definitive-domain.lifecycle.schema-migration",
       "scenario": "security",
       "path": "evidence/scenarios/behaviors/lifecycle.schema-migration/security.proof.json",
-      "digest": "sha256:33a85d34a848b5cf06539319bdcc3a34fcd5e958adcfda9cfc999a6fdb010e8b",
-      "status": "pattern-specific-gap"
+      "digest": "sha256:8a927d613b5bf9b46105060c7fb96e3a76b8204d13f95bd4c2cfd22d855ef103",
+      "status": "bounded-runtime-proof"
     },
     {
       "id": "proof.behavior.lifecycle.schema-migration.performance",
@@ -812,7 +812,7 @@
       "pattern_id": "definitive-domain.lifecycle.schema-migration",
       "scenario": "performance",
       "path": "evidence/scenarios/behaviors/lifecycle.schema-migration/performance.proof.json",
-      "digest": "sha256:48e296c7b299c8820a6a40efa8cd700c5d313edbc38039e83494b5c9a017027a",
+      "digest": "sha256:2a0fd89ab2ffc6479d9f60c32cd11783e21061456491e2b277b6b2a45bf8f629",
       "status": "pattern-specific-gap"
     },
     {
@@ -821,7 +821,7 @@
       "pattern_id": "definitive-domain.lifecycle.schema-migration",
       "scenario": "compatibility",
       "path": "evidence/scenarios/behaviors/lifecycle.schema-migration/compatibility.proof.json",
-      "digest": "sha256:37378f8deead7beb3c0aaaad8a4e8d8f90b3ffcaf5c6772b3ad0bf61b545154f",
+      "digest": "sha256:d9a40edc7380e924c01ec657a5f40a74d72c448acbd9e8c7daabec0bbdb5a4a9",
       "status": "pattern-specific-gap"
     },
     {
@@ -830,7 +830,7 @@
       "pattern_id": "definitive-domain.lifecycle.upgrade",
       "scenario": "normal",
       "path": "evidence/scenarios/behaviors/lifecycle.upgrade/normal.proof.json",
-      "digest": "sha256:d83b88f2f6682f8730e0abbf0f124afe1253d2309a32fc396f11a22cfa528b85",
+      "digest": "sha256:13e351799f9ba12e2df23a2df841759c00337c6879a8197ed896372c371987b7",
       "status": "pattern-specific-gap"
     },
     {
@@ -839,7 +839,7 @@
       "pattern_id": "definitive-domain.lifecycle.upgrade",
       "scenario": "boundary",
       "path": "evidence/scenarios/behaviors/lifecycle.upgrade/boundary.proof.json",
-      "digest": "sha256:f686a1b3bf300d698cc0801142cdc6626d2b39725d83c180588c29ac30da8829",
+      "digest": "sha256:c8128860bbf3c29aab8a49a83fac5f4c2f025ef00936ddfec1d2819e3543f604",
       "status": "pattern-specific-gap"
     },
     {
@@ -848,7 +848,7 @@
       "pattern_id": "definitive-domain.lifecycle.upgrade",
       "scenario": "refusal",
       "path": "evidence/scenarios/behaviors/lifecycle.upgrade/refusal.proof.json",
-      "digest": "sha256:78a27d6c8f45ee237386b11ae8cbecba219af90045f141700a81639fec9a6b26",
+      "digest": "sha256:251c9fdddb51ae0ae0f4d7fd5e7f01cc5f0a48f1cdd72ec81f13cf5de0f71872",
       "status": "pattern-specific-gap"
     },
     {
@@ -857,7 +857,7 @@
       "pattern_id": "definitive-domain.lifecycle.upgrade",
       "scenario": "failure",
       "path": "evidence/scenarios/behaviors/lifecycle.upgrade/failure.proof.json",
-      "digest": "sha256:7d2f599cce78be4b0e07d3f700751f4fcc1751d5459c3309688fd1474f4d4aa3",
+      "digest": "sha256:1b97af6f5627ab90acb08efe623ccccc090963e64079a06a01c273adad1e71bc",
       "status": "pattern-specific-gap"
     },
     {
@@ -866,7 +866,7 @@
       "pattern_id": "definitive-domain.lifecycle.upgrade",
       "scenario": "recovery",
       "path": "evidence/scenarios/behaviors/lifecycle.upgrade/recovery.proof.json",
-      "digest": "sha256:4cc8cbc482b125f68ade3e97f2e95cb0dc831e8df5eb6d717cae24563b14c92c",
+      "digest": "sha256:31f5080722725e1ecccd05b5a8dbc800b0ad2dec112a0cefbd76ad0acbaee6d6",
       "status": "pattern-specific-gap"
     },
     {
@@ -875,7 +875,7 @@
       "pattern_id": "definitive-domain.lifecycle.upgrade",
       "scenario": "migration",
       "path": "evidence/scenarios/behaviors/lifecycle.upgrade/migration.proof.json",
-      "digest": "sha256:4a904e360d1f7cd5ce492721ae5f2d04fbc729eca993b6479381908de4b0d67d",
+      "digest": "sha256:d894cb499c2cc73be211c288bf4cd46688f44616167756c0d997de69d00ee7c0",
       "status": "pattern-specific-gap"
     },
     {
@@ -884,7 +884,7 @@
       "pattern_id": "definitive-domain.lifecycle.upgrade",
       "scenario": "operations",
       "path": "evidence/scenarios/behaviors/lifecycle.upgrade/operations.proof.json",
-      "digest": "sha256:54fb959da2c7056322d76ffc77cda043e26a91edd539d55c0396787881e13ca5",
+      "digest": "sha256:21796a2a8fdcbf8fb2ad94a0269badbc149c23a01bec607abae0afd0745012fd",
       "status": "pattern-specific-gap"
     },
     {
@@ -893,7 +893,7 @@
       "pattern_id": "definitive-domain.lifecycle.upgrade",
       "scenario": "security",
       "path": "evidence/scenarios/behaviors/lifecycle.upgrade/security.proof.json",
-      "digest": "sha256:28fbf701bc55c8407c530663b4892dda9ba87414e024416b4ca72b248e5a9fd2",
+      "digest": "sha256:4a4a7ae4fe5fb05a12fcd377d82b89e685e1b8a5b942d4e3ea53bc442d847882",
       "status": "pattern-specific-gap"
     },
     {
@@ -902,7 +902,7 @@
       "pattern_id": "definitive-domain.lifecycle.upgrade",
       "scenario": "performance",
       "path": "evidence/scenarios/behaviors/lifecycle.upgrade/performance.proof.json",
-      "digest": "sha256:0a4ca3ee10a770dfcce389eddac306898c369a4bb00de928f10081013046818b",
+      "digest": "sha256:61bf5c493f3a2e5b87fe16a2ef78f4c31538d8799b922c337895468c07e1b717",
       "status": "pattern-specific-gap"
     },
     {
@@ -911,7 +911,7 @@
       "pattern_id": "definitive-domain.lifecycle.upgrade",
       "scenario": "compatibility",
       "path": "evidence/scenarios/behaviors/lifecycle.upgrade/compatibility.proof.json",
-      "digest": "sha256:273765248762362d4e758baf364e2a5ed3cec23140b04e3ebb7026f156dd1729",
+      "digest": "sha256:ed780bc107d3c24b1f81652f46e85f3d42e80607ba6443144e38f4cff687c22d",
       "status": "pattern-specific-gap"
     },
     {
@@ -920,7 +920,7 @@
       "pattern_id": "definitive-domain.operations.backup-recovery",
       "scenario": "normal",
       "path": "evidence/scenarios/behaviors/operations.backup-recovery/normal.proof.json",
-      "digest": "sha256:53b677845e591b363215ee3e670beac777e227c09a595e0b9a2dd13d7039fb09",
+      "digest": "sha256:938a1ab0280d78d7979c31cb59ab7aaa2513847a63b069bbb44b231c9edb1534",
       "status": "pattern-specific-gap"
     },
     {
@@ -929,7 +929,7 @@
       "pattern_id": "definitive-domain.operations.backup-recovery",
       "scenario": "boundary",
       "path": "evidence/scenarios/behaviors/operations.backup-recovery/boundary.proof.json",
-      "digest": "sha256:ed16bd5c18105ddbc86f88a6f11dc68fbb89d030024f2b50ad034b460437a384",
+      "digest": "sha256:b78f943db114cc84a1ac1d8061a1ed688be4c3889b2a61b8365ca49cf242d4f8",
       "status": "pattern-specific-gap"
     },
     {
@@ -938,7 +938,7 @@
       "pattern_id": "definitive-domain.operations.backup-recovery",
       "scenario": "refusal",
       "path": "evidence/scenarios/behaviors/operations.backup-recovery/refusal.proof.json",
-      "digest": "sha256:4161e22c45716f259552abf8269bb540e94cdef5735f2808a1460bc677453a25",
+      "digest": "sha256:572547e82f4ec55a05af973882a45eaf8d843f55fa039bcc6953fa1edc8c68e0",
       "status": "pattern-specific-gap"
     },
     {
@@ -947,7 +947,7 @@
       "pattern_id": "definitive-domain.operations.backup-recovery",
       "scenario": "failure",
       "path": "evidence/scenarios/behaviors/operations.backup-recovery/failure.proof.json",
-      "digest": "sha256:9c6ea99364465af888e29f39ba2b3dcb7bc7ba3118c823f00a46e04eb17bbe10",
+      "digest": "sha256:8c4b59b6919ba93b8909a1905876a1e6854531ed45c2c3f141a658aca39f4cea",
       "status": "pattern-specific-gap"
     },
     {
@@ -956,7 +956,7 @@
       "pattern_id": "definitive-domain.operations.backup-recovery",
       "scenario": "recovery",
       "path": "evidence/scenarios/behaviors/operations.backup-recovery/recovery.proof.json",
-      "digest": "sha256:044d023c6b307cfd15f0b27cec6a3b220caae1f9f3873c62ae89f22432a8a99d",
+      "digest": "sha256:ef267b4a768a5ae532f277a83a02825485e2ea120351fcf596012cbcbf4d29c6",
       "status": "pattern-specific-gap"
     },
     {
@@ -965,7 +965,7 @@
       "pattern_id": "definitive-domain.operations.backup-recovery",
       "scenario": "migration",
       "path": "evidence/scenarios/behaviors/operations.backup-recovery/migration.proof.json",
-      "digest": "sha256:cc8c859777ee8844a76d3321c2fed24e870e96b82496ee1ea9e72981dd407a62",
+      "digest": "sha256:41c5e99e8006d08f140f5d99fb29fd7df08e39bb0b66d262e24a8fee906c1fa2",
       "status": "pattern-specific-gap"
     },
     {
@@ -974,7 +974,7 @@
       "pattern_id": "definitive-domain.operations.backup-recovery",
       "scenario": "operations",
       "path": "evidence/scenarios/behaviors/operations.backup-recovery/operations.proof.json",
-      "digest": "sha256:4670069dd89c76bbaabdb879ed6da992501923eb96e0437c902fa10a5890ce8c",
+      "digest": "sha256:997430e7c6282ada2921595fa7203d72b0fdba1487cf092bc6bd287fff07914a",
       "status": "pattern-specific-gap"
     },
     {
@@ -983,7 +983,7 @@
       "pattern_id": "definitive-domain.operations.backup-recovery",
       "scenario": "security",
       "path": "evidence/scenarios/behaviors/operations.backup-recovery/security.proof.json",
-      "digest": "sha256:85801d188968a91b2ff0bef87ee52f63e2fab554b4ddb45bb69c40ecd39bd60e",
+      "digest": "sha256:8eae68845ec556b08ba5996ff746a6504e8bbc3ea1a12a2affe7d34d8bcf2922",
       "status": "pattern-specific-gap"
     },
     {
@@ -992,7 +992,7 @@
       "pattern_id": "definitive-domain.operations.backup-recovery",
       "scenario": "performance",
       "path": "evidence/scenarios/behaviors/operations.backup-recovery/performance.proof.json",
-      "digest": "sha256:2448a78c690f859554dca131e1f72c2d4b439509904e8850c9e6da166ce4dafa",
+      "digest": "sha256:678eb9493981fe6f8de667ba434a37ea9a610a85394eeb42ede3672fdbdd84b4",
       "status": "pattern-specific-gap"
     },
     {
@@ -1001,7 +1001,7 @@
       "pattern_id": "definitive-domain.operations.backup-recovery",
       "scenario": "compatibility",
       "path": "evidence/scenarios/behaviors/operations.backup-recovery/compatibility.proof.json",
-      "digest": "sha256:058ac475fa4ba128f9e71fb3910097f1ba62c149b68e6012fd4d90d25e8f9de5",
+      "digest": "sha256:d028d424c2ca960d1c28cd6ec64a7783ef704d3659417b4c7278dff86dfbaa2a",
       "status": "pattern-specific-gap"
     },
     {
@@ -1010,7 +1010,7 @@
       "pattern_id": "definitive-domain.operations.failure-injection",
       "scenario": "normal",
       "path": "evidence/scenarios/behaviors/operations.failure-injection/normal.proof.json",
-      "digest": "sha256:a3d476695a8cabde35ef754fa0f3153a82a2a92e36ec0d50cd9a91221fcec176",
+      "digest": "sha256:227c56a776fffc376ff497c9dd28e27219efdd21263d8ec3ba1b47f57e08d967",
       "status": "pattern-specific-gap"
     },
     {
@@ -1019,7 +1019,7 @@
       "pattern_id": "definitive-domain.operations.failure-injection",
       "scenario": "boundary",
       "path": "evidence/scenarios/behaviors/operations.failure-injection/boundary.proof.json",
-      "digest": "sha256:228f01e058acbb89e276131b1ebd6369d85956e433dc7dcca4aecca44b4cc28f",
+      "digest": "sha256:d0910e0fc7c6d052f5d9e5b9bf0143de75702295f27fd1a99a44aef407fd2ccb",
       "status": "pattern-specific-gap"
     },
     {
@@ -1028,7 +1028,7 @@
       "pattern_id": "definitive-domain.operations.failure-injection",
       "scenario": "refusal",
       "path": "evidence/scenarios/behaviors/operations.failure-injection/refusal.proof.json",
-      "digest": "sha256:dea91a2fc4c342c0a9d34d82ab8f3be60b75de83ad4bde568020b8f91b9bc6d3",
+      "digest": "sha256:a004c3d9c59b0093135515370252182283e1a89fed3c617fb0c1268560e4c0a4",
       "status": "pattern-specific-gap"
     },
     {
@@ -1037,7 +1037,7 @@
       "pattern_id": "definitive-domain.operations.failure-injection",
       "scenario": "failure",
       "path": "evidence/scenarios/behaviors/operations.failure-injection/failure.proof.json",
-      "digest": "sha256:2b53cc623aa7d3207a4549d610aa48f1de8afff620daf87eb28be2687fe6559e",
+      "digest": "sha256:d2188625049c16b6e4e17312b2d91f3a2505e811482f18da2aefddbaa1df812e",
       "status": "pattern-specific-gap"
     },
     {
@@ -1046,7 +1046,7 @@
       "pattern_id": "definitive-domain.operations.failure-injection",
       "scenario": "recovery",
       "path": "evidence/scenarios/behaviors/operations.failure-injection/recovery.proof.json",
-      "digest": "sha256:d9e0777aa09ca63127a97a7c37c6b48f376e06b6b9601d08d138ed20e3497209",
+      "digest": "sha256:837057c5d42d093c999f033de007bf0a76fb94abc1fe4e683b8bdc6bafb76903",
       "status": "pattern-specific-gap"
     },
     {
@@ -1055,7 +1055,7 @@
       "pattern_id": "definitive-domain.operations.failure-injection",
       "scenario": "migration",
       "path": "evidence/scenarios/behaviors/operations.failure-injection/migration.proof.json",
-      "digest": "sha256:8f40c1a4e1ff70eac50a6d92d5bedd870be7efe061f0421b43510aaf8667d452",
+      "digest": "sha256:4cc0bcfa283a8cc48e87c1457c97b67fb119c56788a056fb1d3642fea06f2b60",
       "status": "pattern-specific-gap"
     },
     {
@@ -1064,7 +1064,7 @@
       "pattern_id": "definitive-domain.operations.failure-injection",
       "scenario": "operations",
       "path": "evidence/scenarios/behaviors/operations.failure-injection/operations.proof.json",
-      "digest": "sha256:adc98f8628ebf8f4c4af4010bc5cdcee5de9deaa25fd6842f9280a9e1bc949c9",
+      "digest": "sha256:63e26af978a53584bac5254d5d0fa1636952bdbd16bbf6b47a44c8cf49185be5",
       "status": "pattern-specific-gap"
     },
     {
@@ -1073,7 +1073,7 @@
       "pattern_id": "definitive-domain.operations.failure-injection",
       "scenario": "security",
       "path": "evidence/scenarios/behaviors/operations.failure-injection/security.proof.json",
-      "digest": "sha256:caaa7fe5d2432c612dd3959b8e4f652cbd10c6efd72570f3320220f4cafd0af5",
+      "digest": "sha256:ea0c6ea3dfa1b68094150ae5190fe4ead1b82bdc5352a757583e0aa06f343b79",
       "status": "pattern-specific-gap"
     },
     {
@@ -1082,7 +1082,7 @@
       "pattern_id": "definitive-domain.operations.failure-injection",
       "scenario": "performance",
       "path": "evidence/scenarios/behaviors/operations.failure-injection/performance.proof.json",
-      "digest": "sha256:822181353db87aa407abe6d99553dd218bf3c379004d89740523eff8a1728f36",
+      "digest": "sha256:7896874fbdb9d33465c7ba7f607349b55457f8654e7f617354cbc1cfdff60b6c",
       "status": "pattern-specific-gap"
     },
     {
@@ -1091,7 +1091,7 @@
       "pattern_id": "definitive-domain.operations.failure-injection",
       "scenario": "compatibility",
       "path": "evidence/scenarios/behaviors/operations.failure-injection/compatibility.proof.json",
-      "digest": "sha256:c8111e111546d279017d25edf376a972dfbe85aaf610d0b35ff40fc0b75cca17",
+      "digest": "sha256:b2ba1e10dfc74ed92b6df41781be96536913989b5a090a67c6346b08bfc58887",
       "status": "pattern-specific-gap"
     },
     {
@@ -1100,7 +1100,7 @@
       "pattern_id": "definitive-domain.operations.logical-replication",
       "scenario": "normal",
       "path": "evidence/scenarios/behaviors/operations.logical-replication/normal.proof.json",
-      "digest": "sha256:c7625ffc4096650aa8c296f6478a70790bf58ecd086ed987e109991237cdb199",
+      "digest": "sha256:64315cc0c78f18d860d45f9548cf1a667df4956915e0e3607b8ebc12efd27825",
       "status": "pattern-specific-gap"
     },
     {
@@ -1109,7 +1109,7 @@
       "pattern_id": "definitive-domain.operations.logical-replication",
       "scenario": "boundary",
       "path": "evidence/scenarios/behaviors/operations.logical-replication/boundary.proof.json",
-      "digest": "sha256:31e6ee05b3207b42f5b2832262c2660b65d9a3b2aff0ec53ee5a6562d0a5d6a2",
+      "digest": "sha256:4a0e894f5e52072f206fa50fb9ed5446ac972253b546c604e6386f25cdf1af5d",
       "status": "pattern-specific-gap"
     },
     {
@@ -1118,7 +1118,7 @@
       "pattern_id": "definitive-domain.operations.logical-replication",
       "scenario": "refusal",
       "path": "evidence/scenarios/behaviors/operations.logical-replication/refusal.proof.json",
-      "digest": "sha256:54cdaba95c8e4eb9b31e26b0e52ff7c704214985356c7ef3346e5eec0adafed5",
+      "digest": "sha256:9601e9324e39cf5652088d7baa05339e0639017e5c53802701840817302f633c",
       "status": "pattern-specific-gap"
     },
     {
@@ -1127,7 +1127,7 @@
       "pattern_id": "definitive-domain.operations.logical-replication",
       "scenario": "failure",
       "path": "evidence/scenarios/behaviors/operations.logical-replication/failure.proof.json",
-      "digest": "sha256:bcd16c9e26bb3d733a9f243923c48a3bee5d22f2f35396de0700708558cb73a8",
+      "digest": "sha256:2bcee011735f1493f0978aeaa84ffa26366f37f964215a0aa650ce4afc4b9f27",
       "status": "pattern-specific-gap"
     },
     {
@@ -1136,7 +1136,7 @@
       "pattern_id": "definitive-domain.operations.logical-replication",
       "scenario": "recovery",
       "path": "evidence/scenarios/behaviors/operations.logical-replication/recovery.proof.json",
-      "digest": "sha256:b94b252e60a43923303442c1cf0fc4c18cce57e43c53d1c096348f88c77bc433",
+      "digest": "sha256:00412a0348c28c5bdded83192abf538a07608a5b1dff884fb8d28ab7c267696f",
       "status": "pattern-specific-gap"
     },
     {
@@ -1145,7 +1145,7 @@
       "pattern_id": "definitive-domain.operations.logical-replication",
       "scenario": "migration",
       "path": "evidence/scenarios/behaviors/operations.logical-replication/migration.proof.json",
-      "digest": "sha256:62bde369eacf9f89c111694c7b4b301d153b4968bb12f345b73f6d1c4dbcc782",
+      "digest": "sha256:1ce25a003fbccd145fd146ba2d1d01f3ac9e005557dc06dec2d4b47878b2cb00",
       "status": "pattern-specific-gap"
     },
     {
@@ -1154,7 +1154,7 @@
       "pattern_id": "definitive-domain.operations.logical-replication",
       "scenario": "operations",
       "path": "evidence/scenarios/behaviors/operations.logical-replication/operations.proof.json",
-      "digest": "sha256:d35dc79e6ab59ceffcfa08d8b32e218ad25750fb2ec40d2445bbbb5de632177a",
+      "digest": "sha256:e170ce8fbb136cc9082de907b6340056210f3cdd0cd6332efdb996a44a45d46c",
       "status": "pattern-specific-gap"
     },
     {
@@ -1163,7 +1163,7 @@
       "pattern_id": "definitive-domain.operations.logical-replication",
       "scenario": "security",
       "path": "evidence/scenarios/behaviors/operations.logical-replication/security.proof.json",
-      "digest": "sha256:39e8d3ae44c9cc7faf096fa308b2cbadfb8f3ace25aea251b1cb5aa37788c472",
+      "digest": "sha256:d2964b6d7144b4bdc685f29ec5692e0291f8f08f4dc1cfd46bf541db5079c098",
       "status": "pattern-specific-gap"
     },
     {
@@ -1172,7 +1172,7 @@
       "pattern_id": "definitive-domain.operations.logical-replication",
       "scenario": "performance",
       "path": "evidence/scenarios/behaviors/operations.logical-replication/performance.proof.json",
-      "digest": "sha256:d55fe02621bddab8b16313403b285c6e226b80a9e7ee0f6d8d7f5cf0cba999d2",
+      "digest": "sha256:2ab27973885c0040e0c07729f793fd97468264a103913f0ebfb246befe4b991e",
       "status": "pattern-specific-gap"
     },
     {
@@ -1181,7 +1181,7 @@
       "pattern_id": "definitive-domain.operations.logical-replication",
       "scenario": "compatibility",
       "path": "evidence/scenarios/behaviors/operations.logical-replication/compatibility.proof.json",
-      "digest": "sha256:5a4b3e42b59992d74a1577cfcff4f40e7b42156f66b845c4586b051fc19c8de7",
+      "digest": "sha256:4712ce9b6dc92fb3f1e797875e8febd97a3ccc4481212af8f4fee5439881ba14",
       "status": "pattern-specific-gap"
     },
     {
@@ -1190,7 +1190,7 @@
       "pattern_id": "definitive-domain.operations.maintenance",
       "scenario": "normal",
       "path": "evidence/scenarios/behaviors/operations.maintenance/normal.proof.json",
-      "digest": "sha256:9f84fdcf0e9653d777957f6e6252f860a62be082a21722b2790faec41fb32682",
+      "digest": "sha256:9d4befe19e0ce398c2659487bb0e1acc082cf0a51fac97d76d8a645e492f3625",
       "status": "pattern-specific-gap"
     },
     {
@@ -1199,7 +1199,7 @@
       "pattern_id": "definitive-domain.operations.maintenance",
       "scenario": "boundary",
       "path": "evidence/scenarios/behaviors/operations.maintenance/boundary.proof.json",
-      "digest": "sha256:49a319a43dbc21af025fa7a8bb742a3c3c84a12d7bf5b7eed141c9510849552c",
+      "digest": "sha256:c4d36d67d5a06f989543858d4eeb92ea3874992b144de0348dde2986d3c61a17",
       "status": "pattern-specific-gap"
     },
     {
@@ -1208,7 +1208,7 @@
       "pattern_id": "definitive-domain.operations.maintenance",
       "scenario": "refusal",
       "path": "evidence/scenarios/behaviors/operations.maintenance/refusal.proof.json",
-      "digest": "sha256:b5eeef12b724cf0ebe22967b8ffa736cb5629d4f3c3530955b6d6c6b1f3909c9",
+      "digest": "sha256:fdb45753c14b5b675f3725f187b8c8b84f6ef656ce5156abe3c5733652515c24",
       "status": "pattern-specific-gap"
     },
     {
@@ -1217,7 +1217,7 @@
       "pattern_id": "definitive-domain.operations.maintenance",
       "scenario": "failure",
       "path": "evidence/scenarios/behaviors/operations.maintenance/failure.proof.json",
-      "digest": "sha256:18f3d4b4a8ec81000ce3b7e365961d7797fad2108077719b1d089a1743237c9e",
+      "digest": "sha256:138826191a6cf37e884de955b5be7820ba8a190f59e505592dad2d2053773f9b",
       "status": "pattern-specific-gap"
     },
     {
@@ -1226,7 +1226,7 @@
       "pattern_id": "definitive-domain.operations.maintenance",
       "scenario": "recovery",
       "path": "evidence/scenarios/behaviors/operations.maintenance/recovery.proof.json",
-      "digest": "sha256:4d7364ea2ab40ea055b6663d2c7d1bc8892615b338fe306b458e9eea7438b208",
+      "digest": "sha256:f587697a35c3b0ae59190e86b8ea007e577b364645bbc162faf7baccacfffb9d",
       "status": "pattern-specific-gap"
     },
     {
@@ -1235,7 +1235,7 @@
       "pattern_id": "definitive-domain.operations.maintenance",
       "scenario": "migration",
       "path": "evidence/scenarios/behaviors/operations.maintenance/migration.proof.json",
-      "digest": "sha256:c1e748d27844e539f758e3a310398f0d0ac492094c830a95664f1c7d804f7174",
+      "digest": "sha256:c35c6cd50b2d1e57045490c7dae2ab27272ceb834c9a280d9ef20c504495af5b",
       "status": "pattern-specific-gap"
     },
     {
@@ -1244,7 +1244,7 @@
       "pattern_id": "definitive-domain.operations.maintenance",
       "scenario": "operations",
       "path": "evidence/scenarios/behaviors/operations.maintenance/operations.proof.json",
-      "digest": "sha256:165c0814b37fd66e5e7bb251e444bf640181a8c5cb6d4ba35d970473e83e207a",
+      "digest": "sha256:2fa0b10719ac5577c3d9145400d87d1379d96bee78c2985674d5b20e121e40c5",
       "status": "pattern-specific-gap"
     },
     {
@@ -1253,7 +1253,7 @@
       "pattern_id": "definitive-domain.operations.maintenance",
       "scenario": "security",
       "path": "evidence/scenarios/behaviors/operations.maintenance/security.proof.json",
-      "digest": "sha256:a89a6063da25f5530041bdcb2b556e6a233964e81a093c3bf43dbb01c5faef45",
+      "digest": "sha256:3840c8528c624c2652b134acf2832245314006d891a01a090de42666b66bf82d",
       "status": "pattern-specific-gap"
     },
     {
@@ -1262,7 +1262,7 @@
       "pattern_id": "definitive-domain.operations.maintenance",
       "scenario": "performance",
       "path": "evidence/scenarios/behaviors/operations.maintenance/performance.proof.json",
-      "digest": "sha256:e77966be8e361308dfe27bf0cd04924e9ae347a7d70160e6001999d34da48610",
+      "digest": "sha256:a0f645cdae753db1a801e025d6438e11cc030eda0439222c723d87c44eb4dafd",
       "status": "pattern-specific-gap"
     },
     {
@@ -1271,7 +1271,7 @@
       "pattern_id": "definitive-domain.operations.maintenance",
       "scenario": "compatibility",
       "path": "evidence/scenarios/behaviors/operations.maintenance/compatibility.proof.json",
-      "digest": "sha256:fa67605aa45fdc6ab1fac6de84923b7133778679c0ae271d614d3fb15fa5301c",
+      "digest": "sha256:1932be74306eff4bc9d4a98fd414809ba4cf0cec7b4ead54e2642dcfec0104b5",
       "status": "pattern-specific-gap"
     },
     {
@@ -1280,7 +1280,7 @@
       "pattern_id": "definitive-domain.operations.observability",
       "scenario": "normal",
       "path": "evidence/scenarios/behaviors/operations.observability/normal.proof.json",
-      "digest": "sha256:1e56f30edb8322ae1770e650a58e8479bb05d62f3f4e52678098e14ad7190fd6",
+      "digest": "sha256:8e84e4e6a723f68ac7098778de80e85af2bd81330cfc1f94b401ae0322797bd8",
       "status": "pattern-specific-gap"
     },
     {
@@ -1289,7 +1289,7 @@
       "pattern_id": "definitive-domain.operations.observability",
       "scenario": "boundary",
       "path": "evidence/scenarios/behaviors/operations.observability/boundary.proof.json",
-      "digest": "sha256:fe7dd1fd4cb7fe87050ff28900c65483c55cb87d9887b0f4996260400709d79f",
+      "digest": "sha256:f6c953a4bb6e3241e39ecc76a38833076c3bb6ffaba4577a33daddfeb7d42e28",
       "status": "pattern-specific-gap"
     },
     {
@@ -1298,7 +1298,7 @@
       "pattern_id": "definitive-domain.operations.observability",
       "scenario": "refusal",
       "path": "evidence/scenarios/behaviors/operations.observability/refusal.proof.json",
-      "digest": "sha256:e593207ab9e9b0f9eeab762121b1b6f8df519b994222c5cc57579deec064b2fb",
+      "digest": "sha256:86f1f639d3ceb82788813292fe020a0d41b1b0aa5d5e3afec768b8342bcd8d84",
       "status": "pattern-specific-gap"
     },
     {
@@ -1307,7 +1307,7 @@
       "pattern_id": "definitive-domain.operations.observability",
       "scenario": "failure",
       "path": "evidence/scenarios/behaviors/operations.observability/failure.proof.json",
-      "digest": "sha256:4ef72ee236314cbcc85a008437fc13e7788df63576db52064421fbc1c7c84d63",
+      "digest": "sha256:280f8485e84c52df191560682c7f7fde00e04479acd58cc8f86e86b010d479bb",
       "status": "pattern-specific-gap"
     },
     {
@@ -1316,7 +1316,7 @@
       "pattern_id": "definitive-domain.operations.observability",
       "scenario": "recovery",
       "path": "evidence/scenarios/behaviors/operations.observability/recovery.proof.json",
-      "digest": "sha256:7718175685d5bf7058fc4fe28a385fae3c6c0ecd524cb4e045937f23fb4437b3",
+      "digest": "sha256:b6d1e50b7fdc1ef5792e6fd7a95c6d31a514f5b4612d3eb11d760171d27f3f78",
       "status": "pattern-specific-gap"
     },
     {
@@ -1325,7 +1325,7 @@
       "pattern_id": "definitive-domain.operations.observability",
       "scenario": "migration",
       "path": "evidence/scenarios/behaviors/operations.observability/migration.proof.json",
-      "digest": "sha256:f34c2ed5125676b1f241385893870a95592447a55ef2668285b34a908c300a0b",
+      "digest": "sha256:9de3dad9fd3c0a19a335cd3154346ac8e5932703dca431fcb56b19ac33dcc515",
       "status": "pattern-specific-gap"
     },
     {
@@ -1334,7 +1334,7 @@
       "pattern_id": "definitive-domain.operations.observability",
       "scenario": "operations",
       "path": "evidence/scenarios/behaviors/operations.observability/operations.proof.json",
-      "digest": "sha256:ac9b011eab93b3cd6b6d57b26c667af90e2d3ae035fe05ec082c1ee76bea9abf",
+      "digest": "sha256:d6899e953539c7e7064ef1197644a0b45ec40b06378188de2f591925892bffb5",
       "status": "pattern-specific-gap"
     },
     {
@@ -1343,7 +1343,7 @@
       "pattern_id": "definitive-domain.operations.observability",
       "scenario": "security",
       "path": "evidence/scenarios/behaviors/operations.observability/security.proof.json",
-      "digest": "sha256:9e39edcb84e4eb8c16dc2f40aa941c284211f2eee69892b57f5e498649ffee54",
+      "digest": "sha256:b92c521cfd762b8a78f469ce17a968142cf7cfcf1ae61e8dc40f705c5eeb854a",
       "status": "pattern-specific-gap"
     },
     {
@@ -1352,7 +1352,7 @@
       "pattern_id": "definitive-domain.operations.observability",
       "scenario": "performance",
       "path": "evidence/scenarios/behaviors/operations.observability/performance.proof.json",
-      "digest": "sha256:36b7aa9046cc6b17572cd99f299b07f239a4cfb439a5a928c89976dd4b533675",
+      "digest": "sha256:e64dd06b7007db223ea8c88e2d68b7c3b7744c224a3c7da8e02a191f971d3fc2",
       "status": "pattern-specific-gap"
     },
     {
@@ -1361,7 +1361,7 @@
       "pattern_id": "definitive-domain.operations.observability",
       "scenario": "compatibility",
       "path": "evidence/scenarios/behaviors/operations.observability/compatibility.proof.json",
-      "digest": "sha256:9763e7d98cd8e98047a42addbc939baa49c626fc0b4faf3278331d29c3421fe8",
+      "digest": "sha256:cd17a6c965a89a105c6e927f7e7e4ff6f9e90a07c38f54ed3aa6497ad571912f",
       "status": "pattern-specific-gap"
     },
     {
@@ -1370,7 +1370,7 @@
       "pattern_id": "definitive-domain.operations.pitr-recovery",
       "scenario": "normal",
       "path": "evidence/scenarios/behaviors/operations.pitr-recovery/normal.proof.json",
-      "digest": "sha256:9c4d9bebc343c3f2419daf047beb296a6d00a73894591e822828dd9f236be6e3",
+      "digest": "sha256:065e8adf72ad0f157a623377cdb6c0ddd9e9b42ede47a73b18dd053abd37659f",
       "status": "pattern-specific-gap"
     },
     {
@@ -1379,7 +1379,7 @@
       "pattern_id": "definitive-domain.operations.pitr-recovery",
       "scenario": "boundary",
       "path": "evidence/scenarios/behaviors/operations.pitr-recovery/boundary.proof.json",
-      "digest": "sha256:f68cb12c02b21e272f9875c57a058f2b4be497135e4ad782e1cf01d9553e3b0c",
+      "digest": "sha256:4dd943d3e57ec3d1eac0e3f9966f872285b3e03e9550a7af432333b9b03b0410",
       "status": "pattern-specific-gap"
     },
     {
@@ -1388,7 +1388,7 @@
       "pattern_id": "definitive-domain.operations.pitr-recovery",
       "scenario": "refusal",
       "path": "evidence/scenarios/behaviors/operations.pitr-recovery/refusal.proof.json",
-      "digest": "sha256:ceac40440d425978957dae8d0372e7e96433f171821fb4692ff3f70b1fd61839",
+      "digest": "sha256:4c42a5ce07208a7fecadf227d30cd6a5289ee4b33741808ef7b2d7e829457c6d",
       "status": "pattern-specific-gap"
     },
     {
@@ -1397,7 +1397,7 @@
       "pattern_id": "definitive-domain.operations.pitr-recovery",
       "scenario": "failure",
       "path": "evidence/scenarios/behaviors/operations.pitr-recovery/failure.proof.json",
-      "digest": "sha256:22db56f269bc067a69e11916c02dee560c62990d56380fe6658cb8346881667c",
+      "digest": "sha256:c307cadc107bb1820b96b215775bfa74f9257d30d150d48203cb912e12a85c93",
       "status": "pattern-specific-gap"
     },
     {
@@ -1406,7 +1406,7 @@
       "pattern_id": "definitive-domain.operations.pitr-recovery",
       "scenario": "recovery",
       "path": "evidence/scenarios/behaviors/operations.pitr-recovery/recovery.proof.json",
-      "digest": "sha256:5d44b386acb4e97a374f11213c2128be2049b631dbcb38d9e16a1e2e03c6c220",
+      "digest": "sha256:341136fa565b69638938b99129c4b3fdc70d9895c0419eb78349891a42d24976",
       "status": "pattern-specific-gap"
     },
     {
@@ -1415,7 +1415,7 @@
       "pattern_id": "definitive-domain.operations.pitr-recovery",
       "scenario": "migration",
       "path": "evidence/scenarios/behaviors/operations.pitr-recovery/migration.proof.json",
-      "digest": "sha256:8214faa3b1825e237f9298f4e9c26131236389316ea2f2ce9177e87077623f4b",
+      "digest": "sha256:f4b12a75e8ad836c4b2d9a160d6497865f5e5a8e6fa43dbdb56755bb0f28dced",
       "status": "pattern-specific-gap"
     },
     {
@@ -1424,7 +1424,7 @@
       "pattern_id": "definitive-domain.operations.pitr-recovery",
       "scenario": "operations",
       "path": "evidence/scenarios/behaviors/operations.pitr-recovery/operations.proof.json",
-      "digest": "sha256:ea04a7ae1d3ab2c432b08f0ac0d8995e62b5d3f8820d298b37526c52ec34c8ee",
+      "digest": "sha256:d97eb4e919fface27e7cf5deb8bd5e3bbb5d4e0905bff15dd96eb1b4a980e1f0",
       "status": "pattern-specific-gap"
     },
     {
@@ -1433,7 +1433,7 @@
       "pattern_id": "definitive-domain.operations.pitr-recovery",
       "scenario": "security",
       "path": "evidence/scenarios/behaviors/operations.pitr-recovery/security.proof.json",
-      "digest": "sha256:464c9d11bf7f0f9c786843599e80f54148061527661b22b4ab8ac9e8cbafd0ba",
+      "digest": "sha256:3d5a4c03b1a5523d831a6632cb0234e52bbade41e22b66684288b1c66790f1e7",
       "status": "pattern-specific-gap"
     },
     {
@@ -1442,7 +1442,7 @@
       "pattern_id": "definitive-domain.operations.pitr-recovery",
       "scenario": "performance",
       "path": "evidence/scenarios/behaviors/operations.pitr-recovery/performance.proof.json",
-      "digest": "sha256:8912a6787ade1ee1b8ff52e4012672950e3ecb440f979b24c3cf3ab82d9ba310",
+      "digest": "sha256:07e71dfb731e469b02fccf4908f5ed2b75f8872bcbec91e683bc5fedbc009bba",
       "status": "pattern-specific-gap"
     },
     {
@@ -1451,7 +1451,7 @@
       "pattern_id": "definitive-domain.operations.pitr-recovery",
       "scenario": "compatibility",
       "path": "evidence/scenarios/behaviors/operations.pitr-recovery/compatibility.proof.json",
-      "digest": "sha256:2f141d928b40d8302c33556ef7ebd100887090a2da21c2324abc9c8e9dda6d96",
+      "digest": "sha256:a54469b87b11a0720ce1a9789f2227225a82971b1f9d145149fc7767a6086d85",
       "status": "pattern-specific-gap"
     },
     {
@@ -1460,7 +1460,7 @@
       "pattern_id": "definitive-domain.operations.replication",
       "scenario": "normal",
       "path": "evidence/scenarios/behaviors/operations.replication/normal.proof.json",
-      "digest": "sha256:ecb4522e934c70745182ceaf3cae3672f720f150d5cbd3249eeabef7c4ce012f",
+      "digest": "sha256:c208a8069a3dfb9831dd43a00eae60cdd668384ca5cc0033bc87e3c572f66f76",
       "status": "pattern-specific-gap"
     },
     {
@@ -1469,7 +1469,7 @@
       "pattern_id": "definitive-domain.operations.replication",
       "scenario": "boundary",
       "path": "evidence/scenarios/behaviors/operations.replication/boundary.proof.json",
-      "digest": "sha256:c2e85d633e94f0077866a25f761347a818e05280a457b22c26ed18d8da787100",
+      "digest": "sha256:8846a3a8e44c9b49a3fc86d36dc29105dfa392257fe967c8188057bcaf633e13",
       "status": "pattern-specific-gap"
     },
     {
@@ -1478,7 +1478,7 @@
       "pattern_id": "definitive-domain.operations.replication",
       "scenario": "refusal",
       "path": "evidence/scenarios/behaviors/operations.replication/refusal.proof.json",
-      "digest": "sha256:c2d3366ba0774168f09ffefa849e06cfa5f10be5f68a7fb4db0358a814f6091e",
+      "digest": "sha256:40e3d88a57f62c1c6a855f7952e773f1f9a28123b11509c5e0fe92efe13c1109",
       "status": "pattern-specific-gap"
     },
     {
@@ -1487,7 +1487,7 @@
       "pattern_id": "definitive-domain.operations.replication",
       "scenario": "failure",
       "path": "evidence/scenarios/behaviors/operations.replication/failure.proof.json",
-      "digest": "sha256:43492aaacd59c268f9987e11e3c0d88019fdc7762a616d7eeac63d0611fbd461",
+      "digest": "sha256:d1dbe8162fb4c738fc5e412403004887f3e6b7927c357a76fd778a74529c73f8",
       "status": "pattern-specific-gap"
     },
     {
@@ -1496,7 +1496,7 @@
       "pattern_id": "definitive-domain.operations.replication",
       "scenario": "recovery",
       "path": "evidence/scenarios/behaviors/operations.replication/recovery.proof.json",
-      "digest": "sha256:15a2a59e627377d8f9f4c40b199586bc966a5fc6ed1c6b94cd038f196f512cb3",
+      "digest": "sha256:2d2d0084d11513927cfc8e3afa0a01f5c8d2bb3ba76dd00ea6ba10b4ff7abf90",
       "status": "pattern-specific-gap"
     },
     {
@@ -1505,7 +1505,7 @@
       "pattern_id": "definitive-domain.operations.replication",
       "scenario": "migration",
       "path": "evidence/scenarios/behaviors/operations.replication/migration.proof.json",
-      "digest": "sha256:6ec5c99f1d7b80b260225bf4a2d2051b321e4353469f5f828d4ac85af99b59e0",
+      "digest": "sha256:ea08625c518fb69485638e0207dc52f44777441c51959c1ffcfac7cac00e8ad5",
       "status": "pattern-specific-gap"
     },
     {
@@ -1514,7 +1514,7 @@
       "pattern_id": "definitive-domain.operations.replication",
       "scenario": "operations",
       "path": "evidence/scenarios/behaviors/operations.replication/operations.proof.json",
-      "digest": "sha256:c740abfd11b0ac8d31cb294022a4e35a75c856e4459997143a6cd5d3fff41913",
+      "digest": "sha256:31c4b67d26feb06325260ea188b86ca14f56ce97eb21842b657fc2c1c3410fdd",
       "status": "pattern-specific-gap"
     },
     {
@@ -1523,7 +1523,7 @@
       "pattern_id": "definitive-domain.operations.replication",
       "scenario": "security",
       "path": "evidence/scenarios/behaviors/operations.replication/security.proof.json",
-      "digest": "sha256:260c602108f33622523b76962f899a82c47758618e2b05ffceb07f5750cfaf71",
+      "digest": "sha256:e08ad693afd733f0395e159859a2d9c4f4bc68e0dc3403ef3e95b44fdc7d97fd",
       "status": "pattern-specific-gap"
     },
     {
@@ -1532,7 +1532,7 @@
       "pattern_id": "definitive-domain.operations.replication",
       "scenario": "performance",
       "path": "evidence/scenarios/behaviors/operations.replication/performance.proof.json",
-      "digest": "sha256:9bcfd799de51cd322d2b1651daac17c71ef61429896b753a82af21e0cd89ac25",
+      "digest": "sha256:c6482c6860b119625572640e95c93db942939fc7950c9e60884fb3a2dd4f9cba",
       "status": "pattern-specific-gap"
     },
     {
@@ -1541,7 +1541,7 @@
       "pattern_id": "definitive-domain.operations.replication",
       "scenario": "compatibility",
       "path": "evidence/scenarios/behaviors/operations.replication/compatibility.proof.json",
-      "digest": "sha256:f848223e2abddd536a0faeafa7f1486ebf70a63e90d8d2db410272ba554ea3d6",
+      "digest": "sha256:257d2a7aac8ac5de002853f0a9a1732dec2d16dcf52a7c69f651d6a986000b55",
       "status": "pattern-specific-gap"
     },
     {
@@ -1550,7 +1550,7 @@
       "pattern_id": "definitive-domain.operations.wal",
       "scenario": "normal",
       "path": "evidence/scenarios/behaviors/operations.wal/normal.proof.json",
-      "digest": "sha256:99799d17e89e771854c9d1b971e851eff401fcac1d9a039c606b13647da2d3c5",
+      "digest": "sha256:bc73a8ae27c5e5985f934ae32224e377fd88e3381d94eae32a969576b156868d",
       "status": "pattern-specific-gap"
     },
     {
@@ -1559,7 +1559,7 @@
       "pattern_id": "definitive-domain.operations.wal",
       "scenario": "boundary",
       "path": "evidence/scenarios/behaviors/operations.wal/boundary.proof.json",
-      "digest": "sha256:8b1f672285b59716d83e90bd7bfcfe4d7b88b474510dbad53884b620d732d74a",
+      "digest": "sha256:9f256f0fdeb21ab535f0b8a4560c428024466d72e2bb52b91424ed8aedbdff60",
       "status": "pattern-specific-gap"
     },
     {
@@ -1568,7 +1568,7 @@
       "pattern_id": "definitive-domain.operations.wal",
       "scenario": "refusal",
       "path": "evidence/scenarios/behaviors/operations.wal/refusal.proof.json",
-      "digest": "sha256:b4b2fb1e7278ac98de12524125ab154df8f25c605522e8fe2c4d1b563c1fa8e2",
+      "digest": "sha256:6c0c6534c4394a7450d3c4d2493c7b870b9bbb732e8a2db4d72581768dc76fad",
       "status": "pattern-specific-gap"
     },
     {
@@ -1577,7 +1577,7 @@
       "pattern_id": "definitive-domain.operations.wal",
       "scenario": "failure",
       "path": "evidence/scenarios/behaviors/operations.wal/failure.proof.json",
-      "digest": "sha256:99f4d8818d2395a46cbbb863b9fcbc27936a3899669c863180740a96a0c64439",
+      "digest": "sha256:27acfdebdd290367a5be3b181dc3a3f0c742e83782148a170a69944384937a95",
       "status": "pattern-specific-gap"
     },
     {
@@ -1586,7 +1586,7 @@
       "pattern_id": "definitive-domain.operations.wal",
       "scenario": "recovery",
       "path": "evidence/scenarios/behaviors/operations.wal/recovery.proof.json",
-      "digest": "sha256:693703214e5e4a8302d5a19ac6a55b92e337a581b669b9a1d61d53183cbc8b43",
+      "digest": "sha256:a73767aee01779e962390ab5b928ffcc4e4562fd6c474e4184b065b1bc765351",
       "status": "pattern-specific-gap"
     },
     {
@@ -1595,7 +1595,7 @@
       "pattern_id": "definitive-domain.operations.wal",
       "scenario": "migration",
       "path": "evidence/scenarios/behaviors/operations.wal/migration.proof.json",
-      "digest": "sha256:3b919adafb482b81c70900c46af69767b5d94e0847e6da01c3071594469bbda6",
+      "digest": "sha256:c994b2e1f74cd6a586fe3820d06d5f1744f84c33106f52aba1c689b1726430b8",
       "status": "pattern-specific-gap"
     },
     {
@@ -1604,7 +1604,7 @@
       "pattern_id": "definitive-domain.operations.wal",
       "scenario": "operations",
       "path": "evidence/scenarios/behaviors/operations.wal/operations.proof.json",
-      "digest": "sha256:66f2ba5d5d4113c155c3d689b0c337896c8b9b455d0a84e6a2b5a2f65f3cc46d",
+      "digest": "sha256:d9d0b7bab9c147314edb254d3b64a1d1bcfdb3497ae941f110a0e6e31913332f",
       "status": "pattern-specific-gap"
     },
     {
@@ -1613,7 +1613,7 @@
       "pattern_id": "definitive-domain.operations.wal",
       "scenario": "security",
       "path": "evidence/scenarios/behaviors/operations.wal/security.proof.json",
-      "digest": "sha256:0142ad5899a0d77c9f9601d5bed7dae7b25d634a1f4bd846fcf287cb26082fa9",
+      "digest": "sha256:3f6eeea3168806a7dca47ca82e93eada9df8e2d7747f3b41f888ea7feb222418",
       "status": "pattern-specific-gap"
     },
     {
@@ -1622,7 +1622,7 @@
       "pattern_id": "definitive-domain.operations.wal",
       "scenario": "performance",
       "path": "evidence/scenarios/behaviors/operations.wal/performance.proof.json",
-      "digest": "sha256:68b040b603a48cfea0ff6423b2c06dd039d49263d1813f55f6467a7024104b16",
+      "digest": "sha256:43bacac4c55cbc295a99a503f03807febfbcce541e9a0991168288945c2e9d78",
       "status": "pattern-specific-gap"
     },
     {
@@ -1631,7 +1631,7 @@
       "pattern_id": "definitive-domain.operations.wal",
       "scenario": "compatibility",
       "path": "evidence/scenarios/behaviors/operations.wal/compatibility.proof.json",
-      "digest": "sha256:113e3beff2fb7c668bd76fddd0e06355bf1f6dd8b9b4928357ae55eddbb70404",
+      "digest": "sha256:b047292724adae1312af44d21db0895ac15c857166ad2ddebc7a17429c9926f9",
       "status": "pattern-specific-gap"
     },
     {
@@ -1640,7 +1640,7 @@
       "pattern_id": "definitive-domain.performance.execution",
       "scenario": "normal",
       "path": "evidence/scenarios/behaviors/performance.execution/normal.proof.json",
-      "digest": "sha256:1af193519fc8858265e56dd7f4e7a8012f58f3883a8fde233e3ca09d791a48f7",
+      "digest": "sha256:0e4bc8847b85b30422768e82242d51ccdc898db267b41a9ff0a3813f16b06a81",
       "status": "pattern-specific-gap"
     },
     {
@@ -1649,7 +1649,7 @@
       "pattern_id": "definitive-domain.performance.execution",
       "scenario": "boundary",
       "path": "evidence/scenarios/behaviors/performance.execution/boundary.proof.json",
-      "digest": "sha256:76ca547ad19a4298989437f57014381e8e678025d751ec38c512345d46ff3174",
+      "digest": "sha256:c4cb422ab4706a4f1e9028162fc8c361c3471775e75ae82409c432cf25bd20bd",
       "status": "pattern-specific-gap"
     },
     {
@@ -1658,7 +1658,7 @@
       "pattern_id": "definitive-domain.performance.execution",
       "scenario": "refusal",
       "path": "evidence/scenarios/behaviors/performance.execution/refusal.proof.json",
-      "digest": "sha256:420cb4a057d06f587a7357d5ad07390df84e51d5dd760b5686070d90c9806784",
+      "digest": "sha256:237fcb21325699cba61240d82fe4500379ac8bc8b51836f2b79997fe06d61e23",
       "status": "pattern-specific-gap"
     },
     {
@@ -1667,7 +1667,7 @@
       "pattern_id": "definitive-domain.performance.execution",
       "scenario": "failure",
       "path": "evidence/scenarios/behaviors/performance.execution/failure.proof.json",
-      "digest": "sha256:a6a9a394baad6a4f8ac663c7555a99e4ed3584d0ce4aaef1bb4bc3955e872f27",
+      "digest": "sha256:abd3770e8f61a9eadf2bb768b36031752dd2bff0c7189ae64f4881d2f7ac5163",
       "status": "pattern-specific-gap"
     },
     {
@@ -1676,7 +1676,7 @@
       "pattern_id": "definitive-domain.performance.execution",
       "scenario": "recovery",
       "path": "evidence/scenarios/behaviors/performance.execution/recovery.proof.json",
-      "digest": "sha256:089caf789ca4432e58ccadf1d5a4244c02f6cdba99bfcfa8e9fa5d441721809b",
+      "digest": "sha256:b958413f58a727398b6db395dfc79c496aa461b57a75057b6365c2c2b90aa287",
       "status": "pattern-specific-gap"
     },
     {
@@ -1685,7 +1685,7 @@
       "pattern_id": "definitive-domain.performance.execution",
       "scenario": "migration",
       "path": "evidence/scenarios/behaviors/performance.execution/migration.proof.json",
-      "digest": "sha256:986a92e7c566b0e28de4692c19cfbb4a8d68bfce3c3d28cbb8802825af9c1679",
+      "digest": "sha256:b1da86cc9bb8482ac0293c895f3b927104ca0018e3206c72c2c6850fe32f059d",
       "status": "pattern-specific-gap"
     },
     {
@@ -1694,7 +1694,7 @@
       "pattern_id": "definitive-domain.performance.execution",
       "scenario": "operations",
       "path": "evidence/scenarios/behaviors/performance.execution/operations.proof.json",
-      "digest": "sha256:f628eb9084c11987af3868a688d5610d226a476f04274a943d613db2d151901b",
+      "digest": "sha256:695e75aaa6f3067be4df98b575f239a03ac940a5e027a34483cd89e41bb84863",
       "status": "pattern-specific-gap"
     },
     {
@@ -1703,7 +1703,7 @@
       "pattern_id": "definitive-domain.performance.execution",
       "scenario": "security",
       "path": "evidence/scenarios/behaviors/performance.execution/security.proof.json",
-      "digest": "sha256:b0e9bbe827989521a976468fa0a2626ce2ed9c6a0c2549584ba4a92c0f2b9c60",
+      "digest": "sha256:dd8201b76ee165e0296a374be07cb04e7e791bbbcbea2e5996e2338bef759ec0",
       "status": "pattern-specific-gap"
     },
     {
@@ -1712,7 +1712,7 @@
       "pattern_id": "definitive-domain.performance.execution",
       "scenario": "performance",
       "path": "evidence/scenarios/behaviors/performance.execution/performance.proof.json",
-      "digest": "sha256:6ab2415c97ef0a4a19e465ca4b35fdda4c8d95d14ac6d773d286711e037cc0a3",
+      "digest": "sha256:e0cf711cb82ce4a95a6a11b3aab40d129cea3641a0c3da779f14b8969997fd92",
       "status": "pattern-specific-gap"
     },
     {
@@ -1721,7 +1721,7 @@
       "pattern_id": "definitive-domain.performance.execution",
       "scenario": "compatibility",
       "path": "evidence/scenarios/behaviors/performance.execution/compatibility.proof.json",
-      "digest": "sha256:63bc9ac1d75693fb82c34e2d59ef78cf6c3ba91cbaef0d02042b0cfc6d685dec",
+      "digest": "sha256:54093bdb58286b83abab9a9c68233fa3368d0acc973df1bf37d0570837540576",
       "status": "pattern-specific-gap"
     },
     {
@@ -1730,7 +1730,7 @@
       "pattern_id": "definitive-domain.performance.index",
       "scenario": "normal",
       "path": "evidence/scenarios/behaviors/performance.index/normal.proof.json",
-      "digest": "sha256:09c643bf8b5f603c3288ec30e870a6eabe0b8960557a25e924a5fa1fc4239d4f",
+      "digest": "sha256:3d7ce1bd79590aa0a96317c97014a9c69345615104d6d1f4b7d94e6cf6b6857f",
       "status": "pattern-specific-gap"
     },
     {
@@ -1739,7 +1739,7 @@
       "pattern_id": "definitive-domain.performance.index",
       "scenario": "boundary",
       "path": "evidence/scenarios/behaviors/performance.index/boundary.proof.json",
-      "digest": "sha256:236c31f560800ed169b66c7b09fdac676d7b560b8a2b4876ce0e6cc29bf08da7",
+      "digest": "sha256:9aadc50194e6f0fb1fb80b61a388899ef95850608266619f4b7dae17a85aa694",
       "status": "pattern-specific-gap"
     },
     {
@@ -1748,7 +1748,7 @@
       "pattern_id": "definitive-domain.performance.index",
       "scenario": "refusal",
       "path": "evidence/scenarios/behaviors/performance.index/refusal.proof.json",
-      "digest": "sha256:ba9f27346c0a494e4c5727a1b0b388676f2b1cfaaa1b35f58e8c48335ab54f7d",
+      "digest": "sha256:a2e8c77f500aaeb77f686da228dd37c624d905fc368be816f47d02eed50360dc",
       "status": "pattern-specific-gap"
     },
     {
@@ -1757,7 +1757,7 @@
       "pattern_id": "definitive-domain.performance.index",
       "scenario": "failure",
       "path": "evidence/scenarios/behaviors/performance.index/failure.proof.json",
-      "digest": "sha256:747b1c2bcc93ec58c58fb643df79dd343102ddda8285d79a5d88fac21879e5a8",
+      "digest": "sha256:21dc9b1cf825f4c3cc85b225fe750c0dc53ff9d3ce288ff2fd89ec7cfbfd4e52",
       "status": "pattern-specific-gap"
     },
     {
@@ -1766,7 +1766,7 @@
       "pattern_id": "definitive-domain.performance.index",
       "scenario": "recovery",
       "path": "evidence/scenarios/behaviors/performance.index/recovery.proof.json",
-      "digest": "sha256:001fd75889ee889395c6bbefdadfa196f6a24e5634cd15cddc159cdeced3c663",
+      "digest": "sha256:a621d27de8f98b7303b87b2152f712affb7a21e6bfa129b3c46b7694bf887abc",
       "status": "pattern-specific-gap"
     },
     {
@@ -1775,7 +1775,7 @@
       "pattern_id": "definitive-domain.performance.index",
       "scenario": "migration",
       "path": "evidence/scenarios/behaviors/performance.index/migration.proof.json",
-      "digest": "sha256:cf9d21416205ec915dcbe6383d139cc843a139cc7b38c9661c7b8099c5f7d4ec",
+      "digest": "sha256:ae79f4f691fb08ecabfceaf0674aca0c698230423cf6f1e901d17a56f4122abb",
       "status": "pattern-specific-gap"
     },
     {
@@ -1784,7 +1784,7 @@
       "pattern_id": "definitive-domain.performance.index",
       "scenario": "operations",
       "path": "evidence/scenarios/behaviors/performance.index/operations.proof.json",
-      "digest": "sha256:fe72f5c8f017f65a34c41efdc820594b89015095dab33c4785e34bc17e41b834",
+      "digest": "sha256:fb702f004aa8e209d0b2eaae7cfb5722ae1b0e6d764b844471764bf871581998",
       "status": "pattern-specific-gap"
     },
     {
@@ -1793,7 +1793,7 @@
       "pattern_id": "definitive-domain.performance.index",
       "scenario": "security",
       "path": "evidence/scenarios/behaviors/performance.index/security.proof.json",
-      "digest": "sha256:fd2a0be5f860f2571d1e98c918b2378a765a3ceac6839243c80de3dc12baa1cd",
+      "digest": "sha256:b45db5cda5c092cb086374e9f7b881f33cf9a6f1c33c0010843a92f67af2f8fb",
       "status": "pattern-specific-gap"
     },
     {
@@ -1802,7 +1802,7 @@
       "pattern_id": "definitive-domain.performance.index",
       "scenario": "performance",
       "path": "evidence/scenarios/behaviors/performance.index/performance.proof.json",
-      "digest": "sha256:c114a2d204517fcd6f5b0f3facda5cb423003434af28c3b393a097a199341582",
+      "digest": "sha256:46e0d3a9c14049088cda3ffcab1993569a48631dcb59054cb1fa19565664d92d",
       "status": "pattern-specific-gap"
     },
     {
@@ -1811,7 +1811,7 @@
       "pattern_id": "definitive-domain.performance.index",
       "scenario": "compatibility",
       "path": "evidence/scenarios/behaviors/performance.index/compatibility.proof.json",
-      "digest": "sha256:a40326ed519db5597107b4d851bab6d381c05c8632b8a1995d9aec771837a0d7",
+      "digest": "sha256:ed24d1daac4d60dae6a0db98c8b707ae5915d27d3676762783e53d76fa702908",
       "status": "pattern-specific-gap"
     },
     {
@@ -1820,7 +1820,7 @@
       "pattern_id": "definitive-domain.performance.planner",
       "scenario": "normal",
       "path": "evidence/scenarios/behaviors/performance.planner/normal.proof.json",
-      "digest": "sha256:1bce56d2593858ab9b17b66117aea2818038acb625d83b3ccb20a92e7c1c983e",
+      "digest": "sha256:d05a71459ffb0e2aa29f467c62eb1c11b624b8dce141fa8a194f7f6b8e8e44ba",
       "status": "pattern-specific-gap"
     },
     {
@@ -1829,7 +1829,7 @@
       "pattern_id": "definitive-domain.performance.planner",
       "scenario": "boundary",
       "path": "evidence/scenarios/behaviors/performance.planner/boundary.proof.json",
-      "digest": "sha256:9b2db98b2250267ad1013f1f13c77342eb2f8b145b6ba4dd3c0d54de51358760",
+      "digest": "sha256:b4c438641cea1b30e3d54b1c8d651d52b8cef6c46f7ca13f24287185b9093650",
       "status": "pattern-specific-gap"
     },
     {
@@ -1838,7 +1838,7 @@
       "pattern_id": "definitive-domain.performance.planner",
       "scenario": "refusal",
       "path": "evidence/scenarios/behaviors/performance.planner/refusal.proof.json",
-      "digest": "sha256:39da2449d8d866639efcd474688a3c930c718149957966b81a8452b5d95aca4c",
+      "digest": "sha256:05286c1f69893b583854e8718f315ea0ebfd15bc4ca40b04495f1d2b3fb44c9b",
       "status": "pattern-specific-gap"
     },
     {
@@ -1847,7 +1847,7 @@
       "pattern_id": "definitive-domain.performance.planner",
       "scenario": "failure",
       "path": "evidence/scenarios/behaviors/performance.planner/failure.proof.json",
-      "digest": "sha256:d164d6508fc633c542c8769ff8e237eadab36c0dd98e4cfdfeab831dd8f6d795",
+      "digest": "sha256:f20c9bd31d049a35e1158bed08df8ab6e6c08a922f04c3f38a806b43fd9a57d8",
       "status": "pattern-specific-gap"
     },
     {
@@ -1856,7 +1856,7 @@
       "pattern_id": "definitive-domain.performance.planner",
       "scenario": "recovery",
       "path": "evidence/scenarios/behaviors/performance.planner/recovery.proof.json",
-      "digest": "sha256:8358ac05d7b132fb195226d72338983844ac003cc414afbd901d25026e1bba21",
+      "digest": "sha256:90ebad46d4668a583cd8c299839aaf14042998b4ce87f7a05f268127021c08bd",
       "status": "pattern-specific-gap"
     },
     {
@@ -1865,7 +1865,7 @@
       "pattern_id": "definitive-domain.performance.planner",
       "scenario": "migration",
       "path": "evidence/scenarios/behaviors/performance.planner/migration.proof.json",
-      "digest": "sha256:e8a9522e295229fa60df7ad4b93ae160aeef2a28135920ad3d47136a300c3137",
+      "digest": "sha256:7a45bb9f327d749f4f02f2caf7ff22c253a2f8c340b129a76a2a3e98897fefb3",
       "status": "pattern-specific-gap"
     },
     {
@@ -1874,7 +1874,7 @@
       "pattern_id": "definitive-domain.performance.planner",
       "scenario": "operations",
       "path": "evidence/scenarios/behaviors/performance.planner/operations.proof.json",
-      "digest": "sha256:c289bd016a62889c9ea21f26e43be379a021b834be224fc97a04b48c71a8a5b2",
+      "digest": "sha256:9e0ac2dbf1974f693b1c554ed0cc43c9ad4171a59bda5b2a07ce27a0c75f5a07",
       "status": "pattern-specific-gap"
     },
     {
@@ -1883,7 +1883,7 @@
       "pattern_id": "definitive-domain.performance.planner",
       "scenario": "security",
       "path": "evidence/scenarios/behaviors/performance.planner/security.proof.json",
-      "digest": "sha256:a24bad291e128d9caeef0f319fec3df18f4393b50e1ac7fd6be6b1749dc91ed4",
+      "digest": "sha256:d5d5d0274186add2df8f100abc14dcf73613e5cb690a66827255dac6db3988f8",
       "status": "pattern-specific-gap"
     },
     {
@@ -1892,7 +1892,7 @@
       "pattern_id": "definitive-domain.performance.planner",
       "scenario": "performance",
       "path": "evidence/scenarios/behaviors/performance.planner/performance.proof.json",
-      "digest": "sha256:4d934a6a597c5e34a8e1445efc2828051a587904001660ec412b091f41219370",
+      "digest": "sha256:2dad143e8ab06d6fa118cf180ec2bf0c3f5004655c3608c2fb9aee6faf9d1019",
       "status": "pattern-specific-gap"
     },
     {
@@ -1901,7 +1901,7 @@
       "pattern_id": "definitive-domain.performance.planner",
       "scenario": "compatibility",
       "path": "evidence/scenarios/behaviors/performance.planner/compatibility.proof.json",
-      "digest": "sha256:405856bc3e7f1a160763c15a454b242955829933f2f543da25d8e1156e6751a2",
+      "digest": "sha256:aea724c5b86ed18aed19c8bc21672ed48383e04b0d62775b7d7585e2215a8192",
       "status": "pattern-specific-gap"
     },
     {
@@ -1910,7 +1910,7 @@
       "pattern_id": "definitive-domain.performance.statistics",
       "scenario": "normal",
       "path": "evidence/scenarios/behaviors/performance.statistics/normal.proof.json",
-      "digest": "sha256:9433c2a70c5e4bb9b57a191c6e10dcdb55f121fbfc9032822fac541e8c258df7",
+      "digest": "sha256:7f2969ca24f0b072f91664f12c71f2d7054b5699ecf75e6aa9347ad2f95e705b",
       "status": "pattern-specific-gap"
     },
     {
@@ -1919,7 +1919,7 @@
       "pattern_id": "definitive-domain.performance.statistics",
       "scenario": "boundary",
       "path": "evidence/scenarios/behaviors/performance.statistics/boundary.proof.json",
-      "digest": "sha256:543954ed3dd7c199012989d92d55f2b46ab59778eb35139e4af28adb40f1caeb",
+      "digest": "sha256:b9028ddd88c551b1ce8919763db825bbea69e68424bc6774ecf8b9ccc17ac34e",
       "status": "pattern-specific-gap"
     },
     {
@@ -1928,7 +1928,7 @@
       "pattern_id": "definitive-domain.performance.statistics",
       "scenario": "refusal",
       "path": "evidence/scenarios/behaviors/performance.statistics/refusal.proof.json",
-      "digest": "sha256:2a6663c42e4bee56178b50b745a137837c50117a28d2db6f5d1b55e35d2e6426",
+      "digest": "sha256:509c443f24a8135db5cd4a69e1a5cf57624e264bd6612df2acdd820ddf4c73c0",
       "status": "pattern-specific-gap"
     },
     {
@@ -1937,7 +1937,7 @@
       "pattern_id": "definitive-domain.performance.statistics",
       "scenario": "failure",
       "path": "evidence/scenarios/behaviors/performance.statistics/failure.proof.json",
-      "digest": "sha256:0098e6724804ac1596f213f58010380c8df68f8db2318247d6b73bfd1026e025",
+      "digest": "sha256:c47649ad3bd73e2a729db87bdee8c14d18a770a0a5c784c7f5a31d3c6b57d759",
       "status": "pattern-specific-gap"
     },
     {
@@ -1946,7 +1946,7 @@
       "pattern_id": "definitive-domain.performance.statistics",
       "scenario": "recovery",
       "path": "evidence/scenarios/behaviors/performance.statistics/recovery.proof.json",
-      "digest": "sha256:40d0c7cc7693b71b05512dda7cd8a1370df247b9b3d3e9513268c1156091dc42",
+      "digest": "sha256:445a64077aff616c4e8a640968f1f30028439a8b723915c688105aa1e27d4615",
       "status": "pattern-specific-gap"
     },
     {
@@ -1955,7 +1955,7 @@
       "pattern_id": "definitive-domain.performance.statistics",
       "scenario": "migration",
       "path": "evidence/scenarios/behaviors/performance.statistics/migration.proof.json",
-      "digest": "sha256:71fa4710b637605b5255cb2dd877cfc28a36317707b7b4f3335f6b6ab5ec1a9c",
+      "digest": "sha256:5fe49ea0814b0c209f22056f0ac3e4efea54374702cac429db712492633c4370",
       "status": "pattern-specific-gap"
     },
     {
@@ -1964,7 +1964,7 @@
       "pattern_id": "definitive-domain.performance.statistics",
       "scenario": "operations",
       "path": "evidence/scenarios/behaviors/performance.statistics/operations.proof.json",
-      "digest": "sha256:e85d95a519b658d8ff1720a662494da21887b2a19e2bf93fc80dd79e55ddc48d",
+      "digest": "sha256:c2649d94e5f2d82689610bec6649a42f692a08754472b4c674790dbafef160d9",
       "status": "pattern-specific-gap"
     },
     {
@@ -1973,7 +1973,7 @@
       "pattern_id": "definitive-domain.performance.statistics",
       "scenario": "security",
       "path": "evidence/scenarios/behaviors/performance.statistics/security.proof.json",
-      "digest": "sha256:988c4b6c098af4bc3cb0c01570c6ea8536b4becacb66654eb0b61a0f2ebdd989",
+      "digest": "sha256:45804a70f1e6ddcc31c4f99337b7c1cefb9a22db6ef995cd3c99ea2bd9f1b774",
       "status": "pattern-specific-gap"
     },
     {
@@ -1982,7 +1982,7 @@
       "pattern_id": "definitive-domain.performance.statistics",
       "scenario": "performance",
       "path": "evidence/scenarios/behaviors/performance.statistics/performance.proof.json",
-      "digest": "sha256:6d0bf005dd0147a4759ac6716a2bce7dee176979f9bf41f84c1a8fc09427655a",
+      "digest": "sha256:24cadabd80e5807318b53ac12170e098c800c8e5f1af36df73cfb457e9969905",
       "status": "pattern-specific-gap"
     },
     {
@@ -1991,7 +1991,7 @@
       "pattern_id": "definitive-domain.performance.statistics",
       "scenario": "compatibility",
       "path": "evidence/scenarios/behaviors/performance.statistics/compatibility.proof.json",
-      "digest": "sha256:4172d7efa3a27b47387affd277e4c1f385f711d2d5755cbd20fa1d7fca0f97d3",
+      "digest": "sha256:38e414ecfa1ef3be113df3ad3661c402064a2ee90b34b16c6c715e80ae497736",
       "status": "pattern-specific-gap"
     },
     {
@@ -2000,7 +2000,7 @@
       "pattern_id": "definitive-domain.publication.provenance",
       "scenario": "normal",
       "path": "evidence/scenarios/behaviors/publication.provenance/normal.proof.json",
-      "digest": "sha256:1ded7ea26a0ca0b0a9b13bb6773bc7543860c1b9169ce0756050318e4781ad47",
+      "digest": "sha256:b05bd3bf5753fa7a22829f795ff9339632a78e4d4ef3d5ff75cafa595c3e16b4",
       "status": "pattern-specific-gap"
     },
     {
@@ -2009,7 +2009,7 @@
       "pattern_id": "definitive-domain.publication.provenance",
       "scenario": "boundary",
       "path": "evidence/scenarios/behaviors/publication.provenance/boundary.proof.json",
-      "digest": "sha256:7139374775b554d507e7d721dceee1373958d44e76b5e9d27aad5d2f8b0bcd8a",
+      "digest": "sha256:71bc8f620c2da9a6ddb52cafcce43abd872d8151423faba5ea658af343162dbb",
       "status": "pattern-specific-gap"
     },
     {
@@ -2018,7 +2018,7 @@
       "pattern_id": "definitive-domain.publication.provenance",
       "scenario": "refusal",
       "path": "evidence/scenarios/behaviors/publication.provenance/refusal.proof.json",
-      "digest": "sha256:7b9b34937bd97bea807a4bd16122eeb28818b48bd9632b036da0bd1f263ae062",
+      "digest": "sha256:4fc9f1dc1b6cfae97e5fa326736496482c91a2bfcfad3ffe497112fd59fcfb29",
       "status": "pattern-specific-gap"
     },
     {
@@ -2027,7 +2027,7 @@
       "pattern_id": "definitive-domain.publication.provenance",
       "scenario": "failure",
       "path": "evidence/scenarios/behaviors/publication.provenance/failure.proof.json",
-      "digest": "sha256:7f03802499b8d1aa6f3cc1e3709bec518c3bc3ac30afd53b9b9376f1addfe819",
+      "digest": "sha256:63f903599bae07506986ba8a67b6b8c353c4be30c50aaa1904d1552757838a39",
       "status": "pattern-specific-gap"
     },
     {
@@ -2036,7 +2036,7 @@
       "pattern_id": "definitive-domain.publication.provenance",
       "scenario": "recovery",
       "path": "evidence/scenarios/behaviors/publication.provenance/recovery.proof.json",
-      "digest": "sha256:5ac5590e7b26828a4bea31488fc1ecad306c7250288a54ab5face03f275f7464",
+      "digest": "sha256:715f2f480546acc51f5e3efce66f3a61a9e04c00a778d1609f64a53c8dcaf18b",
       "status": "pattern-specific-gap"
     },
     {
@@ -2045,7 +2045,7 @@
       "pattern_id": "definitive-domain.publication.provenance",
       "scenario": "migration",
       "path": "evidence/scenarios/behaviors/publication.provenance/migration.proof.json",
-      "digest": "sha256:667acd9fdc34a07259da6a9eed9470a5ac2d7c8e5fed328b08b2af01d8b8286a",
+      "digest": "sha256:fd4d13b854bda29931d2e85dfc8f699bce217c468fd2690c0f08125d903b60b6",
       "status": "pattern-specific-gap"
     },
     {
@@ -2054,7 +2054,7 @@
       "pattern_id": "definitive-domain.publication.provenance",
       "scenario": "operations",
       "path": "evidence/scenarios/behaviors/publication.provenance/operations.proof.json",
-      "digest": "sha256:75826088c2d538003903e2783da5ab7718257579540802d67270f92b81d1d67f",
+      "digest": "sha256:88db1e16f90a8941deceeece8dc1cfe77a69a489ec0828450a26b4234f73676f",
       "status": "pattern-specific-gap"
     },
     {
@@ -2063,7 +2063,7 @@
       "pattern_id": "definitive-domain.publication.provenance",
       "scenario": "security",
       "path": "evidence/scenarios/behaviors/publication.provenance/security.proof.json",
-      "digest": "sha256:b15b4fbd81f91faa23b61df9c5cfe42a32dd18c385c61e576808d198f2d80edf",
+      "digest": "sha256:4a90e81f6b879e4979307914fc3d2890e96d380ad4b7067fad54c6f33ab8f162",
       "status": "pattern-specific-gap"
     },
     {
@@ -2072,7 +2072,7 @@
       "pattern_id": "definitive-domain.publication.provenance",
       "scenario": "performance",
       "path": "evidence/scenarios/behaviors/publication.provenance/performance.proof.json",
-      "digest": "sha256:35609c4b1acb50e7a9a1c04e45e689325b769bb4c8eaa097c5b035d58e048f20",
+      "digest": "sha256:72bf1c676b6643f70f8ab419bf90397bafdb88b6bbce84583c4c525919db4ce4",
       "status": "pattern-specific-gap"
     },
     {
@@ -2081,7 +2081,7 @@
       "pattern_id": "definitive-domain.publication.provenance",
       "scenario": "compatibility",
       "path": "evidence/scenarios/behaviors/publication.provenance/compatibility.proof.json",
-      "digest": "sha256:8128b881edb9723b5ecd756fc3048b682f0e8eaa3b5128f38166e5e2a64f9d7b",
+      "digest": "sha256:052ed60e11da1b40b948263d887a966171028855effc989d9994eaec706fc43d",
       "status": "pattern-specific-gap"
     },
     {
@@ -2090,7 +2090,7 @@
       "pattern_id": "definitive-domain.query.catalog-inventory",
       "scenario": "normal",
       "path": "evidence/scenarios/behaviors/query.catalog-inventory/normal.proof.json",
-      "digest": "sha256:e5a2348e22243e7402f957b007430be66f6d94f6ffca7b97e2a08a5efd1785e6",
+      "digest": "sha256:1cc61bd2027b1bf7818234a1ef7cf658df5521a12af25771244027becf652f9e",
       "status": "pattern-specific-gap"
     },
     {
@@ -2099,7 +2099,7 @@
       "pattern_id": "definitive-domain.query.catalog-inventory",
       "scenario": "boundary",
       "path": "evidence/scenarios/behaviors/query.catalog-inventory/boundary.proof.json",
-      "digest": "sha256:c33a2a3918560ebe126fdc43bbe230c82d9fce5517b5ce933aef6c6d61e17e05",
+      "digest": "sha256:37f89c58312df507e04dd051b0832c77fab2b79197284e70eda27b950f619bff",
       "status": "pattern-specific-gap"
     },
     {
@@ -2108,7 +2108,7 @@
       "pattern_id": "definitive-domain.query.catalog-inventory",
       "scenario": "refusal",
       "path": "evidence/scenarios/behaviors/query.catalog-inventory/refusal.proof.json",
-      "digest": "sha256:92d170450baa8bf29eec3f79eff764f2ff411aa0d1ae50257c995fce6841801f",
+      "digest": "sha256:4f0bb6391c8060505d839adea45f70fc39051c8b7570e4a8774c0a60cb8a5e34",
       "status": "pattern-specific-gap"
     },
     {
@@ -2117,7 +2117,7 @@
       "pattern_id": "definitive-domain.query.catalog-inventory",
       "scenario": "failure",
       "path": "evidence/scenarios/behaviors/query.catalog-inventory/failure.proof.json",
-      "digest": "sha256:5165dd073954252161d908b9a2d01416330cecc84511f89a34f20c44a36ba1ca",
+      "digest": "sha256:2445ad71c89b649d94de6db04e9e47b22d4b34778a6b44767291e902d3c661e4",
       "status": "pattern-specific-gap"
     },
     {
@@ -2126,7 +2126,7 @@
       "pattern_id": "definitive-domain.query.catalog-inventory",
       "scenario": "recovery",
       "path": "evidence/scenarios/behaviors/query.catalog-inventory/recovery.proof.json",
-      "digest": "sha256:53fd6b0e37ff5fc10f962f536fc023a55d89a145e6048b53c12a45c09135bbf6",
+      "digest": "sha256:de7dcfee5e173de201f31db5dadb5ac671c6efe46345c64247bc11e510234119",
       "status": "pattern-specific-gap"
     },
     {
@@ -2135,7 +2135,7 @@
       "pattern_id": "definitive-domain.query.catalog-inventory",
       "scenario": "migration",
       "path": "evidence/scenarios/behaviors/query.catalog-inventory/migration.proof.json",
-      "digest": "sha256:7637b75cd735f362347093803efcc0d8244c51b7501b8b3c8b8d22ab4f8b2138",
+      "digest": "sha256:78dc82df2415d5db67f3c2d32002b4a07e90221c2b1e6667ce4e1189533cb27f",
       "status": "pattern-specific-gap"
     },
     {
@@ -2144,7 +2144,7 @@
       "pattern_id": "definitive-domain.query.catalog-inventory",
       "scenario": "operations",
       "path": "evidence/scenarios/behaviors/query.catalog-inventory/operations.proof.json",
-      "digest": "sha256:39bd7ab35d4637042698e04a3611bc0b12b8f493c92408df7c36de6db5c36c20",
+      "digest": "sha256:89a16d1dbcb2895bded4fde229b7b886d99acd06d94938a6e757e7e0a41d184b",
       "status": "pattern-specific-gap"
     },
     {
@@ -2153,7 +2153,7 @@
       "pattern_id": "definitive-domain.query.catalog-inventory",
       "scenario": "security",
       "path": "evidence/scenarios/behaviors/query.catalog-inventory/security.proof.json",
-      "digest": "sha256:be17ed44d698f3481e89c9b825092c3ef602ca7136114bce0fd6df4c98392d44",
+      "digest": "sha256:392efc344df89d7b1010d535d314bc0448c8f866541db3c89d02682b2d04480d",
       "status": "pattern-specific-gap"
     },
     {
@@ -2162,7 +2162,7 @@
       "pattern_id": "definitive-domain.query.catalog-inventory",
       "scenario": "performance",
       "path": "evidence/scenarios/behaviors/query.catalog-inventory/performance.proof.json",
-      "digest": "sha256:ff99b069bc379f3d3dca34568550a6c7aabff3d6ba6e9b98bfa145afe4e0e257",
+      "digest": "sha256:9adc40359beb06c6dfd7e3261b66350d6c6ec636a78e1dafe20fa583ce758668",
       "status": "pattern-specific-gap"
     },
     {
@@ -2171,7 +2171,7 @@
       "pattern_id": "definitive-domain.query.catalog-inventory",
       "scenario": "compatibility",
       "path": "evidence/scenarios/behaviors/query.catalog-inventory/compatibility.proof.json",
-      "digest": "sha256:ec8be8f494fbeeb359d77649a99326b7cf6e257b16fd2c5ae1b4a7393e498d66",
+      "digest": "sha256:b2ee58f68864da174c009209324667b959816b732d72f8e1d5226a89d705edf5",
       "status": "pattern-specific-gap"
     },
     {
@@ -2180,7 +2180,7 @@
       "pattern_id": "definitive-domain.query.extension",
       "scenario": "normal",
       "path": "evidence/scenarios/behaviors/query.extension/normal.proof.json",
-      "digest": "sha256:4a6d2d900ca7911a85baeebe57ae20ff56571d546dc4b7f5e36cb38377799f3c",
+      "digest": "sha256:e747f3b7b4148179200a332017a8cd1980a6eb61074964df3ddfce52a40a37d5",
       "status": "pattern-specific-gap"
     },
     {
@@ -2189,7 +2189,7 @@
       "pattern_id": "definitive-domain.query.extension",
       "scenario": "boundary",
       "path": "evidence/scenarios/behaviors/query.extension/boundary.proof.json",
-      "digest": "sha256:dac28e5b31b32849c812b3bf242d79ee2939d3761ea995016bafc69744dc4249",
+      "digest": "sha256:4c1f61bfa214333f6d68f4bbca60ed97f7c1704fbab0ad74be6e75ace8d8e970",
       "status": "pattern-specific-gap"
     },
     {
@@ -2198,7 +2198,7 @@
       "pattern_id": "definitive-domain.query.extension",
       "scenario": "refusal",
       "path": "evidence/scenarios/behaviors/query.extension/refusal.proof.json",
-      "digest": "sha256:b40fcfb03d9b8fcaa74a52a9c3504f82aba56bed0583aaa01a416c11ea6cb9b8",
+      "digest": "sha256:48678eb9f76fb2631642ae9efa8dba6569e660411ca69e4a1938c5e89b79fbec",
       "status": "pattern-specific-gap"
     },
     {
@@ -2207,7 +2207,7 @@
       "pattern_id": "definitive-domain.query.extension",
       "scenario": "failure",
       "path": "evidence/scenarios/behaviors/query.extension/failure.proof.json",
-      "digest": "sha256:603c601ca30651e06ef3a8776be837c566af5fb786ec0eba7599c81b53b53e0f",
+      "digest": "sha256:6299d4557984419e8d3f2e5ba72e53ede44a06f26a23359477c35da83431f740",
       "status": "pattern-specific-gap"
     },
     {
@@ -2216,7 +2216,7 @@
       "pattern_id": "definitive-domain.query.extension",
       "scenario": "recovery",
       "path": "evidence/scenarios/behaviors/query.extension/recovery.proof.json",
-      "digest": "sha256:8950689c894ddc015512f83a5013961b5428417ff25e949ff81f94985fe08deb",
+      "digest": "sha256:c1f1b4cf6cb70f3976ef325b20a619c63ada6283821bd8d247a75a72345f63ae",
       "status": "pattern-specific-gap"
     },
     {
@@ -2225,7 +2225,7 @@
       "pattern_id": "definitive-domain.query.extension",
       "scenario": "migration",
       "path": "evidence/scenarios/behaviors/query.extension/migration.proof.json",
-      "digest": "sha256:4bfafc532ba19c0e4c19966f181e92dea0e1f6ba8274362a6c114ea3a0feea6d",
+      "digest": "sha256:9907085cb9f223d706136748dc74b40bf6f873066c71711e293f6b615039f9da",
       "status": "pattern-specific-gap"
     },
     {
@@ -2234,7 +2234,7 @@
       "pattern_id": "definitive-domain.query.extension",
       "scenario": "operations",
       "path": "evidence/scenarios/behaviors/query.extension/operations.proof.json",
-      "digest": "sha256:6f5d7bbb5353210d950a669a400919e990e080ebcd569603dbd3db1753aeae05",
+      "digest": "sha256:6c0dd2f5fb063373d382ebdc745b05b14a297d6314c5552f763b43a7edf3090e",
       "status": "pattern-specific-gap"
     },
     {
@@ -2243,7 +2243,7 @@
       "pattern_id": "definitive-domain.query.extension",
       "scenario": "security",
       "path": "evidence/scenarios/behaviors/query.extension/security.proof.json",
-      "digest": "sha256:6c9fd0c20ee9dc6b0896c2df91bdc2eacdca36fe7af43faad4fb0612ceb72efa",
+      "digest": "sha256:26914f34dd598558ee9c6be5e66122d126d869feebabe5ddb0cf78419cfeed7e",
       "status": "pattern-specific-gap"
     },
     {
@@ -2252,7 +2252,7 @@
       "pattern_id": "definitive-domain.query.extension",
       "scenario": "performance",
       "path": "evidence/scenarios/behaviors/query.extension/performance.proof.json",
-      "digest": "sha256:c5f381806035d3d7b64f161d5ec102329f348528a8e94c340b3fea7728da173b",
+      "digest": "sha256:392fc780df1dc762f9c2631da2d0b37778ae69b5dca5b03694487759e4434025",
       "status": "pattern-specific-gap"
     },
     {
@@ -2261,7 +2261,7 @@
       "pattern_id": "definitive-domain.query.extension",
       "scenario": "compatibility",
       "path": "evidence/scenarios/behaviors/query.extension/compatibility.proof.json",
-      "digest": "sha256:aaa4c02f595b6764c44f80506f49ba56007b7d5b78fe65536dfd4f815a0bd6c7",
+      "digest": "sha256:fae2ef7bac0b8374e666096ad718dd6a89765e3f2aed37ed900b97dc78d5993c",
       "status": "pattern-specific-gap"
     },
     {
@@ -2270,7 +2270,7 @@
       "pattern_id": "definitive-domain.query.partitioning",
       "scenario": "normal",
       "path": "evidence/scenarios/behaviors/query.partitioning/normal.proof.json",
-      "digest": "sha256:94e14951e8dc5c8b5dddf81c317096d676cc390140186c9cfa902fc92d4258ae",
+      "digest": "sha256:0340f7d5498a5b9d66ed63cf44a1b2d0de23fe758b3addace9b4d6886f5d3f10",
       "status": "pattern-specific-gap"
     },
     {
@@ -2279,7 +2279,7 @@
       "pattern_id": "definitive-domain.query.partitioning",
       "scenario": "boundary",
       "path": "evidence/scenarios/behaviors/query.partitioning/boundary.proof.json",
-      "digest": "sha256:3b382349f596dc3c9de6d8c9121fedf53a155bea42b31ce29189ded01634c1b6",
+      "digest": "sha256:95400444b866b73f9199f61d19fb89a8787e70e90a83526c8ecc86b291fd36e7",
       "status": "pattern-specific-gap"
     },
     {
@@ -2288,7 +2288,7 @@
       "pattern_id": "definitive-domain.query.partitioning",
       "scenario": "refusal",
       "path": "evidence/scenarios/behaviors/query.partitioning/refusal.proof.json",
-      "digest": "sha256:5c3f1cac72a18194f45e3b4eb5ce11ecdc1a338a25cb01cff98048c7785158cd",
+      "digest": "sha256:81a10bb9419703f6b7387c77b72f6a2005fcd7caa16e5166eaa4465259db845b",
       "status": "pattern-specific-gap"
     },
     {
@@ -2297,7 +2297,7 @@
       "pattern_id": "definitive-domain.query.partitioning",
       "scenario": "failure",
       "path": "evidence/scenarios/behaviors/query.partitioning/failure.proof.json",
-      "digest": "sha256:98a02108e4228a3dbcb731b56a620e2eb58040e3855a2c3660e3ffeee548d9e9",
+      "digest": "sha256:1bf8ef1079ef5c17401320234e62f297a7430c6d1420fe5525d75d00f3246814",
       "status": "pattern-specific-gap"
     },
     {
@@ -2306,7 +2306,7 @@
       "pattern_id": "definitive-domain.query.partitioning",
       "scenario": "recovery",
       "path": "evidence/scenarios/behaviors/query.partitioning/recovery.proof.json",
-      "digest": "sha256:f1eb4aafcb69ebbe5d16797ea48fa4ca24b0a5a72d70ac5789c325a1933c9b42",
+      "digest": "sha256:9253cd9bed32a3cfd6f0a467571221f2fffeabe4e197c00153b44ab80d1010f4",
       "status": "pattern-specific-gap"
     },
     {
@@ -2315,7 +2315,7 @@
       "pattern_id": "definitive-domain.query.partitioning",
       "scenario": "migration",
       "path": "evidence/scenarios/behaviors/query.partitioning/migration.proof.json",
-      "digest": "sha256:19f6cad9ba90ede021a0d0d566abd161b51bfde19b626b2ea1d470d03d8667bd",
+      "digest": "sha256:b0b888f6df3a4fb4d80a462b6b1fc35f52a0e69f9ee62c6d1452f65cc8dc1ffe",
       "status": "pattern-specific-gap"
     },
     {
@@ -2324,7 +2324,7 @@
       "pattern_id": "definitive-domain.query.partitioning",
       "scenario": "operations",
       "path": "evidence/scenarios/behaviors/query.partitioning/operations.proof.json",
-      "digest": "sha256:b06211f44830492153c99935a4b91934a846e7bb943f48e1b4d4967c0a90fd59",
+      "digest": "sha256:276e4f569b2aebdd3f20832720d3e8aa9039c508b7dad5efa0b7927c4f374502",
       "status": "pattern-specific-gap"
     },
     {
@@ -2333,7 +2333,7 @@
       "pattern_id": "definitive-domain.query.partitioning",
       "scenario": "security",
       "path": "evidence/scenarios/behaviors/query.partitioning/security.proof.json",
-      "digest": "sha256:f8bb151b1f63cc24ffef630e69d153e36dd743e1aba1d440c42f1351fae6c087",
+      "digest": "sha256:3322e94a2012e55a58013d6ca7d0e3db51e4d98c52e3c572f237989e44de747f",
       "status": "pattern-specific-gap"
     },
     {
@@ -2342,7 +2342,7 @@
       "pattern_id": "definitive-domain.query.partitioning",
       "scenario": "performance",
       "path": "evidence/scenarios/behaviors/query.partitioning/performance.proof.json",
-      "digest": "sha256:ae174c6876a27ec06fc81159f03162c6bbfab2ab26737c5d33710febe1a087be",
+      "digest": "sha256:bdddc587eab5082e088f1df90ea3729b2798346e1fb1d0489258ceb521c2f95e",
       "status": "pattern-specific-gap"
     },
     {
@@ -2351,7 +2351,7 @@
       "pattern_id": "definitive-domain.query.partitioning",
       "scenario": "compatibility",
       "path": "evidence/scenarios/behaviors/query.partitioning/compatibility.proof.json",
-      "digest": "sha256:5938e30a20562a968584455c55b8057868ff59eeb49a5e1a98abcc84c7d63996",
+      "digest": "sha256:b67f264e231647d05f25c54d1d06e32946c34fe7f655e7a24c0a72064c24bc8c",
       "status": "pattern-specific-gap"
     },
     {
@@ -2360,7 +2360,7 @@
       "pattern_id": "definitive-domain.query.security",
       "scenario": "normal",
       "path": "evidence/scenarios/behaviors/query.security/normal.proof.json",
-      "digest": "sha256:62b3d40564408c07ccd86e77aaaad5ec6c5a7e1ed731f65f07fe8cce53053c6f",
+      "digest": "sha256:e52b7493980f7ed46a57f6e2ec953be5f145e3f475077c21e208505b15462fe7",
       "status": "pattern-specific-gap"
     },
     {
@@ -2369,7 +2369,7 @@
       "pattern_id": "definitive-domain.query.security",
       "scenario": "boundary",
       "path": "evidence/scenarios/behaviors/query.security/boundary.proof.json",
-      "digest": "sha256:c4c5d7f066887590985b749e30c4a1329f1469233e406dab1ba41c8c7a3d802f",
+      "digest": "sha256:ef19110479802dbce2222d9714b993f85691deabc814eb69e5b2286a8dc467b3",
       "status": "pattern-specific-gap"
     },
     {
@@ -2378,7 +2378,7 @@
       "pattern_id": "definitive-domain.query.security",
       "scenario": "refusal",
       "path": "evidence/scenarios/behaviors/query.security/refusal.proof.json",
-      "digest": "sha256:6ea116de0a0d02b6ff0843f800352acbd181715c9028067f2015cb76a298b2c2",
+      "digest": "sha256:01fe49677e00f57e3126d398a46e117966a41f6b0625ac2251e73e73c35d8655",
       "status": "pattern-specific-gap"
     },
     {
@@ -2387,7 +2387,7 @@
       "pattern_id": "definitive-domain.query.security",
       "scenario": "failure",
       "path": "evidence/scenarios/behaviors/query.security/failure.proof.json",
-      "digest": "sha256:1d64ba4a851e39c57b96453ec9c7e0e6ece8f55f19383bc325cf2e9b273679e8",
+      "digest": "sha256:671e2b3acf5ec3393848f12558194629a0878d4dea2ffc14941d184ee7d9af23",
       "status": "pattern-specific-gap"
     },
     {
@@ -2396,7 +2396,7 @@
       "pattern_id": "definitive-domain.query.security",
       "scenario": "recovery",
       "path": "evidence/scenarios/behaviors/query.security/recovery.proof.json",
-      "digest": "sha256:98b7050891aeffe999903dc4506a2b83a56c1e65cf6fdde92f2b6e903d53de8d",
+      "digest": "sha256:a352cebb1b4ba7c39f5454533d1cbd5bcd599c4ef73f9cce54620fb9b8952305",
       "status": "pattern-specific-gap"
     },
     {
@@ -2405,7 +2405,7 @@
       "pattern_id": "definitive-domain.query.security",
       "scenario": "migration",
       "path": "evidence/scenarios/behaviors/query.security/migration.proof.json",
-      "digest": "sha256:7188db0c79d36927b4c653e12028373d2a0f01ca59eefc32734ff7fb11fe8ac9",
+      "digest": "sha256:b0a5e89e4271f981ac18090f8133e8fe27ff97b514299809d3dc1da456f20813",
       "status": "pattern-specific-gap"
     },
     {
@@ -2414,7 +2414,7 @@
       "pattern_id": "definitive-domain.query.security",
       "scenario": "operations",
       "path": "evidence/scenarios/behaviors/query.security/operations.proof.json",
-      "digest": "sha256:4fe427380f74cb9880abb8e9c74dd5729f76e58a2479eb82dd6da3df2d4560ad",
+      "digest": "sha256:ae332755da324675110d3965a4d490218ed1456cf28729a57be8af181306583c",
       "status": "pattern-specific-gap"
     },
     {
@@ -2423,7 +2423,7 @@
       "pattern_id": "definitive-domain.query.security",
       "scenario": "security",
       "path": "evidence/scenarios/behaviors/query.security/security.proof.json",
-      "digest": "sha256:920816b73904b46bfb24b5bdd9649bbde97ef1db4efb8f7eb8a5f47434548113",
+      "digest": "sha256:c1bf5b04d5ef14df1e26f09218d16a865c88ad5632bdd724327c59bc28ec616b",
       "status": "pattern-specific-gap"
     },
     {
@@ -2432,7 +2432,7 @@
       "pattern_id": "definitive-domain.query.security",
       "scenario": "performance",
       "path": "evidence/scenarios/behaviors/query.security/performance.proof.json",
-      "digest": "sha256:142a672fe5e31411ccc5345599fcae2a7c17db02f621d3dd0764feb797a8ee83",
+      "digest": "sha256:3ae58f509fc8a3e0c4141614f287ae35ec8fd460732a9d3ca2fea0b1e4fd3a19",
       "status": "pattern-specific-gap"
     },
     {
@@ -2441,7 +2441,7 @@
       "pattern_id": "definitive-domain.query.security",
       "scenario": "compatibility",
       "path": "evidence/scenarios/behaviors/query.security/compatibility.proof.json",
-      "digest": "sha256:26df11d54e739f5b9bf1b8b853f7a9fba6bf39ae79914cc2e683f3fdcde87cb5",
+      "digest": "sha256:226c14ccbbd8b05353143e3a286c7d13ecc09a9a6debd75f00ccce2d65dfd832",
       "status": "pattern-specific-gap"
     },
     {
@@ -2450,7 +2450,7 @@
       "pattern_id": "definitive-domain.query.sql-surface",
       "scenario": "normal",
       "path": "evidence/scenarios/behaviors/query.sql-surface/normal.proof.json",
-      "digest": "sha256:727a306877b59136be2d24106f2430ae27c228cf63374cbe37ba9c8e72ca6a1e",
+      "digest": "sha256:f66832f49d7595d3ecadd5aa2cb3d955e4dcd4a9d08cd069649fb763148057a6",
       "status": "pattern-specific-gap"
     },
     {
@@ -2459,7 +2459,7 @@
       "pattern_id": "definitive-domain.query.sql-surface",
       "scenario": "boundary",
       "path": "evidence/scenarios/behaviors/query.sql-surface/boundary.proof.json",
-      "digest": "sha256:7b20416b311352d23adcb9fbce7ef8ba698f5825a19666e9bb6fa0bc36bd43e7",
+      "digest": "sha256:6a7858ac050566e811436ea884e1d54e2e7605562cb2406e30624359d833e7d6",
       "status": "pattern-specific-gap"
     },
     {
@@ -2468,7 +2468,7 @@
       "pattern_id": "definitive-domain.query.sql-surface",
       "scenario": "refusal",
       "path": "evidence/scenarios/behaviors/query.sql-surface/refusal.proof.json",
-      "digest": "sha256:d2a4fd94d94ce3c8f4d2b744b422217c52df574b9f680186d052c2677a9f1ee7",
+      "digest": "sha256:b9ef7ff8de374a9434d00f79a3bfd57f2a6a50eb9a4e3c8435a088284449b992",
       "status": "pattern-specific-gap"
     },
     {
@@ -2477,7 +2477,7 @@
       "pattern_id": "definitive-domain.query.sql-surface",
       "scenario": "failure",
       "path": "evidence/scenarios/behaviors/query.sql-surface/failure.proof.json",
-      "digest": "sha256:686eef64d46031de7eba31fe2dbaa9d3261cc3e46d5ec1bd3a51b13e81e9e9f4",
+      "digest": "sha256:505be21e1a2f66e36316c4ba211f122f117268892560fdb2e3bfe4ab20975e14",
       "status": "pattern-specific-gap"
     },
     {
@@ -2486,7 +2486,7 @@
       "pattern_id": "definitive-domain.query.sql-surface",
       "scenario": "recovery",
       "path": "evidence/scenarios/behaviors/query.sql-surface/recovery.proof.json",
-      "digest": "sha256:0a1fb0a78910f36c26e0c662950f8c2bb8a1edac385c418eabc157fb9a25550f",
+      "digest": "sha256:ddd38e4f2abf7246bbe5039f1f51a2dd394bab1de8f705289f2ceca8546a713f",
       "status": "pattern-specific-gap"
     },
     {
@@ -2495,7 +2495,7 @@
       "pattern_id": "definitive-domain.query.sql-surface",
       "scenario": "migration",
       "path": "evidence/scenarios/behaviors/query.sql-surface/migration.proof.json",
-      "digest": "sha256:616d5302a4956ad2c826daa7372a4e1f06facdbd5471497d7bc75c7b83f3dc15",
+      "digest": "sha256:c6cce3f61cabd51b2e2e8be1ebf6096ffb12b281e193c6b620b121bd65475c7c",
       "status": "pattern-specific-gap"
     },
     {
@@ -2504,7 +2504,7 @@
       "pattern_id": "definitive-domain.query.sql-surface",
       "scenario": "operations",
       "path": "evidence/scenarios/behaviors/query.sql-surface/operations.proof.json",
-      "digest": "sha256:4ce9d62d1e1b152a986484fb8c2e6e7d2fa3f381710fdd9ef0eee35b26358afc",
+      "digest": "sha256:4251f682f8f2e7a53aa7e33347e356749522c7247e1d33684f1d2793662afe0f",
       "status": "pattern-specific-gap"
     },
     {
@@ -2513,7 +2513,7 @@
       "pattern_id": "definitive-domain.query.sql-surface",
       "scenario": "security",
       "path": "evidence/scenarios/behaviors/query.sql-surface/security.proof.json",
-      "digest": "sha256:6376d290f8acfc943e218219c743c3bdb637de44a9df130d38c25397d89577bb",
+      "digest": "sha256:73fef2943c9f1b3e6e8628d4623eb83f80d447118111c8c5333b368d7fb89723",
       "status": "pattern-specific-gap"
     },
     {
@@ -2522,7 +2522,7 @@
       "pattern_id": "definitive-domain.query.sql-surface",
       "scenario": "performance",
       "path": "evidence/scenarios/behaviors/query.sql-surface/performance.proof.json",
-      "digest": "sha256:03fffd22dfe30a9bf1559ed8a7736d837146ab3b49e15e0ddc37cb043b38666b",
+      "digest": "sha256:c8a4e31d417dc20d6a25927aa814b536f5701cdefa98f466ff09d50bbe4308a7",
       "status": "pattern-specific-gap"
     },
     {
@@ -2531,7 +2531,7 @@
       "pattern_id": "definitive-domain.query.sql-surface",
       "scenario": "compatibility",
       "path": "evidence/scenarios/behaviors/query.sql-surface/compatibility.proof.json",
-      "digest": "sha256:9a6875291d664436336270ec740e12d7a4d6c12edc4d9d2a8821d6d8ddc3b6fd",
+      "digest": "sha256:2c1a81e9a6f3dd8ae3c5223c390d0018771dc2ac61eca693482c48ecfd8b7bfc",
       "status": "pattern-specific-gap"
     },
     {
@@ -2540,7 +2540,7 @@
       "pattern_id": "definitive-domain.query.types-constraints",
       "scenario": "normal",
       "path": "evidence/scenarios/behaviors/query.types-constraints/normal.proof.json",
-      "digest": "sha256:f23e9bb98df8c968c115ac589faa3b26006e1df66b5e1b0e903987c0c928e5ce",
+      "digest": "sha256:a19ca76aa0b919425058d8f5e1d9b8fd74efcc08dc25b183c209a7b54c795af0",
       "status": "pattern-specific-gap"
     },
     {
@@ -2549,7 +2549,7 @@
       "pattern_id": "definitive-domain.query.types-constraints",
       "scenario": "boundary",
       "path": "evidence/scenarios/behaviors/query.types-constraints/boundary.proof.json",
-      "digest": "sha256:38f876f2a2175a806635d26b6deb3960666ddb76b170b4a0e67c3407f3a883e1",
+      "digest": "sha256:ec85d2c1c464bd89c2762974852883f27accd3602e09845f1365a72ba86eaf67",
       "status": "pattern-specific-gap"
     },
     {
@@ -2558,7 +2558,7 @@
       "pattern_id": "definitive-domain.query.types-constraints",
       "scenario": "refusal",
       "path": "evidence/scenarios/behaviors/query.types-constraints/refusal.proof.json",
-      "digest": "sha256:53cfcbf45d562e0acaf7f909f9ddaeabb232a20e30b703f737afa0eb384d7b0a",
+      "digest": "sha256:8a1156fa4020f6fb27ce5ccadc81d53c41470db16cb2676bcca8461c34479147",
       "status": "pattern-specific-gap"
     },
     {
@@ -2567,7 +2567,7 @@
       "pattern_id": "definitive-domain.query.types-constraints",
       "scenario": "failure",
       "path": "evidence/scenarios/behaviors/query.types-constraints/failure.proof.json",
-      "digest": "sha256:0b9d92698520bcc26eb1901a252cf4cc1b06897d2dee06baeac7c060a0bf9b82",
+      "digest": "sha256:30b94a81c439f183c69ea9993d0934bd1df46b02b79ccd783d43ea3f0c0c7781",
       "status": "pattern-specific-gap"
     },
     {
@@ -2576,7 +2576,7 @@
       "pattern_id": "definitive-domain.query.types-constraints",
       "scenario": "recovery",
       "path": "evidence/scenarios/behaviors/query.types-constraints/recovery.proof.json",
-      "digest": "sha256:ec7c724bfb816d459962166753704f80f23b070952fc2bdf37cc382604d92444",
+      "digest": "sha256:f63da03dabd67629247a5b32ae4b8d671d0d80556e0af35b6d0b053a2190c42c",
       "status": "pattern-specific-gap"
     },
     {
@@ -2585,7 +2585,7 @@
       "pattern_id": "definitive-domain.query.types-constraints",
       "scenario": "migration",
       "path": "evidence/scenarios/behaviors/query.types-constraints/migration.proof.json",
-      "digest": "sha256:5b76d1a8681d981cb37dd2c0ac2871f2668e03843c28041e971ac9b99464193c",
+      "digest": "sha256:1a1d269349b7d28df8882d29eb391639ac2f64f8e9d22e3bc2c0bee16b8a1bb9",
       "status": "pattern-specific-gap"
     },
     {
@@ -2594,7 +2594,7 @@
       "pattern_id": "definitive-domain.query.types-constraints",
       "scenario": "operations",
       "path": "evidence/scenarios/behaviors/query.types-constraints/operations.proof.json",
-      "digest": "sha256:5b1370e4be4ceaca32d09e0bdd89025f65288a60fbcf09509455d99e8563a569",
+      "digest": "sha256:48c3dedbb21ebc57184a99caf85d1ebed827f1de67ee9787e3be915ce0733211",
       "status": "pattern-specific-gap"
     },
     {
@@ -2603,7 +2603,7 @@
       "pattern_id": "definitive-domain.query.types-constraints",
       "scenario": "security",
       "path": "evidence/scenarios/behaviors/query.types-constraints/security.proof.json",
-      "digest": "sha256:d780544546c701eee8151485054ba357d6794dea82d33c165160386d83548c28",
+      "digest": "sha256:a08c75d6b9e486cc9f7d3225a12a90373a25cd5723cefd625bcd9557ce50fc5b",
       "status": "pattern-specific-gap"
     },
     {
@@ -2612,7 +2612,7 @@
       "pattern_id": "definitive-domain.query.types-constraints",
       "scenario": "performance",
       "path": "evidence/scenarios/behaviors/query.types-constraints/performance.proof.json",
-      "digest": "sha256:1088e3e70377b4274ef67c99d82f73a803050e685575888eec06870ff872048c",
+      "digest": "sha256:faeebdddc9112c93421f792bb53b7806eb5b25dd52a13d9424eff95096c69b94",
       "status": "pattern-specific-gap"
     },
     {
@@ -2621,7 +2621,7 @@
       "pattern_id": "definitive-domain.query.types-constraints",
       "scenario": "compatibility",
       "path": "evidence/scenarios/behaviors/query.types-constraints/compatibility.proof.json",
-      "digest": "sha256:133180364670ea3dd137471f7e088d706ac95c71a5a3548ebc1945004cc013e2",
+      "digest": "sha256:8237e20500a64c438b0dbc34311744dedec1c8e8d07378cf1b3fc0d4c53617c4",
       "status": "pattern-specific-gap"
     },
     {
@@ -2630,7 +2630,7 @@
       "pattern_id": "definitive-domain.skill.router-evaluation",
       "scenario": "normal",
       "path": "evidence/scenarios/behaviors/skill.router-evaluation/normal.proof.json",
-      "digest": "sha256:deca8c0838d28626660d6c2493620fd70a70c5dea8f9ccdf4e27e2b07cfdc6c1",
+      "digest": "sha256:ccffaa0e0cbd05a00c6982d62f729050ee916bd861a46a33a0697a67998bca44",
       "status": "pattern-specific-gap"
     },
     {
@@ -2639,7 +2639,7 @@
       "pattern_id": "definitive-domain.skill.router-evaluation",
       "scenario": "boundary",
       "path": "evidence/scenarios/behaviors/skill.router-evaluation/boundary.proof.json",
-      "digest": "sha256:ddc6b7f528bc60ce7b98f122d77134e0d6d36cce5f529816d525a63ab9d2789a",
+      "digest": "sha256:58d800b521b425ac10c490b5d80396c0aa4b62147900c9ee8a39863a92ef3ee7",
       "status": "pattern-specific-gap"
     },
     {
@@ -2648,7 +2648,7 @@
       "pattern_id": "definitive-domain.skill.router-evaluation",
       "scenario": "refusal",
       "path": "evidence/scenarios/behaviors/skill.router-evaluation/refusal.proof.json",
-      "digest": "sha256:b593269c87f4f0952fed70ab2dc84755b9114236b193cac5e853a3cdfe48b73b",
+      "digest": "sha256:c5f3b979ee4f35ad9cfcd9f12db614948bb3d6b46811ab086ee5fca1d4b3f522",
       "status": "pattern-specific-gap"
     },
     {
@@ -2657,7 +2657,7 @@
       "pattern_id": "definitive-domain.skill.router-evaluation",
       "scenario": "failure",
       "path": "evidence/scenarios/behaviors/skill.router-evaluation/failure.proof.json",
-      "digest": "sha256:80b21cdadfda113ed600b71974a9db8e438fa5e1999bb2fd0702506c09aad485",
+      "digest": "sha256:b5cf269fee74341371a119379d6044f5b5483c25cfc74565e55e5c1ca695c87b",
       "status": "pattern-specific-gap"
     },
     {
@@ -2666,7 +2666,7 @@
       "pattern_id": "definitive-domain.skill.router-evaluation",
       "scenario": "recovery",
       "path": "evidence/scenarios/behaviors/skill.router-evaluation/recovery.proof.json",
-      "digest": "sha256:519a8ce6e67584dcacdc076fabac92c94b023b98c96e005a483bf23ff319fbce",
+      "digest": "sha256:6b1df735c00f7de9bb9d896d19dcbb4277c29f7a641be04f2be71a396f5d574f",
       "status": "pattern-specific-gap"
     },
     {
@@ -2675,7 +2675,7 @@
       "pattern_id": "definitive-domain.skill.router-evaluation",
       "scenario": "migration",
       "path": "evidence/scenarios/behaviors/skill.router-evaluation/migration.proof.json",
-      "digest": "sha256:f7dd17ff41ec09c61ffa394f022aa37c1eacb7e3e981a342353fd1ef836446a3",
+      "digest": "sha256:8eac965bdab57180a74a173a9312050f67c02dd82327d66eca263c0e640a5ee7",
       "status": "pattern-specific-gap"
     },
     {
@@ -2684,7 +2684,7 @@
       "pattern_id": "definitive-domain.skill.router-evaluation",
       "scenario": "operations",
       "path": "evidence/scenarios/behaviors/skill.router-evaluation/operations.proof.json",
-      "digest": "sha256:c8e86b58b01093acf61f375ece6e6d3a4e0bdde4a5c3c55d15d31d60692fbdc7",
+      "digest": "sha256:4c74fe15e05397bb9242e01b40c39113a6336f9aadd9cb9261b369ab19574a8f",
       "status": "pattern-specific-gap"
     },
     {
@@ -2693,7 +2693,7 @@
       "pattern_id": "definitive-domain.skill.router-evaluation",
       "scenario": "security",
       "path": "evidence/scenarios/behaviors/skill.router-evaluation/security.proof.json",
-      "digest": "sha256:20b9faba1b50d736e246788063f6f90f7b07e857eb69541beabe189bbc3507f7",
+      "digest": "sha256:bdf714d3c86570189ec9d29324a777d1e838f534ca49ac6a9d4df9227c5cac66",
       "status": "pattern-specific-gap"
     },
     {
@@ -2702,7 +2702,7 @@
       "pattern_id": "definitive-domain.skill.router-evaluation",
       "scenario": "performance",
       "path": "evidence/scenarios/behaviors/skill.router-evaluation/performance.proof.json",
-      "digest": "sha256:8c0f6ab2bd7d6a4107f19d6656233a0580ace4f90fd76249cfc37afb06a6d7c3",
+      "digest": "sha256:2a3c51940d976e774db3915903bfc5d80ac6deafe6974c694a67a3d3cc6ab4b6",
       "status": "pattern-specific-gap"
     },
     {
@@ -2711,7 +2711,7 @@
       "pattern_id": "definitive-domain.skill.router-evaluation",
       "scenario": "compatibility",
       "path": "evidence/scenarios/behaviors/skill.router-evaluation/compatibility.proof.json",
-      "digest": "sha256:954c8660cd75e2a785eff6ee94d2c1185ee4a380f0f1360b99c816932ed6b1f5",
+      "digest": "sha256:f0c6034ee8076b78bf166937e195ca1fa697bf74732f9700c9abaf2a42da0902",
       "status": "pattern-specific-gap"
     }
   ],

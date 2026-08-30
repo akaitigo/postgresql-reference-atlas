@@ -178,6 +178,14 @@
     },
     {
       "id": "evidence-full-rerun-wal", "result": "pass", "assertions": ["WAL実Runtime Evidenceを再実行し既存IDとpassを保持する"]
+    },
+    {
+      "id": "pg-upgrade-manifest-security-scenario-addition",
+      "result": "pass",
+      "assertions": [
+        "既存のDockerfile、verify.sh、run.shを保持する",
+        "Dockerfile.securityとsecurity-verify.shで17.11から18.6へのSecurity Scenario専用Proofを追加する"
+      ]
     }
   ],
   "verdict": "pass"

@@ -126,7 +126,7 @@
       "client_product": "psql",
       "client_version": "psql (PostgreSQL) 18.6",
       "runtime_image": "postgres:18.6-alpine",
-      "runtime_identity": "pg-atlas-security-84803-4db61c",
+      "runtime_identity": "pg-atlas-security-22908-584ca1",
       "workers": 1,
       "retries": 0,
       "trace_mode": "on",
@@ -134,7 +134,7 @@
     },
     "scenario_runtime_records": [
       {
-        "id": "security-001.concurrency.locking",
+        "id": "security-runtime.concurrency.locking",
         "pattern_id": "definitive-domain.concurrency.locking",
         "variant_id": "postgresql-verification-matrix-v2",
         "scenario": "security",
@@ -154,8 +154,8 @@
         },
         "trace": {
           "path": "artifacts/pattern-scenarios/traces/definitive-domain_concurrency_locking__security__postgresql-verification-matrix-v2.trace.json",
-          "digest": "sha256:c0b595aa763be13e7ef204b248c835825fc61b29ec3dabe39f0e0073698038ec",
-          "bytes": 3876,
+          "digest": "sha256:70918d2027b0c83dc9147737fd8f26cf195519c6a17b517d280493195d622606",
+          "bytes": 4859,
           "action_stream": true,
           "network_stream": true,
           "resource_stream": true
@@ -183,7 +183,7 @@
     "attempts": 1,
     "trace": {
       "path": "artifacts/reference-system/traces/security.trace.json",
-      "digest": "sha256:021c2d7e2cd25a9947b7c8ae57356aff63274197864d036463e91960bc256f68",
+      "digest": "sha256:b6ce180947db65ecc29db7fcbd0ef74164d5ee2f9307bf46ad3b27c46f650cfe",
       "bytes": 1418,
       "action_stream": true,
       "network_stream": true,

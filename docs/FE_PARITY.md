@@ -25,7 +25,7 @@ Reference System/Scenario Proofの参照はFE commit `f2e4c4b19156f8e993f48cdcbc
 - Gapを持つ分野: 15
 - 未Closure軸: 29
 - 統合Reference System: PostgreSQL/psql 18.6で10 Scenarioを10/10実行。SQL、Index Plan、Lock拒否/回復、WAL、Server log、Statement metricをArtifact化
-- Scenario Proof: 29 Behavior × 10 Scenario = 290専用File / bounded補助Evidence 69 / strict Closure 4 / Gap 286 / retry 0記録済み4 / 全Variant実行済み4 / 統合結果・別Artifact metadata流用0 / Authority atomic 0 / completion eligible 0。残りは79 tranche、各最大4 rowで計画する
+- Scenario Proof: 29 Behavior × 10 Scenario = 290専用File / bounded補助Evidence 69 / strict Closure 8 / Gap 282 / retry 0記録済み8 / 全Variant実行済み8 / 統合結果・別Artifact metadata流用0 / Authority atomic 0 / completion eligible 0。残りは78 tranche、各最大4 rowで計画する
 - Depth Parity契約: `depth.parity.yaml`の`completion_status: incomplete`、rows 0
 - Authority locator: 生成候補11,340 / stale 0 / URL再取得deferred 183 / Human review 0
 - Core Authority root: matched 0 / stale 0 / fetch failed 10 / locator deferred 10 / Human review 0 / eligible 0
