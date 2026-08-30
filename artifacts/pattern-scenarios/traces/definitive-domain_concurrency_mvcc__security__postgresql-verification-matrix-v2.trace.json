@@ -12,7 +12,7 @@
     "client_product": "psql",
     "client_version": "psql (PostgreSQL) 18.6",
     "runtime_image": "postgres:18.6-alpine",
-    "runtime_identity": "pg-atlas-security-67159-f0dd4d",
+    "runtime_identity": "pg-atlas-security-84803-4db61c",
     "workers": 1,
     "retries": 0,
     "trace_mode": "on",
@@ -39,11 +39,11 @@
   ],
   "wal": {
     "before_lsn": "0/1BEFFC0",
-    "after_lsn": "0/1BF6000"
+    "after_lsn": "0/1BEFFC0"
   },
-  "log": "2026-08-28 14:52:25.564 UTC [152] LOG:  statement: RESET ROLE;\n2026-08-28 14:52:25.564 UTC [152] LOG:  statement: ROLLBACK;\n2026-08-28 14:52:25.812 UTC [159] LOG:  statement: SELECT pg_current_wal_lsn()\n2026-08-28 14:52:25.985 UTC [166] LOG:  statement: EXPLAIN (FORMAT JSON) SELECT 1 AS security_probe\n2026-08-28 14:52:26.263 UTC [173] LOG:  statement: SELECT pg_current_wal_lsn()\n2026-08-28 14:52:26.416 UTC [180] LOG:  statement: BEGIN;\n2026-08-28 14:52:26.416 UTC [180] LOG:  statement: CREATE ROLE atlas_tenant_a;\n2026-08-28 14:52:26.416 UTC [180] LOG:  statement: CREATE ROLE atlas_tenant_b;\n2026-08-28 14:52:26.417 UTC [180] LOG:  statement: CREATE TABLE atlas_mvcc_tenant(tenant name, value text);\n2026-08-28 14:52:26.418 UTC [180] LOG:  statement: ALTER TABLE atlas_mvcc_tenant ENABLE ROW LEVEL SECURITY;\n2026-08-28 14:52:26.419 UTC [180] LOG:  statement: CREATE POLICY atlas_tenant_policy ON atlas_mvcc_tenant USING (tenant = current_user);\n2026-08-28 14:52:26.419 UTC [180] LOG:  statement: GRANT SELECT ON atlas_mvcc_tenant TO atlas_tenant_a, atlas_tenant_b;\n2026-08-28 14:52:26.419 UTC [180] LOG:  statement: INSERT INTO atlas_mvcc_tenant VALUES ('atlas_tenant_a', 'a'), ('atlas_tenant_b', 'b');\n2026-08-28 14:52:26.420 UTC [180] LOG:  statement: SET ROLE atlas_tenant_a;\n2026-08-28 14:52:26.420 UTC [180] LOG:  statement: SELECT CASE WHEN count(*) = 1 AND min(value) = 'a'\n\t        THEN 'ATLAS_SECURITY_PASS:concurrency.mvcc'\n2026-08-28 14:52:26.420 UTC [180] LOG:  statement: RESET ROLE;\n2026-08-28 14:52:26.420 UTC [180] LOG:  statement: ROLLBACK;\n2026-08-28 14:52:26.587 UTC [187] LOG:  statement: SELECT pg_current_wal_lsn()\n2026-08-28 14:52:26.755 UTC [194] LOG:  statement: EXPLAIN (FORMAT JSON) SELECT 1 AS security_probe\n",
+  "log": "2026-08-30 10:36:01.628 UTC [176] LOG:  statement: RESET ROLE;\n2026-08-30 10:36:01.628 UTC [176] LOG:  statement: ROLLBACK;\n2026-08-30 10:36:01.762 UTC [182] LOG:  statement: SELECT pg_current_wal_lsn()\n2026-08-30 10:36:01.923 UTC [189] LOG:  statement: EXPLAIN (FORMAT JSON) SELECT 1 AS security_probe\n2026-08-30 10:36:02.131 UTC [196] LOG:  statement: SELECT pg_current_wal_lsn()\n2026-08-30 10:36:02.253 UTC [202] LOG:  statement: BEGIN;\n2026-08-30 10:36:02.253 UTC [202] LOG:  statement: CREATE ROLE atlas_tenant_a;\n2026-08-30 10:36:02.255 UTC [202] LOG:  statement: CREATE ROLE atlas_tenant_b;\n2026-08-30 10:36:02.256 UTC [202] LOG:  statement: CREATE TABLE atlas_mvcc_tenant(tenant name, value text);\n2026-08-30 10:36:02.260 UTC [202] LOG:  statement: ALTER TABLE atlas_mvcc_tenant ENABLE ROW LEVEL SECURITY;\n2026-08-30 10:36:02.262 UTC [202] LOG:  statement: CREATE POLICY atlas_tenant_policy ON atlas_mvcc_tenant USING (tenant = current_user);\n2026-08-30 10:36:02.263 UTC [202] LOG:  statement: GRANT SELECT ON atlas_mvcc_tenant TO atlas_tenant_a, atlas_tenant_b;\n2026-08-30 10:36:02.264 UTC [202] LOG:  statement: INSERT INTO atlas_mvcc_tenant VALUES ('atlas_tenant_a', 'a'), ('atlas_tenant_b', 'b');\n2026-08-30 10:36:02.265 UTC [202] LOG:  statement: SET ROLE atlas_tenant_a;\n2026-08-30 10:36:02.265 UTC [202] LOG:  statement: SELECT CASE WHEN count(*) = 1 AND min(value) = 'a'\n\t        THEN 'ATLAS_SECURITY_PASS:concurrency.mvcc'\n2026-08-30 10:36:02.266 UTC [202] LOG:  statement: RESET ROLE;\n2026-08-30 10:36:02.267 UTC [202] LOG:  statement: ROLLBACK;\n2026-08-30 10:36:02.424 UTC [209] LOG:  statement: SELECT pg_current_wal_lsn()\n2026-08-30 10:36:02.568 UTC [216] LOG:  statement: EXPLAIN (FORMAT JSON) SELECT 1 AS security_probe\n",
   "metric": {
-    "elapsed_ms": 159.877
+    "elapsed_ms": 126.324
   },
   "oracle": {
     "kind": "row-level-security-snapshot-isolation",

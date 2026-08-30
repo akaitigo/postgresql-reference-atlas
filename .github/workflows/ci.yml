@@ -19,7 +19,7 @@ jobs:
         uses: actions/checkout@v4
         with:
           repository: akaitigo/reference-atlas-core
-          ref: 40f627e7e7db1d679c18f9442754951b0e1dd13b
+          ref: 072d7ca77981f51754e824d70c6d4ecd55ea67e5
           path: reference-atlas-core
       - name: Install CI dependencies
         run: sudo apt-get update && sudo apt-get install -y ripgrep
@@ -41,6 +41,8 @@ jobs:
         run: make -C postgresql-reference-atlas eval
       - name: Run static publication gates
         run: make -C postgresql-reference-atlas test-static
+      - name: Verify Evidence Dependency Graph
+        run: make -C postgresql-reference-atlas evidence-dependency-verify evidence-dependency-negative-test core-evidence-dependency-audit
       - name: Check committed evidence freshness
         run: make -C postgresql-reference-atlas evidence-freshness
 

@@ -1,0 +1,413 @@
+{
+  "schema_version": 1,
+  "id": "postgresql-evidence-rerun-20260830t103023z",
+  "command": "ruby tools/rerun-evidence-dependencies.rb",
+  "observed_at": "2026-08-30T10:30:21.064106Z",
+  "started_at": "2026-08-30T10:30:23.752491Z",
+  "completed_at": "2026-08-30T10:36:05.725197Z",
+  "result": "passed",
+  "attempts": 1,
+  "runtime_identity": {
+    "server": "PostgreSQL 18.6 (plus PostgreSQL 17.11 for compatibility/upgrade)",
+    "client": "psql from pinned PostgreSQL container images",
+    "container_engine": "Docker version 29.7.2, build a7dcaa6",
+    "host_platform": "universal.arm64e-darwin25",
+    "profiles": [
+      "local",
+      "container",
+      "cluster"
+    ]
+  },
+  "input_bindings": [
+    {
+      "input_id": "source.contract-and-authority",
+      "digest": "sha256:cec41771b6f3e47c352ed59a92b7217286d7ec68f37ce25cd4ab5d05020bf85d"
+    },
+    {
+      "input_id": "harness.sql-schema-correctness",
+      "digest": "sha256:95d3d2367147a6c874879a97035ab4aa60d1808887ac0c524bfd01c483e46780"
+    },
+    {
+      "input_id": "harness.concurrency-mvcc",
+      "digest": "sha256:bb2fa7ca0723dd17301543fb40ef13419c7c888285ecd84e6e707025978b4d1d"
+    },
+    {
+      "input_id": "harness.wal-replication-backup",
+      "digest": "sha256:2ff365c812a13debdb7f208ac5fc7248ff25d50020471483b1d5212c5a3486ab"
+    },
+    {
+      "input_id": "harness.migration-compatibility",
+      "digest": "sha256:8894d497a41566dcd7816b0eee466c0fbf3344163678371dd8105116769f20b6"
+    },
+    {
+      "input_id": "harness.operations-performance-recovery",
+      "digest": "sha256:2a59bae168f7a94179d2496bf6c00bd0974587e9b4fc9699b0711f0fc4beae7c"
+    },
+    {
+      "input_id": "harness.scenario-skill-reporting",
+      "digest": "sha256:71bd28de8b842080b8564ccc84419a044276f0f95d65301f0a0b076784e3efea"
+    },
+    {
+      "input_id": "runtime.postgresql-server-client",
+      "digest": "sha256:6aa5ce6956c82d9ebef2ffa5fc80bf7070ba612da397070b0d622c11a9f4709f"
+    },
+    {
+      "input_id": "profile.local",
+      "digest": "sha256:76ed28411ffc1c2c7543a8c5a520bee4fa032ab7f315b059796f27d86491795d"
+    },
+    {
+      "input_id": "profile.container",
+      "digest": "sha256:2c5efeb596995f24ebcda4b254cca332988f6e2dbd697538bc1d6d25546595bb"
+    },
+    {
+      "input_id": "profile.cluster",
+      "digest": "sha256:c6ea6082fa999d55e8cd8104cc6f0c1d2d6995645fd0a94c8e84526804d28bf6"
+    }
+  ],
+  "commands": [
+    {
+      "id": "lab:authority-lock",
+      "argv": [
+        "bash",
+        "scripts/run-lab.sh",
+        "authority-lock"
+      ],
+      "attempts": 1,
+      "result": "passed"
+    },
+    {
+      "id": "lab:definitive-inventory",
+      "argv": [
+        "bash",
+        "scripts/run-lab.sh",
+        "definitive-inventory"
+      ],
+      "attempts": 1,
+      "result": "passed"
+    },
+    {
+      "id": "lab:sql-surface",
+      "argv": [
+        "bash",
+        "scripts/run-lab.sh",
+        "sql-surface"
+      ],
+      "attempts": 1,
+      "result": "passed"
+    },
+    {
+      "id": "lab:sql",
+      "argv": [
+        "bash",
+        "scripts/run-lab.sh",
+        "sql"
+      ],
+      "attempts": 1,
+      "result": "passed"
+    },
+    {
+      "id": "lab:types-constraints",
+      "argv": [
+        "bash",
+        "scripts/run-lab.sh",
+        "types-constraints"
+      ],
+      "attempts": 1,
+      "result": "passed"
+    },
+    {
+      "id": "lab:catalog-inventory",
+      "argv": [
+        "bash",
+        "scripts/run-lab.sh",
+        "catalog-inventory"
+      ],
+      "attempts": 1,
+      "result": "passed"
+    },
+    {
+      "id": "lab:partitioning",
+      "argv": [
+        "bash",
+        "scripts/run-lab.sh",
+        "partitioning"
+      ],
+      "attempts": 1,
+      "result": "passed"
+    },
+    {
+      "id": "lab:extension",
+      "argv": [
+        "bash",
+        "scripts/run-lab.sh",
+        "extension"
+      ],
+      "attempts": 1,
+      "result": "passed"
+    },
+    {
+      "id": "lab:security",
+      "argv": [
+        "bash",
+        "scripts/run-lab.sh",
+        "security"
+      ],
+      "attempts": 1,
+      "result": "passed"
+    },
+    {
+      "id": "lab:mvcc",
+      "argv": [
+        "bash",
+        "scripts/run-lab.sh",
+        "mvcc"
+      ],
+      "attempts": 1,
+      "result": "passed"
+    },
+    {
+      "id": "lab:locking",
+      "argv": [
+        "bash",
+        "scripts/run-lab.sh",
+        "locking"
+      ],
+      "attempts": 1,
+      "result": "passed"
+    },
+    {
+      "id": "lab:deadlock",
+      "argv": [
+        "bash",
+        "scripts/run-lab.sh",
+        "deadlock"
+      ],
+      "attempts": 1,
+      "result": "passed"
+    },
+    {
+      "id": "lab:planner",
+      "argv": [
+        "bash",
+        "scripts/run-lab.sh",
+        "planner"
+      ],
+      "attempts": 1,
+      "result": "passed"
+    },
+    {
+      "id": "lab:statistics",
+      "argv": [
+        "bash",
+        "scripts/run-lab.sh",
+        "statistics"
+      ],
+      "attempts": 1,
+      "result": "passed"
+    },
+    {
+      "id": "lab:index",
+      "argv": [
+        "bash",
+        "scripts/run-lab.sh",
+        "index"
+      ],
+      "attempts": 1,
+      "result": "passed"
+    },
+    {
+      "id": "lab:performance",
+      "argv": [
+        "bash",
+        "scripts/run-lab.sh",
+        "performance"
+      ],
+      "attempts": 1,
+      "result": "passed"
+    },
+    {
+      "id": "lab:wal",
+      "argv": [
+        "bash",
+        "scripts/run-lab.sh",
+        "wal"
+      ],
+      "attempts": 1,
+      "result": "passed"
+    },
+    {
+      "id": "lab:backup-recovery",
+      "argv": [
+        "bash",
+        "scripts/run-lab.sh",
+        "backup-recovery"
+      ],
+      "attempts": 1,
+      "result": "passed"
+    },
+    {
+      "id": "lab:pitr",
+      "argv": [
+        "bash",
+        "scripts/run-lab.sh",
+        "pitr"
+      ],
+      "attempts": 1,
+      "result": "passed"
+    },
+    {
+      "id": "lab:replication",
+      "argv": [
+        "bash",
+        "scripts/run-lab.sh",
+        "replication"
+      ],
+      "attempts": 1,
+      "result": "passed"
+    },
+    {
+      "id": "lab:logical-replication",
+      "argv": [
+        "bash",
+        "scripts/run-lab.sh",
+        "logical-replication"
+      ],
+      "attempts": 1,
+      "result": "passed"
+    },
+    {
+      "id": "lab:observability",
+      "argv": [
+        "bash",
+        "scripts/run-lab.sh",
+        "observability"
+      ],
+      "attempts": 1,
+      "result": "passed"
+    },
+    {
+      "id": "lab:maintenance",
+      "argv": [
+        "bash",
+        "scripts/run-lab.sh",
+        "maintenance"
+      ],
+      "attempts": 1,
+      "result": "passed"
+    },
+    {
+      "id": "lab:failure-injection",
+      "argv": [
+        "bash",
+        "scripts/run-lab.sh",
+        "failure-injection"
+      ],
+      "attempts": 1,
+      "result": "passed"
+    },
+    {
+      "id": "lab:migration",
+      "argv": [
+        "bash",
+        "scripts/run-lab.sh",
+        "migration"
+      ],
+      "attempts": 1,
+      "result": "passed"
+    },
+    {
+      "id": "lab:upgrade",
+      "argv": [
+        "bash",
+        "scripts/run-lab.sh",
+        "upgrade"
+      ],
+      "attempts": 1,
+      "result": "passed"
+    },
+    {
+      "id": "lab:pg-upgrade",
+      "argv": [
+        "bash",
+        "scripts/run-lab.sh",
+        "pg-upgrade"
+      ],
+      "attempts": 1,
+      "result": "passed"
+    },
+    {
+      "id": "lab:compatibility-matrix",
+      "argv": [
+        "bash",
+        "scripts/run-lab.sh",
+        "compatibility-matrix"
+      ],
+      "attempts": 1,
+      "result": "passed"
+    },
+    {
+      "id": "lab:reference-system",
+      "argv": [
+        "bash",
+        "scripts/run-lab.sh",
+        "reference-system"
+      ],
+      "attempts": 1,
+      "result": "passed"
+    },
+    {
+      "id": "static-gates",
+      "argv": [
+        "make",
+        "test-static"
+      ],
+      "attempts": 1,
+      "result": "passed"
+    },
+    {
+      "id": "skill-eval",
+      "argv": [
+        "make",
+        "eval"
+      ],
+      "attempts": 1,
+      "result": "passed"
+    },
+    {
+      "id": "scenario-runtime",
+      "argv": [
+        "ruby",
+        "tools/run-scenario-security-001.rb"
+      ],
+      "attempts": 1,
+      "result": "passed"
+    },
+    {
+      "id": "scenario-proofs",
+      "argv": [
+        "ruby",
+        "tools/generate-scenario-proofs.rb"
+      ],
+      "attempts": 1,
+      "result": "passed"
+    },
+    {
+      "id": "scenario-closure-plan",
+      "argv": [
+        "ruby",
+        "tools/generate-scenario-closure-plan.rb"
+      ],
+      "attempts": 1,
+      "result": "passed"
+    },
+    {
+      "id": "provenance",
+      "argv": [
+        "ruby",
+        "tools/generate-provenance.rb"
+      ],
+      "attempts": 1,
+      "result": "passed"
+    }
+  ]
+}

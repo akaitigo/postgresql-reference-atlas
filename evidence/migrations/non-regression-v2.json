@@ -15,7 +15,7 @@
       "id": "core-definitive-v2-forward-update",
       "result": "pass",
       "assertions": [
-        "40f627e7e7db1d679c18f9442754951b0e1dd13bはcf9e6e2d981305c83f970c1f21a1ddc9c1109263の子孫である",
+        "072d7ca77981f51754e824d70c6d4ecd55ea67e5はcf9e6e2d981305c83f970c1f21a1ddc9c1109263の子孫である",
         "Core Go testとPostgreSQL make testが成功する",
         "公開mainのCI Stepと27 Lab Matrixを保持する"
       ]
@@ -67,6 +67,117 @@
         "既存Router Artifactの30/30 passを保持する",
         "Harness manifestとEvidence記録のdigest整合を検証する"
       ]
+    },
+    {
+      "id": "pitr-artifact-tmpfs-harness",
+      "result": "pass",
+      "assertions": [
+        "restore point以前の行だけが復元され、以後の行が0である",
+        "Recovery target到達後にpromoteし、archive segment数が正である"
+      ]
+    },
+    {
+      "id": "pitr-manifest-tmpfs-harness",
+      "result": "pass",
+      "assertions": [
+        "既存PITR Harness entryを削除しない",
+        "現在のrun.sh、scripts/lib.sh、scripts/run-lab.shのdigestへ固定する"
+      ]
+    },
+    {
+      "id": "pitr-runner-tmpfs-harness",
+      "result": "pass",
+      "assertions": [
+        "固有名tmpfs containerで実PostgreSQL PITRをfirst-attempt実行する",
+        "既存Docker volume、DB data、Evidenceを削除しない"
+      ]
+    },
+    {
+      "id": "evidence-full-rerun-authority-lock", "result": "pass", "assertions": ["全35 Command first-attempt rerun ledgerと419 output Dependency Graphへ接続する"]
+    },
+    {
+      "id": "evidence-full-rerun-backup-recovery", "result": "pass", "assertions": ["Backup/Recovery実Runtime Evidenceを再実行し既存IDとpassを保持する"]
+    },
+    {
+      "id": "evidence-full-rerun-catalog-inventory", "result": "pass", "assertions": ["Catalog Inventory実Runtime Evidenceを再実行し既存IDとpassを保持する"]
+    },
+    {
+      "id": "evidence-full-rerun-compatibility-matrix", "result": "pass", "assertions": ["14.24〜18.6 Compatibility Matrixを再実行し既存範囲を保持する"]
+    },
+    {
+      "id": "evidence-full-rerun-deadlock", "result": "pass", "assertions": ["Deadlock実Runtime Evidenceを再実行し既存IDとpassを保持する"]
+    },
+    {
+      "id": "evidence-full-rerun-extension", "result": "pass", "assertions": ["Extension実Runtime Evidenceを再実行し既存IDとpassを保持する"]
+    },
+    {
+      "id": "evidence-full-rerun-failure-injection", "result": "pass", "assertions": ["Failure Injection実Runtime Evidenceを再実行し既存IDとpassを保持する"]
+    },
+    {
+      "id": "evidence-full-rerun-foundation-authority-lock", "result": "pass", "assertions": ["Authority Lock静的Evidenceを再生成し既存IDとpassを保持する"]
+    },
+    {
+      "id": "evidence-full-rerun-index", "result": "pass", "assertions": ["Index実Runtime Evidenceを再実行し既存IDとpassを保持する"]
+    },
+    {
+      "id": "evidence-full-rerun-locking", "result": "pass", "assertions": ["Locking実Runtime Evidenceを再実行し既存IDとpassを保持する"]
+    },
+    {
+      "id": "evidence-full-rerun-logical-replication", "result": "pass", "assertions": ["Logical Replication実Runtime Evidenceを再実行し既存IDとpassを保持する"]
+    },
+    {
+      "id": "evidence-full-rerun-maintenance", "result": "pass", "assertions": ["Maintenance実Runtime Evidenceを再実行し既存IDとpassを保持する"]
+    },
+    {
+      "id": "evidence-full-rerun-migration", "result": "pass", "assertions": ["Migration実Runtime Evidenceを再実行し既存IDとpassを保持する"]
+    },
+    {
+      "id": "evidence-full-rerun-mvcc", "result": "pass", "assertions": ["MVCC実Runtime Evidenceを再実行し既存IDとpassを保持する"]
+    },
+    {
+      "id": "evidence-full-rerun-observability", "result": "pass", "assertions": ["Observability実Runtime Evidenceを再実行し既存IDとpassを保持する"]
+    },
+    {
+      "id": "evidence-full-rerun-partitioning", "result": "pass", "assertions": ["Partitioning実Runtime Evidenceを再実行し既存IDとpassを保持する"]
+    },
+    {
+      "id": "evidence-full-rerun-performance", "result": "pass", "assertions": ["Performance実Runtime Evidenceを再実行し既存IDとpassを保持する"]
+    },
+    {
+      "id": "evidence-full-rerun-pg-upgrade", "result": "pass", "assertions": ["pg_upgrade 17.11→18.6を再実行し既存IDとpassを保持する"]
+    },
+    {
+      "id": "evidence-full-rerun-pitr", "result": "pass", "assertions": ["PITR実Runtime Evidenceを再実行し既存IDとpassを保持する"]
+    },
+    {
+      "id": "evidence-full-rerun-planner", "result": "pass", "assertions": ["Planner実Runtime Evidenceを再実行し既存IDとpassを保持する"]
+    },
+    {
+      "id": "evidence-full-rerun-publication-static-gates", "result": "pass", "assertions": ["Publication static gatesを再実行し既存IDとpassを保持する"]
+    },
+    {
+      "id": "evidence-full-rerun-replication", "result": "pass", "assertions": ["Physical Replication実Runtime Evidenceを再実行し既存IDとpassを保持する"]
+    },
+    {
+      "id": "evidence-full-rerun-security", "result": "pass", "assertions": ["Security実Runtime Evidenceを再実行し既存IDとpassを保持する"]
+    },
+    {
+      "id": "evidence-full-rerun-sql-surface", "result": "pass", "assertions": ["SQL Surface Evidenceを再実行し既存IDとpassを保持する"]
+    },
+    {
+      "id": "evidence-full-rerun-sql", "result": "pass", "assertions": ["SQL semantics実Runtime Evidenceを再実行し既存IDとpassを保持する"]
+    },
+    {
+      "id": "evidence-full-rerun-statistics", "result": "pass", "assertions": ["Statistics実Runtime Evidenceを再実行し既存IDとpassを保持する"]
+    },
+    {
+      "id": "evidence-full-rerun-types-constraints", "result": "pass", "assertions": ["Types/Constraints実Runtime Evidenceを再実行し既存IDとpassを保持する"]
+    },
+    {
+      "id": "evidence-full-rerun-upgrade", "result": "pass", "assertions": ["Major Upgrade実Runtime Evidenceを再実行し既存IDとpassを保持する"]
+    },
+    {
+      "id": "evidence-full-rerun-wal", "result": "pass", "assertions": ["WAL実Runtime Evidenceを再実行し既存IDとpassを保持する"]
     }
   ],
   "verdict": "pass"

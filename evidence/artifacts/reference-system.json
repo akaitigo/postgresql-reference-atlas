@@ -67,11 +67,11 @@
                 "Scan Direction": "Forward",
                 "Local Hit Blocks": 0,
                 "Temp Read Blocks": 0,
-                "Actual Total Time": 0.013,
+                "Actual Total Time": 0.048,
                 "Local Read Blocks": 0,
                 "Shared Hit Blocks": 13,
                 "Shared Read Blocks": 0,
-                "Actual Startup Time": 0.011,
+                "Actual Startup Time": 0.043,
                 "Parent Relationship": "Member",
                 "Temp Written Blocks": 0,
                 "Local Dirtied Blocks": 0,
@@ -99,11 +99,11 @@
                 "Scan Direction": "Forward",
                 "Local Hit Blocks": 0,
                 "Temp Read Blocks": 0,
-                "Actual Total Time": 0.009,
+                "Actual Total Time": 0.014,
                 "Local Read Blocks": 0,
                 "Shared Hit Blocks": 3,
                 "Shared Read Blocks": 0,
-                "Actual Startup Time": 0.008,
+                "Actual Startup Time": 0.012,
                 "Parent Relationship": "Member",
                 "Temp Written Blocks": 0,
                 "Local Dirtied Blocks": 0,
@@ -129,11 +129,11 @@
             "Local Hit Blocks": 0,
             "Subplans Removed": 0,
             "Temp Read Blocks": 0,
-            "Actual Total Time": 0.024,
+            "Actual Total Time": 0.068,
             "Local Read Blocks": 0,
             "Shared Hit Blocks": 16,
             "Shared Read Blocks": 0,
-            "Actual Startup Time": 0.019,
+            "Actual Startup Time": 0.060,
             "Parent Relationship": "Outer",
             "Temp Written Blocks": 0,
             "Local Dirtied Blocks": 0,
@@ -154,11 +154,11 @@
         "Parallel Aware": false,
         "Local Hit Blocks": 0,
         "Temp Read Blocks": 0,
-        "Actual Total Time": 0.025,
+        "Actual Total Time": 0.070,
         "Local Read Blocks": 0,
         "Shared Hit Blocks": 16,
         "Shared Read Blocks": 0,
-        "Actual Startup Time": 0.020,
+        "Actual Startup Time": 0.061,
         "Temp Written Blocks": 0,
         "Local Dirtied Blocks": 0,
         "Local Written Blocks": 0,
@@ -178,8 +178,8 @@
         "Shared Written Blocks": 0
       },
       "Triggers": [],
-      "Planning Time": 0.251,
-      "Execution Time": 0.037
+      "Planning Time": 1.142,
+      "Execution Time": 0.098
     }
   ],
   "plan_has_index": true,
@@ -348,7 +348,7 @@
     },
     "log": {
       "path": "evidence/artifacts/reference-system.server.log",
-      "digest": "sha256:b81801ae51aef994472e9d06c117b38d7452a9497079efe3d6546d58c5e7f4fc",
+      "digest": "sha256:d70a53e4761f6f9332d9695ce48167a4b6938ab39e448b1adaea92931edda911",
       "bytes": 3558,
       "stream": "postgres-server-stderr"
     },
@@ -367,5 +367,5 @@
     "completion_eligible": false
   },
   "verdict": "pass",
-  "duration_ms": 5000
+  "duration_ms": 7000
 }

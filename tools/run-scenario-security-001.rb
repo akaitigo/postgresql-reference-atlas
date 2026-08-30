@@ -107,16 +107,23 @@ begin
        "--env", "POSTGRES_HOST_AUTH_METHOD=trust", "--env", "POSTGRES_DB=atlas",
        IMAGE, "-c", "log_statement=all")
   started = true
-  ready = false
+  # initdb briefly starts and stops a temporary server before the final server.
+  # Require two consecutive SQL sessions so pg_isready cannot observe only that
+  # transient initialization window.
+  consecutive_ready = 0
   120.times do
-    _out, _err, status = Open3.capture3("docker", "exec", container, "pg_isready", "-U", "postgres", "-d", "atlas")
+    out, _err, status = Open3.capture3(
+      "docker", "exec", container, "psql", "-XAt", "-U", "postgres", "-d", "atlas", "-c", "SELECT 1"
+    )
     if status.success?
-      ready = true
-      break
+      consecutive_ready += 1
+      break if consecutive_ready == 2 && out.strip == "1"
+    else
+      consecutive_ready = 0
     end
     sleep 0.25
   end
-  raise "PostgreSQL container did not become ready" unless ready
+  raise "PostgreSQL container did not become ready for two consecutive SQL sessions" unless consecutive_ready == 2
   server_version = run!("docker", "exec", container, "psql", "-XAt", "-U", "postgres", "-d", "atlas", "-c", "SHOW server_version").first.strip
   server_version_num = run!("docker", "exec", container, "psql", "-XAt", "-U", "postgres", "-d", "atlas", "-c", "SHOW server_version_num").first.strip
   client_version = run!("docker", "exec", container, "psql", "--version").first.strip

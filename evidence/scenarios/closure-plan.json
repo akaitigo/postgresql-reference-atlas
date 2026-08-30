@@ -22,8 +22,8 @@
     "mass_closure_forbidden": true
   },
   "source_digests": {
-    "evidence/scenarios/index.json": "sha256:119539f2c42748ace04db17054cd91b4facc727f124ec0aef3f4bc4a66e096f3",
-    "artifacts/pattern-scenarios/results.json": "sha256:097bc1708a32537e4ca0ea4e45126e441c643c73dc9381ff7f4c72eea2c17e56"
+    "evidence/scenarios/index.json": "sha256:34436291c8419aafd15947192261ba6495c696453ae3cae8d5203bf5d779e1f1",
+    "artifacts/pattern-scenarios/results.json": "sha256:575c9a424c11d67a724a8e34f9c1271875712b825efd9b39e5e63748d5e1419a"
   },
   "baseline": {
     "inherited_gap_rows_at_bc41912f": 290,
@@ -1289,7 +1289,7 @@
       "risk_rank": 1,
       "proof": {
         "path": "evidence/scenarios/behaviors/foundation.version-lock/security.proof.json",
-        "digest": "sha256:787812bf7c05d41c60077d2aa55faba5ef2d9c209ff6e2594ef62c19b73c1e6d"
+        "digest": "sha256:7a8de876737f3ae2b110342d9f505c7bbc284e70706fa1dbe1d87e2319d688e9"
       },
       "variant_ids": [
         "postgresql-verification-matrix-v2"
@@ -1345,7 +1345,7 @@
       "risk_rank": 1,
       "proof": {
         "path": "evidence/scenarios/behaviors/lifecycle.compatibility-matrix/security.proof.json",
-        "digest": "sha256:5fc04f277329d91aedbde8629fa4a129389c1ca2c12de8917e8ef020ffb592dc"
+        "digest": "sha256:4b24918df396763dfb7860ab15127f8da6dc8bbc06c876d075675c959dc6b55d"
       },
       "variant_ids": [
         "postgresql-verification-matrix-v2"
@@ -1401,7 +1401,7 @@
       "risk_rank": 1,
       "proof": {
         "path": "evidence/scenarios/behaviors/lifecycle.pg-upgrade/security.proof.json",
-        "digest": "sha256:a53a1fe668d284c0f93216e7d84ec77b3f29ab88a6837fe99e41e5f70252a187"
+        "digest": "sha256:2190e6e8db4e76d4069a316a49db4cb4a0b91534b57366aa07c152b16955e729"
       },
       "variant_ids": [
         "postgresql-verification-matrix-v2"
@@ -1457,7 +1457,7 @@
       "risk_rank": 1,
       "proof": {
         "path": "evidence/scenarios/behaviors/lifecycle.schema-migration/security.proof.json",
-        "digest": "sha256:42605a685ba17c92cab86d7c52ca0aeb2ef09c26debdd7dcaf4c830472849939"
+        "digest": "sha256:33a85d34a848b5cf06539319bdcc3a34fcd5e958adcfda9cfc999a6fdb010e8b"
       },
       "variant_ids": [
         "postgresql-verification-matrix-v2"
@@ -1513,7 +1513,7 @@
       "risk_rank": 1,
       "proof": {
         "path": "evidence/scenarios/behaviors/lifecycle.upgrade/security.proof.json",
-        "digest": "sha256:51e86c218042b19a210525136eef8c39fff7af7aa427979a5871da1a4abc6809"
+        "digest": "sha256:28fbf701bc55c8407c530663b4892dda9ba87414e024416b4ca72b248e5a9fd2"
       },
       "variant_ids": [
         "postgresql-verification-matrix-v2"
@@ -1569,7 +1569,7 @@
       "risk_rank": 1,
       "proof": {
         "path": "evidence/scenarios/behaviors/operations.backup-recovery/security.proof.json",
-        "digest": "sha256:e29e9cc0722212daf8ffaf0de39e6619c79bd8133458ee26d0283eade7594463"
+        "digest": "sha256:85801d188968a91b2ff0bef87ee52f63e2fab554b4ddb45bb69c40ecd39bd60e"
       },
       "variant_ids": [
         "postgresql-verification-matrix-v2"
@@ -1625,7 +1625,7 @@
       "risk_rank": 1,
       "proof": {
         "path": "evidence/scenarios/behaviors/operations.failure-injection/security.proof.json",
-        "digest": "sha256:6c7d2d263c8bd276dfbc4fccd5907fed6ebb9430891e1d987494705aadd1c407"
+        "digest": "sha256:caaa7fe5d2432c612dd3959b8e4f652cbd10c6efd72570f3320220f4cafd0af5"
       },
       "variant_ids": [
         "postgresql-verification-matrix-v2"
@@ -1681,7 +1681,7 @@
       "risk_rank": 1,
       "proof": {
         "path": "evidence/scenarios/behaviors/operations.logical-replication/security.proof.json",
-        "digest": "sha256:6b83f1b6edc3cd736bf06b64e32cf8be6896329cd26b1c4669c523f340717765"
+        "digest": "sha256:39e8d3ae44c9cc7faf096fa308b2cbadfb8f3ace25aea251b1cb5aa37788c472"
       },
       "variant_ids": [
         "postgresql-verification-matrix-v2"
@@ -1737,7 +1737,7 @@
       "risk_rank": 1,
       "proof": {
         "path": "evidence/scenarios/behaviors/operations.maintenance/security.proof.json",
-        "digest": "sha256:a82ff104b7b41634f6a596edc002e3b8da64fd36079bc81ae6d3a241fed9a590"
+        "digest": "sha256:a89a6063da25f5530041bdcb2b556e6a233964e81a093c3bf43dbb01c5faef45"
       },
       "variant_ids": [
         "postgresql-verification-matrix-v2"
@@ -1793,7 +1793,7 @@
       "risk_rank": 1,
       "proof": {
         "path": "evidence/scenarios/behaviors/operations.observability/security.proof.json",
-        "digest": "sha256:e3a43db75acb3bf8e8f618213b74853cbd282924faa84b9e1ccc2deace4214e3"
+        "digest": "sha256:9e39edcb84e4eb8c16dc2f40aa941c284211f2eee69892b57f5e498649ffee54"
       },
       "variant_ids": [
         "postgresql-verification-matrix-v2"
@@ -1849,7 +1849,7 @@
       "risk_rank": 1,
       "proof": {
         "path": "evidence/scenarios/behaviors/operations.pitr-recovery/security.proof.json",
-        "digest": "sha256:fe80ac4e11975b454b8accc38a6831ff985403c8b4fa841971b081cf550d8c16"
+        "digest": "sha256:464c9d11bf7f0f9c786843599e80f54148061527661b22b4ab8ac9e8cbafd0ba"
       },
       "variant_ids": [
         "postgresql-verification-matrix-v2"
@@ -1905,7 +1905,7 @@
       "risk_rank": 1,
       "proof": {
         "path": "evidence/scenarios/behaviors/operations.replication/security.proof.json",
-        "digest": "sha256:8d8baca052fa3bc69d312f0eac74e7803fa72f18b1fab3ed62f5242332f4dcd5"
+        "digest": "sha256:260c602108f33622523b76962f899a82c47758618e2b05ffceb07f5750cfaf71"
       },
       "variant_ids": [
         "postgresql-verification-matrix-v2"
@@ -1961,7 +1961,7 @@
       "risk_rank": 1,
       "proof": {
         "path": "evidence/scenarios/behaviors/operations.wal/security.proof.json",
-        "digest": "sha256:d1a196d6ee49089a348b8680263da4a4a82fef5dc745dd89a276802457fc7424"
+        "digest": "sha256:0142ad5899a0d77c9f9601d5bed7dae7b25d634a1f4bd846fcf287cb26082fa9"
       },
       "variant_ids": [
         "postgresql-verification-matrix-v2"
@@ -2017,7 +2017,7 @@
       "risk_rank": 1,
       "proof": {
         "path": "evidence/scenarios/behaviors/performance.execution/security.proof.json",
-        "digest": "sha256:ae7e1fdf2c844ce962d95013bcd9b26576b7bfb1af533b7badb1395a214c4887"
+        "digest": "sha256:b0e9bbe827989521a976468fa0a2626ce2ed9c6a0c2549584ba4a92c0f2b9c60"
       },
       "variant_ids": [
         "postgresql-verification-matrix-v2"
@@ -2073,7 +2073,7 @@
       "risk_rank": 1,
       "proof": {
         "path": "evidence/scenarios/behaviors/performance.index/security.proof.json",
-        "digest": "sha256:868fe8ea2a2760ea3cd3051b85792bc696adbae91302d428ff8d8eecc46ac9f2"
+        "digest": "sha256:fd2a0be5f860f2571d1e98c918b2378a765a3ceac6839243c80de3dc12baa1cd"
       },
       "variant_ids": [
         "postgresql-verification-matrix-v2"
@@ -2129,7 +2129,7 @@
       "risk_rank": 1,
       "proof": {
         "path": "evidence/scenarios/behaviors/performance.planner/security.proof.json",
-        "digest": "sha256:e1da7e728b4d358af313f9af2b34607c9e07f67d72572bf63239da63fe69b223"
+        "digest": "sha256:a24bad291e128d9caeef0f319fec3df18f4393b50e1ac7fd6be6b1749dc91ed4"
       },
       "variant_ids": [
         "postgresql-verification-matrix-v2"
@@ -2185,7 +2185,7 @@
       "risk_rank": 1,
       "proof": {
         "path": "evidence/scenarios/behaviors/performance.statistics/security.proof.json",
-        "digest": "sha256:f28dacbfafcc8607815f3fa0f0add3330bb11f2f10900d1aeebe36f283515ebc"
+        "digest": "sha256:988c4b6c098af4bc3cb0c01570c6ea8536b4becacb66654eb0b61a0f2ebdd989"
       },
       "variant_ids": [
         "postgresql-verification-matrix-v2"
@@ -2241,7 +2241,7 @@
       "risk_rank": 1,
       "proof": {
         "path": "evidence/scenarios/behaviors/publication.provenance/security.proof.json",
-        "digest": "sha256:d114a82723e7798a701e98b96c72d437cbdf4acfea852d5ab6b0b3a2d0a271c4"
+        "digest": "sha256:b15b4fbd81f91faa23b61df9c5cfe42a32dd18c385c61e576808d198f2d80edf"
       },
       "variant_ids": [
         "postgresql-verification-matrix-v2"
@@ -2297,7 +2297,7 @@
       "risk_rank": 1,
       "proof": {
         "path": "evidence/scenarios/behaviors/query.catalog-inventory/security.proof.json",
-        "digest": "sha256:438712888ea64087e6bd43ce39b31ff22a3b006373ff529c73d321ffaffef919"
+        "digest": "sha256:be17ed44d698f3481e89c9b825092c3ef602ca7136114bce0fd6df4c98392d44"
       },
       "variant_ids": [
         "postgresql-verification-matrix-v2"
@@ -2353,7 +2353,7 @@
       "risk_rank": 1,
       "proof": {
         "path": "evidence/scenarios/behaviors/query.extension/security.proof.json",
-        "digest": "sha256:9dadd8f58107361877edf6009d189f2831dac2261f35d712676362880469a76d"
+        "digest": "sha256:6c9fd0c20ee9dc6b0896c2df91bdc2eacdca36fe7af43faad4fb0612ceb72efa"
       },
       "variant_ids": [
         "postgresql-verification-matrix-v2"
@@ -2409,7 +2409,7 @@
       "risk_rank": 1,
       "proof": {
         "path": "evidence/scenarios/behaviors/query.partitioning/security.proof.json",
-        "digest": "sha256:81a4c878e43c90ca4753235ace314a2f3aef108cb6fea9aeef3246383dcd05a7"
+        "digest": "sha256:f8bb151b1f63cc24ffef630e69d153e36dd743e1aba1d440c42f1351fae6c087"
       },
       "variant_ids": [
         "postgresql-verification-matrix-v2"
@@ -2465,7 +2465,7 @@
       "risk_rank": 1,
       "proof": {
         "path": "evidence/scenarios/behaviors/query.security/security.proof.json",
-        "digest": "sha256:a21a0aa6bb713e62ba27783de9b8c4baa5255b385bed636a8ed3a29ab676e276"
+        "digest": "sha256:920816b73904b46bfb24b5bdd9649bbde97ef1db4efb8f7eb8a5f47434548113"
       },
       "variant_ids": [
         "postgresql-verification-matrix-v2"
@@ -2511,7 +2511,7 @@
       "risk_rank": 1,
       "proof": {
         "path": "evidence/scenarios/behaviors/query.sql-surface/security.proof.json",
-        "digest": "sha256:d862e4dbedb8ec1d57e9f6154660fabc111bcb12362e2e46fb525373ba2fc2ba"
+        "digest": "sha256:6376d290f8acfc943e218219c743c3bdb637de44a9df130d38c25397d89577bb"
       },
       "variant_ids": [
         "postgresql-verification-matrix-v2"
@@ -2567,7 +2567,7 @@
       "risk_rank": 1,
       "proof": {
         "path": "evidence/scenarios/behaviors/query.types-constraints/security.proof.json",
-        "digest": "sha256:33c3bf7f79159111b7c504b6739484aca6344adce73b21d6fecaad1d83be1427"
+        "digest": "sha256:d780544546c701eee8151485054ba357d6794dea82d33c165160386d83548c28"
       },
       "variant_ids": [
         "postgresql-verification-matrix-v2"
@@ -2623,7 +2623,7 @@
       "risk_rank": 1,
       "proof": {
         "path": "evidence/scenarios/behaviors/skill.router-evaluation/security.proof.json",
-        "digest": "sha256:851ecf2973be8c2bbe4dcd4ef1e7239c5ac6c128d81aab7728cb3e7a0ebe8945"
+        "digest": "sha256:20b9faba1b50d736e246788063f6f90f7b07e857eb69541beabe189bbc3507f7"
       },
       "variant_ids": [
         "postgresql-verification-matrix-v2"
@@ -2679,7 +2679,7 @@
       "risk_rank": 2,
       "proof": {
         "path": "evidence/scenarios/behaviors/concurrency.deadlock/refusal.proof.json",
-        "digest": "sha256:7916a76968f3e85b5e8e906738c2f5d392c6342ec23167a5c82fe97b3cbf16ce"
+        "digest": "sha256:266e1b9391abd2b625c08b3d63f72188c4aff8f7ce29654a7b74c4a5eb22eb0b"
       },
       "variant_ids": [
         "postgresql-verification-matrix-v2"
@@ -2735,7 +2735,7 @@
       "risk_rank": 2,
       "proof": {
         "path": "evidence/scenarios/behaviors/concurrency.locking/refusal.proof.json",
-        "digest": "sha256:cf8d0bd4565136ef79e12426a452870502d7df3a900ba7449a17cb344b4a7343"
+        "digest": "sha256:41fff51635046ccec92d15a8fb5063bf2b7fa82d61f478388f973132a3c314c3"
       },
       "variant_ids": [
         "postgresql-verification-matrix-v2"
@@ -2782,7 +2782,7 @@
       "risk_rank": 2,
       "proof": {
         "path": "evidence/scenarios/behaviors/concurrency.mvcc/refusal.proof.json",
-        "digest": "sha256:2188c684f776b6ad38db8a81055ed30fb70538970be717d7cf00ffa6a49f8626"
+        "digest": "sha256:39a0abd93c718eefe5d3e5992ccdac449f35756291329688fc7b1c6aca423b21"
       },
       "variant_ids": [
         "postgresql-verification-matrix-v2"
@@ -2838,7 +2838,7 @@
       "risk_rank": 2,
       "proof": {
         "path": "evidence/scenarios/behaviors/foundation.authority-lock/refusal.proof.json",
-        "digest": "sha256:b0d15ac1b5e299a901f170190a1a016f4438fabc123ddd25edc476316dbc9c91"
+        "digest": "sha256:a87ed1840e42535956f0ff1ba668fd45c976fec8b109890ae6734db0860739fc"
       },
       "variant_ids": [
         "postgresql-verification-matrix-v2"
@@ -2894,7 +2894,7 @@
       "risk_rank": 2,
       "proof": {
         "path": "evidence/scenarios/behaviors/foundation.version-lock/refusal.proof.json",
-        "digest": "sha256:530ec68fbe4b2bc9b125126d1abc8dbd5264ac5e384a4e82b34c13165450dcce"
+        "digest": "sha256:a00015223e8d39ceb79552b0b442a9e7392259408fa5cb9e4a533deecd088093"
       },
       "variant_ids": [
         "postgresql-verification-matrix-v2"
@@ -2950,7 +2950,7 @@
       "risk_rank": 2,
       "proof": {
         "path": "evidence/scenarios/behaviors/lifecycle.compatibility-matrix/refusal.proof.json",
-        "digest": "sha256:16779106b3b8eae51a830e56dea37ec1728eb451edc6d97bb57955626343c320"
+        "digest": "sha256:b0ca6ebf0fc0cf2620bca7b7df30c370b2236ba3618de9846776fad411341e11"
       },
       "variant_ids": [
         "postgresql-verification-matrix-v2"
@@ -3006,7 +3006,7 @@
       "risk_rank": 2,
       "proof": {
         "path": "evidence/scenarios/behaviors/lifecycle.pg-upgrade/refusal.proof.json",
-        "digest": "sha256:2429c1062b85c202b56db4c52408d227ae11700cc67f44ed1a8d00b75b5b0159"
+        "digest": "sha256:6c84c60a71b21e89fee37744f7631ee0ffa4ee365497739aab7546cad1e07f9d"
       },
       "variant_ids": [
         "postgresql-verification-matrix-v2"
@@ -3062,7 +3062,7 @@
       "risk_rank": 2,
       "proof": {
         "path": "evidence/scenarios/behaviors/lifecycle.schema-migration/refusal.proof.json",
-        "digest": "sha256:2104f566154e9b50fffb3ee381c8c4fd7f6ef0639d0b5897acd896836966e6ac"
+        "digest": "sha256:e715580e6173f44d916c7246aedf49ace4f1a6963815f4cd6181b8842562fb59"
       },
       "variant_ids": [
         "postgresql-verification-matrix-v2"
@@ -3118,7 +3118,7 @@
       "risk_rank": 2,
       "proof": {
         "path": "evidence/scenarios/behaviors/lifecycle.upgrade/refusal.proof.json",
-        "digest": "sha256:12a21068345788665a0626d1451440a40deee6fa7e65294c5e372a1d847b30ec"
+        "digest": "sha256:78a27d6c8f45ee237386b11ae8cbecba219af90045f141700a81639fec9a6b26"
       },
       "variant_ids": [
         "postgresql-verification-matrix-v2"
@@ -3174,7 +3174,7 @@
       "risk_rank": 2,
       "proof": {
         "path": "evidence/scenarios/behaviors/operations.backup-recovery/refusal.proof.json",
-        "digest": "sha256:216f5d2c1ffb5cf1e46824209824da091bbbbc811f4828b4feec9ffff5814642"
+        "digest": "sha256:4161e22c45716f259552abf8269bb540e94cdef5735f2808a1460bc677453a25"
       },
       "variant_ids": [
         "postgresql-verification-matrix-v2"
@@ -3230,7 +3230,7 @@
       "risk_rank": 2,
       "proof": {
         "path": "evidence/scenarios/behaviors/operations.failure-injection/refusal.proof.json",
-        "digest": "sha256:bc025e00c14887d80a565a77631006002eaf371d9642a4befcc191a179c68ade"
+        "digest": "sha256:dea91a2fc4c342c0a9d34d82ab8f3be60b75de83ad4bde568020b8f91b9bc6d3"
       },
       "variant_ids": [
         "postgresql-verification-matrix-v2"
@@ -3286,7 +3286,7 @@
       "risk_rank": 2,
       "proof": {
         "path": "evidence/scenarios/behaviors/operations.logical-replication/refusal.proof.json",
-        "digest": "sha256:883654228afab8314f31380f131a71ff6a417d05727d99299ca7bfc81dcb1e77"
+        "digest": "sha256:54cdaba95c8e4eb9b31e26b0e52ff7c704214985356c7ef3346e5eec0adafed5"
       },
       "variant_ids": [
         "postgresql-verification-matrix-v2"
@@ -3342,7 +3342,7 @@
       "risk_rank": 2,
       "proof": {
         "path": "evidence/scenarios/behaviors/operations.maintenance/refusal.proof.json",
-        "digest": "sha256:a4b5a97a8c9a014ecc7b5768b7e5327329566a369eda606f23781b9df79a82cf"
+        "digest": "sha256:b5eeef12b724cf0ebe22967b8ffa736cb5629d4f3c3530955b6d6c6b1f3909c9"
       },
       "variant_ids": [
         "postgresql-verification-matrix-v2"
@@ -3398,7 +3398,7 @@
       "risk_rank": 2,
       "proof": {
         "path": "evidence/scenarios/behaviors/operations.observability/refusal.proof.json",
-        "digest": "sha256:ba03b665dde2c7e9944f40a7a13c1996553e50c487eb31c19b9e67b5a46f9c56"
+        "digest": "sha256:e593207ab9e9b0f9eeab762121b1b6f8df519b994222c5cc57579deec064b2fb"
       },
       "variant_ids": [
         "postgresql-verification-matrix-v2"
@@ -3454,7 +3454,7 @@
       "risk_rank": 2,
       "proof": {
         "path": "evidence/scenarios/behaviors/operations.pitr-recovery/refusal.proof.json",
-        "digest": "sha256:36b9c927108d6d3148969b231928598f8cc62b97321a6a08fcc1a481ce9d6c08"
+        "digest": "sha256:ceac40440d425978957dae8d0372e7e96433f171821fb4692ff3f70b1fd61839"
       },
       "variant_ids": [
         "postgresql-verification-matrix-v2"
@@ -3510,7 +3510,7 @@
       "risk_rank": 2,
       "proof": {
         "path": "evidence/scenarios/behaviors/operations.replication/refusal.proof.json",
-        "digest": "sha256:ff227387e382db42580998fd5224a863205e8217fefe83a3ddc2e3b54a4ca9ed"
+        "digest": "sha256:c2d3366ba0774168f09ffefa849e06cfa5f10be5f68a7fb4db0358a814f6091e"
       },
       "variant_ids": [
         "postgresql-verification-matrix-v2"
@@ -3566,7 +3566,7 @@
       "risk_rank": 2,
       "proof": {
         "path": "evidence/scenarios/behaviors/operations.wal/refusal.proof.json",
-        "digest": "sha256:5cb475302c883690b9a898de76c2dd688f0af19b500ba7faadfd7f700190c18a"
+        "digest": "sha256:b4b2fb1e7278ac98de12524125ab154df8f25c605522e8fe2c4d1b563c1fa8e2"
       },
       "variant_ids": [
         "postgresql-verification-matrix-v2"
@@ -3622,7 +3622,7 @@
       "risk_rank": 2,
       "proof": {
         "path": "evidence/scenarios/behaviors/performance.execution/refusal.proof.json",
-        "digest": "sha256:7a6d3796343bf76ca1c8c98cb4fd23ddbe9e392861b647173405d62cea272033"
+        "digest": "sha256:420cb4a057d06f587a7357d5ad07390df84e51d5dd760b5686070d90c9806784"
       },
       "variant_ids": [
         "postgresql-verification-matrix-v2"
@@ -3678,7 +3678,7 @@
       "risk_rank": 2,
       "proof": {
         "path": "evidence/scenarios/behaviors/performance.index/refusal.proof.json",
-        "digest": "sha256:0fc5df1513eee6d3ac0b208c167d02fa344d1b46f03f1a41e0c1c67cdfc2c318"
+        "digest": "sha256:ba9f27346c0a494e4c5727a1b0b388676f2b1cfaaa1b35f58e8c48335ab54f7d"
       },
       "variant_ids": [
         "postgresql-verification-matrix-v2"
@@ -3734,7 +3734,7 @@
       "risk_rank": 2,
       "proof": {
         "path": "evidence/scenarios/behaviors/performance.planner/refusal.proof.json",
-        "digest": "sha256:1b7d3e58f5f0df822cd94416072b6fa967f6cd7b8c86fd630907ae307bc25961"
+        "digest": "sha256:39da2449d8d866639efcd474688a3c930c718149957966b81a8452b5d95aca4c"
       },
       "variant_ids": [
         "postgresql-verification-matrix-v2"
@@ -3790,7 +3790,7 @@
       "risk_rank": 2,
       "proof": {
         "path": "evidence/scenarios/behaviors/performance.statistics/refusal.proof.json",
-        "digest": "sha256:7ec2a0f1fdb183f8a9a2aa7ae283724bfc4af0d20e70250fe5e029af4f5ff9c5"
+        "digest": "sha256:2a6663c42e4bee56178b50b745a137837c50117a28d2db6f5d1b55e35d2e6426"
       },
       "variant_ids": [
         "postgresql-verification-matrix-v2"
@@ -3846,7 +3846,7 @@
       "risk_rank": 2,
       "proof": {
         "path": "evidence/scenarios/behaviors/publication.provenance/refusal.proof.json",
-        "digest": "sha256:ef8eefdb07b6dc2cdaa8573966b7d59e7176af12b3ace85aa9729ae07d8e4211"
+        "digest": "sha256:7b9b34937bd97bea807a4bd16122eeb28818b48bd9632b036da0bd1f263ae062"
       },
       "variant_ids": [
         "postgresql-verification-matrix-v2"
@@ -3896,7 +3896,7 @@
       "risk_rank": 2,
       "proof": {
         "path": "evidence/scenarios/behaviors/query.catalog-inventory/refusal.proof.json",
-        "digest": "sha256:1ea242332e723df6e72256b2c597c7a088bfcc04b47f20c032dbbc09f599cdee"
+        "digest": "sha256:92d170450baa8bf29eec3f79eff764f2ff411aa0d1ae50257c995fce6841801f"
       },
       "variant_ids": [
         "postgresql-verification-matrix-v2"
@@ -3952,7 +3952,7 @@
       "risk_rank": 2,
       "proof": {
         "path": "evidence/scenarios/behaviors/query.extension/refusal.proof.json",
-        "digest": "sha256:95aa260860f9b164f4d83925b4fc18bb2e4eeb3285d4ecf822ff900dde2a5e5b"
+        "digest": "sha256:b40fcfb03d9b8fcaa74a52a9c3504f82aba56bed0583aaa01a416c11ea6cb9b8"
       },
       "variant_ids": [
         "postgresql-verification-matrix-v2"
@@ -3998,7 +3998,7 @@
       "risk_rank": 2,
       "proof": {
         "path": "evidence/scenarios/behaviors/query.partitioning/refusal.proof.json",
-        "digest": "sha256:ffae3da22b0b887911fd30794ebc1040581145553a5011a1f6cad123d8b85380"
+        "digest": "sha256:5c3f1cac72a18194f45e3b4eb5ce11ecdc1a338a25cb01cff98048c7785158cd"
       },
       "variant_ids": [
         "postgresql-verification-matrix-v2"
@@ -4054,7 +4054,7 @@
       "risk_rank": 2,
       "proof": {
         "path": "evidence/scenarios/behaviors/query.security/refusal.proof.json",
-        "digest": "sha256:a29bc17af75d6676663e3903cf1f816d3681e4c794dc9ec385929f85cf6f1694"
+        "digest": "sha256:6ea116de0a0d02b6ff0843f800352acbd181715c9028067f2015cb76a298b2c2"
       },
       "variant_ids": [
         "postgresql-verification-matrix-v2"
@@ -4100,7 +4100,7 @@
       "risk_rank": 2,
       "proof": {
         "path": "evidence/scenarios/behaviors/query.sql-surface/refusal.proof.json",
-        "digest": "sha256:ed20c14e1e33bef56cef289c4e370bfb1796b3b7e1dcae67595261178ebba499"
+        "digest": "sha256:d2a4fd94d94ce3c8f4d2b744b422217c52df574b9f680186d052c2677a9f1ee7"
       },
       "variant_ids": [
         "postgresql-verification-matrix-v2"
@@ -4146,7 +4146,7 @@
       "risk_rank": 2,
       "proof": {
         "path": "evidence/scenarios/behaviors/query.types-constraints/refusal.proof.json",
-        "digest": "sha256:1c66621b661c2ab969073c6e8916accc9a767e65ecfec9676f8873d4a398afd2"
+        "digest": "sha256:53cfcbf45d562e0acaf7f909f9ddaeabb232a20e30b703f737afa0eb384d7b0a"
       },
       "variant_ids": [
         "postgresql-verification-matrix-v2"
@@ -4192,7 +4192,7 @@
       "risk_rank": 2,
       "proof": {
         "path": "evidence/scenarios/behaviors/skill.router-evaluation/refusal.proof.json",
-        "digest": "sha256:bcd1a533e5a3db089623e170050f7b6d80ee26e16958832c018417aa7bbcf24d"
+        "digest": "sha256:b593269c87f4f0952fed70ab2dc84755b9114236b193cac5e853a3cdfe48b73b"
       },
       "variant_ids": [
         "postgresql-verification-matrix-v2"
@@ -4241,7 +4241,7 @@
       "risk_rank": 3,
       "proof": {
         "path": "evidence/scenarios/behaviors/concurrency.deadlock/failure.proof.json",
-        "digest": "sha256:28f6c1ded030b3df83b6865c04592895bd13a99712475dc0ee947da720bf7e2c"
+        "digest": "sha256:b986ec2eaeb0c35b8800134f2d3beab7b9c080b11037018017c9c2f1b0af8d3e"
       },
       "variant_ids": [
         "postgresql-verification-matrix-v2"
@@ -4289,7 +4289,7 @@
       "risk_rank": 3,
       "proof": {
         "path": "evidence/scenarios/behaviors/concurrency.locking/failure.proof.json",
-        "digest": "sha256:af339f799feadc0722fd120fd5788afd54b24ec5dcf6a16f76c8e5ce9cf93957"
+        "digest": "sha256:af56339258e4cd882edff9db0145435cd1face6ebed9cbaf88efa55ebbd8c864"
       },
       "variant_ids": [
         "postgresql-verification-matrix-v2"
@@ -4336,7 +4336,7 @@
       "risk_rank": 3,
       "proof": {
         "path": "evidence/scenarios/behaviors/concurrency.mvcc/failure.proof.json",
-        "digest": "sha256:140a1f0faf3506d0c3e8566d698c1843aa5aae1b3022771e9d1f5f78098fb862"
+        "digest": "sha256:5c3f965d32288e93252392b8fceb7ea5cf0bc4b779469f324f25a41eab88aee1"
       },
       "variant_ids": [
         "postgresql-verification-matrix-v2"
@@ -4392,7 +4392,7 @@
       "risk_rank": 3,
       "proof": {
         "path": "evidence/scenarios/behaviors/foundation.authority-lock/failure.proof.json",
-        "digest": "sha256:fade0f5418805faf3dbde82b2e765fe3544d6781c04c47f645898845cb0df8cc"
+        "digest": "sha256:64286d2c329672f043f7afaa4f0772a4532ec2476fd12cbc23c611a5fc8b0cf6"
       },
       "variant_ids": [
         "postgresql-verification-matrix-v2"
@@ -4448,7 +4448,7 @@
       "risk_rank": 3,
       "proof": {
         "path": "evidence/scenarios/behaviors/foundation.version-lock/failure.proof.json",
-        "digest": "sha256:09e60d0c6890b5529f73f42b97f81bef25f7e23a6238b11e7754577d516bee75"
+        "digest": "sha256:74fad6a96fbf4d5d010e30072f5712223a9d0825c0562250ef7f275a1e512830"
       },
       "variant_ids": [
         "postgresql-verification-matrix-v2"
@@ -4504,7 +4504,7 @@
       "risk_rank": 3,
       "proof": {
         "path": "evidence/scenarios/behaviors/lifecycle.compatibility-matrix/failure.proof.json",
-        "digest": "sha256:0d34f12d667698e487741846c731eecc2369dd5380570f28a0dc19f107eec251"
+        "digest": "sha256:d4de6e5a655b92f5b2894b370115f33e15771cd14a6af78324dd5eda1131bb97"
       },
       "variant_ids": [
         "postgresql-verification-matrix-v2"
@@ -4560,7 +4560,7 @@
       "risk_rank": 3,
       "proof": {
         "path": "evidence/scenarios/behaviors/lifecycle.pg-upgrade/failure.proof.json",
-        "digest": "sha256:afbfdca2c89a24c5e50d8e37be5ebc16c3387340130542a31e41f3dc737cedba"
+        "digest": "sha256:3e5b49be86070eac55bc701a124b97b1744b9f67450645f7168a2e36607a9fab"
       },
       "variant_ids": [
         "postgresql-verification-matrix-v2"
@@ -4616,7 +4616,7 @@
       "risk_rank": 3,
       "proof": {
         "path": "evidence/scenarios/behaviors/lifecycle.schema-migration/failure.proof.json",
-        "digest": "sha256:2cea51d6fd3c72ca29f5d84f490b53c9329863fb03a7dfb529fb3fad3ba24688"
+        "digest": "sha256:739719039362fe047785150bc268318aaf4443f78ee9f9b623271817c1f86404"
       },
       "variant_ids": [
         "postgresql-verification-matrix-v2"
@@ -4672,7 +4672,7 @@
       "risk_rank": 3,
       "proof": {
         "path": "evidence/scenarios/behaviors/lifecycle.upgrade/failure.proof.json",
-        "digest": "sha256:3b893560ea44055aa897b6bd202bdc71260f63441c329832fb7f1e6cdd150911"
+        "digest": "sha256:7d2f599cce78be4b0e07d3f700751f4fcc1751d5459c3309688fd1474f4d4aa3"
       },
       "variant_ids": [
         "postgresql-verification-matrix-v2"
@@ -4728,7 +4728,7 @@
       "risk_rank": 3,
       "proof": {
         "path": "evidence/scenarios/behaviors/operations.backup-recovery/failure.proof.json",
-        "digest": "sha256:b1feb8f9d8824c4f79887d0dbac6204bda2f7d37b3ccbddad6b53ae79d4233b8"
+        "digest": "sha256:9c6ea99364465af888e29f39ba2b3dcb7bc7ba3118c823f00a46e04eb17bbe10"
       },
       "variant_ids": [
         "postgresql-verification-matrix-v2"
@@ -4784,7 +4784,7 @@
       "risk_rank": 3,
       "proof": {
         "path": "evidence/scenarios/behaviors/operations.failure-injection/failure.proof.json",
-        "digest": "sha256:b70799c197b5e7e9deaba8fd211bfe03d7abc73706fef92f1f79ea1b21fcd745"
+        "digest": "sha256:2b53cc623aa7d3207a4549d610aa48f1de8afff620daf87eb28be2687fe6559e"
       },
       "variant_ids": [
         "postgresql-verification-matrix-v2"
@@ -4830,7 +4830,7 @@
       "risk_rank": 3,
       "proof": {
         "path": "evidence/scenarios/behaviors/operations.logical-replication/failure.proof.json",
-        "digest": "sha256:b1c9bd30c7c20b71eac4709e7bcbb0ea0baaec8d1399854aedafba6e4e4b80fd"
+        "digest": "sha256:bcd16c9e26bb3d733a9f243923c48a3bee5d22f2f35396de0700708558cb73a8"
       },
       "variant_ids": [
         "postgresql-verification-matrix-v2"
@@ -4878,7 +4878,7 @@
       "risk_rank": 3,
       "proof": {
         "path": "evidence/scenarios/behaviors/operations.maintenance/failure.proof.json",
-        "digest": "sha256:58576d096659e3f0e5009a4ccb288ebccb1c9523c38126a8f261f8b71c69500b"
+        "digest": "sha256:18f3d4b4a8ec81000ce3b7e365961d7797fad2108077719b1d089a1743237c9e"
       },
       "variant_ids": [
         "postgresql-verification-matrix-v2"
@@ -4934,7 +4934,7 @@
       "risk_rank": 3,
       "proof": {
         "path": "evidence/scenarios/behaviors/operations.observability/failure.proof.json",
-        "digest": "sha256:33caf34c6d0c623315df7b8d991721d48d9c7ba02b9a4bf56503b29f56110c95"
+        "digest": "sha256:4ef72ee236314cbcc85a008437fc13e7788df63576db52064421fbc1c7c84d63"
       },
       "variant_ids": [
         "postgresql-verification-matrix-v2"
@@ -4990,7 +4990,7 @@
       "risk_rank": 3,
       "proof": {
         "path": "evidence/scenarios/behaviors/operations.pitr-recovery/failure.proof.json",
-        "digest": "sha256:93d9aeddd7f2803a639c6cdd0da884c666572838ebd7cef6bd4c6200d9055662"
+        "digest": "sha256:22db56f269bc067a69e11916c02dee560c62990d56380fe6658cb8346881667c"
       },
       "variant_ids": [
         "postgresql-verification-matrix-v2"
@@ -5037,7 +5037,7 @@
       "risk_rank": 3,
       "proof": {
         "path": "evidence/scenarios/behaviors/operations.replication/failure.proof.json",
-        "digest": "sha256:c81a615809a3f48b4dea6cdc57a43bf072982ff312faf77482c8a936007669b5"
+        "digest": "sha256:43492aaacd59c268f9987e11e3c0d88019fdc7762a616d7eeac63d0611fbd461"
       },
       "variant_ids": [
         "postgresql-verification-matrix-v2"
@@ -5085,7 +5085,7 @@
       "risk_rank": 3,
       "proof": {
         "path": "evidence/scenarios/behaviors/operations.wal/failure.proof.json",
-        "digest": "sha256:001efd5c1cc42c3884ff5c1add395c50614c52563c1a3d57facce5d316141f0a"
+        "digest": "sha256:99f4d8818d2395a46cbbb863b9fcbc27936a3899669c863180740a96a0c64439"
       },
       "variant_ids": [
         "postgresql-verification-matrix-v2"
@@ -5141,7 +5141,7 @@
       "risk_rank": 3,
       "proof": {
         "path": "evidence/scenarios/behaviors/performance.execution/failure.proof.json",
-        "digest": "sha256:699d525d0b41c5b73464e5756f599f76a828122d3caf15755c44eb0c0f81070d"
+        "digest": "sha256:a6a9a394baad6a4f8ac663c7555a99e4ed3584d0ce4aaef1bb4bc3955e872f27"
       },
       "variant_ids": [
         "postgresql-verification-matrix-v2"
@@ -5197,7 +5197,7 @@
       "risk_rank": 3,
       "proof": {
         "path": "evidence/scenarios/behaviors/performance.index/failure.proof.json",
-        "digest": "sha256:1138ba4d7e619f1a7a8050cbe423f6342f6d68103cff9ddb6fff1eb54c6ee546"
+        "digest": "sha256:747b1c2bcc93ec58c58fb643df79dd343102ddda8285d79a5d88fac21879e5a8"
       },
       "variant_ids": [
         "postgresql-verification-matrix-v2"
@@ -5253,7 +5253,7 @@
       "risk_rank": 3,
       "proof": {
         "path": "evidence/scenarios/behaviors/performance.planner/failure.proof.json",
-        "digest": "sha256:681c0101133623989e7002210d0ef27f17398492e40bcd6657ba03c0484770f3"
+        "digest": "sha256:d164d6508fc633c542c8769ff8e237eadab36c0dd98e4cfdfeab831dd8f6d795"
       },
       "variant_ids": [
         "postgresql-verification-matrix-v2"
@@ -5309,7 +5309,7 @@
       "risk_rank": 3,
       "proof": {
         "path": "evidence/scenarios/behaviors/performance.statistics/failure.proof.json",
-        "digest": "sha256:dc769eef96d4027c07f94a82e2e5b2eeac34d84d1fdf7b7e5d42f8402a5e9d66"
+        "digest": "sha256:0098e6724804ac1596f213f58010380c8df68f8db2318247d6b73bfd1026e025"
       },
       "variant_ids": [
         "postgresql-verification-matrix-v2"
@@ -5365,7 +5365,7 @@
       "risk_rank": 3,
       "proof": {
         "path": "evidence/scenarios/behaviors/publication.provenance/failure.proof.json",
-        "digest": "sha256:9b2455d2bc4fbd9448ca7f1b3fb741472e8f9feb3e703afd7f4712d5996d9649"
+        "digest": "sha256:7f03802499b8d1aa6f3cc1e3709bec518c3bc3ac30afd53b9b9376f1addfe819"
       },
       "variant_ids": [
         "postgresql-verification-matrix-v2"
@@ -5421,7 +5421,7 @@
       "risk_rank": 3,
       "proof": {
         "path": "evidence/scenarios/behaviors/query.catalog-inventory/failure.proof.json",
-        "digest": "sha256:1f3654d6051db549a596d05327e13b2e81023468ba0f761d9622af871afecab5"
+        "digest": "sha256:5165dd073954252161d908b9a2d01416330cecc84511f89a34f20c44a36ba1ca"
       },
       "variant_ids": [
         "postgresql-verification-matrix-v2"
@@ -5477,7 +5477,7 @@
       "risk_rank": 3,
       "proof": {
         "path": "evidence/scenarios/behaviors/query.extension/failure.proof.json",
-        "digest": "sha256:52b08f9a2bb21d9da7801b85b096bf2355439784a3b93a39ccf9bd59a69350d6"
+        "digest": "sha256:603c601ca30651e06ef3a8776be837c566af5fb786ec0eba7599c81b53b53e0f"
       },
       "variant_ids": [
         "postgresql-verification-matrix-v2"
@@ -5533,7 +5533,7 @@
       "risk_rank": 3,
       "proof": {
         "path": "evidence/scenarios/behaviors/query.partitioning/failure.proof.json",
-        "digest": "sha256:83462787f4ad09109311cb9c88e41daa68102c796d9bce584c3018e63c0ac55d"
+        "digest": "sha256:98a02108e4228a3dbcb731b56a620e2eb58040e3855a2c3660e3ffeee548d9e9"
       },
       "variant_ids": [
         "postgresql-verification-matrix-v2"
@@ -5589,7 +5589,7 @@
       "risk_rank": 3,
       "proof": {
         "path": "evidence/scenarios/behaviors/query.security/failure.proof.json",
-        "digest": "sha256:933a5d3fb02a2a0a3f5c87a65675c5d7b074646ec5cb0414b70cc6c5cb437cbb"
+        "digest": "sha256:1d64ba4a851e39c57b96453ec9c7e0e6ece8f55f19383bc325cf2e9b273679e8"
       },
       "variant_ids": [
         "postgresql-verification-matrix-v2"
@@ -5645,7 +5645,7 @@
       "risk_rank": 3,
       "proof": {
         "path": "evidence/scenarios/behaviors/query.sql-surface/failure.proof.json",
-        "digest": "sha256:82b29f4f0ef70bd69241f93ed718f66e1256300ad0033ed772a45db2da206c2f"
+        "digest": "sha256:686eef64d46031de7eba31fe2dbaa9d3261cc3e46d5ec1bd3a51b13e81e9e9f4"
       },
       "variant_ids": [
         "postgresql-verification-matrix-v2"
@@ -5701,7 +5701,7 @@
       "risk_rank": 3,
       "proof": {
         "path": "evidence/scenarios/behaviors/query.types-constraints/failure.proof.json",
-        "digest": "sha256:363beed6e3fa8c44637652e75896ffb9d3ae207f92789989bf9674a77c6a1f2c"
+        "digest": "sha256:0b9d92698520bcc26eb1901a252cf4cc1b06897d2dee06baeac7c060a0bf9b82"
       },
       "variant_ids": [
         "postgresql-verification-matrix-v2"
@@ -5757,7 +5757,7 @@
       "risk_rank": 3,
       "proof": {
         "path": "evidence/scenarios/behaviors/skill.router-evaluation/failure.proof.json",
-        "digest": "sha256:3877eb2589527a00f119a44d106b6f9ce42507f1545610231d235ec0468d50c3"
+        "digest": "sha256:80b21cdadfda113ed600b71974a9db8e438fa5e1999bb2fd0702506c09aad485"
       },
       "variant_ids": [
         "postgresql-verification-matrix-v2"
@@ -5813,7 +5813,7 @@
       "risk_rank": 4,
       "proof": {
         "path": "evidence/scenarios/behaviors/concurrency.deadlock/recovery.proof.json",
-        "digest": "sha256:9ad150b60e6c4665613db5a688681078252a47de468193777d0520b96ba6a150"
+        "digest": "sha256:159a946a1497036a3edcf5a1f836d15b5fd46360aa4bb11061f426f3c5d595d6"
       },
       "variant_ids": [
         "postgresql-verification-matrix-v2"
@@ -5861,7 +5861,7 @@
       "risk_rank": 4,
       "proof": {
         "path": "evidence/scenarios/behaviors/concurrency.locking/recovery.proof.json",
-        "digest": "sha256:6799d22bb7a45f7971e824ca2bd991f3027d445f35190be89d4bb89735a83ab6"
+        "digest": "sha256:3049a0ef8eeb5b208d68618411a5a9746ef5171817ee3613a359b2d357c99bef"
       },
       "variant_ids": [
         "postgresql-verification-matrix-v2"
@@ -5908,7 +5908,7 @@
       "risk_rank": 4,
       "proof": {
         "path": "evidence/scenarios/behaviors/concurrency.mvcc/recovery.proof.json",
-        "digest": "sha256:b0913a9ddb44c4f2f02a49e40d26d3abd0800f3dfa2d7caa06eabf6675a46ab0"
+        "digest": "sha256:ad2e9f6f5e343ab7c52b72e44acca4c682e25a5096c8a919dd24fa0fc555ebf0"
       },
       "variant_ids": [
         "postgresql-verification-matrix-v2"
@@ -5964,7 +5964,7 @@
       "risk_rank": 4,
       "proof": {
         "path": "evidence/scenarios/behaviors/foundation.authority-lock/recovery.proof.json",
-        "digest": "sha256:bfbcf06494f9af0af611cd3b86d86986d7bc5a50a1318ae888f52d8b3e4b0a46"
+        "digest": "sha256:0744637dd361c734624d5fe2f5df28bb7b14d44bd178d929be16b66cc4397ef1"
       },
       "variant_ids": [
         "postgresql-verification-matrix-v2"
@@ -6020,7 +6020,7 @@
       "risk_rank": 4,
       "proof": {
         "path": "evidence/scenarios/behaviors/foundation.version-lock/recovery.proof.json",
-        "digest": "sha256:5e18d6e8e2f48e33ca37d87c07ede3b5cf39d85449cc19420400c3f22f579db1"
+        "digest": "sha256:c0e6ac25746f7f8040a6b0a08be0c97f9a0682fd690bec4c68aaf6b32d25915c"
       },
       "variant_ids": [
         "postgresql-verification-matrix-v2"
@@ -6076,7 +6076,7 @@
       "risk_rank": 4,
       "proof": {
         "path": "evidence/scenarios/behaviors/lifecycle.compatibility-matrix/recovery.proof.json",
-        "digest": "sha256:fffc7e2ecc0951b3f18c4ddce275e8a99087fada0e26dfd80dd18737aae5ed06"
+        "digest": "sha256:365afa0714acfbd0d9469be0e5d5d2d5ddd2d76e05e1677aeef572286aeb5af4"
       },
       "variant_ids": [
         "postgresql-verification-matrix-v2"
@@ -6132,7 +6132,7 @@
       "risk_rank": 4,
       "proof": {
         "path": "evidence/scenarios/behaviors/lifecycle.pg-upgrade/recovery.proof.json",
-        "digest": "sha256:13b8fcbdafc90f14ce36e24ec378678b4b8ac97feeaf62824b42ce5ca93410d4"
+        "digest": "sha256:fec0f5c8a7b860b90fdedb43e952e081b6a3d51f86ee6ced39469ba9ea2badfd"
       },
       "variant_ids": [
         "postgresql-verification-matrix-v2"
@@ -6179,7 +6179,7 @@
       "risk_rank": 4,
       "proof": {
         "path": "evidence/scenarios/behaviors/lifecycle.schema-migration/recovery.proof.json",
-        "digest": "sha256:461a5f761e78dbd70c1d4df74d4b0fce2ccff19181d27d4275d04d94ba749e1b"
+        "digest": "sha256:ae61bf672d915cb5ea9054516502203ebc505f53230b9f52bc745781f638eff4"
       },
       "variant_ids": [
         "postgresql-verification-matrix-v2"
@@ -6225,7 +6225,7 @@
       "risk_rank": 4,
       "proof": {
         "path": "evidence/scenarios/behaviors/lifecycle.upgrade/recovery.proof.json",
-        "digest": "sha256:2b6aacc5f6d8f0a995eb62bf9271d0aa3519e25a26e049fdfd70d93d4787139f"
+        "digest": "sha256:4cc8cbc482b125f68ade3e97f2e95cb0dc831e8df5eb6d717cae24563b14c92c"
       },
       "variant_ids": [
         "postgresql-verification-matrix-v2"
@@ -6281,7 +6281,7 @@
       "risk_rank": 4,
       "proof": {
         "path": "evidence/scenarios/behaviors/operations.backup-recovery/recovery.proof.json",
-        "digest": "sha256:ca4f59c3e74449aede1f8b991ee0a240b50f2095e3b5090e9bc5b7b76a30cc30"
+        "digest": "sha256:044d023c6b307cfd15f0b27cec6a3b220caae1f9f3873c62ae89f22432a8a99d"
       },
       "variant_ids": [
         "postgresql-verification-matrix-v2"
@@ -6328,7 +6328,7 @@
       "risk_rank": 4,
       "proof": {
         "path": "evidence/scenarios/behaviors/operations.failure-injection/recovery.proof.json",
-        "digest": "sha256:c94b2f07f13b355b356786f628708e5e42cf130af6aa293d629b90e029fc9263"
+        "digest": "sha256:d9e0777aa09ca63127a97a7c37c6b48f376e06b6b9601d08d138ed20e3497209"
       },
       "variant_ids": [
         "postgresql-verification-matrix-v2"
@@ -6374,7 +6374,7 @@
       "risk_rank": 4,
       "proof": {
         "path": "evidence/scenarios/behaviors/operations.logical-replication/recovery.proof.json",
-        "digest": "sha256:547d3d9a0067098e2d08ff32e8abf98a9866b9e5e9b35986293f8da61aaa217a"
+        "digest": "sha256:b94b252e60a43923303442c1cf0fc4c18cce57e43c53d1c096348f88c77bc433"
       },
       "variant_ids": [
         "postgresql-verification-matrix-v2"
@@ -6422,7 +6422,7 @@
       "risk_rank": 4,
       "proof": {
         "path": "evidence/scenarios/behaviors/operations.maintenance/recovery.proof.json",
-        "digest": "sha256:9f03a53582bf10ebdef0ecd6a0afcd6ffc97fccdf8e75bd62b3089360d4b1920"
+        "digest": "sha256:4d7364ea2ab40ea055b6663d2c7d1bc8892615b338fe306b458e9eea7438b208"
       },
       "variant_ids": [
         "postgresql-verification-matrix-v2"
@@ -6468,7 +6468,7 @@
       "risk_rank": 4,
       "proof": {
         "path": "evidence/scenarios/behaviors/operations.observability/recovery.proof.json",
-        "digest": "sha256:0a05561574484226985911a0925c80ca4dd5b371163e22102a86c78ae8c7c6d6"
+        "digest": "sha256:7718175685d5bf7058fc4fe28a385fae3c6c0ecd524cb4e045937f23fb4437b3"
       },
       "variant_ids": [
         "postgresql-verification-matrix-v2"
@@ -6524,7 +6524,7 @@
       "risk_rank": 4,
       "proof": {
         "path": "evidence/scenarios/behaviors/operations.pitr-recovery/recovery.proof.json",
-        "digest": "sha256:65bfd3493e25cacceac5875ff54977db834618d57f2d90abaf8c12116f34cd9d"
+        "digest": "sha256:5d44b386acb4e97a374f11213c2128be2049b631dbcb38d9e16a1e2e03c6c220"
       },
       "variant_ids": [
         "postgresql-verification-matrix-v2"
@@ -6571,7 +6571,7 @@
       "risk_rank": 4,
       "proof": {
         "path": "evidence/scenarios/behaviors/operations.replication/recovery.proof.json",
-        "digest": "sha256:9cd1291f21c0591d974db844bfceff308bd0591e11428447b3f8207d4800385e"
+        "digest": "sha256:15a2a59e627377d8f9f4c40b199586bc966a5fc6ed1c6b94cd038f196f512cb3"
       },
       "variant_ids": [
         "postgresql-verification-matrix-v2"
@@ -6619,7 +6619,7 @@
       "risk_rank": 4,
       "proof": {
         "path": "evidence/scenarios/behaviors/operations.wal/recovery.proof.json",
-        "digest": "sha256:f456687e79032edfc81898f30427deb3e219a8197f68b8379ebc612cba1bc738"
+        "digest": "sha256:693703214e5e4a8302d5a19ac6a55b92e337a581b669b9a1d61d53183cbc8b43"
       },
       "variant_ids": [
         "postgresql-verification-matrix-v2"
@@ -6675,7 +6675,7 @@
       "risk_rank": 4,
       "proof": {
         "path": "evidence/scenarios/behaviors/performance.execution/recovery.proof.json",
-        "digest": "sha256:95a755d530512dea54f08a675a68df6cf8ef715424b0b89ac13eeac2794b6088"
+        "digest": "sha256:089caf789ca4432e58ccadf1d5a4244c02f6cdba99bfcfa8e9fa5d441721809b"
       },
       "variant_ids": [
         "postgresql-verification-matrix-v2"
@@ -6731,7 +6731,7 @@
       "risk_rank": 4,
       "proof": {
         "path": "evidence/scenarios/behaviors/performance.index/recovery.proof.json",
-        "digest": "sha256:bfc022829ace4ecad63bd123b9d31757d2bef8f0cc0fc8e77f3cb16c85c66453"
+        "digest": "sha256:001fd75889ee889395c6bbefdadfa196f6a24e5634cd15cddc159cdeced3c663"
       },
       "variant_ids": [
         "postgresql-verification-matrix-v2"
@@ -6787,7 +6787,7 @@
       "risk_rank": 4,
       "proof": {
         "path": "evidence/scenarios/behaviors/performance.planner/recovery.proof.json",
-        "digest": "sha256:0db258d44e9fc41be3813bf49023841ff706b9b4e37d8268e2b1e39912b8cde1"
+        "digest": "sha256:8358ac05d7b132fb195226d72338983844ac003cc414afbd901d25026e1bba21"
       },
       "variant_ids": [
         "postgresql-verification-matrix-v2"
@@ -6843,7 +6843,7 @@
       "risk_rank": 4,
       "proof": {
         "path": "evidence/scenarios/behaviors/performance.statistics/recovery.proof.json",
-        "digest": "sha256:952646844595ee4bcadec86a19b5e798da887cd9977bd7efcf92a17345e7907f"
+        "digest": "sha256:40d0c7cc7693b71b05512dda7cd8a1370df247b9b3d3e9513268c1156091dc42"
       },
       "variant_ids": [
         "postgresql-verification-matrix-v2"
@@ -6899,7 +6899,7 @@
       "risk_rank": 4,
       "proof": {
         "path": "evidence/scenarios/behaviors/publication.provenance/recovery.proof.json",
-        "digest": "sha256:de7b3f878b955c0bee53b614ec6fe099e4b62422c1ee15525b1f7739e3612957"
+        "digest": "sha256:5ac5590e7b26828a4bea31488fc1ecad306c7250288a54ab5face03f275f7464"
       },
       "variant_ids": [
         "postgresql-verification-matrix-v2"
@@ -6955,7 +6955,7 @@
       "risk_rank": 4,
       "proof": {
         "path": "evidence/scenarios/behaviors/query.catalog-inventory/recovery.proof.json",
-        "digest": "sha256:011c4f549ddcb0edd85e6aead8e80cc437c95bc6017a300228d4f089e4953f2e"
+        "digest": "sha256:53fd6b0e37ff5fc10f962f536fc023a55d89a145e6048b53c12a45c09135bbf6"
       },
       "variant_ids": [
         "postgresql-verification-matrix-v2"
@@ -7011,7 +7011,7 @@
       "risk_rank": 4,
       "proof": {
         "path": "evidence/scenarios/behaviors/query.extension/recovery.proof.json",
-        "digest": "sha256:04b289741e0bf7ab9f2b35b3ecbd4f668a2ff45c988cad319c9a43349d3557f4"
+        "digest": "sha256:8950689c894ddc015512f83a5013961b5428417ff25e949ff81f94985fe08deb"
       },
       "variant_ids": [
         "postgresql-verification-matrix-v2"
@@ -7067,7 +7067,7 @@
       "risk_rank": 4,
       "proof": {
         "path": "evidence/scenarios/behaviors/query.partitioning/recovery.proof.json",
-        "digest": "sha256:ccf517f569ce421e1f3fe1558ff9e57270f24fd90991642ab76957fc15d30ec7"
+        "digest": "sha256:f1eb4aafcb69ebbe5d16797ea48fa4ca24b0a5a72d70ac5789c325a1933c9b42"
       },
       "variant_ids": [
         "postgresql-verification-matrix-v2"
@@ -7123,7 +7123,7 @@
       "risk_rank": 4,
       "proof": {
         "path": "evidence/scenarios/behaviors/query.security/recovery.proof.json",
-        "digest": "sha256:183bff223dc5a0fc46453556987e19c3cafb4fb223917fa9f85ab1d0a10b3a6f"
+        "digest": "sha256:98b7050891aeffe999903dc4506a2b83a56c1e65cf6fdde92f2b6e903d53de8d"
       },
       "variant_ids": [
         "postgresql-verification-matrix-v2"
@@ -7179,7 +7179,7 @@
       "risk_rank": 4,
       "proof": {
         "path": "evidence/scenarios/behaviors/query.sql-surface/recovery.proof.json",
-        "digest": "sha256:542f5bc562b12a7535f9bbd2b2a4bfb9ded4a53ee1b44429cad854a1ec6a554a"
+        "digest": "sha256:0a1fb0a78910f36c26e0c662950f8c2bb8a1edac385c418eabc157fb9a25550f"
       },
       "variant_ids": [
         "postgresql-verification-matrix-v2"
@@ -7235,7 +7235,7 @@
       "risk_rank": 4,
       "proof": {
         "path": "evidence/scenarios/behaviors/query.types-constraints/recovery.proof.json",
-        "digest": "sha256:177f137c94bbf98a1329ca562034d6d36f76666fb56f0c723a6bf9b18e172144"
+        "digest": "sha256:ec7c724bfb816d459962166753704f80f23b070952fc2bdf37cc382604d92444"
       },
       "variant_ids": [
         "postgresql-verification-matrix-v2"
@@ -7291,7 +7291,7 @@
       "risk_rank": 4,
       "proof": {
         "path": "evidence/scenarios/behaviors/skill.router-evaluation/recovery.proof.json",
-        "digest": "sha256:963697ce24b9899102985ce709eff6d9d10081533ed80a10727355d4f39bca5f"
+        "digest": "sha256:519a8ce6e67584dcacdc076fabac92c94b023b98c96e005a483bf23ff319fbce"
       },
       "variant_ids": [
         "postgresql-verification-matrix-v2"
@@ -7347,7 +7347,7 @@
       "risk_rank": 5,
       "proof": {
         "path": "evidence/scenarios/behaviors/concurrency.deadlock/migration.proof.json",
-        "digest": "sha256:a0bc764ed80280bb17bc6b7b2949a487d008c36df6d53eea17eaa113c5126571"
+        "digest": "sha256:07ef54bde6805c01d699e0984b514d43452a502407b695437ada6dbbd87e9992"
       },
       "variant_ids": [
         "postgresql-verification-matrix-v2"
@@ -7403,7 +7403,7 @@
       "risk_rank": 5,
       "proof": {
         "path": "evidence/scenarios/behaviors/concurrency.locking/migration.proof.json",
-        "digest": "sha256:cccc11139a9dd4e6f9e8ce0551ceaa1b2fef81aeeef61e30551f85dfe8bfce85"
+        "digest": "sha256:1139aa58220f779537e748342a0a777f231ee110ed106e8bd449152f7ceea147"
       },
       "variant_ids": [
         "postgresql-verification-matrix-v2"
@@ -7459,7 +7459,7 @@
       "risk_rank": 5,
       "proof": {
         "path": "evidence/scenarios/behaviors/concurrency.mvcc/migration.proof.json",
-        "digest": "sha256:de818adc09ac43146b632f44d91304e3b2d6c48a8bb98197a9ce646056ae22cd"
+        "digest": "sha256:f1bfdad927785c2382983786ff980a015825c22720cbe83022ec1bbf431ab17b"
       },
       "variant_ids": [
         "postgresql-verification-matrix-v2"
@@ -7515,7 +7515,7 @@
       "risk_rank": 5,
       "proof": {
         "path": "evidence/scenarios/behaviors/foundation.authority-lock/migration.proof.json",
-        "digest": "sha256:3953c810f8f77404c4e95523bf9ab79e1fa23ee8f42d06cc75daae40f1c74ada"
+        "digest": "sha256:b51f043e0ed8be2058c3c4173b2ca75568264606df41ccc88f84531b2385da2a"
       },
       "variant_ids": [
         "postgresql-verification-matrix-v2"
@@ -7571,7 +7571,7 @@
       "risk_rank": 5,
       "proof": {
         "path": "evidence/scenarios/behaviors/foundation.version-lock/migration.proof.json",
-        "digest": "sha256:4882987107ae2115b60518bc281c40199680bdbaf53e22c6bc67e06c3926ddd5"
+        "digest": "sha256:ba356afd6c659fdd1a03245e2a70a9244135fed2c9039dc0e578ecb198a6a046"
       },
       "variant_ids": [
         "postgresql-verification-matrix-v2"
@@ -7627,7 +7627,7 @@
       "risk_rank": 5,
       "proof": {
         "path": "evidence/scenarios/behaviors/lifecycle.compatibility-matrix/migration.proof.json",
-        "digest": "sha256:22389eba04d497acbc463135da4c398338da8c9267f49f064feeb66ef76192e8"
+        "digest": "sha256:5e43d7e9f21eb61e458cacf706a7c784412b26602c56b6bf84344a8414f7911d"
       },
       "variant_ids": [
         "postgresql-verification-matrix-v2"
@@ -7683,7 +7683,7 @@
       "risk_rank": 5,
       "proof": {
         "path": "evidence/scenarios/behaviors/lifecycle.pg-upgrade/migration.proof.json",
-        "digest": "sha256:8e100b00486daf333463db3bce475e19413a09070d3bcc3fe9ea37aea59d8815"
+        "digest": "sha256:807dc10565b65b1f1996ee8768f1f869538bbc2e63692bc50db6d2867bf3e6a6"
       },
       "variant_ids": [
         "postgresql-verification-matrix-v2"
@@ -7730,7 +7730,7 @@
       "risk_rank": 5,
       "proof": {
         "path": "evidence/scenarios/behaviors/lifecycle.schema-migration/migration.proof.json",
-        "digest": "sha256:0aafb5407acb44e3a0bc61a0eb6c3bf422dc04cca2221bd6a013c4c4be47bd26"
+        "digest": "sha256:0b13a9323eab94e1c467845c671bb7ae8c9f3555d1b877ffe5bd8d7f3a45cece"
       },
       "variant_ids": [
         "postgresql-verification-matrix-v2"
@@ -7776,7 +7776,7 @@
       "risk_rank": 5,
       "proof": {
         "path": "evidence/scenarios/behaviors/lifecycle.upgrade/migration.proof.json",
-        "digest": "sha256:49a481f825b870574cbfa54ef30423b4db554e043d5803e396f1b46efba2ad47"
+        "digest": "sha256:4a904e360d1f7cd5ce492721ae5f2d04fbc729eca993b6479381908de4b0d67d"
       },
       "variant_ids": [
         "postgresql-verification-matrix-v2"
@@ -7824,7 +7824,7 @@
       "risk_rank": 5,
       "proof": {
         "path": "evidence/scenarios/behaviors/operations.backup-recovery/migration.proof.json",
-        "digest": "sha256:dc576dfa277806ac8b6dc43d5c0a7e5cf9cfa266b464bd745e33cb1275c74525"
+        "digest": "sha256:cc8c859777ee8844a76d3321c2fed24e870e96b82496ee1ea9e72981dd407a62"
       },
       "variant_ids": [
         "postgresql-verification-matrix-v2"
@@ -7880,7 +7880,7 @@
       "risk_rank": 5,
       "proof": {
         "path": "evidence/scenarios/behaviors/operations.failure-injection/migration.proof.json",
-        "digest": "sha256:0f0e6fb68b4e1d5743ca0502f63696fcb7bd5507c481a891141da42348816cb0"
+        "digest": "sha256:8f40c1a4e1ff70eac50a6d92d5bedd870be7efe061f0421b43510aaf8667d452"
       },
       "variant_ids": [
         "postgresql-verification-matrix-v2"
@@ -7936,7 +7936,7 @@
       "risk_rank": 5,
       "proof": {
         "path": "evidence/scenarios/behaviors/operations.logical-replication/migration.proof.json",
-        "digest": "sha256:053a2661279a2b13981f98fec4605da9966b90c24de0a5b2b0ff52cc690c8187"
+        "digest": "sha256:62bde369eacf9f89c111694c7b4b301d153b4968bb12f345b73f6d1c4dbcc782"
       },
       "variant_ids": [
         "postgresql-verification-matrix-v2"
@@ -7992,7 +7992,7 @@
       "risk_rank": 5,
       "proof": {
         "path": "evidence/scenarios/behaviors/operations.maintenance/migration.proof.json",
-        "digest": "sha256:b4ddacac02691cb1c438415b7d57c40866fe612bd2727be7bb4c1d1325fd5f31"
+        "digest": "sha256:c1e748d27844e539f758e3a310398f0d0ac492094c830a95664f1c7d804f7174"
       },
       "variant_ids": [
         "postgresql-verification-matrix-v2"
@@ -8048,7 +8048,7 @@
       "risk_rank": 5,
       "proof": {
         "path": "evidence/scenarios/behaviors/operations.observability/migration.proof.json",
-        "digest": "sha256:c3780ba0b069289fb500d8a4ec71fbc688d36de7bcc0d5cb44979ba150065abd"
+        "digest": "sha256:f34c2ed5125676b1f241385893870a95592447a55ef2668285b34a908c300a0b"
       },
       "variant_ids": [
         "postgresql-verification-matrix-v2"
@@ -8104,7 +8104,7 @@
       "risk_rank": 5,
       "proof": {
         "path": "evidence/scenarios/behaviors/operations.pitr-recovery/migration.proof.json",
-        "digest": "sha256:523aa036426ec1eb14a1183008a1d9cff728d3120198a14c2cda71bd7d7306ce"
+        "digest": "sha256:8214faa3b1825e237f9298f4e9c26131236389316ea2f2ce9177e87077623f4b"
       },
       "variant_ids": [
         "postgresql-verification-matrix-v2"
@@ -8160,7 +8160,7 @@
       "risk_rank": 5,
       "proof": {
         "path": "evidence/scenarios/behaviors/operations.replication/migration.proof.json",
-        "digest": "sha256:c00ce49ac4a99a9b8acfa47aeeeb43bfbaf9f5624ac4e71e223c123701af6180"
+        "digest": "sha256:6ec5c99f1d7b80b260225bf4a2d2051b321e4353469f5f828d4ac85af99b59e0"
       },
       "variant_ids": [
         "postgresql-verification-matrix-v2"
@@ -8216,7 +8216,7 @@
       "risk_rank": 5,
       "proof": {
         "path": "evidence/scenarios/behaviors/operations.wal/migration.proof.json",
-        "digest": "sha256:046fa7e4add65122f20a92c7b3751d57e88f6d870db08f2ff53ece5d228e7d70"
+        "digest": "sha256:3b919adafb482b81c70900c46af69767b5d94e0847e6da01c3071594469bbda6"
       },
       "variant_ids": [
         "postgresql-verification-matrix-v2"
@@ -8272,7 +8272,7 @@
       "risk_rank": 5,
       "proof": {
         "path": "evidence/scenarios/behaviors/performance.execution/migration.proof.json",
-        "digest": "sha256:d6cb71c87540e01084f11cda5cfcc1690bc89e2060876ed4a0ce04b4cde9937b"
+        "digest": "sha256:986a92e7c566b0e28de4692c19cfbb4a8d68bfce3c3d28cbb8802825af9c1679"
       },
       "variant_ids": [
         "postgresql-verification-matrix-v2"
@@ -8328,7 +8328,7 @@
       "risk_rank": 5,
       "proof": {
         "path": "evidence/scenarios/behaviors/performance.index/migration.proof.json",
-        "digest": "sha256:7470094c2401dc0542d5a637ef7da5f25dedafadb7eabc4453b2f8993afc0213"
+        "digest": "sha256:cf9d21416205ec915dcbe6383d139cc843a139cc7b38c9661c7b8099c5f7d4ec"
       },
       "variant_ids": [
         "postgresql-verification-matrix-v2"
@@ -8384,7 +8384,7 @@
       "risk_rank": 5,
       "proof": {
         "path": "evidence/scenarios/behaviors/performance.planner/migration.proof.json",
-        "digest": "sha256:6a3e9080734d2de1345f2ca204cece140e4c8250686084eb365a46e601e68818"
+        "digest": "sha256:e8a9522e295229fa60df7ad4b93ae160aeef2a28135920ad3d47136a300c3137"
       },
       "variant_ids": [
         "postgresql-verification-matrix-v2"
@@ -8440,7 +8440,7 @@
       "risk_rank": 5,
       "proof": {
         "path": "evidence/scenarios/behaviors/performance.statistics/migration.proof.json",
-        "digest": "sha256:9fef2ebac691a91d2a60a68b2957db0abfedf8da75c88c9cb5153a530706d4d3"
+        "digest": "sha256:71fa4710b637605b5255cb2dd877cfc28a36317707b7b4f3335f6b6ab5ec1a9c"
       },
       "variant_ids": [
         "postgresql-verification-matrix-v2"
@@ -8496,7 +8496,7 @@
       "risk_rank": 5,
       "proof": {
         "path": "evidence/scenarios/behaviors/publication.provenance/migration.proof.json",
-        "digest": "sha256:55717552c00eee1c79c51d68128399f032fcf4fbd6823fa8cc9c15c1e935741a"
+        "digest": "sha256:667acd9fdc34a07259da6a9eed9470a5ac2d7c8e5fed328b08b2af01d8b8286a"
       },
       "variant_ids": [
         "postgresql-verification-matrix-v2"
@@ -8552,7 +8552,7 @@
       "risk_rank": 5,
       "proof": {
         "path": "evidence/scenarios/behaviors/query.catalog-inventory/migration.proof.json",
-        "digest": "sha256:b03aa9ce24bae1194dcc96696d17b6cfa6ae6ef698254bd44a9ef934195823a7"
+        "digest": "sha256:7637b75cd735f362347093803efcc0d8244c51b7501b8b3c8b8d22ab4f8b2138"
       },
       "variant_ids": [
         "postgresql-verification-matrix-v2"
@@ -8608,7 +8608,7 @@
       "risk_rank": 5,
       "proof": {
         "path": "evidence/scenarios/behaviors/query.extension/migration.proof.json",
-        "digest": "sha256:0df25f417b7cc91b820ed86db6a7135d49baee9330a0689ee1dc02d361247b73"
+        "digest": "sha256:4bfafc532ba19c0e4c19966f181e92dea0e1f6ba8274362a6c114ea3a0feea6d"
       },
       "variant_ids": [
         "postgresql-verification-matrix-v2"
@@ -8664,7 +8664,7 @@
       "risk_rank": 5,
       "proof": {
         "path": "evidence/scenarios/behaviors/query.partitioning/migration.proof.json",
-        "digest": "sha256:353ed7b194f6d2a92571bd3f8e36b4319cc32aab140e55563c3434045053b2b6"
+        "digest": "sha256:19f6cad9ba90ede021a0d0d566abd161b51bfde19b626b2ea1d470d03d8667bd"
       },
       "variant_ids": [
         "postgresql-verification-matrix-v2"
@@ -8720,7 +8720,7 @@
       "risk_rank": 5,
       "proof": {
         "path": "evidence/scenarios/behaviors/query.security/migration.proof.json",
-        "digest": "sha256:c32749b1f6cf964378dd4ece75a1ecc72fb2ace2566f0f1b71330985fd4e1d7a"
+        "digest": "sha256:7188db0c79d36927b4c653e12028373d2a0f01ca59eefc32734ff7fb11fe8ac9"
       },
       "variant_ids": [
         "postgresql-verification-matrix-v2"
@@ -8776,7 +8776,7 @@
       "risk_rank": 5,
       "proof": {
         "path": "evidence/scenarios/behaviors/query.sql-surface/migration.proof.json",
-        "digest": "sha256:6819820ffa408dc5f8480ff26c36505a78cb07cf44f2667e052527410470afe1"
+        "digest": "sha256:616d5302a4956ad2c826daa7372a4e1f06facdbd5471497d7bc75c7b83f3dc15"
       },
       "variant_ids": [
         "postgresql-verification-matrix-v2"
@@ -8832,7 +8832,7 @@
       "risk_rank": 5,
       "proof": {
         "path": "evidence/scenarios/behaviors/query.types-constraints/migration.proof.json",
-        "digest": "sha256:bc060ca8199b2b8cd86d209cfa767dccff9aa78c237853743ef9010e38641a73"
+        "digest": "sha256:5b76d1a8681d981cb37dd2c0ac2871f2668e03843c28041e971ac9b99464193c"
       },
       "variant_ids": [
         "postgresql-verification-matrix-v2"
@@ -8888,7 +8888,7 @@
       "risk_rank": 5,
       "proof": {
         "path": "evidence/scenarios/behaviors/skill.router-evaluation/migration.proof.json",
-        "digest": "sha256:56f4c44e30e068e5a926794a1fba7d3c576f8dcee0559832beacabd2b9e94c4c"
+        "digest": "sha256:f7dd17ff41ec09c61ffa394f022aa37c1eacb7e3e981a342353fd1ef836446a3"
       },
       "variant_ids": [
         "postgresql-verification-matrix-v2"
@@ -8944,7 +8944,7 @@
       "risk_rank": 6,
       "proof": {
         "path": "evidence/scenarios/behaviors/concurrency.deadlock/operations.proof.json",
-        "digest": "sha256:519862399d07fa4d57a51d2e665081401e79b37dc9265ad9ee2e272f55417faf"
+        "digest": "sha256:6cab447b992557dcf6a8842d640fa176abd53bf32f6210d132242245c2a8200d"
       },
       "variant_ids": [
         "postgresql-verification-matrix-v2"
@@ -9000,7 +9000,7 @@
       "risk_rank": 6,
       "proof": {
         "path": "evidence/scenarios/behaviors/concurrency.locking/operations.proof.json",
-        "digest": "sha256:8a1449b8949816c2faf02be27b2d3d1bb8577f052b3cafa686252e7678acdb7b"
+        "digest": "sha256:c033c2e08f385f5f3747ebdbcb5ccf26ab7fc9df45f04e007f45642b9fd7f1ad"
       },
       "variant_ids": [
         "postgresql-verification-matrix-v2"
@@ -9056,7 +9056,7 @@
       "risk_rank": 6,
       "proof": {
         "path": "evidence/scenarios/behaviors/concurrency.mvcc/operations.proof.json",
-        "digest": "sha256:2466be1169ee801af5f8d6efe39f2f96dac4a8284d88619bc89ac2b9253133f7"
+        "digest": "sha256:85921062c26b20f8943d65c8b3d26b19dff23785c1bee43359685652db7c1b04"
       },
       "variant_ids": [
         "postgresql-verification-matrix-v2"
@@ -9112,7 +9112,7 @@
       "risk_rank": 6,
       "proof": {
         "path": "evidence/scenarios/behaviors/foundation.authority-lock/operations.proof.json",
-        "digest": "sha256:41922ed6415ada301f75c1a60248135c8c5c664811cc072dbb580cc90d5a4185"
+        "digest": "sha256:dfa81b48e5a4d9c947119afb69a8bbcfe49ff21537dc60b9fe8c693c438c2b63"
       },
       "variant_ids": [
         "postgresql-verification-matrix-v2"
@@ -9168,7 +9168,7 @@
       "risk_rank": 6,
       "proof": {
         "path": "evidence/scenarios/behaviors/foundation.version-lock/operations.proof.json",
-        "digest": "sha256:19bc56e16bc710cf4df42919a7b60d4d2c9fd2d2968f0a392add494ba6a9a936"
+        "digest": "sha256:525164c0aa08a2408440bf92335ba2446fa637502605e124b372672690a1b702"
       },
       "variant_ids": [
         "postgresql-verification-matrix-v2"
@@ -9224,7 +9224,7 @@
       "risk_rank": 6,
       "proof": {
         "path": "evidence/scenarios/behaviors/lifecycle.compatibility-matrix/operations.proof.json",
-        "digest": "sha256:18e28d1677d6bec160ee8d3ba03571ecd5c96aab09c2ee07190482f4265cbc10"
+        "digest": "sha256:319e5b79f9da42f9edd795501efb0d6402f0fc3ae33d4eef5c2487a37005eb5f"
       },
       "variant_ids": [
         "postgresql-verification-matrix-v2"
@@ -9280,7 +9280,7 @@
       "risk_rank": 6,
       "proof": {
         "path": "evidence/scenarios/behaviors/lifecycle.pg-upgrade/operations.proof.json",
-        "digest": "sha256:6dfa8c30fb4b628d9bd5dae73c32e6c13e871df714443a1c4ef019921d9624ab"
+        "digest": "sha256:0aa9b8286679ac62cf4d7888c1df2e861dfa4cc4678f7bb9a1fc2fd46133161b"
       },
       "variant_ids": [
         "postgresql-verification-matrix-v2"
@@ -9336,7 +9336,7 @@
       "risk_rank": 6,
       "proof": {
         "path": "evidence/scenarios/behaviors/lifecycle.schema-migration/operations.proof.json",
-        "digest": "sha256:cfb2b05add01386aaecce536e127545613e731c960378b293615ee34dae26c3b"
+        "digest": "sha256:d3540af9ab7d0b94262f57c53a56578e43a9a30ad8b779a72865907bfe0f4373"
       },
       "variant_ids": [
         "postgresql-verification-matrix-v2"
@@ -9392,7 +9392,7 @@
       "risk_rank": 6,
       "proof": {
         "path": "evidence/scenarios/behaviors/lifecycle.upgrade/operations.proof.json",
-        "digest": "sha256:35bb530a7b3eb68b13dfc5360d16dfdd6aec7aaad603a8055fbbd725f55b8b12"
+        "digest": "sha256:54fb959da2c7056322d76ffc77cda043e26a91edd539d55c0396787881e13ca5"
       },
       "variant_ids": [
         "postgresql-verification-matrix-v2"
@@ -9448,7 +9448,7 @@
       "risk_rank": 6,
       "proof": {
         "path": "evidence/scenarios/behaviors/operations.backup-recovery/operations.proof.json",
-        "digest": "sha256:e61cfe8056aeb053c0ed1639c1c8954db88a97a4f610de3c42832219ccc38759"
+        "digest": "sha256:4670069dd89c76bbaabdb879ed6da992501923eb96e0437c902fa10a5890ce8c"
       },
       "variant_ids": [
         "postgresql-verification-matrix-v2"
@@ -9504,7 +9504,7 @@
       "risk_rank": 6,
       "proof": {
         "path": "evidence/scenarios/behaviors/operations.failure-injection/operations.proof.json",
-        "digest": "sha256:3001c4114d4089c32ba16a05647b6dafc6b2feb055408ae61ccc22f64f7f45f5"
+        "digest": "sha256:adc98f8628ebf8f4c4af4010bc5cdcee5de9deaa25fd6842f9280a9e1bc949c9"
       },
       "variant_ids": [
         "postgresql-verification-matrix-v2"
@@ -9560,7 +9560,7 @@
       "risk_rank": 6,
       "proof": {
         "path": "evidence/scenarios/behaviors/operations.logical-replication/operations.proof.json",
-        "digest": "sha256:028aba85d1610f2e18163ca5f7298240d50dffd2bc753312af931b50baa0257e"
+        "digest": "sha256:d35dc79e6ab59ceffcfa08d8b32e218ad25750fb2ec40d2445bbbb5de632177a"
       },
       "variant_ids": [
         "postgresql-verification-matrix-v2"
@@ -9616,7 +9616,7 @@
       "risk_rank": 6,
       "proof": {
         "path": "evidence/scenarios/behaviors/operations.maintenance/operations.proof.json",
-        "digest": "sha256:5d3c10f69a2f7665526a240e7740f499d42188536ae2f2f53c3fcbc6d77bd772"
+        "digest": "sha256:165c0814b37fd66e5e7bb251e444bf640181a8c5cb6d4ba35d970473e83e207a"
       },
       "variant_ids": [
         "postgresql-verification-matrix-v2"
@@ -9662,7 +9662,7 @@
       "risk_rank": 6,
       "proof": {
         "path": "evidence/scenarios/behaviors/operations.observability/operations.proof.json",
-        "digest": "sha256:936be6c0ebbc47dadfc951363c6bd3644f4b431c2b4088901d0c53c456a1451c"
+        "digest": "sha256:ac9b011eab93b3cd6b6d57b26c667af90e2d3ae035fe05ec082c1ee76bea9abf"
       },
       "variant_ids": [
         "postgresql-verification-matrix-v2"
@@ -9707,7 +9707,7 @@
       "risk_rank": 6,
       "proof": {
         "path": "evidence/scenarios/behaviors/operations.pitr-recovery/operations.proof.json",
-        "digest": "sha256:c4fc898c47ff08836bc0cb8200c8bff777933af8647f9f2f48eba9b3a2777073"
+        "digest": "sha256:ea04a7ae1d3ab2c432b08f0ac0d8995e62b5d3f8820d298b37526c52ec34c8ee"
       },
       "variant_ids": [
         "postgresql-verification-matrix-v2"
@@ -9763,7 +9763,7 @@
       "risk_rank": 6,
       "proof": {
         "path": "evidence/scenarios/behaviors/operations.replication/operations.proof.json",
-        "digest": "sha256:2b57cb7f6b7de804872107dcd5d88671ead5c17f69b78af22aba5f8c60a0c555"
+        "digest": "sha256:c740abfd11b0ac8d31cb294022a4e35a75c856e4459997143a6cd5d3fff41913"
       },
       "variant_ids": [
         "postgresql-verification-matrix-v2"
@@ -9819,7 +9819,7 @@
       "risk_rank": 6,
       "proof": {
         "path": "evidence/scenarios/behaviors/operations.wal/operations.proof.json",
-        "digest": "sha256:134d6a424c582c2c3a48f35d37392cdd93478090d2ff1a216c3f8bead4c37f30"
+        "digest": "sha256:66f2ba5d5d4113c155c3d689b0c337896c8b9b455d0a84e6a2b5a2f65f3cc46d"
       },
       "variant_ids": [
         "postgresql-verification-matrix-v2"
@@ -9864,7 +9864,7 @@
       "risk_rank": 6,
       "proof": {
         "path": "evidence/scenarios/behaviors/performance.execution/operations.proof.json",
-        "digest": "sha256:d8b22bd40fec56af05c7a4b851644bd2e3920a44e3d0a6663917bf5cfad553be"
+        "digest": "sha256:f628eb9084c11987af3868a688d5610d226a476f04274a943d613db2d151901b"
       },
       "variant_ids": [
         "postgresql-verification-matrix-v2"
@@ -9920,7 +9920,7 @@
       "risk_rank": 6,
       "proof": {
         "path": "evidence/scenarios/behaviors/performance.index/operations.proof.json",
-        "digest": "sha256:4ebf87df5e0712e94c5149195b3d01e6e998525ba9ba3982549afc5ff219ebb4"
+        "digest": "sha256:fe72f5c8f017f65a34c41efdc820594b89015095dab33c4785e34bc17e41b834"
       },
       "variant_ids": [
         "postgresql-verification-matrix-v2"
@@ -9976,7 +9976,7 @@
       "risk_rank": 6,
       "proof": {
         "path": "evidence/scenarios/behaviors/performance.planner/operations.proof.json",
-        "digest": "sha256:963787ca40accb6a3aa61c805f95441ba56094bc01063eb5e3bbdcbb0a539454"
+        "digest": "sha256:c289bd016a62889c9ea21f26e43be379a021b834be224fc97a04b48c71a8a5b2"
       },
       "variant_ids": [
         "postgresql-verification-matrix-v2"
@@ -10032,7 +10032,7 @@
       "risk_rank": 6,
       "proof": {
         "path": "evidence/scenarios/behaviors/performance.statistics/operations.proof.json",
-        "digest": "sha256:43af2419b5759bdc6e74f0eb3951166213a9c9ebc1ef9dec4f9201d8b6e69efd"
+        "digest": "sha256:e85d95a519b658d8ff1720a662494da21887b2a19e2bf93fc80dd79e55ddc48d"
       },
       "variant_ids": [
         "postgresql-verification-matrix-v2"
@@ -10088,7 +10088,7 @@
       "risk_rank": 6,
       "proof": {
         "path": "evidence/scenarios/behaviors/publication.provenance/operations.proof.json",
-        "digest": "sha256:bd84654e27f6700d4cb8c7b2ccdd581a243143b8b4fb0d6d608db2ce1cccd0b1"
+        "digest": "sha256:75826088c2d538003903e2783da5ab7718257579540802d67270f92b81d1d67f"
       },
       "variant_ids": [
         "postgresql-verification-matrix-v2"
@@ -10144,7 +10144,7 @@
       "risk_rank": 6,
       "proof": {
         "path": "evidence/scenarios/behaviors/query.catalog-inventory/operations.proof.json",
-        "digest": "sha256:7749dc8ca4bae59ccef0c5fd1511f9ff8e9a5a9ee52ea30d469ac916ddcff6f0"
+        "digest": "sha256:39bd7ab35d4637042698e04a3611bc0b12b8f493c92408df7c36de6db5c36c20"
       },
       "variant_ids": [
         "postgresql-verification-matrix-v2"
@@ -10200,7 +10200,7 @@
       "risk_rank": 6,
       "proof": {
         "path": "evidence/scenarios/behaviors/query.extension/operations.proof.json",
-        "digest": "sha256:c5486ecca17255ae84a31bf8a67fdbac92a6a193348be277870f42d6727a473a"
+        "digest": "sha256:6f5d7bbb5353210d950a669a400919e990e080ebcd569603dbd3db1753aeae05"
       },
       "variant_ids": [
         "postgresql-verification-matrix-v2"
@@ -10256,7 +10256,7 @@
       "risk_rank": 6,
       "proof": {
         "path": "evidence/scenarios/behaviors/query.partitioning/operations.proof.json",
-        "digest": "sha256:ace02f8d3fc7069d8dd4d7f9c50a7f4405e7d6906e93c02ee89fe76b7b735fa1"
+        "digest": "sha256:b06211f44830492153c99935a4b91934a846e7bb943f48e1b4d4967c0a90fd59"
       },
       "variant_ids": [
         "postgresql-verification-matrix-v2"
@@ -10312,7 +10312,7 @@
       "risk_rank": 6,
       "proof": {
         "path": "evidence/scenarios/behaviors/query.security/operations.proof.json",
-        "digest": "sha256:cb68f5e3cd6542c6c61e8acc06976f07377fff8ead5ad1a623be12795c5234ea"
+        "digest": "sha256:4fe427380f74cb9880abb8e9c74dd5729f76e58a2479eb82dd6da3df2d4560ad"
       },
       "variant_ids": [
         "postgresql-verification-matrix-v2"
@@ -10368,7 +10368,7 @@
       "risk_rank": 6,
       "proof": {
         "path": "evidence/scenarios/behaviors/query.sql-surface/operations.proof.json",
-        "digest": "sha256:ce4e169f5433e3e5c31b0d0576cb8e72ee3e7ab49652ac390c329bb8ac02ea5f"
+        "digest": "sha256:4ce9d62d1e1b152a986484fb8c2e6e7d2fa3f381710fdd9ef0eee35b26358afc"
       },
       "variant_ids": [
         "postgresql-verification-matrix-v2"
@@ -10424,7 +10424,7 @@
       "risk_rank": 6,
       "proof": {
         "path": "evidence/scenarios/behaviors/query.types-constraints/operations.proof.json",
-        "digest": "sha256:b5cc2d1a288853da6f9a852ee452d097797983fe67a31eff0fa77293af3292bf"
+        "digest": "sha256:5b1370e4be4ceaca32d09e0bdd89025f65288a60fbcf09509455d99e8563a569"
       },
       "variant_ids": [
         "postgresql-verification-matrix-v2"
@@ -10480,7 +10480,7 @@
       "risk_rank": 6,
       "proof": {
         "path": "evidence/scenarios/behaviors/skill.router-evaluation/operations.proof.json",
-        "digest": "sha256:15fae7bb5966a06d8ed0e54c90014faef826345f1a39767d19d3e65327ae390c"
+        "digest": "sha256:c8e86b58b01093acf61f375ece6e6d3a4e0bdde4a5c3c55d15d31d60692fbdc7"
       },
       "variant_ids": [
         "postgresql-verification-matrix-v2"
@@ -10536,7 +10536,7 @@
       "risk_rank": 7,
       "proof": {
         "path": "evidence/scenarios/behaviors/concurrency.deadlock/boundary.proof.json",
-        "digest": "sha256:9cabb455cfb91b69fd6fe70a8cad94211aa9ee6328b90f996eb59ed40d565bb5"
+        "digest": "sha256:05e334ab3abc9ab8ab4a6b2024469e05450b1d9c6d5158c14b92c0c05bdd2749"
       },
       "variant_ids": [
         "postgresql-verification-matrix-v2"
@@ -10592,7 +10592,7 @@
       "risk_rank": 7,
       "proof": {
         "path": "evidence/scenarios/behaviors/concurrency.locking/boundary.proof.json",
-        "digest": "sha256:e05895fa099aac1c1487135dddd7cb2217eef6345423bc9672a2ca822842de9c"
+        "digest": "sha256:12df84df63da06d9d4b467e07e593ba14f822fe8f0127964a75b68d5750a631e"
       },
       "variant_ids": [
         "postgresql-verification-matrix-v2"
@@ -10648,7 +10648,7 @@
       "risk_rank": 7,
       "proof": {
         "path": "evidence/scenarios/behaviors/concurrency.mvcc/boundary.proof.json",
-        "digest": "sha256:4e5006f3c4c5b47c8686fea6762236611c4caffbf9f55ddd178750b424077a10"
+        "digest": "sha256:98566e6e10520ea1ebb4f66c80f08dc3d379349b2160f972bb07ad5765365815"
       },
       "variant_ids": [
         "postgresql-verification-matrix-v2"
@@ -10695,7 +10695,7 @@
       "risk_rank": 7,
       "proof": {
         "path": "evidence/scenarios/behaviors/foundation.authority-lock/boundary.proof.json",
-        "digest": "sha256:e740772f48f0687e7ec39093e90debf2db92c17e58958e5f1f1f4ac9cf3ea419"
+        "digest": "sha256:3ec9c797925d4e776691692742b5c9cdd2b0cf75fe53332038c9fe54f4ff55cb"
       },
       "variant_ids": [
         "postgresql-verification-matrix-v2"
@@ -10751,7 +10751,7 @@
       "risk_rank": 7,
       "proof": {
         "path": "evidence/scenarios/behaviors/foundation.version-lock/boundary.proof.json",
-        "digest": "sha256:64cabf08a6c1d2a061e6323a896996db519abbb5b6d4f7f6bcb10679148d227a"
+        "digest": "sha256:aef17fada26e0ed76758e41cc5d3b54fa0f253e3c76663cc049d6feb618ed645"
       },
       "variant_ids": [
         "postgresql-verification-matrix-v2"
@@ -10807,7 +10807,7 @@
       "risk_rank": 7,
       "proof": {
         "path": "evidence/scenarios/behaviors/lifecycle.compatibility-matrix/boundary.proof.json",
-        "digest": "sha256:eb6e238e1dc410639d8b8e34601d050fdf4963867f7dd550117c4173228df593"
+        "digest": "sha256:655d7cec9c27c87e08217b21c86b88e9573c7567b68b4aee1a3911c8b785489f"
       },
       "variant_ids": [
         "postgresql-verification-matrix-v2"
@@ -10863,7 +10863,7 @@
       "risk_rank": 7,
       "proof": {
         "path": "evidence/scenarios/behaviors/lifecycle.pg-upgrade/boundary.proof.json",
-        "digest": "sha256:5dfb95858c8954cd7556cde16ebe1c88a408cb6e38f1b10fdf78120d4833f295"
+        "digest": "sha256:60429f3bcac7d704146918b0e0987604f0801f966a86281fb8c95d67ac1fe425"
       },
       "variant_ids": [
         "postgresql-verification-matrix-v2"
@@ -10919,7 +10919,7 @@
       "risk_rank": 7,
       "proof": {
         "path": "evidence/scenarios/behaviors/lifecycle.schema-migration/boundary.proof.json",
-        "digest": "sha256:099a2a545124eeaf6c851da37b2d42b1b9b4a7067bb22880ff21681bac91fe2f"
+        "digest": "sha256:d866f567b84d340911bf32e81be799c58d52187e5b06723da46370050a2140b3"
       },
       "variant_ids": [
         "postgresql-verification-matrix-v2"
@@ -10975,7 +10975,7 @@
       "risk_rank": 7,
       "proof": {
         "path": "evidence/scenarios/behaviors/lifecycle.upgrade/boundary.proof.json",
-        "digest": "sha256:2155840664c45f6e7f89cf1dee8120043e5cd51476ddb13817f13618429fc789"
+        "digest": "sha256:f686a1b3bf300d698cc0801142cdc6626d2b39725d83c180588c29ac30da8829"
       },
       "variant_ids": [
         "postgresql-verification-matrix-v2"
@@ -11031,7 +11031,7 @@
       "risk_rank": 7,
       "proof": {
         "path": "evidence/scenarios/behaviors/operations.backup-recovery/boundary.proof.json",
-        "digest": "sha256:dc0351be8e5a24e375afbea6809f7b17cb4312987a21be1460e73ce42eef73b8"
+        "digest": "sha256:ed16bd5c18105ddbc86f88a6f11dc68fbb89d030024f2b50ad034b460437a384"
       },
       "variant_ids": [
         "postgresql-verification-matrix-v2"
@@ -11087,7 +11087,7 @@
       "risk_rank": 7,
       "proof": {
         "path": "evidence/scenarios/behaviors/operations.failure-injection/boundary.proof.json",
-        "digest": "sha256:afe7e07e07803dcf49929c7d2c1481542a4f749ce3744383f9c763d86981a30e"
+        "digest": "sha256:228f01e058acbb89e276131b1ebd6369d85956e433dc7dcca4aecca44b4cc28f"
       },
       "variant_ids": [
         "postgresql-verification-matrix-v2"
@@ -11143,7 +11143,7 @@
       "risk_rank": 7,
       "proof": {
         "path": "evidence/scenarios/behaviors/operations.logical-replication/boundary.proof.json",
-        "digest": "sha256:822c95d86644576d21607de03200fae93afdb57a34fbdcdb20715eaff83a713d"
+        "digest": "sha256:31e6ee05b3207b42f5b2832262c2660b65d9a3b2aff0ec53ee5a6562d0a5d6a2"
       },
       "variant_ids": [
         "postgresql-verification-matrix-v2"
@@ -11199,7 +11199,7 @@
       "risk_rank": 7,
       "proof": {
         "path": "evidence/scenarios/behaviors/operations.maintenance/boundary.proof.json",
-        "digest": "sha256:93bee15b9493e9ff6d9ea5726162d428f99fed13f50c82c1136d764cedeb025d"
+        "digest": "sha256:49a319a43dbc21af025fa7a8bb742a3c3c84a12d7bf5b7eed141c9510849552c"
       },
       "variant_ids": [
         "postgresql-verification-matrix-v2"
@@ -11255,7 +11255,7 @@
       "risk_rank": 7,
       "proof": {
         "path": "evidence/scenarios/behaviors/operations.observability/boundary.proof.json",
-        "digest": "sha256:74a194babe0414cd2737720259c47e66908cd4b493c23cc4702b945642c61778"
+        "digest": "sha256:fe7dd1fd4cb7fe87050ff28900c65483c55cb87d9887b0f4996260400709d79f"
       },
       "variant_ids": [
         "postgresql-verification-matrix-v2"
@@ -11311,7 +11311,7 @@
       "risk_rank": 7,
       "proof": {
         "path": "evidence/scenarios/behaviors/operations.pitr-recovery/boundary.proof.json",
-        "digest": "sha256:5ed66871b5ab72fd908b02a7cbcb454c039adfc92208bd75a56bcb10c6da70e7"
+        "digest": "sha256:f68cb12c02b21e272f9875c57a058f2b4be497135e4ad782e1cf01d9553e3b0c"
       },
       "variant_ids": [
         "postgresql-verification-matrix-v2"
@@ -11367,7 +11367,7 @@
       "risk_rank": 7,
       "proof": {
         "path": "evidence/scenarios/behaviors/operations.replication/boundary.proof.json",
-        "digest": "sha256:d6b465de41ec28e648b83b341efecf4598409d2b58e194adb86986cc9ac6666d"
+        "digest": "sha256:c2e85d633e94f0077866a25f761347a818e05280a457b22c26ed18d8da787100"
       },
       "variant_ids": [
         "postgresql-verification-matrix-v2"
@@ -11423,7 +11423,7 @@
       "risk_rank": 7,
       "proof": {
         "path": "evidence/scenarios/behaviors/operations.wal/boundary.proof.json",
-        "digest": "sha256:a4240452d5a6a891832fd982f507715ddd212a889bf59ef87cd8ccc795d2acfc"
+        "digest": "sha256:8b1f672285b59716d83e90bd7bfcfe4d7b88b474510dbad53884b620d732d74a"
       },
       "variant_ids": [
         "postgresql-verification-matrix-v2"
@@ -11479,7 +11479,7 @@
       "risk_rank": 7,
       "proof": {
         "path": "evidence/scenarios/behaviors/performance.execution/boundary.proof.json",
-        "digest": "sha256:6ec26c547a88f2dd4f1cdc0dffc42ba634498b5fddd537e74fa13a1f49a29107"
+        "digest": "sha256:76ca547ad19a4298989437f57014381e8e678025d751ec38c512345d46ff3174"
       },
       "variant_ids": [
         "postgresql-verification-matrix-v2"
@@ -11535,7 +11535,7 @@
       "risk_rank": 7,
       "proof": {
         "path": "evidence/scenarios/behaviors/performance.index/boundary.proof.json",
-        "digest": "sha256:0c2e9f392ec8c6e4be5f9500e7f611e26fd8295cd763f3e6e39d7478be862bcf"
+        "digest": "sha256:236c31f560800ed169b66c7b09fdac676d7b560b8a2b4876ce0e6cc29bf08da7"
       },
       "variant_ids": [
         "postgresql-verification-matrix-v2"
@@ -11591,7 +11591,7 @@
       "risk_rank": 7,
       "proof": {
         "path": "evidence/scenarios/behaviors/performance.planner/boundary.proof.json",
-        "digest": "sha256:cc15e5f7769a8b18a830055f09205cedf9cb2a4c9f56a7503e0974bb7a0f72d6"
+        "digest": "sha256:9b2db98b2250267ad1013f1f13c77342eb2f8b145b6ba4dd3c0d54de51358760"
       },
       "variant_ids": [
         "postgresql-verification-matrix-v2"
@@ -11647,7 +11647,7 @@
       "risk_rank": 7,
       "proof": {
         "path": "evidence/scenarios/behaviors/performance.statistics/boundary.proof.json",
-        "digest": "sha256:cb9b4ec9ae2cc6754a235b3f4715dfbc7f4245e6f1e31bea33886c648886d0d0"
+        "digest": "sha256:543954ed3dd7c199012989d92d55f2b46ab59778eb35139e4af28adb40f1caeb"
       },
       "variant_ids": [
         "postgresql-verification-matrix-v2"
@@ -11703,7 +11703,7 @@
       "risk_rank": 7,
       "proof": {
         "path": "evidence/scenarios/behaviors/publication.provenance/boundary.proof.json",
-        "digest": "sha256:cde77e3aac820a1ec157f87c47630571c77894e75542b2124ec1909bd9bfaf45"
+        "digest": "sha256:7139374775b554d507e7d721dceee1373958d44e76b5e9d27aad5d2f8b0bcd8a"
       },
       "variant_ids": [
         "postgresql-verification-matrix-v2"
@@ -11759,7 +11759,7 @@
       "risk_rank": 7,
       "proof": {
         "path": "evidence/scenarios/behaviors/query.catalog-inventory/boundary.proof.json",
-        "digest": "sha256:1960f1a21b668ce4bc11f246510a195ed599ccea6091eba1c59d9e973b762f7b"
+        "digest": "sha256:c33a2a3918560ebe126fdc43bbe230c82d9fce5517b5ce933aef6c6d61e17e05"
       },
       "variant_ids": [
         "postgresql-verification-matrix-v2"
@@ -11815,7 +11815,7 @@
       "risk_rank": 7,
       "proof": {
         "path": "evidence/scenarios/behaviors/query.extension/boundary.proof.json",
-        "digest": "sha256:896d34422b27cd9db83c24d9c6c6d31ebc7a21d618d63e6f60975d5ab6bba839"
+        "digest": "sha256:dac28e5b31b32849c812b3bf242d79ee2939d3761ea995016bafc69744dc4249"
       },
       "variant_ids": [
         "postgresql-verification-matrix-v2"
@@ -11871,7 +11871,7 @@
       "risk_rank": 7,
       "proof": {
         "path": "evidence/scenarios/behaviors/query.partitioning/boundary.proof.json",
-        "digest": "sha256:dce9f21e4d7dd8f14ae047507ea92a04b60b797de0ffa705d1f8d7abe87e7553"
+        "digest": "sha256:3b382349f596dc3c9de6d8c9121fedf53a155bea42b31ce29189ded01634c1b6"
       },
       "variant_ids": [
         "postgresql-verification-matrix-v2"
@@ -11917,7 +11917,7 @@
       "risk_rank": 7,
       "proof": {
         "path": "evidence/scenarios/behaviors/query.security/boundary.proof.json",
-        "digest": "sha256:8900a9bb38096fd7e19d6ab42c1d73b2d8f9a74d03752d99706bd1cb91fefb1d"
+        "digest": "sha256:c4c5d7f066887590985b749e30c4a1329f1469233e406dab1ba41c8c7a3d802f"
       },
       "variant_ids": [
         "postgresql-verification-matrix-v2"
@@ -11973,7 +11973,7 @@
       "risk_rank": 7,
       "proof": {
         "path": "evidence/scenarios/behaviors/query.sql-surface/boundary.proof.json",
-        "digest": "sha256:dfa367ec6b07b5656241eece3d8b329479c028a6b24be5655c542c0d606f921f"
+        "digest": "sha256:7b20416b311352d23adcb9fbce7ef8ba698f5825a19666e9bb6fa0bc36bd43e7"
       },
       "variant_ids": [
         "postgresql-verification-matrix-v2"
@@ -12029,7 +12029,7 @@
       "risk_rank": 7,
       "proof": {
         "path": "evidence/scenarios/behaviors/query.types-constraints/boundary.proof.json",
-        "digest": "sha256:fd9a71b465b8395cd362c141b3f148eeb4b16d2bee7fc75fe3d08ef437dedc5d"
+        "digest": "sha256:38f876f2a2175a806635d26b6deb3960666ddb76b170b4a0e67c3407f3a883e1"
       },
       "variant_ids": [
         "postgresql-verification-matrix-v2"
@@ -12075,7 +12075,7 @@
       "risk_rank": 7,
       "proof": {
         "path": "evidence/scenarios/behaviors/skill.router-evaluation/boundary.proof.json",
-        "digest": "sha256:a9b6f014e389a646b1fd3c9d09598122bfe8786eeab228577b297ee1de970a74"
+        "digest": "sha256:ddc6b7f528bc60ce7b98f122d77134e0d6d36cce5f529816d525a63ab9d2789a"
       },
       "variant_ids": [
         "postgresql-verification-matrix-v2"
@@ -12131,7 +12131,7 @@
       "risk_rank": 8,
       "proof": {
         "path": "evidence/scenarios/behaviors/concurrency.deadlock/performance.proof.json",
-        "digest": "sha256:83ae93f6d21836eb92bb2ec7f8bd3df694ea0a2ba2505648f3af3468b9ca868a"
+        "digest": "sha256:0fe554d4e7deae4d1815a2805217904906e9f0a7e8c003a8157ed8f863a5c079"
       },
       "variant_ids": [
         "postgresql-verification-matrix-v2"
@@ -12187,7 +12187,7 @@
       "risk_rank": 8,
       "proof": {
         "path": "evidence/scenarios/behaviors/concurrency.locking/performance.proof.json",
-        "digest": "sha256:4a240514f142cd9d35adeaac60afa7173f951451860f9b6af557d077d0164986"
+        "digest": "sha256:fef81abf17ea713f720b8a7e662880fc10d5b35b3597448f75934992e62449c2"
       },
       "variant_ids": [
         "postgresql-verification-matrix-v2"
@@ -12243,7 +12243,7 @@
       "risk_rank": 8,
       "proof": {
         "path": "evidence/scenarios/behaviors/concurrency.mvcc/performance.proof.json",
-        "digest": "sha256:78cae1ea0a484a5b40973cea87b6ccb4a7387171043a961a294e1058f103d0ed"
+        "digest": "sha256:8d29c576a134b4571e51704a561c1bfc6186fdbca531a6e87d23eed71c5bbc4a"
       },
       "variant_ids": [
         "postgresql-verification-matrix-v2"
@@ -12299,7 +12299,7 @@
       "risk_rank": 8,
       "proof": {
         "path": "evidence/scenarios/behaviors/foundation.authority-lock/performance.proof.json",
-        "digest": "sha256:ed82acf70de95bc3abfa4928b1fc86d28fb060c987e1a297dd5c73fdfbad95c3"
+        "digest": "sha256:c8b924e98cad4fc2470f7ecbf85432f813f79352b7c96bcb048da4f4c5e96cc3"
       },
       "variant_ids": [
         "postgresql-verification-matrix-v2"
@@ -12355,7 +12355,7 @@
       "risk_rank": 8,
       "proof": {
         "path": "evidence/scenarios/behaviors/foundation.version-lock/performance.proof.json",
-        "digest": "sha256:b8d4ae4142da28a8b5683d3d4c3148ce6b5bcc1e6c397f1c26ac2770054cc9f7"
+        "digest": "sha256:b84079e9688388cc870340daa4cdc0a9b2241be02d307f5e610c4ae47f79eb32"
       },
       "variant_ids": [
         "postgresql-verification-matrix-v2"
@@ -12411,7 +12411,7 @@
       "risk_rank": 8,
       "proof": {
         "path": "evidence/scenarios/behaviors/lifecycle.compatibility-matrix/performance.proof.json",
-        "digest": "sha256:733c59bdfe81ffa89f26a629655ec0f20f6b9025fe2f8737c9163f67ec6cd3c7"
+        "digest": "sha256:6f4a827e40348ab1ee493caff204b5b7d1dfd8ee5b4bf9447e89b60c30254eff"
       },
       "variant_ids": [
         "postgresql-verification-matrix-v2"
@@ -12467,7 +12467,7 @@
       "risk_rank": 8,
       "proof": {
         "path": "evidence/scenarios/behaviors/lifecycle.pg-upgrade/performance.proof.json",
-        "digest": "sha256:3359979868e4ac5e9c09c58ddf22cf753113dfe3d88ea37a392dcee729f911e1"
+        "digest": "sha256:a5ed4d42da5d9c604bfeaf337388e430ea0cff680a9d02fa50a1f92e77adca87"
       },
       "variant_ids": [
         "postgresql-verification-matrix-v2"
@@ -12523,7 +12523,7 @@
       "risk_rank": 8,
       "proof": {
         "path": "evidence/scenarios/behaviors/lifecycle.schema-migration/performance.proof.json",
-        "digest": "sha256:df53cf5c21f048a2805ca5ff3146e7e7d27528966944f27209304fb6be94c73f"
+        "digest": "sha256:48e296c7b299c8820a6a40efa8cd700c5d313edbc38039e83494b5c9a017027a"
       },
       "variant_ids": [
         "postgresql-verification-matrix-v2"
@@ -12579,7 +12579,7 @@
       "risk_rank": 8,
       "proof": {
         "path": "evidence/scenarios/behaviors/lifecycle.upgrade/performance.proof.json",
-        "digest": "sha256:f20d2a10f261e53f1e494cbe3b65168af23283501d6151f0784d14663a70ce67"
+        "digest": "sha256:0a4ca3ee10a770dfcce389eddac306898c369a4bb00de928f10081013046818b"
       },
       "variant_ids": [
         "postgresql-verification-matrix-v2"
@@ -12635,7 +12635,7 @@
       "risk_rank": 8,
       "proof": {
         "path": "evidence/scenarios/behaviors/operations.backup-recovery/performance.proof.json",
-        "digest": "sha256:bc21bb0a12454b4bfb5692133c5a0460b554d7fe148cf70a53cb4ca038620734"
+        "digest": "sha256:2448a78c690f859554dca131e1f72c2d4b439509904e8850c9e6da166ce4dafa"
       },
       "variant_ids": [
         "postgresql-verification-matrix-v2"
@@ -12691,7 +12691,7 @@
       "risk_rank": 8,
       "proof": {
         "path": "evidence/scenarios/behaviors/operations.failure-injection/performance.proof.json",
-        "digest": "sha256:9f86ef1ec4522e557c86f0f605810ed3520aa1193b60e99e7d9edca4d511db2b"
+        "digest": "sha256:822181353db87aa407abe6d99553dd218bf3c379004d89740523eff8a1728f36"
       },
       "variant_ids": [
         "postgresql-verification-matrix-v2"
@@ -12747,7 +12747,7 @@
       "risk_rank": 8,
       "proof": {
         "path": "evidence/scenarios/behaviors/operations.logical-replication/performance.proof.json",
-        "digest": "sha256:853d1798aa2d29306c2bfb5eac3932dbc9b6cefcbaf0dc57f330beb1e3a6bbe6"
+        "digest": "sha256:d55fe02621bddab8b16313403b285c6e226b80a9e7ee0f6d8d7f5cf0cba999d2"
       },
       "variant_ids": [
         "postgresql-verification-matrix-v2"
@@ -12803,7 +12803,7 @@
       "risk_rank": 8,
       "proof": {
         "path": "evidence/scenarios/behaviors/operations.maintenance/performance.proof.json",
-        "digest": "sha256:dba5b0b1503a3d0ee10d0002201e189258eede3fa4155ca315b951ba49859177"
+        "digest": "sha256:e77966be8e361308dfe27bf0cd04924e9ae347a7d70160e6001999d34da48610"
       },
       "variant_ids": [
         "postgresql-verification-matrix-v2"
@@ -12859,7 +12859,7 @@
       "risk_rank": 8,
       "proof": {
         "path": "evidence/scenarios/behaviors/operations.observability/performance.proof.json",
-        "digest": "sha256:8354e26b1d5ed141b91f7ab2a74f77662c6bf8e4c74d8e447d48c0e1617a9535"
+        "digest": "sha256:36b7aa9046cc6b17572cd99f299b07f239a4cfb439a5a928c89976dd4b533675"
       },
       "variant_ids": [
         "postgresql-verification-matrix-v2"
@@ -12915,7 +12915,7 @@
       "risk_rank": 8,
       "proof": {
         "path": "evidence/scenarios/behaviors/operations.pitr-recovery/performance.proof.json",
-        "digest": "sha256:fbf45b717bf909b712685c282eebebf6973939451d5d00a4a46e0576818d9a6d"
+        "digest": "sha256:8912a6787ade1ee1b8ff52e4012672950e3ecb440f979b24c3cf3ab82d9ba310"
       },
       "variant_ids": [
         "postgresql-verification-matrix-v2"
@@ -12971,7 +12971,7 @@
       "risk_rank": 8,
       "proof": {
         "path": "evidence/scenarios/behaviors/operations.replication/performance.proof.json",
-        "digest": "sha256:8ae992a3cb682288bb2901c2c9a20fa884b09d0c1fc9c5c341672cdc5d2bd593"
+        "digest": "sha256:9bcfd799de51cd322d2b1651daac17c71ef61429896b753a82af21e0cd89ac25"
       },
       "variant_ids": [
         "postgresql-verification-matrix-v2"
@@ -13027,7 +13027,7 @@
       "risk_rank": 8,
       "proof": {
         "path": "evidence/scenarios/behaviors/operations.wal/performance.proof.json",
-        "digest": "sha256:af4c5490093532ad29bfa9d4c70b41d90a95ee23fc64fac5b87856b7b8d96bea"
+        "digest": "sha256:68b040b603a48cfea0ff6423b2c06dd039d49263d1813f55f6467a7024104b16"
       },
       "variant_ids": [
         "postgresql-verification-matrix-v2"
@@ -13083,7 +13083,7 @@
       "risk_rank": 8,
       "proof": {
         "path": "evidence/scenarios/behaviors/performance.execution/performance.proof.json",
-        "digest": "sha256:1f8b159e68d2e631f7940683326145fb771b0188e010914dc2414b26eb1077bb"
+        "digest": "sha256:6ab2415c97ef0a4a19e465ca4b35fdda4c8d95d14ac6d773d286711e037cc0a3"
       },
       "variant_ids": [
         "postgresql-verification-matrix-v2"
@@ -13129,7 +13129,7 @@
       "risk_rank": 8,
       "proof": {
         "path": "evidence/scenarios/behaviors/performance.index/performance.proof.json",
-        "digest": "sha256:2f541b05c8a90d0b8658bcec35c6b3e8e36755e9a25663ea33936fa91b0d13cb"
+        "digest": "sha256:c114a2d204517fcd6f5b0f3facda5cb423003434af28c3b393a097a199341582"
       },
       "variant_ids": [
         "postgresql-verification-matrix-v2"
@@ -13175,7 +13175,7 @@
       "risk_rank": 8,
       "proof": {
         "path": "evidence/scenarios/behaviors/performance.planner/performance.proof.json",
-        "digest": "sha256:678eb737bfee70d206b3541015f5c446d0d312b795d5f07b33d065ff622f37b3"
+        "digest": "sha256:4d934a6a597c5e34a8e1445efc2828051a587904001660ec412b091f41219370"
       },
       "variant_ids": [
         "postgresql-verification-matrix-v2"
@@ -13221,7 +13221,7 @@
       "risk_rank": 8,
       "proof": {
         "path": "evidence/scenarios/behaviors/performance.statistics/performance.proof.json",
-        "digest": "sha256:51c2a3de2071fbd0610b0e2ee7cc12e04252eba88b30b199fd25532f153effe6"
+        "digest": "sha256:6d0bf005dd0147a4759ac6716a2bce7dee176979f9bf41f84c1a8fc09427655a"
       },
       "variant_ids": [
         "postgresql-verification-matrix-v2"
@@ -13267,7 +13267,7 @@
       "risk_rank": 8,
       "proof": {
         "path": "evidence/scenarios/behaviors/publication.provenance/performance.proof.json",
-        "digest": "sha256:cc63cb3e0b7dfcca1b9b803db0d0f37e91fa0787e5ae3a8678a15e7963725e7e"
+        "digest": "sha256:35609c4b1acb50e7a9a1c04e45e689325b769bb4c8eaa097c5b035d58e048f20"
       },
       "variant_ids": [
         "postgresql-verification-matrix-v2"
@@ -13323,7 +13323,7 @@
       "risk_rank": 8,
       "proof": {
         "path": "evidence/scenarios/behaviors/query.catalog-inventory/performance.proof.json",
-        "digest": "sha256:d7bd08a3d9709c8d88ccd10b84160ea8973e895d8ece909590035a2498b05086"
+        "digest": "sha256:ff99b069bc379f3d3dca34568550a6c7aabff3d6ba6e9b98bfa145afe4e0e257"
       },
       "variant_ids": [
         "postgresql-verification-matrix-v2"
@@ -13379,7 +13379,7 @@
       "risk_rank": 8,
       "proof": {
         "path": "evidence/scenarios/behaviors/query.extension/performance.proof.json",
-        "digest": "sha256:1ee5f39998c6c48833c05fd7ab8a503597bfae93650d187c3ed9e7500575ef78"
+        "digest": "sha256:c5f381806035d3d7b64f161d5ec102329f348528a8e94c340b3fea7728da173b"
       },
       "variant_ids": [
         "postgresql-verification-matrix-v2"
@@ -13425,7 +13425,7 @@
       "risk_rank": 8,
       "proof": {
         "path": "evidence/scenarios/behaviors/query.partitioning/performance.proof.json",
-        "digest": "sha256:e7380ab0cc35cd8996e038f70514862a1d8c0314fec629b93d69b9d405340a59"
+        "digest": "sha256:ae174c6876a27ec06fc81159f03162c6bbfab2ab26737c5d33710febe1a087be"
       },
       "variant_ids": [
         "postgresql-verification-matrix-v2"
@@ -13471,7 +13471,7 @@
       "risk_rank": 8,
       "proof": {
         "path": "evidence/scenarios/behaviors/query.security/performance.proof.json",
-        "digest": "sha256:8799c891a15327049760c84e92b3e84972c533a1f58af792dda00125579a5cfb"
+        "digest": "sha256:142a672fe5e31411ccc5345599fcae2a7c17db02f621d3dd0764feb797a8ee83"
       },
       "variant_ids": [
         "postgresql-verification-matrix-v2"
@@ -13527,7 +13527,7 @@
       "risk_rank": 8,
       "proof": {
         "path": "evidence/scenarios/behaviors/query.sql-surface/performance.proof.json",
-        "digest": "sha256:13baa1a20356940228b98601a225720d72fb3b48c6568001b8ec58a901156830"
+        "digest": "sha256:03fffd22dfe30a9bf1559ed8a7736d837146ab3b49e15e0ddc37cb043b38666b"
       },
       "variant_ids": [
         "postgresql-verification-matrix-v2"
@@ -13583,7 +13583,7 @@
       "risk_rank": 8,
       "proof": {
         "path": "evidence/scenarios/behaviors/query.types-constraints/performance.proof.json",
-        "digest": "sha256:216783cca53d23af08317cc32ed48dc9a9432360dbec620dcf2e318e730adf41"
+        "digest": "sha256:1088e3e70377b4274ef67c99d82f73a803050e685575888eec06870ff872048c"
       },
       "variant_ids": [
         "postgresql-verification-matrix-v2"
@@ -13639,7 +13639,7 @@
       "risk_rank": 8,
       "proof": {
         "path": "evidence/scenarios/behaviors/skill.router-evaluation/performance.proof.json",
-        "digest": "sha256:c46c68472ca5de05b4337f89e4390288c6fc03a09d8c948b3b5b3c16b702d2da"
+        "digest": "sha256:8c0f6ab2bd7d6a4107f19d6656233a0580ace4f90fd76249cfc37afb06a6d7c3"
       },
       "variant_ids": [
         "postgresql-verification-matrix-v2"
@@ -13695,7 +13695,7 @@
       "risk_rank": 9,
       "proof": {
         "path": "evidence/scenarios/behaviors/concurrency.deadlock/compatibility.proof.json",
-        "digest": "sha256:130f1a4228d05de46619d60bb764d54bc2f099f2d575f953d41ab21e01914723"
+        "digest": "sha256:f1000558871d9bb20c7fd964b01325be692124b426991ad6206e512dbce8a401"
       },
       "variant_ids": [
         "postgresql-verification-matrix-v2"
@@ -13751,7 +13751,7 @@
       "risk_rank": 9,
       "proof": {
         "path": "evidence/scenarios/behaviors/concurrency.locking/compatibility.proof.json",
-        "digest": "sha256:e30b5ff3d36c37402dedbe04184c833f2c2216d73918299150875945274247e3"
+        "digest": "sha256:946425f95f46095606555fdb3ee56911c4edc826febc7f6ac0cbf8337508cdd6"
       },
       "variant_ids": [
         "postgresql-verification-matrix-v2"
@@ -13807,7 +13807,7 @@
       "risk_rank": 9,
       "proof": {
         "path": "evidence/scenarios/behaviors/concurrency.mvcc/compatibility.proof.json",
-        "digest": "sha256:1d50af5449fe066f655861d529ef63bacd289010bc592b3d04d27367e840ff1c"
+        "digest": "sha256:0c317a649ff678998fbf281846162d6abb5439505cc7ea02308cb6c81cf16161"
       },
       "variant_ids": [
         "postgresql-verification-matrix-v2"
@@ -13863,7 +13863,7 @@
       "risk_rank": 9,
       "proof": {
         "path": "evidence/scenarios/behaviors/foundation.authority-lock/compatibility.proof.json",
-        "digest": "sha256:3f8f616b74ab961b66a7de8c4646fa5b9bd54c058e0b1a488f95507aadc26615"
+        "digest": "sha256:d567444c0ec246be919f74975a277254006be0d1e1f1b832314ee3323efc7099"
       },
       "variant_ids": [
         "postgresql-verification-matrix-v2"
@@ -13912,7 +13912,7 @@
       "risk_rank": 9,
       "proof": {
         "path": "evidence/scenarios/behaviors/foundation.version-lock/compatibility.proof.json",
-        "digest": "sha256:52b5e671483ea514c2ba68dfe30450db6557fa58faedb615e7b91da05d257e73"
+        "digest": "sha256:1d6c360461cc1040139d22cba37e44e996486c7e81f915aaa98fdb54e9079cc5"
       },
       "variant_ids": [
         "postgresql-verification-matrix-v2"
@@ -13962,7 +13962,7 @@
       "risk_rank": 9,
       "proof": {
         "path": "evidence/scenarios/behaviors/lifecycle.compatibility-matrix/compatibility.proof.json",
-        "digest": "sha256:bc0c87515ddeb444990aad99bc5bfd2775bbf570342a7f2b330be96966239f80"
+        "digest": "sha256:aafafc056c8c38995a16dce023dad6bdbaa33b76b45706b361e7f259c6e729ee"
       },
       "variant_ids": [
         "postgresql-verification-matrix-v2"
@@ -14008,7 +14008,7 @@
       "risk_rank": 9,
       "proof": {
         "path": "evidence/scenarios/behaviors/lifecycle.pg-upgrade/compatibility.proof.json",
-        "digest": "sha256:e30026cb92eb75c8531a9b82948696a2197dd2965c14eacb166aceb96359c1d3"
+        "digest": "sha256:f42a735bd08eba7f88e0a5f77314c1d0eef0e642fca4f2bb5d0094ed9fc9ad07"
       },
       "variant_ids": [
         "postgresql-verification-matrix-v2"
@@ -14055,7 +14055,7 @@
       "risk_rank": 9,
       "proof": {
         "path": "evidence/scenarios/behaviors/lifecycle.schema-migration/compatibility.proof.json",
-        "digest": "sha256:c56a31e72d8f0342832555e0112b00e2c5fd040f67f153481d9c1ee47890a39c"
+        "digest": "sha256:37378f8deead7beb3c0aaaad8a4e8d8f90b3ffcaf5c6772b3ad0bf61b545154f"
       },
       "variant_ids": [
         "postgresql-verification-matrix-v2"
@@ -14111,7 +14111,7 @@
       "risk_rank": 9,
       "proof": {
         "path": "evidence/scenarios/behaviors/lifecycle.upgrade/compatibility.proof.json",
-        "digest": "sha256:c93014d46135c0c5499744b1b09a7e50e097cf3e39119c3bd74f5fa966e17e85"
+        "digest": "sha256:273765248762362d4e758baf364e2a5ed3cec23140b04e3ebb7026f156dd1729"
       },
       "variant_ids": [
         "postgresql-verification-matrix-v2"
@@ -14159,7 +14159,7 @@
       "risk_rank": 9,
       "proof": {
         "path": "evidence/scenarios/behaviors/operations.backup-recovery/compatibility.proof.json",
-        "digest": "sha256:fd165b57709cff12f3b9ba7f581fa6cc41503edd7cc955d01a8c37553e674c73"
+        "digest": "sha256:058ac475fa4ba128f9e71fb3910097f1ba62c149b68e6012fd4d90d25e8f9de5"
       },
       "variant_ids": [
         "postgresql-verification-matrix-v2"
@@ -14215,7 +14215,7 @@
       "risk_rank": 9,
       "proof": {
         "path": "evidence/scenarios/behaviors/operations.failure-injection/compatibility.proof.json",
-        "digest": "sha256:cd5733709d7e1e191acff7c2bacbf5f0056ab56e18853dd6f5578996d6aba7b5"
+        "digest": "sha256:c8111e111546d279017d25edf376a972dfbe85aaf610d0b35ff40fc0b75cca17"
       },
       "variant_ids": [
         "postgresql-verification-matrix-v2"
@@ -14271,7 +14271,7 @@
       "risk_rank": 9,
       "proof": {
         "path": "evidence/scenarios/behaviors/operations.logical-replication/compatibility.proof.json",
-        "digest": "sha256:bf487f625cfb9d55bf1f51910d8247dbb106668ac16f94a7c9aa89d7232850c5"
+        "digest": "sha256:5a4b3e42b59992d74a1577cfcff4f40e7b42156f66b845c4586b051fc19c8de7"
       },
       "variant_ids": [
         "postgresql-verification-matrix-v2"
@@ -14327,7 +14327,7 @@
       "risk_rank": 9,
       "proof": {
         "path": "evidence/scenarios/behaviors/operations.maintenance/compatibility.proof.json",
-        "digest": "sha256:2789fc6b185784f49dffc7a7d78be6cce026aa277b74af35f67fc618f86bc7ea"
+        "digest": "sha256:fa67605aa45fdc6ab1fac6de84923b7133778679c0ae271d614d3fb15fa5301c"
       },
       "variant_ids": [
         "postgresql-verification-matrix-v2"
@@ -14383,7 +14383,7 @@
       "risk_rank": 9,
       "proof": {
         "path": "evidence/scenarios/behaviors/operations.observability/compatibility.proof.json",
-        "digest": "sha256:138ff9bd0e8633b91fa60d9fb6abd912877a63d4b08fe9dff1bd8f30770855dd"
+        "digest": "sha256:9763e7d98cd8e98047a42addbc939baa49c626fc0b4faf3278331d29c3421fe8"
       },
       "variant_ids": [
         "postgresql-verification-matrix-v2"
@@ -14439,7 +14439,7 @@
       "risk_rank": 9,
       "proof": {
         "path": "evidence/scenarios/behaviors/operations.pitr-recovery/compatibility.proof.json",
-        "digest": "sha256:d5dea3ad81497ecf448722784942ef257f5fc2b928c2ea67ca7e8b0ad496ae5c"
+        "digest": "sha256:2f141d928b40d8302c33556ef7ebd100887090a2da21c2324abc9c8e9dda6d96"
       },
       "variant_ids": [
         "postgresql-verification-matrix-v2"
@@ -14495,7 +14495,7 @@
       "risk_rank": 9,
       "proof": {
         "path": "evidence/scenarios/behaviors/operations.replication/compatibility.proof.json",
-        "digest": "sha256:f9706503e74c7f767312a6f5f9871e1c806d812111b6acef244a6cd9246ce47b"
+        "digest": "sha256:f848223e2abddd536a0faeafa7f1486ebf70a63e90d8d2db410272ba554ea3d6"
       },
       "variant_ids": [
         "postgresql-verification-matrix-v2"
@@ -14551,7 +14551,7 @@
       "risk_rank": 9,
       "proof": {
         "path": "evidence/scenarios/behaviors/operations.wal/compatibility.proof.json",
-        "digest": "sha256:2265809fff6b0f4b4cf64d0d191ed6be08dc720edf4b9f842bdb400f5a26789f"
+        "digest": "sha256:113e3beff2fb7c668bd76fddd0e06355bf1f6dd8b9b4928357ae55eddbb70404"
       },
       "variant_ids": [
         "postgresql-verification-matrix-v2"
@@ -14607,7 +14607,7 @@
       "risk_rank": 9,
       "proof": {
         "path": "evidence/scenarios/behaviors/performance.execution/compatibility.proof.json",
-        "digest": "sha256:eeb15f3c5d3e90e208917ef28c7c8d980fc4f893dc9528f91c0ad06d7546015a"
+        "digest": "sha256:63bc9ac1d75693fb82c34e2d59ef78cf6c3ba91cbaef0d02042b0cfc6d685dec"
       },
       "variant_ids": [
         "postgresql-verification-matrix-v2"
@@ -14663,7 +14663,7 @@
       "risk_rank": 9,
       "proof": {
         "path": "evidence/scenarios/behaviors/performance.index/compatibility.proof.json",
-        "digest": "sha256:2b5f8d94431ec11998b1fc26744f1c9f3e0b735db6c9f890d7ed1aad7e5a1901"
+        "digest": "sha256:a40326ed519db5597107b4d851bab6d381c05c8632b8a1995d9aec771837a0d7"
       },
       "variant_ids": [
         "postgresql-verification-matrix-v2"
@@ -14719,7 +14719,7 @@
       "risk_rank": 9,
       "proof": {
         "path": "evidence/scenarios/behaviors/performance.planner/compatibility.proof.json",
-        "digest": "sha256:487147c4ee7e1f1dea7c4a2e9c542b0a00acdee8bef5b7363b1351db804fc2a8"
+        "digest": "sha256:405856bc3e7f1a160763c15a454b242955829933f2f543da25d8e1156e6751a2"
       },
       "variant_ids": [
         "postgresql-verification-matrix-v2"
@@ -14775,7 +14775,7 @@
       "risk_rank": 9,
       "proof": {
         "path": "evidence/scenarios/behaviors/performance.statistics/compatibility.proof.json",
-        "digest": "sha256:d6948dd287088b4963744803c436f6a5aca2642c33fd49ddf78182849b726084"
+        "digest": "sha256:4172d7efa3a27b47387affd277e4c1f385f711d2d5755cbd20fa1d7fca0f97d3"
       },
       "variant_ids": [
         "postgresql-verification-matrix-v2"
@@ -14831,7 +14831,7 @@
       "risk_rank": 9,
       "proof": {
         "path": "evidence/scenarios/behaviors/publication.provenance/compatibility.proof.json",
-        "digest": "sha256:c01ad7172669249fe8a72e073172e55b281d71b63d5dfeae2515a6706576b9b8"
+        "digest": "sha256:8128b881edb9723b5ecd756fc3048b682f0e8eaa3b5128f38166e5e2a64f9d7b"
       },
       "variant_ids": [
         "postgresql-verification-matrix-v2"
@@ -14887,7 +14887,7 @@
       "risk_rank": 9,
       "proof": {
         "path": "evidence/scenarios/behaviors/query.catalog-inventory/compatibility.proof.json",
-        "digest": "sha256:3ce69f3ea7f0004f2f88b96890db55b54cdb50401664b4feda0ff62f4d5c81b6"
+        "digest": "sha256:ec8be8f494fbeeb359d77649a99326b7cf6e257b16fd2c5ae1b4a7393e498d66"
       },
       "variant_ids": [
         "postgresql-verification-matrix-v2"
@@ -14933,7 +14933,7 @@
       "risk_rank": 9,
       "proof": {
         "path": "evidence/scenarios/behaviors/query.extension/compatibility.proof.json",
-        "digest": "sha256:e8646e3daeab96b1d4a4f8867d251fc8f80e65789ac80cdb3fb55adf9ce4c130"
+        "digest": "sha256:aaa4c02f595b6764c44f80506f49ba56007b7d5b78fe65536dfd4f815a0bd6c7"
       },
       "variant_ids": [
         "postgresql-verification-matrix-v2"
@@ -14989,7 +14989,7 @@
       "risk_rank": 9,
       "proof": {
         "path": "evidence/scenarios/behaviors/query.partitioning/compatibility.proof.json",
-        "digest": "sha256:8ace6a4531d815715fd4ef7043e0f6827e32cc7280b8cc65477786ad8f0f0e57"
+        "digest": "sha256:5938e30a20562a968584455c55b8057868ff59eeb49a5e1a98abcc84c7d63996"
       },
       "variant_ids": [
         "postgresql-verification-matrix-v2"
@@ -15045,7 +15045,7 @@
       "risk_rank": 9,
       "proof": {
         "path": "evidence/scenarios/behaviors/query.security/compatibility.proof.json",
-        "digest": "sha256:a55e20b6396828da34c2022e961511dc2e5486248ca65c11179d16a866c24c97"
+        "digest": "sha256:26df11d54e739f5b9bf1b8b853f7a9fba6bf39ae79914cc2e683f3fdcde87cb5"
       },
       "variant_ids": [
         "postgresql-verification-matrix-v2"
@@ -15101,7 +15101,7 @@
       "risk_rank": 9,
       "proof": {
         "path": "evidence/scenarios/behaviors/query.sql-surface/compatibility.proof.json",
-        "digest": "sha256:a1756f39789c1d8a85c30500ad48156ced7acc9c6cb10bfa941577a970419c1e"
+        "digest": "sha256:9a6875291d664436336270ec740e12d7a4d6c12edc4d9d2a8821d6d8ddc3b6fd"
       },
       "variant_ids": [
         "postgresql-verification-matrix-v2"
@@ -15157,7 +15157,7 @@
       "risk_rank": 9,
       "proof": {
         "path": "evidence/scenarios/behaviors/query.types-constraints/compatibility.proof.json",
-        "digest": "sha256:38ffb25b64f4358aaf1766000b65fb45fba4ce18346c120b84c7b21efdd0c284"
+        "digest": "sha256:133180364670ea3dd137471f7e088d706ac95c71a5a3548ebc1945004cc013e2"
       },
       "variant_ids": [
         "postgresql-verification-matrix-v2"
@@ -15213,7 +15213,7 @@
       "risk_rank": 9,
       "proof": {
         "path": "evidence/scenarios/behaviors/skill.router-evaluation/compatibility.proof.json",
-        "digest": "sha256:fe0aa431a2de379a1db17781605370ce6c6d8f6ea1bc1e7549fed86ab23b4efa"
+        "digest": "sha256:954c8660cd75e2a785eff6ee94d2c1185ee4a380f0f1360b99c816932ed6b1f5"
       },
       "variant_ids": [
         "postgresql-verification-matrix-v2"
@@ -15269,7 +15269,7 @@
       "risk_rank": 10,
       "proof": {
         "path": "evidence/scenarios/behaviors/concurrency.deadlock/normal.proof.json",
-        "digest": "sha256:3e47e68bfaf6d8a5e81afa9f46c9806d936da321894239fbdc907599abdbffde"
+        "digest": "sha256:c7e9cc9adfa7c129133480fee6c0ebe503a0a81c6e13d6aff31ff57b13d601b0"
       },
       "variant_ids": [
         "postgresql-verification-matrix-v2"
@@ -15325,7 +15325,7 @@
       "risk_rank": 10,
       "proof": {
         "path": "evidence/scenarios/behaviors/concurrency.locking/normal.proof.json",
-        "digest": "sha256:6d4076113033962e3bb9dab23bad75eda7bd858f1089ca6f73969ba48e7bf68c"
+        "digest": "sha256:8aa5a50e6f386a064cc4c97dffaef6bd13a0cb0bf0da2a3900858633058fe93f"
       },
       "variant_ids": [
         "postgresql-verification-matrix-v2"
@@ -15381,7 +15381,7 @@
       "risk_rank": 10,
       "proof": {
         "path": "evidence/scenarios/behaviors/concurrency.mvcc/normal.proof.json",
-        "digest": "sha256:ff96d8bb26767887807326cfd4a10009940139a21673748c88fd1206ee49325a"
+        "digest": "sha256:bf46de5ae0b28afb62da419e21d75276328923e17843ad440b1302bb723133dd"
       },
       "variant_ids": [
         "postgresql-verification-matrix-v2"
@@ -15428,7 +15428,7 @@
       "risk_rank": 10,
       "proof": {
         "path": "evidence/scenarios/behaviors/foundation.authority-lock/normal.proof.json",
-        "digest": "sha256:4a306f1d3628b78fb002be62bd14e9f40f448e50454dbb5b99e245423c0d65f1"
+        "digest": "sha256:7ac6a64bd1951c4c664f5981116e5a96821254f79519f33893f6ba4ed5ef7379"
       },
       "variant_ids": [
         "postgresql-verification-matrix-v2"
@@ -15477,7 +15477,7 @@
       "risk_rank": 10,
       "proof": {
         "path": "evidence/scenarios/behaviors/foundation.version-lock/normal.proof.json",
-        "digest": "sha256:bc7a95c968ff8d3a61ab22f764fcf8e28fb29161e5f9c70548737824f2445d68"
+        "digest": "sha256:b8ffb47075cbea9e9a6fd83c12cc8bfe9442a37e2fb9c96b7251ed875c70f5fd"
       },
       "variant_ids": [
         "postgresql-verification-matrix-v2"
@@ -15527,7 +15527,7 @@
       "risk_rank": 10,
       "proof": {
         "path": "evidence/scenarios/behaviors/lifecycle.compatibility-matrix/normal.proof.json",
-        "digest": "sha256:b3cbb0b62b815db341ee16554dfb7a935ec5f9563e2b47ff6f8d4c0f1a513e2d"
+        "digest": "sha256:aa46e1d5348c9d81e7e123f85dd3b55129fbb9e939d75d58a5da95ebe1981cf3"
       },
       "variant_ids": [
         "postgresql-verification-matrix-v2"
@@ -15573,7 +15573,7 @@
       "risk_rank": 10,
       "proof": {
         "path": "evidence/scenarios/behaviors/lifecycle.pg-upgrade/normal.proof.json",
-        "digest": "sha256:50141f89defdce5970cb3a54b087702fa0001833c0104eebf8656a0ce140ff24"
+        "digest": "sha256:7e1db56cca03d1d22c92018ccbcd55bf7388201aab00516296e95ded911c3692"
       },
       "variant_ids": [
         "postgresql-verification-matrix-v2"
@@ -15629,7 +15629,7 @@
       "risk_rank": 10,
       "proof": {
         "path": "evidence/scenarios/behaviors/lifecycle.schema-migration/normal.proof.json",
-        "digest": "sha256:5ea0dceebe7f00cfa7f1d8656c7a0fe46092ff50390992467038555df421c852"
+        "digest": "sha256:46363467e90d4fb2ab09b0dfbff3baa3e7633737a672ef9afcae9873150fa28d"
       },
       "variant_ids": [
         "postgresql-verification-matrix-v2"
@@ -15675,7 +15675,7 @@
       "risk_rank": 10,
       "proof": {
         "path": "evidence/scenarios/behaviors/lifecycle.upgrade/normal.proof.json",
-        "digest": "sha256:b7ca1d6b2503f6dbb95820454d8a8e0ad5168dca5c0822351a22209f64376b50"
+        "digest": "sha256:d83b88f2f6682f8730e0abbf0f124afe1253d2309a32fc396f11a22cfa528b85"
       },
       "variant_ids": [
         "postgresql-verification-matrix-v2"
@@ -15723,7 +15723,7 @@
       "risk_rank": 10,
       "proof": {
         "path": "evidence/scenarios/behaviors/operations.backup-recovery/normal.proof.json",
-        "digest": "sha256:b7d19fb47956dc6617348135e9c88f0f3f9a38e0d63ce8e0ee48e461654321e8"
+        "digest": "sha256:53b677845e591b363215ee3e670beac777e227c09a595e0b9a2dd13d7039fb09"
       },
       "variant_ids": [
         "postgresql-verification-matrix-v2"
@@ -15770,7 +15770,7 @@
       "risk_rank": 10,
       "proof": {
         "path": "evidence/scenarios/behaviors/operations.failure-injection/normal.proof.json",
-        "digest": "sha256:2a5070972ad4775dc42bc28bbe03c7c43d898b4b7544425d21f263d6b39c62c7"
+        "digest": "sha256:a3d476695a8cabde35ef754fa0f3153a82a2a92e36ec0d50cd9a91221fcec176"
       },
       "variant_ids": [
         "postgresql-verification-matrix-v2"
@@ -15826,7 +15826,7 @@
       "risk_rank": 10,
       "proof": {
         "path": "evidence/scenarios/behaviors/operations.logical-replication/normal.proof.json",
-        "digest": "sha256:195c778fef551b6b82ccda3f11e135c41227561b9e5e9e311b16fe7e4d1089e4"
+        "digest": "sha256:c7625ffc4096650aa8c296f6478a70790bf58ecd086ed987e109991237cdb199"
       },
       "variant_ids": [
         "postgresql-verification-matrix-v2"
@@ -15874,7 +15874,7 @@
       "risk_rank": 10,
       "proof": {
         "path": "evidence/scenarios/behaviors/operations.maintenance/normal.proof.json",
-        "digest": "sha256:c31f1e80fd70438726a54c9a7c12524ceda636d779d912dd86f1382fcafd91b1"
+        "digest": "sha256:9f84fdcf0e9653d777957f6e6252f860a62be082a21722b2790faec41fb32682"
       },
       "variant_ids": [
         "postgresql-verification-matrix-v2"
@@ -15920,7 +15920,7 @@
       "risk_rank": 10,
       "proof": {
         "path": "evidence/scenarios/behaviors/operations.observability/normal.proof.json",
-        "digest": "sha256:73ff7c12ff392e8e1769e8adf20fdb2c859aa42934062ff63a2b273937ffbf2d"
+        "digest": "sha256:1e56f30edb8322ae1770e650a58e8479bb05d62f3f4e52678098e14ad7190fd6"
       },
       "variant_ids": [
         "postgresql-verification-matrix-v2"
@@ -15965,7 +15965,7 @@
       "risk_rank": 10,
       "proof": {
         "path": "evidence/scenarios/behaviors/operations.pitr-recovery/normal.proof.json",
-        "digest": "sha256:917786bee4aa472766576d9f66f90a466aa615f9aa1ac45b719cf2c18fa8fd76"
+        "digest": "sha256:9c4d9bebc343c3f2419daf047beb296a6d00a73894591e822828dd9f236be6e3"
       },
       "variant_ids": [
         "postgresql-verification-matrix-v2"
@@ -16021,7 +16021,7 @@
       "risk_rank": 10,
       "proof": {
         "path": "evidence/scenarios/behaviors/operations.replication/normal.proof.json",
-        "digest": "sha256:d4028cb30b4e10d2143f20bc6297511314eced300745cb7325f29a2475ed2c34"
+        "digest": "sha256:ecb4522e934c70745182ceaf3cae3672f720f150d5cbd3249eeabef7c4ce012f"
       },
       "variant_ids": [
         "postgresql-verification-matrix-v2"
@@ -16069,7 +16069,7 @@
       "risk_rank": 10,
       "proof": {
         "path": "evidence/scenarios/behaviors/operations.wal/normal.proof.json",
-        "digest": "sha256:a3596b4f22a37b78a3df549d3db8078730d9264ec0a3692d41cb27431047ad09"
+        "digest": "sha256:99799d17e89e771854c9d1b971e851eff401fcac1d9a039c606b13647da2d3c5"
       },
       "variant_ids": [
         "postgresql-verification-matrix-v2"
@@ -16114,7 +16114,7 @@
       "risk_rank": 10,
       "proof": {
         "path": "evidence/scenarios/behaviors/performance.execution/normal.proof.json",
-        "digest": "sha256:307fd7d0c2e565143802fb641140e8df478dd64473568b33d774ee0021ac9e04"
+        "digest": "sha256:1af193519fc8858265e56dd7f4e7a8012f58f3883a8fde233e3ca09d791a48f7"
       },
       "variant_ids": [
         "postgresql-verification-matrix-v2"
@@ -16160,7 +16160,7 @@
       "risk_rank": 10,
       "proof": {
         "path": "evidence/scenarios/behaviors/performance.index/normal.proof.json",
-        "digest": "sha256:4864aee8f8d391fffde5389a0ce004985ef6d568d88535846ed6fdf65cf351cf"
+        "digest": "sha256:09c643bf8b5f603c3288ec30e870a6eabe0b8960557a25e924a5fa1fc4239d4f"
       },
       "variant_ids": [
         "postgresql-verification-matrix-v2"
@@ -16206,7 +16206,7 @@
       "risk_rank": 10,
       "proof": {
         "path": "evidence/scenarios/behaviors/performance.planner/normal.proof.json",
-        "digest": "sha256:45224117a90022c340c7570822675433afaca5a80d76edc2408eec6079c4b095"
+        "digest": "sha256:1bce56d2593858ab9b17b66117aea2818038acb625d83b3ccb20a92e7c1c983e"
       },
       "variant_ids": [
         "postgresql-verification-matrix-v2"
@@ -16252,7 +16252,7 @@
       "risk_rank": 10,
       "proof": {
         "path": "evidence/scenarios/behaviors/performance.statistics/normal.proof.json",
-        "digest": "sha256:f473f3fbeb733da599eed0f587557abfda968d34fb30049d0a1483e05fbc3b27"
+        "digest": "sha256:9433c2a70c5e4bb9b57a191c6e10dcdb55f121fbfc9032822fac541e8c258df7"
       },
       "variant_ids": [
         "postgresql-verification-matrix-v2"
@@ -16298,7 +16298,7 @@
       "risk_rank": 10,
       "proof": {
         "path": "evidence/scenarios/behaviors/publication.provenance/normal.proof.json",
-        "digest": "sha256:cd7f16d3bd16990b3be62d3a50347328752bd2fc1512a501053964be2bc89b38"
+        "digest": "sha256:1ded7ea26a0ca0b0a9b13bb6773bc7543860c1b9169ce0756050318e4781ad47"
       },
       "variant_ids": [
         "postgresql-verification-matrix-v2"
@@ -16348,7 +16348,7 @@
       "risk_rank": 10,
       "proof": {
         "path": "evidence/scenarios/behaviors/query.catalog-inventory/normal.proof.json",
-        "digest": "sha256:21b4856dc97429223c61e99c02f5cc85de9f447f6b6d5094f37e7185a0ce75cf"
+        "digest": "sha256:e5a2348e22243e7402f957b007430be66f6d94f6ffca7b97e2a08a5efd1785e6"
       },
       "variant_ids": [
         "postgresql-verification-matrix-v2"
@@ -16394,7 +16394,7 @@
       "risk_rank": 10,
       "proof": {
         "path": "evidence/scenarios/behaviors/query.extension/normal.proof.json",
-        "digest": "sha256:a0090bfc0d08161e2063756f48ccf5e91e31b1477b3b51b6e574a4dec8ea5097"
+        "digest": "sha256:4a6d2d900ca7911a85baeebe57ae20ff56571d546dc4b7f5e36cb38377799f3c"
       },
       "variant_ids": [
         "postgresql-verification-matrix-v2"
@@ -16440,7 +16440,7 @@
       "risk_rank": 10,
       "proof": {
         "path": "evidence/scenarios/behaviors/query.partitioning/normal.proof.json",
-        "digest": "sha256:43c68d0a22e12473f13a489a0e0a5d2d49bf92c9e216c93b72a6e89ed6f9e7c8"
+        "digest": "sha256:94e14951e8dc5c8b5dddf81c317096d676cc390140186c9cfa902fc92d4258ae"
       },
       "variant_ids": [
         "postgresql-verification-matrix-v2"
@@ -16486,7 +16486,7 @@
       "risk_rank": 10,
       "proof": {
         "path": "evidence/scenarios/behaviors/query.security/normal.proof.json",
-        "digest": "sha256:2d47d28b64f338c85ebe8c94674fcd23b2ee05295d469462448dca4574c83ca4"
+        "digest": "sha256:62b3d40564408c07ccd86e77aaaad5ec6c5a7e1ed731f65f07fe8cce53053c6f"
       },
       "variant_ids": [
         "postgresql-verification-matrix-v2"
@@ -16532,7 +16532,7 @@
       "risk_rank": 10,
       "proof": {
         "path": "evidence/scenarios/behaviors/query.sql-surface/normal.proof.json",
-        "digest": "sha256:dfc7405fc57a0f861e1dda793716bb65fd4f3b928e4fd161dc70d2facdd8ec81"
+        "digest": "sha256:727a306877b59136be2d24106f2430ae27c228cf63374cbe37ba9c8e72ca6a1e"
       },
       "variant_ids": [
         "postgresql-verification-matrix-v2"
@@ -16578,7 +16578,7 @@
       "risk_rank": 10,
       "proof": {
         "path": "evidence/scenarios/behaviors/query.types-constraints/normal.proof.json",
-        "digest": "sha256:08baf964db2c38e3252d724ca1984f9a8da81c7f83e010a344f232f3a46b05e8"
+        "digest": "sha256:f23e9bb98df8c968c115ac589faa3b26006e1df66b5e1b0e903987c0c928e5ce"
       },
       "variant_ids": [
         "postgresql-verification-matrix-v2"
@@ -16624,7 +16624,7 @@
       "risk_rank": 10,
       "proof": {
         "path": "evidence/scenarios/behaviors/skill.router-evaluation/normal.proof.json",
-        "digest": "sha256:11a217ebc6521e4d19906f36efb731379f48da13462c589eaca0fcc425055cbe"
+        "digest": "sha256:deca8c0838d28626660d6c2493620fd70a70c5dea8f9ccdf4e27e2b07cfdc6c1"
       },
       "variant_ids": [
         "postgresql-verification-matrix-v2"

@@ -28,3 +28,5 @@
 Authority body denominatorには別の`baselines/authority-body-inventory-v1.json`を使う。unique document 398件、raw anchor stable ID 5,512件、selector contract、locked body digest、Source IDを固定し、削除や変更には`migrations/authority-body-inventory-v1.json`の旧ID→新ID Mappingと別々のExecution/Migration Evidenceを必須とする。`make authority-body-non-regression-audit`の現行結果はretained 5,512、replaced 0、added 0である。昇格は`authority/reviews/decisions.json`のHuman decisionだけを認め、`authority/review-queue.snapshot.json`と各batchをBody Inventory、Source、Tool digestへ固定する。
 
 Core v1.2の`scenario_proof_rows` collection追加は、公開commit `8a4259d2de288178b8b87f09a09e5b57654c88e0`を再checkoutして`baselines/core-v1.2-v1.0.0.non-regression-baseline.json`へ再捕捉した。v1.1の全16 collectionは内容と件数が完全一致し、新collectionは公開時点0件である。現行290 rowは加法更新として比較し、以後の削除・弱化を拒否する。
+
+Core main `072d7ca77981f51754e824d70c6d4ecd55ea67e5`の`evidence_dependency_graph` collection追加は、同じ公開commitから`baselines/core-v1.4-v1.0.0.non-regression-baseline.json`へ再捕捉した。v1.3の既存collectionは内容と件数が完全一致し、新collectionだけが公開時点0件である。現行Graphのinput、output、policy、Scenario Proof/Closure Plan構造は加法項目として固定し、削除・依存退避・構造縮小を拒否する。

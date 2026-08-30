@@ -5,12 +5,12 @@ claim_ids: [skill.router]
 kind: skill-eval
 producer: postgresql-reference-atlas
 command: make eval
-created_at: "2026-08-28T13:02:37Z"
+created_at: "2026-08-30T10:35:52Z"
 environment:
   profile: local
   manifest_digest: sha256:56798a33c95014233b4f9465aa91ce1198673432edb9114da08dec932ab1331d
 source_digest: sha256:7a5097c6130472b193adb30fda89b4a607f1ae00a1ae87dbc1cf22ae5484eaef
-harness_digest: sha256:a0d9514a5747aaa22f22b941c88488dd5ee8b7caa6becfad33f15c62aba1d296
+harness_digest: sha256:7076782bab1a78910eeb9882132d498b7aad85829fa594a1fdb9610ef9e6588c
 harness_path: evidence/harnesses/skill-router-eval.manifest
 artifact:
   uri: evidence/artifacts/skill-router-eval.json
