@@ -16,7 +16,7 @@ artifact="$(mktemp)"
 current_container=""
 
 cleanup() {
-  [[ -z "$current_container" ]] || docker rm -f "$current_container" >/dev/null 2>&1 || true
+  [[ -z "$current_container" ]] || docker rm -f -v "$current_container" >/dev/null 2>&1 || true
   rm -f "$observations" "$artifact"
 }
 trap cleanup EXIT
@@ -35,7 +35,7 @@ for index in "${!images[@]}"; do
   docker exec -i "$current_container" psql -X -qAt -v ON_ERROR_STOP=1 -U postgres -d atlas \
     < "$ATLAS_ROOT/labs/compatibility-matrix/verify.sql" \
     | jq -c --arg image "${images[$index]}" '. + {image:$image}' >> "$observations"
-  docker rm -f "$current_container" >/dev/null
+  docker rm -f -v "$current_container" >/dev/null
   current_container=""
 done
 

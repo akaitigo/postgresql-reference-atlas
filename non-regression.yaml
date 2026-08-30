@@ -12,6 +12,83 @@ baseline_upgrade:
   migration_evidence_ids: [lab.migration]
 replacements:
   - collection: tests_labs
+    old_id: lab:labs/sql/run.sh
+    new_ids: [lab:labs/sql/run.sh]
+    equivalence: equal-or-stronger
+    reason: 既存SQL semanticsとAssertionを保持し、成功・失敗時のtask-owned anonymous volume cleanupを加えた。
+    execution_proof_evidence_ids: [lab.sql]
+    migration_evidence_ids: [lab.migration]
+  - collection: tests_labs
+    old_id: lab:labs/backup-recovery/run.sh
+    new_ids: [lab:labs/backup-recovery/run.sh]
+    equivalence: equal-or-stronger
+    reason: 既存Backup/Recovery Oracleを保持し、task-owned anonymous volume cleanupを加えた。
+    execution_proof_evidence_ids: [lab.backup-recovery]
+    migration_evidence_ids: [lab.migration]
+  - collection: tests_labs
+    old_id: lab:labs/compatibility-matrix/run.sh
+    new_ids: [lab:labs/compatibility-matrix/run.sh]
+    equivalence: equal-or-stronger
+    reason: 既存14.24〜18.6 denominatorとAssertionを保持し、各containerのanonymous volume cleanupを加えた。
+    execution_proof_evidence_ids: [lab.compatibility-matrix]
+    migration_evidence_ids: [lab.migration]
+  - collection: tests_labs
+    old_id: lab:labs/deadlock/run.sh
+    new_ids: [lab:labs/deadlock/run.sh]
+    equivalence: equal-or-stronger
+    reason: 既存Deadlock detection Oracleを保持し、task-owned anonymous volume cleanupを加えた。
+    execution_proof_evidence_ids: [lab.deadlock]
+    migration_evidence_ids: [lab.migration]
+  - collection: tests_labs
+    old_id: lab:labs/index/run.sh
+    new_ids: [lab:labs/index/run.sh]
+    equivalence: equal-or-stronger
+    reason: 既存Index plan Assertionを保持し、task-owned anonymous volume cleanupを加えた。
+    execution_proof_evidence_ids: [lab.index]
+    migration_evidence_ids: [lab.migration]
+  - collection: tests_labs
+    old_id: lab:labs/logical-replication/run.sh
+    new_ids: [lab:labs/logical-replication/run.sh]
+    equivalence: equal-or-stronger
+    reason: 既存Logical Replication Oracleを保持し、publisher/subscriberのanonymous volume cleanupを加えた。
+    execution_proof_evidence_ids: [lab.logical-replication]
+    migration_evidence_ids: [lab.migration]
+  - collection: tests_labs
+    old_id: lab:labs/mvcc/run.sh
+    new_ids: [lab:labs/mvcc/run.sh]
+    equivalence: equal-or-stronger
+    reason: 既存MVCC visibility Assertionを保持し、task-owned anonymous volume cleanupを加えた。
+    execution_proof_evidence_ids: [lab.mvcc]
+    migration_evidence_ids: [lab.migration]
+  - collection: tests_labs
+    old_id: lab:labs/planner/run.sh
+    new_ids: [lab:labs/planner/run.sh]
+    equivalence: equal-or-stronger
+    reason: 既存Planner plan Assertionを保持し、task-owned anonymous volume cleanupを加えた。
+    execution_proof_evidence_ids: [lab.planner]
+    migration_evidence_ids: [lab.migration]
+  - collection: tests_labs
+    old_id: lab:labs/replication/run.sh
+    new_ids: [lab:labs/replication/run.sh]
+    equivalence: equal-or-stronger
+    reason: 既存Physical Replication Oracleを保持し、primary/standbyのanonymous volume cleanupを加えた。
+    execution_proof_evidence_ids: [lab.replication]
+    migration_evidence_ids: [lab.migration]
+  - collection: tests_labs
+    old_id: lab:labs/upgrade/run.sh
+    new_ids: [lab:labs/upgrade/run.sh]
+    equivalence: equal-or-stronger
+    reason: 既存Major Upgrade Oracleを保持し、old/new containerのanonymous volume cleanupを加えた。
+    execution_proof_evidence_ids: [lab.upgrade]
+    migration_evidence_ids: [lab.migration]
+  - collection: tests_labs
+    old_id: test-harness:scripts/run-sql-lab.sh
+    new_ids: [test-harness:scripts/run-sql-lab.sh]
+    equivalence: equal-or-stronger
+    reason: 共有SQL Lab harnessの実PostgreSQL実行とAssertionを保持し、成功・失敗trapのanonymous volume cleanupを加えた。
+    execution_proof_evidence_ids: [lab.sql]
+    migration_evidence_ids: [lab.migration]
+  - collection: tests_labs
     old_id: lab:labs/pitr/run.sh
     new_ids: [lab:labs/pitr/run.sh]
     equivalence: equal-or-stronger

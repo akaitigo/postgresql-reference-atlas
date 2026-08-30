@@ -186,6 +186,14 @@
         "既存のDockerfile、verify.sh、run.shを保持する",
         "Dockerfile.securityとsecurity-verify.shで17.11から18.6へのSecurity Scenario専用Proofを追加する"
       ]
+    },
+    {
+      "id": "replication-manifest-security-scenario-addition",
+      "result": "pass",
+      "assertions": [
+        "既存のPhysical Replication LabとOracleを保持する",
+        "security-verify.shでstreaming slot、RLS、ACL、standby write拒否を実PostgreSQL 18.6で検証する"
+      ]
     }
   ],
   "verdict": "pass"

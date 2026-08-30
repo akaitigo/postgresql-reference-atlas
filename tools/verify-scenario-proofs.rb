@@ -27,6 +27,10 @@ expected_closed = %w[
   definitive-domain.operations.backup-recovery
   definitive-domain.operations.failure-injection
   definitive-domain.operations.logical-replication
+  definitive-domain.operations.maintenance
+  definitive-domain.operations.observability
+  definitive-domain.operations.pitr-recovery
+  definitive-domain.operations.replication
 ].map { |behavior_id| [behavior_id, "security"] }.sort
 runtime_report_path = File.join(root, "artifacts/pattern-scenarios/results.json")
 runtime_report = JSON.parse(File.read(runtime_report_path))
@@ -104,6 +108,18 @@ index.fetch("files").each do |entry|
         errors << "failure injection recovery Oracle" unless trace.dig("environment", "row_runtime", "failure") == "SIGKILL" && trace.dig("metric", "forced_kill_count") == 1 && trace.fetch("log").match?(/interrupted|redo/) && trace.dig("sql", "stdout").include?("ATLAS_SECURITY_PASS:operations.failure-injection")
       when "definitive-domain.operations.logical-replication"
         errors << "logical replication security Oracle" unless trace.dig("metric", "replicated_rows") == 2 && trace.dig("metric", "slot_active") == true && trace.dig("sql", "stdout").include?("ATLAS_SECURITY_PASS:operations.logical-replication") && trace.dig("sql", "stderr").include?("ATLAS_SECURITY_PASS:operations.logical-replication")
+      when "definitive-domain.operations.maintenance"
+        errors << "maintenance security Oracle" unless trace.dig("sql", "stdout").include?("ATLAS_SECURITY_PASS:operations.maintenance") && trace.dig("sql", "stderr").include?("ATLAS_SECURITY_PASS:operations.maintenance") && trace.fetch("plan").is_a?(Array)
+      when "definitive-domain.operations.observability"
+        errors << "observability security Oracle" unless trace.dig("sql", "stdout").include?("ATLAS_SECURITY_PASS:operations.observability") && trace.dig("sql", "stderr").include?("ATLAS_SECURITY_PASS:operations.observability") && trace.fetch("plan").is_a?(Array)
+      when "definitive-domain.operations.pitr-recovery"
+        result = JSON.parse(trace.dig("sql", "stdout"))
+        errors << "PITR security preservation Oracle" unless result.fetch("visible_rows") == 1 && result.fetch("after_target_rows") == 0 && result.fetch("select_acl") == "t" && result.fetch("rls_enabled") == "t" && result.fetch("update_denied") == true && result.fetch("verdict") == "pass"
+        errors << "PITR recovery plan/WAL/log Oracle" unless trace.fetch("plan").is_a?(Array) && trace.dig("wal", "source_lsn").to_s.include?("/") && trace.dig("wal", "restore_lsn").to_s.include?("/") && trace.fetch("log").include?("recovery stopping at restore point")
+      when "definitive-domain.operations.replication"
+        result = JSON.parse(trace.dig("sql", "stdout"))
+        errors << "physical replication security Oracle" unless result.fetch("visible_rows") == 1 && result.fetch("replicated_rows") == 3 && result.fetch("select_acl") == "t" && result.fetch("rls_enabled") == "t" && result.fetch("write_denied") == true && result.fetch("in_recovery") == "t" && result.fetch("sender_state") == "streaming" && result.fetch("slot_active") == "t" && result.fetch("verdict") == "pass"
+        errors << "physical replication plan/WAL/log Oracle" unless trace.fetch("plan").is_a?(Array) && trace.dig("wal", "primary_lsn") == trace.dig("wal", "replay_lsn") && trace.fetch("log").include?("cannot execute UPDATE in a read-only transaction")
       end
     end
   else
@@ -164,7 +180,7 @@ end
 errors << "completion boundary" unless summary.fetch("integrated_trace_rows") == 290 && summary.fetch("authority_atomic_rows") == 0 && summary.fetch("completion_eligible_rows") == 0
 actual_closed = actual_proofs.select { |proof| proof.dig("closure", "pattern_specific_evidence") }.map { |proof| [proof.fetch("behavior_id"), proof.fetch("scenario")] }.sort
 errors << "strict Scenario closure set" unless actual_closed == expected_closed
-errors << "strict Scenario closure boundary" unless summary.fetch("pattern_specific_rows") == 12 && summary.fetch("pattern_specific_runtime_rows") == 12 && summary.fetch("pattern_specific_gaps") == 278
+errors << "strict Scenario closure boundary" unless summary.fetch("pattern_specific_rows") == 16 && summary.fetch("pattern_specific_runtime_rows") == 16 && summary.fetch("pattern_specific_gaps") == 274
 errors << "completion limits" unless index.fetch("completion_limits").length >= 4
 
 abort errors.uniq.join("\n") unless errors.empty?

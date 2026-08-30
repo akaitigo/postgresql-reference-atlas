@@ -8,7 +8,7 @@ artifact="$(mktemp)"
 
 cleanup() {
   if [[ "${KEEP_LAB:-0}" != "1" ]]; then
-    docker rm -f "$node" >/dev/null 2>&1 || true
+    docker rm -f -v "$node" >/dev/null 2>&1 || true
   fi
   rm -f "$artifact"
 }

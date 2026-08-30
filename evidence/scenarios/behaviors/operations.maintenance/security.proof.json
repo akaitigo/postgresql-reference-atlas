@@ -9,7 +9,7 @@
   "target_id": "operations.maintenance",
   "target_set": "operations",
   "scenario": "security",
-  "status": "pattern-specific-gap",
+  "status": "bounded-runtime-proof",
   "classification": {
     "method": "postgresql-verification-matrix-row-or-explicit-gap",
     "matcher_digest": "sha256:b8734bc90dcefeb02b28f1858c73e8aba0452cf78d0d27349b708e16a4e14ad9",
@@ -51,34 +51,34 @@
       "closure_contract": {
         "surface_scenario_dedicated_row": true,
         "bounded_supporting_evidence": false,
-        "dedicated_real_server_client": false,
-        "variant_denominator_status": "gap",
-        "all_variants_executed": false,
+        "dedicated_real_server_client": true,
+        "variant_denominator_status": "observed",
+        "all_variants_executed": true,
         "retry_count": {
-          "status": "gap",
-          "value": null,
+          "status": "observed",
+          "value": 0,
           "required": 0
         },
         "oracle": {
-          "status": "gap",
+          "status": "observed",
           "proof_obligation_id": null
         },
         "source_digest": {
-          "status": "gap"
+          "status": "observed"
         },
         "harness_digest": {
-          "status": "gap"
+          "status": "observed"
         },
         "required_artifacts": {
-          "sql": "gap",
-          "plan": "gap",
-          "wal": "gap",
-          "log": "gap",
-          "metric": "gap"
+          "sql": "observed",
+          "plan": "observed",
+          "wal": "observed",
+          "log": "observed",
+          "metric": "observed"
         },
         "integrated_reference_credit": false,
         "foreign_artifact_metadata_credit": false,
-        "gap_closed": false
+        "gap_closed": true
       }
     },
     "capture_harness_digest": "sha256:b8734bc90dcefeb02b28f1858c73e8aba0452cf78d0d27349b708e16a4e14ad9",
@@ -116,6 +116,56 @@
     "compatibility_environment": null,
     "compatibility_records": [
 
+    ],
+    "scenario_runtime_report": "artifacts/pattern-scenarios/results.json",
+    "scenario_runtime_environment": {
+      "subject": "PostgreSQL",
+      "server_product": "PostgreSQL",
+      "server_version": "18.6",
+      "server_version_num": "180006",
+      "client_product": "psql",
+      "client_version": "psql (PostgreSQL) 18.6",
+      "runtime_image": "postgres:18.6-alpine",
+      "runtime_identity": "pg-atlas-security-41166-dcd91b",
+      "workers": 1,
+      "retries": 0,
+      "trace_mode": "on",
+      "execution_mode": "real-postgresql-server-client"
+    },
+    "scenario_runtime_records": [
+      {
+        "id": "security-runtime.operations.maintenance",
+        "pattern_id": "definitive-domain.operations.maintenance",
+        "variant_id": "postgresql-verification-matrix-v2",
+        "scenario": "security",
+        "title": "operations.maintenance dedicated PostgreSQL security scenario",
+        "file": "tools/run-scenario-security-001.rb",
+        "line": 1,
+        "source_digest": "sha256:b8734bc90dcefeb02b28f1858c73e8aba0452cf78d0d27349b708e16a4e14ad9",
+        "outcome": "expected",
+        "attempts": 1,
+        "final_status": "passed",
+        "error": null,
+        "oracle": {
+          "kind": "maintenance-configuration-change-requires-table-owner",
+          "scenario": "security",
+          "marker": "ATLAS_SECURITY_PASS:operations.maintenance",
+          "passed": true
+        },
+        "trace": {
+          "path": "artifacts/pattern-scenarios/traces/definitive-domain_operations_maintenance__security__postgresql-verification-matrix-v2.trace.json",
+          "digest": "sha256:f3a258c9fb7dcec2c7a4e977b493b6a11a8af3e319731788dd9dd8ceae03fe66",
+          "bytes": 5907,
+          "action_stream": true,
+          "network_stream": true,
+          "resource_stream": true
+        },
+        "screenshot": {
+          "path": "artifacts/pattern-scenarios/observations/definitive-domain_operations_maintenance__security__postgresql-verification-matrix-v2.observable.json",
+          "digest": "sha256:1a2f5ae12e793eb7250211d7fe165b30ed16960c3aee3d88fe718db8a8d6769e",
+          "bytes": 305
+        }
+      }
     ]
   },
   "integrated_reference": {
@@ -133,7 +183,7 @@
     "attempts": 1,
     "trace": {
       "path": "artifacts/reference-system/traces/security.trace.json",
-      "digest": "sha256:43dba751a7b7c15cae96690d5adbb98a54be1bccce7ff2d1cffc3efe2256384f",
+      "digest": "sha256:442154357427d0554cb8764ab4fd0572390076aa3e7abebc579a8f4770d782cb",
       "bytes": 1418,
       "action_stream": true,
       "network_stream": true,
@@ -149,29 +199,14 @@
   "closure": {
     "dedicated_row": true,
     "dedicated_artifact": true,
-    "pattern_specific_evidence": false,
-    "real_runtime_identity": false,
+    "pattern_specific_evidence": true,
+    "real_runtime_identity": true,
     "integrated_runtime_trace": true,
     "authority_atomic_behavior": false,
     "completion_eligible": false
   },
   "gaps": [
     "既存Verification MatrixにこのBehavior × Scenario専用rowがない。",
-    "専用Evidence Artifactがない。",
-    "全Variantのstable denominatorと専用実行記録がない。",
-    "専用実行のretry count 0を機械記録していない。",
-    "専用Oracleと期待結果の対応がない。",
-    "専用Source digestがない。",
-    "専用Harness digestまたはHarness pathがない。",
-    "server identity gap: 専用Evidenceにserver identityが固定されていない。",
-    "client identity gap: 専用Evidenceにclient identityが固定されていない。",
-    "version identity gap: 専用Evidenceにversion identityが固定されていない。",
-    "runtime identity gap: 専用EvidenceまたはEnvironment profileがない。",
-    "sql artifact gap: このBehavior × Scenarioに既存Verification Matrix Evidenceがない。",
-    "plan artifact gap: 専用PLAN Artifactまたは機械参照可能なpointerがない。",
-    "wal artifact gap: 専用WAL Artifactまたは機械参照可能なpointerがない。",
-    "log artifact gap: 専用Behavior × Scenario Server/Client Log Artifactがない。統合Reference System Logは流用しない。",
-    "metric artifact gap: 専用METRIC Artifactまたは機械参照可能なpointerがない。",
     "統合Reference Systemの結果は専用Surface × Scenario × Variant Closureへ流用しない。",
     "別Evidence Artifactのmetadataだけでは専用実行Proofを閉じない。",
     "Authority raw anchorのHuman reviewとAtomic behavior bindingが未完了でCompletion対象外。"

@@ -5,16 +5,16 @@ claim_ids: [foundation.reference-system.runtime-slice]
 kind: test-report
 producer: postgresql-reference-atlas
 command: make lab LAB=reference-system
-created_at: "2026-08-30T14:38:48Z"
+created_at: "2026-08-30T15:55:07Z"
 environment:
   profile: container
   manifest_digest: sha256:3df4dbd82139e17c785348c281f26b54d7300662087baaeec3034acefedf36b9
 source_digest: sha256:7a5097c6130472b193adb30fda89b4a607f1ae00a1ae87dbc1cf22ae5484eaef
-harness_digest: sha256:349925454ecfff259c7d442d839f2719e5aea5fb47e327c1c413ffe294f49b8d
+harness_digest: sha256:840ed12e5cc85a2589db9c13c617f0a65ea33eb4e3be810e59d1c153c6c405e7
 harness_path: evidence/harnesses/reference-system.manifest
 artifact:
   uri: evidence/artifacts/reference-system.json
-  digest: sha256:b9d33afb6d2f50d3cba015aba1d214c56345c7541e03ebe5d3dd0b7dc8719193
+  digest: sha256:1c91ee2ccac5927ade30ee9bf9b6e0ec4564fec307254f135a23a7a97e7dfa2d
   media_type: application/json
   size_bytes: 10170
 verdict: pass

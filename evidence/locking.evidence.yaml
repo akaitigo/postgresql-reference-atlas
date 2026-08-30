@@ -5,12 +5,12 @@ claim_ids: [concurrency.locking]
 kind: test-report
 producer: postgresql-reference-atlas
 command: make lab LAB=locking
-created_at: "2026-08-30T14:36:02Z"
+created_at: "2026-08-30T15:52:40Z"
 environment:
   profile: container
   manifest_digest: sha256:3df4dbd82139e17c785348c281f26b54d7300662087baaeec3034acefedf36b9
 source_digest: sha256:7a5097c6130472b193adb30fda89b4a607f1ae00a1ae87dbc1cf22ae5484eaef
-harness_digest: sha256:dde173ada18b5b24fcc637b227d59259b055f00f8b44c3e1315be08093c5fac2
+harness_digest: sha256:f3bb0fa87a8a48ff28d07a121f17d54c64cfc0cb442c9eff2d186b53746e6ca2
 harness_path: evidence/harnesses/locking.manifest
 artifact:
   uri: evidence/artifacts/locking.json

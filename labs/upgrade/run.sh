@@ -12,7 +12,7 @@ dump_file="$ATLAS_ROOT/evidence/artifacts/upgrade-$suffix.dump"
 
 cleanup() {
   if [[ "${KEEP_LAB:-0}" != "1" ]]; then
-    docker rm -f "$old" "$new" >/dev/null 2>&1 || true
+    docker rm -f -v "$old" "$new" >/dev/null 2>&1 || true
     docker network rm "$network" >/dev/null 2>&1 || true
   fi
   rm -f "$artifact" "$dump_file"

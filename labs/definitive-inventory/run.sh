@@ -5,14 +5,17 @@ ROOT="$(cd "$(dirname "${BASH_SOURCE[0]}")/../.." && pwd)"
 source "$ROOT/scripts/lib.sh"
 name="pgra-definitive-inventory-$$"
 capture="$(mktemp)"
-source_root="${POSTGRES_SOURCE_ROOT:-/private/tmp/postgresql-rel-18.6-git}"
+temporary_parent="${RUNNER_TEMP:-${TMPDIR:-/tmp}}"
+task_id="${GITHUB_RUN_ID:-local}-${GITHUB_RUN_ATTEMPT:-0}-${GITHUB_JOB:-definitive-inventory}"
+source_root="${POSTGRES_SOURCE_ROOT:-${temporary_parent%/}/postgresql-reference-atlas-${task_id}/postgresql-rel-18.6-git}"
 source_commit="724edf9bde9d356724ad384a2e196edc3c9f80f7"
-cleanup() { docker rm -f "$name" >/dev/null 2>&1 || true; rm -f "$capture"; }
+cleanup() { docker rm -f -v "$name" >/dev/null 2>&1 || true; rm -f "$capture"; }
 trap cleanup EXIT
 
 require_command git
 if [[ ! -d "$source_root/.git" ]]; then
   [[ ! -e "$source_root" ]] || die "Git checkoutではないSource pathが存在します: $source_root"
+  mkdir -p "$(dirname "$source_root")"
   git clone --filter=blob:none --no-checkout https://github.com/postgres/postgres.git "$source_root"
 fi
 git -C "$source_root" checkout --detach "$source_commit" >/dev/null

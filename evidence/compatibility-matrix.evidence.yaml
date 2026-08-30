@@ -5,12 +5,12 @@ claim_ids: [lifecycle.compatibility-matrix]
 kind: compatibility
 producer: postgresql-reference-atlas
 command: make lab LAB=compatibility-matrix
-created_at: "2026-08-30T14:38:40Z"
+created_at: "2026-08-30T15:55:01Z"
 environment:
   profile: cluster
   manifest_digest: sha256:718afbefcc01162a74a85ae51d34b733849f4a6b6c28d17428beead9fcd11701
 source_digest: sha256:7a5097c6130472b193adb30fda89b4a607f1ae00a1ae87dbc1cf22ae5484eaef
-harness_digest: sha256:559ccd9ca37a6e52771de30993240c51baf2cdbea23ffa4b732f4e79b928b754
+harness_digest: sha256:84efe67850ccbb36c8a96bbb87e6fc015cd59f7c951b48436c8a74ac046b64b2
 harness_path: evidence/harnesses/compatibility-matrix.manifest
 artifact:
   uri: evidence/artifacts/compatibility-matrix.json

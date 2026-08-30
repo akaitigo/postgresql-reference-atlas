@@ -15,6 +15,7 @@ jobs:
         uses: actions/checkout@v4
         with:
           path: postgresql-reference-atlas
+          fetch-depth: 0
       - name: Checkout reference-atlas-core Definitive v2
         uses: actions/checkout@v4
         with:
@@ -43,6 +44,8 @@ jobs:
         run: make -C postgresql-reference-atlas test-static
       - name: Verify Evidence Dependency Graph
         run: make -C postgresql-reference-atlas evidence-dependency-verify evidence-dependency-negative-test core-evidence-dependency-audit
+      - name: Verify task-owned Docker volume cleanup
+        run: make -C postgresql-reference-atlas docker-volume-cleanup-test
       - name: Check committed evidence freshness
         run: make -C postgresql-reference-atlas evidence-freshness
 

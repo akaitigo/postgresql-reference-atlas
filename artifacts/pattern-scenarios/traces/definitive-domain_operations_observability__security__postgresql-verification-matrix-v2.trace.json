@@ -1,0 +1,153 @@
+{
+  "schema_version": 1,
+  "pattern_id": "definitive-domain.operations.observability",
+  "target_id": "operations.observability",
+  "scenario": "security",
+  "variant_id": "postgresql-verification-matrix-v2",
+  "environment": {
+    "subject": "PostgreSQL",
+    "server_product": "PostgreSQL",
+    "server_version": "18.6",
+    "server_version_num": "180006",
+    "client_product": "psql",
+    "client_version": "psql (PostgreSQL) 18.6",
+    "runtime_image": "postgres:18.6-alpine",
+    "runtime_identity": "pg-atlas-security-41166-dcd91b",
+    "workers": 1,
+    "retries": 0,
+    "trace_mode": "on",
+    "execution_mode": "real-postgresql-server-client",
+    "row_runtime": {
+      "server_versions": [
+        "18.6"
+      ],
+      "containers": [
+        "pg-atlas-security-41166-dcd91b"
+      ]
+    }
+  },
+  "sql": {
+    "source": "\n      BEGIN;\n      CREATE ROLE atlas_observer;\n      GRANT pg_monitor TO atlas_observer;\n      CREATE TABLE atlas_observability_private(id integer PRIMARY KEY, payload text NOT NULL);\n      INSERT INTO atlas_observability_private VALUES (1, 'private');\n      REVOKE ALL ON atlas_observability_private FROM PUBLIC;\n      SET ROLE atlas_observer;\n      SELECT CASE WHEN pg_has_role(current_user, 'pg_monitor', 'MEMBER')\n        AND (SELECT count(*) FROM pg_stat_activity) > 0\n        THEN 'ATLAS_SECURITY_PASS:operations.observability'\n        ELSE 'ATLAS_SECURITY_FAIL:operations.observability' END;\n      DO $$ BEGIN\n        PERFORM * FROM atlas_observability_private;\n        RAISE EXCEPTION 'private table access unexpectedly allowed';\n      EXCEPTION WHEN insufficient_privilege THEN\n        RAISE NOTICE 'ATLAS_SECURITY_PASS:operations.observability';\n      END $$;\n      RESET ROLE;\n      ROLLBACK;\n    ",
+    "stdout": "BEGIN\nCREATE ROLE\nGRANT ROLE\nCREATE TABLE\nINSERT 0 1\nREVOKE\nSET\n                     case                     \n----------------------------------------------\n ATLAS_SECURITY_PASS:operations.observability\n(1 row)\n\nDO\nRESET\nROLLBACK\n",
+    "stderr": "NOTICE:  ATLAS_SECURITY_PASS:operations.observability\n"
+  },
+  "plan": [
+    {
+      "Plan": {
+        "Node Type": "Nested Loop",
+        "Parallel Aware": false,
+        "Async Capable": false,
+        "Join Type": "Left",
+        "Startup Cost": 1.18,
+        "Total Cost": 2.61,
+        "Plan Rows": 1,
+        "Plan Width": 100,
+        "Disabled": false,
+        "Inner Unique": true,
+        "Plans": [
+          {
+            "Node Type": "Hash Join",
+            "Parent Relationship": "Outer",
+            "Parallel Aware": false,
+            "Async Capable": false,
+            "Join Type": "Inner",
+            "Startup Cost": 1.04,
+            "Total Cost": 2.32,
+            "Plan Rows": 1,
+            "Plan Width": 40,
+            "Disabled": false,
+            "Inner Unique": true,
+            "Hash Cond": "(s.datid = d.oid)",
+            "Plans": [
+              {
+                "Node Type": "Function Scan",
+                "Parent Relationship": "Outer",
+                "Parallel Aware": false,
+                "Async Capable": false,
+                "Function Name": "pg_stat_get_activity",
+                "Alias": "s",
+                "Startup Cost": 0.0,
+                "Total Cost": 1.0,
+                "Plan Rows": 100,
+                "Plan Width": 44,
+                "Disabled": false
+              },
+              {
+                "Node Type": "Hash",
+                "Parent Relationship": "Inner",
+                "Parallel Aware": false,
+                "Async Capable": false,
+                "Startup Cost": 1.03,
+                "Total Cost": 1.03,
+                "Plan Rows": 1,
+                "Plan Width": 4,
+                "Disabled": false,
+                "Plans": [
+                  {
+                    "Node Type": "Seq Scan",
+                    "Parent Relationship": "Outer",
+                    "Parallel Aware": false,
+                    "Async Capable": false,
+                    "Relation Name": "pg_database",
+                    "Alias": "d",
+                    "Startup Cost": 0.0,
+                    "Total Cost": 1.03,
+                    "Plan Rows": 1,
+                    "Plan Width": 4,
+                    "Disabled": false,
+                    "Filter": "(datname = current_database())"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "Node Type": "Index Scan",
+            "Parent Relationship": "Inner",
+            "Parallel Aware": false,
+            "Async Capable": false,
+            "Scan Direction": "Forward",
+            "Index Name": "pg_authid_oid_index",
+            "Relation Name": "pg_authid",
+            "Alias": "u",
+            "Startup Cost": 0.14,
+            "Total Cost": 0.28,
+            "Plan Rows": 1,
+            "Plan Width": 68,
+            "Disabled": false,
+            "Index Cond": "(oid = s.usesysid)"
+          }
+        ]
+      }
+    }
+  ],
+  "wal": {
+    "before_lsn": "0/1C13918",
+    "after_lsn": "0/1C13950"
+  },
+  "log": "2026-08-30 15:56:13.005 UTC [324] LOG:  statement: BEGIN;\n2026-08-30 15:56:13.005 UTC [324] LOG:  statement: CREATE ROLE atlas_maintenance_reader;\n2026-08-30 15:56:13.006 UTC [324] LOG:  statement: CREATE TABLE atlas_maintenance_secure(id integer PRIMARY KEY, payload text NOT NULL);\n2026-08-30 15:56:13.011 UTC [324] LOG:  statement: INSERT INTO atlas_maintenance_secure VALUES (1, 'stable');\n2026-08-30 15:56:13.012 UTC [324] LOG:  statement: GRANT SELECT ON atlas_maintenance_secure TO atlas_maintenance_reader;\n2026-08-30 15:56:13.013 UTC [324] LOG:  statement: SET ROLE atlas_maintenance_reader;\n2026-08-30 15:56:13.014 UTC [324] LOG:  statement: DO $$ BEGIN\n\t        RAISE NOTICE 'ATLAS_SECURITY_PASS:operations.maintenance';\n2026-08-30 15:56:13.015 UTC [324] LOG:  statement: SELECT CASE WHEN count(*) = 1 AND min(payload) = 'stable'\n\t        THEN 'ATLAS_SECURITY_PASS:operations.maintenance'\n2026-08-30 15:56:13.017 UTC [324] LOG:  statement: RESET ROLE;\n2026-08-30 15:56:13.017 UTC [324] LOG:  statement: ROLLBACK;\n2026-08-30 15:56:13.154 UTC [331] LOG:  statement: SELECT pg_current_wal_lsn()\n2026-08-30 15:56:13.254 UTC [338] LOG:  statement: EXPLAIN (FORMAT JSON) SELECT relname, reloptions FROM pg_class WHERE relname = 'atlas_maintenance_secure'\n2026-08-30 15:56:13.405 UTC [345] LOG:  statement: SELECT pg_current_wal_lsn()\n2026-08-30 15:56:13.526 UTC [351] LOG:  statement: BEGIN;\n2026-08-30 15:56:13.527 UTC [351] LOG:  statement: CREATE ROLE atlas_observer;\n2026-08-30 15:56:13.528 UTC [351] LOG:  statement: GRANT pg_monitor TO atlas_observer;\n2026-08-30 15:56:13.530 UTC [351] LOG:  statement: CREATE TABLE atlas_observability_private(id integer PRIMARY KEY, payload text NOT NULL);\n2026-08-30 15:56:13.538 UTC [351] LOG:  statement: INSERT INTO atlas_observability_private VALUES (1, 'private');\n2026-08-30 15:56:13.539 UTC [351] LOG:  statement: REVOKE ALL ON atlas_observability_private FROM PUBLIC;\n2026-08-30 15:56:13.540 UTC [351] LOG:  statement: SET ROLE atlas_observer;\n2026-08-30 15:56:13.540 UTC [351] LOG:  statement: SELECT CASE WHEN pg_has_role(current_user, 'pg_monitor', 'MEMBER')\n\t        THEN 'ATLAS_SECURITY_PASS:operations.observability'\n2026-08-30 15:56:13.544 UTC [351] LOG:  statement: DO $$ BEGIN\n\t        RAISE NOTICE 'ATLAS_SECURITY_PASS:operations.observability';\n2026-08-30 15:56:13.546 UTC [351] LOG:  statement: RESET ROLE;\n2026-08-30 15:56:13.546 UTC [351] LOG:  statement: ROLLBACK;\n2026-08-30 15:56:13.634 UTC [358] LOG:  statement: SELECT pg_current_wal_lsn()\n2026-08-30 15:56:13.732 UTC [365] LOG:  statement: EXPLAIN (FORMAT JSON) SELECT pid, usename, state FROM pg_stat_activity WHERE datname = current_database()\n",
+  "metric": {
+    "elapsed_ms": 137.453
+  },
+  "oracle": {
+    "kind": "pg-monitor-observability-does-not-grant-private-table-access",
+    "scenario": "security",
+    "marker": "ATLAS_SECURITY_PASS:operations.observability",
+    "passed": true
+  },
+  "streams": {
+    "action": [
+      "psql security transaction"
+    ],
+    "network": [
+      "psql-to-PostgreSQL-session"
+    ],
+    "resource": [
+      "SQL",
+      "plan",
+      "WAL",
+      "server-log",
+      "elapsed-metric"
+    ]
+  }
+}

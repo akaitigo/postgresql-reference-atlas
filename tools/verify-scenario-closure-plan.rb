@@ -7,9 +7,9 @@ actual = ScenarioClosurePlan.load_json(ScenarioClosurePlan::PLAN_PATH)
 expected = ScenarioClosurePlan.build
 abort "Scenario Closure Plan is stale or edited outside its generator" unless actual == expected
 summary = actual.fetch("summary")
-abort "PostgreSQL Scenario denominator drift" unless summary.fetch("remaining_rows") == 278 && summary.fetch("by_scenario").fetch("security") == 17 && summary.fetch("by_scenario").reject { |scenario, _| scenario == "security" }.values == Array.new(9, 29)
-abort "PostgreSQL completed suite overclaim" unless summary.fetch("completed_dedicated_rows") == 12 && actual.fetch("completed_rows").length == 12 && actual.fetch("completed_rows").all? { |row| row.fetch("scenario") == "security" && row.fetch("all_first_attempt_pass") && row.fetch("all_trace_streams") && row.fetch("variant_ids") == ["postgresql-verification-matrix-v2"] }
-abort "Tranche contract" unless summary.fetch("planned_tranches") == 77 && actual.fetch("tranches").all? { |tranche| tranche.fetch("pattern_rows").between?(1, 4) && tranche.fetch("variant_runs") >= tranche.fetch("pattern_rows") }
+abort "PostgreSQL Scenario denominator drift" unless summary.fetch("remaining_rows") == 274 && summary.fetch("by_scenario").fetch("security") == 13 && summary.fetch("by_scenario").reject { |scenario, _| scenario == "security" }.values == Array.new(9, 29)
+abort "PostgreSQL completed suite overclaim" unless summary.fetch("completed_dedicated_rows") == 16 && actual.fetch("completed_rows").length == 16 && actual.fetch("completed_rows").all? { |row| row.fetch("scenario") == "security" && row.fetch("all_first_attempt_pass") && row.fetch("all_trace_streams") && row.fetch("variant_ids") == ["postgresql-verification-matrix-v2"] }
+abort "Tranche contract" unless summary.fetch("planned_tranches") == 76 && actual.fetch("tranches").all? { |tranche| tranche.fetch("pattern_rows").between?(1, 4) && tranche.fetch("variant_runs") >= tranche.fetch("pattern_rows") }
 abort "Next risk tranche" unless actual.dig("next_tranche", "id") == "security-001"
 abort "Closure contract weakened" unless actual.fetch("rows").all? do |row|
   closure = row.fetch("required_closure")

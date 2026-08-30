@@ -16,8 +16,10 @@ selecting default time zone ... UTC
 creating configuration files ... ok
 running bootstrap script ... ok
 sh: locale: not found
-2026-08-30 14:38:42.031 UTC [45] WARNING:  no usable system locales were found
+2026-08-30 15:55:02.468 UTC [45] WARNING:  no usable system locales were found
 performing post-bootstrap initialization ... ok
+initdb: warning: enabling "trust" authentication for local connections
+initdb: hint: You can change this by editing pg_hba.conf or using the option -A, or --auth-local and --auth-host, the next time you run initdb.
 syncing data to disk ... ok
 
 
@@ -25,12 +27,10 @@ Success. You can now start the database server using:
 
     pg_ctl -D /var/lib/postgresql/18/docker -l logfile start
 
-initdb: warning: enabling "trust" authentication for local connections
-initdb: hint: You can change this by editing pg_hba.conf or using the option -A, or --auth-local and --auth-host, the next time you run initdb.
-waiting for server to start....2026-08-30 14:38:43.167 UTC [57] LOG:  starting PostgreSQL 18.6 on aarch64-unknown-linux-musl, compiled by gcc (Alpine 15.2.0) 15.2.0, 64-bit
-2026-08-30 14:38:43.171 UTC [57] LOG:  listening on Unix socket "/var/run/postgresql/.s.PGSQL.5432"
-2026-08-30 14:38:43.196 UTC [63] LOG:  database system was shut down at 2026-08-30 14:38:42 UTC
-2026-08-30 14:38:43.205 UTC [57] LOG:  database system is ready to accept connections
+waiting for server to start....2026-08-30 15:55:03.432 UTC [57] LOG:  starting PostgreSQL 18.6 on aarch64-unknown-linux-musl, compiled by gcc (Alpine 15.2.0) 15.2.0, 64-bit
+2026-08-30 15:55:03.438 UTC [57] LOG:  listening on Unix socket "/var/run/postgresql/.s.PGSQL.5432"
+2026-08-30 15:55:03.450 UTC [63] LOG:  database system was shut down at 2026-08-30 15:55:03 UTC
+2026-08-30 15:55:03.455 UTC [57] LOG:  database system is ready to accept connections
  done
 server started
 CREATE DATABASE
@@ -38,25 +38,24 @@ CREATE DATABASE
 
 /usr/local/bin/docker-entrypoint.sh: ignoring /docker-entrypoint-initdb.d/*
 
-waiting for server to shut down....2026-08-30 14:38:43.581 UTC [57] LOG:  received fast shutdown request
-2026-08-30 14:38:43.585 UTC [57] LOG:  aborting any active transactions
-2026-08-30 14:38:43.590 UTC [57] LOG:  background worker "logical replication launcher" (PID 66) exited with exit code 1
-2026-08-30 14:38:43.591 UTC [61] LOG:  shutting down
-2026-08-30 14:38:43.595 UTC [61] LOG:  checkpoint starting: shutdown immediate
-2026-08-30 14:38:43.816 UTC [79] FATAL:  the database system is shutting down
-2026-08-30 14:38:43.919 UTC [61] LOG:  checkpoint complete: wrote 943 buffers (5.8%), wrote 3 SLRU buffers; 0 WAL file(s) added, 0 removed, 0 recycled; write=0.035 s, sync=0.271 s, total=0.329 s; sync files=303, longest=0.008 s, average=0.001 s; distance=4362 kB, estimate=4362 kB; lsn=0/1BA8888, redo lsn=0/1BA8888
-2026-08-30 14:38:43.961 UTC [57] LOG:  database system is shut down
+waiting for server to shut down....2026-08-30 15:55:03.625 UTC [57] LOG:  received fast shutdown request
+2026-08-30 15:55:03.626 UTC [57] LOG:  aborting any active transactions
+2026-08-30 15:55:03.628 UTC [57] LOG:  background worker "logical replication launcher" (PID 66) exited with exit code 1
+2026-08-30 15:55:03.630 UTC [61] LOG:  shutting down
+2026-08-30 15:55:03.630 UTC [61] LOG:  checkpoint starting: shutdown immediate
+2026-08-30 15:55:03.710 UTC [61] LOG:  checkpoint complete: wrote 943 buffers (5.8%), wrote 3 SLRU buffers; 0 WAL file(s) added, 0 removed, 0 recycled; write=0.030 s, sync=0.046 s, total=0.081 s; sync files=303, longest=0.005 s, average=0.001 s; distance=4362 kB, estimate=4362 kB; lsn=0/1BA8888, redo lsn=0/1BA8888
+2026-08-30 15:55:03.733 UTC [57] LOG:  database system is shut down
  done
 server stopped
 
 PostgreSQL init process complete; ready for start up.
 
-2026-08-30 14:38:44.052 UTC [1] LOG:  starting PostgreSQL 18.6 on aarch64-unknown-linux-musl, compiled by gcc (Alpine 15.2.0) 15.2.0, 64-bit
-2026-08-30 14:38:44.052 UTC [1] LOG:  listening on IPv4 address "0.0.0.0", port 5432
-2026-08-30 14:38:44.052 UTC [1] LOG:  listening on IPv6 address "::", port 5432
-2026-08-30 14:38:44.057 UTC [1] LOG:  listening on Unix socket "/var/run/postgresql/.s.PGSQL.5432"
-2026-08-30 14:38:44.071 UTC [86] LOG:  database system was shut down at 2026-08-30 14:38:43 UTC
-2026-08-30 14:38:44.079 UTC [1] LOG:  database system is ready to accept connections
-2026-08-30 14:38:47.795 UTC [123] ERROR:  new row violates row-level security policy for table "orders"
-2026-08-30 14:38:47.795 UTC [123] STATEMENT:  INSERT INTO orders(tenant_id, occurred_at, status, quantity, unit_cents)
+2026-08-30 15:55:03.876 UTC [1] LOG:  starting PostgreSQL 18.6 on aarch64-unknown-linux-musl, compiled by gcc (Alpine 15.2.0) 15.2.0, 64-bit
+2026-08-30 15:55:03.876 UTC [1] LOG:  listening on IPv4 address "0.0.0.0", port 5432
+2026-08-30 15:55:03.876 UTC [1] LOG:  listening on IPv6 address "::", port 5432
+2026-08-30 15:55:03.894 UTC [1] LOG:  listening on Unix socket "/var/run/postgresql/.s.PGSQL.5432"
+2026-08-30 15:55:03.907 UTC [79] LOG:  database system was shut down at 2026-08-30 15:55:03 UTC
+2026-08-30 15:55:03.912 UTC [1] LOG:  database system is ready to accept connections
+2026-08-30 15:55:06.538 UTC [116] ERROR:  new row violates row-level security policy for table "orders"
+2026-08-30 15:55:06.538 UTC [116] STATEMENT:  INSERT INTO orders(tenant_id, occurred_at, status, quantity, unit_cents)
 	               VALUES (2, DATE '2026-02-20', 'open', 1, 500)

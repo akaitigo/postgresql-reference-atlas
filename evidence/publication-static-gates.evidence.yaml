@@ -5,12 +5,12 @@ claim_ids: [publication.provenance]
 kind: test-report
 producer: postgresql-reference-atlas
 command: make test-static
-created_at: "2026-08-30T14:38:50Z"
+created_at: "2026-08-30T15:55:08Z"
 environment:
   profile: local
   manifest_digest: sha256:56798a33c95014233b4f9465aa91ce1198673432edb9114da08dec932ab1331d
 source_digest: sha256:7a5097c6130472b193adb30fda89b4a607f1ae00a1ae87dbc1cf22ae5484eaef
-harness_digest: sha256:d2aa18a4139816b81cbbc9350b929057ee636a5beed55410b1b35705df55f390
+harness_digest: sha256:807871e169769f131460ae3faf4c6709f8ce39bc7616d8a481f543a80c9adc64
 harness_path: evidence/harnesses/publication-static-gates.manifest
 artifact:
   uri: evidence/artifacts/publication-static-gates.json

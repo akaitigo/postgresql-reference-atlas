@@ -1,10 +1,10 @@
 {
   "schema_version": 1,
-  "id": "postgresql-evidence-rerun-20260830t143427z",
+  "id": "postgresql-evidence-rerun-20260830t155140z",
   "command": "ruby tools/rerun-evidence-dependencies.rb",
-  "observed_at": "2026-08-30T14:34:21.889303Z",
-  "started_at": "2026-08-30T14:34:27.228106Z",
-  "completed_at": "2026-08-30T14:40:33.073291Z",
+  "observed_at": "2026-08-30T15:51:37.000323Z",
+  "started_at": "2026-08-30T15:51:40.061842Z",
+  "completed_at": "2026-08-30T15:57:58.147676Z",
   "result": "passed",
   "attempts": 1,
   "runtime_identity": {
@@ -25,27 +25,27 @@
     },
     {
       "input_id": "harness.sql-schema-correctness",
-      "digest": "sha256:95d3d2367147a6c874879a97035ab4aa60d1808887ac0c524bfd01c483e46780"
+      "digest": "sha256:c72ea26e9402a552d1ef480b1793a82911940090c5f2187e1e8706a680906340"
     },
     {
       "input_id": "harness.concurrency-mvcc",
-      "digest": "sha256:bb2fa7ca0723dd17301543fb40ef13419c7c888285ecd84e6e707025978b4d1d"
+      "digest": "sha256:2276ddef473d5463141e3c07c0ad7aadf332ce2a42531bab91e44c85d95ac585"
     },
     {
       "input_id": "harness.wal-replication-backup",
-      "digest": "sha256:2ff365c812a13debdb7f208ac5fc7248ff25d50020471483b1d5212c5a3486ab"
+      "digest": "sha256:e66546ff1a3b335676c5a23298e494263faf157dfa913e204da182d32299c6ac"
     },
     {
       "input_id": "harness.migration-compatibility",
-      "digest": "sha256:d542d36594d865df09fbfb9c4bff01745e4ea120a8cba643cc3fd1fbc93abeb1"
+      "digest": "sha256:137233c4d9255e5f59524187791ef7a56e2ed7b94dee94fc05a40a10f01fe4e8"
     },
     {
       "input_id": "harness.operations-performance-recovery",
-      "digest": "sha256:2a59bae168f7a94179d2496bf6c00bd0974587e9b4fc9699b0711f0fc4beae7c"
+      "digest": "sha256:f7f49ac90ce61c132e0c00288482b0e679b19843c5c5623cbcdfa8951f6e6f65"
     },
     {
       "input_id": "harness.scenario-skill-reporting",
-      "digest": "sha256:027daf1eb2f3048badc8d0f2d938ee6c31df163b43d5974462d345910e6b5be8"
+      "digest": "sha256:1b04bc647476807df7c01bdb50cfd437c05e82c50c9c006df7c518e0bfa87925"
     },
     {
       "input_id": "runtime.postgresql-server-client",

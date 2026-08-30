@@ -5,12 +5,12 @@ claim_ids: [query.security]
 kind: test-report
 producer: postgresql-reference-atlas
 command: make lab LAB=security
-created_at: "2026-08-30T14:35:46Z"
+created_at: "2026-08-30T15:52:28Z"
 environment:
   profile: container
   manifest_digest: sha256:3df4dbd82139e17c785348c281f26b54d7300662087baaeec3034acefedf36b9
 source_digest: sha256:7a5097c6130472b193adb30fda89b4a607f1ae00a1ae87dbc1cf22ae5484eaef
-harness_digest: sha256:0e93aad5e54bd09ced386ff86b880f90970bc4905dca6450d53d072d7f2c8468
+harness_digest: sha256:e2eb9511067be72bcf0f7137ae96bc4da4f84cab0dc922eb324a2315214d11d9
 harness_path: evidence/harnesses/security.manifest
 artifact:
   uri: evidence/artifacts/security.json

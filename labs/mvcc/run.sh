@@ -5,7 +5,7 @@ require_command docker
 
 name="pgra-mvcc-$$"
 artifact="$(mktemp)"
-cleanup() { docker rm -f "$name" >/dev/null 2>&1 || true; rm -f "$artifact"; }
+cleanup() { docker rm -f -v "$name" >/dev/null 2>&1 || true; rm -f "$artifact"; }
 trap cleanup EXIT
 
 docker run -d --name "$name" -e POSTGRES_PASSWORD=atlas -e POSTGRES_DB=atlas "$PG18_IMAGE" >/dev/null

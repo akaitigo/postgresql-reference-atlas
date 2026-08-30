@@ -5,12 +5,12 @@ claim_ids: [operations.observability]
 kind: test-report
 producer: postgresql-reference-atlas
 command: make lab LAB=observability
-created_at: "2026-08-30T14:37:33Z"
+created_at: "2026-08-30T15:53:58Z"
 environment:
   profile: container
   manifest_digest: sha256:3df4dbd82139e17c785348c281f26b54d7300662087baaeec3034acefedf36b9
 source_digest: sha256:7a5097c6130472b193adb30fda89b4a607f1ae00a1ae87dbc1cf22ae5484eaef
-harness_digest: sha256:0a74783abce0c78643523c9ba5ac1bde2ac7c25049ebeb0221872737b1d03f01
+harness_digest: sha256:6b6d2e681c26a0b2e7d2bda2a4488dad587a3ec3b79629795d7b9bdb6f5c8d9b
 harness_path: evidence/harnesses/observability.manifest
 artifact:
   uri: evidence/artifacts/observability.json

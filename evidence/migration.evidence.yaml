@@ -5,12 +5,12 @@ claim_ids: [lifecycle.schema-migration]
 kind: test-report
 producer: postgresql-reference-atlas
 command: make lab LAB=migration
-created_at: "2026-08-30T14:37:49Z"
+created_at: "2026-08-30T15:54:13Z"
 environment:
   profile: container
   manifest_digest: sha256:3df4dbd82139e17c785348c281f26b54d7300662087baaeec3034acefedf36b9
 source_digest: sha256:7a5097c6130472b193adb30fda89b4a607f1ae00a1ae87dbc1cf22ae5484eaef
-harness_digest: sha256:32122577b215926df8ee0361709b57dcc1838053eaa31584e29d3d363d4755f6
+harness_digest: sha256:0cfde8c68e2b2bc0932ae13e2114c5d61923860cb5f0f712fc98fd157af5bcf0
 harness_path: evidence/harnesses/migration.manifest
 artifact:
   uri: evidence/artifacts/migration.json

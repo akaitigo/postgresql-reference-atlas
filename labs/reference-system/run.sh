@@ -14,7 +14,7 @@ final_artifact="$(mktemp)"
 server_log="$(mktemp)"
 
 cleanup() {
-  docker rm -f "$name" >/dev/null 2>&1 || true
+  docker rm -f -v "$name" >/dev/null 2>&1 || true
   rm -f "$raw_artifact" "$final_artifact" "$server_log"
 }
 trap cleanup EXIT

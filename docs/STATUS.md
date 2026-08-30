@@ -19,10 +19,10 @@ Repository statusは`incomplete`。v1 Certificateは29 Targetに限定された`
 - SQL Command、Type、Function、Operator、Cast、Catalog、GUC、Extension、Protocol、Client Toolを細粒度分類
 - Inventory未分類0、Authority Artifact 5件のDigest固定
 - Coverageを56 required Targetへ細分化
-- v1 Evidenceの69 Scenario Row対応をbounded補助Evidenceとして維持し、公開済み29 Behavior × 10 Scenarioの290専用Proof Fileへ分離した。Security trancheの12 rowは固定PostgreSQL/psql runtime、全Variant、retry 0、専用Oracle、Source/Harness digest、SQL/plan/WAL/log/metricを同一実行へ固定した。version lock、14.24〜18.6 compatibility、17.11→18.6 pg_upgrade、schema migrationに加え、17.11→18.6 logical upgrade、backup/restore、SIGKILL recovery、logical replicationの権限境界を実行した。strict Closureは12、Gapは278、Authority atomic bindingは0である
+- v1 Evidenceの69 Scenario Row対応をbounded補助Evidenceとして維持し、公開済み29 Behavior × 10 Scenarioの290専用Proof Fileへ分離した。Security trancheの16 rowは固定PostgreSQL/psql runtime、全Variant、retry 0、専用Oracle、Source/Harness digest、SQL/plan/WAL/log/metricを同一実行へ固定した。version lock、14.24〜18.6 compatibility、17.11→18.6 pg_upgrade、schema migrationに加え、17.11→18.6 logical upgrade、backup/restore、SIGKILL recovery、logical/physical replication、PITR、maintenance、observabilityの権限境界を実行した。strict Closureは16、Gapは274、Authority atomic bindingは0である
 - 全Scenario分類113,400 Row中113,331 Row、必須Scenario 43,544 Row中43,510 Rowが未接続
 - Definitive Skill Matrixは112/112 contract passだが、bounded evidence route 72 / routing gap 40。Targetはcovered 29 / partial 16 / planned 11で、Matrix passをcompletionへ算入しない
-- 統合Reference Systemは固定PostgreSQL/psql 18.6上で10 Scenarioを10/10実行し、SQL、Plan、WAL、Server log、Metricを保存する。統合成功は290個のBehavior固有Proofへ流用しない。Scenario Closure PlanはPostgreSQL固有分母から残り278 rowをrisk順77 tranche（各最大4 row）へ分割した。Backup/PITR/Replication/Upgradeの個別Security Proofは追加したが、全Scenario統合、複数方式Comparison、Runbook演習、現行Definitive Certificateは未実装
+- 統合Reference Systemは固定PostgreSQL/psql 18.6上で10 Scenarioを10/10実行し、SQL、Plan、WAL、Server log、Metricを保存する。統合成功は290個のBehavior固有Proofへ流用しない。Scenario Closure PlanはPostgreSQL固有分母から残り274 rowをrisk順76 tranche（各最大4 row）へ分割した。Backup/PITR/Replication/Upgradeの個別Security Proofは追加したが、全Scenario統合、複数方式Comparison、Runbook演習、現行Definitive Certificateは未実装
 - FE Depth Reference 18軸はsatisfied 1 / partial 17。PostgreSQL技術分野監査は15分野中15分野がincomplete、未Closure軸29。Core Depth Parityは`completion_status: incomplete`
 
 ## 非後退Baseline

@@ -1,0 +1,313 @@
+{
+  "schema_version": 1,
+  "atlas_id": "postgresql-reference-atlas",
+  "change": "task-owned-docker-anonymous-volume-cleanup",
+  "baseline_commit": "8a4259d2de288178b8b87f09a09e5b57654c88e0",
+  "proof": {
+    "command": "make docker-volume-cleanup-test",
+    "success_path": "pass",
+    "failure_path": "pass",
+    "anonymous_volume_leaks": 0,
+    "global_prune": false,
+    "preexisting_volumes_modified": false
+  },
+  "mappings": [
+    {
+      "id": "docker-volume-cleanup-evidence-harnesses-authority-lock-manifest",
+      "result": "pass",
+      "assertions": [
+        "既存のLab、Target、Assertion、Version、CI Matrixを削除または格下げしない",
+        "task-owned container cleanupは成功・失敗trapの双方でdocker rm -f -vを実行し、anonymous volume leakを0にする"
+      ]
+    },
+    {
+      "id": "docker-volume-cleanup-evidence-harnesses-backup-recovery-manifest",
+      "result": "pass",
+      "assertions": [
+        "既存のLab、Target、Assertion、Version、CI Matrixを削除または格下げしない",
+        "task-owned container cleanupは成功・失敗trapの双方でdocker rm -f -vを実行し、anonymous volume leakを0にする"
+      ]
+    },
+    {
+      "id": "docker-volume-cleanup-evidence-harnesses-catalog-inventory-manifest",
+      "result": "pass",
+      "assertions": [
+        "既存のLab、Target、Assertion、Version、CI Matrixを削除または格下げしない",
+        "task-owned container cleanupは成功・失敗trapの双方でdocker rm -f -vを実行し、anonymous volume leakを0にする"
+      ]
+    },
+    {
+      "id": "docker-volume-cleanup-evidence-harnesses-compatibility-matrix-manifest",
+      "result": "pass",
+      "assertions": [
+        "既存のLab、Target、Assertion、Version、CI Matrixを削除または格下げしない",
+        "task-owned container cleanupは成功・失敗trapの双方でdocker rm -f -vを実行し、anonymous volume leakを0にする"
+      ]
+    },
+    {
+      "id": "docker-volume-cleanup-evidence-harnesses-deadlock-manifest",
+      "result": "pass",
+      "assertions": [
+        "既存のLab、Target、Assertion、Version、CI Matrixを削除または格下げしない",
+        "task-owned container cleanupは成功・失敗trapの双方でdocker rm -f -vを実行し、anonymous volume leakを0にする"
+      ]
+    },
+    {
+      "id": "docker-volume-cleanup-evidence-harnesses-extension-manifest",
+      "result": "pass",
+      "assertions": [
+        "既存のLab、Target、Assertion、Version、CI Matrixを削除または格下げしない",
+        "task-owned container cleanupは成功・失敗trapの双方でdocker rm -f -vを実行し、anonymous volume leakを0にする"
+      ]
+    },
+    {
+      "id": "docker-volume-cleanup-evidence-harnesses-failure-injection-manifest",
+      "result": "pass",
+      "assertions": [
+        "既存のLab、Target、Assertion、Version、CI Matrixを削除または格下げしない",
+        "task-owned container cleanupは成功・失敗trapの双方でdocker rm -f -vを実行し、anonymous volume leakを0にする"
+      ]
+    },
+    {
+      "id": "docker-volume-cleanup-evidence-harnesses-foundation-authority-lock-manifest",
+      "result": "pass",
+      "assertions": [
+        "既存のLab、Target、Assertion、Version、CI Matrixを削除または格下げしない",
+        "task-owned container cleanupは成功・失敗trapの双方でdocker rm -f -vを実行し、anonymous volume leakを0にする"
+      ]
+    },
+    {
+      "id": "docker-volume-cleanup-evidence-harnesses-index-manifest",
+      "result": "pass",
+      "assertions": [
+        "既存のLab、Target、Assertion、Version、CI Matrixを削除または格下げしない",
+        "task-owned container cleanupは成功・失敗trapの双方でdocker rm -f -vを実行し、anonymous volume leakを0にする"
+      ]
+    },
+    {
+      "id": "docker-volume-cleanup-evidence-harnesses-locking-manifest",
+      "result": "pass",
+      "assertions": [
+        "既存のLab、Target、Assertion、Version、CI Matrixを削除または格下げしない",
+        "task-owned container cleanupは成功・失敗trapの双方でdocker rm -f -vを実行し、anonymous volume leakを0にする"
+      ]
+    },
+    {
+      "id": "docker-volume-cleanup-evidence-harnesses-logical-replication-manifest",
+      "result": "pass",
+      "assertions": [
+        "既存のLab、Target、Assertion、Version、CI Matrixを削除または格下げしない",
+        "task-owned container cleanupは成功・失敗trapの双方でdocker rm -f -vを実行し、anonymous volume leakを0にする"
+      ]
+    },
+    {
+      "id": "docker-volume-cleanup-evidence-harnesses-maintenance-manifest",
+      "result": "pass",
+      "assertions": [
+        "既存のLab、Target、Assertion、Version、CI Matrixを削除または格下げしない",
+        "task-owned container cleanupは成功・失敗trapの双方でdocker rm -f -vを実行し、anonymous volume leakを0にする"
+      ]
+    },
+    {
+      "id": "docker-volume-cleanup-evidence-harnesses-migration-manifest",
+      "result": "pass",
+      "assertions": [
+        "既存のLab、Target、Assertion、Version、CI Matrixを削除または格下げしない",
+        "task-owned container cleanupは成功・失敗trapの双方でdocker rm -f -vを実行し、anonymous volume leakを0にする"
+      ]
+    },
+    {
+      "id": "docker-volume-cleanup-evidence-harnesses-mvcc-manifest",
+      "result": "pass",
+      "assertions": [
+        "既存のLab、Target、Assertion、Version、CI Matrixを削除または格下げしない",
+        "task-owned container cleanupは成功・失敗trapの双方でdocker rm -f -vを実行し、anonymous volume leakを0にする"
+      ]
+    },
+    {
+      "id": "docker-volume-cleanup-evidence-harnesses-observability-manifest",
+      "result": "pass",
+      "assertions": [
+        "既存のLab、Target、Assertion、Version、CI Matrixを削除または格下げしない",
+        "task-owned container cleanupは成功・失敗trapの双方でdocker rm -f -vを実行し、anonymous volume leakを0にする"
+      ]
+    },
+    {
+      "id": "docker-volume-cleanup-evidence-harnesses-partitioning-manifest",
+      "result": "pass",
+      "assertions": [
+        "既存のLab、Target、Assertion、Version、CI Matrixを削除または格下げしない",
+        "task-owned container cleanupは成功・失敗trapの双方でdocker rm -f -vを実行し、anonymous volume leakを0にする"
+      ]
+    },
+    {
+      "id": "docker-volume-cleanup-evidence-harnesses-performance-manifest",
+      "result": "pass",
+      "assertions": [
+        "既存のLab、Target、Assertion、Version、CI Matrixを削除または格下げしない",
+        "task-owned container cleanupは成功・失敗trapの双方でdocker rm -f -vを実行し、anonymous volume leakを0にする"
+      ]
+    },
+    {
+      "id": "docker-volume-cleanup-evidence-harnesses-planner-manifest",
+      "result": "pass",
+      "assertions": [
+        "既存のLab、Target、Assertion、Version、CI Matrixを削除または格下げしない",
+        "task-owned container cleanupは成功・失敗trapの双方でdocker rm -f -vを実行し、anonymous volume leakを0にする"
+      ]
+    },
+    {
+      "id": "docker-volume-cleanup-evidence-harnesses-publication-static-gates-manifest",
+      "result": "pass",
+      "assertions": [
+        "既存のLab、Target、Assertion、Version、CI Matrixを削除または格下げしない",
+        "task-owned container cleanupは成功・失敗trapの双方でdocker rm -f -vを実行し、anonymous volume leakを0にする"
+      ]
+    },
+    {
+      "id": "docker-volume-cleanup-evidence-harnesses-security-manifest",
+      "result": "pass",
+      "assertions": [
+        "既存のLab、Target、Assertion、Version、CI Matrixを削除または格下げしない",
+        "task-owned container cleanupは成功・失敗trapの双方でdocker rm -f -vを実行し、anonymous volume leakを0にする"
+      ]
+    },
+    {
+      "id": "docker-volume-cleanup-evidence-harnesses-sql-surface-manifest",
+      "result": "pass",
+      "assertions": [
+        "既存のLab、Target、Assertion、Version、CI Matrixを削除または格下げしない",
+        "task-owned container cleanupは成功・失敗trapの双方でdocker rm -f -vを実行し、anonymous volume leakを0にする"
+      ]
+    },
+    {
+      "id": "docker-volume-cleanup-evidence-harnesses-sql-manifest",
+      "result": "pass",
+      "assertions": [
+        "既存のLab、Target、Assertion、Version、CI Matrixを削除または格下げしない",
+        "task-owned container cleanupは成功・失敗trapの双方でdocker rm -f -vを実行し、anonymous volume leakを0にする"
+      ]
+    },
+    {
+      "id": "docker-volume-cleanup-evidence-harnesses-statistics-manifest",
+      "result": "pass",
+      "assertions": [
+        "既存のLab、Target、Assertion、Version、CI Matrixを削除または格下げしない",
+        "task-owned container cleanupは成功・失敗trapの双方でdocker rm -f -vを実行し、anonymous volume leakを0にする"
+      ]
+    },
+    {
+      "id": "docker-volume-cleanup-evidence-harnesses-types-constraints-manifest",
+      "result": "pass",
+      "assertions": [
+        "既存のLab、Target、Assertion、Version、CI Matrixを削除または格下げしない",
+        "task-owned container cleanupは成功・失敗trapの双方でdocker rm -f -vを実行し、anonymous volume leakを0にする"
+      ]
+    },
+    {
+      "id": "docker-volume-cleanup-evidence-harnesses-upgrade-manifest",
+      "result": "pass",
+      "assertions": [
+        "既存のLab、Target、Assertion、Version、CI Matrixを削除または格下げしない",
+        "task-owned container cleanupは成功・失敗trapの双方でdocker rm -f -vを実行し、anonymous volume leakを0にする"
+      ]
+    },
+    {
+      "id": "docker-volume-cleanup-evidence-harnesses-wal-manifest",
+      "result": "pass",
+      "assertions": [
+        "既存のLab、Target、Assertion、Version、CI Matrixを削除または格下げしない",
+        "task-owned container cleanupは成功・失敗trapの双方でdocker rm -f -vを実行し、anonymous volume leakを0にする"
+      ]
+    },
+    {
+      "id": "docker-volume-cleanup-labs-backup-recovery-run-sh",
+      "result": "pass",
+      "assertions": [
+        "既存のLab、Target、Assertion、Version、CI Matrixを削除または格下げしない",
+        "task-owned container cleanupは成功・失敗trapの双方でdocker rm -f -vを実行し、anonymous volume leakを0にする"
+      ]
+    },
+    {
+      "id": "docker-volume-cleanup-labs-compatibility-matrix-run-sh",
+      "result": "pass",
+      "assertions": [
+        "既存のLab、Target、Assertion、Version、CI Matrixを削除または格下げしない",
+        "task-owned container cleanupは成功・失敗trapの双方でdocker rm -f -vを実行し、anonymous volume leakを0にする"
+      ]
+    },
+    {
+      "id": "docker-volume-cleanup-labs-deadlock-run-sh",
+      "result": "pass",
+      "assertions": [
+        "既存のLab、Target、Assertion、Version、CI Matrixを削除または格下げしない",
+        "task-owned container cleanupは成功・失敗trapの双方でdocker rm -f -vを実行し、anonymous volume leakを0にする"
+      ]
+    },
+    {
+      "id": "docker-volume-cleanup-labs-index-run-sh",
+      "result": "pass",
+      "assertions": [
+        "既存のLab、Target、Assertion、Version、CI Matrixを削除または格下げしない",
+        "task-owned container cleanupは成功・失敗trapの双方でdocker rm -f -vを実行し、anonymous volume leakを0にする"
+      ]
+    },
+    {
+      "id": "docker-volume-cleanup-labs-logical-replication-run-sh",
+      "result": "pass",
+      "assertions": [
+        "既存のLab、Target、Assertion、Version、CI Matrixを削除または格下げしない",
+        "task-owned container cleanupは成功・失敗trapの双方でdocker rm -f -vを実行し、anonymous volume leakを0にする"
+      ]
+    },
+    {
+      "id": "docker-volume-cleanup-labs-mvcc-run-sh",
+      "result": "pass",
+      "assertions": [
+        "既存のLab、Target、Assertion、Version、CI Matrixを削除または格下げしない",
+        "task-owned container cleanupは成功・失敗trapの双方でdocker rm -f -vを実行し、anonymous volume leakを0にする"
+      ]
+    },
+    {
+      "id": "docker-volume-cleanup-labs-planner-run-sh",
+      "result": "pass",
+      "assertions": [
+        "既存のLab、Target、Assertion、Version、CI Matrixを削除または格下げしない",
+        "task-owned container cleanupは成功・失敗trapの双方でdocker rm -f -vを実行し、anonymous volume leakを0にする"
+      ]
+    },
+    {
+      "id": "docker-volume-cleanup-labs-replication-run-sh",
+      "result": "pass",
+      "assertions": [
+        "既存のLab、Target、Assertion、Version、CI Matrixを削除または格下げしない",
+        "task-owned container cleanupは成功・失敗trapの双方でdocker rm -f -vを実行し、anonymous volume leakを0にする"
+      ]
+    },
+    {
+      "id": "docker-volume-cleanup-labs-sql-run-sh",
+      "result": "pass",
+      "assertions": [
+        "既存のLab、Target、Assertion、Version、CI Matrixを削除または格下げしない",
+        "task-owned container cleanupは成功・失敗trapの双方でdocker rm -f -vを実行し、anonymous volume leakを0にする"
+      ]
+    },
+    {
+      "id": "docker-volume-cleanup-labs-upgrade-run-sh",
+      "result": "pass",
+      "assertions": [
+        "既存のLab、Target、Assertion、Version、CI Matrixを削除または格下げしない",
+        "task-owned container cleanupは成功・失敗trapの双方でdocker rm -f -vを実行し、anonymous volume leakを0にする"
+      ]
+    },
+    {
+      "id": "docker-volume-cleanup-scripts-run-sql-lab-sh",
+      "result": "pass",
+      "assertions": [
+        "既存のLab、Target、Assertion、Version、CI Matrixを削除または格下げしない",
+        "task-owned container cleanupは成功・失敗trapの双方でdocker rm -f -vを実行し、anonymous volume leakを0にする"
+      ]
+    }
+  ],
+  "verdict": "pass"
+}

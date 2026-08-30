@@ -182,6 +182,69 @@ PATTERNS = {
     "target"=>"operations.logical-replication",
     "oracle"=>"replicated-data-remains-bounded-by-subscriber-rls-and-acl",
     "executor"=>"logical-replication"
+  },
+  "definitive-domain.operations.maintenance"=>{
+    "target"=>"operations.maintenance",
+    "oracle"=>"maintenance-configuration-change-requires-table-owner",
+    "plan_sql"=>"SELECT relname, reloptions FROM pg_class WHERE relname = 'atlas_maintenance_secure'",
+    "sql"=>%q{
+      BEGIN;
+      CREATE ROLE atlas_maintenance_reader;
+      CREATE TABLE atlas_maintenance_secure(id integer PRIMARY KEY, payload text NOT NULL);
+      INSERT INTO atlas_maintenance_secure VALUES (1, 'stable');
+      GRANT SELECT ON atlas_maintenance_secure TO atlas_maintenance_reader;
+      SET ROLE atlas_maintenance_reader;
+      DO $$ BEGIN
+        ALTER TABLE atlas_maintenance_secure SET (autovacuum_enabled = false);
+        RAISE EXCEPTION 'maintenance configuration unexpectedly allowed';
+      EXCEPTION WHEN insufficient_privilege THEN
+        RAISE NOTICE 'ATLAS_SECURITY_PASS:operations.maintenance';
+      END $$;
+      SELECT CASE WHEN count(*) = 1 AND min(payload) = 'stable'
+        THEN 'ATLAS_SECURITY_PASS:operations.maintenance'
+        ELSE 'ATLAS_SECURITY_FAIL:operations.maintenance' END
+      FROM atlas_maintenance_secure;
+      RESET ROLE;
+      ROLLBACK;
+    }
+  },
+  "definitive-domain.operations.observability"=>{
+    "target"=>"operations.observability",
+    "oracle"=>"pg-monitor-observability-does-not-grant-private-table-access",
+    "plan_sql"=>"SELECT pid, usename, state FROM pg_stat_activity WHERE datname = current_database()",
+    "sql"=>%q{
+      BEGIN;
+      CREATE ROLE atlas_observer;
+      GRANT pg_monitor TO atlas_observer;
+      CREATE TABLE atlas_observability_private(id integer PRIMARY KEY, payload text NOT NULL);
+      INSERT INTO atlas_observability_private VALUES (1, 'private');
+      REVOKE ALL ON atlas_observability_private FROM PUBLIC;
+      SET ROLE atlas_observer;
+      SELECT CASE WHEN pg_has_role(current_user, 'pg_monitor', 'MEMBER')
+        AND (SELECT count(*) FROM pg_stat_activity) > 0
+        THEN 'ATLAS_SECURITY_PASS:operations.observability'
+        ELSE 'ATLAS_SECURITY_FAIL:operations.observability' END;
+      DO $$ BEGIN
+        PERFORM * FROM atlas_observability_private;
+        RAISE EXCEPTION 'private table access unexpectedly allowed';
+      EXCEPTION WHEN insufficient_privilege THEN
+        RAISE NOTICE 'ATLAS_SECURITY_PASS:operations.observability';
+      END $$;
+      RESET ROLE;
+      ROLLBACK;
+    }
+  },
+  "definitive-domain.operations.pitr-recovery"=>{
+    "target"=>"operations.pitr-recovery",
+    "oracle"=>"pitr-restores-pre-target-rls-and-acl-boundary",
+    "executor"=>"pitr-recovery",
+    "file"=>"labs/pitr/security-verify.sh"
+  },
+  "definitive-domain.operations.replication"=>{
+    "target"=>"operations.replication",
+    "oracle"=>"physical-standby-replays-rls-and-acl-and-rejects-writes",
+    "executor"=>"physical-replication",
+    "file"=>"labs/replication/security-verify.sh"
   }
 }.freeze
 
@@ -222,7 +285,8 @@ def default_execution(container, definition)
   stdout, stderr = run!("docker", "exec", "-i", container, "psql", "-X", "-v", "ON_ERROR_STOP=1", "-U", "postgres", "-d", "atlas", stdin_data: definition.fetch("sql"))
   elapsed_ms = ((Process.clock_gettime(Process::CLOCK_MONOTONIC) - started_at) * 1000).round(3)
   after_lsn = run!("docker", "exec", container, "psql", "-XAt", "-U", "postgres", "-d", "atlas", "-c", "SELECT pg_current_wal_lsn()").first.strip
-  plan = run!("docker", "exec", container, "psql", "-XAt", "-U", "postgres", "-d", "atlas", "-c", "EXPLAIN (FORMAT JSON) SELECT 1 AS security_probe").first.strip
+  plan_sql = definition.fetch("plan_sql", "SELECT 1 AS security_probe")
+  plan = run!("docker", "exec", container, "psql", "-XAt", "-U", "postgres", "-d", "atlas", "-c", "EXPLAIN (FORMAT JSON) #{plan_sql}").first.strip
   log_stdout, log_stderr = run!("docker", "logs", container)
   {
     "sql"=>{"source"=>definition.fetch("sql"), "stdout"=>stdout, "stderr"=>stderr},
@@ -266,7 +330,7 @@ def compatibility_execution(definition)
         "elapsed_ms"=>elapsed_ms
       }
     ensure
-      system("docker", "rm", "-f", container, out: File::NULL, err: File::NULL) if started
+      system("docker", "rm", "-f", "-v", container, out: File::NULL, err: File::NULL) if started
     end
   end
   raise "Compatibility security version denominator mismatch" unless observations.map { |row| row.fetch("server_version") } == expected_versions
@@ -376,7 +440,7 @@ def logical_upgrade_execution
       "runtime"=>{"server_versions"=>[old_version, new_version], "images"=>[PG17_IMAGE, PG18_IMAGE], "containers"=>[old, new_server]}
     }
   ensure
-    system("docker", "rm", "-f", old, new_server, out: File::NULL, err: File::NULL)
+    system("docker", "rm", "-f", "-v", old, new_server, out: File::NULL, err: File::NULL)
     system("docker", "network", "rm", network, out: File::NULL, err: File::NULL)
   end
 end
@@ -411,7 +475,7 @@ def backup_recovery_execution
       "runtime"=>{"server_versions"=>["18.6"], "images"=>[PG18_IMAGE], "containers"=>[container], "restored_database"=>"atlas_restore"}
     }
   ensure
-    system("docker", "rm", "-f", container, out: File::NULL, err: File::NULL)
+    system("docker", "rm", "-f", "-v", container, out: File::NULL, err: File::NULL)
   end
 end
 
@@ -446,7 +510,7 @@ def failure_injection_execution
       "runtime"=>{"server_versions"=>["18.6"], "images"=>[PG18_IMAGE], "containers"=>[container], "failure"=>"SIGKILL"}
     }
   ensure
-    system("docker", "rm", "-f", container, out: File::NULL, err: File::NULL)
+    system("docker", "rm", "-f", "-v", container, out: File::NULL, err: File::NULL)
   end
 end
 
@@ -499,8 +563,65 @@ def logical_replication_execution
       "runtime"=>{"server_versions"=>["18.6"], "images"=>[PG18_IMAGE], "containers"=>[publisher, subscriber], "network"=>network}
     }
   ensure
-    system("docker", "rm", "-f", subscriber, publisher, out: File::NULL, err: File::NULL)
+    system("docker", "rm", "-f", "-v", subscriber, publisher, out: File::NULL, err: File::NULL)
     system("docker", "network", "rm", network, out: File::NULL, err: File::NULL)
+  end
+end
+
+def isolated_security_script_execution(target:, script_relative:, tmpfs_size:, log_files:)
+  container = "pg-atlas-security-#{target.tr('.', '-')}-#{Process.pid}-#{SecureRandom.hex(3)}"
+  script = File.join(ROOT, script_relative)
+  started_at = Process.clock_gettime(Process::CLOCK_MONOTONIC)
+  started = false
+  begin
+    run!("docker", "run", "--detach", "--name", container,
+         "--tmpfs", "/work:rw,exec,size=#{tmpfs_size}", PG18_IMAGE,
+         "sh", "-ceu", "while :; do sleep 3600; done")
+    started = true
+    run!("docker", "cp", script, "#{container}:/tmp/atlas-security-verify.sh")
+    stdout, stderr = run!("docker", "exec", container, "sh", "/tmp/atlas-security-verify.sh")
+    result = JSON.parse(stdout)
+    yield result
+    logs = log_files.map { |path| run!("docker", "exec", container, "cat", path).join }.join("\n")
+    metric_keys = %w[visible_rows after_target_rows replicated_rows archived_segments update_denied write_denied slot_active sender_state in_recovery]
+    {
+      "sql"=>{"source"=>File.read(script), "stdout"=>stdout, "stderr"=>stderr},
+      "plan"=>JSON.parse(Base64.decode64(result.fetch("plan_base64"))),
+      "wal"=>result.select { |key, _value| key.end_with?("_lsn") },
+      "log"=>logs.lines.grep(/statement:|recovery|restore|redo|replication|read-only|permission denied/).last(100).join,
+      "metric"=>result.slice(*metric_keys).merge("elapsed_ms"=>((Process.clock_gettime(Process::CLOCK_MONOTONIC) - started_at) * 1000).round(3)),
+      "oracle_output"=>"ATLAS_SECURITY_PASS:#{target}",
+      "runtime"=>{"server_versions"=>[result.fetch("version")], "images"=>[PG18_IMAGE], "containers"=>[container], "isolation"=>"container-tmpfs"}
+    }
+  ensure
+    system("docker", "rm", "-f", "-v", container, out: File::NULL, err: File::NULL) if started
+  end
+end
+
+def pitr_security_execution
+  isolated_security_script_execution(
+    target: "operations.pitr-recovery", script_relative: "labs/pitr/security-verify.sh", tmpfs_size: "768m",
+    log_files: %w[/tmp/pitr-security-primary.log /tmp/pitr-security-restore.log]
+  ) do |result|
+    raise "PITR security Oracle failed" unless result.fetch("verdict") == "pass" &&
+      result.fetch("version") == "18.6" && result.fetch("visible_rows") == 1 &&
+      result.fetch("after_target_rows") == 0 && result.fetch("select_acl") == "t" &&
+      result.fetch("rls_enabled") == "t" && result.fetch("update_denied") == true &&
+      result.fetch("in_recovery") == "f" && result.fetch("archived_segments").positive?
+  end
+end
+
+def physical_replication_security_execution
+  isolated_security_script_execution(
+    target: "operations.replication", script_relative: "labs/replication/security-verify.sh", tmpfs_size: "512m",
+    log_files: %w[/tmp/replication-security-primary.log /tmp/replication-security-standby.log]
+  ) do |result|
+    raise "physical replication security Oracle failed" unless result.fetch("verdict") == "pass" &&
+      result.fetch("version") == "18.6" && result.fetch("visible_rows") == 1 &&
+      result.fetch("replicated_rows") == 3 && result.fetch("select_acl") == "t" &&
+      result.fetch("rls_enabled") == "t" && result.fetch("write_denied") == true &&
+      result.fetch("in_recovery") == "t" && result.fetch("sender_state") == "streaming" &&
+      result.fetch("slot_active") == "t"
   end
 end
 
@@ -550,6 +671,8 @@ begin
                   when "backup-recovery" then backup_recovery_execution
                   when "failure-injection" then failure_injection_execution
                   when "logical-replication" then logical_replication_execution
+                  when "pitr-recovery" then pitr_security_execution
+                  when "physical-replication" then physical_replication_security_execution
                   else default_execution(container, definition)
                   end
       raise "Scenario Oracle marker missing: #{target}" unless execution.fetch("oracle_output").include?(marker)
@@ -592,5 +715,5 @@ begin
   raise "Scenario Evidence was not published" unless result == :published
   puts "Published atomic PostgreSQL security Evidence: #{PATTERNS.length} rows / #{PATTERNS.length} first-attempt Variant runs."
 ensure
-  system("docker", "rm", "-f", container, out: File::NULL, err: File::NULL) if started
+  system("docker", "rm", "-f", "-v", container, out: File::NULL, err: File::NULL) if started
 end
