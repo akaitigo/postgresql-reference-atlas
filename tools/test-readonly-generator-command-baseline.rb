@@ -32,7 +32,7 @@ end
 
 verify_targets.call(makefile)
 targets.each do |target, expected|
-  Dir.mktmpdir("pgra-command-baseline.", "/private/tmp") do |tmp|
+  TrackedGeneratedFreshness.with_tempdir("pgra-command-baseline.") do |tmp|
     fixture = File.join(tmp, "Makefile")
     content = File.read(makefile)
     File.write(fixture, content.sub(expected, "@echo noop"))

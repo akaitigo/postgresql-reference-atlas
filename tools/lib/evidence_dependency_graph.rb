@@ -51,6 +51,20 @@ module EvidenceDependencyGraph
   end
 
   def input_specs
+    evidence_dependency_control_plane_members = %w[
+      tools/generate-evidence-dependency-graph.rb
+      tools/lib/evidence_dependency_graph.rb
+      tools/lib/tracked_generated_freshness.rb
+      tools/verify-generated-output-readonly.rb
+      tools/verify-tracked-generated-freshness.rb
+      tools/test-readonly-generator-command-baseline.rb
+      tools/test-tracked-generated-freshness.rb
+      tests/evidence-dependency-inputs.rb
+      tests/evidence-pipeline-clean.rb
+    ].freeze
+    legacy_scenario_skill_reporting_members = files(
+      "tools/**/*.rb", "evals/run.sh", "evals/cases.json", ".agents/skills/postgresql-atlas/**/*"
+    )
     specs = [
       ["source.contract-and-authority", "source", %w[
         atlas.yaml mastery.yaml sources.lock.yaml coverage.yaml skill.package.yaml
@@ -74,9 +88,8 @@ module EvidenceDependencyGraph
         "labs/{performance,observability,maintenance,failure-injection,reference-system}/**/*",
         "scripts/{lib.sh,run-lab.sh,run-sql-lab.sh,static-gates.sh,graph-gates.rb}"
       )],
-      ["harness.scenario-skill-reporting", "harness", files(
-        "tools/**/*.rb", "evals/run.sh", "evals/cases.json", ".agents/skills/postgresql-atlas/**/*"
-      )],
+      ["harness.scenario-skill-reporting", "harness", legacy_scenario_skill_reporting_members - evidence_dependency_control_plane_members],
+      ["harness.evidence-dependency-control-plane", "harness", evidence_dependency_control_plane_members],
       ["runtime.postgresql-server-client", "runtime", %w[sources.lock.yaml go.mod scripts/lib.sh]],
       ["profile.local", "profile", %w[environments/local.yaml]],
       ["profile.container", "profile", %w[environments/container.yaml]],
@@ -258,6 +271,14 @@ module EvidenceDependencyGraph
         {"id"=>"postgresql-scenario-closure-topology-v1", "kind"=>"scenario-closure-plan", "path"=>"evidence/scenarios/closure-plan.json", "baseline_digest"=>closure_plan_structure_digest}
       ]
     }
+  end
+
+  def verify_ledger_input_bindings!(ledger_bindings, bindings = current_input_bindings)
+    bindings.each do |binding|
+      id = binding.fetch("id")
+      current = binding.fetch("digest")
+      raise "Rerun ledgerが現在の入力へ結ばれていません: #{id}" unless ledger_bindings[id] == current
+    end
   end
 
   def verify!(graph)

@@ -10,6 +10,8 @@
 
 CI validate jobはpublish経路を再実行しません。代わりにtemporary repository copy上で同じtracked generator列を走らせ、committed outputとbyte比較するread-only freshness auditを実行します。これにより、owner full rerunだけがEvidence/Graphをpublishし、CIはstaleまたは非決定的なtracked outputだけを検出します。
 
+`harness.scenario-skill-reporting` のfull rerun inputは、scenario runtime、Scenario Proof、Closure Plan、Provenance、Skill Evalの生成に実際に使うscriptとskillへ限定します。`tools/generate-evidence-dependency-graph.rb`、`tools/lib/evidence_dependency_graph.rb`、tracked freshness verifier、read-only gate baseline testは削除せず `harness.evidence-dependency-control-plane` へ移し、Graph generator/verifier変更でもstaleになるよう機械追跡します。旧 `tools/**/*.rb` 由来memberは `scenario-skill-reporting` または `evidence-dependency-control-plane` のどちらかへ必ず移され、member総集合は縮小しません。
+
 `READ_ONLY_TRACKED_GENERATORS=1 make test-static` は静的Gateを省略しません。temporary copy内で `scripts/static-gates.sh` 全体を実行し、rights/secret/schema/evidence生成の結果をcommitted outputへbyte比較します。
 
 `make evidence-pipeline-refresh`はderived generator→ledger verify→final Graphを直列実行し、`make evidence-pipeline-clean`はHEAD差分ではなく、full-run ledger bindingの再検証、Graph verify、temporary copy上の全tracked generator再実行によるbyte freshness比較を順に実施します。これによりdirty checkpointでも、tracked出力が現在のgenerator列に対してcleanかどうかをread-onlyで検証できます。generator binding省略、Graph後のEvidence mutation、Graph digestだけの書換え、Eval refresh省略、clean verifierのno-op化はnegative fixtureで拒否します。

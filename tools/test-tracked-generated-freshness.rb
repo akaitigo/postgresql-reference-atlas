@@ -9,7 +9,7 @@ require_relative "lib/tracked_generated_freshness"
 root = TrackedGeneratedFreshness::ROOT
 failures = []
 
-Dir.mktmpdir("pgra-generated-freshness-test.", "/private/tmp") do |tmp|
+TrackedGeneratedFreshness.with_tempdir("pgra-generated-freshness-test.") do |tmp|
   clone = File.join(tmp, "clone")
   FileUtils.mkdir_p(clone)
   TrackedGeneratedFreshness.copy_repo(root, clone)
@@ -23,7 +23,7 @@ Dir.mktmpdir("pgra-generated-freshness-test.", "/private/tmp") do |tmp|
   end
 end
 
-Dir.mktmpdir("pgra-generated-freshness-test.", "/private/tmp") do |tmp|
+TrackedGeneratedFreshness.with_tempdir("pgra-generated-freshness-test.") do |tmp|
   clone = File.join(tmp, "clone")
   FileUtils.mkdir_p(clone)
   TrackedGeneratedFreshness.copy_repo(root, clone)
@@ -37,7 +37,7 @@ Dir.mktmpdir("pgra-generated-freshness-test.", "/private/tmp") do |tmp|
   end
 end
 
-Dir.mktmpdir("pgra-generated-freshness-test.", "/private/tmp") do |tmp|
+TrackedGeneratedFreshness.with_tempdir("pgra-generated-freshness-test.") do |tmp|
   clone = File.join(tmp, "clone")
   FileUtils.mkdir_p(clone)
   TrackedGeneratedFreshness.copy_repo(root, clone)

@@ -4,6 +4,8 @@
 require "open3"
 require "tmpdir"
 
+require_relative "../tools/lib/tracked_generated_freshness"
+
 root = File.expand_path("..", __dir__)
 makefile = File.join(root, "Makefile")
 expected = [
@@ -31,7 +33,7 @@ end
 verify_target.call(makefile)
 
 expected.each do |command|
-  Dir.mktmpdir("pgra-evidence-pipeline-clean.", "/private/tmp") do |tmp|
+  TrackedGeneratedFreshness.with_tempdir("pgra-evidence-pipeline-clean.") do |tmp|
     fixture = File.join(tmp, "Makefile")
     lines = File.readlines(makefile)
     target_index = lines.index(target_header)

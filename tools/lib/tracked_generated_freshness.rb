@@ -143,6 +143,16 @@ module TrackedGeneratedFreshness
     PROFILES.fetch(name)
   end
 
+  def temporary_root
+    root = ENV["RUNNER_TEMP"] || ENV["TMPDIR"] || Dir.tmpdir
+    FileUtils.mkdir_p(root)
+    root
+  end
+
+  def with_tempdir(prefix, parent = temporary_root, &block)
+    Dir.mktmpdir(prefix, parent, &block)
+  end
+
   def run_generators!(root, commands)
     env = {"TMPDIR"=>root}
     commands.each do |command|
@@ -199,7 +209,7 @@ module TrackedGeneratedFreshness
   end
 
   def verify!(name = "all-tracked", root = ROOT)
-    Dir.mktmpdir("pgra-generated-freshness.", "/private/tmp") do |tmp|
+    with_tempdir("pgra-generated-freshness.") do |tmp|
       copy_repo(root, tmp)
       run_generators!(tmp, profile(name).fetch("commands"))
       compare_roots!(root, tmp, name)

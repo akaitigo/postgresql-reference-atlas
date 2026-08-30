@@ -3,10 +3,17 @@
 
 require_relative "../tools/lib/evidence_dependency_graph"
 
-input = EvidenceDependencyGraph.current_input_bindings.find { |item| item.fetch("id") == "harness.scenario-skill-reporting" }
-members = input.fetch("members")
+def locate(bindings, id)
+  bindings.find { |item| item.fetch("id") == id } || abort("missing input group: #{id}")
+end
 
-required = %w[
+def validate_partition!(bindings)
+  scenario = locate(bindings, "harness.scenario-skill-reporting")
+  control = locate(bindings, "harness.evidence-dependency-control-plane")
+  scenario_members = scenario.fetch("members")
+  control_members = control.fetch("members")
+
+  scenario_required = %w[
   evals/run.sh
   evals/cases.json
   tools/rerun-evidence-dependencies.rb
@@ -15,24 +22,80 @@ required = %w[
   tools/generate-scenario-proofs.rb
   tools/generate-scenario-closure-plan.rb
   tools/generate-provenance.rb
-  tools/generate-evidence-dependency-graph.rb
   tools/verify-definitive-skill-eval.rb
   tools/lib/atomic_evidence_publisher.rb
   tools/lib/canonical-json.rb
-  tools/lib/evidence_dependency_graph.rb
   tools/lib/postgresql-skill-routing.rb
   tools/lib/scenario_closure_plan.rb
   tools/lib/scenario_proofs.rb
 ].freeze
-required.each do |path|
-  abort "scenario-skill-reporting input is missing required generator dependency: #{path}" unless members.include?(path)
+  scenario_required.each do |path|
+    abort "scenario-skill-reporting input is missing required generator dependency: #{path}" unless scenario_members.include?(path)
+  end
+
+  control_required = %w[
+  tools/generate-evidence-dependency-graph.rb
+  tools/lib/evidence_dependency_graph.rb
+  tools/lib/tracked_generated_freshness.rb
+  tools/test-readonly-generator-command-baseline.rb
+  tools/test-tracked-generated-freshness.rb
+  tools/verify-generated-output-readonly.rb
+  tools/verify-tracked-generated-freshness.rb
+  tests/evidence-dependency-inputs.rb
+  tests/evidence-pipeline-clean.rb
+].freeze
+  control_required.each do |path|
+    abort "evidence-dependency-control-plane input is missing required verifier dependency: #{path}" unless control_members.include?(path)
+  end
+
+  legacy_members = EvidenceDependencyGraph.files("tools/**/*.rb", "evals/run.sh", "evals/cases.json", ".agents/skills/postgresql-atlas/**/*")
+  grouped_members = {}
+  bindings.each do |binding|
+    binding.fetch("members").each do |member|
+      grouped_members[member] ||= []
+      grouped_members[member] << binding.fetch("id")
+    end
+  end
+  legacy_members.each do |path|
+    groups = grouped_members[path] || []
+    abort "legacy scenario/graph member was lost from the partitioned input groups: #{path}" if groups.empty?
+  end
+  missing_mapping = legacy_members.reject do |path|
+    groups = grouped_members.fetch(path)
+    groups.include?("harness.scenario-skill-reporting") || groups.include?("harness.evidence-dependency-control-plane")
+  end
+  abort "legacy scenario/graph members were not mapped into the new input groups: #{missing_mapping.join(', ')}" unless missing_mapping.empty?
 end
 
-forbidden = %w[
-  tests/evidence-dependency-inputs.rb
-  tests/workflow-action-pins.rb
-].freeze
-unexpected = forbidden.select { |path| members.include?(path) }
-abort "scenario-skill-reporting input includes gate-only verifier/test files: #{unexpected.join(', ')}" unless unexpected.empty?
+bindings = EvidenceDependencyGraph.current_input_bindings
+validate_partition!(bindings)
 
-puts "Evidence dependency input contractを検証しました: scenario-skill-reporting excludes moved gate-only tests"
+missing_group = bindings.reject { |binding| binding.fetch("id") == "harness.evidence-dependency-control-plane" }
+begin
+  validate_partition!(missing_group)
+  abort "missing control-plane group was accepted"
+rescue SystemExit => e
+  raise unless e.status == 1
+end
+
+missing_member = Marshal.load(Marshal.dump(bindings))
+control = locate(missing_member, "harness.evidence-dependency-control-plane")
+control.fetch("members").delete("tools/lib/evidence_dependency_graph.rb")
+begin
+  validate_partition!(missing_member)
+  abort "control-plane member removal was accepted"
+rescue SystemExit => e
+  raise unless e.status == 1
+end
+
+ledger_bindings = bindings.to_h { |binding| [binding.fetch("id"), binding.fetch("digest")] }
+stale_bindings = ledger_bindings.dup
+stale_bindings["harness.evidence-dependency-control-plane"] = "sha256:#{'0' * 64}"
+begin
+  EvidenceDependencyGraph.verify_ledger_input_bindings!(stale_bindings, bindings)
+  abort "control-plane stale ledger digest was accepted"
+rescue RuntimeError => e
+  abort e.message unless e.message.include?("harness.evidence-dependency-control-plane")
+end
+
+puts "Evidence dependency input contractを検証しました: legacy member set partitioned without shrink; group-removal/member-loss and control-plane stale-digest fixtures rejected"
