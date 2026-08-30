@@ -28,8 +28,8 @@
     },
     "evaluator": {
       "path": "tools/generate-definitive-skill-eval.rb",
-      "digest": "sha256:3a4263663d44a71b6a7bf39dc414d380a68d6a59c5ff86d1be763227798f4eb2",
-      "bytes": 12142
+      "digest": "sha256:358d0088155dabd6d53f5957754f756126ddcd325ea315e68deae8cc76b0da50",
+      "bytes": 12180
     },
     "routing_library": {
       "path": "tools/lib/postgresql-skill-routing.rb",
@@ -43,8 +43,8 @@
     },
     "legacy_eval": {
       "path": "evals/postgresql-router.skill-eval.json",
-      "digest": "sha256:19952e887352df50ee312f513da04da8be6c625b476e1e101797eb0d1e93aa9b",
-      "bytes": 8940
+      "digest": "sha256:736673ce55d5f00f0a082c2b450f27516c513d10e6d86df5bb6ae397d9bd48fa",
+      "bytes": 8945
     }
   },
   "summary": {
@@ -86,9 +86,7 @@
       ],
       "mutation_policy": "read-only",
       "mutation_status": "read-only",
-      "blocked_reasons": [
-
-      ],
+      "blocked_reasons": [],
       "stop_conditions": [
         "coverage-gap",
         "unverified-evidence",
@@ -128,7 +126,7 @@
       "evidence_bindings": [
         {
           "path": "evidence/foundation-authority-lock.evidence.yaml",
-          "digest": "sha256:2e3c51a8125790372c399eb53698583d219ba1bc72bca8aa945400c23227c767",
+          "digest": "sha256:25f6d2eb0a3ed78b9db762ebb294066b3c1435e89dfce5472a7ae697184c2b9b",
           "bytes": 856,
           "id": "foundation.authority-lock"
         },
@@ -153,7 +151,7 @@
         {
           "evidence_id": "reference-system",
           "path": "evidence/artifacts/reference-system.json",
-          "digest": "sha256:e51556cc0675013457a24ee48e82d8f2d277b77d41584335ce8e5e350496d756"
+          "digest": "sha256:f882cc2fb599ef685c444b38f26b700e59939e5b374680b7f71d32a79859c8f0"
         }
       ],
       "assertions": {
@@ -194,9 +192,7 @@
       ],
       "mutation_policy": "read-only",
       "mutation_status": "read-only",
-      "blocked_reasons": [
-
-      ],
+      "blocked_reasons": [],
       "stop_conditions": [
         "coverage-gap",
         "unverified-evidence",
@@ -231,7 +227,7 @@
       "evidence_bindings": [
         {
           "path": "evidence/mvcc.evidence.yaml",
-          "digest": "sha256:ac442f06c9a4fe68268e4ee2f20913906eb6f60da064eaf67d720b5021ce2c42",
+          "digest": "sha256:927fb43fd7e8d48a8f0f2f4eceb78aa73b2aa14ebf1fd8c3a088dc3cb5d394af",
           "bytes": 768,
           "id": "lab.mvcc"
         },
@@ -255,7 +251,7 @@
         {
           "evidence_id": "reference-system",
           "path": "evidence/artifacts/reference-system.json",
-          "digest": "sha256:e51556cc0675013457a24ee48e82d8f2d277b77d41584335ce8e5e350496d756"
+          "digest": "sha256:f882cc2fb599ef685c444b38f26b700e59939e5b374680b7f71d32a79859c8f0"
         }
       ],
       "assertions": {
@@ -296,9 +292,7 @@
       ],
       "mutation_policy": "read-only",
       "mutation_status": "read-only",
-      "blocked_reasons": [
-
-      ],
+      "blocked_reasons": [],
       "stop_conditions": [
         "coverage-gap",
         "unverified-evidence",
@@ -310,8 +304,8 @@
       "implementation_bindings": [
         {
           "path": "evidence/artifacts/reference-system.json",
-          "digest": "sha256:e51556cc0675013457a24ee48e82d8f2d277b77d41584335ce8e5e350496d756",
-          "bytes": 10171,
+          "digest": "sha256:f882cc2fb599ef685c444b38f26b700e59939e5b374680b7f71d32a79859c8f0",
+          "bytes": 10170,
           "claim_scope": "route-candidate-not-target-completion-proof",
           "id": "integrated-runtime"
         },
@@ -333,7 +327,7 @@
       "evidence_bindings": [
         {
           "path": "evidence/partitioning.evidence.yaml",
-          "digest": "sha256:50c38851613842b9b3cad047d2bb59f92733be0813a443bd98e76bb932e6e65e",
+          "digest": "sha256:dd6896ea768f7c66051b8f5099b3887ce436f7faf0feb105f2d42fa187a87079",
           "bytes": 802,
           "id": "lab.partitioning"
         },
@@ -357,7 +351,7 @@
         {
           "evidence_id": "reference-system",
           "path": "evidence/artifacts/reference-system.json",
-          "digest": "sha256:e51556cc0675013457a24ee48e82d8f2d277b77d41584335ce8e5e350496d756"
+          "digest": "sha256:f882cc2fb599ef685c444b38f26b700e59939e5b374680b7f71d32a79859c8f0"
         }
       ],
       "assertions": {
@@ -398,9 +392,7 @@
       ],
       "mutation_policy": "read-only",
       "mutation_status": "read-only",
-      "blocked_reasons": [
-
-      ],
+      "blocked_reasons": [],
       "stop_conditions": [
         "coverage-gap",
         "unverified-evidence",
@@ -435,7 +427,7 @@
       "evidence_bindings": [
         {
           "path": "evidence/sql.evidence.yaml",
-          "digest": "sha256:2b759aa061d58a80740083930198e343cf5563decb4f826adc88fd54e0573ca3",
+          "digest": "sha256:ffa8753713bbea0cfe560adf0f88fdc1c6fe5470903e70f98cc1eabbc60c963b",
           "bytes": 765,
           "id": "lab.sql"
         },
@@ -448,7 +440,7 @@
         },
         {
           "path": "evidence/sql-surface.evidence.yaml",
-          "digest": "sha256:fb173e5431b767132497556ef76e446dce97483d310399a384d28728745a15fe",
+          "digest": "sha256:af3943fffc33a45caaecf9257acbfaa9710b955f4a1c07375f6786fbb5a09a41",
           "bytes": 793,
           "id": "lab.sql-surface"
         },
@@ -472,7 +464,7 @@
         {
           "evidence_id": "reference-system",
           "path": "evidence/artifacts/reference-system.json",
-          "digest": "sha256:e51556cc0675013457a24ee48e82d8f2d277b77d41584335ce8e5e350496d756"
+          "digest": "sha256:f882cc2fb599ef685c444b38f26b700e59939e5b374680b7f71d32a79859c8f0"
         }
       ],
       "assertions": {
@@ -513,9 +505,7 @@
       ],
       "mutation_policy": "read-only",
       "mutation_status": "read-only",
-      "blocked_reasons": [
-
-      ],
+      "blocked_reasons": [],
       "stop_conditions": [
         "coverage-gap",
         "unverified-evidence",
@@ -527,8 +517,8 @@
       "implementation_bindings": [
         {
           "path": "evidence/artifacts/reference-system.json",
-          "digest": "sha256:e51556cc0675013457a24ee48e82d8f2d277b77d41584335ce8e5e350496d756",
-          "bytes": 10171,
+          "digest": "sha256:f882cc2fb599ef685c444b38f26b700e59939e5b374680b7f71d32a79859c8f0",
+          "bytes": 10170,
           "claim_scope": "route-candidate-not-target-completion-proof",
           "id": "normal-oracle"
         },
@@ -550,7 +540,7 @@
       "evidence_bindings": [
         {
           "path": "evidence/sql.evidence.yaml",
-          "digest": "sha256:2b759aa061d58a80740083930198e343cf5563decb4f826adc88fd54e0573ca3",
+          "digest": "sha256:ffa8753713bbea0cfe560adf0f88fdc1c6fe5470903e70f98cc1eabbc60c963b",
           "bytes": 765,
           "id": "lab.sql"
         },
@@ -563,7 +553,7 @@
         },
         {
           "path": "evidence/sql-surface.evidence.yaml",
-          "digest": "sha256:fb173e5431b767132497556ef76e446dce97483d310399a384d28728745a15fe",
+          "digest": "sha256:af3943fffc33a45caaecf9257acbfaa9710b955f4a1c07375f6786fbb5a09a41",
           "bytes": 793,
           "id": "lab.sql-surface"
         },
@@ -587,7 +577,7 @@
         {
           "evidence_id": "reference-system",
           "path": "evidence/artifacts/reference-system.json",
-          "digest": "sha256:e51556cc0675013457a24ee48e82d8f2d277b77d41584335ce8e5e350496d756"
+          "digest": "sha256:f882cc2fb599ef685c444b38f26b700e59939e5b374680b7f71d32a79859c8f0"
         }
       ],
       "assertions": {
@@ -629,9 +619,7 @@
       ],
       "mutation_policy": "read-only",
       "mutation_status": "read-only",
-      "blocked_reasons": [
-
-      ],
+      "blocked_reasons": [],
       "stop_conditions": [
         "coverage-gap",
         "unverified-evidence",
@@ -666,7 +654,7 @@
       "evidence_bindings": [
         {
           "path": "evidence/deadlock.evidence.yaml",
-          "digest": "sha256:1a6e05e64c54b5cba490cb84df16ed45a1b8673f2a9580505ff34df100eab673",
+          "digest": "sha256:2b2fd7852ed73eef200af15035ea51f336792f6c7e7c4b93678d7a957d910191",
           "bytes": 788,
           "id": "lab.deadlock"
         },
@@ -690,7 +678,7 @@
         {
           "evidence_id": "reference-system",
           "path": "evidence/artifacts/reference-system.json",
-          "digest": "sha256:e51556cc0675013457a24ee48e82d8f2d277b77d41584335ce8e5e350496d756"
+          "digest": "sha256:f882cc2fb599ef685c444b38f26b700e59939e5b374680b7f71d32a79859c8f0"
         }
       ],
       "assertions": {
@@ -731,9 +719,7 @@
       ],
       "mutation_policy": "read-only",
       "mutation_status": "read-only",
-      "blocked_reasons": [
-
-      ],
+      "blocked_reasons": [],
       "stop_conditions": [
         "coverage-gap",
         "unverified-evidence",
@@ -768,7 +754,7 @@
       "evidence_bindings": [
         {
           "path": "evidence/performance.evidence.yaml",
-          "digest": "sha256:0a2c8f312b46058630e8c6ee3825c2f0768e8320f0f68e0340d74872596763e1",
+          "digest": "sha256:e0c1295698da907c4926151ac9a16bf3654e74ab15d99e0edfe301bd0b1feaeb",
           "bytes": 799,
           "id": "lab.performance"
         },
@@ -792,7 +778,7 @@
         {
           "evidence_id": "reference-system",
           "path": "evidence/artifacts/reference-system.json",
-          "digest": "sha256:e51556cc0675013457a24ee48e82d8f2d277b77d41584335ce8e5e350496d756"
+          "digest": "sha256:f882cc2fb599ef685c444b38f26b700e59939e5b374680b7f71d32a79859c8f0"
         }
       ],
       "assertions": {
@@ -833,9 +819,7 @@
       ],
       "mutation_policy": "read-only",
       "mutation_status": "read-only",
-      "blocked_reasons": [
-
-      ],
+      "blocked_reasons": [],
       "stop_conditions": [
         "coverage-gap",
         "unverified-evidence",
@@ -870,7 +854,7 @@
       "evidence_bindings": [
         {
           "path": "evidence/security.evidence.yaml",
-          "digest": "sha256:a8c782ad980bcc2881e740fc60a39e3faa297adcc39cac64eb84e070b77b334f",
+          "digest": "sha256:e0d1ccb72d36ad51dcbb93ec8d318ddca8f772d6f675ca1aa3cd287184c32364",
           "bytes": 782,
           "id": "lab.security"
         },
@@ -894,7 +878,7 @@
         {
           "evidence_id": "reference-system",
           "path": "evidence/artifacts/reference-system.json",
-          "digest": "sha256:e51556cc0675013457a24ee48e82d8f2d277b77d41584335ce8e5e350496d756"
+          "digest": "sha256:f882cc2fb599ef685c444b38f26b700e59939e5b374680b7f71d32a79859c8f0"
         }
       ],
       "assertions": {
@@ -935,9 +919,7 @@
       ],
       "mutation_policy": "read-only",
       "mutation_status": "read-only",
-      "blocked_reasons": [
-
-      ],
+      "blocked_reasons": [],
       "stop_conditions": [
         "coverage-gap",
         "unverified-evidence",
@@ -972,7 +954,7 @@
       "evidence_bindings": [
         {
           "path": "evidence/planner.evidence.yaml",
-          "digest": "sha256:c1f537075746712b4469f55e77beafb4ce11df19f926f0160bddd7a6e0917a0e",
+          "digest": "sha256:f3864c92f2538ac2670600f9d99ff03271527797ed72828d798fe0eae7618057",
           "bytes": 781,
           "id": "lab.planner"
         },
@@ -996,7 +978,7 @@
         {
           "evidence_id": "reference-system",
           "path": "evidence/artifacts/reference-system.json",
-          "digest": "sha256:e51556cc0675013457a24ee48e82d8f2d277b77d41584335ce8e5e350496d756"
+          "digest": "sha256:f882cc2fb599ef685c444b38f26b700e59939e5b374680b7f71d32a79859c8f0"
         }
       ],
       "assertions": {
@@ -1037,9 +1019,7 @@
       ],
       "mutation_policy": "read-only",
       "mutation_status": "read-only",
-      "blocked_reasons": [
-
-      ],
+      "blocked_reasons": [],
       "stop_conditions": [
         "coverage-gap",
         "unverified-evidence",
@@ -1104,7 +1084,7 @@
       "evidence_bindings": [
         {
           "path": "evidence/compatibility-matrix.evidence.yaml",
-          "digest": "sha256:b482452563fb9ef1de054ecf7904cfdca202938d4e71ce336531a04febe4edad",
+          "digest": "sha256:5bee6468752914f371b3ce2e6ebeed9f007374ebbc80c01c309e46f40b5fd781",
           "bytes": 847,
           "id": "lab.compatibility-matrix"
         },
@@ -1134,7 +1114,7 @@
         {
           "evidence_id": "reference-system",
           "path": "evidence/artifacts/reference-system.json",
-          "digest": "sha256:e51556cc0675013457a24ee48e82d8f2d277b77d41584335ce8e5e350496d756"
+          "digest": "sha256:f882cc2fb599ef685c444b38f26b700e59939e5b374680b7f71d32a79859c8f0"
         }
       ],
       "assertions": {
@@ -1175,9 +1155,7 @@
       ],
       "mutation_policy": "read-only",
       "mutation_status": "read-only",
-      "blocked_reasons": [
-
-      ],
+      "blocked_reasons": [],
       "stop_conditions": [
         "coverage-gap",
         "unverified-evidence",
@@ -1212,7 +1190,7 @@
       "evidence_bindings": [
         {
           "path": "evidence/migration.evidence.yaml",
-          "digest": "sha256:7421c83eb2b1d32575a6bda8eb5138aec7c5aabec9c5cb618319d518cf0e4468",
+          "digest": "sha256:653769b5c4d5fd5c168748278d9bc3d2429640e708a69fe4a187fa558da96012",
           "bytes": 798,
           "id": "lab.migration"
         },
@@ -1236,7 +1214,7 @@
         {
           "evidence_id": "reference-system",
           "path": "evidence/artifacts/reference-system.json",
-          "digest": "sha256:e51556cc0675013457a24ee48e82d8f2d277b77d41584335ce8e5e350496d756"
+          "digest": "sha256:f882cc2fb599ef685c444b38f26b700e59939e5b374680b7f71d32a79859c8f0"
         }
       ],
       "assertions": {
@@ -1277,9 +1255,7 @@
       ],
       "mutation_policy": "read-only",
       "mutation_status": "read-only",
-      "blocked_reasons": [
-
-      ],
+      "blocked_reasons": [],
       "stop_conditions": [
         "coverage-gap",
         "unverified-evidence",
@@ -1314,7 +1290,7 @@
       "evidence_bindings": [
         {
           "path": "evidence/partitioning.evidence.yaml",
-          "digest": "sha256:50c38851613842b9b3cad047d2bb59f92733be0813a443bd98e76bb932e6e65e",
+          "digest": "sha256:dd6896ea768f7c66051b8f5099b3887ce436f7faf0feb105f2d42fa187a87079",
           "bytes": 802,
           "id": "lab.partitioning"
         },
@@ -1338,7 +1314,7 @@
         {
           "evidence_id": "reference-system",
           "path": "evidence/artifacts/reference-system.json",
-          "digest": "sha256:e51556cc0675013457a24ee48e82d8f2d277b77d41584335ce8e5e350496d756"
+          "digest": "sha256:f882cc2fb599ef685c444b38f26b700e59939e5b374680b7f71d32a79859c8f0"
         }
       ],
       "assertions": {
@@ -1379,9 +1355,7 @@
       ],
       "mutation_policy": "read-only",
       "mutation_status": "read-only",
-      "blocked_reasons": [
-
-      ],
+      "blocked_reasons": [],
       "stop_conditions": [
         "coverage-gap",
         "unverified-evidence",
@@ -1426,7 +1400,7 @@
       "evidence_bindings": [
         {
           "path": "evidence/foundation-authority-lock.evidence.yaml",
-          "digest": "sha256:2e3c51a8125790372c399eb53698583d219ba1bc72bca8aa945400c23227c767",
+          "digest": "sha256:25f6d2eb0a3ed78b9db762ebb294066b3c1435e89dfce5472a7ae697184c2b9b",
           "bytes": 856,
           "id": "foundation.authority-lock"
         },
@@ -1439,7 +1413,7 @@
         },
         {
           "path": "evidence/authority-lock.evidence.yaml",
-          "digest": "sha256:2240a83bbd46e4761a069cc49809ddf3efb793c3b15ffd3ce78cd4f414a1c003",
+          "digest": "sha256:71a6f082b8ee1305eb84319b6fe35908b26a63633ee44091e3819dd89710bc38",
           "bytes": 814,
           "id": "lab.authority-lock"
         },
@@ -1465,7 +1439,7 @@
         {
           "evidence_id": "reference-system",
           "path": "evidence/artifacts/reference-system.json",
-          "digest": "sha256:e51556cc0675013457a24ee48e82d8f2d277b77d41584335ce8e5e350496d756"
+          "digest": "sha256:f882cc2fb599ef685c444b38f26b700e59939e5b374680b7f71d32a79859c8f0"
         }
       ],
       "assertions": {
@@ -1506,9 +1480,7 @@
       ],
       "mutation_policy": "read-only",
       "mutation_status": "read-only",
-      "blocked_reasons": [
-
-      ],
+      "blocked_reasons": [],
       "stop_conditions": [
         "coverage-gap",
         "unverified-evidence",
@@ -1543,8 +1515,8 @@
       "evidence_bindings": [
         {
           "path": "evidence/artifacts/reference-system.json",
-          "digest": "sha256:e51556cc0675013457a24ee48e82d8f2d277b77d41584335ce8e5e350496d756",
-          "bytes": 10171,
+          "digest": "sha256:f882cc2fb599ef685c444b38f26b700e59939e5b374680b7f71d32a79859c8f0",
+          "bytes": 10170,
           "claim_scope": "shared-integration-slice-not-target-completion-proof",
           "id": "reference-system"
         }
@@ -1561,7 +1533,7 @@
         {
           "evidence_id": "reference-system",
           "path": "evidence/artifacts/reference-system.json",
-          "digest": "sha256:e51556cc0675013457a24ee48e82d8f2d277b77d41584335ce8e5e350496d756"
+          "digest": "sha256:f882cc2fb599ef685c444b38f26b700e59939e5b374680b7f71d32a79859c8f0"
         }
       ],
       "assertions": {
@@ -1602,9 +1574,7 @@
       ],
       "mutation_policy": "read-only",
       "mutation_status": "read-only",
-      "blocked_reasons": [
-
-      ],
+      "blocked_reasons": [],
       "stop_conditions": [
         "coverage-gap",
         "unverified-evidence",
@@ -1644,7 +1614,7 @@
       "evidence_bindings": [
         {
           "path": "evidence/foundation-authority-lock.evidence.yaml",
-          "digest": "sha256:2e3c51a8125790372c399eb53698583d219ba1bc72bca8aa945400c23227c767",
+          "digest": "sha256:25f6d2eb0a3ed78b9db762ebb294066b3c1435e89dfce5472a7ae697184c2b9b",
           "bytes": 856,
           "id": "foundation.authority-lock"
         },
@@ -1669,7 +1639,7 @@
         {
           "evidence_id": "reference-system",
           "path": "evidence/artifacts/reference-system.json",
-          "digest": "sha256:e51556cc0675013457a24ee48e82d8f2d277b77d41584335ce8e5e350496d756"
+          "digest": "sha256:f882cc2fb599ef685c444b38f26b700e59939e5b374680b7f71d32a79859c8f0"
         }
       ],
       "assertions": {
@@ -1710,9 +1680,7 @@
       ],
       "mutation_policy": "read-only",
       "mutation_status": "read-only",
-      "blocked_reasons": [
-
-      ],
+      "blocked_reasons": [],
       "stop_conditions": [
         "coverage-gap",
         "unverified-evidence",
@@ -1747,7 +1715,7 @@
       "evidence_bindings": [
         {
           "path": "evidence/mvcc.evidence.yaml",
-          "digest": "sha256:ac442f06c9a4fe68268e4ee2f20913906eb6f60da064eaf67d720b5021ce2c42",
+          "digest": "sha256:927fb43fd7e8d48a8f0f2f4eceb78aa73b2aa14ebf1fd8c3a088dc3cb5d394af",
           "bytes": 768,
           "id": "lab.mvcc"
         },
@@ -1771,7 +1739,7 @@
         {
           "evidence_id": "reference-system",
           "path": "evidence/artifacts/reference-system.json",
-          "digest": "sha256:e51556cc0675013457a24ee48e82d8f2d277b77d41584335ce8e5e350496d756"
+          "digest": "sha256:f882cc2fb599ef685c444b38f26b700e59939e5b374680b7f71d32a79859c8f0"
         }
       ],
       "assertions": {
@@ -1812,9 +1780,7 @@
       ],
       "mutation_policy": "read-only",
       "mutation_status": "read-only",
-      "blocked_reasons": [
-
-      ],
+      "blocked_reasons": [],
       "stop_conditions": [
         "coverage-gap",
         "unverified-evidence",
@@ -1826,8 +1792,8 @@
       "implementation_bindings": [
         {
           "path": "evidence/artifacts/reference-system.json",
-          "digest": "sha256:e51556cc0675013457a24ee48e82d8f2d277b77d41584335ce8e5e350496d756",
-          "bytes": 10171,
+          "digest": "sha256:f882cc2fb599ef685c444b38f26b700e59939e5b374680b7f71d32a79859c8f0",
+          "bytes": 10170,
           "claim_scope": "route-candidate-not-target-completion-proof",
           "id": "integrated-runtime"
         },
@@ -1849,7 +1815,7 @@
       "evidence_bindings": [
         {
           "path": "evidence/partitioning.evidence.yaml",
-          "digest": "sha256:50c38851613842b9b3cad047d2bb59f92733be0813a443bd98e76bb932e6e65e",
+          "digest": "sha256:dd6896ea768f7c66051b8f5099b3887ce436f7faf0feb105f2d42fa187a87079",
           "bytes": 802,
           "id": "lab.partitioning"
         },
@@ -1873,7 +1839,7 @@
         {
           "evidence_id": "reference-system",
           "path": "evidence/artifacts/reference-system.json",
-          "digest": "sha256:e51556cc0675013457a24ee48e82d8f2d277b77d41584335ce8e5e350496d756"
+          "digest": "sha256:f882cc2fb599ef685c444b38f26b700e59939e5b374680b7f71d32a79859c8f0"
         }
       ],
       "assertions": {
@@ -1914,9 +1880,7 @@
       ],
       "mutation_policy": "read-only",
       "mutation_status": "read-only",
-      "blocked_reasons": [
-
-      ],
+      "blocked_reasons": [],
       "stop_conditions": [
         "coverage-gap",
         "unverified-evidence",
@@ -1951,7 +1915,7 @@
       "evidence_bindings": [
         {
           "path": "evidence/sql.evidence.yaml",
-          "digest": "sha256:2b759aa061d58a80740083930198e343cf5563decb4f826adc88fd54e0573ca3",
+          "digest": "sha256:ffa8753713bbea0cfe560adf0f88fdc1c6fe5470903e70f98cc1eabbc60c963b",
           "bytes": 765,
           "id": "lab.sql"
         },
@@ -1964,7 +1928,7 @@
         },
         {
           "path": "evidence/sql-surface.evidence.yaml",
-          "digest": "sha256:fb173e5431b767132497556ef76e446dce97483d310399a384d28728745a15fe",
+          "digest": "sha256:af3943fffc33a45caaecf9257acbfaa9710b955f4a1c07375f6786fbb5a09a41",
           "bytes": 793,
           "id": "lab.sql-surface"
         },
@@ -1988,7 +1952,7 @@
         {
           "evidence_id": "reference-system",
           "path": "evidence/artifacts/reference-system.json",
-          "digest": "sha256:e51556cc0675013457a24ee48e82d8f2d277b77d41584335ce8e5e350496d756"
+          "digest": "sha256:f882cc2fb599ef685c444b38f26b700e59939e5b374680b7f71d32a79859c8f0"
         }
       ],
       "assertions": {
@@ -2029,9 +1993,7 @@
       ],
       "mutation_policy": "read-only",
       "mutation_status": "read-only",
-      "blocked_reasons": [
-
-      ],
+      "blocked_reasons": [],
       "stop_conditions": [
         "coverage-gap",
         "unverified-evidence",
@@ -2043,8 +2005,8 @@
       "implementation_bindings": [
         {
           "path": "evidence/artifacts/reference-system.json",
-          "digest": "sha256:e51556cc0675013457a24ee48e82d8f2d277b77d41584335ce8e5e350496d756",
-          "bytes": 10171,
+          "digest": "sha256:f882cc2fb599ef685c444b38f26b700e59939e5b374680b7f71d32a79859c8f0",
+          "bytes": 10170,
           "claim_scope": "route-candidate-not-target-completion-proof",
           "id": "normal-oracle"
         },
@@ -2066,7 +2028,7 @@
       "evidence_bindings": [
         {
           "path": "evidence/sql.evidence.yaml",
-          "digest": "sha256:2b759aa061d58a80740083930198e343cf5563decb4f826adc88fd54e0573ca3",
+          "digest": "sha256:ffa8753713bbea0cfe560adf0f88fdc1c6fe5470903e70f98cc1eabbc60c963b",
           "bytes": 765,
           "id": "lab.sql"
         },
@@ -2079,7 +2041,7 @@
         },
         {
           "path": "evidence/sql-surface.evidence.yaml",
-          "digest": "sha256:fb173e5431b767132497556ef76e446dce97483d310399a384d28728745a15fe",
+          "digest": "sha256:af3943fffc33a45caaecf9257acbfaa9710b955f4a1c07375f6786fbb5a09a41",
           "bytes": 793,
           "id": "lab.sql-surface"
         },
@@ -2103,7 +2065,7 @@
         {
           "evidence_id": "reference-system",
           "path": "evidence/artifacts/reference-system.json",
-          "digest": "sha256:e51556cc0675013457a24ee48e82d8f2d277b77d41584335ce8e5e350496d756"
+          "digest": "sha256:f882cc2fb599ef685c444b38f26b700e59939e5b374680b7f71d32a79859c8f0"
         }
       ],
       "assertions": {
@@ -2145,9 +2107,7 @@
       ],
       "mutation_policy": "read-only",
       "mutation_status": "read-only",
-      "blocked_reasons": [
-
-      ],
+      "blocked_reasons": [],
       "stop_conditions": [
         "coverage-gap",
         "unverified-evidence",
@@ -2182,7 +2142,7 @@
       "evidence_bindings": [
         {
           "path": "evidence/deadlock.evidence.yaml",
-          "digest": "sha256:1a6e05e64c54b5cba490cb84df16ed45a1b8673f2a9580505ff34df100eab673",
+          "digest": "sha256:2b2fd7852ed73eef200af15035ea51f336792f6c7e7c4b93678d7a957d910191",
           "bytes": 788,
           "id": "lab.deadlock"
         },
@@ -2206,7 +2166,7 @@
         {
           "evidence_id": "reference-system",
           "path": "evidence/artifacts/reference-system.json",
-          "digest": "sha256:e51556cc0675013457a24ee48e82d8f2d277b77d41584335ce8e5e350496d756"
+          "digest": "sha256:f882cc2fb599ef685c444b38f26b700e59939e5b374680b7f71d32a79859c8f0"
         }
       ],
       "assertions": {
@@ -2247,9 +2207,7 @@
       ],
       "mutation_policy": "read-only",
       "mutation_status": "read-only",
-      "blocked_reasons": [
-
-      ],
+      "blocked_reasons": [],
       "stop_conditions": [
         "coverage-gap",
         "unverified-evidence",
@@ -2284,7 +2242,7 @@
       "evidence_bindings": [
         {
           "path": "evidence/performance.evidence.yaml",
-          "digest": "sha256:0a2c8f312b46058630e8c6ee3825c2f0768e8320f0f68e0340d74872596763e1",
+          "digest": "sha256:e0c1295698da907c4926151ac9a16bf3654e74ab15d99e0edfe301bd0b1feaeb",
           "bytes": 799,
           "id": "lab.performance"
         },
@@ -2308,7 +2266,7 @@
         {
           "evidence_id": "reference-system",
           "path": "evidence/artifacts/reference-system.json",
-          "digest": "sha256:e51556cc0675013457a24ee48e82d8f2d277b77d41584335ce8e5e350496d756"
+          "digest": "sha256:f882cc2fb599ef685c444b38f26b700e59939e5b374680b7f71d32a79859c8f0"
         }
       ],
       "assertions": {
@@ -2349,9 +2307,7 @@
       ],
       "mutation_policy": "read-only",
       "mutation_status": "read-only",
-      "blocked_reasons": [
-
-      ],
+      "blocked_reasons": [],
       "stop_conditions": [
         "coverage-gap",
         "unverified-evidence",
@@ -2386,7 +2342,7 @@
       "evidence_bindings": [
         {
           "path": "evidence/security.evidence.yaml",
-          "digest": "sha256:a8c782ad980bcc2881e740fc60a39e3faa297adcc39cac64eb84e070b77b334f",
+          "digest": "sha256:e0d1ccb72d36ad51dcbb93ec8d318ddca8f772d6f675ca1aa3cd287184c32364",
           "bytes": 782,
           "id": "lab.security"
         },
@@ -2410,7 +2366,7 @@
         {
           "evidence_id": "reference-system",
           "path": "evidence/artifacts/reference-system.json",
-          "digest": "sha256:e51556cc0675013457a24ee48e82d8f2d277b77d41584335ce8e5e350496d756"
+          "digest": "sha256:f882cc2fb599ef685c444b38f26b700e59939e5b374680b7f71d32a79859c8f0"
         }
       ],
       "assertions": {
@@ -2451,9 +2407,7 @@
       ],
       "mutation_policy": "read-only",
       "mutation_status": "read-only",
-      "blocked_reasons": [
-
-      ],
+      "blocked_reasons": [],
       "stop_conditions": [
         "coverage-gap",
         "unverified-evidence",
@@ -2488,7 +2442,7 @@
       "evidence_bindings": [
         {
           "path": "evidence/planner.evidence.yaml",
-          "digest": "sha256:c1f537075746712b4469f55e77beafb4ce11df19f926f0160bddd7a6e0917a0e",
+          "digest": "sha256:f3864c92f2538ac2670600f9d99ff03271527797ed72828d798fe0eae7618057",
           "bytes": 781,
           "id": "lab.planner"
         },
@@ -2512,7 +2466,7 @@
         {
           "evidence_id": "reference-system",
           "path": "evidence/artifacts/reference-system.json",
-          "digest": "sha256:e51556cc0675013457a24ee48e82d8f2d277b77d41584335ce8e5e350496d756"
+          "digest": "sha256:f882cc2fb599ef685c444b38f26b700e59939e5b374680b7f71d32a79859c8f0"
         }
       ],
       "assertions": {
@@ -2553,9 +2507,7 @@
       ],
       "mutation_policy": "read-only",
       "mutation_status": "read-only",
-      "blocked_reasons": [
-
-      ],
+      "blocked_reasons": [],
       "stop_conditions": [
         "coverage-gap",
         "unverified-evidence",
@@ -2620,7 +2572,7 @@
       "evidence_bindings": [
         {
           "path": "evidence/compatibility-matrix.evidence.yaml",
-          "digest": "sha256:b482452563fb9ef1de054ecf7904cfdca202938d4e71ce336531a04febe4edad",
+          "digest": "sha256:5bee6468752914f371b3ce2e6ebeed9f007374ebbc80c01c309e46f40b5fd781",
           "bytes": 847,
           "id": "lab.compatibility-matrix"
         },
@@ -2650,7 +2602,7 @@
         {
           "evidence_id": "reference-system",
           "path": "evidence/artifacts/reference-system.json",
-          "digest": "sha256:e51556cc0675013457a24ee48e82d8f2d277b77d41584335ce8e5e350496d756"
+          "digest": "sha256:f882cc2fb599ef685c444b38f26b700e59939e5b374680b7f71d32a79859c8f0"
         }
       ],
       "assertions": {
@@ -2691,9 +2643,7 @@
       ],
       "mutation_policy": "read-only",
       "mutation_status": "read-only",
-      "blocked_reasons": [
-
-      ],
+      "blocked_reasons": [],
       "stop_conditions": [
         "coverage-gap",
         "unverified-evidence",
@@ -2728,7 +2678,7 @@
       "evidence_bindings": [
         {
           "path": "evidence/migration.evidence.yaml",
-          "digest": "sha256:7421c83eb2b1d32575a6bda8eb5138aec7c5aabec9c5cb618319d518cf0e4468",
+          "digest": "sha256:653769b5c4d5fd5c168748278d9bc3d2429640e708a69fe4a187fa558da96012",
           "bytes": 798,
           "id": "lab.migration"
         },
@@ -2752,7 +2702,7 @@
         {
           "evidence_id": "reference-system",
           "path": "evidence/artifacts/reference-system.json",
-          "digest": "sha256:e51556cc0675013457a24ee48e82d8f2d277b77d41584335ce8e5e350496d756"
+          "digest": "sha256:f882cc2fb599ef685c444b38f26b700e59939e5b374680b7f71d32a79859c8f0"
         }
       ],
       "assertions": {
@@ -2793,9 +2743,7 @@
       ],
       "mutation_policy": "read-only",
       "mutation_status": "read-only",
-      "blocked_reasons": [
-
-      ],
+      "blocked_reasons": [],
       "stop_conditions": [
         "coverage-gap",
         "unverified-evidence",
@@ -2830,7 +2778,7 @@
       "evidence_bindings": [
         {
           "path": "evidence/partitioning.evidence.yaml",
-          "digest": "sha256:50c38851613842b9b3cad047d2bb59f92733be0813a443bd98e76bb932e6e65e",
+          "digest": "sha256:dd6896ea768f7c66051b8f5099b3887ce436f7faf0feb105f2d42fa187a87079",
           "bytes": 802,
           "id": "lab.partitioning"
         },
@@ -2854,7 +2802,7 @@
         {
           "evidence_id": "reference-system",
           "path": "evidence/artifacts/reference-system.json",
-          "digest": "sha256:e51556cc0675013457a24ee48e82d8f2d277b77d41584335ce8e5e350496d756"
+          "digest": "sha256:f882cc2fb599ef685c444b38f26b700e59939e5b374680b7f71d32a79859c8f0"
         }
       ],
       "assertions": {
@@ -2895,9 +2843,7 @@
       ],
       "mutation_policy": "read-only",
       "mutation_status": "read-only",
-      "blocked_reasons": [
-
-      ],
+      "blocked_reasons": [],
       "stop_conditions": [
         "coverage-gap",
         "unverified-evidence",
@@ -2932,7 +2878,7 @@
       "evidence_bindings": [
         {
           "path": "evidence/publication-static-gates.evidence.yaml",
-          "digest": "sha256:98dba3d5be2fea3a3c28dd795768104cc37e52dba221b46b479e6cf72145c7a5",
+          "digest": "sha256:e1ffff19fa5d150b9728aa64b311713a51a6da7f15818d85ac5a0f1931f0cdfa",
           "bytes": 824,
           "id": "publication.static-gates"
         },
@@ -2956,7 +2902,7 @@
         {
           "evidence_id": "reference-system",
           "path": "evidence/artifacts/reference-system.json",
-          "digest": "sha256:e51556cc0675013457a24ee48e82d8f2d277b77d41584335ce8e5e350496d756"
+          "digest": "sha256:f882cc2fb599ef685c444b38f26b700e59939e5b374680b7f71d32a79859c8f0"
         }
       ],
       "assertions": {
@@ -2997,9 +2943,7 @@
       ],
       "mutation_policy": "read-only",
       "mutation_status": "read-only",
-      "blocked_reasons": [
-
-      ],
+      "blocked_reasons": [],
       "stop_conditions": [
         "coverage-gap",
         "unverified-evidence",
@@ -3034,8 +2978,8 @@
       "evidence_bindings": [
         {
           "path": "evidence/artifacts/reference-system.json",
-          "digest": "sha256:e51556cc0675013457a24ee48e82d8f2d277b77d41584335ce8e5e350496d756",
-          "bytes": 10171,
+          "digest": "sha256:f882cc2fb599ef685c444b38f26b700e59939e5b374680b7f71d32a79859c8f0",
+          "bytes": 10170,
           "claim_scope": "shared-integration-slice-not-target-completion-proof",
           "id": "reference-system"
         }
@@ -3052,7 +2996,7 @@
         {
           "evidence_id": "reference-system",
           "path": "evidence/artifacts/reference-system.json",
-          "digest": "sha256:e51556cc0675013457a24ee48e82d8f2d277b77d41584335ce8e5e350496d756"
+          "digest": "sha256:f882cc2fb599ef685c444b38f26b700e59939e5b374680b7f71d32a79859c8f0"
         }
       ],
       "assertions": {
@@ -3093,9 +3037,7 @@
       ],
       "mutation_policy": "explicit-authorization-required",
       "mutation_status": "authorized-for-request-scope",
-      "blocked_reasons": [
-
-      ],
+      "blocked_reasons": [],
       "stop_conditions": [
         "coverage-gap",
         "unverified-evidence",
@@ -3135,7 +3077,7 @@
       "evidence_bindings": [
         {
           "path": "evidence/foundation-authority-lock.evidence.yaml",
-          "digest": "sha256:2e3c51a8125790372c399eb53698583d219ba1bc72bca8aa945400c23227c767",
+          "digest": "sha256:25f6d2eb0a3ed78b9db762ebb294066b3c1435e89dfce5472a7ae697184c2b9b",
           "bytes": 856,
           "id": "foundation.authority-lock"
         },
@@ -3160,7 +3102,7 @@
         {
           "evidence_id": "reference-system",
           "path": "evidence/artifacts/reference-system.json",
-          "digest": "sha256:e51556cc0675013457a24ee48e82d8f2d277b77d41584335ce8e5e350496d756"
+          "digest": "sha256:f882cc2fb599ef685c444b38f26b700e59939e5b374680b7f71d32a79859c8f0"
         }
       ],
       "assertions": {
@@ -3201,9 +3143,7 @@
       ],
       "mutation_policy": "explicit-authorization-required",
       "mutation_status": "authorized-for-request-scope",
-      "blocked_reasons": [
-
-      ],
+      "blocked_reasons": [],
       "stop_conditions": [
         "coverage-gap",
         "unverified-evidence",
@@ -3238,7 +3178,7 @@
       "evidence_bindings": [
         {
           "path": "evidence/mvcc.evidence.yaml",
-          "digest": "sha256:ac442f06c9a4fe68268e4ee2f20913906eb6f60da064eaf67d720b5021ce2c42",
+          "digest": "sha256:927fb43fd7e8d48a8f0f2f4eceb78aa73b2aa14ebf1fd8c3a088dc3cb5d394af",
           "bytes": 768,
           "id": "lab.mvcc"
         },
@@ -3262,7 +3202,7 @@
         {
           "evidence_id": "reference-system",
           "path": "evidence/artifacts/reference-system.json",
-          "digest": "sha256:e51556cc0675013457a24ee48e82d8f2d277b77d41584335ce8e5e350496d756"
+          "digest": "sha256:f882cc2fb599ef685c444b38f26b700e59939e5b374680b7f71d32a79859c8f0"
         }
       ],
       "assertions": {
@@ -3303,9 +3243,7 @@
       ],
       "mutation_policy": "explicit-authorization-required",
       "mutation_status": "authorized-for-request-scope",
-      "blocked_reasons": [
-
-      ],
+      "blocked_reasons": [],
       "stop_conditions": [
         "coverage-gap",
         "unverified-evidence",
@@ -3317,8 +3255,8 @@
       "implementation_bindings": [
         {
           "path": "evidence/artifacts/reference-system.json",
-          "digest": "sha256:e51556cc0675013457a24ee48e82d8f2d277b77d41584335ce8e5e350496d756",
-          "bytes": 10171,
+          "digest": "sha256:f882cc2fb599ef685c444b38f26b700e59939e5b374680b7f71d32a79859c8f0",
+          "bytes": 10170,
           "claim_scope": "route-candidate-not-target-completion-proof",
           "id": "integrated-runtime"
         },
@@ -3340,7 +3278,7 @@
       "evidence_bindings": [
         {
           "path": "evidence/partitioning.evidence.yaml",
-          "digest": "sha256:50c38851613842b9b3cad047d2bb59f92733be0813a443bd98e76bb932e6e65e",
+          "digest": "sha256:dd6896ea768f7c66051b8f5099b3887ce436f7faf0feb105f2d42fa187a87079",
           "bytes": 802,
           "id": "lab.partitioning"
         },
@@ -3364,7 +3302,7 @@
         {
           "evidence_id": "reference-system",
           "path": "evidence/artifacts/reference-system.json",
-          "digest": "sha256:e51556cc0675013457a24ee48e82d8f2d277b77d41584335ce8e5e350496d756"
+          "digest": "sha256:f882cc2fb599ef685c444b38f26b700e59939e5b374680b7f71d32a79859c8f0"
         }
       ],
       "assertions": {
@@ -3405,9 +3343,7 @@
       ],
       "mutation_policy": "explicit-authorization-required",
       "mutation_status": "authorized-for-request-scope",
-      "blocked_reasons": [
-
-      ],
+      "blocked_reasons": [],
       "stop_conditions": [
         "coverage-gap",
         "unverified-evidence",
@@ -3442,7 +3378,7 @@
       "evidence_bindings": [
         {
           "path": "evidence/sql.evidence.yaml",
-          "digest": "sha256:2b759aa061d58a80740083930198e343cf5563decb4f826adc88fd54e0573ca3",
+          "digest": "sha256:ffa8753713bbea0cfe560adf0f88fdc1c6fe5470903e70f98cc1eabbc60c963b",
           "bytes": 765,
           "id": "lab.sql"
         },
@@ -3455,7 +3391,7 @@
         },
         {
           "path": "evidence/sql-surface.evidence.yaml",
-          "digest": "sha256:fb173e5431b767132497556ef76e446dce97483d310399a384d28728745a15fe",
+          "digest": "sha256:af3943fffc33a45caaecf9257acbfaa9710b955f4a1c07375f6786fbb5a09a41",
           "bytes": 793,
           "id": "lab.sql-surface"
         },
@@ -3479,7 +3415,7 @@
         {
           "evidence_id": "reference-system",
           "path": "evidence/artifacts/reference-system.json",
-          "digest": "sha256:e51556cc0675013457a24ee48e82d8f2d277b77d41584335ce8e5e350496d756"
+          "digest": "sha256:f882cc2fb599ef685c444b38f26b700e59939e5b374680b7f71d32a79859c8f0"
         }
       ],
       "assertions": {
@@ -3520,9 +3456,7 @@
       ],
       "mutation_policy": "explicit-authorization-required",
       "mutation_status": "authorized-for-request-scope",
-      "blocked_reasons": [
-
-      ],
+      "blocked_reasons": [],
       "stop_conditions": [
         "coverage-gap",
         "unverified-evidence",
@@ -3534,8 +3468,8 @@
       "implementation_bindings": [
         {
           "path": "evidence/artifacts/reference-system.json",
-          "digest": "sha256:e51556cc0675013457a24ee48e82d8f2d277b77d41584335ce8e5e350496d756",
-          "bytes": 10171,
+          "digest": "sha256:f882cc2fb599ef685c444b38f26b700e59939e5b374680b7f71d32a79859c8f0",
+          "bytes": 10170,
           "claim_scope": "route-candidate-not-target-completion-proof",
           "id": "normal-oracle"
         },
@@ -3557,7 +3491,7 @@
       "evidence_bindings": [
         {
           "path": "evidence/sql.evidence.yaml",
-          "digest": "sha256:2b759aa061d58a80740083930198e343cf5563decb4f826adc88fd54e0573ca3",
+          "digest": "sha256:ffa8753713bbea0cfe560adf0f88fdc1c6fe5470903e70f98cc1eabbc60c963b",
           "bytes": 765,
           "id": "lab.sql"
         },
@@ -3570,7 +3504,7 @@
         },
         {
           "path": "evidence/sql-surface.evidence.yaml",
-          "digest": "sha256:fb173e5431b767132497556ef76e446dce97483d310399a384d28728745a15fe",
+          "digest": "sha256:af3943fffc33a45caaecf9257acbfaa9710b955f4a1c07375f6786fbb5a09a41",
           "bytes": 793,
           "id": "lab.sql-surface"
         },
@@ -3594,7 +3528,7 @@
         {
           "evidence_id": "reference-system",
           "path": "evidence/artifacts/reference-system.json",
-          "digest": "sha256:e51556cc0675013457a24ee48e82d8f2d277b77d41584335ce8e5e350496d756"
+          "digest": "sha256:f882cc2fb599ef685c444b38f26b700e59939e5b374680b7f71d32a79859c8f0"
         }
       ],
       "assertions": {
@@ -3636,9 +3570,7 @@
       ],
       "mutation_policy": "explicit-authorization-required",
       "mutation_status": "authorized-for-request-scope",
-      "blocked_reasons": [
-
-      ],
+      "blocked_reasons": [],
       "stop_conditions": [
         "coverage-gap",
         "unverified-evidence",
@@ -3673,7 +3605,7 @@
       "evidence_bindings": [
         {
           "path": "evidence/deadlock.evidence.yaml",
-          "digest": "sha256:1a6e05e64c54b5cba490cb84df16ed45a1b8673f2a9580505ff34df100eab673",
+          "digest": "sha256:2b2fd7852ed73eef200af15035ea51f336792f6c7e7c4b93678d7a957d910191",
           "bytes": 788,
           "id": "lab.deadlock"
         },
@@ -3697,7 +3629,7 @@
         {
           "evidence_id": "reference-system",
           "path": "evidence/artifacts/reference-system.json",
-          "digest": "sha256:e51556cc0675013457a24ee48e82d8f2d277b77d41584335ce8e5e350496d756"
+          "digest": "sha256:f882cc2fb599ef685c444b38f26b700e59939e5b374680b7f71d32a79859c8f0"
         }
       ],
       "assertions": {
@@ -3738,9 +3670,7 @@
       ],
       "mutation_policy": "explicit-authorization-required",
       "mutation_status": "authorized-for-request-scope",
-      "blocked_reasons": [
-
-      ],
+      "blocked_reasons": [],
       "stop_conditions": [
         "coverage-gap",
         "unverified-evidence",
@@ -3775,7 +3705,7 @@
       "evidence_bindings": [
         {
           "path": "evidence/performance.evidence.yaml",
-          "digest": "sha256:0a2c8f312b46058630e8c6ee3825c2f0768e8320f0f68e0340d74872596763e1",
+          "digest": "sha256:e0c1295698da907c4926151ac9a16bf3654e74ab15d99e0edfe301bd0b1feaeb",
           "bytes": 799,
           "id": "lab.performance"
         },
@@ -3799,7 +3729,7 @@
         {
           "evidence_id": "reference-system",
           "path": "evidence/artifacts/reference-system.json",
-          "digest": "sha256:e51556cc0675013457a24ee48e82d8f2d277b77d41584335ce8e5e350496d756"
+          "digest": "sha256:f882cc2fb599ef685c444b38f26b700e59939e5b374680b7f71d32a79859c8f0"
         }
       ],
       "assertions": {
@@ -3840,9 +3770,7 @@
       ],
       "mutation_policy": "explicit-authorization-required",
       "mutation_status": "authorized-for-request-scope",
-      "blocked_reasons": [
-
-      ],
+      "blocked_reasons": [],
       "stop_conditions": [
         "coverage-gap",
         "unverified-evidence",
@@ -3877,7 +3805,7 @@
       "evidence_bindings": [
         {
           "path": "evidence/security.evidence.yaml",
-          "digest": "sha256:a8c782ad980bcc2881e740fc60a39e3faa297adcc39cac64eb84e070b77b334f",
+          "digest": "sha256:e0d1ccb72d36ad51dcbb93ec8d318ddca8f772d6f675ca1aa3cd287184c32364",
           "bytes": 782,
           "id": "lab.security"
         },
@@ -3901,7 +3829,7 @@
         {
           "evidence_id": "reference-system",
           "path": "evidence/artifacts/reference-system.json",
-          "digest": "sha256:e51556cc0675013457a24ee48e82d8f2d277b77d41584335ce8e5e350496d756"
+          "digest": "sha256:f882cc2fb599ef685c444b38f26b700e59939e5b374680b7f71d32a79859c8f0"
         }
       ],
       "assertions": {
@@ -3942,9 +3870,7 @@
       ],
       "mutation_policy": "explicit-authorization-required",
       "mutation_status": "authorized-for-request-scope",
-      "blocked_reasons": [
-
-      ],
+      "blocked_reasons": [],
       "stop_conditions": [
         "coverage-gap",
         "unverified-evidence",
@@ -3979,7 +3905,7 @@
       "evidence_bindings": [
         {
           "path": "evidence/planner.evidence.yaml",
-          "digest": "sha256:c1f537075746712b4469f55e77beafb4ce11df19f926f0160bddd7a6e0917a0e",
+          "digest": "sha256:f3864c92f2538ac2670600f9d99ff03271527797ed72828d798fe0eae7618057",
           "bytes": 781,
           "id": "lab.planner"
         },
@@ -4003,7 +3929,7 @@
         {
           "evidence_id": "reference-system",
           "path": "evidence/artifacts/reference-system.json",
-          "digest": "sha256:e51556cc0675013457a24ee48e82d8f2d277b77d41584335ce8e5e350496d756"
+          "digest": "sha256:f882cc2fb599ef685c444b38f26b700e59939e5b374680b7f71d32a79859c8f0"
         }
       ],
       "assertions": {
@@ -4044,9 +3970,7 @@
       ],
       "mutation_policy": "explicit-authorization-required",
       "mutation_status": "authorized-for-request-scope",
-      "blocked_reasons": [
-
-      ],
+      "blocked_reasons": [],
       "stop_conditions": [
         "coverage-gap",
         "unverified-evidence",
@@ -4111,7 +4035,7 @@
       "evidence_bindings": [
         {
           "path": "evidence/compatibility-matrix.evidence.yaml",
-          "digest": "sha256:b482452563fb9ef1de054ecf7904cfdca202938d4e71ce336531a04febe4edad",
+          "digest": "sha256:5bee6468752914f371b3ce2e6ebeed9f007374ebbc80c01c309e46f40b5fd781",
           "bytes": 847,
           "id": "lab.compatibility-matrix"
         },
@@ -4141,7 +4065,7 @@
         {
           "evidence_id": "reference-system",
           "path": "evidence/artifacts/reference-system.json",
-          "digest": "sha256:e51556cc0675013457a24ee48e82d8f2d277b77d41584335ce8e5e350496d756"
+          "digest": "sha256:f882cc2fb599ef685c444b38f26b700e59939e5b374680b7f71d32a79859c8f0"
         }
       ],
       "assertions": {
@@ -4182,9 +4106,7 @@
       ],
       "mutation_policy": "explicit-authorization-required",
       "mutation_status": "authorized-for-request-scope",
-      "blocked_reasons": [
-
-      ],
+      "blocked_reasons": [],
       "stop_conditions": [
         "coverage-gap",
         "unverified-evidence",
@@ -4219,7 +4141,7 @@
       "evidence_bindings": [
         {
           "path": "evidence/migration.evidence.yaml",
-          "digest": "sha256:7421c83eb2b1d32575a6bda8eb5138aec7c5aabec9c5cb618319d518cf0e4468",
+          "digest": "sha256:653769b5c4d5fd5c168748278d9bc3d2429640e708a69fe4a187fa558da96012",
           "bytes": 798,
           "id": "lab.migration"
         },
@@ -4243,7 +4165,7 @@
         {
           "evidence_id": "reference-system",
           "path": "evidence/artifacts/reference-system.json",
-          "digest": "sha256:e51556cc0675013457a24ee48e82d8f2d277b77d41584335ce8e5e350496d756"
+          "digest": "sha256:f882cc2fb599ef685c444b38f26b700e59939e5b374680b7f71d32a79859c8f0"
         }
       ],
       "assertions": {
@@ -4284,9 +4206,7 @@
       ],
       "mutation_policy": "explicit-authorization-required",
       "mutation_status": "authorized-for-request-scope",
-      "blocked_reasons": [
-
-      ],
+      "blocked_reasons": [],
       "stop_conditions": [
         "coverage-gap",
         "unverified-evidence",
@@ -4321,7 +4241,7 @@
       "evidence_bindings": [
         {
           "path": "evidence/partitioning.evidence.yaml",
-          "digest": "sha256:50c38851613842b9b3cad047d2bb59f92733be0813a443bd98e76bb932e6e65e",
+          "digest": "sha256:dd6896ea768f7c66051b8f5099b3887ce436f7faf0feb105f2d42fa187a87079",
           "bytes": 802,
           "id": "lab.partitioning"
         },
@@ -4345,7 +4265,7 @@
         {
           "evidence_id": "reference-system",
           "path": "evidence/artifacts/reference-system.json",
-          "digest": "sha256:e51556cc0675013457a24ee48e82d8f2d277b77d41584335ce8e5e350496d756"
+          "digest": "sha256:f882cc2fb599ef685c444b38f26b700e59939e5b374680b7f71d32a79859c8f0"
         }
       ],
       "assertions": {
@@ -4386,9 +4306,7 @@
       ],
       "mutation_policy": "explicit-authorization-required",
       "mutation_status": "authorized-for-request-scope",
-      "blocked_reasons": [
-
-      ],
+      "blocked_reasons": [],
       "stop_conditions": [
         "coverage-gap",
         "unverified-evidence",
@@ -4423,7 +4341,7 @@
       "evidence_bindings": [
         {
           "path": "evidence/publication-static-gates.evidence.yaml",
-          "digest": "sha256:98dba3d5be2fea3a3c28dd795768104cc37e52dba221b46b479e6cf72145c7a5",
+          "digest": "sha256:e1ffff19fa5d150b9728aa64b311713a51a6da7f15818d85ac5a0f1931f0cdfa",
           "bytes": 824,
           "id": "publication.static-gates"
         },
@@ -4447,7 +4365,7 @@
         {
           "evidence_id": "reference-system",
           "path": "evidence/artifacts/reference-system.json",
-          "digest": "sha256:e51556cc0675013457a24ee48e82d8f2d277b77d41584335ce8e5e350496d756"
+          "digest": "sha256:f882cc2fb599ef685c444b38f26b700e59939e5b374680b7f71d32a79859c8f0"
         }
       ],
       "assertions": {
@@ -4488,9 +4406,7 @@
       ],
       "mutation_policy": "explicit-authorization-required",
       "mutation_status": "authorized-for-request-scope",
-      "blocked_reasons": [
-
-      ],
+      "blocked_reasons": [],
       "stop_conditions": [
         "coverage-gap",
         "unverified-evidence",
@@ -4525,8 +4441,8 @@
       "evidence_bindings": [
         {
           "path": "evidence/artifacts/reference-system.json",
-          "digest": "sha256:e51556cc0675013457a24ee48e82d8f2d277b77d41584335ce8e5e350496d756",
-          "bytes": 10171,
+          "digest": "sha256:f882cc2fb599ef685c444b38f26b700e59939e5b374680b7f71d32a79859c8f0",
+          "bytes": 10170,
           "claim_scope": "shared-integration-slice-not-target-completion-proof",
           "id": "reference-system"
         }
@@ -4543,7 +4459,7 @@
         {
           "evidence_id": "reference-system",
           "path": "evidence/artifacts/reference-system.json",
-          "digest": "sha256:e51556cc0675013457a24ee48e82d8f2d277b77d41584335ce8e5e350496d756"
+          "digest": "sha256:f882cc2fb599ef685c444b38f26b700e59939e5b374680b7f71d32a79859c8f0"
         }
       ],
       "assertions": {
@@ -4584,9 +4500,7 @@
       ],
       "mutation_policy": "read-only",
       "mutation_status": "read-only",
-      "blocked_reasons": [
-
-      ],
+      "blocked_reasons": [],
       "stop_conditions": [
         "coverage-gap",
         "unverified-evidence",
@@ -4626,7 +4540,7 @@
       "evidence_bindings": [
         {
           "path": "evidence/foundation-authority-lock.evidence.yaml",
-          "digest": "sha256:2e3c51a8125790372c399eb53698583d219ba1bc72bca8aa945400c23227c767",
+          "digest": "sha256:25f6d2eb0a3ed78b9db762ebb294066b3c1435e89dfce5472a7ae697184c2b9b",
           "bytes": 856,
           "id": "foundation.authority-lock"
         },
@@ -4651,7 +4565,7 @@
         {
           "evidence_id": "reference-system",
           "path": "evidence/artifacts/reference-system.json",
-          "digest": "sha256:e51556cc0675013457a24ee48e82d8f2d277b77d41584335ce8e5e350496d756"
+          "digest": "sha256:f882cc2fb599ef685c444b38f26b700e59939e5b374680b7f71d32a79859c8f0"
         }
       ],
       "assertions": {
@@ -4692,9 +4606,7 @@
       ],
       "mutation_policy": "read-only",
       "mutation_status": "read-only",
-      "blocked_reasons": [
-
-      ],
+      "blocked_reasons": [],
       "stop_conditions": [
         "coverage-gap",
         "unverified-evidence",
@@ -4729,7 +4641,7 @@
       "evidence_bindings": [
         {
           "path": "evidence/mvcc.evidence.yaml",
-          "digest": "sha256:ac442f06c9a4fe68268e4ee2f20913906eb6f60da064eaf67d720b5021ce2c42",
+          "digest": "sha256:927fb43fd7e8d48a8f0f2f4eceb78aa73b2aa14ebf1fd8c3a088dc3cb5d394af",
           "bytes": 768,
           "id": "lab.mvcc"
         },
@@ -4753,7 +4665,7 @@
         {
           "evidence_id": "reference-system",
           "path": "evidence/artifacts/reference-system.json",
-          "digest": "sha256:e51556cc0675013457a24ee48e82d8f2d277b77d41584335ce8e5e350496d756"
+          "digest": "sha256:f882cc2fb599ef685c444b38f26b700e59939e5b374680b7f71d32a79859c8f0"
         }
       ],
       "assertions": {
@@ -4794,9 +4706,7 @@
       ],
       "mutation_policy": "read-only",
       "mutation_status": "read-only",
-      "blocked_reasons": [
-
-      ],
+      "blocked_reasons": [],
       "stop_conditions": [
         "coverage-gap",
         "unverified-evidence",
@@ -4808,8 +4718,8 @@
       "implementation_bindings": [
         {
           "path": "evidence/artifacts/reference-system.json",
-          "digest": "sha256:e51556cc0675013457a24ee48e82d8f2d277b77d41584335ce8e5e350496d756",
-          "bytes": 10171,
+          "digest": "sha256:f882cc2fb599ef685c444b38f26b700e59939e5b374680b7f71d32a79859c8f0",
+          "bytes": 10170,
           "claim_scope": "route-candidate-not-target-completion-proof",
           "id": "integrated-runtime"
         },
@@ -4831,7 +4741,7 @@
       "evidence_bindings": [
         {
           "path": "evidence/partitioning.evidence.yaml",
-          "digest": "sha256:50c38851613842b9b3cad047d2bb59f92733be0813a443bd98e76bb932e6e65e",
+          "digest": "sha256:dd6896ea768f7c66051b8f5099b3887ce436f7faf0feb105f2d42fa187a87079",
           "bytes": 802,
           "id": "lab.partitioning"
         },
@@ -4855,7 +4765,7 @@
         {
           "evidence_id": "reference-system",
           "path": "evidence/artifacts/reference-system.json",
-          "digest": "sha256:e51556cc0675013457a24ee48e82d8f2d277b77d41584335ce8e5e350496d756"
+          "digest": "sha256:f882cc2fb599ef685c444b38f26b700e59939e5b374680b7f71d32a79859c8f0"
         }
       ],
       "assertions": {
@@ -4896,9 +4806,7 @@
       ],
       "mutation_policy": "read-only",
       "mutation_status": "read-only",
-      "blocked_reasons": [
-
-      ],
+      "blocked_reasons": [],
       "stop_conditions": [
         "coverage-gap",
         "unverified-evidence",
@@ -4933,7 +4841,7 @@
       "evidence_bindings": [
         {
           "path": "evidence/sql.evidence.yaml",
-          "digest": "sha256:2b759aa061d58a80740083930198e343cf5563decb4f826adc88fd54e0573ca3",
+          "digest": "sha256:ffa8753713bbea0cfe560adf0f88fdc1c6fe5470903e70f98cc1eabbc60c963b",
           "bytes": 765,
           "id": "lab.sql"
         },
@@ -4946,7 +4854,7 @@
         },
         {
           "path": "evidence/sql-surface.evidence.yaml",
-          "digest": "sha256:fb173e5431b767132497556ef76e446dce97483d310399a384d28728745a15fe",
+          "digest": "sha256:af3943fffc33a45caaecf9257acbfaa9710b955f4a1c07375f6786fbb5a09a41",
           "bytes": 793,
           "id": "lab.sql-surface"
         },
@@ -4970,7 +4878,7 @@
         {
           "evidence_id": "reference-system",
           "path": "evidence/artifacts/reference-system.json",
-          "digest": "sha256:e51556cc0675013457a24ee48e82d8f2d277b77d41584335ce8e5e350496d756"
+          "digest": "sha256:f882cc2fb599ef685c444b38f26b700e59939e5b374680b7f71d32a79859c8f0"
         }
       ],
       "assertions": {
@@ -5011,9 +4919,7 @@
       ],
       "mutation_policy": "read-only",
       "mutation_status": "read-only",
-      "blocked_reasons": [
-
-      ],
+      "blocked_reasons": [],
       "stop_conditions": [
         "coverage-gap",
         "unverified-evidence",
@@ -5025,8 +4931,8 @@
       "implementation_bindings": [
         {
           "path": "evidence/artifacts/reference-system.json",
-          "digest": "sha256:e51556cc0675013457a24ee48e82d8f2d277b77d41584335ce8e5e350496d756",
-          "bytes": 10171,
+          "digest": "sha256:f882cc2fb599ef685c444b38f26b700e59939e5b374680b7f71d32a79859c8f0",
+          "bytes": 10170,
           "claim_scope": "route-candidate-not-target-completion-proof",
           "id": "normal-oracle"
         },
@@ -5048,7 +4954,7 @@
       "evidence_bindings": [
         {
           "path": "evidence/sql.evidence.yaml",
-          "digest": "sha256:2b759aa061d58a80740083930198e343cf5563decb4f826adc88fd54e0573ca3",
+          "digest": "sha256:ffa8753713bbea0cfe560adf0f88fdc1c6fe5470903e70f98cc1eabbc60c963b",
           "bytes": 765,
           "id": "lab.sql"
         },
@@ -5061,7 +4967,7 @@
         },
         {
           "path": "evidence/sql-surface.evidence.yaml",
-          "digest": "sha256:fb173e5431b767132497556ef76e446dce97483d310399a384d28728745a15fe",
+          "digest": "sha256:af3943fffc33a45caaecf9257acbfaa9710b955f4a1c07375f6786fbb5a09a41",
           "bytes": 793,
           "id": "lab.sql-surface"
         },
@@ -5085,7 +4991,7 @@
         {
           "evidence_id": "reference-system",
           "path": "evidence/artifacts/reference-system.json",
-          "digest": "sha256:e51556cc0675013457a24ee48e82d8f2d277b77d41584335ce8e5e350496d756"
+          "digest": "sha256:f882cc2fb599ef685c444b38f26b700e59939e5b374680b7f71d32a79859c8f0"
         }
       ],
       "assertions": {
@@ -5127,9 +5033,7 @@
       ],
       "mutation_policy": "read-only",
       "mutation_status": "read-only",
-      "blocked_reasons": [
-
-      ],
+      "blocked_reasons": [],
       "stop_conditions": [
         "coverage-gap",
         "unverified-evidence",
@@ -5164,7 +5068,7 @@
       "evidence_bindings": [
         {
           "path": "evidence/deadlock.evidence.yaml",
-          "digest": "sha256:1a6e05e64c54b5cba490cb84df16ed45a1b8673f2a9580505ff34df100eab673",
+          "digest": "sha256:2b2fd7852ed73eef200af15035ea51f336792f6c7e7c4b93678d7a957d910191",
           "bytes": 788,
           "id": "lab.deadlock"
         },
@@ -5188,7 +5092,7 @@
         {
           "evidence_id": "reference-system",
           "path": "evidence/artifacts/reference-system.json",
-          "digest": "sha256:e51556cc0675013457a24ee48e82d8f2d277b77d41584335ce8e5e350496d756"
+          "digest": "sha256:f882cc2fb599ef685c444b38f26b700e59939e5b374680b7f71d32a79859c8f0"
         }
       ],
       "assertions": {
@@ -5229,9 +5133,7 @@
       ],
       "mutation_policy": "read-only",
       "mutation_status": "read-only",
-      "blocked_reasons": [
-
-      ],
+      "blocked_reasons": [],
       "stop_conditions": [
         "coverage-gap",
         "unverified-evidence",
@@ -5266,7 +5168,7 @@
       "evidence_bindings": [
         {
           "path": "evidence/performance.evidence.yaml",
-          "digest": "sha256:0a2c8f312b46058630e8c6ee3825c2f0768e8320f0f68e0340d74872596763e1",
+          "digest": "sha256:e0c1295698da907c4926151ac9a16bf3654e74ab15d99e0edfe301bd0b1feaeb",
           "bytes": 799,
           "id": "lab.performance"
         },
@@ -5290,7 +5192,7 @@
         {
           "evidence_id": "reference-system",
           "path": "evidence/artifacts/reference-system.json",
-          "digest": "sha256:e51556cc0675013457a24ee48e82d8f2d277b77d41584335ce8e5e350496d756"
+          "digest": "sha256:f882cc2fb599ef685c444b38f26b700e59939e5b374680b7f71d32a79859c8f0"
         }
       ],
       "assertions": {
@@ -5331,9 +5233,7 @@
       ],
       "mutation_policy": "read-only",
       "mutation_status": "read-only",
-      "blocked_reasons": [
-
-      ],
+      "blocked_reasons": [],
       "stop_conditions": [
         "coverage-gap",
         "unverified-evidence",
@@ -5368,7 +5268,7 @@
       "evidence_bindings": [
         {
           "path": "evidence/security.evidence.yaml",
-          "digest": "sha256:a8c782ad980bcc2881e740fc60a39e3faa297adcc39cac64eb84e070b77b334f",
+          "digest": "sha256:e0d1ccb72d36ad51dcbb93ec8d318ddca8f772d6f675ca1aa3cd287184c32364",
           "bytes": 782,
           "id": "lab.security"
         },
@@ -5392,7 +5292,7 @@
         {
           "evidence_id": "reference-system",
           "path": "evidence/artifacts/reference-system.json",
-          "digest": "sha256:e51556cc0675013457a24ee48e82d8f2d277b77d41584335ce8e5e350496d756"
+          "digest": "sha256:f882cc2fb599ef685c444b38f26b700e59939e5b374680b7f71d32a79859c8f0"
         }
       ],
       "assertions": {
@@ -5433,9 +5333,7 @@
       ],
       "mutation_policy": "read-only",
       "mutation_status": "read-only",
-      "blocked_reasons": [
-
-      ],
+      "blocked_reasons": [],
       "stop_conditions": [
         "coverage-gap",
         "unverified-evidence",
@@ -5470,7 +5368,7 @@
       "evidence_bindings": [
         {
           "path": "evidence/planner.evidence.yaml",
-          "digest": "sha256:c1f537075746712b4469f55e77beafb4ce11df19f926f0160bddd7a6e0917a0e",
+          "digest": "sha256:f3864c92f2538ac2670600f9d99ff03271527797ed72828d798fe0eae7618057",
           "bytes": 781,
           "id": "lab.planner"
         },
@@ -5494,7 +5392,7 @@
         {
           "evidence_id": "reference-system",
           "path": "evidence/artifacts/reference-system.json",
-          "digest": "sha256:e51556cc0675013457a24ee48e82d8f2d277b77d41584335ce8e5e350496d756"
+          "digest": "sha256:f882cc2fb599ef685c444b38f26b700e59939e5b374680b7f71d32a79859c8f0"
         }
       ],
       "assertions": {
@@ -5535,9 +5433,7 @@
       ],
       "mutation_policy": "read-only",
       "mutation_status": "read-only",
-      "blocked_reasons": [
-
-      ],
+      "blocked_reasons": [],
       "stop_conditions": [
         "coverage-gap",
         "unverified-evidence",
@@ -5602,7 +5498,7 @@
       "evidence_bindings": [
         {
           "path": "evidence/compatibility-matrix.evidence.yaml",
-          "digest": "sha256:b482452563fb9ef1de054ecf7904cfdca202938d4e71ce336531a04febe4edad",
+          "digest": "sha256:5bee6468752914f371b3ce2e6ebeed9f007374ebbc80c01c309e46f40b5fd781",
           "bytes": 847,
           "id": "lab.compatibility-matrix"
         },
@@ -5632,7 +5528,7 @@
         {
           "evidence_id": "reference-system",
           "path": "evidence/artifacts/reference-system.json",
-          "digest": "sha256:e51556cc0675013457a24ee48e82d8f2d277b77d41584335ce8e5e350496d756"
+          "digest": "sha256:f882cc2fb599ef685c444b38f26b700e59939e5b374680b7f71d32a79859c8f0"
         }
       ],
       "assertions": {
@@ -5673,9 +5569,7 @@
       ],
       "mutation_policy": "read-only",
       "mutation_status": "read-only",
-      "blocked_reasons": [
-
-      ],
+      "blocked_reasons": [],
       "stop_conditions": [
         "coverage-gap",
         "unverified-evidence",
@@ -5710,7 +5604,7 @@
       "evidence_bindings": [
         {
           "path": "evidence/migration.evidence.yaml",
-          "digest": "sha256:7421c83eb2b1d32575a6bda8eb5138aec7c5aabec9c5cb618319d518cf0e4468",
+          "digest": "sha256:653769b5c4d5fd5c168748278d9bc3d2429640e708a69fe4a187fa558da96012",
           "bytes": 798,
           "id": "lab.migration"
         },
@@ -5734,7 +5628,7 @@
         {
           "evidence_id": "reference-system",
           "path": "evidence/artifacts/reference-system.json",
-          "digest": "sha256:e51556cc0675013457a24ee48e82d8f2d277b77d41584335ce8e5e350496d756"
+          "digest": "sha256:f882cc2fb599ef685c444b38f26b700e59939e5b374680b7f71d32a79859c8f0"
         }
       ],
       "assertions": {
@@ -5775,9 +5669,7 @@
       ],
       "mutation_policy": "read-only",
       "mutation_status": "read-only",
-      "blocked_reasons": [
-
-      ],
+      "blocked_reasons": [],
       "stop_conditions": [
         "coverage-gap",
         "unverified-evidence",
@@ -5812,7 +5704,7 @@
       "evidence_bindings": [
         {
           "path": "evidence/partitioning.evidence.yaml",
-          "digest": "sha256:50c38851613842b9b3cad047d2bb59f92733be0813a443bd98e76bb932e6e65e",
+          "digest": "sha256:dd6896ea768f7c66051b8f5099b3887ce436f7faf0feb105f2d42fa187a87079",
           "bytes": 802,
           "id": "lab.partitioning"
         },
@@ -5836,7 +5728,7 @@
         {
           "evidence_id": "reference-system",
           "path": "evidence/artifacts/reference-system.json",
-          "digest": "sha256:e51556cc0675013457a24ee48e82d8f2d277b77d41584335ce8e5e350496d756"
+          "digest": "sha256:f882cc2fb599ef685c444b38f26b700e59939e5b374680b7f71d32a79859c8f0"
         }
       ],
       "assertions": {
@@ -5877,9 +5769,7 @@
       ],
       "mutation_policy": "read-only",
       "mutation_status": "read-only",
-      "blocked_reasons": [
-
-      ],
+      "blocked_reasons": [],
       "stop_conditions": [
         "coverage-gap",
         "unverified-evidence",
@@ -5914,7 +5804,7 @@
       "evidence_bindings": [
         {
           "path": "evidence/publication-static-gates.evidence.yaml",
-          "digest": "sha256:98dba3d5be2fea3a3c28dd795768104cc37e52dba221b46b479e6cf72145c7a5",
+          "digest": "sha256:e1ffff19fa5d150b9728aa64b311713a51a6da7f15818d85ac5a0f1931f0cdfa",
           "bytes": 824,
           "id": "publication.static-gates"
         },
@@ -5938,7 +5828,7 @@
         {
           "evidence_id": "reference-system",
           "path": "evidence/artifacts/reference-system.json",
-          "digest": "sha256:e51556cc0675013457a24ee48e82d8f2d277b77d41584335ce8e5e350496d756"
+          "digest": "sha256:f882cc2fb599ef685c444b38f26b700e59939e5b374680b7f71d32a79859c8f0"
         }
       ],
       "assertions": {
@@ -5979,9 +5869,7 @@
       ],
       "mutation_policy": "read-only",
       "mutation_status": "read-only",
-      "blocked_reasons": [
-
-      ],
+      "blocked_reasons": [],
       "stop_conditions": [
         "coverage-gap",
         "unverified-evidence",
@@ -6016,8 +5904,8 @@
       "evidence_bindings": [
         {
           "path": "evidence/artifacts/reference-system.json",
-          "digest": "sha256:e51556cc0675013457a24ee48e82d8f2d277b77d41584335ce8e5e350496d756",
-          "bytes": 10171,
+          "digest": "sha256:f882cc2fb599ef685c444b38f26b700e59939e5b374680b7f71d32a79859c8f0",
+          "bytes": 10170,
           "claim_scope": "shared-integration-slice-not-target-completion-proof",
           "id": "reference-system"
         }
@@ -6034,7 +5922,7 @@
         {
           "evidence_id": "reference-system",
           "path": "evidence/artifacts/reference-system.json",
-          "digest": "sha256:e51556cc0675013457a24ee48e82d8f2d277b77d41584335ce8e5e350496d756"
+          "digest": "sha256:f882cc2fb599ef685c444b38f26b700e59939e5b374680b7f71d32a79859c8f0"
         }
       ],
       "assertions": {
@@ -6075,9 +5963,7 @@
       ],
       "mutation_policy": "read-only",
       "mutation_status": "read-only",
-      "blocked_reasons": [
-
-      ],
+      "blocked_reasons": [],
       "stop_conditions": [
         "coverage-gap",
         "unverified-evidence",
@@ -6117,7 +6003,7 @@
       "evidence_bindings": [
         {
           "path": "evidence/foundation-authority-lock.evidence.yaml",
-          "digest": "sha256:2e3c51a8125790372c399eb53698583d219ba1bc72bca8aa945400c23227c767",
+          "digest": "sha256:25f6d2eb0a3ed78b9db762ebb294066b3c1435e89dfce5472a7ae697184c2b9b",
           "bytes": 856,
           "id": "foundation.authority-lock"
         },
@@ -6142,7 +6028,7 @@
         {
           "evidence_id": "reference-system",
           "path": "evidence/artifacts/reference-system.json",
-          "digest": "sha256:e51556cc0675013457a24ee48e82d8f2d277b77d41584335ce8e5e350496d756"
+          "digest": "sha256:f882cc2fb599ef685c444b38f26b700e59939e5b374680b7f71d32a79859c8f0"
         }
       ],
       "assertions": {
@@ -6183,9 +6069,7 @@
       ],
       "mutation_policy": "read-only",
       "mutation_status": "read-only",
-      "blocked_reasons": [
-
-      ],
+      "blocked_reasons": [],
       "stop_conditions": [
         "coverage-gap",
         "unverified-evidence",
@@ -6220,7 +6104,7 @@
       "evidence_bindings": [
         {
           "path": "evidence/mvcc.evidence.yaml",
-          "digest": "sha256:ac442f06c9a4fe68268e4ee2f20913906eb6f60da064eaf67d720b5021ce2c42",
+          "digest": "sha256:927fb43fd7e8d48a8f0f2f4eceb78aa73b2aa14ebf1fd8c3a088dc3cb5d394af",
           "bytes": 768,
           "id": "lab.mvcc"
         },
@@ -6244,7 +6128,7 @@
         {
           "evidence_id": "reference-system",
           "path": "evidence/artifacts/reference-system.json",
-          "digest": "sha256:e51556cc0675013457a24ee48e82d8f2d277b77d41584335ce8e5e350496d756"
+          "digest": "sha256:f882cc2fb599ef685c444b38f26b700e59939e5b374680b7f71d32a79859c8f0"
         }
       ],
       "assertions": {
@@ -6285,9 +6169,7 @@
       ],
       "mutation_policy": "read-only",
       "mutation_status": "read-only",
-      "blocked_reasons": [
-
-      ],
+      "blocked_reasons": [],
       "stop_conditions": [
         "coverage-gap",
         "unverified-evidence",
@@ -6299,8 +6181,8 @@
       "implementation_bindings": [
         {
           "path": "evidence/artifacts/reference-system.json",
-          "digest": "sha256:e51556cc0675013457a24ee48e82d8f2d277b77d41584335ce8e5e350496d756",
-          "bytes": 10171,
+          "digest": "sha256:f882cc2fb599ef685c444b38f26b700e59939e5b374680b7f71d32a79859c8f0",
+          "bytes": 10170,
           "claim_scope": "route-candidate-not-target-completion-proof",
           "id": "integrated-runtime"
         },
@@ -6322,7 +6204,7 @@
       "evidence_bindings": [
         {
           "path": "evidence/planner.evidence.yaml",
-          "digest": "sha256:c1f537075746712b4469f55e77beafb4ce11df19f926f0160bddd7a6e0917a0e",
+          "digest": "sha256:f3864c92f2538ac2670600f9d99ff03271527797ed72828d798fe0eae7618057",
           "bytes": 781,
           "id": "lab.planner"
         },
@@ -6346,7 +6228,7 @@
         {
           "evidence_id": "reference-system",
           "path": "evidence/artifacts/reference-system.json",
-          "digest": "sha256:e51556cc0675013457a24ee48e82d8f2d277b77d41584335ce8e5e350496d756"
+          "digest": "sha256:f882cc2fb599ef685c444b38f26b700e59939e5b374680b7f71d32a79859c8f0"
         }
       ],
       "assertions": {
@@ -6387,9 +6269,7 @@
       ],
       "mutation_policy": "read-only",
       "mutation_status": "read-only",
-      "blocked_reasons": [
-
-      ],
+      "blocked_reasons": [],
       "stop_conditions": [
         "coverage-gap",
         "unverified-evidence",
@@ -6424,7 +6304,7 @@
       "evidence_bindings": [
         {
           "path": "evidence/index.evidence.yaml",
-          "digest": "sha256:0b7a97106bd5702c9fa6c3cc03c75030592d2e8189ad2a5c23abf5a2662f9323",
+          "digest": "sha256:e77989719a9301d1e846fdcaa52dc26cdceabf8a933dc64d0fb81d00530eeabe",
           "bytes": 771,
           "id": "lab.index"
         },
@@ -6448,7 +6328,7 @@
         {
           "evidence_id": "reference-system",
           "path": "evidence/artifacts/reference-system.json",
-          "digest": "sha256:e51556cc0675013457a24ee48e82d8f2d277b77d41584335ce8e5e350496d756"
+          "digest": "sha256:f882cc2fb599ef685c444b38f26b700e59939e5b374680b7f71d32a79859c8f0"
         }
       ],
       "assertions": {
@@ -6489,9 +6369,7 @@
       ],
       "mutation_policy": "read-only",
       "mutation_status": "read-only",
-      "blocked_reasons": [
-
-      ],
+      "blocked_reasons": [],
       "stop_conditions": [
         "coverage-gap",
         "unverified-evidence",
@@ -6503,8 +6381,8 @@
       "implementation_bindings": [
         {
           "path": "evidence/artifacts/reference-system.json",
-          "digest": "sha256:e51556cc0675013457a24ee48e82d8f2d277b77d41584335ce8e5e350496d756",
-          "bytes": 10171,
+          "digest": "sha256:f882cc2fb599ef685c444b38f26b700e59939e5b374680b7f71d32a79859c8f0",
+          "bytes": 10170,
           "claim_scope": "route-candidate-not-target-completion-proof",
           "id": "normal-oracle"
         },
@@ -6526,7 +6404,7 @@
       "evidence_bindings": [
         {
           "path": "evidence/planner.evidence.yaml",
-          "digest": "sha256:c1f537075746712b4469f55e77beafb4ce11df19f926f0160bddd7a6e0917a0e",
+          "digest": "sha256:f3864c92f2538ac2670600f9d99ff03271527797ed72828d798fe0eae7618057",
           "bytes": 781,
           "id": "lab.planner"
         },
@@ -6550,7 +6428,7 @@
         {
           "evidence_id": "reference-system",
           "path": "evidence/artifacts/reference-system.json",
-          "digest": "sha256:e51556cc0675013457a24ee48e82d8f2d277b77d41584335ce8e5e350496d756"
+          "digest": "sha256:f882cc2fb599ef685c444b38f26b700e59939e5b374680b7f71d32a79859c8f0"
         }
       ],
       "assertions": {
@@ -6592,9 +6470,7 @@
       ],
       "mutation_policy": "read-only",
       "mutation_status": "read-only",
-      "blocked_reasons": [
-
-      ],
+      "blocked_reasons": [],
       "stop_conditions": [
         "coverage-gap",
         "unverified-evidence",
@@ -6629,7 +6505,7 @@
       "evidence_bindings": [
         {
           "path": "evidence/failure-injection.evidence.yaml",
-          "digest": "sha256:a9309cf878d403ffbc384f5adf081124b461898df411e5ec03e47660d5eb20bb",
+          "digest": "sha256:2ee32230589fa71d75fc6dfe7a90d739cf21fdde510a06c35622b771f7248244",
           "bytes": 827,
           "id": "lab.failure-injection"
         },
@@ -6653,7 +6529,7 @@
         {
           "evidence_id": "reference-system",
           "path": "evidence/artifacts/reference-system.json",
-          "digest": "sha256:e51556cc0675013457a24ee48e82d8f2d277b77d41584335ce8e5e350496d756"
+          "digest": "sha256:f882cc2fb599ef685c444b38f26b700e59939e5b374680b7f71d32a79859c8f0"
         }
       ],
       "assertions": {
@@ -6694,9 +6570,7 @@
       ],
       "mutation_policy": "read-only",
       "mutation_status": "read-only",
-      "blocked_reasons": [
-
-      ],
+      "blocked_reasons": [],
       "stop_conditions": [
         "coverage-gap",
         "unverified-evidence",
@@ -6731,7 +6605,7 @@
       "evidence_bindings": [
         {
           "path": "evidence/performance.evidence.yaml",
-          "digest": "sha256:0a2c8f312b46058630e8c6ee3825c2f0768e8320f0f68e0340d74872596763e1",
+          "digest": "sha256:e0c1295698da907c4926151ac9a16bf3654e74ab15d99e0edfe301bd0b1feaeb",
           "bytes": 799,
           "id": "lab.performance"
         },
@@ -6755,7 +6629,7 @@
         {
           "evidence_id": "reference-system",
           "path": "evidence/artifacts/reference-system.json",
-          "digest": "sha256:e51556cc0675013457a24ee48e82d8f2d277b77d41584335ce8e5e350496d756"
+          "digest": "sha256:f882cc2fb599ef685c444b38f26b700e59939e5b374680b7f71d32a79859c8f0"
         }
       ],
       "assertions": {
@@ -6796,9 +6670,7 @@
       ],
       "mutation_policy": "read-only",
       "mutation_status": "read-only",
-      "blocked_reasons": [
-
-      ],
+      "blocked_reasons": [],
       "stop_conditions": [
         "coverage-gap",
         "unverified-evidence",
@@ -6833,8 +6705,8 @@
       "evidence_bindings": [
         {
           "path": "evidence/artifacts/reference-system.json",
-          "digest": "sha256:e51556cc0675013457a24ee48e82d8f2d277b77d41584335ce8e5e350496d756",
-          "bytes": 10171,
+          "digest": "sha256:f882cc2fb599ef685c444b38f26b700e59939e5b374680b7f71d32a79859c8f0",
+          "bytes": 10170,
           "claim_scope": "shared-integration-slice-not-target-completion-proof",
           "id": "reference-system"
         }
@@ -6851,7 +6723,7 @@
         {
           "evidence_id": "reference-system",
           "path": "evidence/artifacts/reference-system.json",
-          "digest": "sha256:e51556cc0675013457a24ee48e82d8f2d277b77d41584335ce8e5e350496d756"
+          "digest": "sha256:f882cc2fb599ef685c444b38f26b700e59939e5b374680b7f71d32a79859c8f0"
         }
       ],
       "assertions": {
@@ -6892,9 +6764,7 @@
       ],
       "mutation_policy": "read-only",
       "mutation_status": "read-only",
-      "blocked_reasons": [
-
-      ],
+      "blocked_reasons": [],
       "stop_conditions": [
         "coverage-gap",
         "unverified-evidence",
@@ -6929,7 +6799,7 @@
       "evidence_bindings": [
         {
           "path": "evidence/planner.evidence.yaml",
-          "digest": "sha256:c1f537075746712b4469f55e77beafb4ce11df19f926f0160bddd7a6e0917a0e",
+          "digest": "sha256:f3864c92f2538ac2670600f9d99ff03271527797ed72828d798fe0eae7618057",
           "bytes": 781,
           "id": "lab.planner"
         },
@@ -6953,7 +6823,7 @@
         {
           "evidence_id": "reference-system",
           "path": "evidence/artifacts/reference-system.json",
-          "digest": "sha256:e51556cc0675013457a24ee48e82d8f2d277b77d41584335ce8e5e350496d756"
+          "digest": "sha256:f882cc2fb599ef685c444b38f26b700e59939e5b374680b7f71d32a79859c8f0"
         }
       ],
       "assertions": {
@@ -6994,9 +6864,7 @@
       ],
       "mutation_policy": "read-only",
       "mutation_status": "read-only",
-      "blocked_reasons": [
-
-      ],
+      "blocked_reasons": [],
       "stop_conditions": [
         "coverage-gap",
         "unverified-evidence",
@@ -7061,7 +6929,7 @@
       "evidence_bindings": [
         {
           "path": "evidence/compatibility-matrix.evidence.yaml",
-          "digest": "sha256:b482452563fb9ef1de054ecf7904cfdca202938d4e71ce336531a04febe4edad",
+          "digest": "sha256:5bee6468752914f371b3ce2e6ebeed9f007374ebbc80c01c309e46f40b5fd781",
           "bytes": 847,
           "id": "lab.compatibility-matrix"
         },
@@ -7091,7 +6959,7 @@
         {
           "evidence_id": "reference-system",
           "path": "evidence/artifacts/reference-system.json",
-          "digest": "sha256:e51556cc0675013457a24ee48e82d8f2d277b77d41584335ce8e5e350496d756"
+          "digest": "sha256:f882cc2fb599ef685c444b38f26b700e59939e5b374680b7f71d32a79859c8f0"
         }
       ],
       "assertions": {
@@ -7132,9 +7000,7 @@
       ],
       "mutation_policy": "read-only",
       "mutation_status": "read-only",
-      "blocked_reasons": [
-
-      ],
+      "blocked_reasons": [],
       "stop_conditions": [
         "coverage-gap",
         "unverified-evidence",
@@ -7169,7 +7035,7 @@
       "evidence_bindings": [
         {
           "path": "evidence/migration.evidence.yaml",
-          "digest": "sha256:7421c83eb2b1d32575a6bda8eb5138aec7c5aabec9c5cb618319d518cf0e4468",
+          "digest": "sha256:653769b5c4d5fd5c168748278d9bc3d2429640e708a69fe4a187fa558da96012",
           "bytes": 798,
           "id": "lab.migration"
         },
@@ -7193,7 +7059,7 @@
         {
           "evidence_id": "reference-system",
           "path": "evidence/artifacts/reference-system.json",
-          "digest": "sha256:e51556cc0675013457a24ee48e82d8f2d277b77d41584335ce8e5e350496d756"
+          "digest": "sha256:f882cc2fb599ef685c444b38f26b700e59939e5b374680b7f71d32a79859c8f0"
         }
       ],
       "assertions": {
@@ -7234,9 +7100,7 @@
       ],
       "mutation_policy": "read-only",
       "mutation_status": "read-only",
-      "blocked_reasons": [
-
-      ],
+      "blocked_reasons": [],
       "stop_conditions": [
         "coverage-gap",
         "unverified-evidence",
@@ -7271,7 +7135,7 @@
       "evidence_bindings": [
         {
           "path": "evidence/index.evidence.yaml",
-          "digest": "sha256:0b7a97106bd5702c9fa6c3cc03c75030592d2e8189ad2a5c23abf5a2662f9323",
+          "digest": "sha256:e77989719a9301d1e846fdcaa52dc26cdceabf8a933dc64d0fb81d00530eeabe",
           "bytes": 771,
           "id": "lab.index"
         },
@@ -7295,7 +7159,7 @@
         {
           "evidence_id": "reference-system",
           "path": "evidence/artifacts/reference-system.json",
-          "digest": "sha256:e51556cc0675013457a24ee48e82d8f2d277b77d41584335ce8e5e350496d756"
+          "digest": "sha256:f882cc2fb599ef685c444b38f26b700e59939e5b374680b7f71d32a79859c8f0"
         }
       ],
       "assertions": {
@@ -7336,9 +7200,7 @@
       ],
       "mutation_policy": "read-only",
       "mutation_status": "read-only",
-      "blocked_reasons": [
-
-      ],
+      "blocked_reasons": [],
       "stop_conditions": [
         "coverage-gap",
         "unverified-evidence",
@@ -7373,7 +7235,7 @@
       "evidence_bindings": [
         {
           "path": "evidence/publication-static-gates.evidence.yaml",
-          "digest": "sha256:98dba3d5be2fea3a3c28dd795768104cc37e52dba221b46b479e6cf72145c7a5",
+          "digest": "sha256:e1ffff19fa5d150b9728aa64b311713a51a6da7f15818d85ac5a0f1931f0cdfa",
           "bytes": 824,
           "id": "publication.static-gates"
         },
@@ -7397,7 +7259,7 @@
         {
           "evidence_id": "reference-system",
           "path": "evidence/artifacts/reference-system.json",
-          "digest": "sha256:e51556cc0675013457a24ee48e82d8f2d277b77d41584335ce8e5e350496d756"
+          "digest": "sha256:f882cc2fb599ef685c444b38f26b700e59939e5b374680b7f71d32a79859c8f0"
         }
       ],
       "assertions": {
@@ -7438,9 +7300,7 @@
       ],
       "mutation_policy": "read-only",
       "mutation_status": "read-only",
-      "blocked_reasons": [
-
-      ],
+      "blocked_reasons": [],
       "stop_conditions": [
         "coverage-gap",
         "unverified-evidence",
@@ -7475,8 +7335,8 @@
       "evidence_bindings": [
         {
           "path": "evidence/artifacts/reference-system.json",
-          "digest": "sha256:e51556cc0675013457a24ee48e82d8f2d277b77d41584335ce8e5e350496d756",
-          "bytes": 10171,
+          "digest": "sha256:f882cc2fb599ef685c444b38f26b700e59939e5b374680b7f71d32a79859c8f0",
+          "bytes": 10170,
           "claim_scope": "shared-integration-slice-not-target-completion-proof",
           "id": "reference-system"
         }
@@ -7493,7 +7353,7 @@
         {
           "evidence_id": "reference-system",
           "path": "evidence/artifacts/reference-system.json",
-          "digest": "sha256:e51556cc0675013457a24ee48e82d8f2d277b77d41584335ce8e5e350496d756"
+          "digest": "sha256:f882cc2fb599ef685c444b38f26b700e59939e5b374680b7f71d32a79859c8f0"
         }
       ],
       "assertions": {
@@ -7534,9 +7394,7 @@
       ],
       "mutation_policy": "read-only",
       "mutation_status": "read-only",
-      "blocked_reasons": [
-
-      ],
+      "blocked_reasons": [],
       "stop_conditions": [
         "coverage-gap",
         "unverified-evidence",
@@ -7576,7 +7434,7 @@
       "evidence_bindings": [
         {
           "path": "evidence/foundation-authority-lock.evidence.yaml",
-          "digest": "sha256:2e3c51a8125790372c399eb53698583d219ba1bc72bca8aa945400c23227c767",
+          "digest": "sha256:25f6d2eb0a3ed78b9db762ebb294066b3c1435e89dfce5472a7ae697184c2b9b",
           "bytes": 856,
           "id": "foundation.authority-lock"
         },
@@ -7601,7 +7459,7 @@
         {
           "evidence_id": "reference-system",
           "path": "evidence/artifacts/reference-system.json",
-          "digest": "sha256:e51556cc0675013457a24ee48e82d8f2d277b77d41584335ce8e5e350496d756"
+          "digest": "sha256:f882cc2fb599ef685c444b38f26b700e59939e5b374680b7f71d32a79859c8f0"
         }
       ],
       "assertions": {
@@ -7642,9 +7500,7 @@
       ],
       "mutation_policy": "read-only",
       "mutation_status": "read-only",
-      "blocked_reasons": [
-
-      ],
+      "blocked_reasons": [],
       "stop_conditions": [
         "coverage-gap",
         "unverified-evidence",
@@ -7679,7 +7535,7 @@
       "evidence_bindings": [
         {
           "path": "evidence/mvcc.evidence.yaml",
-          "digest": "sha256:ac442f06c9a4fe68268e4ee2f20913906eb6f60da064eaf67d720b5021ce2c42",
+          "digest": "sha256:927fb43fd7e8d48a8f0f2f4eceb78aa73b2aa14ebf1fd8c3a088dc3cb5d394af",
           "bytes": 768,
           "id": "lab.mvcc"
         },
@@ -7703,7 +7559,7 @@
         {
           "evidence_id": "reference-system",
           "path": "evidence/artifacts/reference-system.json",
-          "digest": "sha256:e51556cc0675013457a24ee48e82d8f2d277b77d41584335ce8e5e350496d756"
+          "digest": "sha256:f882cc2fb599ef685c444b38f26b700e59939e5b374680b7f71d32a79859c8f0"
         }
       ],
       "assertions": {
@@ -7744,9 +7600,7 @@
       ],
       "mutation_policy": "read-only",
       "mutation_status": "read-only",
-      "blocked_reasons": [
-
-      ],
+      "blocked_reasons": [],
       "stop_conditions": [
         "coverage-gap",
         "unverified-evidence",
@@ -7758,8 +7612,8 @@
       "implementation_bindings": [
         {
           "path": "evidence/artifacts/reference-system.json",
-          "digest": "sha256:e51556cc0675013457a24ee48e82d8f2d277b77d41584335ce8e5e350496d756",
-          "bytes": 10171,
+          "digest": "sha256:f882cc2fb599ef685c444b38f26b700e59939e5b374680b7f71d32a79859c8f0",
+          "bytes": 10170,
           "claim_scope": "route-candidate-not-target-completion-proof",
           "id": "integrated-runtime"
         },
@@ -7781,7 +7635,7 @@
       "evidence_bindings": [
         {
           "path": "evidence/locking.evidence.yaml",
-          "digest": "sha256:6e7ae583b775d65e65f52623e1125188914d33dc29f40cf363b07cb70bd9ae90",
+          "digest": "sha256:9aacb5b7550d1ece4583a625a359d06c1c3048432ec7e367a9ae64ed5deb2dcc",
           "bytes": 783,
           "id": "lab.locking"
         },
@@ -7805,7 +7659,7 @@
         {
           "evidence_id": "reference-system",
           "path": "evidence/artifacts/reference-system.json",
-          "digest": "sha256:e51556cc0675013457a24ee48e82d8f2d277b77d41584335ce8e5e350496d756"
+          "digest": "sha256:f882cc2fb599ef685c444b38f26b700e59939e5b374680b7f71d32a79859c8f0"
         }
       ],
       "assertions": {
@@ -7846,9 +7700,7 @@
       ],
       "mutation_policy": "read-only",
       "mutation_status": "read-only",
-      "blocked_reasons": [
-
-      ],
+      "blocked_reasons": [],
       "stop_conditions": [
         "coverage-gap",
         "unverified-evidence",
@@ -7883,7 +7735,7 @@
       "evidence_bindings": [
         {
           "path": "evidence/mvcc.evidence.yaml",
-          "digest": "sha256:ac442f06c9a4fe68268e4ee2f20913906eb6f60da064eaf67d720b5021ce2c42",
+          "digest": "sha256:927fb43fd7e8d48a8f0f2f4eceb78aa73b2aa14ebf1fd8c3a088dc3cb5d394af",
           "bytes": 768,
           "id": "lab.mvcc"
         },
@@ -7907,7 +7759,7 @@
         {
           "evidence_id": "reference-system",
           "path": "evidence/artifacts/reference-system.json",
-          "digest": "sha256:e51556cc0675013457a24ee48e82d8f2d277b77d41584335ce8e5e350496d756"
+          "digest": "sha256:f882cc2fb599ef685c444b38f26b700e59939e5b374680b7f71d32a79859c8f0"
         }
       ],
       "assertions": {
@@ -7948,9 +7800,7 @@
       ],
       "mutation_policy": "read-only",
       "mutation_status": "read-only",
-      "blocked_reasons": [
-
-      ],
+      "blocked_reasons": [],
       "stop_conditions": [
         "coverage-gap",
         "unverified-evidence",
@@ -7962,8 +7812,8 @@
       "implementation_bindings": [
         {
           "path": "evidence/artifacts/reference-system.json",
-          "digest": "sha256:e51556cc0675013457a24ee48e82d8f2d277b77d41584335ce8e5e350496d756",
-          "bytes": 10171,
+          "digest": "sha256:f882cc2fb599ef685c444b38f26b700e59939e5b374680b7f71d32a79859c8f0",
+          "bytes": 10170,
           "claim_scope": "route-candidate-not-target-completion-proof",
           "id": "normal-oracle"
         },
@@ -7985,7 +7835,7 @@
       "evidence_bindings": [
         {
           "path": "evidence/deadlock.evidence.yaml",
-          "digest": "sha256:1a6e05e64c54b5cba490cb84df16ed45a1b8673f2a9580505ff34df100eab673",
+          "digest": "sha256:2b2fd7852ed73eef200af15035ea51f336792f6c7e7c4b93678d7a957d910191",
           "bytes": 788,
           "id": "lab.deadlock"
         },
@@ -8009,7 +7859,7 @@
         {
           "evidence_id": "reference-system",
           "path": "evidence/artifacts/reference-system.json",
-          "digest": "sha256:e51556cc0675013457a24ee48e82d8f2d277b77d41584335ce8e5e350496d756"
+          "digest": "sha256:f882cc2fb599ef685c444b38f26b700e59939e5b374680b7f71d32a79859c8f0"
         }
       ],
       "assertions": {
@@ -8051,9 +7901,7 @@
       ],
       "mutation_policy": "read-only",
       "mutation_status": "read-only",
-      "blocked_reasons": [
-
-      ],
+      "blocked_reasons": [],
       "stop_conditions": [
         "coverage-gap",
         "unverified-evidence",
@@ -8088,7 +7936,7 @@
       "evidence_bindings": [
         {
           "path": "evidence/deadlock.evidence.yaml",
-          "digest": "sha256:1a6e05e64c54b5cba490cb84df16ed45a1b8673f2a9580505ff34df100eab673",
+          "digest": "sha256:2b2fd7852ed73eef200af15035ea51f336792f6c7e7c4b93678d7a957d910191",
           "bytes": 788,
           "id": "lab.deadlock"
         },
@@ -8112,7 +7960,7 @@
         {
           "evidence_id": "reference-system",
           "path": "evidence/artifacts/reference-system.json",
-          "digest": "sha256:e51556cc0675013457a24ee48e82d8f2d277b77d41584335ce8e5e350496d756"
+          "digest": "sha256:f882cc2fb599ef685c444b38f26b700e59939e5b374680b7f71d32a79859c8f0"
         }
       ],
       "assertions": {
@@ -8153,9 +8001,7 @@
       ],
       "mutation_policy": "read-only",
       "mutation_status": "read-only",
-      "blocked_reasons": [
-
-      ],
+      "blocked_reasons": [],
       "stop_conditions": [
         "coverage-gap",
         "unverified-evidence",
@@ -8190,7 +8036,7 @@
       "evidence_bindings": [
         {
           "path": "evidence/performance.evidence.yaml",
-          "digest": "sha256:0a2c8f312b46058630e8c6ee3825c2f0768e8320f0f68e0340d74872596763e1",
+          "digest": "sha256:e0c1295698da907c4926151ac9a16bf3654e74ab15d99e0edfe301bd0b1feaeb",
           "bytes": 799,
           "id": "lab.performance"
         },
@@ -8214,7 +8060,7 @@
         {
           "evidence_id": "reference-system",
           "path": "evidence/artifacts/reference-system.json",
-          "digest": "sha256:e51556cc0675013457a24ee48e82d8f2d277b77d41584335ce8e5e350496d756"
+          "digest": "sha256:f882cc2fb599ef685c444b38f26b700e59939e5b374680b7f71d32a79859c8f0"
         }
       ],
       "assertions": {
@@ -8255,9 +8101,7 @@
       ],
       "mutation_policy": "read-only",
       "mutation_status": "read-only",
-      "blocked_reasons": [
-
-      ],
+      "blocked_reasons": [],
       "stop_conditions": [
         "coverage-gap",
         "unverified-evidence",
@@ -8292,7 +8136,7 @@
       "evidence_bindings": [
         {
           "path": "evidence/locking.evidence.yaml",
-          "digest": "sha256:6e7ae583b775d65e65f52623e1125188914d33dc29f40cf363b07cb70bd9ae90",
+          "digest": "sha256:9aacb5b7550d1ece4583a625a359d06c1c3048432ec7e367a9ae64ed5deb2dcc",
           "bytes": 783,
           "id": "lab.locking"
         },
@@ -8316,7 +8160,7 @@
         {
           "evidence_id": "reference-system",
           "path": "evidence/artifacts/reference-system.json",
-          "digest": "sha256:e51556cc0675013457a24ee48e82d8f2d277b77d41584335ce8e5e350496d756"
+          "digest": "sha256:f882cc2fb599ef685c444b38f26b700e59939e5b374680b7f71d32a79859c8f0"
         }
       ],
       "assertions": {
@@ -8357,9 +8201,7 @@
       ],
       "mutation_policy": "read-only",
       "mutation_status": "read-only",
-      "blocked_reasons": [
-
-      ],
+      "blocked_reasons": [],
       "stop_conditions": [
         "coverage-gap",
         "unverified-evidence",
@@ -8394,7 +8236,7 @@
       "evidence_bindings": [
         {
           "path": "evidence/planner.evidence.yaml",
-          "digest": "sha256:c1f537075746712b4469f55e77beafb4ce11df19f926f0160bddd7a6e0917a0e",
+          "digest": "sha256:f3864c92f2538ac2670600f9d99ff03271527797ed72828d798fe0eae7618057",
           "bytes": 781,
           "id": "lab.planner"
         },
@@ -8418,7 +8260,7 @@
         {
           "evidence_id": "reference-system",
           "path": "evidence/artifacts/reference-system.json",
-          "digest": "sha256:e51556cc0675013457a24ee48e82d8f2d277b77d41584335ce8e5e350496d756"
+          "digest": "sha256:f882cc2fb599ef685c444b38f26b700e59939e5b374680b7f71d32a79859c8f0"
         }
       ],
       "assertions": {
@@ -8459,9 +8301,7 @@
       ],
       "mutation_policy": "read-only",
       "mutation_status": "read-only",
-      "blocked_reasons": [
-
-      ],
+      "blocked_reasons": [],
       "stop_conditions": [
         "coverage-gap",
         "unverified-evidence",
@@ -8526,7 +8366,7 @@
       "evidence_bindings": [
         {
           "path": "evidence/compatibility-matrix.evidence.yaml",
-          "digest": "sha256:b482452563fb9ef1de054ecf7904cfdca202938d4e71ce336531a04febe4edad",
+          "digest": "sha256:5bee6468752914f371b3ce2e6ebeed9f007374ebbc80c01c309e46f40b5fd781",
           "bytes": 847,
           "id": "lab.compatibility-matrix"
         },
@@ -8556,7 +8396,7 @@
         {
           "evidence_id": "reference-system",
           "path": "evidence/artifacts/reference-system.json",
-          "digest": "sha256:e51556cc0675013457a24ee48e82d8f2d277b77d41584335ce8e5e350496d756"
+          "digest": "sha256:f882cc2fb599ef685c444b38f26b700e59939e5b374680b7f71d32a79859c8f0"
         }
       ],
       "assertions": {
@@ -8597,9 +8437,7 @@
       ],
       "mutation_policy": "read-only",
       "mutation_status": "read-only",
-      "blocked_reasons": [
-
-      ],
+      "blocked_reasons": [],
       "stop_conditions": [
         "coverage-gap",
         "unverified-evidence",
@@ -8634,7 +8472,7 @@
       "evidence_bindings": [
         {
           "path": "evidence/migration.evidence.yaml",
-          "digest": "sha256:7421c83eb2b1d32575a6bda8eb5138aec7c5aabec9c5cb618319d518cf0e4468",
+          "digest": "sha256:653769b5c4d5fd5c168748278d9bc3d2429640e708a69fe4a187fa558da96012",
           "bytes": 798,
           "id": "lab.migration"
         },
@@ -8658,7 +8496,7 @@
         {
           "evidence_id": "reference-system",
           "path": "evidence/artifacts/reference-system.json",
-          "digest": "sha256:e51556cc0675013457a24ee48e82d8f2d277b77d41584335ce8e5e350496d756"
+          "digest": "sha256:f882cc2fb599ef685c444b38f26b700e59939e5b374680b7f71d32a79859c8f0"
         }
       ],
       "assertions": {
@@ -8699,9 +8537,7 @@
       ],
       "mutation_policy": "read-only",
       "mutation_status": "read-only",
-      "blocked_reasons": [
-
-      ],
+      "blocked_reasons": [],
       "stop_conditions": [
         "coverage-gap",
         "unverified-evidence",
@@ -8736,7 +8572,7 @@
       "evidence_bindings": [
         {
           "path": "evidence/mvcc.evidence.yaml",
-          "digest": "sha256:ac442f06c9a4fe68268e4ee2f20913906eb6f60da064eaf67d720b5021ce2c42",
+          "digest": "sha256:927fb43fd7e8d48a8f0f2f4eceb78aa73b2aa14ebf1fd8c3a088dc3cb5d394af",
           "bytes": 768,
           "id": "lab.mvcc"
         },
@@ -8760,7 +8596,7 @@
         {
           "evidence_id": "reference-system",
           "path": "evidence/artifacts/reference-system.json",
-          "digest": "sha256:e51556cc0675013457a24ee48e82d8f2d277b77d41584335ce8e5e350496d756"
+          "digest": "sha256:f882cc2fb599ef685c444b38f26b700e59939e5b374680b7f71d32a79859c8f0"
         }
       ],
       "assertions": {
@@ -8801,9 +8637,7 @@
       ],
       "mutation_policy": "read-only",
       "mutation_status": "read-only",
-      "blocked_reasons": [
-
-      ],
+      "blocked_reasons": [],
       "stop_conditions": [
         "coverage-gap",
         "unverified-evidence",
@@ -8838,7 +8672,7 @@
       "evidence_bindings": [
         {
           "path": "evidence/publication-static-gates.evidence.yaml",
-          "digest": "sha256:98dba3d5be2fea3a3c28dd795768104cc37e52dba221b46b479e6cf72145c7a5",
+          "digest": "sha256:e1ffff19fa5d150b9728aa64b311713a51a6da7f15818d85ac5a0f1931f0cdfa",
           "bytes": 824,
           "id": "publication.static-gates"
         },
@@ -8862,7 +8696,7 @@
         {
           "evidence_id": "reference-system",
           "path": "evidence/artifacts/reference-system.json",
-          "digest": "sha256:e51556cc0675013457a24ee48e82d8f2d277b77d41584335ce8e5e350496d756"
+          "digest": "sha256:f882cc2fb599ef685c444b38f26b700e59939e5b374680b7f71d32a79859c8f0"
         }
       ],
       "assertions": {
@@ -8903,9 +8737,7 @@
       ],
       "mutation_policy": "read-only",
       "mutation_status": "read-only",
-      "blocked_reasons": [
-
-      ],
+      "blocked_reasons": [],
       "stop_conditions": [
         "coverage-gap",
         "unverified-evidence",
@@ -8940,8 +8772,8 @@
       "evidence_bindings": [
         {
           "path": "evidence/artifacts/reference-system.json",
-          "digest": "sha256:e51556cc0675013457a24ee48e82d8f2d277b77d41584335ce8e5e350496d756",
-          "bytes": 10171,
+          "digest": "sha256:f882cc2fb599ef685c444b38f26b700e59939e5b374680b7f71d32a79859c8f0",
+          "bytes": 10170,
           "claim_scope": "shared-integration-slice-not-target-completion-proof",
           "id": "reference-system"
         }
@@ -8958,7 +8790,7 @@
         {
           "evidence_id": "reference-system",
           "path": "evidence/artifacts/reference-system.json",
-          "digest": "sha256:e51556cc0675013457a24ee48e82d8f2d277b77d41584335ce8e5e350496d756"
+          "digest": "sha256:f882cc2fb599ef685c444b38f26b700e59939e5b374680b7f71d32a79859c8f0"
         }
       ],
       "assertions": {
@@ -8999,9 +8831,7 @@
       ],
       "mutation_policy": "explicit-authorization-required",
       "mutation_status": "authorized-for-request-scope",
-      "blocked_reasons": [
-
-      ],
+      "blocked_reasons": [],
       "stop_conditions": [
         "coverage-gap",
         "unverified-evidence",
@@ -9041,7 +8871,7 @@
       "evidence_bindings": [
         {
           "path": "evidence/foundation-authority-lock.evidence.yaml",
-          "digest": "sha256:2e3c51a8125790372c399eb53698583d219ba1bc72bca8aa945400c23227c767",
+          "digest": "sha256:25f6d2eb0a3ed78b9db762ebb294066b3c1435e89dfce5472a7ae697184c2b9b",
           "bytes": 856,
           "id": "foundation.authority-lock"
         },
@@ -9066,7 +8896,7 @@
         {
           "evidence_id": "reference-system",
           "path": "evidence/artifacts/reference-system.json",
-          "digest": "sha256:e51556cc0675013457a24ee48e82d8f2d277b77d41584335ce8e5e350496d756"
+          "digest": "sha256:f882cc2fb599ef685c444b38f26b700e59939e5b374680b7f71d32a79859c8f0"
         }
       ],
       "assertions": {
@@ -9107,9 +8937,7 @@
       ],
       "mutation_policy": "explicit-authorization-required",
       "mutation_status": "authorized-for-request-scope",
-      "blocked_reasons": [
-
-      ],
+      "blocked_reasons": [],
       "stop_conditions": [
         "coverage-gap",
         "unverified-evidence",
@@ -9149,14 +8977,14 @@
       "evidence_bindings": [
         {
           "path": "evidence/reference-system.evidence.yaml",
-          "digest": "sha256:8110f4c2b4fe37afe42b43c9c226e6f88bb877ddaa2b1d6e68bfa32a7598d4b7",
+          "digest": "sha256:252accc14a9af2288328564ca1d8becdf9526d838993a8dbd0e67909b4ea91c3",
           "bytes": 843,
           "id": "lab.reference-system"
         },
         {
           "path": "evidence/artifacts/reference-system.json",
-          "digest": "sha256:e51556cc0675013457a24ee48e82d8f2d277b77d41584335ce8e5e350496d756",
-          "bytes": 10171,
+          "digest": "sha256:f882cc2fb599ef685c444b38f26b700e59939e5b374680b7f71d32a79859c8f0",
+          "bytes": 10170,
           "claim_scope": "target-bounded-proof",
           "id": "lab.reference-system"
         }
@@ -9174,7 +9002,7 @@
         {
           "evidence_id": "reference-system",
           "path": "evidence/artifacts/reference-system.json",
-          "digest": "sha256:e51556cc0675013457a24ee48e82d8f2d277b77d41584335ce8e5e350496d756"
+          "digest": "sha256:f882cc2fb599ef685c444b38f26b700e59939e5b374680b7f71d32a79859c8f0"
         }
       ],
       "assertions": {
@@ -9215,9 +9043,7 @@
       ],
       "mutation_policy": "explicit-authorization-required",
       "mutation_status": "authorized-for-request-scope",
-      "blocked_reasons": [
-
-      ],
+      "blocked_reasons": [],
       "stop_conditions": [
         "coverage-gap",
         "unverified-evidence",
@@ -9229,8 +9055,8 @@
       "implementation_bindings": [
         {
           "path": "evidence/artifacts/reference-system.json",
-          "digest": "sha256:e51556cc0675013457a24ee48e82d8f2d277b77d41584335ce8e5e350496d756",
-          "bytes": 10171,
+          "digest": "sha256:f882cc2fb599ef685c444b38f26b700e59939e5b374680b7f71d32a79859c8f0",
+          "bytes": 10170,
           "claim_scope": "route-candidate-not-target-completion-proof",
           "id": "integrated-runtime"
         },
@@ -9252,7 +9078,7 @@
       "evidence_bindings": [
         {
           "path": "evidence/migration.evidence.yaml",
-          "digest": "sha256:7421c83eb2b1d32575a6bda8eb5138aec7c5aabec9c5cb618319d518cf0e4468",
+          "digest": "sha256:653769b5c4d5fd5c168748278d9bc3d2429640e708a69fe4a187fa558da96012",
           "bytes": 798,
           "id": "lab.migration"
         },
@@ -9276,7 +9102,7 @@
         {
           "evidence_id": "reference-system",
           "path": "evidence/artifacts/reference-system.json",
-          "digest": "sha256:e51556cc0675013457a24ee48e82d8f2d277b77d41584335ce8e5e350496d756"
+          "digest": "sha256:f882cc2fb599ef685c444b38f26b700e59939e5b374680b7f71d32a79859c8f0"
         }
       ],
       "assertions": {
@@ -9317,9 +9143,7 @@
       ],
       "mutation_policy": "explicit-authorization-required",
       "mutation_status": "authorized-for-request-scope",
-      "blocked_reasons": [
-
-      ],
+      "blocked_reasons": [],
       "stop_conditions": [
         "coverage-gap",
         "unverified-evidence",
@@ -9354,7 +9178,7 @@
       "evidence_bindings": [
         {
           "path": "evidence/migration.evidence.yaml",
-          "digest": "sha256:7421c83eb2b1d32575a6bda8eb5138aec7c5aabec9c5cb618319d518cf0e4468",
+          "digest": "sha256:653769b5c4d5fd5c168748278d9bc3d2429640e708a69fe4a187fa558da96012",
           "bytes": 798,
           "id": "lab.migration"
         },
@@ -9378,7 +9202,7 @@
         {
           "evidence_id": "reference-system",
           "path": "evidence/artifacts/reference-system.json",
-          "digest": "sha256:e51556cc0675013457a24ee48e82d8f2d277b77d41584335ce8e5e350496d756"
+          "digest": "sha256:f882cc2fb599ef685c444b38f26b700e59939e5b374680b7f71d32a79859c8f0"
         }
       ],
       "assertions": {
@@ -9419,9 +9243,7 @@
       ],
       "mutation_policy": "explicit-authorization-required",
       "mutation_status": "authorized-for-request-scope",
-      "blocked_reasons": [
-
-      ],
+      "blocked_reasons": [],
       "stop_conditions": [
         "coverage-gap",
         "unverified-evidence",
@@ -9433,8 +9255,8 @@
       "implementation_bindings": [
         {
           "path": "evidence/artifacts/reference-system.json",
-          "digest": "sha256:e51556cc0675013457a24ee48e82d8f2d277b77d41584335ce8e5e350496d756",
-          "bytes": 10171,
+          "digest": "sha256:f882cc2fb599ef685c444b38f26b700e59939e5b374680b7f71d32a79859c8f0",
+          "bytes": 10170,
           "claim_scope": "route-candidate-not-target-completion-proof",
           "id": "normal-oracle"
         },
@@ -9486,7 +9308,7 @@
       "evidence_bindings": [
         {
           "path": "evidence/compatibility-matrix.evidence.yaml",
-          "digest": "sha256:b482452563fb9ef1de054ecf7904cfdca202938d4e71ce336531a04febe4edad",
+          "digest": "sha256:5bee6468752914f371b3ce2e6ebeed9f007374ebbc80c01c309e46f40b5fd781",
           "bytes": 847,
           "id": "lab.compatibility-matrix"
         },
@@ -9516,7 +9338,7 @@
         {
           "evidence_id": "reference-system",
           "path": "evidence/artifacts/reference-system.json",
-          "digest": "sha256:e51556cc0675013457a24ee48e82d8f2d277b77d41584335ce8e5e350496d756"
+          "digest": "sha256:f882cc2fb599ef685c444b38f26b700e59939e5b374680b7f71d32a79859c8f0"
         }
       ],
       "assertions": {
@@ -9558,9 +9380,7 @@
       ],
       "mutation_policy": "explicit-authorization-required",
       "mutation_status": "authorized-for-request-scope",
-      "blocked_reasons": [
-
-      ],
+      "blocked_reasons": [],
       "stop_conditions": [
         "coverage-gap",
         "unverified-evidence",
@@ -9600,7 +9420,7 @@
       "evidence_bindings": [
         {
           "path": "evidence/upgrade.evidence.yaml",
-          "digest": "sha256:c94342150c2e251757bae88d8e9120f36b861b3b6a7807a69a9cf29d36f813da",
+          "digest": "sha256:3c1408a253b6c1996136c2b74468d77f17fe20d5c1277baf2995b862a0dea1cc",
           "bytes": 777,
           "id": "lab.upgrade"
         },
@@ -9625,7 +9445,7 @@
         {
           "evidence_id": "reference-system",
           "path": "evidence/artifacts/reference-system.json",
-          "digest": "sha256:e51556cc0675013457a24ee48e82d8f2d277b77d41584335ce8e5e350496d756"
+          "digest": "sha256:f882cc2fb599ef685c444b38f26b700e59939e5b374680b7f71d32a79859c8f0"
         }
       ],
       "assertions": {
@@ -9666,9 +9486,7 @@
       ],
       "mutation_policy": "explicit-authorization-required",
       "mutation_status": "authorized-for-request-scope",
-      "blocked_reasons": [
-
-      ],
+      "blocked_reasons": [],
       "stop_conditions": [
         "coverage-gap",
         "unverified-evidence",
@@ -9703,7 +9521,7 @@
       "evidence_bindings": [
         {
           "path": "evidence/performance.evidence.yaml",
-          "digest": "sha256:0a2c8f312b46058630e8c6ee3825c2f0768e8320f0f68e0340d74872596763e1",
+          "digest": "sha256:e0c1295698da907c4926151ac9a16bf3654e74ab15d99e0edfe301bd0b1feaeb",
           "bytes": 799,
           "id": "lab.performance"
         },
@@ -9727,7 +9545,7 @@
         {
           "evidence_id": "reference-system",
           "path": "evidence/artifacts/reference-system.json",
-          "digest": "sha256:e51556cc0675013457a24ee48e82d8f2d277b77d41584335ce8e5e350496d756"
+          "digest": "sha256:f882cc2fb599ef685c444b38f26b700e59939e5b374680b7f71d32a79859c8f0"
         }
       ],
       "assertions": {
@@ -9768,9 +9586,7 @@
       ],
       "mutation_policy": "explicit-authorization-required",
       "mutation_status": "authorized-for-request-scope",
-      "blocked_reasons": [
-
-      ],
+      "blocked_reasons": [],
       "stop_conditions": [
         "coverage-gap",
         "unverified-evidence",
@@ -9815,7 +9631,7 @@
       "evidence_bindings": [
         {
           "path": "evidence/foundation-authority-lock.evidence.yaml",
-          "digest": "sha256:2e3c51a8125790372c399eb53698583d219ba1bc72bca8aa945400c23227c767",
+          "digest": "sha256:25f6d2eb0a3ed78b9db762ebb294066b3c1435e89dfce5472a7ae697184c2b9b",
           "bytes": 856,
           "id": "foundation.authority-lock"
         },
@@ -9828,7 +9644,7 @@
         },
         {
           "path": "evidence/authority-lock.evidence.yaml",
-          "digest": "sha256:2240a83bbd46e4761a069cc49809ddf3efb793c3b15ffd3ce78cd4f414a1c003",
+          "digest": "sha256:71a6f082b8ee1305eb84319b6fe35908b26a63633ee44091e3819dd89710bc38",
           "bytes": 814,
           "id": "lab.authority-lock"
         },
@@ -9854,7 +9670,7 @@
         {
           "evidence_id": "reference-system",
           "path": "evidence/artifacts/reference-system.json",
-          "digest": "sha256:e51556cc0675013457a24ee48e82d8f2d277b77d41584335ce8e5e350496d756"
+          "digest": "sha256:f882cc2fb599ef685c444b38f26b700e59939e5b374680b7f71d32a79859c8f0"
         }
       ],
       "assertions": {
@@ -9895,9 +9711,7 @@
       ],
       "mutation_policy": "explicit-authorization-required",
       "mutation_status": "authorized-for-request-scope",
-      "blocked_reasons": [
-
-      ],
+      "blocked_reasons": [],
       "stop_conditions": [
         "coverage-gap",
         "unverified-evidence",
@@ -9932,7 +9746,7 @@
       "evidence_bindings": [
         {
           "path": "evidence/planner.evidence.yaml",
-          "digest": "sha256:c1f537075746712b4469f55e77beafb4ce11df19f926f0160bddd7a6e0917a0e",
+          "digest": "sha256:f3864c92f2538ac2670600f9d99ff03271527797ed72828d798fe0eae7618057",
           "bytes": 781,
           "id": "lab.planner"
         },
@@ -9956,7 +9770,7 @@
         {
           "evidence_id": "reference-system",
           "path": "evidence/artifacts/reference-system.json",
-          "digest": "sha256:e51556cc0675013457a24ee48e82d8f2d277b77d41584335ce8e5e350496d756"
+          "digest": "sha256:f882cc2fb599ef685c444b38f26b700e59939e5b374680b7f71d32a79859c8f0"
         }
       ],
       "assertions": {
@@ -9997,9 +9811,7 @@
       ],
       "mutation_policy": "explicit-authorization-required",
       "mutation_status": "authorized-for-request-scope",
-      "blocked_reasons": [
-
-      ],
+      "blocked_reasons": [],
       "stop_conditions": [
         "coverage-gap",
         "unverified-evidence",
@@ -10064,7 +9876,7 @@
       "evidence_bindings": [
         {
           "path": "evidence/compatibility-matrix.evidence.yaml",
-          "digest": "sha256:b482452563fb9ef1de054ecf7904cfdca202938d4e71ce336531a04febe4edad",
+          "digest": "sha256:5bee6468752914f371b3ce2e6ebeed9f007374ebbc80c01c309e46f40b5fd781",
           "bytes": 847,
           "id": "lab.compatibility-matrix"
         },
@@ -10094,7 +9906,7 @@
         {
           "evidence_id": "reference-system",
           "path": "evidence/artifacts/reference-system.json",
-          "digest": "sha256:e51556cc0675013457a24ee48e82d8f2d277b77d41584335ce8e5e350496d756"
+          "digest": "sha256:f882cc2fb599ef685c444b38f26b700e59939e5b374680b7f71d32a79859c8f0"
         }
       ],
       "assertions": {
@@ -10135,9 +9947,7 @@
       ],
       "mutation_policy": "explicit-authorization-required",
       "mutation_status": "authorized-for-request-scope",
-      "blocked_reasons": [
-
-      ],
+      "blocked_reasons": [],
       "stop_conditions": [
         "coverage-gap",
         "unverified-evidence",
@@ -10172,7 +9982,7 @@
       "evidence_bindings": [
         {
           "path": "evidence/migration.evidence.yaml",
-          "digest": "sha256:7421c83eb2b1d32575a6bda8eb5138aec7c5aabec9c5cb618319d518cf0e4468",
+          "digest": "sha256:653769b5c4d5fd5c168748278d9bc3d2429640e708a69fe4a187fa558da96012",
           "bytes": 798,
           "id": "lab.migration"
         },
@@ -10196,7 +10006,7 @@
         {
           "evidence_id": "reference-system",
           "path": "evidence/artifacts/reference-system.json",
-          "digest": "sha256:e51556cc0675013457a24ee48e82d8f2d277b77d41584335ce8e5e350496d756"
+          "digest": "sha256:f882cc2fb599ef685c444b38f26b700e59939e5b374680b7f71d32a79859c8f0"
         }
       ],
       "assertions": {
@@ -10237,9 +10047,7 @@
       ],
       "mutation_policy": "explicit-authorization-required",
       "mutation_status": "authorized-for-request-scope",
-      "blocked_reasons": [
-
-      ],
+      "blocked_reasons": [],
       "stop_conditions": [
         "coverage-gap",
         "unverified-evidence",
@@ -10304,7 +10112,7 @@
       "evidence_bindings": [
         {
           "path": "evidence/upgrade.evidence.yaml",
-          "digest": "sha256:c94342150c2e251757bae88d8e9120f36b861b3b6a7807a69a9cf29d36f813da",
+          "digest": "sha256:3c1408a253b6c1996136c2b74468d77f17fe20d5c1277baf2995b862a0dea1cc",
           "bytes": 777,
           "id": "lab.upgrade"
         },
@@ -10317,7 +10125,7 @@
         },
         {
           "path": "evidence/pg-upgrade.evidence.yaml",
-          "digest": "sha256:03d6c7c8b2e987e9ebf24cf91fd1f869c85c30bf938f5b26c9b5cf1396ad0728",
+          "digest": "sha256:b58caa627652f337e3a7be0a1e53cc9548c8fe8aad2e440a7e8b0beeb7d7352c",
           "bytes": 792,
           "id": "lab.pg-upgrade"
         },
@@ -10330,7 +10138,7 @@
         },
         {
           "path": "evidence/compatibility-matrix.evidence.yaml",
-          "digest": "sha256:b482452563fb9ef1de054ecf7904cfdca202938d4e71ce336531a04febe4edad",
+          "digest": "sha256:5bee6468752914f371b3ce2e6ebeed9f007374ebbc80c01c309e46f40b5fd781",
           "bytes": 847,
           "id": "lab.compatibility-matrix"
         },
@@ -10360,7 +10168,7 @@
         {
           "evidence_id": "reference-system",
           "path": "evidence/artifacts/reference-system.json",
-          "digest": "sha256:e51556cc0675013457a24ee48e82d8f2d277b77d41584335ce8e5e350496d756"
+          "digest": "sha256:f882cc2fb599ef685c444b38f26b700e59939e5b374680b7f71d32a79859c8f0"
         }
       ],
       "assertions": {
@@ -10401,9 +10209,7 @@
       ],
       "mutation_policy": "explicit-authorization-required",
       "mutation_status": "authorized-for-request-scope",
-      "blocked_reasons": [
-
-      ],
+      "blocked_reasons": [],
       "stop_conditions": [
         "coverage-gap",
         "unverified-evidence",
@@ -10448,7 +10254,7 @@
       "evidence_bindings": [
         {
           "path": "evidence/foundation-authority-lock.evidence.yaml",
-          "digest": "sha256:2e3c51a8125790372c399eb53698583d219ba1bc72bca8aa945400c23227c767",
+          "digest": "sha256:25f6d2eb0a3ed78b9db762ebb294066b3c1435e89dfce5472a7ae697184c2b9b",
           "bytes": 856,
           "id": "foundation.authority-lock"
         },
@@ -10461,7 +10267,7 @@
         },
         {
           "path": "evidence/authority-lock.evidence.yaml",
-          "digest": "sha256:2240a83bbd46e4761a069cc49809ddf3efb793c3b15ffd3ce78cd4f414a1c003",
+          "digest": "sha256:71a6f082b8ee1305eb84319b6fe35908b26a63633ee44091e3819dd89710bc38",
           "bytes": 814,
           "id": "lab.authority-lock"
         },
@@ -10487,7 +10293,7 @@
         {
           "evidence_id": "reference-system",
           "path": "evidence/artifacts/reference-system.json",
-          "digest": "sha256:e51556cc0675013457a24ee48e82d8f2d277b77d41584335ce8e5e350496d756"
+          "digest": "sha256:f882cc2fb599ef685c444b38f26b700e59939e5b374680b7f71d32a79859c8f0"
         }
       ],
       "assertions": {
@@ -10528,9 +10334,7 @@
       ],
       "mutation_policy": "explicit-authorization-required",
       "mutation_status": "authorized-for-request-scope",
-      "blocked_reasons": [
-
-      ],
+      "blocked_reasons": [],
       "stop_conditions": [
         "coverage-gap",
         "unverified-evidence",
@@ -10565,8 +10369,8 @@
       "evidence_bindings": [
         {
           "path": "evidence/artifacts/reference-system.json",
-          "digest": "sha256:e51556cc0675013457a24ee48e82d8f2d277b77d41584335ce8e5e350496d756",
-          "bytes": 10171,
+          "digest": "sha256:f882cc2fb599ef685c444b38f26b700e59939e5b374680b7f71d32a79859c8f0",
+          "bytes": 10170,
           "claim_scope": "shared-integration-slice-not-target-completion-proof",
           "id": "reference-system"
         }
@@ -10583,7 +10387,7 @@
         {
           "evidence_id": "reference-system",
           "path": "evidence/artifacts/reference-system.json",
-          "digest": "sha256:e51556cc0675013457a24ee48e82d8f2d277b77d41584335ce8e5e350496d756"
+          "digest": "sha256:f882cc2fb599ef685c444b38f26b700e59939e5b374680b7f71d32a79859c8f0"
         }
       ],
       "assertions": {
@@ -10625,9 +10429,7 @@
       ],
       "mutation_policy": "explicit-authorization-required",
       "mutation_status": "authorized-for-request-scope",
-      "blocked_reasons": [
-
-      ],
+      "blocked_reasons": [],
       "stop_conditions": [
         "coverage-gap",
         "unverified-evidence",
@@ -10667,7 +10469,7 @@
       "evidence_bindings": [
         {
           "path": "evidence/foundation-authority-lock.evidence.yaml",
-          "digest": "sha256:2e3c51a8125790372c399eb53698583d219ba1bc72bca8aa945400c23227c767",
+          "digest": "sha256:25f6d2eb0a3ed78b9db762ebb294066b3c1435e89dfce5472a7ae697184c2b9b",
           "bytes": 856,
           "id": "foundation.authority-lock"
         },
@@ -10692,7 +10494,7 @@
         {
           "evidence_id": "reference-system",
           "path": "evidence/artifacts/reference-system.json",
-          "digest": "sha256:e51556cc0675013457a24ee48e82d8f2d277b77d41584335ce8e5e350496d756"
+          "digest": "sha256:f882cc2fb599ef685c444b38f26b700e59939e5b374680b7f71d32a79859c8f0"
         }
       ],
       "assertions": {
@@ -10734,9 +10536,7 @@
       ],
       "mutation_policy": "explicit-authorization-required",
       "mutation_status": "authorized-for-request-scope",
-      "blocked_reasons": [
-
-      ],
+      "blocked_reasons": [],
       "stop_conditions": [
         "coverage-gap",
         "unverified-evidence",
@@ -10771,7 +10571,7 @@
       "evidence_bindings": [
         {
           "path": "evidence/mvcc.evidence.yaml",
-          "digest": "sha256:ac442f06c9a4fe68268e4ee2f20913906eb6f60da064eaf67d720b5021ce2c42",
+          "digest": "sha256:927fb43fd7e8d48a8f0f2f4eceb78aa73b2aa14ebf1fd8c3a088dc3cb5d394af",
           "bytes": 768,
           "id": "lab.mvcc"
         },
@@ -10795,7 +10595,7 @@
         {
           "evidence_id": "reference-system",
           "path": "evidence/artifacts/reference-system.json",
-          "digest": "sha256:e51556cc0675013457a24ee48e82d8f2d277b77d41584335ce8e5e350496d756"
+          "digest": "sha256:f882cc2fb599ef685c444b38f26b700e59939e5b374680b7f71d32a79859c8f0"
         }
       ],
       "assertions": {
@@ -10837,9 +10637,7 @@
       ],
       "mutation_policy": "explicit-authorization-required",
       "mutation_status": "authorized-for-request-scope",
-      "blocked_reasons": [
-
-      ],
+      "blocked_reasons": [],
       "stop_conditions": [
         "coverage-gap",
         "unverified-evidence",
@@ -10851,8 +10649,8 @@
       "implementation_bindings": [
         {
           "path": "evidence/artifacts/reference-system.json",
-          "digest": "sha256:e51556cc0675013457a24ee48e82d8f2d277b77d41584335ce8e5e350496d756",
-          "bytes": 10171,
+          "digest": "sha256:f882cc2fb599ef685c444b38f26b700e59939e5b374680b7f71d32a79859c8f0",
+          "bytes": 10170,
           "claim_scope": "route-candidate-not-target-completion-proof",
           "id": "integrated-runtime"
         },
@@ -10879,14 +10677,14 @@
       "evidence_bindings": [
         {
           "path": "evidence/reference-system.evidence.yaml",
-          "digest": "sha256:8110f4c2b4fe37afe42b43c9c226e6f88bb877ddaa2b1d6e68bfa32a7598d4b7",
+          "digest": "sha256:252accc14a9af2288328564ca1d8becdf9526d838993a8dbd0e67909b4ea91c3",
           "bytes": 843,
           "id": "lab.reference-system"
         },
         {
           "path": "evidence/artifacts/reference-system.json",
-          "digest": "sha256:e51556cc0675013457a24ee48e82d8f2d277b77d41584335ce8e5e350496d756",
-          "bytes": 10171,
+          "digest": "sha256:f882cc2fb599ef685c444b38f26b700e59939e5b374680b7f71d32a79859c8f0",
+          "bytes": 10170,
           "claim_scope": "target-bounded-proof",
           "id": "lab.reference-system"
         }
@@ -10904,7 +10702,7 @@
         {
           "evidence_id": "reference-system",
           "path": "evidence/artifacts/reference-system.json",
-          "digest": "sha256:e51556cc0675013457a24ee48e82d8f2d277b77d41584335ce8e5e350496d756"
+          "digest": "sha256:f882cc2fb599ef685c444b38f26b700e59939e5b374680b7f71d32a79859c8f0"
         }
       ],
       "assertions": {
@@ -10946,9 +10744,7 @@
       ],
       "mutation_policy": "explicit-authorization-required",
       "mutation_status": "authorized-for-request-scope",
-      "blocked_reasons": [
-
-      ],
+      "blocked_reasons": [],
       "stop_conditions": [
         "coverage-gap",
         "unverified-evidence",
@@ -10983,7 +10779,7 @@
       "evidence_bindings": [
         {
           "path": "evidence/sql.evidence.yaml",
-          "digest": "sha256:2b759aa061d58a80740083930198e343cf5563decb4f826adc88fd54e0573ca3",
+          "digest": "sha256:ffa8753713bbea0cfe560adf0f88fdc1c6fe5470903e70f98cc1eabbc60c963b",
           "bytes": 765,
           "id": "lab.sql"
         },
@@ -10996,7 +10792,7 @@
         },
         {
           "path": "evidence/sql-surface.evidence.yaml",
-          "digest": "sha256:fb173e5431b767132497556ef76e446dce97483d310399a384d28728745a15fe",
+          "digest": "sha256:af3943fffc33a45caaecf9257acbfaa9710b955f4a1c07375f6786fbb5a09a41",
           "bytes": 793,
           "id": "lab.sql-surface"
         },
@@ -11020,7 +10816,7 @@
         {
           "evidence_id": "reference-system",
           "path": "evidence/artifacts/reference-system.json",
-          "digest": "sha256:e51556cc0675013457a24ee48e82d8f2d277b77d41584335ce8e5e350496d756"
+          "digest": "sha256:f882cc2fb599ef685c444b38f26b700e59939e5b374680b7f71d32a79859c8f0"
         }
       ],
       "assertions": {
@@ -11062,9 +10858,7 @@
       ],
       "mutation_policy": "explicit-authorization-required",
       "mutation_status": "authorized-for-request-scope",
-      "blocked_reasons": [
-
-      ],
+      "blocked_reasons": [],
       "stop_conditions": [
         "coverage-gap",
         "unverified-evidence",
@@ -11076,8 +10870,8 @@
       "implementation_bindings": [
         {
           "path": "evidence/artifacts/reference-system.json",
-          "digest": "sha256:e51556cc0675013457a24ee48e82d8f2d277b77d41584335ce8e5e350496d756",
-          "bytes": 10171,
+          "digest": "sha256:f882cc2fb599ef685c444b38f26b700e59939e5b374680b7f71d32a79859c8f0",
+          "bytes": 10170,
           "claim_scope": "route-candidate-not-target-completion-proof",
           "id": "normal-oracle"
         },
@@ -11099,7 +10893,7 @@
       "evidence_bindings": [
         {
           "path": "evidence/sql.evidence.yaml",
-          "digest": "sha256:2b759aa061d58a80740083930198e343cf5563decb4f826adc88fd54e0573ca3",
+          "digest": "sha256:ffa8753713bbea0cfe560adf0f88fdc1c6fe5470903e70f98cc1eabbc60c963b",
           "bytes": 765,
           "id": "lab.sql"
         },
@@ -11112,7 +10906,7 @@
         },
         {
           "path": "evidence/sql-surface.evidence.yaml",
-          "digest": "sha256:fb173e5431b767132497556ef76e446dce97483d310399a384d28728745a15fe",
+          "digest": "sha256:af3943fffc33a45caaecf9257acbfaa9710b955f4a1c07375f6786fbb5a09a41",
           "bytes": 793,
           "id": "lab.sql-surface"
         },
@@ -11136,7 +10930,7 @@
         {
           "evidence_id": "reference-system",
           "path": "evidence/artifacts/reference-system.json",
-          "digest": "sha256:e51556cc0675013457a24ee48e82d8f2d277b77d41584335ce8e5e350496d756"
+          "digest": "sha256:f882cc2fb599ef685c444b38f26b700e59939e5b374680b7f71d32a79859c8f0"
         }
       ],
       "assertions": {
@@ -11179,9 +10973,7 @@
       ],
       "mutation_policy": "explicit-authorization-required",
       "mutation_status": "authorized-for-request-scope",
-      "blocked_reasons": [
-
-      ],
+      "blocked_reasons": [],
       "stop_conditions": [
         "coverage-gap",
         "unverified-evidence",
@@ -11216,7 +11008,7 @@
       "evidence_bindings": [
         {
           "path": "evidence/deadlock.evidence.yaml",
-          "digest": "sha256:1a6e05e64c54b5cba490cb84df16ed45a1b8673f2a9580505ff34df100eab673",
+          "digest": "sha256:2b2fd7852ed73eef200af15035ea51f336792f6c7e7c4b93678d7a957d910191",
           "bytes": 788,
           "id": "lab.deadlock"
         },
@@ -11240,7 +11032,7 @@
         {
           "evidence_id": "reference-system",
           "path": "evidence/artifacts/reference-system.json",
-          "digest": "sha256:e51556cc0675013457a24ee48e82d8f2d277b77d41584335ce8e5e350496d756"
+          "digest": "sha256:f882cc2fb599ef685c444b38f26b700e59939e5b374680b7f71d32a79859c8f0"
         }
       ],
       "assertions": {
@@ -11282,9 +11074,7 @@
       ],
       "mutation_policy": "explicit-authorization-required",
       "mutation_status": "authorized-for-request-scope",
-      "blocked_reasons": [
-
-      ],
+      "blocked_reasons": [],
       "stop_conditions": [
         "coverage-gap",
         "unverified-evidence",
@@ -11319,7 +11109,7 @@
       "evidence_bindings": [
         {
           "path": "evidence/performance.evidence.yaml",
-          "digest": "sha256:0a2c8f312b46058630e8c6ee3825c2f0768e8320f0f68e0340d74872596763e1",
+          "digest": "sha256:e0c1295698da907c4926151ac9a16bf3654e74ab15d99e0edfe301bd0b1feaeb",
           "bytes": 799,
           "id": "lab.performance"
         },
@@ -11343,7 +11133,7 @@
         {
           "evidence_id": "reference-system",
           "path": "evidence/artifacts/reference-system.json",
-          "digest": "sha256:e51556cc0675013457a24ee48e82d8f2d277b77d41584335ce8e5e350496d756"
+          "digest": "sha256:f882cc2fb599ef685c444b38f26b700e59939e5b374680b7f71d32a79859c8f0"
         }
       ],
       "assertions": {
@@ -11385,9 +11175,7 @@
       ],
       "mutation_policy": "explicit-authorization-required",
       "mutation_status": "authorized-for-request-scope",
-      "blocked_reasons": [
-
-      ],
+      "blocked_reasons": [],
       "stop_conditions": [
         "coverage-gap",
         "unverified-evidence",
@@ -11422,7 +11210,7 @@
       "evidence_bindings": [
         {
           "path": "evidence/security.evidence.yaml",
-          "digest": "sha256:a8c782ad980bcc2881e740fc60a39e3faa297adcc39cac64eb84e070b77b334f",
+          "digest": "sha256:e0d1ccb72d36ad51dcbb93ec8d318ddca8f772d6f675ca1aa3cd287184c32364",
           "bytes": 782,
           "id": "lab.security"
         },
@@ -11446,7 +11234,7 @@
         {
           "evidence_id": "reference-system",
           "path": "evidence/artifacts/reference-system.json",
-          "digest": "sha256:e51556cc0675013457a24ee48e82d8f2d277b77d41584335ce8e5e350496d756"
+          "digest": "sha256:f882cc2fb599ef685c444b38f26b700e59939e5b374680b7f71d32a79859c8f0"
         }
       ],
       "assertions": {
@@ -11488,9 +11276,7 @@
       ],
       "mutation_policy": "explicit-authorization-required",
       "mutation_status": "authorized-for-request-scope",
-      "blocked_reasons": [
-
-      ],
+      "blocked_reasons": [],
       "stop_conditions": [
         "coverage-gap",
         "unverified-evidence",
@@ -11525,7 +11311,7 @@
       "evidence_bindings": [
         {
           "path": "evidence/planner.evidence.yaml",
-          "digest": "sha256:c1f537075746712b4469f55e77beafb4ce11df19f926f0160bddd7a6e0917a0e",
+          "digest": "sha256:f3864c92f2538ac2670600f9d99ff03271527797ed72828d798fe0eae7618057",
           "bytes": 781,
           "id": "lab.planner"
         },
@@ -11549,7 +11335,7 @@
         {
           "evidence_id": "reference-system",
           "path": "evidence/artifacts/reference-system.json",
-          "digest": "sha256:e51556cc0675013457a24ee48e82d8f2d277b77d41584335ce8e5e350496d756"
+          "digest": "sha256:f882cc2fb599ef685c444b38f26b700e59939e5b374680b7f71d32a79859c8f0"
         }
       ],
       "assertions": {
@@ -11591,9 +11377,7 @@
       ],
       "mutation_policy": "explicit-authorization-required",
       "mutation_status": "authorized-for-request-scope",
-      "blocked_reasons": [
-
-      ],
+      "blocked_reasons": [],
       "stop_conditions": [
         "coverage-gap",
         "unverified-evidence",
@@ -11658,7 +11442,7 @@
       "evidence_bindings": [
         {
           "path": "evidence/compatibility-matrix.evidence.yaml",
-          "digest": "sha256:b482452563fb9ef1de054ecf7904cfdca202938d4e71ce336531a04febe4edad",
+          "digest": "sha256:5bee6468752914f371b3ce2e6ebeed9f007374ebbc80c01c309e46f40b5fd781",
           "bytes": 847,
           "id": "lab.compatibility-matrix"
         },
@@ -11688,7 +11472,7 @@
         {
           "evidence_id": "reference-system",
           "path": "evidence/artifacts/reference-system.json",
-          "digest": "sha256:e51556cc0675013457a24ee48e82d8f2d277b77d41584335ce8e5e350496d756"
+          "digest": "sha256:f882cc2fb599ef685c444b38f26b700e59939e5b374680b7f71d32a79859c8f0"
         }
       ],
       "assertions": {
@@ -11730,9 +11514,7 @@
       ],
       "mutation_policy": "explicit-authorization-required",
       "mutation_status": "authorized-for-request-scope",
-      "blocked_reasons": [
-
-      ],
+      "blocked_reasons": [],
       "stop_conditions": [
         "coverage-gap",
         "unverified-evidence",
@@ -11767,7 +11549,7 @@
       "evidence_bindings": [
         {
           "path": "evidence/migration.evidence.yaml",
-          "digest": "sha256:7421c83eb2b1d32575a6bda8eb5138aec7c5aabec9c5cb618319d518cf0e4468",
+          "digest": "sha256:653769b5c4d5fd5c168748278d9bc3d2429640e708a69fe4a187fa558da96012",
           "bytes": 798,
           "id": "lab.migration"
         },
@@ -11791,7 +11573,7 @@
         {
           "evidence_id": "reference-system",
           "path": "evidence/artifacts/reference-system.json",
-          "digest": "sha256:e51556cc0675013457a24ee48e82d8f2d277b77d41584335ce8e5e350496d756"
+          "digest": "sha256:f882cc2fb599ef685c444b38f26b700e59939e5b374680b7f71d32a79859c8f0"
         }
       ],
       "assertions": {
@@ -11833,9 +11615,7 @@
       ],
       "mutation_policy": "explicit-authorization-required",
       "mutation_status": "authorized-for-request-scope",
-      "blocked_reasons": [
-
-      ],
+      "blocked_reasons": [],
       "stop_conditions": [
         "coverage-gap",
         "unverified-evidence",
@@ -11870,7 +11650,7 @@
       "evidence_bindings": [
         {
           "path": "evidence/partitioning.evidence.yaml",
-          "digest": "sha256:50c38851613842b9b3cad047d2bb59f92733be0813a443bd98e76bb932e6e65e",
+          "digest": "sha256:dd6896ea768f7c66051b8f5099b3887ce436f7faf0feb105f2d42fa187a87079",
           "bytes": 802,
           "id": "lab.partitioning"
         },
@@ -11894,7 +11674,7 @@
         {
           "evidence_id": "reference-system",
           "path": "evidence/artifacts/reference-system.json",
-          "digest": "sha256:e51556cc0675013457a24ee48e82d8f2d277b77d41584335ce8e5e350496d756"
+          "digest": "sha256:f882cc2fb599ef685c444b38f26b700e59939e5b374680b7f71d32a79859c8f0"
         }
       ],
       "assertions": {
@@ -11936,9 +11716,7 @@
       ],
       "mutation_policy": "explicit-authorization-required",
       "mutation_status": "authorized-for-request-scope",
-      "blocked_reasons": [
-
-      ],
+      "blocked_reasons": [],
       "stop_conditions": [
         "coverage-gap",
         "unverified-evidence",
@@ -11973,7 +11751,7 @@
       "evidence_bindings": [
         {
           "path": "evidence/publication-static-gates.evidence.yaml",
-          "digest": "sha256:98dba3d5be2fea3a3c28dd795768104cc37e52dba221b46b479e6cf72145c7a5",
+          "digest": "sha256:e1ffff19fa5d150b9728aa64b311713a51a6da7f15818d85ac5a0f1931f0cdfa",
           "bytes": 824,
           "id": "publication.static-gates"
         },
@@ -11997,7 +11775,7 @@
         {
           "evidence_id": "reference-system",
           "path": "evidence/artifacts/reference-system.json",
-          "digest": "sha256:e51556cc0675013457a24ee48e82d8f2d277b77d41584335ce8e5e350496d756"
+          "digest": "sha256:f882cc2fb599ef685c444b38f26b700e59939e5b374680b7f71d32a79859c8f0"
         }
       ],
       "assertions": {
@@ -12039,9 +11817,7 @@
       ],
       "mutation_policy": "explicit-authorization-required",
       "mutation_status": "authorized-for-request-scope",
-      "blocked_reasons": [
-
-      ],
+      "blocked_reasons": [],
       "stop_conditions": [
         "coverage-gap",
         "unverified-evidence",
@@ -12076,8 +11852,8 @@
       "evidence_bindings": [
         {
           "path": "evidence/artifacts/reference-system.json",
-          "digest": "sha256:e51556cc0675013457a24ee48e82d8f2d277b77d41584335ce8e5e350496d756",
-          "bytes": 10171,
+          "digest": "sha256:f882cc2fb599ef685c444b38f26b700e59939e5b374680b7f71d32a79859c8f0",
+          "bytes": 10170,
           "claim_scope": "shared-integration-slice-not-target-completion-proof",
           "id": "reference-system"
         }
@@ -12094,7 +11870,7 @@
         {
           "evidence_id": "reference-system",
           "path": "evidence/artifacts/reference-system.json",
-          "digest": "sha256:e51556cc0675013457a24ee48e82d8f2d277b77d41584335ce8e5e350496d756"
+          "digest": "sha256:f882cc2fb599ef685c444b38f26b700e59939e5b374680b7f71d32a79859c8f0"
         }
       ],
       "assertions": {
@@ -12174,7 +11950,7 @@
       "evidence_bindings": [
         {
           "path": "evidence/partitioning.evidence.yaml",
-          "digest": "sha256:50c38851613842b9b3cad047d2bb59f92733be0813a443bd98e76bb932e6e65e",
+          "digest": "sha256:dd6896ea768f7c66051b8f5099b3887ce436f7faf0feb105f2d42fa187a87079",
           "bytes": 802,
           "id": "lab.partitioning"
         },
@@ -12198,11 +11974,10 @@
         {
           "evidence_id": "reference-system",
           "path": "evidence/artifacts/reference-system.json",
-          "digest": "sha256:e51556cc0675013457a24ee48e82d8f2d277b77d41584335ce8e5e350496d756"
+          "digest": "sha256:f882cc2fb599ef685c444b38f26b700e59939e5b374680b7f71d32a79859c8f0"
         }
       ],
-      "assertions": {
-      },
+      "assertions": {},
       "result": "pass"
     },
     {
@@ -12272,7 +12047,7 @@
       "evidence_bindings": [
         {
           "path": "evidence/foundation-authority-lock.evidence.yaml",
-          "digest": "sha256:2e3c51a8125790372c399eb53698583d219ba1bc72bca8aa945400c23227c767",
+          "digest": "sha256:25f6d2eb0a3ed78b9db762ebb294066b3c1435e89dfce5472a7ae697184c2b9b",
           "bytes": 856,
           "id": "foundation.authority-lock"
         },
@@ -12297,11 +12072,10 @@
         {
           "evidence_id": "reference-system",
           "path": "evidence/artifacts/reference-system.json",
-          "digest": "sha256:e51556cc0675013457a24ee48e82d8f2d277b77d41584335ce8e5e350496d756"
+          "digest": "sha256:f882cc2fb599ef685c444b38f26b700e59939e5b374680b7f71d32a79859c8f0"
         }
       ],
-      "assertions": {
-      },
+      "assertions": {},
       "result": "pass"
     },
     {
@@ -12366,7 +12140,7 @@
       "evidence_bindings": [
         {
           "path": "evidence/sql.evidence.yaml",
-          "digest": "sha256:2b759aa061d58a80740083930198e343cf5563decb4f826adc88fd54e0573ca3",
+          "digest": "sha256:ffa8753713bbea0cfe560adf0f88fdc1c6fe5470903e70f98cc1eabbc60c963b",
           "bytes": 765,
           "id": "lab.sql"
         },
@@ -12379,7 +12153,7 @@
         },
         {
           "path": "evidence/sql-surface.evidence.yaml",
-          "digest": "sha256:fb173e5431b767132497556ef76e446dce97483d310399a384d28728745a15fe",
+          "digest": "sha256:af3943fffc33a45caaecf9257acbfaa9710b955f4a1c07375f6786fbb5a09a41",
           "bytes": 793,
           "id": "lab.sql-surface"
         },
@@ -12403,11 +12177,10 @@
         {
           "evidence_id": "reference-system",
           "path": "evidence/artifacts/reference-system.json",
-          "digest": "sha256:e51556cc0675013457a24ee48e82d8f2d277b77d41584335ce8e5e350496d756"
+          "digest": "sha256:f882cc2fb599ef685c444b38f26b700e59939e5b374680b7f71d32a79859c8f0"
         }
       ],
-      "assertions": {
-      },
+      "assertions": {},
       "result": "pass"
     },
     {
@@ -12474,8 +12247,8 @@
       "evidence_bindings": [
         {
           "path": "evidence/artifacts/reference-system.json",
-          "digest": "sha256:e51556cc0675013457a24ee48e82d8f2d277b77d41584335ce8e5e350496d756",
-          "bytes": 10171,
+          "digest": "sha256:f882cc2fb599ef685c444b38f26b700e59939e5b374680b7f71d32a79859c8f0",
+          "bytes": 10170,
           "claim_scope": "shared-integration-slice-not-target-completion-proof",
           "id": "reference-system"
         }
@@ -12492,11 +12265,10 @@
         {
           "evidence_id": "reference-system",
           "path": "evidence/artifacts/reference-system.json",
-          "digest": "sha256:e51556cc0675013457a24ee48e82d8f2d277b77d41584335ce8e5e350496d756"
+          "digest": "sha256:f882cc2fb599ef685c444b38f26b700e59939e5b374680b7f71d32a79859c8f0"
         }
       ],
-      "assertions": {
-      },
+      "assertions": {},
       "result": "pass"
     },
     {
@@ -12571,7 +12343,7 @@
       "evidence_bindings": [
         {
           "path": "evidence/foundation-authority-lock.evidence.yaml",
-          "digest": "sha256:2e3c51a8125790372c399eb53698583d219ba1bc72bca8aa945400c23227c767",
+          "digest": "sha256:25f6d2eb0a3ed78b9db762ebb294066b3c1435e89dfce5472a7ae697184c2b9b",
           "bytes": 856,
           "id": "foundation.authority-lock"
         },
@@ -12584,7 +12356,7 @@
         },
         {
           "path": "evidence/authority-lock.evidence.yaml",
-          "digest": "sha256:2240a83bbd46e4761a069cc49809ddf3efb793c3b15ffd3ce78cd4f414a1c003",
+          "digest": "sha256:71a6f082b8ee1305eb84319b6fe35908b26a63633ee44091e3819dd89710bc38",
           "bytes": 814,
           "id": "lab.authority-lock"
         },
@@ -12610,11 +12382,10 @@
         {
           "evidence_id": "reference-system",
           "path": "evidence/artifacts/reference-system.json",
-          "digest": "sha256:e51556cc0675013457a24ee48e82d8f2d277b77d41584335ce8e5e350496d756"
+          "digest": "sha256:f882cc2fb599ef685c444b38f26b700e59939e5b374680b7f71d32a79859c8f0"
         }
       ],
-      "assertions": {
-      },
+      "assertions": {},
       "result": "pass"
     }
   ],

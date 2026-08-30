@@ -40,6 +40,8 @@ jobs:
           fi
       - name: Evaluate router skill
         run: make -C postgresql-reference-atlas eval
+      - name: Refresh Graph after router skill evaluation
+        run: make -C postgresql-reference-atlas evidence-dependency-generate evidence-dependency-verify eval-evidence-dependency-clean
       - name: Run static publication gates
         run: make -C postgresql-reference-atlas test-static
       - name: Verify Evidence Dependency Graph

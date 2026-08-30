@@ -15,6 +15,7 @@ GENERATED_PATHS = [
 
 def prepare_checkout(path, reverse: false)
   paths = %w[
+    tools/lib/canonical-json.rb
     tools/lib/authority-review-queue.rb
     tools/generate-authority-review-queue.rb
     tools/verify-authority-review-queue.rb

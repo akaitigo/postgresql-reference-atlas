@@ -9,6 +9,15 @@ module EvidenceDependencyGraph
   ROOT = File.expand_path("../..", __dir__)
   GRAPH_PATH = "evidence/dependency-graph.json"
   LEDGER_PATH = "evidence/dependency-rerun.json"
+  SKILL_EVAL_OUTPUT_PATHS = %w[
+    evals/postgresql-router.skill-eval.json
+    evals/postgresql-atlas.definitive-routing-eval.json
+    evals/postgresql-atlas.definitive-skill-eval.json
+    evals/definitive-skill-router.json
+    evidence/artifacts/skill-router-eval.json
+    evidence/harnesses/skill-router-eval.manifest
+    evidence/skill-router-eval.evidence.yaml
+  ].freeze
   POLICY = {
     "transitive_staleness"=>true,
     "digest_only_closure_forbidden"=>true,
@@ -190,6 +199,7 @@ module EvidenceDependencyGraph
 
   def build
     ledger = JSON.parse(File.read(absolute(LEDGER_PATH)))
+    verify_ledger_output_bindings!(ledger)
     prior = File.file?(absolute(GRAPH_PATH)) ? JSON.parse(File.read(absolute(GRAPH_PATH))) : nil
     prior_inputs = Array(prior&.fetch("inputs", [])).to_h { |item| [item.fetch("id"), item] }
     ledger_bindings = ledger.fetch("input_bindings").to_h { |item| [item.fetch("input_id"), item.fetch("digest")] }
@@ -224,7 +234,7 @@ module EvidenceDependencyGraph
     }
     {
       "schema_version"=>1, "atlas_id"=>"postgresql-reference-atlas",
-      "generated_at"=>Time.now.utc.iso8601, "status"=>"current", "policy"=>POLICY,
+      "generated_at"=>ledger.fetch("completed_at"), "status"=>"current", "policy"=>POLICY,
       "inputs"=>inputs, "outputs"=>outputs, "runs"=>[run], "required_outputs"=>paths,
       "structures"=>[
         {"id"=>"postgresql-scenario-proof-topology-v1", "kind"=>"scenario-proof-index", "path"=>"evidence/scenarios/index.json", "baseline_digest"=>proof_structure_digest},
@@ -234,6 +244,8 @@ module EvidenceDependencyGraph
   end
 
   def verify!(graph)
+    ledger = JSON.parse(File.read(absolute(LEDGER_PATH)))
+    verify_ledger_output_bindings!(ledger)
     raise "Dependency Graph policyが変化しています" unless graph.fetch("policy") == POLICY
     raise "Dependency Graphはstaleです" unless graph.fetch("status") == "current"
     inputs = graph.fetch("inputs").to_h { |item| [item.fetch("id"), item] }
@@ -273,5 +285,14 @@ module EvidenceDependencyGraph
       raise "Proof/Closure Plan構造が縮小または変更されています: #{structure.fetch('kind')}" unless actual_structures.fetch(structure.fetch("kind")) == structure.fetch("baseline_digest")
     end
     true
+  end
+
+  def verify_ledger_output_bindings!(ledger)
+    bindings = Array(ledger["output_bindings"]).to_h { |item| [item.fetch("path"), item.fetch("digest")] }
+    missing = SKILL_EVAL_OUTPUT_PATHS - bindings.keys
+    raise "Eval rerun output bindingが不足しています: #{missing.first}" unless missing.empty?
+    SKILL_EVAL_OUTPUT_PATHS.each do |path|
+      raise "Eval outputがfull rerun ledgerと一致しません: #{path}" unless File.file?(absolute(path)) && bindings.fetch(path) == digest_file(path)
+    end
   end
 end

@@ -1,10 +1,10 @@
 {
   "schema_version": 1,
-  "id": "postgresql-evidence-rerun-20260830t161451z",
+  "id": "postgresql-evidence-rerun-20260830t164408z",
   "command": "ruby tools/rerun-evidence-dependencies.rb",
-  "observed_at": "2026-08-30T16:14:48.660942Z",
-  "started_at": "2026-08-30T16:14:51.894890Z",
-  "completed_at": "2026-08-30T16:26:40.415939Z",
+  "observed_at": "2026-08-30T16:44:04.088775Z",
+  "started_at": "2026-08-30T16:44:08.426974Z",
+  "completed_at": "2026-08-30T16:51:09.139532Z",
   "result": "passed",
   "attempts": 1,
   "runtime_identity": {
@@ -45,7 +45,7 @@
     },
     {
       "input_id": "harness.scenario-skill-reporting",
-      "digest": "sha256:3ddead735121d424b7a6227ad7c4ced4b4bfd580f91bc41d3a9a25df863c6c2b"
+      "digest": "sha256:25628ff9a06ac1764c0f75b5fae9f8f85105557703b6558ea0e919a552451cae"
     },
     {
       "input_id": "runtime.postgresql-server-client",
@@ -62,6 +62,36 @@
     {
       "input_id": "profile.cluster",
       "digest": "sha256:c6ea6082fa999d55e8cd8104cc6f0c1d2d6995645fd0a94c8e84526804d28bf6"
+    }
+  ],
+  "output_bindings": [
+    {
+      "path": "evals/postgresql-router.skill-eval.json",
+      "digest": "sha256:736673ce55d5f00f0a082c2b450f27516c513d10e6d86df5bb6ae397d9bd48fa"
+    },
+    {
+      "path": "evals/postgresql-atlas.definitive-routing-eval.json",
+      "digest": "sha256:dfaa9a8ab852d513e4a0c469f27c7b1102bca1f3cc9c002bd8b411df401fa491"
+    },
+    {
+      "path": "evals/postgresql-atlas.definitive-skill-eval.json",
+      "digest": "sha256:27027e74331738231819309fbd0f5efab4cb0e453efe60002017adbeed49d1e8"
+    },
+    {
+      "path": "evals/definitive-skill-router.json",
+      "digest": "sha256:00689bd86dce26431b9d6450d6050381c92a50c44287e1f92f2960acabbf4d19"
+    },
+    {
+      "path": "evidence/artifacts/skill-router-eval.json",
+      "digest": "sha256:11e3d4301de73eca5ee25a01eb3c6f0c6f3a13552c19ffc4ce8a38fbc105e2d4"
+    },
+    {
+      "path": "evidence/harnesses/skill-router-eval.manifest",
+      "digest": "sha256:9e0a47f7d2ca24902911dbb4265ae75028c9bf5f414758ecb445234df2225ee8"
+    },
+    {
+      "path": "evidence/skill-router-eval.evidence.yaml",
+      "digest": "sha256:241fed8f28dff6546e100b7efe3757e437c62bb4bd9f8597fabafb41ec73bb0a"
     }
   ],
   "commands": [

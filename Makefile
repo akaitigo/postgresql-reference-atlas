@@ -3,7 +3,9 @@ CORE_DIR ?= ../reference-atlas-core
 LAB ?= sql
 ATLAS_ROOT := $(CURDIR)
 
-.PHONY: validate audit non-regression-audit core-non-regression-audit authority-body-non-regression-audit definitive-audit parity-audit depth-parity-audit authority-locator-verify authority-body-verify authority-review-verify authority-review-determinism-test definitive-skill-eval-verify scenario-proofs-generate scenario-proofs-verify scenario-closure-plan-generate scenario-closure-plan-verify scenario-security-001-run scenario-evidence-atomicity-test docker-volume-cleanup-test evidence-dependency-rerun evidence-dependency-generate evidence-dependency-verify evidence-dependency-negative-test core-evidence-dependency-audit core-scenario-trace-audit core-scenario-plan-audit core-evidence-durability-audit core-authority-audit core-authority-body-audit core-authority-review-audit core-skill-router-audit definitive-gate claims provenance certificate-verify commit-signature-verify test-static evidence-freshness lab eval refresh-evidence test
+.NOTPARALLEL: test
+
+.PHONY: validate audit non-regression-audit core-non-regression-audit authority-body-non-regression-audit definitive-audit parity-audit depth-parity-audit authority-locator-verify authority-body-verify authority-review-verify authority-review-determinism-test definitive-skill-eval-verify scenario-proofs-generate scenario-proofs-verify scenario-closure-plan-generate scenario-closure-plan-verify scenario-security-001-run scenario-evidence-atomicity-test docker-volume-cleanup-test evidence-dependency-rerun evidence-dependency-generate evidence-dependency-verify evidence-dependency-negative-test eval-evidence-dependency-refresh eval-evidence-dependency-clean core-evidence-dependency-audit core-scenario-trace-audit core-scenario-plan-audit core-evidence-durability-audit core-authority-audit core-authority-body-audit core-authority-review-audit core-skill-router-audit definitive-gate claims provenance certificate-verify commit-signature-verify test-static evidence-freshness lab eval refresh-evidence test
 
 validate:
 	cd $(CORE_DIR) && GOCACHE=$(CURDIR)/.cache/go-build go run ./cmd/atlas validate \
@@ -135,6 +137,22 @@ evidence-dependency-verify:
 evidence-dependency-negative-test:
 	ruby tools/test-evidence-dependency-graph.rb
 
+eval-evidence-dependency-refresh:
+	bash evals/run.sh
+	ruby tools/generate-evidence-dependency-graph.rb
+	ruby tools/verify-evidence-dependency-graph.rb
+
+eval-evidence-dependency-clean:
+	git diff --exit-code -- \
+		evals/postgresql-router.skill-eval.json \
+		evals/postgresql-atlas.definitive-routing-eval.json \
+		evals/postgresql-atlas.definitive-skill-eval.json \
+		evals/definitive-skill-router.json \
+		evidence/artifacts/skill-router-eval.json \
+		evidence/harnesses/skill-router-eval.manifest \
+		evidence/skill-router-eval.evidence.yaml \
+		evidence/dependency-graph.json
+
 core-evidence-dependency-audit:
 	cd $(CORE_DIR) && GOCACHE=$(CURDIR)/.cache/go-build go run ./cmd/atlas audit $(ATLAS_ROOT) --gate evidence-dependency
 
@@ -179,4 +197,4 @@ commit-signature-verify:
 
 refresh-evidence: eval test-static provenance
 
-test: validate audit non-regression-audit core-non-regression-audit authority-body-non-regression-audit definitive-audit parity-audit authority-locator-verify authority-body-verify authority-review-verify authority-review-determinism-test definitive-skill-eval-verify scenario-proofs-verify scenario-closure-plan-verify scenario-evidence-atomicity-test docker-volume-cleanup-test evidence-dependency-verify evidence-dependency-negative-test core-evidence-dependency-audit core-scenario-trace-audit core-scenario-plan-audit core-evidence-durability-audit core-authority-audit core-authority-body-audit core-authority-review-audit core-skill-router-audit depth-parity-audit evidence-freshness certificate-verify
+test: validate audit non-regression-audit core-non-regression-audit authority-body-non-regression-audit definitive-audit parity-audit authority-locator-verify authority-body-verify authority-review-verify authority-review-determinism-test eval-evidence-dependency-refresh eval-evidence-dependency-clean definitive-skill-eval-verify scenario-proofs-verify scenario-closure-plan-verify scenario-evidence-atomicity-test docker-volume-cleanup-test evidence-dependency-verify evidence-dependency-negative-test core-evidence-dependency-audit core-scenario-trace-audit core-scenario-plan-audit core-evidence-durability-audit core-authority-audit core-authority-body-audit core-authority-review-audit core-skill-router-audit depth-parity-audit evidence-freshness certificate-verify

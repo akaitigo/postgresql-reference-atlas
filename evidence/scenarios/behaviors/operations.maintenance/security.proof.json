@@ -126,7 +126,7 @@
       "client_product": "psql",
       "client_version": "psql (PostgreSQL) 18.6",
       "runtime_image": "postgres:18.6-alpine",
-      "runtime_identity": "pg-atlas-security-16101-9f31dc",
+      "runtime_identity": "pg-atlas-security-76006-2cda90",
       "workers": 1,
       "retries": 0,
       "trace_mode": "on",
@@ -154,7 +154,7 @@
         },
         "trace": {
           "path": "artifacts/pattern-scenarios/traces/definitive-domain_operations_maintenance__security__postgresql-verification-matrix-v2.trace.json",
-          "digest": "sha256:adddc2872702f098ac503e4d530e46651910d378dc30b5527dab22063a5d6fd2",
+          "digest": "sha256:046ca37641be9f7722cfa24b14e8a56153f1b11c1eb7ebf33df4e55cb36e8156",
           "bytes": 5907,
           "action_stream": true,
           "network_stream": true,
@@ -183,7 +183,7 @@
     "attempts": 1,
     "trace": {
       "path": "artifacts/reference-system/traces/security.trace.json",
-      "digest": "sha256:61a17b596c789523abb9d7f1069be98cd34d7660497d78874dd564a1f769e983",
+      "digest": "sha256:abe1e2a8dfa174b3c315dba3444e23b4be946cecb09ad359a6a3d9ee657fea21",
       "bytes": 1418,
       "action_stream": true,
       "network_stream": true,

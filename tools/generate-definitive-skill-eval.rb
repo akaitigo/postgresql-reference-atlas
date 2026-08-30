@@ -2,6 +2,7 @@
 # frozen_string_literal: true
 
 require_relative "lib/postgresql-skill-routing"
+require_relative "lib/canonical-json"
 
 root = File.expand_path("..", __dir__)
 ctx = PostgreSQLSkillRouting.context(root)
@@ -62,7 +63,7 @@ artifact = {
   "target_state_ledger"=>target_states, "matrix"=>matrix, "boundary_cases"=>boundaries,
   "independent_agent_forward_eval"=>forward
 }
-File.write(File.join(root, "evals/postgresql-atlas.definitive-routing-eval.json"), JSON.pretty_generate(artifact) + "\n")
+File.write(File.join(root, "evals/postgresql-atlas.definitive-routing-eval.json"), CanonicalJSON.pretty(artifact) + "\n")
 
 core_cases = matrix.map do |item|
   {"id"=>item.fetch("id"), "result"=>item.fetch("contract_result"), "outcome_ids"=>[item.fetch("outcome")], "surface_ids"=>[item.fetch("surface")],
@@ -79,7 +80,7 @@ core_cases << {"id"=>"forward.independent-agent", "result"=>forward.fetch("resul
                "assertion"=>"独立Agent Forward Evalを機械記録し、未実施または不合格を完成判定から分離する。"}
 core_eval = {"schema_version"=>2, "id"=>"skill.postgresql-definitive-audit", "atlas_id"=>"postgresql-reference-atlas", "atlas_release"=>"v1.0.0",
              "skill_id"=>"postgresql-atlas", "generated_at"=>PostgreSQLSkillRouting::GENERATED_AT, "cases"=>core_cases}
-File.write(File.join(root, "evals/postgresql-atlas.definitive-skill-eval.json"), JSON.pretty_generate(core_eval) + "\n")
+File.write(File.join(root, "evals/postgresql-atlas.definitive-skill-eval.json"), CanonicalJSON.pretty(core_eval) + "\n")
 
 file_binding = lambda do |binding|
   binding.slice("path", "digest", "bytes", "claim_scope", "id")
@@ -133,5 +134,5 @@ adapter = {
                     "passed"=>Array(forward["cases"]).count { |item| item["result"] == "pass" }, "failed"=>Array(forward["cases"]).count { |item| item["result"] != "pass" },
                     "artifact_path"=>forward_binding.fetch("path"), "artifact_digest"=>forward_binding.fetch("digest")}
 }
-File.write(File.join(root, "evals/definitive-skill-router.json"), JSON.pretty_generate(adapter) + "\n")
+File.write(File.join(root, "evals/definitive-skill-router.json"), CanonicalJSON.pretty(adapter) + "\n")
 puts "Definitive Skill Eval: matrix=#{matrix.length} bounded_routes=#{matrix.length-routing_gaps} routing_gaps=#{routing_gaps} boundaries=#{boundaries.length-boundary_failures}/#{boundaries.length} forward=#{forward.fetch('result')}"

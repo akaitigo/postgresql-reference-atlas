@@ -62,7 +62,10 @@ jq -n --argjson total "$total" --argjson passed "$passed" --argjson pass_rate "$
   --argjson results "$results" \
   '{total:$total,passed:$passed,pass_rate:$pass_rate,version:"18.6",path_checks:true,results:$results,verdict:(if $pass_rate == 1 then "pass" else "fail" end)}' > "$report"
 jq -e '.verdict == "pass"' "$report" >/dev/null
-generated_at="$(date -u '+%Y-%m-%dT%H:%M:%SZ')"
+# Regeneration must be byte-identical for the same locked inputs. Runtime
+# identity belongs to Lab/Scenario Evidence; this deterministic Skill artifact
+# uses the same fixed generation epoch as the definitive routing contract.
+generated_at="2026-08-28T00:00:00+09:00"
 jq -n --arg generated_at "$generated_at" --argjson results "$results" \
   '{schema_version:1,id:"skill.postgresql-router",atlas_id:"postgresql-reference-atlas",atlas_release:"v1.0.0",skill_id:"postgresql-atlas",generated_at:$generated_at,cases:($results | map({id,category,result:.verdict,assertion:(.id + " は期待したCapability、Coverage、安全境界へ正しくRoutingされる。"),evidence_ids:["skill.router-eval"]}))}' \
   > "$eval_entity"

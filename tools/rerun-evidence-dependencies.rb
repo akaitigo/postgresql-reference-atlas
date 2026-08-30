@@ -130,6 +130,12 @@ Dir.mktmpdir("postgresql-evidence-rerun-") do |temporary_root|
     abort "Rerun中に入力が変化しました: #{input.fetch('id')}" unless actual == input.fetch("digest")
   end
   docker_version, = Open3.capture2("docker", "--version")
+  output_bindings = EvidenceDependencyGraph::SKILL_EVAL_OUTPUT_PATHS.map do |relative|
+    path = File.join(stage_root, relative)
+    abort "Skill Eval rerun outputがありません: #{relative}" unless File.file?(path)
+
+    {"path"=>relative, "digest"=>"sha256:#{Digest::SHA256.file(path).hexdigest}"}
+  end
   ledger = {
     "schema_version"=>1,
     "id"=>"postgresql-evidence-rerun-#{Time.parse(started_at).utc.strftime('%Y%m%dt%H%M%Sz')}",
@@ -147,6 +153,7 @@ Dir.mktmpdir("postgresql-evidence-rerun-") do |temporary_root|
       "profiles"=>%w[local container cluster]
     },
     "input_bindings"=>bindings,
+    "output_bindings"=>output_bindings,
     "commands"=>commands.map { |label, argv| {"id"=>label, "argv"=>argv, "attempts"=>1, "result"=>"passed"} }
   }
   stage_ledger = File.join(stage_root, EvidenceDependencyGraph::LEDGER_PATH)
