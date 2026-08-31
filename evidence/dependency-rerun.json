@@ -45,11 +45,11 @@
     },
     {
       "input_id": "harness.scenario-skill-reporting",
-      "digest": "sha256:638f59fa668a38a865e8088e8a9d6b6377b65879c78abd68996a63c6e15648a6"
+      "digest": "sha256:0b9da12e0eee320cbee98536684f731ad50fd019aa2ebaac67ecbe98528cb109"
     },
     {
       "input_id": "harness.evidence-dependency-control-plane",
-      "digest": "sha256:82e6e6578d18bd619a0fd6d34aa4dc37d1474ad72324cd349bb7fcc3c7eb7c70"
+      "digest": "sha256:0a7f6a38db2b76e728463ed24972cc746c67c10e8e78cb273cf374af2e7cc3e4"
     },
     {
       "input_id": "runtime.postgresql-server-client",
@@ -76,6 +76,14 @@
     {
       "path": "artifacts/pattern-scenario-failures/security-001-20260830T220147Z-6908__closure.definitive-domain.performance.index.security.json",
       "digest": "sha256:a633d9c78612bfeedca881c4325eec6923e4d85a8ee1ccf0066f2713c62c7d9e"
+    },
+    {
+      "path": "artifacts/pattern-scenario-failures/security-001-20260831T051312Z-88696__closure.definitive-domain.performance.statistics.security.json",
+      "digest": "sha256:7c66cb0d9ab7c3c228831de5a233c9ac348bd9b66cce181be453e6cea1d278a3"
+    },
+    {
+      "path": "artifacts/pattern-scenario-failures/security-001-20260831T051608Z-89784__closure.definitive-domain.query.extension.security.json",
+      "digest": "sha256:e0848b365f1c7a63fd4502a0afefd534927e79183d6122a1d4eefbc9b3f76640"
     },
     {
       "path": "artifacts/pattern-scenarios/observations/definitive-domain_concurrency_deadlock__security__postgresql-verification-matrix-v2.observable.json",
@@ -158,88 +166,120 @@
       "digest": "sha256:4427b1e4f1f3c108d67d1d7a54d5f5aa18c4227d9a8ccc325b342f032b286ee2"
     },
     {
+      "path": "artifacts/pattern-scenarios/observations/definitive-domain_performance_statistics__security__postgresql-verification-matrix-v2.observable.json",
+      "digest": "sha256:a2eeb3fce9bf52863d4460997876682bc971dfa90d9ce8a2902f89d54e848443"
+    },
+    {
+      "path": "artifacts/pattern-scenarios/observations/definitive-domain_publication_provenance__security__postgresql-verification-matrix-v2.observable.json",
+      "digest": "sha256:5038607804b0df9d1f158187728d504cf9394288b1e8937b5e95fe828a8b6a84"
+    },
+    {
+      "path": "artifacts/pattern-scenarios/observations/definitive-domain_query_catalog-inventory__security__postgresql-verification-matrix-v2.observable.json",
+      "digest": "sha256:c742777071e87f249fe715d0c996824c5ef5600d4c1be79f20be344bab0acc37"
+    },
+    {
+      "path": "artifacts/pattern-scenarios/observations/definitive-domain_query_extension__security__postgresql-verification-matrix-v2.observable.json",
+      "digest": "sha256:c8b80b5c78caf8973020c5786ad5cfe091c50053bcfe4ee04838baa4e2f21b94"
+    },
+    {
       "path": "artifacts/pattern-scenarios/results.json",
-      "digest": "sha256:93077286664997b9f7b4800172278ea64c0993837f91c4a1e29ca87fc1d7baa6"
+      "digest": "sha256:23ee23f3c01ff17458fbd4c6c4b910c1038eb66cc4da3fd6fb7fff2cb95714f9"
     },
     {
       "path": "artifacts/pattern-scenarios/traces/definitive-domain_concurrency_deadlock__security__postgresql-verification-matrix-v2.trace.json",
-      "digest": "sha256:905ca5084622bbe2aeefeab37311f9e6abf76174eeb3731c3b592f30c255c110"
+      "digest": "sha256:8cc14014fb847e244ca08a8121be00dda772a23a14a8f8b87c44b7f418112d68"
     },
     {
       "path": "artifacts/pattern-scenarios/traces/definitive-domain_concurrency_locking__security__postgresql-verification-matrix-v2.trace.json",
-      "digest": "sha256:1e9f1567c24ac9ecb20ab39654d804cd1cc4ab0b18ff0558b520e5b51085e712"
+      "digest": "sha256:7a7d5be6b2ad46c6c5787fe8683feff3b5cc37a72161b6df12eed91bd2aac6b6"
     },
     {
       "path": "artifacts/pattern-scenarios/traces/definitive-domain_concurrency_mvcc__security__postgresql-verification-matrix-v2.trace.json",
-      "digest": "sha256:01f47dbc053eea299868d10029211daf219071d885f4152092012c46fb057403"
+      "digest": "sha256:2bc086bcf3859d7b8906a1d198e372fb907f142b90a512d28335431c0cdac42f"
     },
     {
       "path": "artifacts/pattern-scenarios/traces/definitive-domain_foundation_authority-lock__security__postgresql-verification-matrix-v2.trace.json",
-      "digest": "sha256:3baa043fba2776418bc39322b85c678812c32f304849bff621103ce27816ea86"
+      "digest": "sha256:e50e9886763bf7df868cd426ab8f75cd029a38841543e2d05cb815f42864876c"
     },
     {
       "path": "artifacts/pattern-scenarios/traces/definitive-domain_foundation_version-lock__security__postgresql-verification-matrix-v2.trace.json",
-      "digest": "sha256:dad3464ebceae2c0044be453643e982bb975690f1bd6dbd5e4756ec74fd09843"
+      "digest": "sha256:79a97736ab89a456fda5162b6a9071f3776ad93436d8003fb682231ab939c2ea"
     },
     {
       "path": "artifacts/pattern-scenarios/traces/definitive-domain_lifecycle_compatibility-matrix__security__postgresql-verification-matrix-v2.trace.json",
-      "digest": "sha256:e1be28dae05a3de84b1bf2a245bff19cb6132b8bf7f1d381bfe592e88bd6762f"
+      "digest": "sha256:6d5bb76760581cb10f5ecae72d211bd3110dedb0aa64e88e67f8c351a683ccbf"
     },
     {
       "path": "artifacts/pattern-scenarios/traces/definitive-domain_lifecycle_pg-upgrade__security__postgresql-verification-matrix-v2.trace.json",
-      "digest": "sha256:369a5bd2f26f067de571fe51528a9aa789f3bae55e8fec2ccbe95a1892eafc94"
+      "digest": "sha256:9499874ffa131550a7fca691c3d0685032c5b6d90e6fca8357e4ee3e7f38d2ae"
     },
     {
       "path": "artifacts/pattern-scenarios/traces/definitive-domain_lifecycle_schema-migration__security__postgresql-verification-matrix-v2.trace.json",
-      "digest": "sha256:9ac07ea5956d458a032f6e99c9418ae319e53082507ae4c43f0a14c133b40677"
+      "digest": "sha256:3f6fdd719d291e918d025873f7a0151cea0f9956b21ac517dede98da3665e3fd"
     },
     {
       "path": "artifacts/pattern-scenarios/traces/definitive-domain_lifecycle_upgrade__security__postgresql-verification-matrix-v2.trace.json",
-      "digest": "sha256:35e5201a30d41c8caa45d9702feda9fce9ed6fe36c506fa358a2b3baf00e60ba"
+      "digest": "sha256:16deec8a2b46ab9321880669322d87f7f1593782bd144ecf4496dc9fce32e37f"
     },
     {
       "path": "artifacts/pattern-scenarios/traces/definitive-domain_operations_backup-recovery__security__postgresql-verification-matrix-v2.trace.json",
-      "digest": "sha256:f12430d9c609f930473c18b390eabea5005b3cee11a176f5e872a155ba65b595"
+      "digest": "sha256:cd98601263d3208f6d1de9840a018c19d8b61473800bbafef3f0954672daf4b8"
     },
     {
       "path": "artifacts/pattern-scenarios/traces/definitive-domain_operations_failure-injection__security__postgresql-verification-matrix-v2.trace.json",
-      "digest": "sha256:c5d65eb7aba3d20bde053be1eab46cdacf60e026554a86bf702d54c53cb20623"
+      "digest": "sha256:7606c31ad54a310f493c4dd8ebfe62f6129974dc00378fa4d7bf8503d1caef2d"
     },
     {
       "path": "artifacts/pattern-scenarios/traces/definitive-domain_operations_logical-replication__security__postgresql-verification-matrix-v2.trace.json",
-      "digest": "sha256:0e760cd969a219c92503c18d94aab827bbbec23088f2a6c6afc5fc1b2db04e8d"
+      "digest": "sha256:d7ebba78da0ccc76cd4da518401e8d1254126c69ff2d2b938cae9ffdad188456"
     },
     {
       "path": "artifacts/pattern-scenarios/traces/definitive-domain_operations_maintenance__security__postgresql-verification-matrix-v2.trace.json",
-      "digest": "sha256:532d619c0fc8a331fdd86edc3625f4707d4dc1dac891c119cb7eaea0a2f770c7"
+      "digest": "sha256:24b04853494f41ab393dcec7f42652c4788c3bb472b59c4f410efee54d243dd8"
     },
     {
       "path": "artifacts/pattern-scenarios/traces/definitive-domain_operations_observability__security__postgresql-verification-matrix-v2.trace.json",
-      "digest": "sha256:fbdfb64ac05bc5ab275333c01059cf2993df2d485036a8da93a594083b5f4731"
+      "digest": "sha256:bb444f9f3280fe234288722b63e485a7f3f69d3d54f8693a2c773e51766701c7"
     },
     {
       "path": "artifacts/pattern-scenarios/traces/definitive-domain_operations_pitr-recovery__security__postgresql-verification-matrix-v2.trace.json",
-      "digest": "sha256:c68c6482b7b5bbccefc13d4d5b11f4125fb53e02d7bb519e1369883a49232a4e"
+      "digest": "sha256:d80232b72b628e901220fe2a1b5346e8a614aefbe3e8696b9af6404c4e802dec"
     },
     {
       "path": "artifacts/pattern-scenarios/traces/definitive-domain_operations_replication__security__postgresql-verification-matrix-v2.trace.json",
-      "digest": "sha256:8666928c53d6071e3c3e0a12840c4e7fc664f3af19472a586f268e52788048c2"
+      "digest": "sha256:08956e69dcf52a39e9155dcc2cf2bb4502bac1944fb8c55593bc0f2821e93474"
     },
     {
       "path": "artifacts/pattern-scenarios/traces/definitive-domain_operations_wal__security__postgresql-verification-matrix-v2.trace.json",
-      "digest": "sha256:ae71c3ee0a0ca796c84c1dd83d399fc02af3c1b6fe4249cd555fc4813ad42023"
+      "digest": "sha256:329b779740441ac1b494c612ac7c237f75f2d06a7df888aa970296a3d81aa0bb"
     },
     {
       "path": "artifacts/pattern-scenarios/traces/definitive-domain_performance_execution__security__postgresql-verification-matrix-v2.trace.json",
-      "digest": "sha256:e8a665ab68237df562c2c252345decbb95cf315adc3a1b27fce91971605d63db"
+      "digest": "sha256:121459e88ba94ab49f91482f6f4d9024474f3d2857e64ee1ac7d98d4b645355e"
     },
     {
       "path": "artifacts/pattern-scenarios/traces/definitive-domain_performance_index__security__postgresql-verification-matrix-v2.trace.json",
-      "digest": "sha256:35485b9a3501980b0c0da1393928fedfa54560642c5d6790d4cf501f453af064"
+      "digest": "sha256:6a49f1c38a3654ff0c8064e1720f6f5ccda0232ac8862b3802836030b2b47071"
     },
     {
       "path": "artifacts/pattern-scenarios/traces/definitive-domain_performance_planner__security__postgresql-verification-matrix-v2.trace.json",
-      "digest": "sha256:69df6c078bf4a87cce05b5ec79f3cb8eb14aab8e1008280a093a8deba2888b01"
+      "digest": "sha256:3c0732a63cc5883168c3cb11fcb0997b5bc8bdf60e39d370d347c5b415892c67"
+    },
+    {
+      "path": "artifacts/pattern-scenarios/traces/definitive-domain_performance_statistics__security__postgresql-verification-matrix-v2.trace.json",
+      "digest": "sha256:e39732b8334d6f18d4b08474df5a52b41d8cb32f470d8bdd8f95188a1d87e116"
+    },
+    {
+      "path": "artifacts/pattern-scenarios/traces/definitive-domain_publication_provenance__security__postgresql-verification-matrix-v2.trace.json",
+      "digest": "sha256:a1ff8cb7ece2ea36f9d06b1ac59f54273150fea1daecf36894ae6f4cbbba69b3"
+    },
+    {
+      "path": "artifacts/pattern-scenarios/traces/definitive-domain_query_catalog-inventory__security__postgresql-verification-matrix-v2.trace.json",
+      "digest": "sha256:b6cc60c4b38636a6cecc7aced35c57f021480ea9ad650858413caa4463e2c30b"
+    },
+    {
+      "path": "artifacts/pattern-scenarios/traces/definitive-domain_query_extension__security__postgresql-verification-matrix-v2.trace.json",
+      "digest": "sha256:bfc9178d138cef37131c31cca3e4d79622376e9f992a284fa966078d27bb0a5a"
     },
     {
       "path": "artifacts/reference-system/observations/boundary.observable.json",
@@ -495,7 +535,7 @@
     },
     {
       "path": "evidence/dependency-graph.json",
-      "digest": "sha256:281d65ff8e390cb2ecea16ee228b7938427b6317eb8dddacdeda1896c8b57bbe"
+      "digest": "sha256:d311e967b838f67f294af950ecd30cb479486290681891a7af3c531a8ff3a658"
     },
     {
       "path": "evidence/extension.evidence.yaml",
@@ -731,7 +771,7 @@
     },
     {
       "path": "evidence/scenarios/behaviors/concurrency.deadlock/security.proof.json",
-      "digest": "sha256:f50a1d2f501825e679cc33e9c193fba994113e9d00973201673388f8ab08316e"
+      "digest": "sha256:9cecb955ab2a091a5bea5baea6bb9c904b502fa1d1bd8021e4b7ffd99083f1e3"
     },
     {
       "path": "evidence/scenarios/behaviors/concurrency.locking/boundary.proof.json",
@@ -771,7 +811,7 @@
     },
     {
       "path": "evidence/scenarios/behaviors/concurrency.locking/security.proof.json",
-      "digest": "sha256:84108f9fcc6212e386d72d8605a7814d468a1946b16c5132f57978fbd3bcf0e2"
+      "digest": "sha256:dc5051e5ff263a00930fed72f4a5237d168df52bb3dab18403ad5f8cc0595640"
     },
     {
       "path": "evidence/scenarios/behaviors/concurrency.mvcc/boundary.proof.json",
@@ -811,7 +851,7 @@
     },
     {
       "path": "evidence/scenarios/behaviors/concurrency.mvcc/security.proof.json",
-      "digest": "sha256:c478cad8f50ef38fc8c13f6b889c5eab8c493543f3aba09bf399eb0158cf9df2"
+      "digest": "sha256:207d275e3e5eeb30dbd08ea1652c599019998a20f16392b44f453375ae43d093"
     },
     {
       "path": "evidence/scenarios/behaviors/foundation.authority-lock/boundary.proof.json",
@@ -851,7 +891,7 @@
     },
     {
       "path": "evidence/scenarios/behaviors/foundation.authority-lock/security.proof.json",
-      "digest": "sha256:36e84fae8f1ddc5703a4f317e3f1c5c59a10123b9b6ab7e81cd42315a7ce5db3"
+      "digest": "sha256:182b83c93268905fa78681e5f1434ee072617294a0e3e0f3802f342f17664dab"
     },
     {
       "path": "evidence/scenarios/behaviors/foundation.version-lock/boundary.proof.json",
@@ -891,7 +931,7 @@
     },
     {
       "path": "evidence/scenarios/behaviors/foundation.version-lock/security.proof.json",
-      "digest": "sha256:71ea40ae1a2f9f1d88c31024745a23b7ac4465de77984f6a00bdf788401404b2"
+      "digest": "sha256:ccd2f961b59ea93a8585bde445d2b45473b5629392199a8aad4cdc33038770a8"
     },
     {
       "path": "evidence/scenarios/behaviors/lifecycle.compatibility-matrix/boundary.proof.json",
@@ -931,7 +971,7 @@
     },
     {
       "path": "evidence/scenarios/behaviors/lifecycle.compatibility-matrix/security.proof.json",
-      "digest": "sha256:fbe03f0706a7aa6f25cc6fbdbddee8024faf5c1590b5cd4cc7edc850b73ae832"
+      "digest": "sha256:405ac3f6d5bb95bc790008a6b3ef4f4340d1ebdddf0a73d9ee5210345cbccdd4"
     },
     {
       "path": "evidence/scenarios/behaviors/lifecycle.pg-upgrade/boundary.proof.json",
@@ -971,7 +1011,7 @@
     },
     {
       "path": "evidence/scenarios/behaviors/lifecycle.pg-upgrade/security.proof.json",
-      "digest": "sha256:600fcff31dd1bf0dc39ffce788474580e483f2b97f0b5f7b6fdeb291b5dcb6a8"
+      "digest": "sha256:d9614b4338c1f133b1c0e11efe7db3285c21347e2084acd8b1be1673948ba60b"
     },
     {
       "path": "evidence/scenarios/behaviors/lifecycle.schema-migration/boundary.proof.json",
@@ -1011,7 +1051,7 @@
     },
     {
       "path": "evidence/scenarios/behaviors/lifecycle.schema-migration/security.proof.json",
-      "digest": "sha256:66b35d297d8e711fdb1c0df5a01ce6c0587f915438115f80869dc7ebcb390b19"
+      "digest": "sha256:93f827fe9f544b3ed43ffb7304a9a44fe2cb020e4df2f0eb6a8d62d92bdb394f"
     },
     {
       "path": "evidence/scenarios/behaviors/lifecycle.upgrade/boundary.proof.json",
@@ -1051,7 +1091,7 @@
     },
     {
       "path": "evidence/scenarios/behaviors/lifecycle.upgrade/security.proof.json",
-      "digest": "sha256:f7e061229d66f935bd919c0cd0af5f8473fe76d6f971f261bbad53f424178a5c"
+      "digest": "sha256:46e63e9d2d275084e9610d27da8da67d48b0d7a9a835f3cccce1ffcdb8714e56"
     },
     {
       "path": "evidence/scenarios/behaviors/operations.backup-recovery/boundary.proof.json",
@@ -1091,7 +1131,7 @@
     },
     {
       "path": "evidence/scenarios/behaviors/operations.backup-recovery/security.proof.json",
-      "digest": "sha256:f0b8576c714be42ca85bd9ba37d494c8004905e790ffd8feb1ddbce232a77b8b"
+      "digest": "sha256:c17a225234f49e039c8958e9006cf64a717bde83c809833d1cd44855620a4cf6"
     },
     {
       "path": "evidence/scenarios/behaviors/operations.failure-injection/boundary.proof.json",
@@ -1131,7 +1171,7 @@
     },
     {
       "path": "evidence/scenarios/behaviors/operations.failure-injection/security.proof.json",
-      "digest": "sha256:621b9e6def41cd462c4209f9cdb8480b76c78702510ea2aea0e23f80bc306ae8"
+      "digest": "sha256:5d3d80e3f9a45466be5082563af8080f06e626a9e162be896c747b8417e69c6a"
     },
     {
       "path": "evidence/scenarios/behaviors/operations.logical-replication/boundary.proof.json",
@@ -1171,7 +1211,7 @@
     },
     {
       "path": "evidence/scenarios/behaviors/operations.logical-replication/security.proof.json",
-      "digest": "sha256:c327d086f07cfbe0e363feb096734662430596a4f59a2e42edfa41ae08528cf4"
+      "digest": "sha256:22a09f59176a9c723adb12ec19891f5cd53e97492327763b617a8ac05f7cca0d"
     },
     {
       "path": "evidence/scenarios/behaviors/operations.maintenance/boundary.proof.json",
@@ -1211,7 +1251,7 @@
     },
     {
       "path": "evidence/scenarios/behaviors/operations.maintenance/security.proof.json",
-      "digest": "sha256:aae1eacf58797620729200a36bb907c1c256f5e28ef887df99aadaecf40ca2fb"
+      "digest": "sha256:602e6f4b69dd077a0f8ae724d56512c21f6274840089677d43071ab147b1764b"
     },
     {
       "path": "evidence/scenarios/behaviors/operations.observability/boundary.proof.json",
@@ -1251,7 +1291,7 @@
     },
     {
       "path": "evidence/scenarios/behaviors/operations.observability/security.proof.json",
-      "digest": "sha256:96455d695a9dcadf8ec292765b1970dbac146f840c6bc827550cb9324e163922"
+      "digest": "sha256:a9ba6f7409ad9ad0266f4240aabb1c506427f6b75af327200f2498c0c017baf2"
     },
     {
       "path": "evidence/scenarios/behaviors/operations.pitr-recovery/boundary.proof.json",
@@ -1291,7 +1331,7 @@
     },
     {
       "path": "evidence/scenarios/behaviors/operations.pitr-recovery/security.proof.json",
-      "digest": "sha256:0a30d2ab9fff0d26b58852d2af09ca27a05b9d03ec8d8cf682f54a03c9d99abe"
+      "digest": "sha256:b7361834902f370834c2bcafa5528dfff303914b0920a36b12af2c85aa2925a3"
     },
     {
       "path": "evidence/scenarios/behaviors/operations.replication/boundary.proof.json",
@@ -1331,7 +1371,7 @@
     },
     {
       "path": "evidence/scenarios/behaviors/operations.replication/security.proof.json",
-      "digest": "sha256:2d40c4b4371192e94f12a2223083ea8a5a4af4882aab42f36af0c1fb4de38945"
+      "digest": "sha256:23094ad2bbce179a87eb07fb326163e1aa9facc2b3843ac701a0d7fc4926ad73"
     },
     {
       "path": "evidence/scenarios/behaviors/operations.wal/boundary.proof.json",
@@ -1371,7 +1411,7 @@
     },
     {
       "path": "evidence/scenarios/behaviors/operations.wal/security.proof.json",
-      "digest": "sha256:84acf1527e64b1ee1bfa8bdddce04716bae6e24ddc4bdb2f4756ac253d5d1eb0"
+      "digest": "sha256:e5f3051dafb5ebb2258ff06c848805f1c7e45adb2a1f39d0564d02855552f448"
     },
     {
       "path": "evidence/scenarios/behaviors/performance.execution/boundary.proof.json",
@@ -1411,7 +1451,7 @@
     },
     {
       "path": "evidence/scenarios/behaviors/performance.execution/security.proof.json",
-      "digest": "sha256:f9fbc5cc2968f062956a95ad423f94df083043897184aae6154332206c565cc5"
+      "digest": "sha256:75f113031bb1e4d355c5552e436314815bfd0b709fdfe8c44a5edbe15888fb48"
     },
     {
       "path": "evidence/scenarios/behaviors/performance.index/boundary.proof.json",
@@ -1451,7 +1491,7 @@
     },
     {
       "path": "evidence/scenarios/behaviors/performance.index/security.proof.json",
-      "digest": "sha256:0bf556722441d1aeb2de65b86343e5da9e6de5e57f14824ab100afd2bc59283c"
+      "digest": "sha256:87b8fb4dc64a17bc6e68c5a14c230ba36c9fde60d3656925f2e45f24e3565c88"
     },
     {
       "path": "evidence/scenarios/behaviors/performance.planner/boundary.proof.json",
@@ -1491,7 +1531,7 @@
     },
     {
       "path": "evidence/scenarios/behaviors/performance.planner/security.proof.json",
-      "digest": "sha256:2cdc9df82e15f4c7fec3a7e8df98f1b6abf199b1cb190e7e92b8323e23766667"
+      "digest": "sha256:d5da474c0c1b3690d878ffbd0852889b00e2bf6eacde21cd328a4edb12b5030b"
     },
     {
       "path": "evidence/scenarios/behaviors/performance.statistics/boundary.proof.json",
@@ -1531,7 +1571,7 @@
     },
     {
       "path": "evidence/scenarios/behaviors/performance.statistics/security.proof.json",
-      "digest": "sha256:1cde6fd76a23ec8a7a254b7b29618e6a10aa7cc9efafe57082857c2fea103976"
+      "digest": "sha256:1cbfdbac3699bb4957d848326cad62e02532d0383fd854562f60565fc807be8d"
     },
     {
       "path": "evidence/scenarios/behaviors/publication.provenance/boundary.proof.json",
@@ -1571,7 +1611,7 @@
     },
     {
       "path": "evidence/scenarios/behaviors/publication.provenance/security.proof.json",
-      "digest": "sha256:40f7199b699642c070d113d403f18bd0c293654445d0cf634e78b8df3c6051b7"
+      "digest": "sha256:4daab28796d49a61bcb2cbe4f0623c326e7d6aabb7ba321c23753ed733af086b"
     },
     {
       "path": "evidence/scenarios/behaviors/query.catalog-inventory/boundary.proof.json",
@@ -1611,7 +1651,7 @@
     },
     {
       "path": "evidence/scenarios/behaviors/query.catalog-inventory/security.proof.json",
-      "digest": "sha256:77a6388187fafcca09fc72f6df5bbb9417584033d3d2d0ab45d1e2827e6e8817"
+      "digest": "sha256:8f7b9faaae8f5133987168e854f5369e1787963c16e1074ddef5b8baeba4cff2"
     },
     {
       "path": "evidence/scenarios/behaviors/query.extension/boundary.proof.json",
@@ -1651,7 +1691,7 @@
     },
     {
       "path": "evidence/scenarios/behaviors/query.extension/security.proof.json",
-      "digest": "sha256:3e3acb826d2d3232851e5813069982fa8255996b08f3aa40b004495208099dcf"
+      "digest": "sha256:8ae7c65eb450806eecf18731f52799b44c72e29a54f346ee81db9b8b42e06005"
     },
     {
       "path": "evidence/scenarios/behaviors/query.partitioning/boundary.proof.json",
@@ -1855,11 +1895,11 @@
     },
     {
       "path": "evidence/scenarios/closure-plan.json",
-      "digest": "sha256:6116ca064864563cadc4f30919268218cf3c5ca50a52df3c73cd62d87c3cfac9"
+      "digest": "sha256:f11d802d0499b58bfd31b4c0c6df2f1326f39689365f2c57685c47eeca4b2e9b"
     },
     {
       "path": "evidence/scenarios/index.json",
-      "digest": "sha256:89d4fb51b0558c4cff3220eb76ccd5f1a17c8d18ee002b07c6264e1a10873a31"
+      "digest": "sha256:66c4e8dc722213afcb459a0ba1d89dae63c1d2d1508e2aaee05f77438c9148fd"
     },
     {
       "path": "evidence/security.evidence.yaml",
@@ -1895,7 +1935,7 @@
     },
     {
       "path": "provenance.yaml",
-      "digest": "sha256:a1ff5dc6e70d1583ef0f0aa2870c6ebe5c91edba057540a4ef6e85f5e09672f2"
+      "digest": "sha256:c4559404a63c0c2bc33b7aecf9323f23e802da030a4e587e796f45af6234125b"
     }
   ],
   "output_binding_policy": {

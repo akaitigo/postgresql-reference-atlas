@@ -28,19 +28,26 @@ module SecurityScenarioTranche
     definitive-domain.performance.execution
     definitive-domain.performance.index
     definitive-domain.performance.planner
-  ].freeze
-  NEXT_TRANCHE_PATTERN_IDS = %w[
     definitive-domain.performance.statistics
     definitive-domain.publication.provenance
     definitive-domain.query.catalog-inventory
     definitive-domain.query.extension
   ].freeze
-  FOLLOWING_TRANCHE_ID = "security-002"
-  FOLLOWING_TRANCHE_PATTERN_IDS = %w[
+  PUBLISHED_TRANCHE_PATTERN_IDS = %w[
+    definitive-domain.performance.statistics
+    definitive-domain.publication.provenance
+    definitive-domain.query.catalog-inventory
+    definitive-domain.query.extension
+  ].freeze
+  NEXT_TRANCHE_PATTERN_IDS = %w[
     definitive-domain.query.partitioning
     definitive-domain.query.security
     definitive-domain.query.sql-surface
     definitive-domain.query.types-constraints
+  ].freeze
+  FOLLOWING_TRANCHE_ID = "security-002"
+  FOLLOWING_TRANCHE_PATTERN_IDS = %w[
+    definitive-domain.skill.router-evaluation
   ].freeze
   MAX_PATTERN_ROWS = 4
 
@@ -56,6 +63,10 @@ module SecurityScenarioTranche
 
   def expected_row_ids
     NEXT_TRANCHE_PATTERN_IDS.map { |pattern_id| row_id_for(pattern_id) }
+  end
+
+  def expected_published_row_ids
+    PUBLISHED_TRANCHE_PATTERN_IDS.map { |pattern_id| row_id_for(pattern_id) }
   end
 
   def expected_following_row_ids

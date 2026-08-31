@@ -2,6 +2,7 @@
 # frozen_string_literal: true
 
 require_relative "lib/scenario_proofs"
+require_relative "lib/security_scenario_tranche"
 
 root = ScenarioProofs::ROOT
 index_path = File.join(root, "evidence/scenarios/index.json")
@@ -14,28 +15,9 @@ errors << "denominator" unless index.fetch("denominator") == "29-current-domain-
 errors << "FE method lock" unless index.fetch("completion_limits").any? { |item| item.include?("f2e4c4b19156f8e993f48cdcbce23679ad881924") && item.include?("絶対件数は転用しない") }
 
 expected_proofs, behaviors = ScenarioProofs.build
-expected_closed = %w[
-  definitive-domain.concurrency.deadlock
-  definitive-domain.concurrency.locking
-  definitive-domain.concurrency.mvcc
-  definitive-domain.foundation.authority-lock
-  definitive-domain.foundation.version-lock
-  definitive-domain.lifecycle.compatibility-matrix
-  definitive-domain.lifecycle.pg-upgrade
-  definitive-domain.lifecycle.schema-migration
-  definitive-domain.lifecycle.upgrade
-  definitive-domain.operations.backup-recovery
-  definitive-domain.operations.failure-injection
-  definitive-domain.operations.logical-replication
-  definitive-domain.operations.maintenance
-  definitive-domain.operations.observability
-  definitive-domain.operations.pitr-recovery
-  definitive-domain.operations.replication
-  definitive-domain.operations.wal
-  definitive-domain.performance.execution
-  definitive-domain.performance.index
-  definitive-domain.performance.planner
-].map { |behavior_id| [behavior_id, "security"] }.sort
+expected_closed = SecurityScenarioTranche::COMPLETED_PATTERN_IDS.map { |behavior_id| [behavior_id, "security"] }.sort
+closed_row_count = SecurityScenarioTranche::COMPLETED_PATTERN_IDS.length
+gap_row_count = 290 - closed_row_count
 runtime_report_path = File.join(root, "artifacts/pattern-scenarios/results.json")
 runtime_report = JSON.parse(File.read(runtime_report_path))
 expected_pairs = expected_proofs.map { |proof| [proof.fetch("behavior_id"), proof.fetch("scenario")] }.sort
@@ -196,7 +178,7 @@ end
 errors << "completion boundary" unless summary.fetch("integrated_trace_rows") == 290 && summary.fetch("authority_atomic_rows") == 0 && summary.fetch("completion_eligible_rows") == 0
 actual_closed = actual_proofs.select { |proof| proof.dig("closure", "pattern_specific_evidence") }.map { |proof| [proof.fetch("behavior_id"), proof.fetch("scenario")] }.sort
 errors << "strict Scenario closure set" unless actual_closed == expected_closed
-errors << "strict Scenario closure boundary" unless summary.fetch("pattern_specific_rows") == 20 && summary.fetch("pattern_specific_runtime_rows") == 20 && summary.fetch("pattern_specific_gaps") == 270
+errors << "strict Scenario closure boundary" unless summary.fetch("pattern_specific_rows") == closed_row_count && summary.fetch("pattern_specific_runtime_rows") == closed_row_count && summary.fetch("pattern_specific_gaps") == gap_row_count
 errors << "completion limits" unless index.fetch("completion_limits").length >= 4
 
 abort errors.uniq.join("\n") unless errors.empty?

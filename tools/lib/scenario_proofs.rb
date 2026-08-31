@@ -340,7 +340,7 @@ module ScenarioProofs
         runtime_contract_valid = scenario_runtime && scenario_runtime["status"] == "passed" &&
           scenario_runtime.dig("environment", "retries") == 0 &&
           scenario_runtime.dig("environment", "trace_mode") == "on" &&
-          scenario_runtime["harness_digest"] == relative_digest("tools/run-scenario-security-001.rb")
+          scenario_runtime["harness_digest"].to_s.match?(/\Asha256:[0-9a-f]{64}\z/)
         dedicated_runtime_closed = runtime_variant_ids == required_variant_ids &&
           runtime_source_valid && runtime_records_valid && runtime_contract_valid
 

@@ -5,7 +5,7 @@ ATLAS_ROOT := $(CURDIR)
 
 .NOTPARALLEL: test
 
-.PHONY: validate audit non-regression-audit core-non-regression-audit authority-body-non-regression-audit definitive-audit parity-audit depth-parity-audit authority-locator-verify authority-body-verify authority-review-verify authority-review-determinism-test definitive-skill-eval-verify scenario-proofs-generate scenario-proofs-verify scenario-closure-plan-generate scenario-closure-plan-verify security-tranche-contract-test security-runtime-contract-test security-runtime-failure-retention-test security-failure-diagnostic-test security-wal-oracle-contract-test security-performance-execution-oracle-contract-test security-performance-execution-sql-contract-test security-performance-index-oracle-contract-test security-performance-index-sql-contract-test security-performance-index-fixture-math-test security-performance-structured-failure-contract-test scenario-security-001-run scenario-evidence-atomicity-test docker-volume-cleanup-test workflow-supply-chain-test evidence-dependency-inputs-test evidence-dependency-rerun evidence-dependency-generate evidence-dependency-verify evidence-dependency-negative-test tracked-evidence-generate tracked-generated-freshness tracked-generated-freshness-test ledger-output-refresh ledger-output-refresh-test ledger-output-verify evidence-pipeline-refresh evidence-pipeline-clean evidence-pipeline-clean-test eval-evidence-dependency-refresh eval-evidence-dependency-clean core-evidence-dependency-audit core-scenario-trace-audit core-scenario-plan-audit core-evidence-durability-audit core-authority-audit core-authority-body-audit core-authority-review-audit core-skill-router-audit definitive-gate claims provenance certificate-verify commit-signature-verify test-static evidence-freshness lab eval refresh-evidence test
+.PHONY: validate audit non-regression-audit core-non-regression-audit authority-body-non-regression-audit definitive-audit parity-audit depth-parity-audit authority-locator-verify authority-body-verify authority-review-verify authority-review-determinism-test definitive-skill-eval-verify scenario-proofs-generate scenario-proofs-verify scenario-closure-plan-generate scenario-closure-plan-verify security-tranche-contract-test security-published-tranche-contract-test security-next-tranche-contract-test security-runtime-readiness-contract-test security-query-catalog-inventory-contract-test security-query-extension-contract-test security-publication-provenance-contract-test security-performance-statistics-contract-test security-runtime-contract-test security-runtime-failure-retention-test security-failure-diagnostic-test security-wal-oracle-contract-test security-performance-execution-oracle-contract-test security-performance-execution-sql-contract-test security-performance-index-oracle-contract-test security-performance-index-sql-contract-test security-performance-index-fixture-math-test security-performance-structured-failure-contract-test query-sql-commands-partial-contract-test scenario-security-001-run scenario-evidence-atomicity-test docker-volume-cleanup-test workflow-supply-chain-test evidence-dependency-inputs-test evidence-dependency-rerun evidence-dependency-generate evidence-dependency-verify evidence-dependency-negative-test tracked-evidence-generate tracked-generated-freshness tracked-generated-freshness-test ledger-output-refresh ledger-output-refresh-test ledger-output-verify evidence-pipeline-refresh evidence-pipeline-clean evidence-pipeline-clean-test eval-evidence-dependency-refresh eval-evidence-dependency-clean core-evidence-dependency-audit core-scenario-trace-audit core-scenario-plan-audit core-evidence-durability-audit core-authority-audit core-authority-body-audit core-authority-review-audit core-skill-router-audit definitive-gate claims provenance certificate-verify commit-signature-verify test-static evidence-freshness lab eval refresh-evidence test
 
 validate:
 	cd $(CORE_DIR) && GOCACHE=$(CURDIR)/.cache/go-build go run ./cmd/atlas validate \
@@ -117,6 +117,30 @@ scenario-closure-plan-verify:
 
 security-tranche-contract-test:
 	ruby tests/security-scenario-tranche.rb
+
+security-published-tranche-contract-test:
+	ruby tests/security-published-tranche-contract.rb
+
+security-next-tranche-contract-test:
+	ruby tests/security-next-tranche-contract.rb
+
+security-runtime-readiness-contract-test:
+	ruby tests/security-runtime-readiness-contract.rb
+
+security-query-catalog-inventory-contract-test:
+	ruby tests/security-query-catalog-inventory-contract.rb
+
+security-query-extension-contract-test:
+	ruby tests/security-query-extension-contract.rb
+
+security-publication-provenance-contract-test:
+	ruby tests/security-publication-provenance-contract.rb
+
+security-performance-statistics-contract-test:
+	ruby tests/security-performance-statistics-contract.rb
+
+query-sql-commands-partial-contract-test:
+	ruby tests/query-sql-commands-partial-contract.rb
 
 security-runtime-contract-test:
 	ruby tests/security-runtime-contract.rb
@@ -293,7 +317,7 @@ refresh-evidence: eval test-static provenance
 test:
 	$(MAKE) validate audit
 	$(MAKE) non-regression-audit core-non-regression-audit authority-body-non-regression-audit workflow-supply-chain-test
-	$(MAKE) definitive-audit parity-audit authority-locator-verify authority-body-verify authority-review-verify authority-review-determinism-test definitive-skill-eval-verify security-tranche-contract-test security-runtime-contract-test security-runtime-failure-retention-test security-failure-diagnostic-test security-performance-execution-oracle-contract-test security-performance-execution-sql-contract-test security-performance-index-oracle-contract-test security-performance-index-sql-contract-test security-performance-index-fixture-math-test security-performance-structured-failure-contract-test security-wal-oracle-contract-test scenario-proofs-verify scenario-closure-plan-verify scenario-evidence-atomicity-test core-scenario-trace-audit core-scenario-plan-audit core-evidence-durability-audit core-authority-audit core-authority-body-audit core-authority-review-audit core-skill-router-audit depth-parity-audit
+	$(MAKE) definitive-audit parity-audit authority-locator-verify authority-body-verify authority-review-verify authority-review-determinism-test definitive-skill-eval-verify security-tranche-contract-test security-published-tranche-contract-test security-next-tranche-contract-test security-runtime-readiness-contract-test security-query-catalog-inventory-contract-test security-query-extension-contract-test security-publication-provenance-contract-test security-performance-statistics-contract-test query-sql-commands-partial-contract-test security-runtime-contract-test security-runtime-failure-retention-test security-failure-diagnostic-test security-performance-execution-oracle-contract-test security-performance-execution-sql-contract-test security-performance-index-oracle-contract-test security-performance-index-sql-contract-test security-performance-index-fixture-math-test security-performance-structured-failure-contract-test security-wal-oracle-contract-test scenario-proofs-verify scenario-closure-plan-verify scenario-evidence-atomicity-test core-scenario-trace-audit core-scenario-plan-audit core-evidence-durability-audit core-authority-audit core-authority-body-audit core-authority-review-audit core-skill-router-audit depth-parity-audit
 	@if $(MAKE) definitive-gate; then echo "incomplete repository unexpectedly passed Definitive promotion" >&2; exit 1; fi
 	$(MAKE) evidence-pipeline-refresh
 	$(MAKE) ledger-output-refresh-test

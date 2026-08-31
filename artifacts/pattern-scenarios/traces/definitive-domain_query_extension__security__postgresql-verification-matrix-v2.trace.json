@@ -1,0 +1,193 @@
+{
+  "schema_version": 1,
+  "pattern_id": "definitive-domain.query.extension",
+  "target_id": "query.extension",
+  "scenario": "security",
+  "variant_id": "postgresql-verification-matrix-v2",
+  "environment": {
+    "subject": "PostgreSQL",
+    "server_product": "PostgreSQL",
+    "server_version": "18.6",
+    "server_version_num": "180006",
+    "client_product": "psql",
+    "client_version": "psql (PostgreSQL) 18.6",
+    "runtime_image": "postgres:18.6-alpine",
+    "runtime_identity": "pg-atlas-security-93406-4e4e8d",
+    "workers": 1,
+    "retries": 0,
+    "trace_mode": "on",
+    "execution_mode": "real-postgresql-server-client",
+    "row_runtime": {
+      "server_versions": [
+        "18.6"
+      ],
+      "containers": [
+        "pg-atlas-security-93406-4e4e8d"
+      ],
+      "extension": "pg_trgm"
+    }
+  },
+  "sql": {
+    "source": "BEGIN;\nCREATE ROLE atlas_extension_reader;\nCREATE EXTENSION pg_trgm;\nCREATE TABLE atlas_extension_secure(id bigint PRIMARY KEY, tenant name NOT NULL, body text NOT NULL);\nALTER TABLE atlas_extension_secure ENABLE ROW LEVEL SECURITY;\nCREATE POLICY atlas_extension_policy ON atlas_extension_secure TO atlas_extension_reader\n  USING (tenant = 'atlas_extension_reader' AND body LIKE '%searchable phrase%')\n  WITH CHECK (tenant = 'atlas_extension_reader');\nINSERT INTO atlas_extension_secure\nSELECT g, 'atlas_extension_reader', CASE WHEN g = 4242 THEN 'postgresql atlas searchable phrase' ELSE md5(g::text) END\nFROM generate_series(1, 20000) AS g;\nCREATE INDEX atlas_extension_secure_body_trgm_idx ON atlas_extension_secure USING gin (body gin_trgm_ops);\nANALYZE atlas_extension_secure;\nGRANT SELECT ON atlas_extension_secure TO atlas_extension_reader;\nCREATE TEMP TABLE atlas_extension_observation(plan jsonb, matching_rows bigint, similarity_value real);\nGRANT INSERT, SELECT ON atlas_extension_observation TO atlas_extension_reader;\nSET ROLE atlas_extension_reader;\nDO $$ DECLARE captured jsonb; BEGIN\n  EXECUTE 'EXPLAIN (ANALYZE, BUFFERS, WAL, FORMAT JSON) SELECT id FROM atlas_extension_secure WHERE tenant = ''atlas_extension_reader'' AND body LIKE ''%searchable phrase%'' ORDER BY id' INTO captured;\n  INSERT INTO atlas_extension_observation\n  SELECT captured, count(*), similarity('postgresql atlas', 'postgres atlas')\n  FROM atlas_extension_secure WHERE tenant = 'atlas_extension_reader' AND body LIKE '%searchable phrase%';\n  BEGIN\n    CREATE EXTENSION hstore;\n    PERFORM set_config('atlas.extension.install_denied', 'false', true);\n  EXCEPTION WHEN insufficient_privilege THEN\n    PERFORM set_config('atlas.extension.install_denied', 'true', true);\n  END;\nEND $$;\nRESET ROLE;\nSELECT json_build_object(\n  'server_version', current_setting('server_version'),\n  'extension_version', (SELECT extversion FROM pg_extension WHERE extname = 'pg_trgm'),\n  'similarity', (SELECT similarity_value FROM atlas_extension_observation),\n  'matching_rows', (SELECT matching_rows FROM atlas_extension_observation),\n  'security_rejected', current_setting('atlas.extension.install_denied', true) = 'true',\n  'oracle_marker', 'ATLAS_SECURITY_PASS:query.extension', 'plan', (SELECT plan FROM atlas_extension_observation),\n  'verdict', CASE WHEN (SELECT matching_rows FROM atlas_extension_observation) = 1\n    AND (SELECT similarity_value FROM atlas_extension_observation) > 0\n    AND current_setting('atlas.extension.install_denied', true) = 'true' THEN 'pass' ELSE 'fail' END\n);\nROLLBACK;\n",
+    "stdout": "BEGIN\nCREATE ROLE\nCREATE EXTENSION\nCREATE TABLE\nALTER TABLE\nCREATE POLICY\nINSERT 0 20000\nCREATE INDEX\nANALYZE\nGRANT\nCREATE TABLE\nGRANT\nSET\nDO\nRESET\n{\"server_version\" : \"18.6\", \"extension_version\" : \"1.6\", \"similarity\" : 0.7777778, \"matching_rows\" : 1, \"security_rejected\" : true, \"oracle_marker\" : \"ATLAS_SECURITY_PASS:query.extension\", \"plan\" : [{\"Plan\": {\"Plans\": [{\"Alias\": \"atlas_extension_secure\", \"Plans\": [{\"WAL FPI\": 0, \"Disabled\": false, \"Node Type\": \"Bitmap Index Scan\", \"Plan Rows\": 2, \"WAL Bytes\": 0, \"Index Cond\": \"(body ~~ '%searchable phrase%'::text)\", \"Index Name\": \"atlas_extension_secure_body_trgm_idx\", \"Plan Width\": 0, \"Total Cost\": 134.52, \"Actual Rows\": 1.00, \"WAL Records\": 0, \"Actual Loops\": 1, \"Startup Cost\": 0.00, \"Async Capable\": false, \"Index Searches\": 1, \"Parallel Aware\": false, \"Local Hit Blocks\": 0, \"Temp Read Blocks\": 0, \"WAL Buffers Full\": 0, \"Actual Total Time\": 0.017, \"Local Read Blocks\": 0, \"Shared Hit Blocks\": 31, \"Shared Read Blocks\": 0, \"Actual Startup Time\": 0.017, \"Parent Relationship\": \"Outer\", \"Temp Written Blocks\": 0, \"Local Dirtied Blocks\": 0, \"Local Written Blocks\": 0, \"Shared Dirtied Blocks\": 0, \"Shared Written Blocks\": 0}], \"Filter\": \"(tenant = 'atlas_extension_reader'::name)\", \"WAL FPI\": 0, \"Disabled\": false, \"Node Type\": \"Bitmap Heap Scan\", \"Plan Rows\": 1, \"WAL Bytes\": 0, \"Plan Width\": 8, \"Total Cost\": 142.10, \"Actual Rows\": 1.00, \"WAL Records\": 0, \"Actual Loops\": 1, \"Recheck Cond\": \"(body ~~ '%searchable phrase%'::text)\", \"Startup Cost\": 134.52, \"Async Capable\": false, \"Relation Name\": \"atlas_extension_secure\", \"Parallel Aware\": false, \"Local Hit Blocks\": 0, \"Temp Read Blocks\": 0, \"WAL Buffers Full\": 0, \"Actual Total Time\": 0.022, \"Exact Heap Blocks\": 1, \"Local Read Blocks\": 0, \"Lossy Heap Blocks\": 0, \"Shared Hit Blocks\": 32, \"Shared Read Blocks\": 0, \"Actual Startup Time\": 0.022, \"Parent Relationship\": \"Outer\", \"Temp Written Blocks\": 0, \"Local Dirtied Blocks\": 0, \"Local Written Blocks\": 0, \"Shared Dirtied Blocks\": 0, \"Shared Written Blocks\": 0, \"Rows Removed by Filter\": 0, \"Rows Removed by Index Recheck\": 0}], \"WAL FPI\": 0, \"Disabled\": false, \"Sort Key\": [\"id\"], \"Node Type\": \"Sort\", \"Plan Rows\": 1, \"WAL Bytes\": 0, \"Plan Width\": 8, \"Total Cost\": 142.12, \"Actual Rows\": 1.00, \"Sort Method\": \"quicksort\", \"WAL Records\": 0, \"Actual Loops\": 1, \"Startup Cost\": 142.11, \"Async Capable\": false, \"Parallel Aware\": false, \"Sort Space Type\": \"Memory\", \"Sort Space Used\": 25, \"Local Hit Blocks\": 0, \"Temp Read Blocks\": 0, \"WAL Buffers Full\": 0, \"Actual Total Time\": 0.027, \"Local Read Blocks\": 0, \"Shared Hit Blocks\": 32, \"Shared Read Blocks\": 0, \"Actual Startup Time\": 0.027, \"Temp Written Blocks\": 0, \"Local Dirtied Blocks\": 0, \"Local Written Blocks\": 0, \"Shared Dirtied Blocks\": 0, \"Shared Written Blocks\": 0}, \"Planning\": {\"Local Hit Blocks\": 0, \"Temp Read Blocks\": 0, \"Local Read Blocks\": 0, \"Shared Hit Blocks\": 40, \"Shared Read Blocks\": 0, \"Temp Written Blocks\": 0, \"Local Dirtied Blocks\": 0, \"Local Written Blocks\": 0, \"Shared Dirtied Blocks\": 0, \"Shared Written Blocks\": 0}, \"Triggers\": [], \"Planning Time\": 0.139, \"Execution Time\": 0.049}], \"verdict\" : \"pass\"}\nROLLBACK\n",
+    "stderr": ""
+  },
+  "plan": [
+    {
+      "Plan": {
+        "Plans": [
+          {
+            "Alias": "atlas_extension_secure",
+            "Plans": [
+              {
+                "WAL FPI": 0,
+                "Disabled": false,
+                "Node Type": "Bitmap Index Scan",
+                "Plan Rows": 2,
+                "WAL Bytes": 0,
+                "Index Cond": "(body ~~ '%searchable phrase%'::text)",
+                "Index Name": "atlas_extension_secure_body_trgm_idx",
+                "Plan Width": 0,
+                "Total Cost": 134.52,
+                "Actual Rows": 1.0,
+                "WAL Records": 0,
+                "Actual Loops": 1,
+                "Startup Cost": 0.0,
+                "Async Capable": false,
+                "Index Searches": 1,
+                "Parallel Aware": false,
+                "Local Hit Blocks": 0,
+                "Temp Read Blocks": 0,
+                "WAL Buffers Full": 0,
+                "Actual Total Time": 0.017,
+                "Local Read Blocks": 0,
+                "Shared Hit Blocks": 31,
+                "Shared Read Blocks": 0,
+                "Actual Startup Time": 0.017,
+                "Parent Relationship": "Outer",
+                "Temp Written Blocks": 0,
+                "Local Dirtied Blocks": 0,
+                "Local Written Blocks": 0,
+                "Shared Dirtied Blocks": 0,
+                "Shared Written Blocks": 0
+              }
+            ],
+            "Filter": "(tenant = 'atlas_extension_reader'::name)",
+            "WAL FPI": 0,
+            "Disabled": false,
+            "Node Type": "Bitmap Heap Scan",
+            "Plan Rows": 1,
+            "WAL Bytes": 0,
+            "Plan Width": 8,
+            "Total Cost": 142.1,
+            "Actual Rows": 1.0,
+            "WAL Records": 0,
+            "Actual Loops": 1,
+            "Recheck Cond": "(body ~~ '%searchable phrase%'::text)",
+            "Startup Cost": 134.52,
+            "Async Capable": false,
+            "Relation Name": "atlas_extension_secure",
+            "Parallel Aware": false,
+            "Local Hit Blocks": 0,
+            "Temp Read Blocks": 0,
+            "WAL Buffers Full": 0,
+            "Actual Total Time": 0.022,
+            "Exact Heap Blocks": 1,
+            "Local Read Blocks": 0,
+            "Lossy Heap Blocks": 0,
+            "Shared Hit Blocks": 32,
+            "Shared Read Blocks": 0,
+            "Actual Startup Time": 0.022,
+            "Parent Relationship": "Outer",
+            "Temp Written Blocks": 0,
+            "Local Dirtied Blocks": 0,
+            "Local Written Blocks": 0,
+            "Shared Dirtied Blocks": 0,
+            "Shared Written Blocks": 0,
+            "Rows Removed by Filter": 0,
+            "Rows Removed by Index Recheck": 0
+          }
+        ],
+        "WAL FPI": 0,
+        "Disabled": false,
+        "Sort Key": [
+          "id"
+        ],
+        "Node Type": "Sort",
+        "Plan Rows": 1,
+        "WAL Bytes": 0,
+        "Plan Width": 8,
+        "Total Cost": 142.12,
+        "Actual Rows": 1.0,
+        "Sort Method": "quicksort",
+        "WAL Records": 0,
+        "Actual Loops": 1,
+        "Startup Cost": 142.11,
+        "Async Capable": false,
+        "Parallel Aware": false,
+        "Sort Space Type": "Memory",
+        "Sort Space Used": 25,
+        "Local Hit Blocks": 0,
+        "Temp Read Blocks": 0,
+        "WAL Buffers Full": 0,
+        "Actual Total Time": 0.027,
+        "Local Read Blocks": 0,
+        "Shared Hit Blocks": 32,
+        "Shared Read Blocks": 0,
+        "Actual Startup Time": 0.027,
+        "Temp Written Blocks": 0,
+        "Local Dirtied Blocks": 0,
+        "Local Written Blocks": 0,
+        "Shared Dirtied Blocks": 0,
+        "Shared Written Blocks": 0
+      },
+      "Planning": {
+        "Local Hit Blocks": 0,
+        "Temp Read Blocks": 0,
+        "Local Read Blocks": 0,
+        "Shared Hit Blocks": 40,
+        "Shared Read Blocks": 0,
+        "Temp Written Blocks": 0,
+        "Local Dirtied Blocks": 0,
+        "Local Written Blocks": 0,
+        "Shared Dirtied Blocks": 0,
+        "Shared Written Blocks": 0
+      },
+      "Triggers": [
+
+      ],
+      "Planning Time": 0.139,
+      "Execution Time": 0.049
+    }
+  ],
+  "wal": {
+    "before_lsn": "0/B525028",
+    "after_lsn": "0/B800000"
+  },
+  "log": "2026-08-31 05:21:01.607 UTC [499] LOG:  statement: CREATE TABLE atlas_extension_secure(id bigint PRIMARY KEY, tenant name NOT NULL, body text NOT NULL);\n2026-08-31 05:21:01.609 UTC [499] LOG:  statement: ALTER TABLE atlas_extension_secure ENABLE ROW LEVEL SECURITY;\n2026-08-31 05:21:01.609 UTC [499] LOG:  statement: CREATE POLICY atlas_extension_policy ON atlas_extension_secure TO atlas_extension_reader\n\t  USING (tenant = 'atlas_extension_reader' AND body LIKE '%searchable phrase%')\n\t  WITH CHECK (tenant = 'atlas_extension_reader');\n2026-08-31 05:21:01.609 UTC [499] LOG:  statement: INSERT INTO atlas_extension_secure\n\tSELECT g, 'atlas_extension_reader', CASE WHEN g = 4242 THEN 'postgresql atlas searchable phrase' ELSE md5(g::text) END\n\tFROM generate_series(1, 20000) AS g;\n2026-08-31 05:21:01.634 UTC [499] LOG:  statement: CREATE INDEX atlas_extension_secure_body_trgm_idx ON atlas_extension_secure USING gin (body gin_trgm_ops);\n2026-08-31 05:21:01.728 UTC [499] LOG:  statement: ANALYZE atlas_extension_secure;\n2026-08-31 05:21:01.740 UTC [499] LOG:  statement: GRANT SELECT ON atlas_extension_secure TO atlas_extension_reader;\n2026-08-31 05:21:01.740 UTC [499] LOG:  statement: CREATE TEMP TABLE atlas_extension_observation(plan jsonb, matching_rows bigint, similarity_value real);\n2026-08-31 05:21:01.741 UTC [499] LOG:  statement: GRANT INSERT, SELECT ON atlas_extension_observation TO atlas_extension_reader;\n2026-08-31 05:21:01.741 UTC [499] LOG:  statement: SET ROLE atlas_extension_reader;\n2026-08-31 05:21:01.741 UTC [499] LOG:  statement: DO $$ DECLARE captured jsonb; BEGIN\n\t  EXECUTE 'EXPLAIN (ANALYZE, BUFFERS, WAL, FORMAT JSON) SELECT id FROM atlas_extension_secure WHERE tenant = ''atlas_extension_reader'' AND body LIKE ''%searchable phrase%'' ORDER BY id' INTO captured;\n\t  INSERT INTO atlas_extension_observation\n\t  SELECT captured, count(*), similarity('postgresql atlas', 'postgres atlas')\n\t  FROM atlas_extension_secure WHERE tenant = 'atlas_extension_reader' AND body LIKE '%searchable phrase%';\n\t  BEGIN\n\t    CREATE EXTENSION hstore;\n\t    PERFORM set_config('atlas.extension.install_denied', 'false', true);\n\t  EXCEPTION WHEN insufficient_privilege THEN\n\t    PERFORM set_config('atlas.extension.install_denied', 'true', true);\n\t  END;\n\tEND $$;\n2026-08-31 05:21:01.742 UTC [499] LOG:  statement: RESET ROLE;\n2026-08-31 05:21:01.742 UTC [499] LOG:  statement: SELECT json_build_object(\n\t  'server_version', current_setting('server_version'),\n\t  'extension_version', (SELECT extversion FROM pg_extension WHERE extname = 'pg_trgm'),\n\t  'similarity', (SELECT similarity_value FROM atlas_extension_observation),\n\t  'matching_rows', (SELECT matching_rows FROM atlas_extension_observation),\n\t  'security_rejected', current_setting('atlas.extension.install_denied', true) = 'true',\n\t  'oracle_marker', 'ATLAS_SECURITY_PASS:query.extension', 'plan', (SELECT plan FROM atlas_extension_observation),\n\t  'verdict', CASE WHEN (SELECT matching_rows FROM atlas_extension_observation) = 1\n\t    AND (SELECT similarity_value FROM atlas_extension_observation) > 0\n\t    AND current_setting('atlas.extension.install_denied', true) = 'true' THEN 'pass' ELSE 'fail' END\n\t);\n2026-08-31 05:21:01.743 UTC [499] LOG:  statement: ROLLBACK;\n2026-08-31 05:21:01.777 UTC [506] LOG:  statement: SELECT pg_current_wal_lsn()\n",
+  "metric": {
+    "elapsed_ms": 224.894,
+    "matching_rows": 1
+  },
+  "oracle": {
+    "kind": "rls-bounded-pg-trgm-gin-plan-and-install-refusal",
+    "scenario": "security",
+    "marker": "ATLAS_SECURITY_PASS:query.extension",
+    "passed": true
+  },
+  "streams": {
+    "action": [
+      "psql security transaction"
+    ],
+    "network": [
+      "psql-to-PostgreSQL-session"
+    ],
+    "resource": [
+      "SQL",
+      "plan",
+      "WAL",
+      "server-log",
+      "elapsed-metric"
+    ]
+  }
+}

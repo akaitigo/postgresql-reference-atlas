@@ -30,6 +30,7 @@ module SecurityFailureDiagnostics
     %r{\A[A-Za-z]:\\}
   ].freeze
   RUN_ID_PATTERN = /\A[a-zA-Z0-9][a-zA-Z0-9._-]*\z/.freeze
+  CANONICAL_ARTIFACT_FLOOR = 41
 
   module_function
 
@@ -149,7 +150,16 @@ module SecurityFailureDiagnostics
     raise Error, "failure diagnostic kind is invalid" unless document.fetch("kind") == "postgresql-scenario-runtime-failure-diagnostic"
     run_id = document.fetch("run_id")
     raise Error, "failure diagnostic run_id is invalid" unless run_id.match?(RUN_ID_PATTERN) && !run_id.include?("..")
-    raise Error, "failure diagnostic append-only state is invalid" unless document.dig("canonical_artifacts", "pre", "count") == 33 && document.dig("canonical_artifacts", "post", "count") == 33
+    pre = document.dig("canonical_artifacts", "pre")
+    post = document.dig("canonical_artifacts", "post")
+    retained = pre.is_a?(Hash) && post.is_a?(Hash) &&
+      pre.fetch("count", 0) >= CANONICAL_ARTIFACT_FLOOR &&
+      pre.fetch("count", 0) == post.fetch("count", -1) &&
+      pre.fetch("count", 0) == Array(pre["artifacts"]).length &&
+      post.fetch("count", 0) == Array(post["artifacts"]).length &&
+      pre["collection_digest"] == post["collection_digest"] &&
+      document.dig("canonical_artifacts", "unchanged") == true
+    raise Error, "failure diagnostic append-only state is invalid" unless retained
     scan_forbidden_content!(document)
   end
 

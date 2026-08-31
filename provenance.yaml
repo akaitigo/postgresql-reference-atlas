@@ -4,7 +4,7 @@ atlas_id: postgresql-reference-atlas
 generated_at: '2026-08-30T19:45:24.801360Z'
 artifacts:
 - path: artifacts/pattern-scenarios/results.json
-  digest: sha256:93077286664997b9f7b4800172278ea64c0993837f91c4a1e29ca87fc1d7baa6
+  digest: sha256:23ee23f3c01ff17458fbd4c6c4b910c1038eb66cc4da3fd6fb7fff2cb95714f9
   kind: test-report
   license: Apache-2.0
   source_ids:
@@ -466,14 +466,14 @@ artifacts:
   source_ids: []
   generated_by: make authority-body-non-regression-audit
 - path: evidence/scenarios/closure-plan.json
-  digest: sha256:6116ca064864563cadc4f30919268218cf3c5ca50a52df3c73cd62d87c3cfac9
+  digest: sha256:f11d802d0499b58bfd31b4c0c6df2f1326f39689365f2c57685c47eeca4b2e9b
   kind: test-report
   license: Apache-2.0
   source_ids:
   - postgres-container-18.6-alpine
   generated_by: make scenario-closure-plan-generate
 - path: evidence/scenarios/index.json
-  digest: sha256:89d4fb51b0558c4cff3220eb76ccd5f1a17c8d18ee002b07c6264e1a10873a31
+  digest: sha256:66c4e8dc722213afcb459a0ba1d89dae63c1d2d1508e2aaee05f77438c9148fd
   kind: test-report
   license: Apache-2.0
   source_ids:
@@ -514,7 +514,7 @@ artifacts:
   source_ids: []
   generated_by: manual implementation; verified by make scenario-evidence-atomicity-test
 - path: tools/run-scenario-security-001.rb
-  digest: sha256:cdc81ed7e0f9c0f352f6191a35217137f078baf1873f17962edb2ff87f3ae8d9
+  digest: sha256:ee818edeebc047840ea55692af6e7e9f12761b74be858e455e9408a372112e54
   kind: document
   license: Apache-2.0
   source_ids:

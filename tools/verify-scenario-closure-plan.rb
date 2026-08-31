@@ -8,9 +8,12 @@ actual = ScenarioClosurePlan.load_json(ScenarioClosurePlan::PLAN_PATH)
 expected = ScenarioClosurePlan.build
 abort "Scenario Closure Plan is stale or edited outside its generator" unless actual == expected
 summary = actual.fetch("summary")
-abort "PostgreSQL Scenario denominator drift" unless summary.fetch("remaining_rows") == 270 && summary.fetch("by_scenario").fetch("security") == 9 && summary.fetch("by_scenario").reject { |scenario, _| scenario == "security" }.values == Array.new(9, 29)
-abort "PostgreSQL completed suite overclaim" unless summary.fetch("completed_dedicated_rows") == 20 && actual.fetch("completed_rows").length == 20 && actual.fetch("completed_rows").all? { |row| row.fetch("scenario") == "security" && row.fetch("all_first_attempt_pass") && row.fetch("all_trace_streams") && row.fetch("variant_ids") == ["postgresql-verification-matrix-v2"] }
-abort "Tranche contract" unless summary.fetch("planned_tranches") == 75 && actual.fetch("tranches").all? { |tranche| tranche.fetch("pattern_rows").between?(1, 4) && tranche.fetch("variant_runs") >= tranche.fetch("pattern_rows") }
+completed_rows = SecurityScenarioTranche::COMPLETED_PATTERN_IDS.length
+remaining_rows = 290 - completed_rows
+remaining_security_rows = 29 - completed_rows
+abort "PostgreSQL Scenario denominator drift" unless summary.fetch("remaining_rows") == remaining_rows && summary.fetch("by_scenario").fetch("security") == remaining_security_rows && summary.fetch("by_scenario").reject { |scenario, _| scenario == "security" }.values == Array.new(9, 29)
+abort "PostgreSQL completed suite overclaim" unless summary.fetch("completed_dedicated_rows") == completed_rows && actual.fetch("completed_rows").length == completed_rows && actual.fetch("completed_rows").all? { |row| row.fetch("scenario") == "security" && row.fetch("all_first_attempt_pass") && row.fetch("all_trace_streams") && row.fetch("variant_ids") == ["postgresql-verification-matrix-v2"] }
+abort "Tranche contract" unless summary.fetch("planned_tranches") == actual.fetch("tranches").length && actual.fetch("tranches").all? { |tranche| tranche.fetch("pattern_rows").between?(1, 4) && tranche.fetch("variant_runs") >= tranche.fetch("pattern_rows") }
 abort "Next risk tranche" unless actual.dig("next_tranche", "id") == "security-001"
 abort "Closure contract weakened" unless actual.fetch("rows").all? do |row|
   closure = row.fetch("required_closure")

@@ -16,12 +16,14 @@ end
 failure_diagnostics = Dir.glob(File.join(root, "artifacts/pattern-scenario-failures/*.json")).sort
 failure_records = failure_diagnostics.map { |path| JSON.parse(File.read(path)) }
 
-abort "canonical scenario runtime report drifted" unless report.fetch("status") == "passed" && report.dig("counts", "rows") == 20 && report.dig("counts", "passed") == 20
+abort "canonical scenario runtime report drifted" unless report.fetch("status") == "passed" && report.dig("counts", "rows") == 24 && report.dig("counts", "passed") == 24
 abort "canonical security runtime attempts drifted" unless report.fetch("tests").all? { |test| test.fetch("attempts") == 1 && test.fetch("final_status") == "passed" }
-abort "canonical security artifact retention drifted" unless artifacts.length == 41 && artifacts.uniq.length == 41 && artifacts.all? { |path| File.file?(path) }
+abort "canonical security artifact retention drifted" unless artifacts.length == 49 && artifacts.uniq.length == 49 && artifacts.all? { |path| File.file?(path) }
 abort "append-only failure diagnostics drifted" unless failure_diagnostics.map { |path| File.basename(path) } == [
   "security-001-20260830T214437Z-8458__closure.unknown.security.json",
-  "security-001-20260830T220147Z-6908__closure.definitive-domain.performance.index.security.json"
+  "security-001-20260830T220147Z-6908__closure.definitive-domain.performance.index.security.json",
+  "security-001-20260831T051312Z-88696__closure.definitive-domain.performance.statistics.security.json",
+  "security-001-20260831T051608Z-89784__closure.definitive-domain.query.extension.security.json"
 ] && failure_records.all? { |record| record.fetch("command") == "ruby tools/run-scenario-security-001.rb" }
 abort "staging cleanup drifted" if Dir.exist?(File.join(root, "artifacts/.pattern-scenarios-next")) || Dir.exist?(File.join(root, "artifacts/.pattern-scenarios-prev"))
 

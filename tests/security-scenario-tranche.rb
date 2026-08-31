@@ -16,11 +16,11 @@ abort "following security tranche row selection drifted" unless following.fetch(
 
 published_pattern_ids = SecurityScenarioTranche.published_pattern_ids(plan)
 abort "security published suite selector drifted" unless published_pattern_ids == SecurityScenarioTranche::COMPLETED_PATTERN_IDS
-abort "security published suite cardinality drifted" unless published_pattern_ids.length == 20 && published_pattern_ids.uniq.length == 20
+abort "security published suite cardinality drifted" unless published_pattern_ids.length == 24 && published_pattern_ids.uniq.length == 24
 
 runtime_pattern_ids = SecurityScenarioTranche.next_runtime_pattern_ids(plan)
 abort "security next runtime selector drifted" unless runtime_pattern_ids == SecurityScenarioTranche::COMPLETED_PATTERN_IDS + SecurityScenarioTranche::NEXT_TRANCHE_PATTERN_IDS
-abort "security next runtime selector cardinality drifted" unless runtime_pattern_ids.length == 24 && runtime_pattern_ids.uniq.length == 24
+abort "security next runtime selector cardinality drifted" unless runtime_pattern_ids.length == 28 && runtime_pattern_ids.uniq.length == 28
 
 oversized = JSON.parse(JSON.generate(plan))
 oversized.fetch("next_tranche").fetch("row_ids") << "closure.definitive-domain.query.sql-commands.security"
@@ -62,4 +62,4 @@ rescue RuntimeError => e
   raise unless e.message.include?("approved order")
 end
 
-puts "Security tranche contractを検証しました: completed=20 next=4 next_runtime=24 negatives=4/4"
+puts "Security tranche contractを検証しました: completed=24 next=4 next_runtime=28 negatives=4/4"

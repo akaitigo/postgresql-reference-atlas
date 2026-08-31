@@ -4,6 +4,7 @@
 require "digest"
 require "json"
 require "yaml"
+require_relative "lib/security_scenario_tranche"
 
 root = File.expand_path("..", __dir__)
 manifest = YAML.safe_load(File.read(File.join(root, "definitive.yaml")), aliases: false)
@@ -101,6 +102,7 @@ report = {
 }
 File.write(File.join(root, "evidence/definitive-audit-report.json"), JSON.pretty_generate(report) + "\n")
 scenario_summary = scenario_proofs.fetch("summary")
-scenario_contract_valid = scenario_summary.fetch("rows") == 290 && scenario_summary.fetch("pattern_specific_rows") == 20 && scenario_summary.fetch("pattern_specific_runtime_rows") == 20 && scenario_summary.fetch("pattern_specific_gaps") == 270 && scenario_summary.fetch("integrated_trace_rows") == 290 && scenario_summary.fetch("authority_atomic_rows") == 0 && scenario_summary.fetch("completion_eligible_rows") == 0
+closed_row_count = SecurityScenarioTranche::COMPLETED_PATTERN_IDS.length
+scenario_contract_valid = scenario_summary.fetch("rows") == 290 && scenario_summary.fetch("pattern_specific_rows") == closed_row_count && scenario_summary.fetch("pattern_specific_runtime_rows") == closed_row_count && scenario_summary.fetch("pattern_specific_gaps") == 290 - closed_row_count && scenario_summary.fetch("integrated_trace_rows") == 290 && scenario_summary.fetch("authority_atomic_rows") == 0 && scenario_summary.fetch("completion_eligible_rows") == 0
 abort "Definitive InventoryまたはScenario Proofに構造違反があります" unless artifact_errors.empty? && unclassified.empty? && duplicate_items.empty? && unknown_targets.empty? && target_mismatches.empty? && scenario_contract_valid
 puts "Definitive audit: inventory=#{items.length} unclassified=0 targets=#{target_by_id.length} open_targets=#{target_gaps.length} scenario_proofs=#{scenario_summary.fetch('rows')} completion_eligible=0 skill_routing_gaps=#{definitive_skill.dig('summary', 'routing_gaps')} verdict=pending"

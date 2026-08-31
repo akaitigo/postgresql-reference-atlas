@@ -10,6 +10,12 @@ require "securerandom"
 require "time"
 require_relative "lib/atomic_evidence_publisher"
 require_relative "lib/security_failure_diagnostics"
+require_relative "lib/security_next_tranche_contract"
+require_relative "lib/security_performance_statistics_contract"
+require_relative "lib/security_publication_provenance_contract"
+require_relative "lib/security_query_catalog_inventory_contract"
+require_relative "lib/security_query_extension_contract"
+require_relative "lib/security_runtime_readiness_contract"
 require_relative "lib/security_scenario_oracles"
 require_relative "lib/security_scenario_tranche"
 
@@ -260,6 +266,26 @@ PATTERNS = {
     "target"=>"performance.planner",
     "oracle"=>"analyzed-rls-bounded-selective-query-uses-index-plan",
     "executor"=>"performance-planner-security"
+  },
+  "definitive-domain.performance.statistics"=>{
+    "target"=>"performance.statistics",
+    "oracle"=>"extended-statistics-estimate-and-owner-only-maintenance",
+    "executor"=>"performance-statistics-security"
+  },
+  "definitive-domain.publication.provenance"=>{
+    "target"=>"publication.provenance",
+    "oracle"=>"read-only-rights-sbom-secret-and-graph-gates",
+    "executor"=>"publication-provenance-security"
+  },
+  "definitive-domain.query.catalog-inventory"=>{
+    "target"=>"query.catalog-inventory",
+    "oracle"=>"ordered-pg-catalog-digests-and-mutation-refusal",
+    "executor"=>"catalog-inventory-security"
+  },
+  "definitive-domain.query.extension"=>{
+    "target"=>"query.extension",
+    "oracle"=>"rls-bounded-pg-trgm-gin-plan-and-install-refusal",
+    "executor"=>"bundled-extension-security"
   },
   "definitive-domain.operations.pitr-recovery"=>{
     "target"=>"operations.pitr-recovery",
@@ -1048,6 +1074,311 @@ def performance_planner_security_execution(container)
   }
 end
 
+def performance_statistics_security_execution(container)
+  SecurityPerformanceStatisticsContract.verify!
+  marker = "ATLAS_SECURITY_PASS:performance.statistics"
+  sql = <<~SQL
+    BEGIN;
+    CREATE ROLE atlas_perf_statistics_reader;
+    CREATE TABLE correlated_fact(a integer NOT NULL, b integer NOT NULL, payload text NOT NULL);
+    INSERT INTO correlated_fact
+    SELECT g % 100, g % 100, md5(g::text) FROM generate_series(1, 10000) AS g;
+    GRANT SELECT ON correlated_fact TO atlas_perf_statistics_reader;
+    CREATE STATISTICS correlated_fact_ab (dependencies, mcv) ON a, b FROM correlated_fact;
+    ANALYZE correlated_fact;
+    SELECT set_config('atlas.statistics.before_analyze',
+      coalesce((SELECT last_analyze::text FROM pg_stat_all_tables WHERE relname = 'correlated_fact'), ''), true);
+    SET ROLE atlas_perf_statistics_reader;
+    DO $$ BEGIN
+      BEGIN
+        CREATE STATISTICS atlas_perf_statistics_reader_attempt ON a, b FROM correlated_fact;
+        PERFORM set_config('atlas.statistics.create_denied', 'false', true);
+      EXCEPTION WHEN insufficient_privilege THEN
+        PERFORM set_config('atlas.statistics.create_denied', 'true', true);
+      END;
+    END $$;
+    ANALYZE correlated_fact;
+    RESET ROLE;
+    CREATE TEMP TABLE atlas_statistics_plan(plan jsonb);
+    DO $$ DECLARE captured jsonb; BEGIN
+      EXECUTE 'EXPLAIN (ANALYZE, BUFFERS, FORMAT JSON) SELECT * FROM correlated_fact WHERE a = 42 AND b = 42' INTO captured;
+      INSERT INTO atlas_statistics_plan VALUES (captured);
+    END $$;
+    SELECT json_build_object(
+      'server_version', current_setting('server_version'),
+      'statistics_kinds', (SELECT array_agg(CASE kind::text WHEN 'f' THEN 'dependencies' WHEN 'm' THEN 'mcv' ELSE kind::text END ORDER BY kind::text)
+        FROM pg_statistic_ext, unnest(stxkind) AS kind WHERE stxname = 'correlated_fact_ab'),
+      'estimated_rows', (SELECT (plan #>> '{0,Plan,Plan Rows}')::integer FROM atlas_statistics_plan),
+      'actual_rows', (SELECT count(*) FROM correlated_fact WHERE a = 42 AND b = 42),
+      'security_rejected', current_setting('atlas.statistics.create_denied', true) = 'true'
+        AND coalesce((SELECT last_analyze::text FROM pg_stat_all_tables WHERE relname = 'correlated_fact'), '')
+          = current_setting('atlas.statistics.before_analyze', true),
+      'oracle_marker', '#{marker}',
+      'plan', (SELECT plan FROM atlas_statistics_plan),
+      'verdict', CASE WHEN
+        (SELECT (plan #>> '{0,Plan,Plan Rows}')::integer FROM atlas_statistics_plan) BETWEEN 80 AND 120
+        AND (SELECT count(*) FROM correlated_fact WHERE a = 42 AND b = 42) = 100
+        AND current_setting('atlas.statistics.create_denied', true) = 'true'
+        AND coalesce((SELECT last_analyze::text FROM pg_stat_all_tables WHERE relname = 'correlated_fact'), '')
+          = current_setting('atlas.statistics.before_analyze', true)
+        THEN 'pass' ELSE 'fail' END
+    );
+    ROLLBACK;
+  SQL
+  before_lsn = run!("docker", "exec", container, "psql", "-XAt", "-U", "postgres", "-d", "atlas", "-c", "SELECT pg_current_wal_lsn()").first.strip
+  started_at = Process.clock_gettime(Process::CLOCK_MONOTONIC)
+  result, stdout, stderr = psql_json_execution(container, sql)
+  after_lsn = run!("docker", "exec", container, "psql", "-XAt", "-U", "postgres", "-d", "atlas", "-c", "SELECT pg_current_wal_lsn()").first.strip
+  nodes = SecurityScenarioOracles.plan_document_nodes(result["plan"])
+  predicates = {
+    "result_verdict_pass"=>result["verdict"] == "pass",
+    "server_version_exact"=>result["server_version"] == "18.6",
+    "statistics_kinds_exact"=>Array(result["statistics_kinds"]).sort == %w[dependencies mcv],
+    "estimated_rows_window"=>result["estimated_rows"].to_i.between?(80, 120),
+    "actual_rows_exact"=>result["actual_rows"] == 100,
+    "security_rejected"=>result["security_rejected"] == true,
+    "marker_exact"=>result["oracle_marker"] == marker,
+    "plan_document_array"=>result["plan"].is_a?(Array) && !result["plan"].empty?,
+    "plan_rows_match_estimate"=>nodes.any? { |node| node["Plan Rows"].to_i == result["estimated_rows"].to_i },
+    "plan_actual_rows_and_loops"=>SecurityScenarioOracles.plan_has_actual_execution?(nodes),
+    "plan_buffers_observed"=>SecurityScenarioOracles.plan_has_buffers?(nodes)
+  }
+  unless predicates.values.all?
+    raise SecurityFailureDiagnostics::ScenarioOracleFailure.new(
+      failed_row: "closure.definitive-domain.performance.statistics.security", target: "performance.statistics",
+      oracle_error: "performance.statistics security Oracle failed", actual_result: result, oracle_predicates: predicates
+    )
+  end
+  log = run!("docker", "logs", container).join
+  {
+    "sql"=>{"source"=>sql, "stdout"=>stdout, "stderr"=>stderr}, "plan"=>result.fetch("plan"),
+    "wal"=>{"before_lsn"=>before_lsn, "after_lsn"=>after_lsn},
+    "log"=>log.lines.grep(/statement:|ATLAS_SECURITY_PASS/).last(40).join,
+    "metric"=>{"elapsed_ms"=>((Process.clock_gettime(Process::CLOCK_MONOTONIC) - started_at) * 1000).round(3),
+      "estimated_rows"=>result.fetch("estimated_rows"), "actual_rows"=>result.fetch("actual_rows")},
+    "oracle_output"=>marker, "runtime"=>{"server_versions"=>[result.fetch("server_version")], "containers"=>[container]}
+  }
+end
+
+def catalog_inventory_security_execution(container)
+  SecurityQueryCatalogInventoryContract.verify!
+  marker = "ATLAS_SECURITY_PASS:query.catalog-inventory"
+  sql = <<~SQL
+    BEGIN;
+    CREATE ROLE atlas_catalog_reader;
+    SET ROLE atlas_catalog_reader;
+    DO $$ BEGIN
+      BEGIN
+        CREATE TABLE pg_catalog.atlas_catalog_forged(id integer);
+        PERFORM set_config('atlas.catalog.mutation_denied', 'false', true);
+      EXCEPTION WHEN insufficient_privilege THEN
+        PERFORM set_config('atlas.catalog.mutation_denied', 'true', true);
+      END;
+    END $$;
+    RESET ROLE;
+    CREATE TEMP TABLE atlas_catalog_plan(plan jsonb);
+    DO $$ DECLARE captured jsonb; BEGIN
+      EXECUTE 'EXPLAIN (ANALYZE, BUFFERS, FORMAT JSON) SELECT oid, typname FROM pg_type WHERE typnamespace = ''pg_catalog''::regnamespace ORDER BY oid LIMIT 10' INTO captured;
+      INSERT INTO atlas_catalog_plan VALUES (captured);
+    END $$;
+    WITH
+    types AS (SELECT count(*) AS count, md5(string_agg(oid::text || ':' || typname, ',' ORDER BY oid)) AS digest FROM pg_type WHERE typnamespace = 'pg_catalog'::regnamespace),
+    functions AS (SELECT count(*) AS count, md5(string_agg(oid::text || ':' || proname || ':' || pg_get_function_identity_arguments(oid), ',' ORDER BY oid)) AS digest FROM pg_proc WHERE pronamespace = 'pg_catalog'::regnamespace),
+    operators AS (SELECT count(*) AS count, md5(string_agg(oid::text || ':' || oprname, ',' ORDER BY oid)) AS digest FROM pg_operator WHERE oprnamespace = 'pg_catalog'::regnamespace),
+    casts AS (SELECT count(*) AS count, md5(string_agg(oid::text || ':' || castsource::text || ':' || casttarget::text, ',' ORDER BY oid)) AS digest FROM pg_cast),
+    access_methods AS (SELECT count(*) AS count, md5(string_agg(oid::text || ':' || amname, ',' ORDER BY oid)) AS digest FROM pg_am),
+    collations AS (SELECT count(*) AS count, md5(string_agg(oid::text || ':' || collname, ',' ORDER BY oid)) AS digest FROM pg_collation),
+    extensions AS (SELECT count(*) AS count, md5(string_agg(name || ':' || default_version, ',' ORDER BY name)) AS digest FROM pg_available_extensions),
+    catalog_relations AS (SELECT count(*) AS count, md5(string_agg(c.oid::text || ':' || c.relname, ',' ORDER BY c.oid)) AS digest FROM pg_class c WHERE c.relnamespace = 'pg_catalog'::regnamespace)
+    SELECT json_build_object(
+      'server_version', current_setting('server_version'),
+      'types', (SELECT json_build_object('count', count, 'digest', digest) FROM types),
+      'functions', (SELECT json_build_object('count', count, 'digest', digest) FROM functions),
+      'operators', (SELECT json_build_object('count', count, 'digest', digest) FROM operators),
+      'casts', (SELECT json_build_object('count', count, 'digest', digest) FROM casts),
+      'access_methods', (SELECT json_build_object('count', count, 'digest', digest) FROM access_methods),
+      'collations', (SELECT json_build_object('count', count, 'digest', digest) FROM collations),
+      'available_extensions', (SELECT json_build_object('count', count, 'digest', digest) FROM extensions),
+      'catalog_relations', (SELECT json_build_object('count', count, 'digest', digest) FROM catalog_relations),
+      'security_rejected', current_setting('atlas.catalog.mutation_denied', true) = 'true',
+      'oracle_marker', '#{marker}', 'plan', (SELECT plan FROM atlas_catalog_plan),
+      'verdict', CASE WHEN (SELECT count FROM types) > 100 AND (SELECT count FROM functions) > 1000
+        AND (SELECT count FROM operators) > 500 AND (SELECT count FROM casts) > 100
+        AND (SELECT count FROM access_methods) >= 7 AND (SELECT count FROM collations) > 0
+        AND (SELECT count FROM extensions) > 20 AND (SELECT count FROM catalog_relations) > 50
+        AND current_setting('atlas.catalog.mutation_denied', true) = 'true' THEN 'pass' ELSE 'fail' END
+    );
+    ROLLBACK;
+  SQL
+  before_lsn = run!("docker", "exec", container, "psql", "-XAt", "-U", "postgres", "-d", "atlas", "-c", "SELECT pg_current_wal_lsn()").first.strip
+  started_at = Process.clock_gettime(Process::CLOCK_MONOTONIC)
+  result, stdout, stderr = psql_json_execution(container, sql)
+  after_lsn = run!("docker", "exec", container, "psql", "-XAt", "-U", "postgres", "-d", "atlas", "-c", "SELECT pg_current_wal_lsn()").first.strip
+  nodes = SecurityScenarioOracles.plan_document_nodes(result["plan"])
+  inventories = %w[types functions operators casts access_methods collations available_extensions catalog_relations]
+  predicates = {
+    "result_verdict_pass"=>result["verdict"] == "pass", "server_version_exact"=>result["server_version"] == "18.6",
+    "types_count_threshold"=>result.dig("types", "count").to_i > 100,
+    "functions_count_threshold"=>result.dig("functions", "count").to_i > 1000,
+    "operators_count_threshold"=>result.dig("operators", "count").to_i > 500,
+    "casts_count_threshold"=>result.dig("casts", "count").to_i > 100,
+    "access_methods_threshold"=>result.dig("access_methods", "count").to_i >= 7,
+    "collations_count_positive"=>result.dig("collations", "count").to_i.positive?,
+    "available_extensions_threshold"=>result.dig("available_extensions", "count").to_i > 20,
+    "catalog_relations_threshold"=>result.dig("catalog_relations", "count").to_i > 50,
+    "digests_present"=>inventories.all? { |name| result.dig(name, "digest").to_s.match?(/\A[0-9a-f]{32}\z/) },
+    "security_rejected"=>result["security_rejected"] == true, "marker_exact"=>result["oracle_marker"] == marker,
+    "plan_document_array"=>result["plan"].is_a?(Array) && !result["plan"].empty?,
+    "plan_actual_rows_and_loops"=>SecurityScenarioOracles.plan_has_actual_execution?(nodes),
+    "plan_buffers_observed"=>SecurityScenarioOracles.plan_has_buffers?(nodes),
+    "plan_reads_pg_catalog_type_relation"=>nodes.any? { |node| node["Relation Name"] == "pg_type" }
+  }
+  unless predicates.values.all?
+    raise SecurityFailureDiagnostics::ScenarioOracleFailure.new(
+      failed_row: "closure.definitive-domain.query.catalog-inventory.security", target: "query.catalog-inventory",
+      oracle_error: "query.catalog-inventory security Oracle failed", actual_result: result, oracle_predicates: predicates
+    )
+  end
+  log = run!("docker", "logs", container).join
+  {
+    "sql"=>{"source"=>sql, "stdout"=>stdout, "stderr"=>stderr}, "plan"=>result.fetch("plan"),
+    "wal"=>{"before_lsn"=>before_lsn, "after_lsn"=>after_lsn}, "log"=>log.lines.last(40).join,
+    "metric"=>{"elapsed_ms"=>((Process.clock_gettime(Process::CLOCK_MONOTONIC) - started_at) * 1000).round(3),
+      "catalog_objects"=>inventories.sum { |name| result.dig(name, "count").to_i }},
+    "oracle_output"=>marker, "runtime"=>{"server_versions"=>[result.fetch("server_version")], "containers"=>[container]}
+  }
+end
+
+def bundled_extension_security_execution(container)
+  SecurityQueryExtensionContract.verify!
+  marker = "ATLAS_SECURITY_PASS:query.extension"
+  sql = <<~SQL
+    BEGIN;
+    CREATE ROLE atlas_extension_reader;
+    CREATE EXTENSION pg_trgm;
+    CREATE TABLE atlas_extension_secure(id bigint PRIMARY KEY, tenant name NOT NULL, body text NOT NULL);
+    ALTER TABLE atlas_extension_secure ENABLE ROW LEVEL SECURITY;
+    CREATE POLICY atlas_extension_policy ON atlas_extension_secure TO atlas_extension_reader
+      USING (tenant = 'atlas_extension_reader' AND body LIKE '%searchable phrase%')
+      WITH CHECK (tenant = 'atlas_extension_reader');
+    INSERT INTO atlas_extension_secure
+    SELECT g, 'atlas_extension_reader', CASE WHEN g = 4242 THEN 'postgresql atlas searchable phrase' ELSE md5(g::text) END
+    FROM generate_series(1, 20000) AS g;
+    CREATE INDEX atlas_extension_secure_body_trgm_idx ON atlas_extension_secure USING gin (body gin_trgm_ops);
+    ANALYZE atlas_extension_secure;
+    GRANT SELECT ON atlas_extension_secure TO atlas_extension_reader;
+    CREATE TEMP TABLE atlas_extension_observation(plan jsonb, matching_rows bigint, similarity_value real);
+    GRANT INSERT, SELECT ON atlas_extension_observation TO atlas_extension_reader;
+    SET ROLE atlas_extension_reader;
+    DO $$ DECLARE captured jsonb; BEGIN
+      EXECUTE 'EXPLAIN (ANALYZE, BUFFERS, WAL, FORMAT JSON) SELECT id FROM atlas_extension_secure WHERE tenant = ''atlas_extension_reader'' AND body LIKE ''%searchable phrase%'' ORDER BY id' INTO captured;
+      INSERT INTO atlas_extension_observation
+      SELECT captured, count(*), similarity('postgresql atlas', 'postgres atlas')
+      FROM atlas_extension_secure WHERE tenant = 'atlas_extension_reader' AND body LIKE '%searchable phrase%';
+      BEGIN
+        CREATE EXTENSION hstore;
+        PERFORM set_config('atlas.extension.install_denied', 'false', true);
+      EXCEPTION WHEN insufficient_privilege THEN
+        PERFORM set_config('atlas.extension.install_denied', 'true', true);
+      END;
+    END $$;
+    RESET ROLE;
+    SELECT json_build_object(
+      'server_version', current_setting('server_version'),
+      'extension_version', (SELECT extversion FROM pg_extension WHERE extname = 'pg_trgm'),
+      'similarity', (SELECT similarity_value FROM atlas_extension_observation),
+      'matching_rows', (SELECT matching_rows FROM atlas_extension_observation),
+      'security_rejected', current_setting('atlas.extension.install_denied', true) = 'true',
+      'oracle_marker', '#{marker}', 'plan', (SELECT plan FROM atlas_extension_observation),
+      'verdict', CASE WHEN (SELECT matching_rows FROM atlas_extension_observation) = 1
+        AND (SELECT similarity_value FROM atlas_extension_observation) > 0
+        AND current_setting('atlas.extension.install_denied', true) = 'true' THEN 'pass' ELSE 'fail' END
+    );
+    ROLLBACK;
+  SQL
+  before_lsn = run!("docker", "exec", container, "psql", "-XAt", "-U", "postgres", "-d", "atlas", "-c", "SELECT pg_current_wal_lsn()").first.strip
+  started_at = Process.clock_gettime(Process::CLOCK_MONOTONIC)
+  result, stdout, stderr = psql_json_execution(container, sql)
+  after_lsn = run!("docker", "exec", container, "psql", "-XAt", "-U", "postgres", "-d", "atlas", "-c", "SELECT pg_current_wal_lsn()").first.strip
+  nodes = SecurityScenarioOracles.plan_document_nodes(result["plan"])
+  exact_index = "atlas_extension_secure_body_trgm_idx"
+  exact_relation = "atlas_extension_secure"
+  predicates = {
+    "result_verdict_pass"=>result["verdict"] == "pass", "server_version_exact"=>result["server_version"] == "18.6",
+    "extension_version_present"=>!result["extension_version"].to_s.empty?, "similarity_positive"=>result["similarity"].to_f.positive?,
+    "matching_rows_exact"=>result["matching_rows"] == 1, "security_rejected"=>result["security_rejected"] == true,
+    "marker_exact"=>result["oracle_marker"] == marker, "plan_document_array"=>result["plan"].is_a?(Array) && !result["plan"].empty?,
+    "plan_actual_rows_and_loops"=>SecurityScenarioOracles.plan_has_actual_execution?(nodes),
+    "plan_buffers_observed"=>SecurityScenarioOracles.plan_has_buffers?(nodes),
+    "plan_exact_gin_index"=>SecurityScenarioOracles.exact_index_path?(nodes: nodes, relation: exact_relation, index: exact_index),
+    "plan_exact_relation"=>nodes.any? { |node| node["Relation Name"] == exact_relation },
+    "plan_literal_tenant_observed"=>SecurityScenarioOracles.condition_includes?(nodes: nodes, expected: "atlas_extension_reader"),
+    "plan_seq_scan_absent_on_exact_relation"=>SecurityScenarioOracles.seq_scan_absent_on_relation?(nodes: nodes, relation: exact_relation)
+  }
+  unless predicates.values.all?
+    raise SecurityFailureDiagnostics::ScenarioOracleFailure.new(
+      failed_row: "closure.definitive-domain.query.extension.security", target: "query.extension",
+      oracle_error: "query.extension security Oracle failed", actual_result: result, oracle_predicates: predicates
+    )
+  end
+  log = run!("docker", "logs", container).join
+  {
+    "sql"=>{"source"=>sql, "stdout"=>stdout, "stderr"=>stderr}, "plan"=>result.fetch("plan"),
+    "wal"=>{"before_lsn"=>before_lsn, "after_lsn"=>after_lsn}, "log"=>log.lines.last(40).join,
+    "metric"=>{"elapsed_ms"=>((Process.clock_gettime(Process::CLOCK_MONOTONIC) - started_at) * 1000).round(3),
+      "matching_rows"=>result.fetch("matching_rows")},
+    "oracle_output"=>marker, "runtime"=>{"server_versions"=>[result.fetch("server_version")], "containers"=>[container], "extension"=>"pg_trgm"}
+  }
+end
+
+def publication_provenance_security_execution
+  SecurityPublicationProvenanceContract.verify!
+  marker = "ATLAS_SECURITY_PASS:publication.provenance"
+  started_at = Process.clock_gettime(Process::CLOCK_MONOTONIC)
+  required = %w[LICENSE NOTICE SECURITY.md CONTRIBUTING.md third_party/manifest.yaml sbom.spdx.json surface/sql-commands.yaml]
+  rights_files = required.to_h { |relative| [relative, File.file?(File.join(ROOT, relative)) && File.size?(File.join(ROOT, relative))] }
+  static_source = File.read(File.join(ROOT, "scripts/static-gates.sh"))
+  lock_digest = digest_file(File.join(ROOT, "sources.lock.yaml"))
+  coverage_digest = File.read(File.join(ROOT, "coverage.yaml"))[/^authority_lock_digest:\s*(sha256:[0-9a-f]{64})$/, 1]
+  sbom = JSON.parse(File.read(File.join(ROOT, "sbom.spdx.json")))
+  secret_stdout, secret_stderr, secret_status = Open3.capture3(
+    "rg", "-n", "--hidden", "--glob", "!evidence/**", "--glob", "!.git/**",
+    '(BEGIN (RSA|OPENSSH|EC) PRIVATE KEY|AKIA[0-9A-Z]{16}|postgres(ql)?://[^[:space:]]+:[^[:space:]@]+@)', ROOT
+  )
+  raise "publication secret scan failed to execute: #{secret_stderr}" unless [0, 1].include?(secret_status.exitstatus)
+  graph_stdout, graph_stderr = run!("ruby", File.join(ROOT, "scripts/graph-gates.rb"))
+  result = {
+    "authority_lock_digest"=>lock_digest, "rights_files"=>rights_files,
+    "secret_scan"=>{"verdict"=>secret_status.exitstatus == 1 ? "pass" : "fail", "matches"=>secret_stdout.lines.length},
+    "sbom"=>{"spdx_version"=>sbom["spdxVersion"], "license_declared"=>sbom.dig("packages", 0, "licenseDeclared")},
+    "third_party_manifest"=>{"present"=>File.size?(File.join(ROOT, "third_party/manifest.yaml")) ? true : false},
+    "verdict"=>"pending"
+  }
+  predicates = {
+    "ledger_time_bound"=>static_source.include?('ledger_time="${EVIDENCE_LEDGER_TIME:-}"'),
+    "required_rights_files_present"=>rights_files.values.all?, "authority_lock_digest_matches_coverage"=>lock_digest == coverage_digest,
+    "third_party_manifest_present"=>result.dig("third_party_manifest", "present"),
+    "apache_license_declared"=>File.read(File.join(ROOT, "LICENSE")).include?("Apache License"),
+    "spdx_apache_declared"=>result.dig("sbom", "spdx_version") == "SPDX-2.3" && result.dig("sbom", "license_declared") == "Apache-2.0",
+    "secret_scan_pass"=>result.dig("secret_scan", "verdict") == "pass",
+    "record_evidence_bound"=>static_source.include?("record_evidence foundation-authority-lock") && static_source.include?("record_evidence publication-static-gates publication.provenance"),
+    "graph_gate_invoked"=>static_source.include?('ruby "$ROOT/scripts/graph-gates.rb"') && graph_stdout.include?("整合を確認")
+  }
+  result["verdict"] = predicates.values.all? ? "pass" : "fail"
+  unless predicates.values.all?
+    raise SecurityFailureDiagnostics::ScenarioOracleFailure.new(
+      failed_row: "closure.definitive-domain.publication.provenance.security", target: "publication.provenance",
+      oracle_error: "publication.provenance security Oracle failed", actual_result: result, oracle_predicates: predicates
+    )
+  end
+  {
+    "sql"=>{"source"=>static_source, "stdout"=>graph_stdout, "stderr"=>graph_stderr + secret_stderr},
+    "plan"=>[{"Plan"=>{"Node Type"=>"Local Static Verification", "Actual Rows"=>required.length, "Actual Loops"=>1}}],
+    "wal"=>{}, "log"=>graph_stdout, "metric"=>{"elapsed_ms"=>((Process.clock_gettime(Process::CLOCK_MONOTONIC) - started_at) * 1000).round(3), "required_files"=>required.length},
+    "oracle_output"=>marker, "runtime"=>{"server_versions"=>["18.6"], "mode"=>"local-static-verifier"}
+  }
+end
+
 def logical_replication_execution
   suffix = "#{Process.pid}-#{SecureRandom.hex(3)}"
   network = "pg-atlas-security-logical-net-#{suffix}"
@@ -1159,6 +1490,19 @@ def physical_replication_security_execution
   end
 end
 
+def selected_security_patterns(plan)
+  SecurityRuntimeReadinessContract.verify_runnable!(plan: plan)
+  SecurityNextTrancheContract.verify!(plan: plan)
+  pattern_ids = SecurityScenarioTranche.runtime_pattern_ids(plan)
+  missing_patterns = pattern_ids.reject { |pattern_id| PATTERNS.key?(pattern_id) }
+  raise "security runtime definitions missing: #{missing_patterns.join(', ')}" unless missing_patterns.empty?
+
+  pattern_ids.to_h do |pattern_id|
+    [pattern_id, PATTERNS.fetch(pattern_id)]
+  end
+end
+
+selected_patterns = selected_security_patterns(SecurityScenarioTranche.load_plan)
 container = "pg-atlas-security-#{Process.pid}-#{SecureRandom.hex(3)}"
 started = false
 begin
@@ -1180,9 +1524,6 @@ begin
   source_digest = digest_file(matrix_path)
   harness_digest = digest_file(__FILE__)
   canonical_snapshot_before = SecurityFailureDiagnostics.canonical_artifact_snapshot(ROOT)
-  selected_patterns = SecurityScenarioTranche.runtime_pattern_ids.to_h do |pattern_id|
-    [pattern_id, PATTERNS.fetch(pattern_id)]
-  end
   begin
     publisher = AtomicEvidencePublisher.new(OUTPUT, validator: lambda do |staging|
       report = JSON.parse(File.read(File.join(staging, "results.json")))
@@ -1214,6 +1555,10 @@ begin
                     when "performance-execution-security" then performance_execution_security_execution(container)
                     when "performance-index-security" then performance_index_security_execution(container)
                     when "performance-planner-security" then performance_planner_security_execution(container)
+                    when "performance-statistics-security" then performance_statistics_security_execution(container)
+                    when "publication-provenance-security" then publication_provenance_security_execution
+                    when "catalog-inventory-security" then catalog_inventory_security_execution(container)
+                    when "bundled-extension-security" then bundled_extension_security_execution(container)
                     when "pitr-recovery" then pitr_security_execution
                     when "physical-replication" then physical_replication_security_execution
                     else default_execution(container, definition)

@@ -19,7 +19,7 @@ def build_canonical_snapshot_root
     FileUtils.mkdir_p(trace_root)
     FileUtils.mkdir_p(observation_root)
 
-    tests = 16.times.map do |index|
+    tests = 20.times.map do |index|
       trace_name = format("row-%02d.trace.json", index + 1)
       observation_name = format("row-%02d.observable.json", index + 1)
       File.write(File.join(trace_root, trace_name), JSON.pretty_generate({"id"=>"trace-#{index + 1}"}) + "\n")
@@ -155,6 +155,18 @@ build_canonical_snapshot_root do |dir|
     abort "missing required field was accepted"
   rescue SecurityFailureDiagnostics::Error => error
     assert(error.message.include?("schema is invalid"), "schema rejection drifted")
+  end
+
+  begin
+    mutated = Marshal.load(Marshal.dump(document))
+    mutated.dig("canonical_artifacts", "pre")["count"] = 39
+    mutated.dig("canonical_artifacts", "pre")["artifacts"] = mutated.dig("canonical_artifacts", "pre", "artifacts").first(39)
+    mutated.dig("canonical_artifacts", "post")["count"] = 39
+    mutated.dig("canonical_artifacts", "post")["artifacts"] = mutated.dig("canonical_artifacts", "post", "artifacts").first(39)
+    SecurityFailureDiagnostics.validate_document!(mutated)
+    abort "canonical artifact floor shrink was accepted"
+  rescue SecurityFailureDiagnostics::Error => error
+    assert(error.message.include?("append-only state"), "canonical artifact floor rejection drifted")
   end
 
   begin

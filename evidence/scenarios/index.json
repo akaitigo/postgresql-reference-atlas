@@ -6,27 +6,27 @@
   "status": "incomplete-authority-atomic-and-runtime-closure",
   "denominator": "29-current-domain-behaviors-x-10-scenarios",
   "source_digests": {
-    "tools/lib/scenario_proofs.rb": "sha256:3fe39e6c9690df0fc57d3f9615d93eb5e435ce795399951618de0052b56fffd6",
+    "tools/lib/scenario_proofs.rb": "sha256:b27c18a9a9925ffee2af15827475e468480437dc988e9cecb9892150f251393c",
     "tools/generate-scenario-proofs.rb": "sha256:127fe4cd6f55dd9bdeccdf7fbae5c4525a8e672f61a79cd4bfe18aca6f5e0478",
-    "tools/verify-scenario-proofs.rb": "sha256:b052785f5eaee106b684296525c72648e79b8884fa1ba82e4cd2adeaa3b704a3",
+    "tools/verify-scenario-proofs.rb": "sha256:2655cf06d1aef36d41aa947816dad1fbc9ed323504b6d5b2a5bb81fc0c44d300",
     "verification.matrix.yaml": "sha256:b8734bc90dcefeb02b28f1858c73e8aba0452cf78d0d27349b708e16a4e14ad9",
     "coverage.yaml": "sha256:6c431b536f6e3ac640c547188749fae5082c8ead2e2b893f1ca057113f7e0865",
     "authority/reviews/decisions.json": "sha256:0d880fa74f9f98f0e9dd8565ddcb52fa03d9970f7051416fddf1630fd783b4af",
     "evidence/artifacts/reference-system.json": "sha256:2f94f4e2e2b00253667c0c74b586d5423e5442a45e8772d84b3af478176e6e94",
     "integrations/reference-system/manifest.json": "sha256:93d8d68db6ed586e398259db0fb24a8a88c69d0f512ccc3fe751dc7c65447b3a",
     "artifacts/reference-system/results.json": "sha256:013389290f7cce7e265b3363bfd833506c2508b653a65a58c58b4f641bef3dc2",
-    "artifacts/pattern-scenarios/results.json": "sha256:93077286664997b9f7b4800172278ea64c0993837f91c4a1e29ca87fc1d7baa6"
+    "artifacts/pattern-scenarios/results.json": "sha256:23ee23f3c01ff17458fbd4c6c4b910c1038eb66cc4da3fd6fb7fff2cb95714f9"
   },
-  "tool_digest": "sha256:7faaae8a00f6b383c33976c8d60dc3d864edbfb741b38346e78be220b8cb9a73",
+  "tool_digest": "sha256:269eaea62282c25f61073c3fed0c6c056981e54fb4c4265b1845cc8f198ce686",
   "summary": {
     "patterns": 29,
     "scenarios": 10,
     "rows": 290,
     "dedicated_artifacts": 290,
-    "pattern_specific_rows": 20,
-    "pattern_specific_runtime_rows": 20,
+    "pattern_specific_rows": 24,
+    "pattern_specific_runtime_rows": 24,
     "pattern_specific_capture_rows": 0,
-    "pattern_specific_gaps": 270,
+    "pattern_specific_gaps": 266,
     "integrated_trace_rows": 290,
     "authority_atomic_rows": 0,
     "completion_eligible_rows": 0
@@ -83,10 +83,10 @@
     },
     "security": {
       "rows": 29,
-      "pattern_specific": 20,
-      "runtime_identity": 20,
+      "pattern_specific": 24,
+      "runtime_identity": 24,
       "integrated_pattern_mapped": 0,
-      "gaps": 9
+      "gaps": 5
     },
     "performance": {
       "rows": 29,
@@ -173,7 +173,7 @@
       "pattern_id": "definitive-domain.concurrency.deadlock",
       "scenario": "security",
       "path": "evidence/scenarios/behaviors/concurrency.deadlock/security.proof.json",
-      "digest": "sha256:f50a1d2f501825e679cc33e9c193fba994113e9d00973201673388f8ab08316e",
+      "digest": "sha256:9cecb955ab2a091a5bea5baea6bb9c904b502fa1d1bd8021e4b7ffd99083f1e3",
       "status": "bounded-runtime-proof"
     },
     {
@@ -263,7 +263,7 @@
       "pattern_id": "definitive-domain.concurrency.locking",
       "scenario": "security",
       "path": "evidence/scenarios/behaviors/concurrency.locking/security.proof.json",
-      "digest": "sha256:84108f9fcc6212e386d72d8605a7814d468a1946b16c5132f57978fbd3bcf0e2",
+      "digest": "sha256:dc5051e5ff263a00930fed72f4a5237d168df52bb3dab18403ad5f8cc0595640",
       "status": "bounded-runtime-proof"
     },
     {
@@ -353,7 +353,7 @@
       "pattern_id": "definitive-domain.concurrency.mvcc",
       "scenario": "security",
       "path": "evidence/scenarios/behaviors/concurrency.mvcc/security.proof.json",
-      "digest": "sha256:c478cad8f50ef38fc8c13f6b889c5eab8c493543f3aba09bf399eb0158cf9df2",
+      "digest": "sha256:207d275e3e5eeb30dbd08ea1652c599019998a20f16392b44f453375ae43d093",
       "status": "bounded-runtime-proof"
     },
     {
@@ -443,7 +443,7 @@
       "pattern_id": "definitive-domain.foundation.authority-lock",
       "scenario": "security",
       "path": "evidence/scenarios/behaviors/foundation.authority-lock/security.proof.json",
-      "digest": "sha256:36e84fae8f1ddc5703a4f317e3f1c5c59a10123b9b6ab7e81cd42315a7ce5db3",
+      "digest": "sha256:182b83c93268905fa78681e5f1434ee072617294a0e3e0f3802f342f17664dab",
       "status": "bounded-runtime-proof"
     },
     {
@@ -533,7 +533,7 @@
       "pattern_id": "definitive-domain.foundation.version-lock",
       "scenario": "security",
       "path": "evidence/scenarios/behaviors/foundation.version-lock/security.proof.json",
-      "digest": "sha256:71ea40ae1a2f9f1d88c31024745a23b7ac4465de77984f6a00bdf788401404b2",
+      "digest": "sha256:ccd2f961b59ea93a8585bde445d2b45473b5629392199a8aad4cdc33038770a8",
       "status": "bounded-runtime-proof"
     },
     {
@@ -623,7 +623,7 @@
       "pattern_id": "definitive-domain.lifecycle.compatibility-matrix",
       "scenario": "security",
       "path": "evidence/scenarios/behaviors/lifecycle.compatibility-matrix/security.proof.json",
-      "digest": "sha256:fbe03f0706a7aa6f25cc6fbdbddee8024faf5c1590b5cd4cc7edc850b73ae832",
+      "digest": "sha256:405ac3f6d5bb95bc790008a6b3ef4f4340d1ebdddf0a73d9ee5210345cbccdd4",
       "status": "bounded-runtime-proof"
     },
     {
@@ -713,7 +713,7 @@
       "pattern_id": "definitive-domain.lifecycle.pg-upgrade",
       "scenario": "security",
       "path": "evidence/scenarios/behaviors/lifecycle.pg-upgrade/security.proof.json",
-      "digest": "sha256:600fcff31dd1bf0dc39ffce788474580e483f2b97f0b5f7b6fdeb291b5dcb6a8",
+      "digest": "sha256:d9614b4338c1f133b1c0e11efe7db3285c21347e2084acd8b1be1673948ba60b",
       "status": "bounded-runtime-proof"
     },
     {
@@ -803,7 +803,7 @@
       "pattern_id": "definitive-domain.lifecycle.schema-migration",
       "scenario": "security",
       "path": "evidence/scenarios/behaviors/lifecycle.schema-migration/security.proof.json",
-      "digest": "sha256:66b35d297d8e711fdb1c0df5a01ce6c0587f915438115f80869dc7ebcb390b19",
+      "digest": "sha256:93f827fe9f544b3ed43ffb7304a9a44fe2cb020e4df2f0eb6a8d62d92bdb394f",
       "status": "bounded-runtime-proof"
     },
     {
@@ -893,7 +893,7 @@
       "pattern_id": "definitive-domain.lifecycle.upgrade",
       "scenario": "security",
       "path": "evidence/scenarios/behaviors/lifecycle.upgrade/security.proof.json",
-      "digest": "sha256:f7e061229d66f935bd919c0cd0af5f8473fe76d6f971f261bbad53f424178a5c",
+      "digest": "sha256:46e63e9d2d275084e9610d27da8da67d48b0d7a9a835f3cccce1ffcdb8714e56",
       "status": "bounded-runtime-proof"
     },
     {
@@ -983,7 +983,7 @@
       "pattern_id": "definitive-domain.operations.backup-recovery",
       "scenario": "security",
       "path": "evidence/scenarios/behaviors/operations.backup-recovery/security.proof.json",
-      "digest": "sha256:f0b8576c714be42ca85bd9ba37d494c8004905e790ffd8feb1ddbce232a77b8b",
+      "digest": "sha256:c17a225234f49e039c8958e9006cf64a717bde83c809833d1cd44855620a4cf6",
       "status": "bounded-runtime-proof"
     },
     {
@@ -1073,7 +1073,7 @@
       "pattern_id": "definitive-domain.operations.failure-injection",
       "scenario": "security",
       "path": "evidence/scenarios/behaviors/operations.failure-injection/security.proof.json",
-      "digest": "sha256:621b9e6def41cd462c4209f9cdb8480b76c78702510ea2aea0e23f80bc306ae8",
+      "digest": "sha256:5d3d80e3f9a45466be5082563af8080f06e626a9e162be896c747b8417e69c6a",
       "status": "bounded-runtime-proof"
     },
     {
@@ -1163,7 +1163,7 @@
       "pattern_id": "definitive-domain.operations.logical-replication",
       "scenario": "security",
       "path": "evidence/scenarios/behaviors/operations.logical-replication/security.proof.json",
-      "digest": "sha256:c327d086f07cfbe0e363feb096734662430596a4f59a2e42edfa41ae08528cf4",
+      "digest": "sha256:22a09f59176a9c723adb12ec19891f5cd53e97492327763b617a8ac05f7cca0d",
       "status": "bounded-runtime-proof"
     },
     {
@@ -1253,7 +1253,7 @@
       "pattern_id": "definitive-domain.operations.maintenance",
       "scenario": "security",
       "path": "evidence/scenarios/behaviors/operations.maintenance/security.proof.json",
-      "digest": "sha256:aae1eacf58797620729200a36bb907c1c256f5e28ef887df99aadaecf40ca2fb",
+      "digest": "sha256:602e6f4b69dd077a0f8ae724d56512c21f6274840089677d43071ab147b1764b",
       "status": "bounded-runtime-proof"
     },
     {
@@ -1343,7 +1343,7 @@
       "pattern_id": "definitive-domain.operations.observability",
       "scenario": "security",
       "path": "evidence/scenarios/behaviors/operations.observability/security.proof.json",
-      "digest": "sha256:96455d695a9dcadf8ec292765b1970dbac146f840c6bc827550cb9324e163922",
+      "digest": "sha256:a9ba6f7409ad9ad0266f4240aabb1c506427f6b75af327200f2498c0c017baf2",
       "status": "bounded-runtime-proof"
     },
     {
@@ -1433,7 +1433,7 @@
       "pattern_id": "definitive-domain.operations.pitr-recovery",
       "scenario": "security",
       "path": "evidence/scenarios/behaviors/operations.pitr-recovery/security.proof.json",
-      "digest": "sha256:0a30d2ab9fff0d26b58852d2af09ca27a05b9d03ec8d8cf682f54a03c9d99abe",
+      "digest": "sha256:b7361834902f370834c2bcafa5528dfff303914b0920a36b12af2c85aa2925a3",
       "status": "bounded-runtime-proof"
     },
     {
@@ -1523,7 +1523,7 @@
       "pattern_id": "definitive-domain.operations.replication",
       "scenario": "security",
       "path": "evidence/scenarios/behaviors/operations.replication/security.proof.json",
-      "digest": "sha256:2d40c4b4371192e94f12a2223083ea8a5a4af4882aab42f36af0c1fb4de38945",
+      "digest": "sha256:23094ad2bbce179a87eb07fb326163e1aa9facc2b3843ac701a0d7fc4926ad73",
       "status": "bounded-runtime-proof"
     },
     {
@@ -1613,7 +1613,7 @@
       "pattern_id": "definitive-domain.operations.wal",
       "scenario": "security",
       "path": "evidence/scenarios/behaviors/operations.wal/security.proof.json",
-      "digest": "sha256:84acf1527e64b1ee1bfa8bdddce04716bae6e24ddc4bdb2f4756ac253d5d1eb0",
+      "digest": "sha256:e5f3051dafb5ebb2258ff06c848805f1c7e45adb2a1f39d0564d02855552f448",
       "status": "bounded-runtime-proof"
     },
     {
@@ -1703,7 +1703,7 @@
       "pattern_id": "definitive-domain.performance.execution",
       "scenario": "security",
       "path": "evidence/scenarios/behaviors/performance.execution/security.proof.json",
-      "digest": "sha256:f9fbc5cc2968f062956a95ad423f94df083043897184aae6154332206c565cc5",
+      "digest": "sha256:75f113031bb1e4d355c5552e436314815bfd0b709fdfe8c44a5edbe15888fb48",
       "status": "bounded-runtime-proof"
     },
     {
@@ -1793,7 +1793,7 @@
       "pattern_id": "definitive-domain.performance.index",
       "scenario": "security",
       "path": "evidence/scenarios/behaviors/performance.index/security.proof.json",
-      "digest": "sha256:0bf556722441d1aeb2de65b86343e5da9e6de5e57f14824ab100afd2bc59283c",
+      "digest": "sha256:87b8fb4dc64a17bc6e68c5a14c230ba36c9fde60d3656925f2e45f24e3565c88",
       "status": "bounded-runtime-proof"
     },
     {
@@ -1883,7 +1883,7 @@
       "pattern_id": "definitive-domain.performance.planner",
       "scenario": "security",
       "path": "evidence/scenarios/behaviors/performance.planner/security.proof.json",
-      "digest": "sha256:2cdc9df82e15f4c7fec3a7e8df98f1b6abf199b1cb190e7e92b8323e23766667",
+      "digest": "sha256:d5da474c0c1b3690d878ffbd0852889b00e2bf6eacde21cd328a4edb12b5030b",
       "status": "bounded-runtime-proof"
     },
     {
@@ -1973,8 +1973,8 @@
       "pattern_id": "definitive-domain.performance.statistics",
       "scenario": "security",
       "path": "evidence/scenarios/behaviors/performance.statistics/security.proof.json",
-      "digest": "sha256:1cde6fd76a23ec8a7a254b7b29618e6a10aa7cc9efafe57082857c2fea103976",
-      "status": "pattern-specific-gap"
+      "digest": "sha256:1cbfdbac3699bb4957d848326cad62e02532d0383fd854562f60565fc807be8d",
+      "status": "bounded-runtime-proof"
     },
     {
       "id": "proof.behavior.performance.statistics.performance",
@@ -2063,8 +2063,8 @@
       "pattern_id": "definitive-domain.publication.provenance",
       "scenario": "security",
       "path": "evidence/scenarios/behaviors/publication.provenance/security.proof.json",
-      "digest": "sha256:40f7199b699642c070d113d403f18bd0c293654445d0cf634e78b8df3c6051b7",
-      "status": "pattern-specific-gap"
+      "digest": "sha256:4daab28796d49a61bcb2cbe4f0623c326e7d6aabb7ba321c23753ed733af086b",
+      "status": "bounded-runtime-proof"
     },
     {
       "id": "proof.behavior.publication.provenance.performance",
@@ -2153,8 +2153,8 @@
       "pattern_id": "definitive-domain.query.catalog-inventory",
       "scenario": "security",
       "path": "evidence/scenarios/behaviors/query.catalog-inventory/security.proof.json",
-      "digest": "sha256:77a6388187fafcca09fc72f6df5bbb9417584033d3d2d0ab45d1e2827e6e8817",
-      "status": "pattern-specific-gap"
+      "digest": "sha256:8f7b9faaae8f5133987168e854f5369e1787963c16e1074ddef5b8baeba4cff2",
+      "status": "bounded-runtime-proof"
     },
     {
       "id": "proof.behavior.query.catalog-inventory.performance",
@@ -2243,8 +2243,8 @@
       "pattern_id": "definitive-domain.query.extension",
       "scenario": "security",
       "path": "evidence/scenarios/behaviors/query.extension/security.proof.json",
-      "digest": "sha256:3e3acb826d2d3232851e5813069982fa8255996b08f3aa40b004495208099dcf",
-      "status": "pattern-specific-gap"
+      "digest": "sha256:8ae7c65eb450806eecf18731f52799b44c72e29a54f346ee81db9b8b42e06005",
+      "status": "bounded-runtime-proof"
     },
     {
       "id": "proof.behavior.query.extension.performance",

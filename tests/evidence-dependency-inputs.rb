@@ -26,6 +26,13 @@ def validate_partition!(bindings)
   tools/lib/atomic_evidence_publisher.rb
   tools/lib/canonical-json.rb
   tools/lib/postgresql-skill-routing.rb
+  tools/lib/security_query_catalog_inventory_contract.rb
+  tools/lib/security_query_extension_contract.rb
+  tools/lib/security_publication_provenance_contract.rb
+  tools/lib/security_performance_statistics_contract.rb
+  tools/lib/security_published_tranche_contract.rb
+  tools/lib/security_next_tranche_contract.rb
+  tools/lib/security_runtime_readiness_contract.rb
   tools/lib/security_scenario_tranche.rb
   tools/lib/scenario_closure_plan.rb
   tools/lib/scenario_proofs.rb
@@ -44,6 +51,14 @@ def validate_partition!(bindings)
   tools/verify-tracked-generated-freshness.rb
   tests/evidence-dependency-inputs.rb
   tests/evidence-pipeline-clean.rb
+  tests/query-sql-commands-partial-contract.rb
+  tests/security-query-catalog-inventory-contract.rb
+  tests/security-query-extension-contract.rb
+  tests/security-publication-provenance-contract.rb
+  tests/security-performance-statistics-contract.rb
+  tests/security-published-tranche-contract.rb
+  tests/security-next-tranche-contract.rb
+  tests/security-runtime-readiness-contract.rb
 ].freeze
   control_required.each do |path|
     abort "evidence-dependency-control-plane input is missing required verifier dependency: #{path}" unless control_members.include?(path)

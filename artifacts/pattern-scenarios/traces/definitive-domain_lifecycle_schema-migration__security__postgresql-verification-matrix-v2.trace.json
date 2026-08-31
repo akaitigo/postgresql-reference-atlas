@@ -12,7 +12,7 @@
     "client_product": "psql",
     "client_version": "psql (PostgreSQL) 18.6",
     "runtime_image": "postgres:18.6-alpine",
-    "runtime_identity": "pg-atlas-security-72438-23077a",
+    "runtime_identity": "pg-atlas-security-93406-4e4e8d",
     "workers": 1,
     "retries": 0,
     "trace_mode": "on",
@@ -22,7 +22,7 @@
         "18.6"
       ],
       "containers": [
-        "pg-atlas-security-72438-23077a"
+        "pg-atlas-security-93406-4e4e8d"
       ]
     }
   },
@@ -46,12 +46,12 @@
     }
   ],
   "wal": {
-    "before_lsn": "0/1BF7F00",
-    "after_lsn": "0/1BF7F00"
+    "before_lsn": "0/1BF7EC8",
+    "after_lsn": "0/1C00000"
   },
-  "log": "2026-08-30 22:12:53.585 UTC [201] LOG:  statement: ROLLBACK;\n2026-08-30 22:12:53.623 UTC [208] LOG:  statement: SELECT pg_current_wal_lsn()\n2026-08-30 22:12:53.658 UTC [215] LOG:  statement: EXPLAIN (FORMAT JSON) SELECT 1 AS security_probe\n2026-08-30 22:12:53.713 UTC [222] LOG:  statement: SELECT pg_current_wal_lsn()\n2026-08-30 22:12:53.747 UTC [229] LOG:  statement: SELECT CASE WHEN current_setting('server_version') LIKE '18.6%'\n\t        THEN 'ATLAS_SECURITY_PASS:foundation.authority-lock'\n2026-08-30 22:12:53.782 UTC [236] LOG:  statement: SELECT pg_current_wal_lsn()\n2026-08-30 22:12:53.817 UTC [243] LOG:  statement: EXPLAIN (FORMAT JSON) SELECT 1 AS security_probe\n2026-08-30 22:12:53.873 UTC [250] LOG:  statement: SELECT pg_current_wal_lsn()\n2026-08-30 22:12:53.909 UTC [257] LOG:  statement: SELECT CASE WHEN current_setting('server_version_num') = '180006'\n\t        THEN 'ATLAS_SECURITY_PASS:foundation.version-lock'\n2026-08-30 22:12:53.943 UTC [264] LOG:  statement: SELECT pg_current_wal_lsn()\n2026-08-30 22:12:53.978 UTC [270] LOG:  statement: EXPLAIN (FORMAT JSON) SELECT 1 AS security_probe\n2026-08-30 22:13:09.427 UTC [277] LOG:  statement: SELECT pg_current_wal_lsn()\n2026-08-30 22:13:09.469 UTC [283] LOG:  statement: BEGIN;\n2026-08-30 22:13:09.469 UTC [283] LOG:  statement: CREATE ROLE atlas_migration_reader;\n2026-08-30 22:13:09.469 UTC [283] LOG:  statement: CREATE SCHEMA atlas_migration AUTHORIZATION postgres;\n2026-08-30 22:13:09.469 UTC [283] LOG:  statement: CREATE TABLE atlas_migration.secure_record(id integer PRIMARY KEY, payload text NOT NULL);\n2026-08-30 22:13:09.471 UTC [283] LOG:  statement: INSERT INTO atlas_migration.secure_record VALUES (1, 'stable');\n2026-08-30 22:13:09.472 UTC [283] LOG:  statement: GRANT USAGE ON SCHEMA atlas_migration TO atlas_migration_reader;\n2026-08-30 22:13:09.472 UTC [283] LOG:  statement: GRANT SELECT ON atlas_migration.secure_record TO atlas_migration_reader;\n2026-08-30 22:13:09.472 UTC [283] LOG:  statement: SET ROLE atlas_migration_reader;\n2026-08-30 22:13:09.472 UTC [283] LOG:  statement: DO $$ BEGIN\n\t        RAISE NOTICE 'ATLAS_SECURITY_PASS:lifecycle.schema-migration';\n2026-08-30 22:13:09.472 UTC [283] LOG:  statement: SELECT CASE WHEN count(*) = 1 AND min(payload) = 'stable'\n\t        THEN 'ATLAS_SECURITY_PASS:lifecycle.schema-migration'\n2026-08-30 22:13:09.473 UTC [283] LOG:  statement: RESET ROLE;\n2026-08-30 22:13:09.473 UTC [283] LOG:  statement: ROLLBACK;\n2026-08-30 22:13:09.513 UTC [290] LOG:  statement: SELECT pg_current_wal_lsn()\n2026-08-30 22:13:09.549 UTC [297] LOG:  statement: EXPLAIN (FORMAT JSON) SELECT 1 AS security_probe\n",
+  "log": "2026-08-31 05:18:55.047 UTC [195] LOG:  statement: ROLLBACK;\n2026-08-31 05:18:55.078 UTC [202] LOG:  statement: SELECT pg_current_wal_lsn()\n2026-08-31 05:18:55.108 UTC [209] LOG:  statement: EXPLAIN (FORMAT JSON) SELECT 1 AS security_probe\n2026-08-31 05:18:55.159 UTC [216] LOG:  statement: SELECT pg_current_wal_lsn()\n2026-08-31 05:18:55.190 UTC [223] LOG:  statement: SELECT CASE WHEN current_setting('server_version') LIKE '18.6%'\n\t        THEN 'ATLAS_SECURITY_PASS:foundation.authority-lock'\n2026-08-31 05:18:55.223 UTC [230] LOG:  statement: SELECT pg_current_wal_lsn()\n2026-08-31 05:18:55.255 UTC [237] LOG:  statement: EXPLAIN (FORMAT JSON) SELECT 1 AS security_probe\n2026-08-31 05:18:55.304 UTC [244] LOG:  statement: SELECT pg_current_wal_lsn()\n2026-08-31 05:18:55.345 UTC [251] LOG:  statement: SELECT CASE WHEN current_setting('server_version_num') = '180006'\n\t        THEN 'ATLAS_SECURITY_PASS:foundation.version-lock'\n2026-08-31 05:18:55.377 UTC [258] LOG:  statement: SELECT pg_current_wal_lsn()\n2026-08-31 05:18:55.408 UTC [265] LOG:  statement: EXPLAIN (FORMAT JSON) SELECT 1 AS security_probe\n2026-08-31 05:19:08.700 UTC [272] LOG:  statement: SELECT pg_current_wal_lsn()\n2026-08-31 05:19:08.743 UTC [279] LOG:  statement: BEGIN;\n2026-08-31 05:19:08.743 UTC [279] LOG:  statement: CREATE ROLE atlas_migration_reader;\n2026-08-31 05:19:08.743 UTC [279] LOG:  statement: CREATE SCHEMA atlas_migration AUTHORIZATION postgres;\n2026-08-31 05:19:08.744 UTC [279] LOG:  statement: CREATE TABLE atlas_migration.secure_record(id integer PRIMARY KEY, payload text NOT NULL);\n2026-08-31 05:19:08.745 UTC [279] LOG:  statement: INSERT INTO atlas_migration.secure_record VALUES (1, 'stable');\n2026-08-31 05:19:08.745 UTC [279] LOG:  statement: GRANT USAGE ON SCHEMA atlas_migration TO atlas_migration_reader;\n2026-08-31 05:19:08.746 UTC [279] LOG:  statement: GRANT SELECT ON atlas_migration.secure_record TO atlas_migration_reader;\n2026-08-31 05:19:08.746 UTC [279] LOG:  statement: SET ROLE atlas_migration_reader;\n2026-08-31 05:19:08.746 UTC [279] LOG:  statement: DO $$ BEGIN\n\t        RAISE NOTICE 'ATLAS_SECURITY_PASS:lifecycle.schema-migration';\n2026-08-31 05:19:08.747 UTC [279] LOG:  statement: SELECT CASE WHEN count(*) = 1 AND min(payload) = 'stable'\n\t        THEN 'ATLAS_SECURITY_PASS:lifecycle.schema-migration'\n2026-08-31 05:19:08.747 UTC [279] LOG:  statement: RESET ROLE;\n2026-08-31 05:19:08.747 UTC [279] LOG:  statement: ROLLBACK;\n2026-08-31 05:19:08.781 UTC [286] LOG:  statement: SELECT pg_current_wal_lsn()\n2026-08-31 05:19:08.813 UTC [293] LOG:  statement: EXPLAIN (FORMAT JSON) SELECT 1 AS security_probe\n",
   "metric": {
-    "elapsed_ms": 45.277
+    "elapsed_ms": 45.782
   },
   "oracle": {
     "kind": "unauthorized-ddl-rejected-during-schema-migration",
