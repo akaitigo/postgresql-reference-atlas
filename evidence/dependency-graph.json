@@ -212,6 +212,7 @@
         "tools/lib/scenario_proofs.rb",
         "tools/lib/security_failure_diagnostics.rb",
         "tools/lib/security_json_output.rb",
+        "tools/lib/security_next_runtime_rows.rb",
         "tools/lib/security_next_tranche_contract.rb",
         "tools/lib/security_next_tranche_row_contracts.rb",
         "tools/lib/security_performance_statistics_contract.rb",
@@ -241,7 +242,7 @@
         "tools/verify-sql-surface.rb"
       ],
       "baseline_digest": "sha256:775c67f607e6f8ab3ce84c702630472b46dbdd925fb51fda573f8e5148084040",
-      "current_digest": "sha256:56184df134b5577b6798d3c1693ab5642a5b622583bb569a233700b0941a7a59",
+      "current_digest": "sha256:3b9ab46b583de7b0432b6e73db4072b86f825265859656dbba44c08c993669f5",
       "observed_at": "2026-08-30T19:45:22.402577Z"
     },
     {
@@ -10586,7 +10587,7 @@
       "id": "output.a859f137cb315aeae3b6",
       "kind": "derived-evidence",
       "path": "provenance.yaml",
-      "digest": "sha256:8e687711ef3cc5133701f943366eb16fdd3103eef495f5c670740e86efcba0ff",
+      "digest": "sha256:f3387b9889115dc80af857aca5de75b635fc821ced91b82ed94e53fde1e46383",
       "depends_on": [
         "source.contract-and-authority",
         "harness.sql-schema-correctness",
@@ -10652,7 +10653,7 @@
         },
         {
           "input_id": "harness.scenario-skill-reporting",
-          "digest": "sha256:56184df134b5577b6798d3c1693ab5642a5b622583bb569a233700b0941a7a59"
+          "digest": "sha256:3b9ab46b583de7b0432b6e73db4072b86f825265859656dbba44c08c993669f5"
         },
         {
           "input_id": "harness.evidence-dependency-control-plane",

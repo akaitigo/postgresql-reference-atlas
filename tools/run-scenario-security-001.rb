@@ -13,6 +13,7 @@ require_relative "lib/security_failure_diagnostics"
 require_relative "lib/security_json_output"
 require_relative "lib/security_next_tranche_contract"
 require_relative "lib/security_next_tranche_row_contracts"
+require_relative "lib/security_next_runtime_rows"
 require_relative "lib/security_performance_statistics_contract"
 require_relative "lib/security_publication_provenance_contract"
 require_relative "lib/security_query_catalog_inventory_contract"
@@ -2282,7 +2283,9 @@ def selected_security_patterns(plan)
   SecurityRuntimeReadinessContract.verify_runnable!(plan: plan, preflight: runtime_preflight)
   SecurityNextTrancheContract.verify!(plan: plan)
   SecurityNextTrancheRowContracts.verify!
-  pattern_ids = SecurityScenarioTranche.runtime_pattern_ids(plan)
+  runtime_rows = SecurityNextRuntimeRows.next_runtime_rows(plan)
+  SecurityNextRuntimeRows.verify_security_command_supported!(runtime_rows)
+  pattern_ids = runtime_rows.map { |row| row.fetch("pattern_id") }
   missing_patterns = pattern_ids.reject { |pattern_id| PATTERNS.key?(pattern_id) }
   raise "security runtime definitions missing: #{missing_patterns.join(', ')}" unless missing_patterns.empty?
 
