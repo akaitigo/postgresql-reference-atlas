@@ -1,0 +1,182 @@
+{
+  "schema_version": 1,
+  "pattern_id": "definitive-domain.query.partitioning",
+  "target_id": "query.partitioning",
+  "scenario": "security",
+  "variant_id": "postgresql-verification-matrix-v2",
+  "environment": {
+    "subject": "PostgreSQL",
+    "server_product": "PostgreSQL",
+    "server_version": "18.6",
+    "server_version_num": "180006",
+    "client_product": "psql",
+    "client_version": "psql (PostgreSQL) 18.6",
+    "runtime_image": "postgres:18.6-alpine",
+    "runtime_identity": "pg-atlas-security-68614-b1cef5",
+    "workers": 1,
+    "retries": 0,
+    "trace_mode": "on",
+    "execution_mode": "real-postgresql-server-client",
+    "row_runtime": {
+      "server_versions": [
+        "18.6"
+      ],
+      "containers": [
+        "pg-atlas-security-68614-b1cef5"
+      ]
+    }
+  },
+  "sql": {
+    "source": "BEGIN;\nCREATE ROLE atlas_partition_reader;\nCREATE TABLE atlas_partition_secure(\n  id bigint NOT NULL,\n  tenant name NOT NULL,\n  occurred_on date NOT NULL,\n  payload text NOT NULL,\n  PRIMARY KEY (occurred_on, id)\n) PARTITION BY RANGE (occurred_on);\nCREATE TABLE atlas_partition_secure_2026q1 PARTITION OF atlas_partition_secure FOR VALUES FROM ('2026-01-01') TO ('2026-04-01');\nCREATE TABLE atlas_partition_secure_2026q2 PARTITION OF atlas_partition_secure FOR VALUES FROM ('2026-04-01') TO ('2026-07-01');\nCREATE TABLE atlas_partition_secure_default PARTITION OF atlas_partition_secure DEFAULT;\nALTER TABLE atlas_partition_secure ENABLE ROW LEVEL SECURITY;\nCREATE POLICY atlas_partition_policy ON atlas_partition_secure\n  TO atlas_partition_reader\n  USING (tenant = 'atlas_partition_reader')\n  WITH CHECK (tenant = 'atlas_partition_reader');\nGRANT SELECT, INSERT ON atlas_partition_secure TO atlas_partition_reader;\nINSERT INTO atlas_partition_secure VALUES\n  (1, 'atlas_partition_reader', DATE '2026-02-01', 'q1'),\n  (2, 'atlas_partition_reader', DATE '2026-05-01', 'q2'),\n  (3, 'atlas_partition_reader', DATE '2027-01-01', 'default');\nCREATE TEMP TABLE atlas_partition_observation(\n  plan jsonb,\n  q1_rows bigint,\n  q2_rows bigint,\n  default_rows bigint,\n  partition_pruning boolean,\n  security_rejected boolean DEFAULT false\n);\nINSERT INTO atlas_partition_observation(q1_rows, q2_rows, default_rows)\nSELECT\n  (SELECT count(*) FROM atlas_partition_secure_2026q1),\n  (SELECT count(*) FROM atlas_partition_secure_2026q2),\n  (SELECT count(*) FROM atlas_partition_secure_default);\nGRANT SELECT, UPDATE ON atlas_partition_observation TO atlas_partition_reader;\nDO $atlas$\nDECLARE observation_rows bigint;\nBEGIN\n  SELECT count(*) INTO observation_rows FROM atlas_partition_observation;\n  IF observation_rows <> 1 THEN\n    RAISE EXCEPTION 'atlas_partition_observation seed expected 1 row, got %', observation_rows;\n  END IF;\nEND;\n$atlas$;\nSET ROLE atlas_partition_reader;\nDO $atlas$\nDECLARE observed jsonb;\nDECLARE updated_rows bigint;\nBEGIN\n  EXECUTE 'EXPLAIN (ANALYZE, BUFFERS, FORMAT JSON) SELECT id FROM atlas_partition_secure WHERE tenant = ''atlas_partition_reader'' AND occurred_on = DATE ''2026-02-01'' ORDER BY id' INTO observed;\n  UPDATE atlas_partition_observation\n  SET plan = observed,\n      partition_pruning = observed::text LIKE '%atlas_partition_secure_2026q1%'\n        AND observed::text NOT LIKE '%atlas_partition_secure_2026q2%'\n        AND observed::text NOT LIKE '%atlas_partition_secure_default%';\n  GET DIAGNOSTICS updated_rows = ROW_COUNT;\n  IF updated_rows <> 1 THEN\n    RAISE EXCEPTION 'atlas_partition_observation plan update expected 1 row, got %', updated_rows;\n  END IF;\nEND;\n$atlas$;\nDO $atlas$\nDECLARE updated_rows bigint;\nBEGIN\n  ALTER TABLE atlas_partition_secure DETACH PARTITION atlas_partition_secure_2026q1;\n  RAISE EXCEPTION 'partition detach unexpectedly allowed';\nEXCEPTION WHEN insufficient_privilege THEN\n  UPDATE atlas_partition_observation SET security_rejected = true;\n  GET DIAGNOSTICS updated_rows = ROW_COUNT;\n  IF updated_rows <> 1 THEN\n    RAISE EXCEPTION 'atlas_partition_observation refusal update expected 1 row, got %', updated_rows;\n  END IF;\n  RAISE NOTICE 'ATLAS_SECURITY_PASS:query.partitioning';\nEND;\n$atlas$;\nRESET ROLE;\nDO $atlas$\nDECLARE observation_rows bigint;\nBEGIN\n  SELECT count(*) INTO observation_rows FROM atlas_partition_observation;\n  IF observation_rows <> 1 THEN\n    RAISE EXCEPTION 'atlas_partition_observation final cardinality expected 1 row, got %', observation_rows;\n  END IF;\nEND;\n$atlas$;\nSELECT json_build_object(\n  'server_version', current_setting('server_version'),\n  'observation_rows', (SELECT count(*)::integer FROM atlas_partition_observation),\n  'q1_rows', q1_rows,\n  'q2_rows', q2_rows,\n  'default_rows', default_rows,\n  'partition_pruning', partition_pruning,\n  'security_rejected', security_rejected,\n  'oracle_marker', CASE WHEN security_rejected THEN 'ATLAS_SECURITY_PASS:query.partitioning' ELSE 'ATLAS_SECURITY_FAIL:query.partitioning' END,\n  'plan', plan,\n  'verdict', CASE WHEN (SELECT count(*)::integer FROM atlas_partition_observation) = 1 AND q1_rows = 1 AND q2_rows = 1 AND default_rows = 1 AND partition_pruning AND security_rejected THEN 'pass' ELSE 'fail' END\n)\nFROM atlas_partition_observation;\nROLLBACK;\n",
+    "stdout": "BEGIN\nCREATE ROLE\nCREATE TABLE\nCREATE TABLE\nCREATE TABLE\nCREATE TABLE\nALTER TABLE\nCREATE POLICY\nGRANT\nINSERT 0 3\nCREATE TABLE\nINSERT 0 1\nGRANT\nDO\nSET\nDO\nDO\nRESET\nDO\n{\"server_version\" : \"18.6\", \"observation_rows\" : 1, \"q1_rows\" : 1, \"q2_rows\" : 1, \"default_rows\" : 1, \"partition_pruning\" : true, \"security_rejected\" : true, \"oracle_marker\" : \"ATLAS_SECURITY_PASS:query.partitioning\", \"plan\" : [{\"Plan\": {\"Plans\": [{\"Alias\": \"atlas_partition_secure\", \"Plans\": [{\"Disabled\": false, \"Node Type\": \"Bitmap Index Scan\", \"Plan Rows\": 3, \"Index Cond\": \"(occurred_on = '2026-02-01'::date)\", \"Index Name\": \"atlas_partition_secure_2026q1_pkey\", \"Plan Width\": 0, \"Total Cost\": 4.17, \"Actual Rows\": 1.00, \"Actual Loops\": 1, \"Startup Cost\": 0.00, \"Async Capable\": false, \"Index Searches\": 1, \"Parallel Aware\": false, \"Local Hit Blocks\": 0, \"Temp Read Blocks\": 0, \"Actual Total Time\": 0.002, \"Local Read Blocks\": 0, \"Shared Hit Blocks\": 1, \"Shared Read Blocks\": 0, \"Actual Startup Time\": 0.002, \"Parent Relationship\": \"Outer\", \"Temp Written Blocks\": 0, \"Local Dirtied Blocks\": 0, \"Local Written Blocks\": 0, \"Shared Dirtied Blocks\": 0, \"Shared Written Blocks\": 0}], \"Filter\": \"(tenant = 'atlas_partition_reader'::name)\", \"Disabled\": false, \"Node Type\": \"Bitmap Heap Scan\", \"Plan Rows\": 1, \"Plan Width\": 8, \"Total Cost\": 11.29, \"Actual Rows\": 1.00, \"Actual Loops\": 1, \"Recheck Cond\": \"(occurred_on = '2026-02-01'::date)\", \"Startup Cost\": 4.17, \"Async Capable\": false, \"Relation Name\": \"atlas_partition_secure_2026q1\", \"Parallel Aware\": false, \"Local Hit Blocks\": 0, \"Temp Read Blocks\": 0, \"Actual Total Time\": 0.006, \"Exact Heap Blocks\": 1, \"Local Read Blocks\": 0, \"Lossy Heap Blocks\": 0, \"Shared Hit Blocks\": 2, \"Shared Read Blocks\": 0, \"Actual Startup Time\": 0.006, \"Parent Relationship\": \"Outer\", \"Temp Written Blocks\": 0, \"Local Dirtied Blocks\": 0, \"Local Written Blocks\": 0, \"Shared Dirtied Blocks\": 0, \"Shared Written Blocks\": 0, \"Rows Removed by Filter\": 0, \"Rows Removed by Index Recheck\": 0}], \"Disabled\": false, \"Sort Key\": [\"atlas_partition_secure.id\"], \"Node Type\": \"Sort\", \"Plan Rows\": 1, \"Plan Width\": 8, \"Total Cost\": 11.30, \"Actual Rows\": 1.00, \"Sort Method\": \"quicksort\", \"Actual Loops\": 1, \"Startup Cost\": 11.30, \"Async Capable\": false, \"Parallel Aware\": false, \"Sort Space Type\": \"Memory\", \"Sort Space Used\": 25, \"Local Hit Blocks\": 0, \"Temp Read Blocks\": 0, \"Actual Total Time\": 0.015, \"Local Read Blocks\": 0, \"Shared Hit Blocks\": 2, \"Shared Read Blocks\": 0, \"Actual Startup Time\": 0.014, \"Temp Written Blocks\": 0, \"Local Dirtied Blocks\": 0, \"Local Written Blocks\": 0, \"Shared Dirtied Blocks\": 0, \"Shared Written Blocks\": 0}, \"Planning\": {\"Local Hit Blocks\": 0, \"Temp Read Blocks\": 0, \"Local Read Blocks\": 0, \"Shared Hit Blocks\": 32, \"Shared Read Blocks\": 1, \"Temp Written Blocks\": 0, \"Local Dirtied Blocks\": 0, \"Local Written Blocks\": 0, \"Shared Dirtied Blocks\": 0, \"Shared Written Blocks\": 0}, \"Triggers\": [], \"Planning Time\": 0.426, \"Execution Time\": 0.036}], \"verdict\" : \"pass\"}\nROLLBACK\n",
+    "stderr": "NOTICE:  ATLAS_SECURITY_PASS:query.partitioning\n"
+  },
+  "plan": [
+    {
+      "Plan": {
+        "Plans": [
+          {
+            "Alias": "atlas_partition_secure",
+            "Plans": [
+              {
+                "Disabled": false,
+                "Node Type": "Bitmap Index Scan",
+                "Plan Rows": 3,
+                "Index Cond": "(occurred_on = '2026-02-01'::date)",
+                "Index Name": "atlas_partition_secure_2026q1_pkey",
+                "Plan Width": 0,
+                "Total Cost": 4.17,
+                "Actual Rows": 1.0,
+                "Actual Loops": 1,
+                "Startup Cost": 0.0,
+                "Async Capable": false,
+                "Index Searches": 1,
+                "Parallel Aware": false,
+                "Local Hit Blocks": 0,
+                "Temp Read Blocks": 0,
+                "Actual Total Time": 0.002,
+                "Local Read Blocks": 0,
+                "Shared Hit Blocks": 1,
+                "Shared Read Blocks": 0,
+                "Actual Startup Time": 0.002,
+                "Parent Relationship": "Outer",
+                "Temp Written Blocks": 0,
+                "Local Dirtied Blocks": 0,
+                "Local Written Blocks": 0,
+                "Shared Dirtied Blocks": 0,
+                "Shared Written Blocks": 0
+              }
+            ],
+            "Filter": "(tenant = 'atlas_partition_reader'::name)",
+            "Disabled": false,
+            "Node Type": "Bitmap Heap Scan",
+            "Plan Rows": 1,
+            "Plan Width": 8,
+            "Total Cost": 11.29,
+            "Actual Rows": 1.0,
+            "Actual Loops": 1,
+            "Recheck Cond": "(occurred_on = '2026-02-01'::date)",
+            "Startup Cost": 4.17,
+            "Async Capable": false,
+            "Relation Name": "atlas_partition_secure_2026q1",
+            "Parallel Aware": false,
+            "Local Hit Blocks": 0,
+            "Temp Read Blocks": 0,
+            "Actual Total Time": 0.006,
+            "Exact Heap Blocks": 1,
+            "Local Read Blocks": 0,
+            "Lossy Heap Blocks": 0,
+            "Shared Hit Blocks": 2,
+            "Shared Read Blocks": 0,
+            "Actual Startup Time": 0.006,
+            "Parent Relationship": "Outer",
+            "Temp Written Blocks": 0,
+            "Local Dirtied Blocks": 0,
+            "Local Written Blocks": 0,
+            "Shared Dirtied Blocks": 0,
+            "Shared Written Blocks": 0,
+            "Rows Removed by Filter": 0,
+            "Rows Removed by Index Recheck": 0
+          }
+        ],
+        "Disabled": false,
+        "Sort Key": [
+          "atlas_partition_secure.id"
+        ],
+        "Node Type": "Sort",
+        "Plan Rows": 1,
+        "Plan Width": 8,
+        "Total Cost": 11.3,
+        "Actual Rows": 1.0,
+        "Sort Method": "quicksort",
+        "Actual Loops": 1,
+        "Startup Cost": 11.3,
+        "Async Capable": false,
+        "Parallel Aware": false,
+        "Sort Space Type": "Memory",
+        "Sort Space Used": 25,
+        "Local Hit Blocks": 0,
+        "Temp Read Blocks": 0,
+        "Actual Total Time": 0.015,
+        "Local Read Blocks": 0,
+        "Shared Hit Blocks": 2,
+        "Shared Read Blocks": 0,
+        "Actual Startup Time": 0.014,
+        "Temp Written Blocks": 0,
+        "Local Dirtied Blocks": 0,
+        "Local Written Blocks": 0,
+        "Shared Dirtied Blocks": 0,
+        "Shared Written Blocks": 0
+      },
+      "Planning": {
+        "Local Hit Blocks": 0,
+        "Temp Read Blocks": 0,
+        "Local Read Blocks": 0,
+        "Shared Hit Blocks": 32,
+        "Shared Read Blocks": 1,
+        "Temp Written Blocks": 0,
+        "Local Dirtied Blocks": 0,
+        "Local Written Blocks": 0,
+        "Shared Dirtied Blocks": 0,
+        "Shared Written Blocks": 0
+      },
+      "Triggers": [
+
+      ],
+      "Planning Time": 0.426,
+      "Execution Time": 0.036
+    }
+  ],
+  "wal": {
+    "before_lsn": "0/BB54000",
+    "after_lsn": "0/BB54660"
+  },
+  "log": "2026-08-31 14:48:08.833 UTC [492] LOG:  statement: ALTER TABLE atlas_extension_secure ENABLE ROW LEVEL SECURITY;\n2026-08-31 14:48:08.834 UTC [492] LOG:  statement: CREATE POLICY atlas_extension_policy ON atlas_extension_secure TO atlas_extension_reader\n2026-08-31 14:48:08.834 UTC [492] LOG:  statement: INSERT INTO atlas_extension_secure\n2026-08-31 14:48:08.859 UTC [492] LOG:  statement: CREATE INDEX atlas_extension_secure_body_trgm_idx ON atlas_extension_secure USING gin (body gin_trgm_ops);\n2026-08-31 14:48:08.990 UTC [492] LOG:  statement: ANALYZE atlas_extension_secure;\n2026-08-31 14:48:09.015 UTC [492] LOG:  statement: GRANT SELECT ON atlas_extension_secure TO atlas_extension_reader;\n2026-08-31 14:48:09.015 UTC [492] LOG:  statement: CREATE TEMP TABLE atlas_extension_observation(plan jsonb, matching_rows bigint, similarity_value real);\n2026-08-31 14:48:09.016 UTC [492] LOG:  statement: GRANT INSERT, SELECT ON atlas_extension_observation TO atlas_extension_reader;\n2026-08-31 14:48:09.016 UTC [492] LOG:  statement: SET ROLE atlas_extension_reader;\n2026-08-31 14:48:09.016 UTC [492] LOG:  statement: DO $$ DECLARE captured jsonb; BEGIN\n2026-08-31 14:48:09.017 UTC [492] LOG:  statement: RESET ROLE;\n2026-08-31 14:48:09.017 UTC [492] LOG:  statement: SELECT json_build_object(\n\t  'oracle_marker', 'ATLAS_SECURITY_PASS:query.extension', 'plan', (SELECT plan FROM atlas_extension_observation),\n2026-08-31 14:48:09.018 UTC [492] LOG:  statement: ROLLBACK;\n2026-08-31 14:48:09.079 UTC [499] LOG:  statement: SELECT pg_current_wal_lsn()\n2026-08-31 14:48:09.170 UTC [506] LOG:  statement: SELECT pg_current_wal_lsn()\n2026-08-31 14:48:09.231 UTC [513] LOG:  statement: BEGIN;\n2026-08-31 14:48:09.231 UTC [513] LOG:  statement: CREATE ROLE atlas_partition_reader;\n2026-08-31 14:48:09.232 UTC [513] LOG:  statement: CREATE TABLE atlas_partition_secure(\n2026-08-31 14:48:09.235 UTC [513] LOG:  statement: CREATE TABLE atlas_partition_secure_2026q1 PARTITION OF atlas_partition_secure FOR VALUES FROM ('2026-01-01') TO ('2026-04-01');\n2026-08-31 14:48:09.240 UTC [513] LOG:  statement: CREATE TABLE atlas_partition_secure_2026q2 PARTITION OF atlas_partition_secure FOR VALUES FROM ('2026-04-01') TO ('2026-07-01');\n2026-08-31 14:48:09.243 UTC [513] LOG:  statement: CREATE TABLE atlas_partition_secure_default PARTITION OF atlas_partition_secure DEFAULT;\n2026-08-31 14:48:09.246 UTC [513] LOG:  statement: ALTER TABLE atlas_partition_secure ENABLE ROW LEVEL SECURITY;\n2026-08-31 14:48:09.246 UTC [513] LOG:  statement: CREATE POLICY atlas_partition_policy ON atlas_partition_secure\n2026-08-31 14:48:09.246 UTC [513] LOG:  statement: GRANT SELECT, INSERT ON atlas_partition_secure TO atlas_partition_reader;\n2026-08-31 14:48:09.247 UTC [513] LOG:  statement: INSERT INTO atlas_partition_secure VALUES\n2026-08-31 14:48:09.248 UTC [513] LOG:  statement: CREATE TEMP TABLE atlas_partition_observation(\n2026-08-31 14:48:09.249 UTC [513] LOG:  statement: INSERT INTO atlas_partition_observation(q1_rows, q2_rows, default_rows)\n2026-08-31 14:48:09.251 UTC [513] LOG:  statement: GRANT SELECT, UPDATE ON atlas_partition_observation TO atlas_partition_reader;\n2026-08-31 14:48:09.251 UTC [513] LOG:  statement: DO $atlas$\n2026-08-31 14:48:09.253 UTC [513] LOG:  statement: SET ROLE atlas_partition_reader;\n2026-08-31 14:48:09.253 UTC [513] LOG:  statement: DO $atlas$\n2026-08-31 14:48:09.255 UTC [513] LOG:  statement: DO $atlas$\n\t  RAISE NOTICE 'ATLAS_SECURITY_PASS:query.partitioning';\n2026-08-31 14:48:09.255 UTC [513] LOG:  statement: RESET ROLE;\n2026-08-31 14:48:09.256 UTC [513] LOG:  statement: DO $atlas$\n2026-08-31 14:48:09.256 UTC [513] LOG:  statement: SELECT json_build_object(\n\t  'oracle_marker', CASE WHEN security_rejected THEN 'ATLAS_SECURITY_PASS:query.partitioning' ELSE 'ATLAS_SECURITY_FAIL:query.partitioning' END,\n2026-08-31 14:48:09.256 UTC [513] LOG:  statement: ROLLBACK;\n2026-08-31 14:48:09.325 UTC [520] LOG:  statement: SELECT pg_current_wal_lsn()\n",
+  "metric": {
+    "elapsed_ms": 175.54,
+    "q1_rows": 1,
+    "q2_rows": 1,
+    "default_rows": 1
+  },
+  "oracle": {
+    "kind": "partition-routing-pruning-and-owner-boundary",
+    "scenario": "security",
+    "marker": "ATLAS_SECURITY_PASS:query.partitioning",
+    "passed": true
+  },
+  "streams": {
+    "action": [
+      "psql security transaction"
+    ],
+    "network": [
+      "psql-to-PostgreSQL-session"
+    ],
+    "resource": [
+      "SQL",
+      "plan",
+      "WAL",
+      "server-log",
+      "elapsed-metric"
+    ]
+  }
+}

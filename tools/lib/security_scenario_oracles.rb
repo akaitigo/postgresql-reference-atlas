@@ -98,6 +98,99 @@ module SecurityScenarioOracles
     performance_planner_predicates(result, marker: marker).values.all?
   end
 
+  def query_partitioning_predicates(result, marker:)
+    nodes = plan_document_nodes(result["plan"])
+    {
+      "result_verdict_pass"=>result.fetch("verdict") == "pass",
+      "server_version_exact"=>result.fetch("server_version") == "18.6",
+      "observation_rows_exact"=>result.fetch("observation_rows") == 1,
+      "q1_rows_exact"=>result.fetch("q1_rows") == 1,
+      "q2_rows_exact"=>result.fetch("q2_rows") == 1,
+      "default_rows_exact"=>result.fetch("default_rows") == 1,
+      "partition_pruning_true"=>result.fetch("partition_pruning") == true,
+      "security_rejected"=>result.fetch("security_rejected") == true,
+      "marker_exact"=>result.fetch("oracle_marker") == marker,
+      "plan_document_array"=>result.fetch("plan").is_a?(Array) && !result.fetch("plan").empty?,
+      "plan_actual_rows_and_loops"=>plan_has_actual_execution?(nodes),
+      "plan_buffers_observed"=>plan_has_buffers?(nodes),
+      "plan_q1_partition_present"=>nodes.any? { |node| node["Relation Name"] == "atlas_partition_secure_2026q1" },
+      "plan_q2_partition_absent"=>nodes.none? { |node| node["Relation Name"] == "atlas_partition_secure_2026q2" },
+      "plan_default_partition_absent"=>nodes.none? { |node| node["Relation Name"] == "atlas_partition_secure_default" }
+    }
+  end
+
+  def query_partitioning_pass?(result, marker:)
+    query_partitioning_predicates(result, marker: marker).values.all?
+  end
+
+  def query_security_predicates(result, marker:)
+    effective_host_rule = result.fetch("effective_host_rule")
+    host_rule_rows = result.fetch("host_rule_rows")
+    {
+      "result_verdict_pass"=>result.fetch("verdict") == "pass",
+      "server_version_exact"=>result.fetch("server_version") == "18.6",
+      "observation_rows_exact"=>result.fetch("observation_rows") == 1,
+      "visible_rows_exact"=>result.fetch("visible_rows") == 1,
+      "security_rejected"=>result.fetch("tenant_escape_denied") == true,
+      "sqlstate_42501"=>result.fetch("sqlstate") == "42501",
+      "password_encryption_scram"=>result.fetch("password_encryption") == "scram-sha-256",
+      "scram_verifier_true"=>result.fetch("scram_verifier") == true,
+      "host_scram_rule_true"=>result.fetch("host_scram_rule") == true,
+      "host_rule_rows_present"=>host_rule_rows.is_a?(Array) && !host_rule_rows.empty?,
+      "effective_host_rule_present"=>effective_host_rule.is_a?(Hash) && effective_host_rule["line_number"].is_a?(Numeric),
+      "effective_host_rule_auth_method_scram"=>effective_host_rule.is_a?(Hash) && effective_host_rule["auth_method"] == "scram-sha-256",
+      "effective_host_rule_error_blank"=>effective_host_rule.is_a?(Hash) && [nil, ""].include?(effective_host_rule["error"]),
+      "fixed_search_path_true"=>result.fetch("fixed_search_path") == true,
+      "marker_exact"=>result.fetch("oracle_marker") == marker
+    }
+  end
+
+  def query_security_pass?(result, marker:)
+    query_security_predicates(result, marker: marker).values.all?
+  end
+
+  def query_sql_surface_predicates(result, marker:)
+    {
+      "result_verdict_pass"=>result.fetch("verdict") == "pass",
+      "server_version_exact"=>result.fetch("server_version") == "18.6",
+      "observation_rows_exact"=>result.fetch("observation_rows") == 1,
+      "returned_id_exact"=>result.fetch("returned_id") == 1,
+      "returned_note_exact"=>result.fetch("returned_note") == "created",
+      "visible_rows_exact"=>result.fetch("visible_rows") == 1,
+      "duplicate_key_sqlstate_exact"=>result.fetch("duplicate_key_sqlstate") == "23505",
+      "check_violation_sqlstate_exact"=>result.fetch("check_violation_sqlstate") == "23514",
+      "security_rejected"=>result.fetch("security_rejected") == true,
+      "marker_exact"=>result.fetch("oracle_marker") == marker,
+      "literal_tenant_policy_exact"=>result.fetch("policy_tenant") == "atlas_sql_surface_writer"
+    }
+  end
+
+  def query_sql_surface_pass?(result, marker:)
+    query_sql_surface_predicates(result, marker: marker).values.all?
+  end
+
+  def query_types_constraints_predicates(result, marker:)
+    {
+      "result_verdict_pass"=>result.fetch("verdict") == "pass",
+      "server_version_exact"=>result.fetch("server_version") == "18.6",
+      "observation_rows_exact"=>result.fetch("observation_rows") == 1,
+      "row_count_exact"=>result.fetch("row_count") == 1,
+      "uuid_v7_exact"=>result.fetch("uuid_version") == 7,
+      "array_contains_true"=>result.fetch("array_contains") == true,
+      "json_path_true"=>result.fetch("json_path") == true,
+      "range_contains_true"=>result.fetch("range_contains") == true,
+      "generated_value_exact"=>result.fetch("generated_value") == "atlas-order",
+      "invalid_domain_sqlstate_exact"=>result.fetch("invalid_domain_sqlstate") == "23514",
+      "security_rejected"=>result.fetch("security_rejected") == true,
+      "marker_exact"=>result.fetch("oracle_marker") == marker,
+      "literal_tenant_policy_exact"=>result.fetch("policy_tenant") == "atlas_typed_order_writer"
+    }
+  end
+
+  def query_types_constraints_pass?(result, marker:)
+    query_types_constraints_predicates(result, marker: marker).values.all?
+  end
+
   def performance_execution_plan_nodes(plan_document)
     plan_document_nodes(plan_document)
   end

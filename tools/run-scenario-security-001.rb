@@ -10,7 +10,9 @@ require "securerandom"
 require "time"
 require_relative "lib/atomic_evidence_publisher"
 require_relative "lib/security_failure_diagnostics"
+require_relative "lib/security_json_output"
 require_relative "lib/security_next_tranche_contract"
+require_relative "lib/security_next_tranche_row_contracts"
 require_relative "lib/security_performance_statistics_contract"
 require_relative "lib/security_publication_provenance_contract"
 require_relative "lib/security_query_catalog_inventory_contract"
@@ -28,6 +30,8 @@ PERFORMANCE_INDEX_LITERAL_TENANT = "atlas_perf_index_reader"
 IMAGE = "postgres:18.6-alpine"
 PG18_IMAGE = "postgres:18.6-alpine@sha256:d3e1620b530c944afa6e887d22eb899824da68e19c52024bf98f5220c88a65b2"
 PG17_IMAGE = "postgres:17.11-alpine@sha256:18cfe3ef5e6815560c98237d6216d1e5119702fb0f3894c8785dd58b8bbe5d73"
+ROOT_POSTGRES_PASSWORD = "postgres-atlas-root"
+ROOT_POSTGRES_INITDB_ARGS = "--auth-host=scram-sha-256 --auth-local=trust"
 COMPATIBILITY_IMAGES = [
   "postgres:14.24-alpine@sha256:727876d274666da0b92a445390ba093c84b8e9f8343e1c53cd4e9a7ab2d85310",
   "postgres:15.19-alpine3.23@sha256:b0dc4a8dc256b963ee25867843d9fd366850e327e4a2a65ccb3c47262d092973",
@@ -287,6 +291,26 @@ PATTERNS = {
     "oracle"=>"rls-bounded-pg-trgm-gin-plan-and-install-refusal",
     "executor"=>"bundled-extension-security"
   },
+  "definitive-domain.query.partitioning"=>{
+    "target"=>"query.partitioning",
+    "oracle"=>"partition-routing-pruning-and-owner-boundary",
+    "executor"=>"query-partitioning-security"
+  },
+  "definitive-domain.query.security"=>{
+    "target"=>"query.security",
+    "oracle"=>"force-rls-scram-search-path-and-cross-tenant-refusal",
+    "executor"=>"query-security"
+  },
+  "definitive-domain.query.sql-surface"=>{
+    "target"=>"query.sql-surface",
+    "oracle"=>"returning-constraint-sqlstate-and-cross-tenant-refusal",
+    "executor"=>"query-sql-surface-security"
+  },
+  "definitive-domain.query.types-constraints"=>{
+    "target"=>"query.types-constraints",
+    "oracle"=>"typed-roundtrip-domain-sqlstate-and-cross-tenant-refusal",
+    "executor"=>"query-types-constraints-security"
+  },
   "definitive-domain.operations.pitr-recovery"=>{
     "target"=>"operations.pitr-recovery",
     "oracle"=>"pitr-restores-pre-target-rls-and-acl-boundary",
@@ -350,11 +374,60 @@ def default_execution(container, definition)
   }
 end
 
-def psql_json_execution(container, sql)
-  stdout, stderr = run!("docker", "exec", "-i", container, "psql", "-XAt", "-v", "ON_ERROR_STOP=1", "-U", "postgres", "-d", "atlas", stdin_data: sql)
+def psql_capture(container, sql)
+  command = ["docker", "exec", "-i", container, "psql", "-XAt", "-v", "ON_ERROR_STOP=1", "-U", "postgres", "-d", "atlas"]
+  stdout, stderr, status = Open3.capture3(*command, stdin_data: sql)
+  [command, stdout, stderr, status]
+end
+
+def parse_json_line!(stdout)
   json_line = stdout.lines.reverse.map(&:strip).find { |line| line.start_with?("{") && line.end_with?("}") }
   raise "JSON result missing from scenario execution" unless json_line&.start_with?("{")
-  [JSON.parse(json_line), stdout, stderr]
+  JSON.parse(json_line)
+end
+
+def psql_json_execution(container, sql)
+  command, stdout, stderr, status = psql_capture(container, sql)
+  raise "command failed (#{command.join(' ')}): #{stderr}\n#{stdout}" unless status.success?
+  [parse_json_line!(stdout), stdout, stderr]
+end
+
+def psql_json_execution_for_row!(container:, sql:, marker:, failed_row:, target:, phase:)
+  command, stdout, stderr, status = psql_capture(container, sql)
+  unless status.success?
+    raise SecurityFailureDiagnostics::ScenarioOracleFailure.new(
+      failed_row: failed_row,
+      target: target,
+      oracle_error: "#{target} runtime #{phase} failed: command failed (#{command.join(' ')}): #{stderr}\n#{stdout}",
+      actual_result: SecurityJsonOutput.command_failure_result(
+        phase: phase,
+        reason: "command-exit-nonzero",
+        command: command,
+        exit_status: status.exitstatus,
+        stdout: stdout,
+        stderr: stderr,
+        marker_present: stdout.include?(marker) || stderr.include?(marker),
+        json_candidate_lines: SecurityJsonOutput.json_candidate_lines(stdout)
+      ),
+      oracle_predicates: {
+        "command_succeeded"=>false,
+        "json_object_present"=>false,
+        "marker_present"=>stdout.include?(marker) || stderr.include?(marker)
+      }
+    )
+  end
+
+  result = SecurityJsonOutput.parse_single_json_object!(
+    stdout: stdout,
+    stderr: stderr,
+    marker: marker,
+    command: command,
+    exit_status: status.exitstatus,
+    failed_row: failed_row,
+    target: target,
+    phase: phase
+  )
+  [result, stdout, stderr]
 end
 
 def compatibility_execution(definition)
@@ -1331,6 +1404,720 @@ def bundled_extension_security_execution(container)
   }
 end
 
+def query_partitioning_security_execution(container)
+  marker = "ATLAS_SECURITY_PASS:query.partitioning"
+  sql = <<~SQL
+    BEGIN;
+    CREATE ROLE atlas_partition_reader;
+    CREATE TABLE atlas_partition_secure(
+      id bigint NOT NULL,
+      tenant name NOT NULL,
+      occurred_on date NOT NULL,
+      payload text NOT NULL,
+      PRIMARY KEY (occurred_on, id)
+    ) PARTITION BY RANGE (occurred_on);
+    CREATE TABLE atlas_partition_secure_2026q1 PARTITION OF atlas_partition_secure FOR VALUES FROM ('2026-01-01') TO ('2026-04-01');
+    CREATE TABLE atlas_partition_secure_2026q2 PARTITION OF atlas_partition_secure FOR VALUES FROM ('2026-04-01') TO ('2026-07-01');
+    CREATE TABLE atlas_partition_secure_default PARTITION OF atlas_partition_secure DEFAULT;
+    ALTER TABLE atlas_partition_secure ENABLE ROW LEVEL SECURITY;
+    CREATE POLICY atlas_partition_policy ON atlas_partition_secure
+      TO atlas_partition_reader
+      USING (tenant = 'atlas_partition_reader')
+      WITH CHECK (tenant = 'atlas_partition_reader');
+    GRANT SELECT, INSERT ON atlas_partition_secure TO atlas_partition_reader;
+    INSERT INTO atlas_partition_secure VALUES
+      (1, 'atlas_partition_reader', DATE '2026-02-01', 'q1'),
+      (2, 'atlas_partition_reader', DATE '2026-05-01', 'q2'),
+      (3, 'atlas_partition_reader', DATE '2027-01-01', 'default');
+    CREATE TEMP TABLE atlas_partition_observation(
+      plan jsonb,
+      q1_rows bigint,
+      q2_rows bigint,
+      default_rows bigint,
+      partition_pruning boolean,
+      security_rejected boolean DEFAULT false
+    );
+    INSERT INTO atlas_partition_observation(q1_rows, q2_rows, default_rows)
+    SELECT
+      (SELECT count(*) FROM atlas_partition_secure_2026q1),
+      (SELECT count(*) FROM atlas_partition_secure_2026q2),
+      (SELECT count(*) FROM atlas_partition_secure_default);
+    GRANT SELECT, UPDATE ON atlas_partition_observation TO atlas_partition_reader;
+    DO $atlas$
+    DECLARE observation_rows bigint;
+    BEGIN
+      SELECT count(*) INTO observation_rows FROM atlas_partition_observation;
+      IF observation_rows <> 1 THEN
+        RAISE EXCEPTION 'atlas_partition_observation seed expected 1 row, got %', observation_rows;
+      END IF;
+    END;
+    $atlas$;
+    SET ROLE atlas_partition_reader;
+    DO $atlas$
+    DECLARE observed jsonb;
+    DECLARE updated_rows bigint;
+    BEGIN
+      EXECUTE 'EXPLAIN (ANALYZE, BUFFERS, FORMAT JSON) SELECT id FROM atlas_partition_secure WHERE tenant = ''atlas_partition_reader'' AND occurred_on = DATE ''2026-02-01'' ORDER BY id' INTO observed;
+      UPDATE atlas_partition_observation
+      SET plan = observed,
+          partition_pruning = observed::text LIKE '%atlas_partition_secure_2026q1%'
+            AND observed::text NOT LIKE '%atlas_partition_secure_2026q2%'
+            AND observed::text NOT LIKE '%atlas_partition_secure_default%';
+      GET DIAGNOSTICS updated_rows = ROW_COUNT;
+      IF updated_rows <> 1 THEN
+        RAISE EXCEPTION 'atlas_partition_observation plan update expected 1 row, got %', updated_rows;
+      END IF;
+    END;
+    $atlas$;
+    DO $atlas$
+    DECLARE updated_rows bigint;
+    BEGIN
+      ALTER TABLE atlas_partition_secure DETACH PARTITION atlas_partition_secure_2026q1;
+      RAISE EXCEPTION 'partition detach unexpectedly allowed';
+    EXCEPTION WHEN insufficient_privilege THEN
+      UPDATE atlas_partition_observation SET security_rejected = true;
+      GET DIAGNOSTICS updated_rows = ROW_COUNT;
+      IF updated_rows <> 1 THEN
+        RAISE EXCEPTION 'atlas_partition_observation refusal update expected 1 row, got %', updated_rows;
+      END IF;
+      RAISE NOTICE '#{marker}';
+    END;
+    $atlas$;
+    RESET ROLE;
+    DO $atlas$
+    DECLARE observation_rows bigint;
+    BEGIN
+      SELECT count(*) INTO observation_rows FROM atlas_partition_observation;
+      IF observation_rows <> 1 THEN
+        RAISE EXCEPTION 'atlas_partition_observation final cardinality expected 1 row, got %', observation_rows;
+      END IF;
+    END;
+    $atlas$;
+    SELECT json_build_object(
+      'server_version', current_setting('server_version'),
+      'observation_rows', (SELECT count(*)::integer FROM atlas_partition_observation),
+      'q1_rows', q1_rows,
+      'q2_rows', q2_rows,
+      'default_rows', default_rows,
+      'partition_pruning', partition_pruning,
+      'security_rejected', security_rejected,
+      'oracle_marker', CASE WHEN security_rejected THEN '#{marker}' ELSE 'ATLAS_SECURITY_FAIL:query.partitioning' END,
+      'plan', plan,
+      'verdict', CASE WHEN (SELECT count(*)::integer FROM atlas_partition_observation) = 1 AND q1_rows = 1 AND q2_rows = 1 AND default_rows = 1 AND partition_pruning AND security_rejected THEN 'pass' ELSE 'fail' END
+    )
+    FROM atlas_partition_observation;
+    ROLLBACK;
+  SQL
+  before_lsn = run!("docker", "exec", container, "psql", "-XAt", "-U", "postgres", "-d", "atlas", "-c", "SELECT pg_current_wal_lsn()").first.strip
+  started_at = Process.clock_gettime(Process::CLOCK_MONOTONIC)
+  result, stdout, stderr = psql_json_execution_for_row!(
+    container: container,
+    sql: sql,
+    marker: marker,
+    failed_row: "closure.definitive-domain.query.partitioning.security",
+    target: "query.partitioning",
+    phase: "runtime"
+  )
+  after_lsn = run!("docker", "exec", container, "psql", "-XAt", "-U", "postgres", "-d", "atlas", "-c", "SELECT pg_current_wal_lsn()").first.strip
+  predicates = SecurityScenarioOracles.query_partitioning_predicates(result, marker: marker)
+  unless predicates.values.all?
+    raise SecurityFailureDiagnostics::ScenarioOracleFailure.new(
+      failed_row: "closure.definitive-domain.query.partitioning.security",
+      target: "query.partitioning",
+      oracle_error: "query.partitioning security Oracle failed",
+      actual_result: result,
+      oracle_predicates: predicates
+    )
+  end
+  log = run!("docker", "logs", container).join
+  {
+    "sql"=>{"source"=>sql, "stdout"=>stdout, "stderr"=>stderr},
+    "plan"=>result.fetch("plan"),
+    "wal"=>{"before_lsn"=>before_lsn, "after_lsn"=>after_lsn},
+    "log"=>log.lines.grep(/statement:|ATLAS_SECURITY_PASS/).last(40).join,
+    "metric"=>{"elapsed_ms"=>((Process.clock_gettime(Process::CLOCK_MONOTONIC) - started_at) * 1000).round(3), "q1_rows"=>result.fetch("q1_rows"), "q2_rows"=>result.fetch("q2_rows"), "default_rows"=>result.fetch("default_rows")},
+    "oracle_output"=>stdout + stderr,
+    "runtime"=>{"server_versions"=>["18.6"], "containers"=>[container]}
+  }
+end
+
+def query_security_security_execution(container)
+  marker = "ATLAS_SECURITY_PASS:query.security"
+  bootstrap_sql = <<~SQL
+    BEGIN;
+    CREATE EXTENSION dblink;
+    CREATE ROLE tenant_app LOGIN PASSWORD 'tenant-atlas' NOSUPERUSER NOCREATEDB NOCREATEROLE;
+    CREATE TABLE tenant_record(tenant_id integer NOT NULL, id integer NOT NULL, secret text NOT NULL, PRIMARY KEY (tenant_id, id));
+    ALTER TABLE tenant_record ENABLE ROW LEVEL SECURITY;
+    ALTER TABLE tenant_record FORCE ROW LEVEL SECURITY;
+    CREATE POLICY tenant_isolation ON tenant_record
+      USING (tenant_id = current_setting('app.tenant_id')::integer)
+      WITH CHECK (tenant_id = current_setting('app.tenant_id')::integer);
+    GRANT SELECT, INSERT ON tenant_record TO tenant_app;
+    INSERT INTO tenant_record VALUES (1, 1, 'tenant-one'), (2, 1, 'tenant-two');
+    CREATE FUNCTION secured_row_count() RETURNS bigint
+    LANGUAGE sql SECURITY DEFINER
+    SET search_path = pg_catalog, public
+    AS 'SELECT count(*) FROM public.tenant_record';
+    REVOKE ALL ON FUNCTION secured_row_count() FROM PUBLIC;
+    COMMIT;
+  SQL
+  runtime_sql = <<~SQL
+    BEGIN;
+    CREATE TEMP TABLE atlas_query_security_observation(plan jsonb, visible_rows integer, tenant_escape_denied boolean DEFAULT false, sqlstate text);
+    INSERT INTO atlas_query_security_observation DEFAULT VALUES;
+    GRANT SELECT, UPDATE ON atlas_query_security_observation TO tenant_app;
+    SET ROLE tenant_app;
+    SELECT set_config('app.tenant_id', '1', true);
+    DO $atlas$
+    DECLARE observed jsonb;
+    DECLARE updated_rows bigint;
+    BEGIN
+      EXECUTE 'EXPLAIN (ANALYZE, BUFFERS, FORMAT JSON) SELECT tenant_id, id FROM tenant_record ORDER BY id' INTO observed;
+      UPDATE atlas_query_security_observation SET plan = observed;
+      GET DIAGNOSTICS updated_rows = ROW_COUNT;
+      IF updated_rows <> 1 THEN
+        RAISE EXCEPTION 'atlas_query_security_observation plan update expected 1 row, got %', updated_rows;
+      END IF;
+    END;
+    $atlas$;
+    DO $atlas$
+    DECLARE updated_rows bigint;
+    BEGIN
+      UPDATE atlas_query_security_observation SET visible_rows = (SELECT count(*)::integer FROM tenant_record);
+      GET DIAGNOSTICS updated_rows = ROW_COUNT;
+      IF updated_rows <> 1 THEN
+        RAISE EXCEPTION 'atlas_query_security_observation visible_rows update expected 1 row, got %', updated_rows;
+      END IF;
+    END;
+    $atlas$;
+    RESET ROLE;
+    SELECT dblink_connect('tenant1', 'host=127.0.0.1 dbname=atlas user=tenant_app password=tenant-atlas options=-capp.tenant_id=1');
+    DO $atlas$
+    DECLARE observed_state text;
+    DECLARE updated_rows bigint;
+    BEGIN
+      PERFORM dblink_exec('tenant1', $q$INSERT INTO tenant_record VALUES (2, 2, 'escape')$q$);
+      RAISE EXCEPTION 'cross-tenant insert unexpectedly allowed';
+    EXCEPTION WHEN insufficient_privilege THEN
+      GET STACKED DIAGNOSTICS observed_state = RETURNED_SQLSTATE;
+      UPDATE atlas_query_security_observation SET tenant_escape_denied = true, sqlstate = observed_state;
+      GET DIAGNOSTICS updated_rows = ROW_COUNT;
+      IF updated_rows <> 1 THEN
+        RAISE EXCEPTION 'atlas_query_security_observation refusal update expected 1 row, got %', updated_rows;
+      END IF;
+      RAISE NOTICE '#{marker}';
+    END;
+    $atlas$;
+    SELECT dblink_disconnect('tenant1');
+    DO $atlas$
+    DECLARE observation_rows bigint;
+    BEGIN
+      SELECT count(*) INTO observation_rows FROM atlas_query_security_observation;
+      IF observation_rows <> 1 THEN
+        RAISE EXCEPTION 'atlas_query_security_observation final cardinality expected 1 row, got %', observation_rows;
+      END IF;
+    END;
+    $atlas$;
+    SELECT json_build_object(
+      'server_version', current_setting('server_version'),
+      'observation_rows', (SELECT count(*)::integer FROM atlas_query_security_observation),
+      'visible_rows', visible_rows,
+      'tenant_escape_denied', tenant_escape_denied,
+      'sqlstate', sqlstate,
+      'password_encryption', current_setting('password_encryption'),
+      'scram_verifier', (SELECT rolpassword LIKE 'SCRAM-SHA-256$%' FROM pg_authid WHERE rolname = 'tenant_app'),
+      'host_rule_rows', COALESCE((
+        SELECT json_agg(json_build_object(
+          'line_number', line_number,
+          'type', type,
+          'database', database,
+          'user_name', user_name,
+          'address', address,
+          'auth_method', auth_method,
+          'error', error
+        ) ORDER BY line_number)
+        FROM pg_hba_file_rules
+        WHERE type LIKE 'host%'
+      ), '[]'::json),
+      'effective_host_rule', COALESCE((
+        SELECT json_build_object(
+          'line_number', line_number,
+          'type', type,
+          'database', database,
+          'user_name', user_name,
+          'address', address,
+          'auth_method', auth_method,
+          'error', error
+        )
+        FROM (
+          SELECT line_number, type, database, user_name, address, auth_method, error
+          FROM pg_hba_file_rules
+          WHERE type LIKE 'host%'
+            AND COALESCE(error, '') = ''
+            AND (database @> ARRAY['atlas']::text[] OR database @> ARRAY['all']::text[])
+            AND (user_name @> ARRAY['tenant_app']::text[] OR user_name @> ARRAY['all']::text[])
+            AND (address = '127.0.0.1' OR address LIKE '127.0.0.1/%' OR address IN ('all', 'samehost'))
+          ORDER BY line_number
+          LIMIT 1
+        ) AS matched_host_rule
+      ), '{}'::json),
+      'host_scram_rule', COALESCE((
+        SELECT auth_method = 'scram-sha-256'
+        FROM (
+          SELECT auth_method
+          FROM pg_hba_file_rules
+          WHERE type LIKE 'host%'
+            AND COALESCE(error, '') = ''
+            AND (database @> ARRAY['atlas']::text[] OR database @> ARRAY['all']::text[])
+            AND (user_name @> ARRAY['tenant_app']::text[] OR user_name @> ARRAY['all']::text[])
+            AND (address = '127.0.0.1' OR address LIKE '127.0.0.1/%' OR address IN ('all', 'samehost'))
+          ORDER BY line_number
+          LIMIT 1
+        ) AS effective_host_auth
+      ), false),
+      'fixed_search_path', (SELECT proconfig @> ARRAY['search_path=pg_catalog, public'] FROM pg_proc WHERE proname = 'secured_row_count'),
+      'oracle_marker', CASE WHEN tenant_escape_denied THEN '#{marker}' ELSE 'ATLAS_SECURITY_FAIL:query.security' END,
+      'plan', plan,
+      'verdict', CASE WHEN (SELECT count(*)::integer FROM atlas_query_security_observation) = 1 AND visible_rows = 1 AND tenant_escape_denied AND sqlstate = '42501'
+        AND current_setting('password_encryption') = 'scram-sha-256'
+        AND (SELECT rolpassword LIKE 'SCRAM-SHA-256$%' FROM pg_authid WHERE rolname = 'tenant_app')
+        AND COALESCE((
+          SELECT auth_method = 'scram-sha-256'
+          FROM (
+            SELECT auth_method
+            FROM pg_hba_file_rules
+            WHERE type LIKE 'host%'
+              AND COALESCE(error, '') = ''
+              AND (database @> ARRAY['atlas']::text[] OR database @> ARRAY['all']::text[])
+              AND (user_name @> ARRAY['tenant_app']::text[] OR user_name @> ARRAY['all']::text[])
+              AND (address = '127.0.0.1' OR address LIKE '127.0.0.1/%' OR address IN ('all', 'samehost'))
+            ORDER BY line_number
+            LIMIT 1
+          ) AS effective_host_auth
+        ), false)
+        AND (SELECT proconfig @> ARRAY['search_path=pg_catalog, public'] FROM pg_proc WHERE proname = 'secured_row_count')
+      THEN 'pass' ELSE 'fail' END
+    )
+    FROM atlas_query_security_observation;
+    ROLLBACK;
+  SQL
+  sql = "#{bootstrap_sql}\n#{runtime_sql}"
+  before_lsn = run!("docker", "exec", container, "psql", "-XAt", "-U", "postgres", "-d", "atlas", "-c", "SELECT pg_current_wal_lsn()").first.strip
+  started_at = Process.clock_gettime(Process::CLOCK_MONOTONIC)
+  bootstrap_command, bootstrap_stdout, bootstrap_stderr, bootstrap_status = psql_capture(container, bootstrap_sql)
+  unless bootstrap_status.success?
+    raise SecurityFailureDiagnostics::ScenarioOracleFailure.new(
+      failed_row: "closure.definitive-domain.query.security.security",
+      target: "query.security",
+      oracle_error: "query.security runtime bootstrap failed: command failed (#{bootstrap_command.join(' ')}): #{bootstrap_stderr}\n#{bootstrap_stdout}",
+      actual_result: SecurityJsonOutput.command_failure_result(
+        phase: "bootstrap",
+        reason: "command-exit-nonzero",
+        command: bootstrap_command,
+        exit_status: bootstrap_status.exitstatus,
+        stdout: bootstrap_stdout,
+        stderr: bootstrap_stderr,
+        marker_present: bootstrap_stdout.include?(marker) || bootstrap_stderr.include?(marker),
+        json_candidate_lines: SecurityJsonOutput.json_candidate_lines(bootstrap_stdout)
+      ),
+      oracle_predicates: {
+        "bootstrap_committed_before_cross_session"=>false,
+        "cross_session_role_visible"=>false
+      }
+    )
+  end
+  runtime_command, runtime_stdout, runtime_stderr, runtime_status = psql_capture(container, runtime_sql)
+  unless runtime_status.success?
+    raise SecurityFailureDiagnostics::ScenarioOracleFailure.new(
+      failed_row: "closure.definitive-domain.query.security.security",
+      target: "query.security",
+      oracle_error: "query.security runtime cross-session refusal failed: command failed (#{runtime_command.join(' ')}): #{runtime_stderr}\n#{runtime_stdout}",
+      actual_result: SecurityJsonOutput.command_failure_result(
+        phase: "cross-session-refusal",
+        reason: "command-exit-nonzero",
+        command: runtime_command,
+        exit_status: runtime_status.exitstatus,
+        stdout: runtime_stdout,
+        stderr: runtime_stderr,
+        marker_present: runtime_stdout.include?(marker) || runtime_stderr.include?(marker),
+        json_candidate_lines: SecurityJsonOutput.json_candidate_lines(runtime_stdout)
+      ),
+      oracle_predicates: {
+        "bootstrap_committed_before_cross_session"=>true,
+        "cross_session_role_visible"=>!runtime_stderr.include?('role "tenant_app" does not exist')
+      }
+    )
+  end
+  result = SecurityJsonOutput.parse_single_json_object!(
+    stdout: runtime_stdout,
+    stderr: runtime_stderr,
+    marker: marker,
+    command: runtime_command,
+    exit_status: runtime_status.exitstatus,
+    failed_row: "closure.definitive-domain.query.security.security",
+    target: "query.security",
+    phase: "json-parse"
+  )
+  stdout = bootstrap_stdout + runtime_stdout
+  stderr = bootstrap_stderr + runtime_stderr
+  after_lsn = run!("docker", "exec", container, "psql", "-XAt", "-U", "postgres", "-d", "atlas", "-c", "SELECT pg_current_wal_lsn()").first.strip
+  predicates = SecurityScenarioOracles.query_security_predicates(result, marker: marker)
+  unless predicates.values.all?
+    raise SecurityFailureDiagnostics::ScenarioOracleFailure.new(
+      failed_row: "closure.definitive-domain.query.security.security",
+      target: "query.security",
+      oracle_error: "query.security security Oracle failed",
+      actual_result: result,
+      oracle_predicates: predicates
+    )
+  end
+  log = run!("docker", "logs", container).join
+  {
+    "sql"=>{"source"=>sql, "stdout"=>stdout, "stderr"=>stderr},
+    "plan"=>result.fetch("plan"),
+    "wal"=>{"before_lsn"=>before_lsn, "after_lsn"=>after_lsn},
+    "log"=>log.lines.grep(/statement:|ATLAS_SECURITY_PASS/).last(40).join,
+    "metric"=>{"elapsed_ms"=>((Process.clock_gettime(Process::CLOCK_MONOTONIC) - started_at) * 1000).round(3), "visible_rows"=>result.fetch("visible_rows")},
+    "oracle_output"=>stdout + stderr,
+    "runtime"=>{"server_versions"=>["18.6"], "containers"=>[container]}
+  }
+end
+
+def query_sql_surface_security_execution(container)
+  marker = "ATLAS_SECURITY_PASS:query.sql-surface"
+  sql = <<~SQL
+    BEGIN;
+    CREATE ROLE atlas_sql_surface_writer LOGIN PASSWORD 'atlas-sql-surface';
+    CREATE TABLE atlas_sql_surface_secure(
+      tenant name NOT NULL,
+      id integer NOT NULL,
+      amount integer NOT NULL CHECK (amount > 0),
+      note text NOT NULL,
+      PRIMARY KEY (tenant, id)
+    );
+    ALTER TABLE atlas_sql_surface_secure ENABLE ROW LEVEL SECURITY;
+    CREATE POLICY atlas_sql_surface_policy ON atlas_sql_surface_secure
+      TO atlas_sql_surface_writer
+      USING (tenant = 'atlas_sql_surface_writer')
+      WITH CHECK (tenant = 'atlas_sql_surface_writer');
+    GRANT SELECT, INSERT ON atlas_sql_surface_secure TO atlas_sql_surface_writer;
+    CREATE TEMP TABLE atlas_sql_surface_observation(
+      plan jsonb,
+      returned_id integer,
+      returned_note text,
+      visible_rows integer,
+      duplicate_key_sqlstate text,
+      check_violation_sqlstate text,
+      security_rejected boolean DEFAULT false
+    );
+    INSERT INTO atlas_sql_surface_observation DEFAULT VALUES;
+    GRANT SELECT, UPDATE ON atlas_sql_surface_observation TO atlas_sql_surface_writer;
+    SET ROLE atlas_sql_surface_writer;
+    DO $atlas$
+    DECLARE updated_rows bigint;
+    BEGIN
+      WITH inserted AS (
+        INSERT INTO atlas_sql_surface_secure(tenant, id, amount, note)
+        VALUES ('atlas_sql_surface_writer', 1, 100, 'created')
+        RETURNING id, note
+      )
+      UPDATE atlas_sql_surface_observation
+      SET returned_id = (SELECT id FROM inserted),
+          returned_note = (SELECT note FROM inserted);
+      GET DIAGNOSTICS updated_rows = ROW_COUNT;
+      IF updated_rows <> 1 THEN
+        RAISE EXCEPTION 'atlas_sql_surface_observation insert/update expected 1 row, got %', updated_rows;
+      END IF;
+      UPDATE atlas_sql_surface_observation
+      SET visible_rows = (SELECT count(*)::integer FROM atlas_sql_surface_secure WHERE tenant = 'atlas_sql_surface_writer');
+      GET DIAGNOSTICS updated_rows = ROW_COUNT;
+      IF updated_rows <> 1 THEN
+        RAISE EXCEPTION 'atlas_sql_surface_observation visible_rows update expected 1 row, got %', updated_rows;
+      END IF;
+    END;
+    $atlas$;
+    DO $atlas$
+    DECLARE observed jsonb;
+    DECLARE updated_rows bigint;
+    BEGIN
+      EXECUTE 'EXPLAIN (ANALYZE, BUFFERS, FORMAT JSON) SELECT id, note FROM atlas_sql_surface_secure WHERE tenant = ''atlas_sql_surface_writer'' ORDER BY id' INTO observed;
+      UPDATE atlas_sql_surface_observation SET plan = observed;
+      GET DIAGNOSTICS updated_rows = ROW_COUNT;
+      IF updated_rows <> 1 THEN
+        RAISE EXCEPTION 'atlas_sql_surface_observation plan update expected 1 row, got %', updated_rows;
+      END IF;
+    END;
+    $atlas$;
+    DO $atlas$
+    DECLARE observed_state text;
+    DECLARE updated_rows bigint;
+    BEGIN
+      BEGIN
+        INSERT INTO atlas_sql_surface_secure(tenant, id, amount, note) VALUES ('atlas_sql_surface_writer', 1, 100, 'duplicate');
+        RAISE EXCEPTION 'duplicate key unexpectedly allowed';
+      EXCEPTION WHEN unique_violation THEN
+        GET STACKED DIAGNOSTICS observed_state = RETURNED_SQLSTATE;
+        UPDATE atlas_sql_surface_observation SET duplicate_key_sqlstate = observed_state;
+        GET DIAGNOSTICS updated_rows = ROW_COUNT;
+        IF updated_rows <> 1 THEN
+          RAISE EXCEPTION 'atlas_sql_surface_observation duplicate update expected 1 row, got %', updated_rows;
+        END IF;
+      END;
+      BEGIN
+        INSERT INTO atlas_sql_surface_secure(tenant, id, amount, note) VALUES ('atlas_sql_surface_writer', 2, -1, 'invalid');
+        RAISE EXCEPTION 'check violation unexpectedly allowed';
+      EXCEPTION WHEN check_violation THEN
+        GET STACKED DIAGNOSTICS observed_state = RETURNED_SQLSTATE;
+        UPDATE atlas_sql_surface_observation SET check_violation_sqlstate = observed_state;
+        GET DIAGNOSTICS updated_rows = ROW_COUNT;
+        IF updated_rows <> 1 THEN
+          RAISE EXCEPTION 'atlas_sql_surface_observation check update expected 1 row, got %', updated_rows;
+        END IF;
+      END;
+      BEGIN
+        INSERT INTO atlas_sql_surface_secure(tenant, id, amount, note) VALUES ('postgres', 2, 100, 'escape');
+        RAISE EXCEPTION 'cross-tenant insert unexpectedly allowed';
+      EXCEPTION WHEN insufficient_privilege THEN
+        UPDATE atlas_sql_surface_observation SET security_rejected = true;
+        GET DIAGNOSTICS updated_rows = ROW_COUNT;
+        IF updated_rows <> 1 THEN
+          RAISE EXCEPTION 'atlas_sql_surface_observation refusal update expected 1 row, got %', updated_rows;
+        END IF;
+        RAISE NOTICE '#{marker}';
+      END;
+    END;
+    $atlas$;
+    RESET ROLE;
+    DO $atlas$
+    DECLARE observation_rows bigint;
+    BEGIN
+      SELECT count(*) INTO observation_rows FROM atlas_sql_surface_observation;
+      IF observation_rows <> 1 THEN
+        RAISE EXCEPTION 'atlas_sql_surface_observation final cardinality expected 1 row, got %', observation_rows;
+      END IF;
+    END;
+    $atlas$;
+    SELECT json_build_object(
+      'server_version', current_setting('server_version'),
+      'observation_rows', (SELECT count(*)::integer FROM atlas_sql_surface_observation),
+      'returned_id', returned_id,
+      'returned_note', returned_note,
+      'visible_rows', visible_rows,
+      'duplicate_key_sqlstate', duplicate_key_sqlstate,
+      'check_violation_sqlstate', check_violation_sqlstate,
+      'policy_tenant', 'atlas_sql_surface_writer',
+      'security_rejected', security_rejected,
+      'oracle_marker', CASE WHEN security_rejected THEN '#{marker}' ELSE 'ATLAS_SECURITY_FAIL:query.sql-surface' END,
+      'plan', plan,
+      'verdict', CASE WHEN (SELECT count(*)::integer FROM atlas_sql_surface_observation) = 1 AND returned_id = 1 AND returned_note = 'created' AND visible_rows = 1
+        AND duplicate_key_sqlstate = '23505' AND check_violation_sqlstate = '23514' AND security_rejected
+      THEN 'pass' ELSE 'fail' END
+    )
+    FROM atlas_sql_surface_observation;
+    ROLLBACK;
+  SQL
+  before_lsn = run!("docker", "exec", container, "psql", "-XAt", "-U", "postgres", "-d", "atlas", "-c", "SELECT pg_current_wal_lsn()").first.strip
+  started_at = Process.clock_gettime(Process::CLOCK_MONOTONIC)
+  result, stdout, stderr = psql_json_execution_for_row!(
+    container: container,
+    sql: sql,
+    marker: marker,
+    failed_row: "closure.definitive-domain.query.sql-surface.security",
+    target: "query.sql-surface",
+    phase: "runtime"
+  )
+  after_lsn = run!("docker", "exec", container, "psql", "-XAt", "-U", "postgres", "-d", "atlas", "-c", "SELECT pg_current_wal_lsn()").first.strip
+  predicates = SecurityScenarioOracles.query_sql_surface_predicates(result, marker: marker)
+  unless predicates.values.all?
+    raise SecurityFailureDiagnostics::ScenarioOracleFailure.new(
+      failed_row: "closure.definitive-domain.query.sql-surface.security",
+      target: "query.sql-surface",
+      oracle_error: "query.sql-surface security Oracle failed",
+      actual_result: result,
+      oracle_predicates: predicates
+    )
+  end
+  log = run!("docker", "logs", container).join
+  {
+    "sql"=>{"source"=>sql, "stdout"=>stdout, "stderr"=>stderr},
+    "plan"=>result.fetch("plan"),
+    "wal"=>{"before_lsn"=>before_lsn, "after_lsn"=>after_lsn},
+    "log"=>log.lines.grep(/statement:|ATLAS_SECURITY_PASS/).last(40).join,
+    "metric"=>{"elapsed_ms"=>((Process.clock_gettime(Process::CLOCK_MONOTONIC) - started_at) * 1000).round(3), "visible_rows"=>result.fetch("visible_rows")},
+    "oracle_output"=>stdout + stderr,
+    "runtime"=>{"server_versions"=>["18.6"], "containers"=>[container]}
+  }
+end
+
+def query_types_constraints_security_execution(container)
+  marker = "ATLAS_SECURITY_PASS:query.types-constraints"
+  sql = <<~SQL
+    BEGIN;
+    CREATE ROLE atlas_typed_order_writer LOGIN PASSWORD 'atlas-types';
+    CREATE DOMAIN positive_money AS numeric(12,2) CHECK (VALUE > 0);
+    CREATE TYPE order_status AS ENUM ('draft', 'confirmed', 'cancelled');
+    CREATE TABLE atlas_typed_order_secure(
+      tenant name NOT NULL,
+      id uuid PRIMARY KEY DEFAULT uuidv7(),
+      status order_status NOT NULL,
+      amount positive_money NOT NULL,
+      tags text[] NOT NULL CHECK (cardinality(tags) > 0),
+      metadata jsonb NOT NULL CHECK (jsonb_typeof(metadata) = 'object'),
+      valid_during tstzrange NOT NULL CHECK (NOT isempty(valid_during)),
+      service_days datemultirange NOT NULL,
+      client_network inet NOT NULL,
+      display_name text GENERATED ALWAYS AS (metadata ->> 'name') STORED
+    );
+    ALTER TABLE atlas_typed_order_secure ENABLE ROW LEVEL SECURITY;
+    CREATE POLICY atlas_typed_order_policy ON atlas_typed_order_secure
+      TO atlas_typed_order_writer
+      USING (tenant = 'atlas_typed_order_writer')
+      WITH CHECK (tenant = 'atlas_typed_order_writer');
+    GRANT SELECT, INSERT ON atlas_typed_order_secure TO atlas_typed_order_writer;
+    CREATE TEMP TABLE atlas_typed_order_observation(
+      plan jsonb,
+      row_count integer,
+      uuid_version integer,
+      array_contains boolean,
+      json_path boolean,
+      range_contains boolean,
+      generated_value text,
+      invalid_domain_sqlstate text,
+      security_rejected boolean DEFAULT false
+    );
+    INSERT INTO atlas_typed_order_observation DEFAULT VALUES;
+    GRANT SELECT, UPDATE ON atlas_typed_order_observation TO atlas_typed_order_writer;
+    SET ROLE atlas_typed_order_writer;
+    DO $atlas$
+    DECLARE updated_rows bigint;
+    BEGIN
+      INSERT INTO atlas_typed_order_secure(tenant, status, amount, tags, metadata, valid_during, service_days, client_network)
+      VALUES (
+        'atlas_typed_order_writer', 'confirmed', 1200.00, ARRAY['priority', 'export'], '{"name":"atlas-order","region":"jp"}',
+        tstzrange('2026-08-28 00:00:00+00', '2026-08-29 00:00:00+00', '[)'),
+        datemultirange(daterange('2026-08-28', '2026-08-30', '[)')),
+        '192.0.2.10/24'
+      );
+      UPDATE atlas_typed_order_observation
+      SET row_count = (SELECT count(*)::integer FROM atlas_typed_order_secure WHERE tenant = 'atlas_typed_order_writer'),
+          uuid_version = (SELECT uuid_extract_version(id) FROM atlas_typed_order_secure WHERE tenant = 'atlas_typed_order_writer' LIMIT 1),
+          array_contains = (SELECT bool_and(tags @> ARRAY['priority']) FROM atlas_typed_order_secure WHERE tenant = 'atlas_typed_order_writer'),
+          json_path = (SELECT bool_and(jsonb_path_exists(metadata, '$.region ? (@ == "jp")')) FROM atlas_typed_order_secure WHERE tenant = 'atlas_typed_order_writer'),
+          range_contains = (SELECT bool_and(valid_during @> timestamptz '2026-08-28 12:00:00+00') FROM atlas_typed_order_secure WHERE tenant = 'atlas_typed_order_writer'),
+          generated_value = (SELECT max(display_name) FROM atlas_typed_order_secure WHERE tenant = 'atlas_typed_order_writer');
+      GET DIAGNOSTICS updated_rows = ROW_COUNT;
+      IF updated_rows <> 1 THEN
+        RAISE EXCEPTION 'atlas_typed_order_observation insert/update expected 1 row, got %', updated_rows;
+      END IF;
+    END;
+    $atlas$;
+    DO $atlas$
+    DECLARE observed jsonb;
+    DECLARE updated_rows bigint;
+    BEGIN
+      EXECUTE 'EXPLAIN (ANALYZE, BUFFERS, FORMAT JSON) SELECT tenant, display_name FROM atlas_typed_order_secure WHERE tenant = ''atlas_typed_order_writer''' INTO observed;
+      UPDATE atlas_typed_order_observation SET plan = observed;
+      GET DIAGNOSTICS updated_rows = ROW_COUNT;
+      IF updated_rows <> 1 THEN
+        RAISE EXCEPTION 'atlas_typed_order_observation plan update expected 1 row, got %', updated_rows;
+      END IF;
+    END;
+    $atlas$;
+    DO $atlas$
+    DECLARE observed_state text;
+    DECLARE updated_rows bigint;
+    BEGIN
+      BEGIN
+        INSERT INTO atlas_typed_order_secure(tenant, status, amount, tags, metadata, valid_during, service_days, client_network)
+        VALUES ('atlas_typed_order_writer', 'draft', -1, ARRAY['invalid'], '{}', tstzrange('2026-01-01', '2026-01-02'), '{}', '192.0.2.1');
+        RAISE EXCEPTION 'invalid domain unexpectedly allowed';
+      EXCEPTION WHEN check_violation THEN
+        GET STACKED DIAGNOSTICS observed_state = RETURNED_SQLSTATE;
+        UPDATE atlas_typed_order_observation SET invalid_domain_sqlstate = observed_state;
+        GET DIAGNOSTICS updated_rows = ROW_COUNT;
+        IF updated_rows <> 1 THEN
+          RAISE EXCEPTION 'atlas_typed_order_observation invalid-domain update expected 1 row, got %', updated_rows;
+        END IF;
+      END;
+      BEGIN
+        INSERT INTO atlas_typed_order_secure(tenant, status, amount, tags, metadata, valid_during, service_days, client_network)
+        VALUES ('postgres', 'confirmed', 1, ARRAY['escape'], '{"name":"escape"}', tstzrange('2026-01-01', '2026-01-02'), datemultirange(daterange('2026-01-01', '2026-01-02', '[)')), '192.0.2.20/24');
+        RAISE EXCEPTION 'cross-tenant insert unexpectedly allowed';
+      EXCEPTION WHEN insufficient_privilege THEN
+        UPDATE atlas_typed_order_observation SET security_rejected = true;
+        GET DIAGNOSTICS updated_rows = ROW_COUNT;
+        IF updated_rows <> 1 THEN
+          RAISE EXCEPTION 'atlas_typed_order_observation refusal update expected 1 row, got %', updated_rows;
+        END IF;
+        RAISE NOTICE '#{marker}';
+      END;
+    END;
+    $atlas$;
+    RESET ROLE;
+    DO $atlas$
+    DECLARE observation_rows bigint;
+    BEGIN
+      SELECT count(*) INTO observation_rows FROM atlas_typed_order_observation;
+      IF observation_rows <> 1 THEN
+        RAISE EXCEPTION 'atlas_typed_order_observation final cardinality expected 1 row, got %', observation_rows;
+      END IF;
+    END;
+    $atlas$;
+    SELECT json_build_object(
+      'server_version', current_setting('server_version'),
+      'observation_rows', (SELECT count(*)::integer FROM atlas_typed_order_observation),
+      'row_count', row_count,
+      'uuid_version', uuid_version,
+      'array_contains', array_contains,
+      'json_path', json_path,
+      'range_contains', range_contains,
+      'generated_value', generated_value,
+      'invalid_domain_sqlstate', invalid_domain_sqlstate,
+      'policy_tenant', 'atlas_typed_order_writer',
+      'security_rejected', security_rejected,
+      'oracle_marker', CASE WHEN security_rejected THEN '#{marker}' ELSE 'ATLAS_SECURITY_FAIL:query.types-constraints' END,
+      'plan', plan,
+      'verdict', CASE WHEN (SELECT count(*)::integer FROM atlas_typed_order_observation) = 1 AND row_count = 1 AND uuid_version = 7 AND array_contains AND json_path AND range_contains
+        AND generated_value = 'atlas-order' AND invalid_domain_sqlstate = '23514' AND security_rejected
+      THEN 'pass' ELSE 'fail' END
+    )
+    FROM atlas_typed_order_observation;
+    ROLLBACK;
+  SQL
+  before_lsn = run!("docker", "exec", container, "psql", "-XAt", "-U", "postgres", "-d", "atlas", "-c", "SELECT pg_current_wal_lsn()").first.strip
+  started_at = Process.clock_gettime(Process::CLOCK_MONOTONIC)
+  result, stdout, stderr = psql_json_execution_for_row!(
+    container: container,
+    sql: sql,
+    marker: marker,
+    failed_row: "closure.definitive-domain.query.types-constraints.security",
+    target: "query.types-constraints",
+    phase: "runtime"
+  )
+  after_lsn = run!("docker", "exec", container, "psql", "-XAt", "-U", "postgres", "-d", "atlas", "-c", "SELECT pg_current_wal_lsn()").first.strip
+  predicates = SecurityScenarioOracles.query_types_constraints_predicates(result, marker: marker)
+  unless predicates.values.all?
+    raise SecurityFailureDiagnostics::ScenarioOracleFailure.new(
+      failed_row: "closure.definitive-domain.query.types-constraints.security",
+      target: "query.types-constraints",
+      oracle_error: "query.types-constraints security Oracle failed",
+      actual_result: result,
+      oracle_predicates: predicates
+    )
+  end
+  log = run!("docker", "logs", container).join
+  {
+    "sql"=>{"source"=>sql, "stdout"=>stdout, "stderr"=>stderr},
+    "plan"=>result.fetch("plan"),
+    "wal"=>{"before_lsn"=>before_lsn, "after_lsn"=>after_lsn},
+    "log"=>log.lines.grep(/statement:|ATLAS_SECURITY_PASS/).last(40).join,
+    "metric"=>{"elapsed_ms"=>((Process.clock_gettime(Process::CLOCK_MONOTONIC) - started_at) * 1000).round(3), "row_count"=>result.fetch("row_count")},
+    "oracle_output"=>stdout + stderr,
+    "runtime"=>{"server_versions"=>["18.6"], "containers"=>[container]}
+  }
+end
+
 def publication_provenance_security_execution
   SecurityPublicationProvenanceContract.verify!
   marker = "ATLAS_SECURITY_PASS:publication.provenance"
@@ -1491,23 +2278,26 @@ def physical_replication_security_execution
 end
 
 def selected_security_patterns(plan)
-  SecurityRuntimeReadinessContract.verify_runnable!(plan: plan)
+  runtime_preflight = SecurityRuntimeReadinessContract.evaluate_live_preflight!(plan: plan)
+  SecurityRuntimeReadinessContract.verify_runnable!(plan: plan, preflight: runtime_preflight)
   SecurityNextTrancheContract.verify!(plan: plan)
+  SecurityNextTrancheRowContracts.verify!
   pattern_ids = SecurityScenarioTranche.runtime_pattern_ids(plan)
   missing_patterns = pattern_ids.reject { |pattern_id| PATTERNS.key?(pattern_id) }
   raise "security runtime definitions missing: #{missing_patterns.join(', ')}" unless missing_patterns.empty?
 
-  pattern_ids.to_h do |pattern_id|
+  selected = pattern_ids.to_h do |pattern_id|
     [pattern_id, PATTERNS.fetch(pattern_id)]
   end
+  [selected, runtime_preflight]
 end
 
-selected_patterns = selected_security_patterns(SecurityScenarioTranche.load_plan)
+selected_patterns, runtime_preflight = selected_security_patterns(SecurityScenarioTranche.load_plan)
 container = "pg-atlas-security-#{Process.pid}-#{SecureRandom.hex(3)}"
 started = false
 begin
   run!("docker", "run", "--detach", "--rm", "--name", container,
-       "--env", "POSTGRES_HOST_AUTH_METHOD=trust", "--env", "POSTGRES_DB=atlas",
+       "--env", "POSTGRES_PASSWORD=#{ROOT_POSTGRES_PASSWORD}", "--env", "POSTGRES_INITDB_ARGS=#{ROOT_POSTGRES_INITDB_ARGS}", "--env", "POSTGRES_DB=atlas",
        IMAGE, "-c", "log_statement=all")
   started = true
   wait_for_postgres(container)
@@ -1559,6 +2349,10 @@ begin
                     when "publication-provenance-security" then publication_provenance_security_execution
                     when "catalog-inventory-security" then catalog_inventory_security_execution(container)
                     when "bundled-extension-security" then bundled_extension_security_execution(container)
+                    when "query-partitioning-security" then query_partitioning_security_execution(container)
+                    when "query-security" then query_security_security_execution(container)
+                    when "query-sql-surface-security" then query_sql_surface_security_execution(container)
+                    when "query-types-constraints-security" then query_types_constraints_security_execution(container)
                     when "pitr-recovery" then pitr_security_execution
                     when "physical-replication" then physical_replication_security_execution
                     else default_execution(container, definition)
@@ -1590,11 +2384,12 @@ begin
           "screenshot"=>{"path"=>final_observation, "digest"=>digest_file(observation_path), "bytes"=>File.size(observation_path)}
         }
       end
+      report_environment = environment.merge("runtime_preflight"=>runtime_preflight)
       report = {
         "schema_version"=>1, "id"=>"postgresql-pattern-scenario-runtime-v1", "created_at"=>Time.now.utc.iso8601,
         "status"=>"passed", "command"=>"ruby tools/run-scenario-security-001.rb", "profile"=>"real-postgresql-18.6-container",
         "counts"=>{"rows"=>selected_patterns.length, "variants"=>selected_patterns.length, "total"=>selected_patterns.length, "passed"=>selected_patterns.length, "failed"=>0, "flaky"=>0, "skipped"=>0},
-        "source_digest"=>source_digest, "harness_digest"=>harness_digest, "environment"=>environment,
+        "source_digest"=>source_digest, "harness_digest"=>harness_digest, "environment"=>report_environment,
         "retention_contract"=>{"publish_on"=>"full-run-passed", "failed_run"=>"retain-prior-success", "swap"=>"staged-directory-rename-with-rollback"},
         "tests"=>tests
       }

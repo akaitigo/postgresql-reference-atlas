@@ -1,0 +1,178 @@
+{
+  "schema_version": 1,
+  "pattern_id": "definitive-domain.query.sql-surface",
+  "target_id": "query.sql-surface",
+  "scenario": "security",
+  "variant_id": "postgresql-verification-matrix-v2",
+  "environment": {
+    "subject": "PostgreSQL",
+    "server_product": "PostgreSQL",
+    "server_version": "18.6",
+    "server_version_num": "180006",
+    "client_product": "psql",
+    "client_version": "psql (PostgreSQL) 18.6",
+    "runtime_image": "postgres:18.6-alpine",
+    "runtime_identity": "pg-atlas-security-68614-b1cef5",
+    "workers": 1,
+    "retries": 0,
+    "trace_mode": "on",
+    "execution_mode": "real-postgresql-server-client",
+    "row_runtime": {
+      "server_versions": [
+        "18.6"
+      ],
+      "containers": [
+        "pg-atlas-security-68614-b1cef5"
+      ]
+    }
+  },
+  "sql": {
+    "source": "BEGIN;\nCREATE ROLE atlas_sql_surface_writer LOGIN PASSWORD 'atlas-sql-surface';\nCREATE TABLE atlas_sql_surface_secure(\n  tenant name NOT NULL,\n  id integer NOT NULL,\n  amount integer NOT NULL CHECK (amount > 0),\n  note text NOT NULL,\n  PRIMARY KEY (tenant, id)\n);\nALTER TABLE atlas_sql_surface_secure ENABLE ROW LEVEL SECURITY;\nCREATE POLICY atlas_sql_surface_policy ON atlas_sql_surface_secure\n  TO atlas_sql_surface_writer\n  USING (tenant = 'atlas_sql_surface_writer')\n  WITH CHECK (tenant = 'atlas_sql_surface_writer');\nGRANT SELECT, INSERT ON atlas_sql_surface_secure TO atlas_sql_surface_writer;\nCREATE TEMP TABLE atlas_sql_surface_observation(\n  plan jsonb,\n  returned_id integer,\n  returned_note text,\n  visible_rows integer,\n  duplicate_key_sqlstate text,\n  check_violation_sqlstate text,\n  security_rejected boolean DEFAULT false\n);\nINSERT INTO atlas_sql_surface_observation DEFAULT VALUES;\nGRANT SELECT, UPDATE ON atlas_sql_surface_observation TO atlas_sql_surface_writer;\nSET ROLE atlas_sql_surface_writer;\nDO $atlas$\nDECLARE updated_rows bigint;\nBEGIN\n  WITH inserted AS (\n    INSERT INTO atlas_sql_surface_secure(tenant, id, amount, note)\n    VALUES ('atlas_sql_surface_writer', 1, 100, 'created')\n    RETURNING id, note\n  )\n  UPDATE atlas_sql_surface_observation\n  SET returned_id = (SELECT id FROM inserted),\n      returned_note = (SELECT note FROM inserted);\n  GET DIAGNOSTICS updated_rows = ROW_COUNT;\n  IF updated_rows <> 1 THEN\n    RAISE EXCEPTION 'atlas_sql_surface_observation insert/update expected 1 row, got %', updated_rows;\n  END IF;\n  UPDATE atlas_sql_surface_observation\n  SET visible_rows = (SELECT count(*)::integer FROM atlas_sql_surface_secure WHERE tenant = 'atlas_sql_surface_writer');\n  GET DIAGNOSTICS updated_rows = ROW_COUNT;\n  IF updated_rows <> 1 THEN\n    RAISE EXCEPTION 'atlas_sql_surface_observation visible_rows update expected 1 row, got %', updated_rows;\n  END IF;\nEND;\n$atlas$;\nDO $atlas$\nDECLARE observed jsonb;\nDECLARE updated_rows bigint;\nBEGIN\n  EXECUTE 'EXPLAIN (ANALYZE, BUFFERS, FORMAT JSON) SELECT id, note FROM atlas_sql_surface_secure WHERE tenant = ''atlas_sql_surface_writer'' ORDER BY id' INTO observed;\n  UPDATE atlas_sql_surface_observation SET plan = observed;\n  GET DIAGNOSTICS updated_rows = ROW_COUNT;\n  IF updated_rows <> 1 THEN\n    RAISE EXCEPTION 'atlas_sql_surface_observation plan update expected 1 row, got %', updated_rows;\n  END IF;\nEND;\n$atlas$;\nDO $atlas$\nDECLARE observed_state text;\nDECLARE updated_rows bigint;\nBEGIN\n  BEGIN\n    INSERT INTO atlas_sql_surface_secure(tenant, id, amount, note) VALUES ('atlas_sql_surface_writer', 1, 100, 'duplicate');\n    RAISE EXCEPTION 'duplicate key unexpectedly allowed';\n  EXCEPTION WHEN unique_violation THEN\n    GET STACKED DIAGNOSTICS observed_state = RETURNED_SQLSTATE;\n    UPDATE atlas_sql_surface_observation SET duplicate_key_sqlstate = observed_state;\n    GET DIAGNOSTICS updated_rows = ROW_COUNT;\n    IF updated_rows <> 1 THEN\n      RAISE EXCEPTION 'atlas_sql_surface_observation duplicate update expected 1 row, got %', updated_rows;\n    END IF;\n  END;\n  BEGIN\n    INSERT INTO atlas_sql_surface_secure(tenant, id, amount, note) VALUES ('atlas_sql_surface_writer', 2, -1, 'invalid');\n    RAISE EXCEPTION 'check violation unexpectedly allowed';\n  EXCEPTION WHEN check_violation THEN\n    GET STACKED DIAGNOSTICS observed_state = RETURNED_SQLSTATE;\n    UPDATE atlas_sql_surface_observation SET check_violation_sqlstate = observed_state;\n    GET DIAGNOSTICS updated_rows = ROW_COUNT;\n    IF updated_rows <> 1 THEN\n      RAISE EXCEPTION 'atlas_sql_surface_observation check update expected 1 row, got %', updated_rows;\n    END IF;\n  END;\n  BEGIN\n    INSERT INTO atlas_sql_surface_secure(tenant, id, amount, note) VALUES ('postgres', 2, 100, 'escape');\n    RAISE EXCEPTION 'cross-tenant insert unexpectedly allowed';\n  EXCEPTION WHEN insufficient_privilege THEN\n    UPDATE atlas_sql_surface_observation SET security_rejected = true;\n    GET DIAGNOSTICS updated_rows = ROW_COUNT;\n    IF updated_rows <> 1 THEN\n      RAISE EXCEPTION 'atlas_sql_surface_observation refusal update expected 1 row, got %', updated_rows;\n    END IF;\n    RAISE NOTICE 'ATLAS_SECURITY_PASS:query.sql-surface';\n  END;\nEND;\n$atlas$;\nRESET ROLE;\nDO $atlas$\nDECLARE observation_rows bigint;\nBEGIN\n  SELECT count(*) INTO observation_rows FROM atlas_sql_surface_observation;\n  IF observation_rows <> 1 THEN\n    RAISE EXCEPTION 'atlas_sql_surface_observation final cardinality expected 1 row, got %', observation_rows;\n  END IF;\nEND;\n$atlas$;\nSELECT json_build_object(\n  'server_version', current_setting('server_version'),\n  'observation_rows', (SELECT count(*)::integer FROM atlas_sql_surface_observation),\n  'returned_id', returned_id,\n  'returned_note', returned_note,\n  'visible_rows', visible_rows,\n  'duplicate_key_sqlstate', duplicate_key_sqlstate,\n  'check_violation_sqlstate', check_violation_sqlstate,\n  'policy_tenant', 'atlas_sql_surface_writer',\n  'security_rejected', security_rejected,\n  'oracle_marker', CASE WHEN security_rejected THEN 'ATLAS_SECURITY_PASS:query.sql-surface' ELSE 'ATLAS_SECURITY_FAIL:query.sql-surface' END,\n  'plan', plan,\n  'verdict', CASE WHEN (SELECT count(*)::integer FROM atlas_sql_surface_observation) = 1 AND returned_id = 1 AND returned_note = 'created' AND visible_rows = 1\n    AND duplicate_key_sqlstate = '23505' AND check_violation_sqlstate = '23514' AND security_rejected\n  THEN 'pass' ELSE 'fail' END\n)\nFROM atlas_sql_surface_observation;\nROLLBACK;\n",
+    "stdout": "BEGIN\nCREATE ROLE\nCREATE TABLE\nALTER TABLE\nCREATE POLICY\nGRANT\nCREATE TABLE\nINSERT 0 1\nGRANT\nSET\nDO\nDO\nDO\nRESET\nDO\n{\"server_version\" : \"18.6\", \"observation_rows\" : 1, \"returned_id\" : 1, \"returned_note\" : \"created\", \"visible_rows\" : 1, \"duplicate_key_sqlstate\" : \"23505\", \"check_violation_sqlstate\" : \"23514\", \"policy_tenant\" : \"atlas_sql_surface_writer\", \"security_rejected\" : true, \"oracle_marker\" : \"ATLAS_SECURITY_PASS:query.sql-surface\", \"plan\" : [{\"Plan\": {\"Plans\": [{\"Alias\": \"atlas_sql_surface_secure\", \"Plans\": [{\"Disabled\": false, \"Node Type\": \"Bitmap Index Scan\", \"Plan Rows\": 3, \"Index Cond\": \"(tenant = 'atlas_sql_surface_writer'::name)\", \"Index Name\": \"atlas_sql_surface_secure_pkey\", \"Plan Width\": 0, \"Total Cost\": 4.17, \"Actual Rows\": 1.00, \"Actual Loops\": 1, \"Startup Cost\": 0.00, \"Async Capable\": false, \"Index Searches\": 1, \"Parallel Aware\": false, \"Local Hit Blocks\": 0, \"Temp Read Blocks\": 0, \"Actual Total Time\": 0.001, \"Local Read Blocks\": 0, \"Shared Hit Blocks\": 1, \"Shared Read Blocks\": 0, \"Actual Startup Time\": 0.001, \"Parent Relationship\": \"Outer\", \"Temp Written Blocks\": 0, \"Local Dirtied Blocks\": 0, \"Local Written Blocks\": 0, \"Shared Dirtied Blocks\": 0, \"Shared Written Blocks\": 0}], \"Disabled\": false, \"Node Type\": \"Bitmap Heap Scan\", \"Plan Rows\": 3, \"Plan Width\": 36, \"Total Cost\": 11.28, \"Actual Rows\": 1.00, \"Actual Loops\": 1, \"Recheck Cond\": \"(tenant = 'atlas_sql_surface_writer'::name)\", \"Startup Cost\": 4.17, \"Async Capable\": false, \"Relation Name\": \"atlas_sql_surface_secure\", \"Parallel Aware\": false, \"Local Hit Blocks\": 0, \"Temp Read Blocks\": 0, \"Actual Total Time\": 0.003, \"Exact Heap Blocks\": 1, \"Local Read Blocks\": 0, \"Lossy Heap Blocks\": 0, \"Shared Hit Blocks\": 2, \"Shared Read Blocks\": 0, \"Actual Startup Time\": 0.003, \"Parent Relationship\": \"Outer\", \"Temp Written Blocks\": 0, \"Local Dirtied Blocks\": 0, \"Local Written Blocks\": 0, \"Shared Dirtied Blocks\": 0, \"Shared Written Blocks\": 0, \"Rows Removed by Index Recheck\": 0}], \"Disabled\": false, \"Sort Key\": [\"id\"], \"Node Type\": \"Sort\", \"Plan Rows\": 3, \"Plan Width\": 36, \"Total Cost\": 11.31, \"Actual Rows\": 1.00, \"Sort Method\": \"quicksort\", \"Actual Loops\": 1, \"Startup Cost\": 11.31, \"Async Capable\": false, \"Parallel Aware\": false, \"Sort Space Type\": \"Memory\", \"Sort Space Used\": 25, \"Local Hit Blocks\": 0, \"Temp Read Blocks\": 0, \"Actual Total Time\": 0.007, \"Local Read Blocks\": 0, \"Shared Hit Blocks\": 2, \"Shared Read Blocks\": 0, \"Actual Startup Time\": 0.007, \"Temp Written Blocks\": 0, \"Local Dirtied Blocks\": 0, \"Local Written Blocks\": 0, \"Shared Dirtied Blocks\": 0, \"Shared Written Blocks\": 0}, \"Planning\": {\"Local Hit Blocks\": 0, \"Temp Read Blocks\": 0, \"Local Read Blocks\": 0, \"Shared Hit Blocks\": 11, \"Shared Read Blocks\": 0, \"Temp Written Blocks\": 0, \"Local Dirtied Blocks\": 0, \"Local Written Blocks\": 0, \"Shared Dirtied Blocks\": 0, \"Shared Written Blocks\": 0}, \"Triggers\": [], \"Planning Time\": 0.088, \"Execution Time\": 0.018}], \"verdict\" : \"pass\"}\nROLLBACK\n",
+    "stderr": "NOTICE:  ATLAS_SECURITY_PASS:query.sql-surface\n"
+  },
+  "plan": [
+    {
+      "Plan": {
+        "Plans": [
+          {
+            "Alias": "atlas_sql_surface_secure",
+            "Plans": [
+              {
+                "Disabled": false,
+                "Node Type": "Bitmap Index Scan",
+                "Plan Rows": 3,
+                "Index Cond": "(tenant = 'atlas_sql_surface_writer'::name)",
+                "Index Name": "atlas_sql_surface_secure_pkey",
+                "Plan Width": 0,
+                "Total Cost": 4.17,
+                "Actual Rows": 1.0,
+                "Actual Loops": 1,
+                "Startup Cost": 0.0,
+                "Async Capable": false,
+                "Index Searches": 1,
+                "Parallel Aware": false,
+                "Local Hit Blocks": 0,
+                "Temp Read Blocks": 0,
+                "Actual Total Time": 0.001,
+                "Local Read Blocks": 0,
+                "Shared Hit Blocks": 1,
+                "Shared Read Blocks": 0,
+                "Actual Startup Time": 0.001,
+                "Parent Relationship": "Outer",
+                "Temp Written Blocks": 0,
+                "Local Dirtied Blocks": 0,
+                "Local Written Blocks": 0,
+                "Shared Dirtied Blocks": 0,
+                "Shared Written Blocks": 0
+              }
+            ],
+            "Disabled": false,
+            "Node Type": "Bitmap Heap Scan",
+            "Plan Rows": 3,
+            "Plan Width": 36,
+            "Total Cost": 11.28,
+            "Actual Rows": 1.0,
+            "Actual Loops": 1,
+            "Recheck Cond": "(tenant = 'atlas_sql_surface_writer'::name)",
+            "Startup Cost": 4.17,
+            "Async Capable": false,
+            "Relation Name": "atlas_sql_surface_secure",
+            "Parallel Aware": false,
+            "Local Hit Blocks": 0,
+            "Temp Read Blocks": 0,
+            "Actual Total Time": 0.003,
+            "Exact Heap Blocks": 1,
+            "Local Read Blocks": 0,
+            "Lossy Heap Blocks": 0,
+            "Shared Hit Blocks": 2,
+            "Shared Read Blocks": 0,
+            "Actual Startup Time": 0.003,
+            "Parent Relationship": "Outer",
+            "Temp Written Blocks": 0,
+            "Local Dirtied Blocks": 0,
+            "Local Written Blocks": 0,
+            "Shared Dirtied Blocks": 0,
+            "Shared Written Blocks": 0,
+            "Rows Removed by Index Recheck": 0
+          }
+        ],
+        "Disabled": false,
+        "Sort Key": [
+          "id"
+        ],
+        "Node Type": "Sort",
+        "Plan Rows": 3,
+        "Plan Width": 36,
+        "Total Cost": 11.31,
+        "Actual Rows": 1.0,
+        "Sort Method": "quicksort",
+        "Actual Loops": 1,
+        "Startup Cost": 11.31,
+        "Async Capable": false,
+        "Parallel Aware": false,
+        "Sort Space Type": "Memory",
+        "Sort Space Used": 25,
+        "Local Hit Blocks": 0,
+        "Temp Read Blocks": 0,
+        "Actual Total Time": 0.007,
+        "Local Read Blocks": 0,
+        "Shared Hit Blocks": 2,
+        "Shared Read Blocks": 0,
+        "Actual Startup Time": 0.007,
+        "Temp Written Blocks": 0,
+        "Local Dirtied Blocks": 0,
+        "Local Written Blocks": 0,
+        "Shared Dirtied Blocks": 0,
+        "Shared Written Blocks": 0
+      },
+      "Planning": {
+        "Local Hit Blocks": 0,
+        "Temp Read Blocks": 0,
+        "Local Read Blocks": 0,
+        "Shared Hit Blocks": 11,
+        "Shared Read Blocks": 0,
+        "Temp Written Blocks": 0,
+        "Local Dirtied Blocks": 0,
+        "Local Written Blocks": 0,
+        "Shared Dirtied Blocks": 0,
+        "Shared Written Blocks": 0
+      },
+      "Triggers": [
+
+      ],
+      "Planning Time": 0.088,
+      "Execution Time": 0.018
+    }
+  ],
+  "wal": {
+    "before_lsn": "0/BBAC000",
+    "after_lsn": "0/BBB6000"
+  },
+  "log": "2026-08-31 14:48:09.520 UTC [541] LOG:  statement: BEGIN;\n2026-08-31 14:48:09.520 UTC [541] LOG:  statement: CREATE TEMP TABLE atlas_query_security_observation(plan jsonb, visible_rows integer, tenant_escape_denied boolean DEFAULT false, sqlstate text);\n2026-08-31 14:48:09.522 UTC [541] LOG:  statement: INSERT INTO atlas_query_security_observation DEFAULT VALUES;\n2026-08-31 14:48:09.522 UTC [541] LOG:  statement: GRANT SELECT, UPDATE ON atlas_query_security_observation TO tenant_app;\n2026-08-31 14:48:09.523 UTC [541] LOG:  statement: SET ROLE tenant_app;\n2026-08-31 14:48:09.523 UTC [541] LOG:  statement: SELECT set_config('app.tenant_id', '1', true);\n2026-08-31 14:48:09.523 UTC [541] LOG:  statement: DO $atlas$\n2026-08-31 14:48:09.526 UTC [541] LOG:  statement: DO $atlas$\n2026-08-31 14:48:09.526 UTC [541] LOG:  statement: RESET ROLE;\n2026-08-31 14:48:09.527 UTC [541] LOG:  statement: SELECT dblink_connect('tenant1', 'host=127.0.0.1 dbname=atlas user=tenant_app password=tenant-atlas options=-capp.tenant_id=1');\n2026-08-31 14:48:09.535 UTC [541] LOG:  statement: DO $atlas$\n\t  RAISE NOTICE 'ATLAS_SECURITY_PASS:query.security';\n2026-08-31 14:48:09.536 UTC [542] LOG:  statement: INSERT INTO tenant_record VALUES (2, 2, 'escape')\n2026-08-31 14:48:09.537 UTC [541] LOG:  statement: SELECT dblink_disconnect('tenant1');\n2026-08-31 14:48:09.537 UTC [541] LOG:  statement: DO $atlas$\n2026-08-31 14:48:09.538 UTC [541] LOG:  statement: SELECT json_build_object(\n\t  'oracle_marker', CASE WHEN tenant_escape_denied THEN 'ATLAS_SECURITY_PASS:query.security' ELSE 'ATLAS_SECURITY_FAIL:query.security' END,\n2026-08-31 14:48:09.541 UTC [541] LOG:  statement: ROLLBACK;\n2026-08-31 14:48:09.608 UTC [549] LOG:  statement: SELECT pg_current_wal_lsn()\n2026-08-31 14:48:09.714 UTC [556] LOG:  statement: SELECT pg_current_wal_lsn()\n2026-08-31 14:48:09.764 UTC [563] LOG:  statement: BEGIN;\n2026-08-31 14:48:09.765 UTC [563] LOG:  statement: CREATE ROLE atlas_sql_surface_writer LOGIN PASSWORD 'atlas-sql-surface';\n2026-08-31 14:48:09.769 UTC [563] LOG:  statement: CREATE TABLE atlas_sql_surface_secure(\n2026-08-31 14:48:09.775 UTC [563] LOG:  statement: ALTER TABLE atlas_sql_surface_secure ENABLE ROW LEVEL SECURITY;\n2026-08-31 14:48:09.775 UTC [563] LOG:  statement: CREATE POLICY atlas_sql_surface_policy ON atlas_sql_surface_secure\n2026-08-31 14:48:09.775 UTC [563] LOG:  statement: GRANT SELECT, INSERT ON atlas_sql_surface_secure TO atlas_sql_surface_writer;\n2026-08-31 14:48:09.776 UTC [563] LOG:  statement: CREATE TEMP TABLE atlas_sql_surface_observation(\n2026-08-31 14:48:09.778 UTC [563] LOG:  statement: INSERT INTO atlas_sql_surface_observation DEFAULT VALUES;\n2026-08-31 14:48:09.778 UTC [563] LOG:  statement: GRANT SELECT, UPDATE ON atlas_sql_surface_observation TO atlas_sql_surface_writer;\n2026-08-31 14:48:09.778 UTC [563] LOG:  statement: SET ROLE atlas_sql_surface_writer;\n2026-08-31 14:48:09.778 UTC [563] LOG:  statement: DO $atlas$\n2026-08-31 14:48:09.781 UTC [563] LOG:  statement: DO $atlas$\n2026-08-31 14:48:09.782 UTC [563] LOG:  statement: DO $atlas$\n\t    RAISE NOTICE 'ATLAS_SECURITY_PASS:query.sql-surface';\n2026-08-31 14:48:09.783 UTC [563] LOG:  statement: RESET ROLE;\n2026-08-31 14:48:09.783 UTC [563] LOG:  statement: DO $atlas$\n2026-08-31 14:48:09.783 UTC [563] LOG:  statement: SELECT json_build_object(\n\t  'oracle_marker', CASE WHEN security_rejected THEN 'ATLAS_SECURITY_PASS:query.sql-surface' ELSE 'ATLAS_SECURITY_FAIL:query.sql-surface' END,\n2026-08-31 14:48:09.784 UTC [563] LOG:  statement: ROLLBACK;\n2026-08-31 14:48:09.847 UTC [570] LOG:  statement: SELECT pg_current_wal_lsn()\n",
+  "metric": {
+    "elapsed_ms": 163.65,
+    "visible_rows": 1
+  },
+  "oracle": {
+    "kind": "returning-constraint-sqlstate-and-cross-tenant-refusal",
+    "scenario": "security",
+    "marker": "ATLAS_SECURITY_PASS:query.sql-surface",
+    "passed": true
+  },
+  "streams": {
+    "action": [
+      "psql security transaction"
+    ],
+    "network": [
+      "psql-to-PostgreSQL-session"
+    ],
+    "resource": [
+      "SQL",
+      "plan",
+      "WAL",
+      "server-log",
+      "elapsed-metric"
+    ]
+  }
+}

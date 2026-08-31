@@ -3,16 +3,22 @@
 
 require "json"
 require_relative "../tools/lib/security_next_tranche_contract"
+require_relative "../tools/lib/security_next_tranche_row_contracts"
 
 plan = SecurityScenarioTranche.load_plan
 SecurityNextTrancheContract.verify!(plan: plan)
 source = File.read(File.expand_path("../tools/run-scenario-security-001.rb", __dir__))
 abort "security runner must bind next tranche contract preflight" unless source.include?('require_relative "lib/security_next_tranche_contract"') && source.include?("SecurityNextTrancheContract.verify!(plan: plan)")
+abort "security runner must bind next tranche row contracts preflight" unless source.include?('require_relative "lib/security_next_tranche_row_contracts"') && source.include?("SecurityNextTrancheRowContracts.verify!")
 abort "security runner must fail closed on missing next tranche definitions" unless source.include?('raise "security runtime definitions missing:')
 
 contract = SecurityNextTrancheContract.contract
-abort "next tranche contract row_ids drifted" unless contract.fetch("row_ids") == plan.dig("next_tranche", "row_ids")
+row_contracts = SecurityNextTrancheRowContracts.contracts
+completed_ids = plan.fetch("completed_rows").map { |row| SecurityScenarioTranche.row_id_for(row.fetch("pattern_id")) }
+abort "next tranche contract row_ids drifted" unless contract.fetch("row_ids") == SecurityScenarioTranche.expected_latest_runtime_row_ids
+abort "next tranche contract must stay bound to the completed suite" unless (contract.fetch("row_ids") - completed_ids).empty?
 abort "next tranche contract must stay exact 4 rows" unless contract.fetch("pattern_rows") == 4 && contract.fetch("variant_runs") == 4
+abort "next tranche row contracts must stay exact 4 rows" unless row_contracts.length == 4
 abort "next tranche command drifted" unless contract.fetch("command") == SecurityNextTrancheContract::COMMAND
 abort "next tranche attempt policy drifted" unless SecurityNextTrancheContract::ATTEMPT_POLICY == {"workers"=>1, "retries"=>0, "first_attempt_only"=>true}
 abort "next tranche publication policy drifted" unless SecurityNextTrancheContract::PUBLICATION_POLICY == {
@@ -74,4 +80,4 @@ rescue RuntimeError => e
   raise unless e.message.include?("diagnostic policy drifted")
 end
 
-puts "Next security tranche contractを検証しました: exact planned 4 rows, command/publication/diagnostic policies, and deletion/reorder/retry/append-only weakening rejected"
+puts "Security runtime tranche contractを検証しました: completed query 4-row contract remains fixed, bound to the completed suite, and command/publication/diagnostic weakening is rejected"

@@ -205,8 +205,8 @@ errors << "Scenario Closure risk order" unless closure_plan_policy.fetch("risk_o
 errors << "Scenario Closure tranche size" unless closure_plan_policy.fetch("maximum_pattern_rows_per_tranche") == 4
 errors << "Scenario Closure Subject denominator" unless closure_plan_policy.fetch("derive_counts_from_postgresql_denominator") == true && closure_plan_policy.fetch("transplant_frontend_absolute_counts") == false
 closure_plan_summary = scenario_closure_plan.fetch("summary")
-errors << "PostgreSQL Scenario Closure Plan denominator" unless closure_plan_summary.fetch("remaining_rows") == remaining_row_count && closure_plan_summary.fetch("completed_dedicated_rows") == closed_row_count && closure_plan_summary.fetch("planned_tranches") == 74
-errors << "PostgreSQL Scenario Closure Plan next tranche" unless scenario_closure_plan.dig("next_tranche", "id") == "security-001" && scenario_closure_plan.fetch("tranches").all? { |tranche| tranche.fetch("pattern_rows") <= 4 }
+errors << "PostgreSQL Scenario Closure Plan denominator" unless closure_plan_summary.fetch("remaining_rows") == remaining_row_count && closure_plan_summary.fetch("completed_dedicated_rows") == closed_row_count && closure_plan_summary.fetch("planned_tranches") == 73
+errors << "PostgreSQL Scenario Closure Plan next tranche" unless scenario_closure_plan.dig("next_tranche", "id") == "security-001" && scenario_closure_plan.dig("next_tranche", "row_ids") == SecurityScenarioTranche.expected_row_ids && scenario_closure_plan.fetch("tranches").all? { |tranche| tranche.fetch("pattern_rows") <= 4 }
 
 atomic_contract = mapping.fetch("atomic_scenario_evidence_publishing")
 atomic_reference = atomic_contract.fetch("reference")

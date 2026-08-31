@@ -122,11 +122,62 @@
       "client_product": "psql",
       "client_version": "psql (PostgreSQL) 18.6",
       "runtime_image": "postgres:18.6-alpine",
-      "runtime_identity": "pg-atlas-security-93406-4e4e8d",
+      "runtime_identity": "pg-atlas-security-68614-b1cef5",
       "workers": 1,
       "retries": 0,
       "trace_mode": "on",
-      "execution_mode": "real-postgresql-server-client"
+      "execution_mode": "real-postgresql-server-client",
+      "runtime_preflight": {
+        "schema_version": 1,
+        "kind": "postgresql-security-runtime-preflight-v1",
+        "tranche_id": "security-001",
+        "scenario": "security",
+        "command": "ruby tools/run-scenario-security-001.rb",
+        "attempt_policy": {
+          "workers": 1,
+          "retries": 0,
+          "first_attempt_only": true
+        },
+        "publication_policy": {
+          "publish_on": "full-run-passed",
+          "failed_run": "retain-prior-success",
+          "swap": "staged-directory-rename-with-rollback"
+        },
+        "row_ids": [
+          "closure.definitive-domain.query.partitioning.security",
+          "closure.definitive-domain.query.security.security",
+          "closure.definitive-domain.query.sql-surface.security",
+          "closure.definitive-domain.query.types-constraints.security"
+        ],
+        "expected_outputs": [
+          "artifacts/pattern-scenarios/results.json",
+          "artifacts/pattern-scenarios/traces/definitive-domain_query_partitioning__security__postgresql-verification-matrix-v2.trace.json",
+          "artifacts/pattern-scenarios/traces/definitive-domain_query_security__security__postgresql-verification-matrix-v2.trace.json",
+          "artifacts/pattern-scenarios/traces/definitive-domain_query_sql-surface__security__postgresql-verification-matrix-v2.trace.json",
+          "artifacts/pattern-scenarios/traces/definitive-domain_query_types-constraints__security__postgresql-verification-matrix-v2.trace.json",
+          "artifacts/pattern-scenarios/observations/definitive-domain_query_partitioning__security__postgresql-verification-matrix-v2.observable.json",
+          "artifacts/pattern-scenarios/observations/definitive-domain_query_security__security__postgresql-verification-matrix-v2.observable.json",
+          "artifacts/pattern-scenarios/observations/definitive-domain_query_sql-surface__security__postgresql-verification-matrix-v2.observable.json",
+          "artifacts/pattern-scenarios/observations/definitive-domain_query_types-constraints__security__postgresql-verification-matrix-v2.observable.json"
+        ],
+        "runtime_prerequisites": {
+          "exclusive_heavy_slot_required": true,
+          "minimum_free_gib": 4,
+          "docker_active_containers": 0
+        },
+        "repo_root": "/Users/nakayamaryuuukei/work/private-code/postgresql-reference-atlas",
+        "cwd": "/Users/nakayamaryuuukei/work/private-code/postgresql-reference-atlas",
+        "pid": 68614,
+        "slot_token_env": "PG_ATLAS_EXCLUSIVE_HEAVY_SLOT_TOKEN",
+        "slot_token": "pg-security-001-20260831T1515JST",
+        "measured_at": "2026-08-31T14:45:47Z",
+        "measurements": {
+          "free_gib": 67.34,
+          "docker_active_containers": 0
+        },
+        "status": "ready",
+        "failures": []
+      }
     },
     "scenario_runtime_records": [
       {
@@ -150,7 +201,7 @@
         },
         "trace": {
           "path": "artifacts/pattern-scenarios/traces/definitive-domain_lifecycle_upgrade__security__postgresql-verification-matrix-v2.trace.json",
-          "digest": "sha256:16deec8a2b46ab9321880669322d87f7f1593782bd144ecf4496dc9fce32e37f",
+          "digest": "sha256:6512a2015241fcbd05bbb4e621d126a7c5ffd9d2155b8468ac5fb3acee5da109",
           "bytes": 6740,
           "action_stream": true,
           "network_stream": true,

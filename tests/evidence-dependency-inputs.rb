@@ -32,6 +32,7 @@ def validate_partition!(bindings)
   tools/lib/security_performance_statistics_contract.rb
   tools/lib/security_published_tranche_contract.rb
   tools/lib/security_next_tranche_contract.rb
+  tools/lib/security_next_tranche_row_contracts.rb
   tools/lib/security_runtime_readiness_contract.rb
   tools/lib/security_scenario_tranche.rb
   tools/lib/scenario_closure_plan.rb
@@ -58,6 +59,22 @@ def validate_partition!(bindings)
   tests/security-performance-statistics-contract.rb
   tests/security-published-tranche-contract.rb
   tests/security-next-tranche-contract.rb
+  tests/security-next-tranche-row-contracts.rb
+  tests/security-next-tranche-runtime-implementation.rb
+  tests/security-next-tranche-runtime-hygiene.rb
+  tests/security-next-tranche-oracles.rb
+  tests/security-next-tranche-negative-coverage.rb
+  tests/security-query-partitioning-contract.rb
+  tests/security-query-partitioning-sql-contract.rb
+  tests/security-query-security-contract.rb
+  tests/security-query-security-sql-contract.rb
+  tests/security-query-security-runtime-auth-contract.rb
+  tests/security-query-security-json-contract.rb
+  tests/security-query-sql-surface-contract.rb
+  tests/security-query-sql-surface-sql-contract.rb
+  tests/security-query-types-constraints-contract.rb
+  tests/security-query-types-constraints-sql-contract.rb
+  tests/security-runtime-live-preflight.rb
   tests/security-runtime-readiness-contract.rb
 ].freeze
   control_required.each do |path|
