@@ -1,0 +1,317 @@
+{
+  "document_id": "document-pg-720dafbb19894d8f",
+  "source_ids": [
+    "postgresql-source-rel-18.6"
+  ],
+  "authority_url": "https://github.com/postgres/postgres/tree/REL_18_6",
+  "document_locator": "git:724edf9bde9d356724ad384a2e196edc3c9f80f7:doc/src/sgml/ref/alter_role.sgml",
+  "locked_source_digest": "sha256:873c03070a2e8aae0768fb75d8d6739ae9589681c6cd50839e79d787a7aed222",
+  "locked_body_digest": "sha256:e152bd4b39b2dfbaf2fe15cd90c5b0a16b4a1ad9fb86ce2f09ffb103256d98dd",
+  "fetch": {
+    "status": "matched",
+    "fetched_digest": "sha256:e152bd4b39b2dfbaf2fe15cd90c5b0a16b4a1ad9fb86ce2f09ffb103256d98dd",
+    "locked_digest_match": true,
+    "error_digest": null
+  },
+  "schema_version": 1,
+  "extraction": {
+    "method": "sgml-raw-anchor-selector-v1",
+    "tool": "postgresql-reference-atlas-authority-body-inventory-v1",
+    "tool_digest": "sha256:097da35cf95014735db866fca94f5db07c0717353928b543bcf9c188ae005d2c",
+    "selector_contract": [
+      "document-root",
+      "sgml-id-attribute"
+    ],
+    "selector_exhaustive_for_locked_body": true,
+    "authority_semantics_exhaustive": false,
+    "review_status": "automated-unreviewed",
+    "body_storage": "digest-locator-and-offset-only"
+  },
+  "anchors": [
+    {
+      "id": "anchor-pg-92d35cdfaf5f166f45fe",
+      "locator": "document-root",
+      "locator_kind": "document-root",
+      "raw_selector": "document-root",
+      "element_name": "document",
+      "parent_anchor_id": null,
+      "context_start": 0,
+      "context_end": 13919,
+      "context_unit": "byte",
+      "context_digest": "sha256:e152bd4b39b2dfbaf2fe15cd90c5b0a16b4a1ad9fb86ce2f09ffb103256d98dd",
+      "classification_status": "pending-human",
+      "surface_ids": [
+
+      ],
+      "behavior_ids": [
+
+      ]
+    },
+    {
+      "id": "anchor-pg-8fa4cc160933252cd850",
+      "locator": "#sql-alterrole",
+      "locator_kind": "fragment",
+      "raw_selector": "sgml-id-attribute",
+      "element_name": "refentry",
+      "parent_anchor_id": "anchor-pg-92d35cdfaf5f166f45fe",
+      "context_start": 68,
+      "context_end": 98,
+      "context_unit": "byte",
+      "context_digest": "sha256:5c25a75e61974162d982fd6288bf8b475b0b1c9f41a85d8a200980d034c99153",
+      "classification_status": "pending-human",
+      "surface_ids": [
+
+      ],
+      "behavior_ids": [
+
+      ]
+    },
+    {
+      "id": "anchor-pg-76b3cfd27dd102434fa1",
+      "locator": "#sql-alterrole-desc",
+      "locator_kind": "fragment",
+      "raw_selector": "sgml-id-attribute",
+      "element_name": "refsect1",
+      "parent_anchor_id": "anchor-pg-92d35cdfaf5f166f45fe",
+      "context_start": 2391,
+      "context_end": 2427,
+      "context_unit": "byte",
+      "context_digest": "sha256:d70603df2c28276b02d1220186f1d32a757325323b5e4e5a16eabfee292e4ee4",
+      "classification_status": "pending-human",
+      "surface_ids": [
+
+      ],
+      "behavior_ids": [
+
+      ]
+    },
+    {
+      "id": "anchor-pg-9e408eb77733eddf7efd",
+      "locator": "#sql-alterrole-params",
+      "locator_kind": "fragment",
+      "raw_selector": "sgml-id-attribute",
+      "element_name": "refsect1",
+      "parent_anchor_id": "anchor-pg-92d35cdfaf5f166f45fe",
+      "context_start": 6254,
+      "context_end": 6292,
+      "context_unit": "byte",
+      "context_digest": "sha256:0e6d738df73f5c0b1c7d91f6d0c6e9def850569a46008c3e5a1d5b24f9668907",
+      "classification_status": "pending-human",
+      "surface_ids": [
+
+      ],
+      "behavior_ids": [
+
+      ]
+    },
+    {
+      "id": "anchor-pg-234e5273eb1628aa02ea",
+      "locator": "#sql-alterrole-params-name",
+      "locator_kind": "fragment",
+      "raw_selector": "sgml-id-attribute",
+      "element_name": "varlistentry",
+      "parent_anchor_id": "anchor-pg-92d35cdfaf5f166f45fe",
+      "context_start": 6340,
+      "context_end": 6391,
+      "context_unit": "byte",
+      "context_digest": "sha256:8dfe7a7c48ba1962f54e436c1723c8f9b0b870eef322baad9ca4232dec256264",
+      "classification_status": "pending-human",
+      "surface_ids": [
+
+      ],
+      "behavior_ids": [
+
+      ]
+    },
+    {
+      "id": "anchor-pg-c51a120ac180b7205b09",
+      "locator": "#sql-alterrole-params-current-role",
+      "locator_kind": "fragment",
+      "raw_selector": "sgml-id-attribute",
+      "element_name": "varlistentry",
+      "parent_anchor_id": "anchor-pg-92d35cdfaf5f166f45fe",
+      "context_start": 6611,
+      "context_end": 6670,
+      "context_unit": "byte",
+      "context_digest": "sha256:0f51b06dacf544a31970471fa7ebb178bfd7823e807f7101962b2dfe4bf0cb44",
+      "classification_status": "pending-human",
+      "surface_ids": [
+
+      ],
+      "behavior_ids": [
+
+      ]
+    },
+    {
+      "id": "anchor-pg-46f630f353e759c3911c",
+      "locator": "#sql-alterrole-params-session-user",
+      "locator_kind": "fragment",
+      "raw_selector": "sgml-id-attribute",
+      "element_name": "varlistentry",
+      "parent_anchor_id": "anchor-pg-92d35cdfaf5f166f45fe",
+      "context_start": 6931,
+      "context_end": 6990,
+      "context_unit": "byte",
+      "context_digest": "sha256:97cd27c943c363c2fee65cfc50f3bfb984356944865c5ae2f8246ce85e91c7da",
+      "classification_status": "pending-human",
+      "surface_ids": [
+
+      ],
+      "behavior_ids": [
+
+      ]
+    },
+    {
+      "id": "anchor-pg-5643dd7fb5d8ad0eb4c8",
+      "locator": "#sql-alterrole-params-superuser",
+      "locator_kind": "fragment",
+      "raw_selector": "sgml-id-attribute",
+      "element_name": "varlistentry",
+      "parent_anchor_id": "anchor-pg-92d35cdfaf5f166f45fe",
+      "context_start": 7216,
+      "context_end": 7272,
+      "context_unit": "byte",
+      "context_digest": "sha256:4b527851bc99fd4cadfa8acf98b5a56b2126bed11e71b493aee20a890850f514",
+      "classification_status": "pending-human",
+      "surface_ids": [
+
+      ],
+      "behavior_ids": [
+
+      ]
+    },
+    {
+      "id": "anchor-pg-c19588c5d24cb751d6e0",
+      "locator": "#sql-alterrole-params-new-name",
+      "locator_kind": "fragment",
+      "raw_selector": "sgml-id-attribute",
+      "element_name": "varlistentry",
+      "parent_anchor_id": "anchor-pg-92d35cdfaf5f166f45fe",
+      "context_start": 8661,
+      "context_end": 8716,
+      "context_unit": "byte",
+      "context_digest": "sha256:ca0c74df45833a202ca8b0f268690c4de3b5c803084f4eaf298bf8b0c73dec20",
+      "classification_status": "pending-human",
+      "surface_ids": [
+
+      ],
+      "behavior_ids": [
+
+      ]
+    },
+    {
+      "id": "anchor-pg-f292117d7167910d4a7c",
+      "locator": "#sql-alterrole-params-database-name",
+      "locator_kind": "fragment",
+      "raw_selector": "sgml-id-attribute",
+      "element_name": "varlistentry",
+      "parent_anchor_id": "anchor-pg-92d35cdfaf5f166f45fe",
+      "context_start": 8891,
+      "context_end": 8951,
+      "context_unit": "byte",
+      "context_digest": "sha256:2e66ec00ec8a78f967fc29dd03274b48b8de051ced30eca463642c6ddba7cf60",
+      "classification_status": "pending-human",
+      "surface_ids": [
+
+      ],
+      "behavior_ids": [
+
+      ]
+    },
+    {
+      "id": "anchor-pg-6db89b8605b951b0bd7e",
+      "locator": "#sql-alterrole-params-configuration-parameter",
+      "locator_kind": "fragment",
+      "raw_selector": "sgml-id-attribute",
+      "element_name": "varlistentry",
+      "parent_anchor_id": "anchor-pg-92d35cdfaf5f166f45fe",
+      "context_start": 9185,
+      "context_end": 9255,
+      "context_unit": "byte",
+      "context_digest": "sha256:284b86dde8c3a09a29389b8e8166f0cc01ece540fc77bee0bd0776d95880b9f8",
+      "classification_status": "pending-human",
+      "surface_ids": [
+
+      ],
+      "behavior_ids": [
+
+      ]
+    },
+    {
+      "id": "anchor-pg-943e58f745d1ef982e85",
+      "locator": "#sql-alterrole-notes",
+      "locator_kind": "fragment",
+      "raw_selector": "sgml-id-attribute",
+      "element_name": "refsect1",
+      "parent_anchor_id": "anchor-pg-92d35cdfaf5f166f45fe",
+      "context_start": 10755,
+      "context_end": 10792,
+      "context_unit": "byte",
+      "context_digest": "sha256:a24dd6719d393ede5ce4dbc45a8c9ecae120d17f109897b4f9e7be95b9b3f423",
+      "classification_status": "pending-human",
+      "surface_ids": [
+
+      ],
+      "behavior_ids": [
+
+      ]
+    },
+    {
+      "id": "anchor-pg-0bdecf7c950657a526e3",
+      "locator": "#sql-alterrole-examples",
+      "locator_kind": "fragment",
+      "raw_selector": "sgml-id-attribute",
+      "element_name": "refsect1",
+      "parent_anchor_id": "anchor-pg-92d35cdfaf5f166f45fe",
+      "context_start": 11997,
+      "context_end": 12037,
+      "context_unit": "byte",
+      "context_digest": "sha256:819dd1f2877472c1a72574d2b4f572070289f255bdfb05241324a14f9ee9d1c7",
+      "classification_status": "pending-human",
+      "surface_ids": [
+
+      ],
+      "behavior_ids": [
+
+      ]
+    },
+    {
+      "id": "anchor-pg-6a6adf86f47423fa7170",
+      "locator": "#sql-alterrole-compat",
+      "locator_kind": "fragment",
+      "raw_selector": "sgml-id-attribute",
+      "element_name": "refsect1",
+      "parent_anchor_id": "anchor-pg-92d35cdfaf5f166f45fe",
+      "context_start": 13374,
+      "context_end": 13412,
+      "context_unit": "byte",
+      "context_digest": "sha256:c68065d5d47c2195a9f1b26aadbca8a58c050904fdd94d874d41a8a49219c845",
+      "classification_status": "pending-human",
+      "surface_ids": [
+
+      ],
+      "behavior_ids": [
+
+      ]
+    },
+    {
+      "id": "anchor-pg-e92f13d4cccfe262faec",
+      "locator": "#sql-alterrole-see",
+      "locator_kind": "fragment",
+      "raw_selector": "sgml-id-attribute",
+      "element_name": "refsect1",
+      "parent_anchor_id": "anchor-pg-92d35cdfaf5f166f45fe",
+      "context_start": 13581,
+      "context_end": 13616,
+      "context_unit": "byte",
+      "context_digest": "sha256:40cea8f06b38a2d40249d58da7b493f05fd68ed7dc008ba4217c65e44951d126",
+      "classification_status": "pending-human",
+      "surface_ids": [
+
+      ],
+      "behavior_ids": [
+
+      ]
+    }
+  ]
+}

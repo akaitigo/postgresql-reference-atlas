@@ -5,12 +5,12 @@ claim_ids: [query.catalog-inventory]
 kind: capture
 producer: postgresql-reference-atlas
 command: make lab LAB=catalog-inventory
-created_at: "2026-08-28T07:49:07Z"
+created_at: "2026-08-30T19:45:52Z"
 environment:
   profile: container
   manifest_digest: sha256:3df4dbd82139e17c785348c281f26b54d7300662087baaeec3034acefedf36b9
 source_digest: sha256:7a5097c6130472b193adb30fda89b4a607f1ae00a1ae87dbc1cf22ae5484eaef
-harness_digest: sha256:76018e9feed09db82bae5bbf7a5dc4213dd3f24f8323053edcfe3a3371ea5048
+harness_digest: sha256:e6c137bd9004e1f077a5a3b3d13fe439537178f98c4b617c604148ee7226707c
 harness_path: evidence/harnesses/catalog-inventory.manifest
 artifact:
   uri: evidence/artifacts/catalog-inventory.json

@@ -1,0 +1,85 @@
+{
+  "schema_version": 1,
+  "pattern_id": "definitive-domain.operations.backup-recovery",
+  "target_id": "operations.backup-recovery",
+  "scenario": "security",
+  "variant_id": "postgresql-verification-matrix-v2",
+  "environment": {
+    "subject": "PostgreSQL",
+    "server_product": "PostgreSQL",
+    "server_version": "18.6",
+    "server_version_num": "180006",
+    "client_product": "psql",
+    "client_version": "psql (PostgreSQL) 18.6",
+    "runtime_image": "postgres:18.6-alpine",
+    "runtime_identity": "pg-atlas-security-68614-b1cef5",
+    "workers": 1,
+    "retries": 0,
+    "trace_mode": "on",
+    "execution_mode": "real-postgresql-server-client",
+    "row_runtime": {
+      "server_versions": [
+        "18.6"
+      ],
+      "images": [
+        "postgres:18.6-alpine@sha256:d3e1620b530c944afa6e887d22eb899824da68e19c52024bf98f5220c88a65b2"
+      ],
+      "containers": [
+        "pg-atlas-security-backup-68614-72814e"
+      ],
+      "restored_database": "atlas_restore"
+    }
+  },
+  "sql": {
+    "source": "CREATE ROLE atlas_backup_reader;\nCREATE TABLE atlas_backup_secure(tenant name NOT NULL, payload text NOT NULL);\nALTER TABLE atlas_backup_secure ENABLE ROW LEVEL SECURITY;\nCREATE POLICY atlas_security_policy ON atlas_backup_secure USING (tenant = current_user);\nGRANT SELECT ON atlas_backup_secure TO atlas_backup_reader;\nINSERT INTO atlas_backup_secure VALUES ('atlas_backup_reader', 'visible'), ('postgres', 'hidden');\nSET ROLE atlas_backup_reader;\nSELECT CASE WHEN count(*) = 1 AND min(payload) = 'visible'\n  THEN 'ATLAS_SECURITY_PASS:operations.backup-recovery'\n  ELSE 'ATLAS_SECURITY_FAIL:operations.backup-recovery' END\nFROM atlas_backup_secure;\nDO $$ BEGIN\n  UPDATE atlas_backup_secure SET payload = 'forged';\n  RAISE EXCEPTION 'update unexpectedly allowed';\nEXCEPTION WHEN insufficient_privilege THEN\n  RAISE NOTICE 'ATLAS_SECURITY_PASS:operations.backup-recovery';\nEND $$;\nRESET ROLE;\n",
+    "stdout": "SET\n                      case                      \n------------------------------------------------\n ATLAS_SECURITY_PASS:operations.backup-recovery\n(1 row)\n\nDO\nRESET\n",
+    "stderr": "NOTICE:  ATLAS_SECURITY_PASS:operations.backup-recovery\n"
+  },
+  "plan": [
+    {
+      "Plan": {
+        "Node Type": "Seq Scan",
+        "Parallel Aware": false,
+        "Async Capable": false,
+        "Relation Name": "atlas_backup_secure",
+        "Alias": "atlas_backup_secure",
+        "Startup Cost": 0.0,
+        "Total Cost": 19.75,
+        "Plan Rows": 3,
+        "Plan Width": 96,
+        "Disabled": false,
+        "Filter": "(tenant = CURRENT_USER)"
+      }
+    }
+  ],
+  "wal": {
+    "before_lsn": "0/1BE1710",
+    "after_lsn": "0/2027A28"
+  },
+  "log": "2026-08-31 14:46:15.975 UTC [125] LOG:  statement: EXECUTE getColumnACLs('6100')\n2026-08-31 14:46:15.976 UTC [125] LOG:  statement: COPY public.atlas_backup_secure (tenant, payload) TO stdout;\n2026-08-31 14:46:16.035 UTC [132] LOG:  statement: SELECT pg_catalog.set_config('search_path', '', false);\n2026-08-31 14:46:16.036 UTC [132] LOG:  statement: CREATE DATABASE atlas_restore;\n2026-08-31 14:46:16.147 UTC [139] LOG:  statement: SELECT pg_catalog.set_config('search_path', '', false);\n2026-08-31 14:46:16.147 UTC [139] LOG:  statement: SELECT pg_catalog.set_config('search_path', '', false);\n2026-08-31 14:46:16.148 UTC [139] LOG:  statement: SELECT pg_catalog.pg_is_in_recovery()\n2026-08-31 14:46:16.148 UTC [139] LOG:  statement: --\n2026-08-31 14:46:16.148 UTC [139] LOG:  statement: -- Dumped from database version 18.6\n2026-08-31 14:46:16.148 UTC [139] LOG:  statement: -- Dumped by pg_dump version 18.6\n2026-08-31 14:46:16.148 UTC [139] LOG:  statement: \n2026-08-31 14:46:16.148 UTC [139] LOG:  statement: SET statement_timeout = 0;\n2026-08-31 14:46:16.149 UTC [139] LOG:  statement: SET lock_timeout = 0;\n2026-08-31 14:46:16.149 UTC [139] LOG:  statement: SET idle_in_transaction_session_timeout = 0;\n2026-08-31 14:46:16.149 UTC [139] LOG:  statement: SET transaction_timeout = 0;\n2026-08-31 14:46:16.149 UTC [139] LOG:  statement: SET client_encoding = 'UTF8';\n2026-08-31 14:46:16.149 UTC [139] LOG:  statement: SET standard_conforming_strings = on;\n2026-08-31 14:46:16.149 UTC [139] LOG:  statement: SELECT pg_catalog.set_config('search_path', '', false);\n2026-08-31 14:46:16.149 UTC [139] LOG:  statement: SET check_function_bodies = false;\n2026-08-31 14:46:16.149 UTC [139] LOG:  statement: SET xmloption = content;\n2026-08-31 14:46:16.150 UTC [139] LOG:  statement: SET client_min_messages = warning;\n2026-08-31 14:46:16.150 UTC [139] LOG:  statement: SET row_security = off;\n2026-08-31 14:46:16.150 UTC [139] LOG:  statement: \n2026-08-31 14:46:16.150 UTC [139] LOG:  statement: SET default_tablespace = ''\n2026-08-31 14:46:16.150 UTC [139] LOG:  statement: SET default_table_access_method = heap;\n2026-08-31 14:46:16.150 UTC [139] LOG:  statement: CREATE TABLE public.atlas_backup_secure (\n2026-08-31 14:46:16.153 UTC [139] LOG:  statement: ALTER TABLE public.atlas_backup_secure OWNER TO postgres;\n2026-08-31 14:46:16.154 UTC [139] LOG:  statement: COPY public.atlas_backup_secure (tenant, payload) FROM stdin;\n2026-08-31 14:46:16.154 UTC [139] LOG:  statement: ALTER TABLE public.atlas_backup_secure ENABLE ROW LEVEL SECURITY;\n2026-08-31 14:46:16.155 UTC [139] LOG:  statement: CREATE POLICY atlas_security_policy ON public.atlas_backup_secure USING ((tenant = CURRENT_USER));\n2026-08-31 14:46:16.156 UTC [139] LOG:  statement: GRANT SELECT ON TABLE public.atlas_backup_secure TO atlas_backup_reader;\n2026-08-31 14:46:16.156 UTC [139] LOG:  statement: --\n2026-08-31 14:46:16.210 UTC [146] LOG:  statement: SET ROLE atlas_backup_reader;\n2026-08-31 14:46:16.210 UTC [146] LOG:  statement: SELECT CASE WHEN count(*) = 1 AND min(payload) = 'visible'\n\t  THEN 'ATLAS_SECURITY_PASS:operations.backup-recovery'\n2026-08-31 14:46:16.211 UTC [146] LOG:  statement: DO $$ BEGIN\n\t  RAISE NOTICE 'ATLAS_SECURITY_PASS:operations.backup-recovery';\n2026-08-31 14:46:16.212 UTC [146] LOG:  statement: RESET ROLE;\n2026-08-31 14:46:16.266 UTC [153] LOG:  statement: SELECT pg_current_wal_lsn()\n2026-08-31 14:46:16.317 UTC [160] LOG:  statement: SET ROLE atlas_backup_reader; EXPLAIN (FORMAT JSON) SELECT * FROM atlas_backup_secure; RESET ROLE\n",
+  "metric": {
+    "elapsed_ms": 1908.012,
+    "dump_bytes": 2200
+  },
+  "oracle": {
+    "kind": "acl-and-rls-survive-custom-backup-restore",
+    "scenario": "security",
+    "marker": "ATLAS_SECURITY_PASS:operations.backup-recovery",
+    "passed": true
+  },
+  "streams": {
+    "action": [
+      "psql security transaction"
+    ],
+    "network": [
+      "psql-to-PostgreSQL-session"
+    ],
+    "resource": [
+      "SQL",
+      "plan",
+      "WAL",
+      "server-log",
+      "elapsed-metric"
+    ]
+  }
+}

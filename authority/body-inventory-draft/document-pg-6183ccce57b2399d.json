@@ -1,0 +1,127 @@
+{
+  "document_id": "document-pg-6183ccce57b2399d",
+  "source_ids": [
+    "postgresql-source-rel-18.6"
+  ],
+  "authority_url": "https://github.com/postgres/postgres/tree/REL_18_6",
+  "document_locator": "git:724edf9bde9d356724ad384a2e196edc3c9f80f7:doc/src/sgml/history.sgml",
+  "locked_source_digest": "sha256:873c03070a2e8aae0768fb75d8d6739ae9589681c6cd50839e79d787a7aed222",
+  "locked_body_digest": "sha256:a9f475e6dd0cf45dae89aacab6b72158152684d6f1760b17f178a40ffa9d5878",
+  "fetch": {
+    "status": "matched",
+    "fetched_digest": "sha256:a9f475e6dd0cf45dae89aacab6b72158152684d6f1760b17f178a40ffa9d5878",
+    "locked_digest_match": true,
+    "error_digest": null
+  },
+  "schema_version": 1,
+  "extraction": {
+    "method": "sgml-raw-anchor-selector-v1",
+    "tool": "postgresql-reference-atlas-authority-body-inventory-v1",
+    "tool_digest": "sha256:097da35cf95014735db866fca94f5db07c0717353928b543bcf9c188ae005d2c",
+    "selector_contract": [
+      "document-root",
+      "sgml-id-attribute"
+    ],
+    "selector_exhaustive_for_locked_body": true,
+    "authority_semantics_exhaustive": false,
+    "review_status": "automated-unreviewed",
+    "body_storage": "digest-locator-and-offset-only"
+  },
+  "anchors": [
+    {
+      "id": "anchor-pg-b082aabc2a8791638ef4",
+      "locator": "document-root",
+      "locator_kind": "document-root",
+      "raw_selector": "document-root",
+      "element_name": "document",
+      "parent_anchor_id": null,
+      "context_start": 0,
+      "context_end": 8817,
+      "context_unit": "byte",
+      "context_digest": "sha256:a9f475e6dd0cf45dae89aacab6b72158152684d6f1760b17f178a40ffa9d5878",
+      "classification_status": "pending-human",
+      "surface_ids": [
+
+      ],
+      "behavior_ids": [
+
+      ]
+    },
+    {
+      "id": "anchor-pg-673a377dc14277230b4c",
+      "locator": "#history",
+      "locator_kind": "fragment",
+      "raw_selector": "sgml-id-attribute",
+      "element_name": "sect1",
+      "parent_anchor_id": "anchor-pg-b082aabc2a8791638ef4",
+      "context_start": 36,
+      "context_end": 57,
+      "context_unit": "byte",
+      "context_digest": "sha256:00b3071659f950f09193cf7cad677ec4fe45d35be97aa0d68d62bc2ba5cf0407",
+      "classification_status": "pending-human",
+      "surface_ids": [
+
+      ],
+      "behavior_ids": [
+
+      ]
+    },
+    {
+      "id": "anchor-pg-df89d7ac5ce07254fd5c",
+      "locator": "#history-berkeley",
+      "locator_kind": "fragment",
+      "raw_selector": "sgml-id-attribute",
+      "element_name": "sect2",
+      "parent_anchor_id": "anchor-pg-b082aabc2a8791638ef4",
+      "context_start": 810,
+      "context_end": 841,
+      "context_unit": "byte",
+      "context_digest": "sha256:49b8b2a1e52cf80e91fb673ca2b8a0b68bdae0929b75b8cc374876db99dbdf52",
+      "classification_status": "pending-human",
+      "surface_ids": [
+
+      ],
+      "behavior_ids": [
+
+      ]
+    },
+    {
+      "id": "anchor-pg-fe0ec3022bba1119dbfe",
+      "locator": "#history-postgres95",
+      "locator_kind": "fragment",
+      "raw_selector": "sgml-id-attribute",
+      "element_name": "sect2",
+      "parent_anchor_id": "anchor-pg-b082aabc2a8791638ef4",
+      "context_start": 3998,
+      "context_end": 4031,
+      "context_unit": "byte",
+      "context_digest": "sha256:73fb0af8fbd29bd69c46540131bbb057432866275ab8eebd9a1c535397cb0e6a",
+      "classification_status": "pending-human",
+      "surface_ids": [
+
+      ],
+      "behavior_ids": [
+
+      ]
+    },
+    {
+      "id": "anchor-pg-5f128ee1921e0eb48f95",
+      "locator": "#history-postgresql",
+      "locator_kind": "fragment",
+      "raw_selector": "sgml-id-attribute",
+      "element_name": "sect2",
+      "parent_anchor_id": "anchor-pg-b082aabc2a8791638ef4",
+      "context_start": 7316,
+      "context_end": 7349,
+      "context_unit": "byte",
+      "context_digest": "sha256:1bb20cbcf78ba96d057462cabec992243d426acbd97f63781c6d02966f62d725",
+      "classification_status": "pending-human",
+      "surface_ids": [
+
+      ],
+      "behavior_ids": [
+
+      ]
+    }
+  ]
+}

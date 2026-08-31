@@ -1,0 +1,33 @@
+schema_version: 2
+atlas_id: postgresql-reference-atlas
+epoch: "2026-08-28"
+completion_class: subject-definitive
+authority_extraction: authority/extraction.snapshot.json
+authority_body_inventory: authority/body-inventory.snapshot.json
+authority_body_review: authority/review-queue.snapshot.json
+surface_inventory: surface.inventory.yaml
+verification_matrix: verification.matrix.yaml
+scenario_proofs: evidence/scenarios/index.json
+scenario_closure_plan: evidence/scenarios/closure-plan.json
+evidence_durability: artifacts/pattern-scenarios/results.json
+evidence_dependency_graph: evidence/dependency-graph.json
+depth_parity: depth.parity.yaml
+skill_eval: evals/postgresql-atlas.definitive-skill-eval.json
+skill_router: evals/definitive-skill-router.json
+non_regression: non-regression.yaml
+certificate: evidence/definitive-certificate.json
+historical_certificates:
+  - path: evidence/history/v1.0.0/completion-certificate.json
+    classification: bounded-complete
+reference_systems:
+  - id: order-runtime-slice
+    path: evidence/artifacts/reference-system.json
+    digest: sha256:9f88e1c842ccc8959ab319bafd17e0850ef81fe214664c3a7fbc52f23c62f03d
+    behavior_ids:
+      - definitive-domain.query.security
+      - definitive-domain.query.partitioning
+      - definitive-domain.performance.planner
+      - definitive-domain.concurrency.locking
+      - definitive-domain.operations.wal
+      - definitive-domain.operations.observability
+comparisons: []

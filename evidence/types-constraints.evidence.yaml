@@ -5,12 +5,12 @@ claim_ids: [query.types-constraints]
 kind: test-report
 producer: postgresql-reference-atlas
 command: make lab LAB=types-constraints
-created_at: "2026-08-28T07:49:02Z"
+created_at: "2026-08-30T19:45:48Z"
 environment:
   profile: container
   manifest_digest: sha256:3df4dbd82139e17c785348c281f26b54d7300662087baaeec3034acefedf36b9
 source_digest: sha256:7a5097c6130472b193adb30fda89b4a607f1ae00a1ae87dbc1cf22ae5484eaef
-harness_digest: sha256:6b233ae03fdc4708d55022e3259f742ff4cd46c87dbd0a57086a1a598a9471b9
+harness_digest: sha256:e5b5abaca9bb5e9c6abc40e11b21a71771ab6a1ef544a3d712fa5a23605045c5
 harness_path: evidence/harnesses/types-constraints.manifest
 artifact:
   uri: evidence/artifacts/types-constraints.json

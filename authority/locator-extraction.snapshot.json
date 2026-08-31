@@ -1,0 +1,80 @@
+{
+  "schema_version": 1,
+  "atlas_id": "postgresql-reference-atlas",
+  "generated_at": "2026-08-28T00:00:00+09:00",
+  "status": "incomplete-human-review-required",
+  "body_storage": "digest-and-locator-offset-only",
+  "summary": {
+    "authority_artifacts": 5,
+    "candidate_surfaces": 11340,
+    "source_commit_matched": true,
+    "stale_source_bodies": 0,
+    "url_retrieval_deferred": 183,
+    "locator_evaluations_deferred": 183,
+    "human_reviewed_surfaces": 0,
+    "generated_surface_candidates_exhaustive": true,
+    "authority_text_surfaces_exhaustive": false,
+    "postgresql_authority_denominator_closed": false,
+    "core_v2_eligible_surfaces": 0
+  },
+  "locator_status": {
+    "file-locator-found": 273,
+    "fragment-found": 4178,
+    "local-contract-anchor-found": 56,
+    "runtime-metadata-locator": 6650,
+    "url-fetch-deferred-source-correspondence-found": 183
+  },
+  "sources": [
+    {
+      "authority_artifact_id": "definitive-domain",
+      "source_id": "postgresql-docs-18.6",
+      "path": "authority/locator-draft/definitive-domain.json",
+      "digest": "sha256:72b7324e1277ced19aa9d906b5e80b4d14a5e495a25169be24871a41726939dd",
+      "candidate_surfaces": 56,
+      "locator_status": {
+        "local-contract-anchor-found": 56
+      }
+    },
+    {
+      "authority_artifact_id": "docs-sections",
+      "source_id": "postgresql-source-rel-18.6",
+      "path": "authority/locator-draft/docs-sections.json",
+      "digest": "sha256:c58caa4bb3ea87eab7bc57d06c75526dcc60dbc75e06c197bbfe4516723270f8",
+      "candidate_surfaces": 4133,
+      "locator_status": {
+        "fragment-found": 4133
+      }
+    },
+    {
+      "authority_artifact_id": "docs-sql",
+      "source_id": "postgresql-docs-18.6",
+      "path": "authority/locator-draft/docs-sql.json",
+      "digest": "sha256:f99ecdd0557fc558521663639e3011cbce4196418040feb2e000a6a7bd8dab5e",
+      "candidate_surfaces": 183,
+      "locator_status": {
+        "url-fetch-deferred-source-correspondence-found": 183
+      }
+    },
+    {
+      "authority_artifact_id": "runtime-catalog",
+      "source_id": "postgres-container-18.6-alpine",
+      "path": "authority/locator-draft/runtime-catalog.json",
+      "digest": "sha256:ca6ae0aae9d3a0bea533911a0b0dfc370dce5703b835419f02fc4e701cc88cca",
+      "candidate_surfaces": 6650,
+      "locator_status": {
+        "runtime-metadata-locator": 6650
+      }
+    },
+    {
+      "authority_artifact_id": "source-surface",
+      "source_id": "postgresql-source-rel-18.6",
+      "path": "authority/locator-draft/source-surface.json",
+      "digest": "sha256:ea7ea56acc089956c33e5ea0ba5d27b2625b2d3534c7098165c920b56bf98871",
+      "candidate_surfaces": 318,
+      "locator_status": {
+        "file-locator-found": 273,
+        "fragment-found": 45
+      }
+    }
+  ]
+}

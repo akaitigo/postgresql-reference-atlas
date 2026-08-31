@@ -1,0 +1,77 @@
+{
+  "schema_version": 1,
+  "pattern_id": "definitive-domain.concurrency.locking",
+  "target_id": "concurrency.locking",
+  "scenario": "security",
+  "variant_id": "postgresql-verification-matrix-v2",
+  "environment": {
+    "subject": "PostgreSQL",
+    "server_product": "PostgreSQL",
+    "server_version": "18.6",
+    "server_version_num": "180006",
+    "client_product": "psql",
+    "client_version": "psql (PostgreSQL) 18.6",
+    "runtime_image": "postgres:18.6-alpine",
+    "runtime_identity": "pg-atlas-security-68614-b1cef5",
+    "workers": 1,
+    "retries": 0,
+    "trace_mode": "on",
+    "execution_mode": "real-postgresql-server-client",
+    "row_runtime": {
+      "server_versions": [
+        "18.6"
+      ],
+      "containers": [
+        "pg-atlas-security-68614-b1cef5"
+      ]
+    }
+  },
+  "sql": {
+    "source": "\n      BEGIN;\n      CREATE ROLE atlas_lock_reader;\n      CREATE TABLE atlas_lock_private(id integer primary key, value text);\n      INSERT INTO atlas_lock_private VALUES (1, 'stable');\n      GRANT SELECT ON atlas_lock_private TO atlas_lock_reader;\n      SET ROLE atlas_lock_reader;\n      DO $$ BEGIN\n        UPDATE atlas_lock_private SET value = 'forged' WHERE id = 1;\n        RAISE EXCEPTION 'update unexpectedly allowed';\n      EXCEPTION WHEN insufficient_privilege THEN\n        RAISE NOTICE 'ATLAS_SECURITY_PASS:concurrency.locking';\n      END $$;\n      RESET ROLE;\n      ROLLBACK;\n    ",
+    "stdout": "BEGIN\nCREATE ROLE\nCREATE TABLE\nINSERT 0 1\nGRANT\nSET\nDO\nRESET\nROLLBACK\n",
+    "stderr": "NOTICE:  ATLAS_SECURITY_PASS:concurrency.locking\n"
+  },
+  "plan": [
+    {
+      "Plan": {
+        "Node Type": "Result",
+        "Parallel Aware": false,
+        "Async Capable": false,
+        "Startup Cost": 0.0,
+        "Total Cost": 0.01,
+        "Plan Rows": 1,
+        "Plan Width": 4,
+        "Disabled": false
+      }
+    }
+  ],
+  "wal": {
+    "before_lsn": "0/1BDE000",
+    "after_lsn": "0/1BF0000"
+  },
+  "log": "2026-08-31 14:45:50.989 UTC [97] LOG:  statement: SELECT 1\n2026-08-31 14:45:51.292 UTC [104] LOG:  statement: SELECT 1\n2026-08-31 14:45:51.333 UTC [111] LOG:  statement: SHOW server_version\n2026-08-31 14:45:51.372 UTC [118] LOG:  statement: SHOW server_version_num\n2026-08-31 14:45:51.488 UTC [130] LOG:  statement: SELECT pg_current_wal_lsn()\n2026-08-31 14:45:51.537 UTC [137] LOG:  statement: BEGIN;\n2026-08-31 14:45:51.537 UTC [137] LOG:  statement: CREATE ROLE atlas_deadlock_reader;\n2026-08-31 14:45:51.537 UTC [137] LOG:  statement: CREATE TABLE atlas_deadlock_private(id integer primary key, secret text);\n2026-08-31 14:45:51.541 UTC [137] LOG:  statement: INSERT INTO atlas_deadlock_private VALUES (1, 'private');\n2026-08-31 14:45:51.541 UTC [137] LOG:  statement: REVOKE ALL ON atlas_deadlock_private FROM PUBLIC;\n2026-08-31 14:45:51.542 UTC [137] LOG:  statement: SET ROLE atlas_deadlock_reader;\n2026-08-31 14:45:51.542 UTC [137] LOG:  statement: DO $$ BEGIN\n\t        RAISE NOTICE 'ATLAS_SECURITY_PASS:concurrency.deadlock';\n2026-08-31 14:45:51.542 UTC [137] LOG:  statement: RESET ROLE;\n2026-08-31 14:45:51.542 UTC [137] LOG:  statement: ROLLBACK;\n2026-08-31 14:45:51.586 UTC [144] LOG:  statement: SELECT pg_current_wal_lsn()\n2026-08-31 14:45:51.628 UTC [151] LOG:  statement: EXPLAIN (FORMAT JSON) SELECT 1 AS security_probe\n2026-08-31 14:45:51.692 UTC [158] LOG:  statement: SELECT pg_current_wal_lsn()\n2026-08-31 14:45:51.729 UTC [165] LOG:  statement: BEGIN;\n2026-08-31 14:45:51.729 UTC [165] LOG:  statement: CREATE ROLE atlas_lock_reader;\n2026-08-31 14:45:51.729 UTC [165] LOG:  statement: CREATE TABLE atlas_lock_private(id integer primary key, value text);\n2026-08-31 14:45:51.732 UTC [165] LOG:  statement: INSERT INTO atlas_lock_private VALUES (1, 'stable');\n2026-08-31 14:45:51.732 UTC [165] LOG:  statement: GRANT SELECT ON atlas_lock_private TO atlas_lock_reader;\n2026-08-31 14:45:51.732 UTC [165] LOG:  statement: SET ROLE atlas_lock_reader;\n2026-08-31 14:45:51.732 UTC [165] LOG:  statement: DO $$ BEGIN\n\t        RAISE NOTICE 'ATLAS_SECURITY_PASS:concurrency.locking';\n2026-08-31 14:45:51.733 UTC [165] LOG:  statement: RESET ROLE;\n2026-08-31 14:45:51.733 UTC [165] LOG:  statement: ROLLBACK;\n2026-08-31 14:45:51.770 UTC [172] LOG:  statement: SELECT pg_current_wal_lsn()\n2026-08-31 14:45:51.805 UTC [179] LOG:  statement: EXPLAIN (FORMAT JSON) SELECT 1 AS security_probe\n",
+  "metric": {
+    "elapsed_ms": 41.146
+  },
+  "oracle": {
+    "kind": "update-lock-permission-denied",
+    "scenario": "security",
+    "marker": "ATLAS_SECURITY_PASS:concurrency.locking",
+    "passed": true
+  },
+  "streams": {
+    "action": [
+      "psql security transaction"
+    ],
+    "network": [
+      "psql-to-PostgreSQL-session"
+    ],
+    "resource": [
+      "SQL",
+      "plan",
+      "WAL",
+      "server-log",
+      "elapsed-metric"
+    ]
+  }
+}

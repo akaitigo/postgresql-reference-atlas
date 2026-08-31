@@ -1,0 +1,11 @@
+# Scenario Evidenceの原子的保存
+
+専用PostgreSQL Scenario Runtime Reporterは`AtomicEvidencePublisher`を通してEvidence directoryを公開する。SQL、Plan、WAL、Log、Metric、Trace、Runtime reportは同じstaging directoryへ全件生成し、全runがpassしstaging検証も成功した場合だけdirectory renameで公開する。
+
+失敗run、Artifact欠落、Oracle不一致では公開先を変更せず、直前の成功Evidenceを保持する。swap中に失敗した場合はbackup directoryをrenameで復元する。成功時はdirectory全体を置換するため、新旧Artifactの混在や部分上書きを許さない。
+
+```bash
+make scenario-evidence-atomicity-test
+```
+
+negative testは失敗run、部分生成、promotion前後のswap失敗、新旧混在を検査する。このPublisher自体はScenario Closureを与えない。Closureには各rowの全Variantを実PostgreSQL server/clientでretry 0かつfirst-attempt passとして実行し、専用Oracle、Source/Harness digest、Variant別Artifactを同じ成功世代へ保存する必要がある。

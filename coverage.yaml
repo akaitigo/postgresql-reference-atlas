@@ -321,3 +321,246 @@ targets:
     rationale: 公開前に独自成果物と第三者Sourceの権利、出典、SBOM、秘密情報を独立して確認する。
     claim_ids: [publication.provenance]
     evidence_ids: [publication.static-gates]
+  - id: query.sql-commands
+    title: SQL Command 183件のCommand別Proof
+    target_set: query
+    kind: capability
+    requirement: required
+    state: partial
+    rationale: 公式Command索引の分類だけでなく各Command Familyの正常、境界、拒否を個別Proofへ接続する必要がある。
+    claim_ids: [query.sql-surface]
+    evidence_ids: [lab.sql-surface, lab.sql]
+  - id: query.runtime-types
+    title: 組み込みType全件の意味論
+    target_set: query
+    kind: capability
+    requirement: required
+    state: partial
+    rationale: Runtime Catalogの全Typeを分類し、表現範囲、NULL、Cast、拒否境界のProofを型Familyごとに持つ必要がある。
+    claim_ids: [query.types-constraints]
+    evidence_ids: [lab.catalog-inventory, lab.types-constraints]
+  - id: query.runtime-functions
+    title: 組み込みFunction全件の分類とProof
+    target_set: query
+    kind: capability
+    requirement: required
+    state: planned
+    rationale: pg_catalog Function全件を機能Familyへ分類し、Volatility、Parallel Safety、NULL、Error境界を検証する必要がある。
+    claim_ids: []
+    evidence_ids: []
+  - id: query.runtime-operators
+    title: 組み込みOperator全件の分類とProof
+    target_set: query
+    kind: capability
+    requirement: required
+    state: planned
+    rationale: Operator全件を引数型と結果型へ接続し、NULL、型不一致、Index利用条件を検証する必要がある。
+    claim_ids: []
+    evidence_ids: []
+  - id: query.runtime-casts
+    title: Cast全件と安全境界
+    target_set: query
+    kind: capability
+    requirement: required
+    state: planned
+    rationale: implicit、assignment、explicit Cast全件を分類し、情報損失と拒否境界を検証する必要がある。
+    claim_ids: []
+    evidence_ids: []
+  - id: query.system-catalogs
+    title: System CatalogとInformation Schema全件
+    target_set: query
+    kind: capability
+    requirement: required
+    state: partial
+    rationale: Catalog Relationの件数DigestだけでなくColumn意味論、権限、Version互換性を個別に固定する必要がある。
+    claim_ids: [query.catalog-inventory]
+    evidence_ids: [lab.catalog-inventory]
+  - id: operations.gucs
+    title: GUC全件のContext・単位・境界
+    target_set: operations
+    kind: operation
+    requirement: required
+    state: planned
+    rationale: pg_settings全件をContext、Restart要否、単位、範囲、危険性へ分類し変更とRollbackを検証する必要がある。
+    claim_ids: []
+    evidence_ids: []
+  - id: integration.protocol
+    title: Frontend Backend Protocol全Message
+    target_set: query
+    kind: compatibility
+    requirement: required
+    state: planned
+    rationale: Startup、Authentication、Simple、Extended、COPY、Cancel、Errorの全Messageを状態遷移とFailureへ接続する必要がある。
+    claim_ids: []
+    evidence_ids: []
+  - id: integration.client-tools
+    title: 公式Client-facing Tool全件
+    target_set: lifecycle
+    kind: compatibility
+    requirement: required
+    state: partial
+    rationale: psqlと各Client Utilityの入力、出力、認証、失敗、Version境界をTool別に検証する必要がある。
+    claim_ids: [lifecycle.compatibility-matrix]
+    evidence_ids: [lab.compatibility-matrix]
+  - id: concurrency.transactions-isolation
+    title: Transactionと全Isolation Level
+    target_set: concurrency
+    kind: capability
+    requirement: required
+    state: partial
+    rationale: Read Committed、Repeatable Read、Serializable、Savepoint、2PCの正常、競合、Abort、Recoveryを比較する必要がある。
+    claim_ids: [concurrency.mvcc]
+    evidence_ids: [lab.mvcc]
+  - id: performance.planner-methods
+    title: Planner MethodとJoin Strategy
+    target_set: performance
+    kind: performance
+    requirement: required
+    state: partial
+    rationale: Scan、Join、Aggregate、Sort、Parallel、JITの選択条件と誤推定回復を方式比較で検証する必要がある。
+    claim_ids: [performance.planner]
+    evidence_ids: [lab.planner, lab.statistics]
+  - id: performance.index-methods
+    title: Index MethodとOperator Class
+    target_set: performance
+    kind: performance
+    requirement: required
+    state: partial
+    rationale: B-tree、Hash、GiST、SP-GiST、GIN、BRINの適用条件、容量、更新費用、Failureを比較する必要がある。
+    claim_ids: [performance.index]
+    evidence_ids: [lab.index, lab.extension]
+  - id: query.partition-methods
+    title: Partition方式とLifecycle
+    target_set: query
+    kind: capability
+    requirement: required
+    state: partial
+    rationale: Range、List、Hash、Subpartition、Attach、Detach、Default、Pruningを運用境界まで比較する必要がある。
+    claim_ids: [query.partitioning]
+    evidence_ids: [lab.partitioning]
+  - id: security.authentication
+    title: Authentication MethodとTLS境界
+    target_set: query
+    kind: security
+    requirement: required
+    state: planned
+    rationale: trust、password、SCRAM、certificate、GSS、LDAP等のCore認証面を設定、拒否、監査、Rollbackへ接続する必要がある。
+    claim_ids: []
+    evidence_ids: []
+  - id: security.authorization
+    title: Role・Privilege・RLS全境界
+    target_set: query
+    kind: security
+    requirement: required
+    state: partial
+    rationale: Object Privilege、Default Privilege、Role継承、RLS、SECURITY DEFINERを攻撃と回復まで検証する必要がある。
+    claim_ids: [query.security]
+    evidence_ids: [lab.security]
+  - id: operations.checkpoint
+    title: CheckpointとWAL Capacity
+    target_set: operations
+    kind: operation
+    requirement: required
+    state: partial
+    rationale: Checkpoint開始条件、WAL保持、Full-page Write、容量圧力、Recovery時間の関係を測定する必要がある。
+    claim_ids: [operations.wal]
+    evidence_ids: [lab.wal]
+  - id: operations.backup-methods
+    title: Backup方式比較とRestore演習
+    target_set: operations
+    kind: operation
+    requirement: required
+    state: partial
+    rationale: logical、physical、incremental、snapshot境界をRPO、RTO、容量、整合性、暗号化で比較する必要がある。
+    claim_ids: [operations.backup-recovery]
+    evidence_ids: [lab.backup-recovery, lab.pitr]
+  - id: operations.replication-ha
+    title: ReplicationとHA境界
+    target_set: operations
+    kind: operation
+    requirement: required
+    state: partial
+    rationale: sync、async、slot、cascading、failover、rewind、split-brain境界とCore外Orchestrator責任を明示する必要がある。
+    claim_ids: [operations.replication]
+    evidence_ids: [lab.replication]
+  - id: operations.logical-modes
+    title: Logical Replication方式とConflict
+    target_set: operations
+    kind: operation
+    requirement: required
+    state: partial
+    rationale: Publication範囲、Row Filter、Column List、Sequence、DDL、Conflict、Version差を方式別に検証する必要がある。
+    claim_ids: [operations.logical-replication]
+    evidence_ids: [lab.logical-replication]
+  - id: operations.vacuum-bloat
+    title: Vacuum・Freeze・Bloat・Wraparound
+    target_set: operations
+    kind: operation
+    requirement: required
+    state: partial
+    rationale: Autovacuum、Freeze、HOT、Bloat、Wraparound、Index Cleanupを容量と停止条件まで演習する必要がある。
+    claim_ids: [operations.maintenance]
+    evidence_ids: [lab.maintenance]
+  - id: operations.resource-limits
+    title: Connection・Memory・Disk・WAL Resource Limit
+    target_set: operations
+    kind: performance
+    requirement: required
+    state: planned
+    rationale: Connection、Memory、Temporary File、Disk、WAL、Worker上限を過負荷、拒否、回復、Capacity計画へ接続する必要がある。
+    claim_ids: []
+    evidence_ids: []
+  - id: operations.corruption-recovery
+    title: Corruption検出とRecovery
+    target_set: operations
+    kind: failure
+    requirement: required
+    state: planned
+    rationale: Checksum、amcheck、破損Page、WAL欠損、Backup破損を隔離注入し検出、停止、Recoveryを演習する必要がある。
+    claim_ids: []
+    evidence_ids: []
+  - id: lifecycle.upgrade-matrix
+    title: Upgrade・Migration・互換性全方式
+    target_set: lifecycle
+    kind: migration
+    requirement: required
+    state: partial
+    rationale: dump、pg_upgrade、logical、rolling境界、Extension、Collation、Protocol、RollbackをVersion Matrixで比較する必要がある。
+    claim_ids: [lifecycle.upgrade, lifecycle.pg-upgrade, lifecycle.compatibility-matrix]
+    evidence_ids: [lab.upgrade, lab.pg-upgrade, lab.compatibility-matrix]
+  - id: operations.runbook-exercises
+    title: 運用Runbook実地演習
+    target_set: operations
+    kind: operation
+    requirement: required
+    state: planned
+    rationale: Backup、Lock、Capacity、Replication、Corruption、UpgradeのRunbookを時間制限付き演習Evidenceへ接続する必要がある。
+    claim_ids: []
+    evidence_ids: []
+  - id: foundation.reference-system
+    title: 統合Reference System
+    target_set: foundation
+    kind: construction
+    requirement: required
+    state: partial
+    rationale: Security、Partition、Planner、Lock、WAL、Observabilityの統合Sliceは実行済み。Backup、PITR、Replication、Upgradeと全Authority Behaviorの統合は未Closureである。
+    claim_ids: [foundation.reference-system.runtime-slice]
+    evidence_ids: [lab.reference-system]
+  - id: performance.capacity-comparison
+    title: 性能・容量・費用の方式比較
+    target_set: performance
+    kind: performance
+    requirement: required
+    state: planned
+    rationale: 方式ごとのLatencyだけでなくThroughput、Memory、Disk、WAL、Recovery時間を固定Workloadで比較する必要がある。
+    claim_ids: []
+    evidence_ids: []
+  - id: skill.definitive-proof-routing
+    title: Target別Proof Router Eval
+    target_set: skill
+    kind: skill
+    requirement: required
+    state: planned
+    rationale: Routerが全Inventory Targetの不足Scenarioを捏造せずClaim、Evidence、Gap、停止条件へ誘導する必要がある。
+    claim_ids: []
+    evidence_ids: []

@@ -1,0 +1,202 @@
+schema_version: 1
+source_id: postgresql-source-rel-18.6
+description: PostgreSQL 18.6公式SGMLの章ファイルをDefinitive Coverage Targetへ全件分類する。
+targets:
+  foundation.authority-lock:
+    - acronyms.sgml
+    - biblio.sgml
+    - color.sgml
+    - docguide.sgml
+    - filelist.sgml
+    - glossary.sgml
+    - history.sgml
+    - info.sgml
+    - intro.sgml
+    - keywords.sgml
+    - legal.sgml
+    - notation.sgml
+    - reference.sgml
+    - sources.sgml
+  foundation.version-lock:
+    - appendix-obsolete-default-roles.sgml
+    - appendix-obsolete-pgreceivexlog.sgml
+    - appendix-obsolete-pgresetxlog.sgml
+    - appendix-obsolete-pgxlogdump.sgml
+    - appendix-obsolete-recovery-config.sgml
+    - appendix-obsolete.sgml
+    - features.sgml
+    - install-binaries.sgml
+    - installation.sgml
+    - nls.sgml
+    - release-18.sgml
+    - release.sgml
+    - sourcerepo.sgml
+    - start.sgml
+  foundation.reference-system:
+    - regress.sgml
+  query.sql-commands:
+    - advanced.sgml
+    - ddl.sgml
+    - dml.sgml
+    - queries.sgml
+    - query.sgml
+    - syntax.sgml
+  query.runtime-types:
+    - array.sgml
+    - charset.sgml
+    - datatype.sgml
+    - datetime.sgml
+    - json.sgml
+    - rangetypes.sgml
+    - rowtypes.sgml
+    - textsearch.sgml
+    - typeconv.sgml
+  query.runtime-functions:
+    - func.sgml
+  query.system-catalogs:
+    - bki.sgml
+    - catalogs.sgml
+    - information_schema.sgml
+    - system-views.sgml
+  query.extension:
+    - arch-dev.sgml
+    - bgworker.sgml
+    - citext.sgml
+    - contrib-spi.sgml
+    - contrib.sgml
+    - cube.sgml
+    - custom-rmgr.sgml
+    - custom-scan.sgml
+    - dblink.sgml
+    - dfunc.sgml
+    - dict-int.sgml
+    - dict-xsyn.sgml
+    - earthdistance.sgml
+    - event-trigger.sgml
+    - extend.sgml
+    - fdwhandler.sgml
+    - file-fdw.sgml
+    - fuzzystrmatch.sgml
+    - generic-wal.sgml
+    - hstore.sgml
+    - intagg.sgml
+    - intarray.sgml
+    - isn.sgml
+    - lo.sgml
+    - ltree.sgml
+    - pgcrypto.sgml
+    - pgtrgm.sgml
+    - plhandler.sgml
+    - plperl.sgml
+    - plpgsql.sgml
+    - plpython.sgml
+    - pltcl.sgml
+    - postgres-fdw.sgml
+    - rules.sgml
+    - seg.sgml
+    - spi.sgml
+    - tableam.sgml
+    - tablefunc.sgml
+    - tablesample-method.sgml
+    - tcn.sgml
+    - trigger.sgml
+    - tsm-system-rows.sgml
+    - tsm-system-time.sgml
+    - unaccent.sgml
+    - uuid-ossp.sgml
+    - wal-for-extensions.sgml
+    - xaggr.sgml
+    - xfunc.sgml
+    - xindex.sgml
+    - xml2.sgml
+    - xoper.sgml
+    - xplang.sgml
+    - xtypes.sgml
+  integration.protocol:
+    - protocol.sgml
+  integration.client-tools:
+    - ecpg.sgml
+    - libpq.sgml
+    - lobj.sgml
+    - oid2name.sgml
+    - postgres.sgml
+  concurrency.mvcc:
+    - mvcc.sgml
+  concurrency.transactions-isolation:
+    - xact.sgml
+  performance.planner-methods:
+    - geqo.sgml
+    - jit.sgml
+    - parallel.sgml
+    - perform.sgml
+    - planstats.sgml
+  performance.index-methods:
+    - bloom.sgml
+    - brin.sgml
+    - btree-gin.sgml
+    - btree-gist.sgml
+    - btree.sgml
+    - gin.sgml
+    - gist.sgml
+    - hash.sgml
+    - indexam.sgml
+    - indices.sgml
+    - indextypes.sgml
+    - spgist.sgml
+  security.authentication:
+    - auth-delay.sgml
+    - client-auth.sgml
+    - oauth-validators.sgml
+    - passwordcheck.sgml
+    - sslinfo.sgml
+  security.authorization:
+    - manage-ag.sgml
+    - sepgsql.sgml
+    - user-manag.sgml
+  operations.gucs:
+    - config.sgml
+  operations.backup-methods:
+    - backup-manifest.sgml
+    - backup.sgml
+    - basebackup-to-shell.sgml
+  operations.wal:
+    - archive-modules.sgml
+    - basic-archive.sgml
+    - wal.sgml
+  operations.replication-ha:
+    - high-availability.sgml
+  operations.logical-modes:
+    - logical-replication.sgml
+    - logicaldecoding.sgml
+    - pglogicalinspect.sgml
+    - replication-origins.sgml
+    - test-decoding.sgml
+  operations.observability:
+    - auto-explain.sgml
+    - monitoring.sgml
+    - pgbuffercache.sgml
+    - pgfreespacemap.sgml
+    - pgoverexplain.sgml
+    - pgrowlocks.sgml
+    - pgstatstatements.sgml
+    - pgstattuple.sgml
+    - pgvisibility.sgml
+    - pgwalinspect.sgml
+  operations.vacuum-bloat:
+    - maintenance.sgml
+    - vacuumlo.sgml
+  operations.corruption-recovery:
+    - amcheck.sgml
+    - pageinspect.sgml
+    - pgsurgery.sgml
+  operations.resource-limits:
+    - limits.sgml
+  operations.runbook-exercises:
+    - problems.sgml
+  operations.maintenance:
+    - pgprewarm.sgml
+    - storage.sgml
+  lifecycle.compatibility-matrix:
+    - errcodes.sgml
+    - external-projects.sgml
+    - runtime.sgml

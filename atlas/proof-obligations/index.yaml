@@ -1,6 +1,9 @@
 schema_version: 1
 atlas_id: postgresql-reference-atlas
 proof_obligations:
+  - id: foundation.reference-system.runtime-slice
+    acceptance: 同一DatabaseとFixtureでTenant境界、Index Plan、Lock拒否と回復、WAL増分、Statement callがすべて期待値を満たす。
+    command: make lab LAB=reference-system
   - id: foundation.authority-digests
     acceptance: sources.lock.yamlの全DigestがSchema適合し、CoverageがLockfile Digestへ束縛される。
     command: make validate

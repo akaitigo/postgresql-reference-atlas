@@ -1,0 +1,677 @@
+{
+  "schema_version": 1,
+  "queue_id": "authority-review-pg-e4c9877a8fc101d28b42",
+  "batch_id": "review-p1-sgml-id-attribute-18",
+  "status": "pending-human",
+  "machine_assistance": "ordering-and-candidate-clustering-only",
+  "semantic_decisions": "none",
+  "items": [
+    {
+      "anchor_id": "anchor-pg-1f79f559a0e288bfce29",
+      "document_id": "document-pg-d2610d8429b4b3e1",
+      "authority_url": "https://github.com/postgres/postgres/tree/REL_18_6",
+      "document_locator": "git:724edf9bde9d356724ad384a2e196edc3c9f80f7:doc/src/sgml/ref/psql-ref.sgml",
+      "source_ids": [
+        "postgresql-source-rel-18.6"
+      ],
+      "locked_source_digest": "sha256:4bb2c8eda5be839b141e142d7434997242d5894ec56a311e0fba1a439fe38973",
+      "inventory_tool_digest": "sha256:097da35cf95014735db866fca94f5db07c0717353928b543bcf9c188ae005d2c",
+      "review_queue_tool_digest": "sha256:409ff9047ea99f14bcfbc26a4a680a8f24e9c99fa04679ee3a20355e5394cdc0",
+      "locator": "#app-psql-option-field-host",
+      "locator_kind": "fragment",
+      "raw_selector": "sgml-id-attribute",
+      "element_name": "varlistentry",
+      "parent_anchor_id": "anchor-pg-6ef686f1d08a9234b3e3",
+      "context_start": 10028,
+      "context_end": 10079,
+      "context_unit": "byte",
+      "context_digest": "sha256:ba3bb6195bdf2692401c1cab21e23aaf822cbd54adb259e78c45fcd4a524f053",
+      "existing_mapping_candidate_ids": [],
+      "priority": 1,
+      "priority_reasons": [
+        "fixed-sgml-id-anchor"
+      ],
+      "candidate_cluster_id": null,
+      "batch_id": "review-p1-sgml-id-attribute-18",
+      "state": "pending-human"
+    },
+    {
+      "anchor_id": "anchor-pg-44b40c2a6f1410e14f72",
+      "document_id": "document-pg-defbc2b8354db387",
+      "authority_url": "https://github.com/postgres/postgres/tree/REL_18_6",
+      "document_locator": "git:724edf9bde9d356724ad384a2e196edc3c9f80f7:doc/src/sgml/ref/alter_table.sgml",
+      "source_ids": [
+        "postgresql-source-rel-18.6"
+      ],
+      "locked_source_digest": "sha256:10436673fa2f093bdf51986a06d22dd748a9bb003bcd5517db2a65fba569a3c9",
+      "inventory_tool_digest": "sha256:097da35cf95014735db866fca94f5db07c0717353928b543bcf9c188ae005d2c",
+      "review_queue_tool_digest": "sha256:409ff9047ea99f14bcfbc26a4a680a8f24e9c99fa04679ee3a20355e5394cdc0",
+      "locator": "#sql-altertable-parms-new-name",
+      "locator_kind": "fragment",
+      "raw_selector": "sgml-id-attribute",
+      "element_name": "varlistentry",
+      "parent_anchor_id": "anchor-pg-3ec521e41a6d192a9251",
+      "context_start": 61977,
+      "context_end": 62032,
+      "context_unit": "byte",
+      "context_digest": "sha256:54e5b2aab56284701da8bf876868614075fa7a4fb904552ea40ded883f3376d5",
+      "existing_mapping_candidate_ids": [],
+      "priority": 1,
+      "priority_reasons": [
+        "fixed-sgml-id-anchor"
+      ],
+      "candidate_cluster_id": null,
+      "batch_id": "review-p1-sgml-id-attribute-18",
+      "state": "pending-human"
+    },
+    {
+      "anchor_id": "anchor-pg-505033f1cbb5cdf15546",
+      "document_id": "document-pg-fc39cd501a45c1e6",
+      "authority_url": "https://github.com/postgres/postgres/tree/REL_18_6",
+      "document_locator": "git:724edf9bde9d356724ad384a2e196edc3c9f80f7:doc/src/sgml/ref/initdb.sgml",
+      "source_ids": [
+        "postgresql-source-rel-18.6"
+      ],
+      "locked_source_digest": "sha256:36dda55b530a8a1cf55f9db990d4f659100bfd83a207ae0b6957051714e19622",
+      "inventory_tool_digest": "sha256:097da35cf95014735db866fca94f5db07c0717353928b543bcf9c188ae005d2c",
+      "review_queue_tool_digest": "sha256:409ff9047ea99f14bcfbc26a4a680a8f24e9c99fa04679ee3a20355e5394cdc0",
+      "locator": "#app-initdb-option-no-locale",
+      "locator_kind": "fragment",
+      "raw_selector": "sgml-id-attribute",
+      "element_name": "varlistentry",
+      "parent_anchor_id": "anchor-pg-0bb1ad2afc6e29fdf796",
+      "context_start": 12873,
+      "context_end": 12926,
+      "context_unit": "byte",
+      "context_digest": "sha256:5a49fe8e31b26be818a25dba6cd5d4ecd0f5fe720bcbabc4890dc7ade9db457c",
+      "existing_mapping_candidate_ids": [],
+      "priority": 1,
+      "priority_reasons": [
+        "fixed-sgml-id-anchor"
+      ],
+      "candidate_cluster_id": null,
+      "batch_id": "review-p1-sgml-id-attribute-18",
+      "state": "pending-human"
+    },
+    {
+      "anchor_id": "anchor-pg-5105a2ded7c9e7d5b14b",
+      "document_id": "document-pg-5fa9c6f29d197bdf",
+      "authority_url": "https://github.com/postgres/postgres/tree/REL_18_6",
+      "document_locator": "git:724edf9bde9d356724ad384a2e196edc3c9f80f7:doc/src/sgml/ref/analyze.sgml",
+      "source_ids": [
+        "postgresql-source-rel-18.6"
+      ],
+      "locked_source_digest": "sha256:28ee18ed0c0fa8e19f921bd4d214ae9b3c25b7f77e6beea421c547535247ccf1",
+      "inventory_tool_digest": "sha256:097da35cf95014735db866fca94f5db07c0717353928b543bcf9c188ae005d2c",
+      "review_queue_tool_digest": "sha256:409ff9047ea99f14bcfbc26a4a680a8f24e9c99fa04679ee3a20355e5394cdc0",
+      "locator": "#sql-analyze",
+      "locator_kind": "fragment",
+      "raw_selector": "sgml-id-attribute",
+      "element_name": "refentry",
+      "parent_anchor_id": "anchor-pg-8820b1f4bfec25e3c75b",
+      "context_start": 65,
+      "context_end": 93,
+      "context_unit": "byte",
+      "context_digest": "sha256:21170309340c6b12bdee6d27edc1c5ba647a1994b873e49749eb883656d9c57d",
+      "existing_mapping_candidate_ids": [],
+      "priority": 1,
+      "priority_reasons": [
+        "fixed-sgml-id-anchor"
+      ],
+      "candidate_cluster_id": null,
+      "batch_id": "review-p1-sgml-id-attribute-18",
+      "state": "pending-human"
+    },
+    {
+      "anchor_id": "anchor-pg-57ea1517cae2305528c3",
+      "document_id": "document-pg-d2610d8429b4b3e1",
+      "authority_url": "https://github.com/postgres/postgres/tree/REL_18_6",
+      "document_locator": "git:724edf9bde9d356724ad384a2e196edc3c9f80f7:doc/src/sgml/ref/psql-ref.sgml",
+      "source_ids": [
+        "postgresql-source-rel-18.6"
+      ],
+      "locked_source_digest": "sha256:4bb2c8eda5be839b141e142d7434997242d5894ec56a311e0fba1a439fe38973",
+      "inventory_tool_digest": "sha256:097da35cf95014735db866fca94f5db07c0717353928b543bcf9c188ae005d2c",
+      "review_queue_tool_digest": "sha256:409ff9047ea99f14bcfbc26a4a680a8f24e9c99fa04679ee3a20355e5394cdc0",
+      "locator": "#app-psql-environment-psqlrc",
+      "locator_kind": "fragment",
+      "raw_selector": "sgml-id-attribute",
+      "element_name": "varlistentry",
+      "parent_anchor_id": "anchor-pg-6ef686f1d08a9234b3e3",
+      "context_start": 233423,
+      "context_end": 233474,
+      "context_unit": "byte",
+      "context_digest": "sha256:b80a3b4b1ea274ec5d8610f2679ca29cd1aa5b1af7d6c0efaaa8a38bd8d2634d",
+      "existing_mapping_candidate_ids": [],
+      "priority": 1,
+      "priority_reasons": [
+        "fixed-sgml-id-anchor"
+      ],
+      "candidate_cluster_id": null,
+      "batch_id": "review-p1-sgml-id-attribute-18",
+      "state": "pending-human"
+    },
+    {
+      "anchor_id": "anchor-pg-744b3620a4aa2b83f26b",
+      "document_id": "document-pg-2ac913f9f17e31eb",
+      "authority_url": "https://github.com/postgres/postgres/tree/REL_18_6",
+      "document_locator": "git:724edf9bde9d356724ad384a2e196edc3c9f80f7:doc/src/sgml/ref/create_database.sgml",
+      "source_ids": [
+        "postgresql-source-rel-18.6"
+      ],
+      "locked_source_digest": "sha256:2ff34127b456868e3ce1ea1c8ec02eb1e4e86f54911fc2749a97a67869794671",
+      "inventory_tool_digest": "sha256:097da35cf95014735db866fca94f5db07c0717353928b543bcf9c188ae005d2c",
+      "review_queue_tool_digest": "sha256:409ff9047ea99f14bcfbc26a4a680a8f24e9c99fa04679ee3a20355e5394cdc0",
+      "locator": "#sql-createdatabase",
+      "locator_kind": "fragment",
+      "raw_selector": "sgml-id-attribute",
+      "element_name": "refentry",
+      "parent_anchor_id": "anchor-pg-23ed4855ba027c31b285",
+      "context_start": 73,
+      "context_end": 108,
+      "context_unit": "byte",
+      "context_digest": "sha256:87bce1ed21a87aeb874fef4abbcce429296db4550a82617ed537192cd4f9a094",
+      "existing_mapping_candidate_ids": [],
+      "priority": 1,
+      "priority_reasons": [
+        "fixed-sgml-id-anchor"
+      ],
+      "candidate_cluster_id": null,
+      "batch_id": "review-p1-sgml-id-attribute-18",
+      "state": "pending-human"
+    },
+    {
+      "anchor_id": "anchor-pg-8b259eb5f6d7e2ac6b51",
+      "document_id": "document-pg-d2610d8429b4b3e1",
+      "authority_url": "https://github.com/postgres/postgres/tree/REL_18_6",
+      "document_locator": "git:724edf9bde9d356724ad384a2e196edc3c9f80f7:doc/src/sgml/ref/psql-ref.sgml",
+      "source_ids": [
+        "postgresql-source-rel-18.6"
+      ],
+      "locked_source_digest": "sha256:4bb2c8eda5be839b141e142d7434997242d5894ec56a311e0fba1a439fe38973",
+      "inventory_tool_digest": "sha256:097da35cf95014735db866fca94f5db07c0717353928b543bcf9c188ae005d2c",
+      "review_queue_tool_digest": "sha256:409ff9047ea99f14bcfbc26a4a680a8f24e9c99fa04679ee3a20355e5394cdc0",
+      "locator": "#app-psql-meta-command-c-uc",
+      "locator_kind": "fragment",
+      "raw_selector": "sgml-id-attribute",
+      "element_name": "varlistentry",
+      "parent_anchor_id": "anchor-pg-6ef686f1d08a9234b3e3",
+      "context_start": 43581,
+      "context_end": 43634,
+      "context_unit": "byte",
+      "context_digest": "sha256:ccc58642bcfc99b059df66a0cc17d4f2bd1b9a0e7dae6644de7a213c42fc96c2",
+      "existing_mapping_candidate_ids": [],
+      "priority": 1,
+      "priority_reasons": [
+        "fixed-sgml-id-anchor"
+      ],
+      "candidate_cluster_id": null,
+      "batch_id": "review-p1-sgml-id-attribute-18",
+      "state": "pending-human"
+    },
+    {
+      "anchor_id": "anchor-pg-9109100014fcdea3f1ca",
+      "document_id": "document-pg-c522ca74b6f8716b",
+      "authority_url": "https://github.com/postgres/postgres/tree/REL_18_6",
+      "document_locator": "git:724edf9bde9d356724ad384a2e196edc3c9f80f7:doc/src/sgml/ref/commit.sgml",
+      "source_ids": [
+        "postgresql-source-rel-18.6"
+      ],
+      "locked_source_digest": "sha256:d9b11c2867f73a9983480856dbfeb4318fc0642662ad5d8c164a724ca18b9579",
+      "inventory_tool_digest": "sha256:097da35cf95014735db866fca94f5db07c0717353928b543bcf9c188ae005d2c",
+      "review_queue_tool_digest": "sha256:409ff9047ea99f14bcfbc26a4a680a8f24e9c99fa04679ee3a20355e5394cdc0",
+      "locator": "#sql-commit-chain",
+      "locator_kind": "fragment",
+      "raw_selector": "sgml-id-attribute",
+      "element_name": "varlistentry",
+      "parent_anchor_id": "anchor-pg-be340568c9c6a66f50d6",
+      "context_start": 1208,
+      "context_end": 1248,
+      "context_unit": "byte",
+      "context_digest": "sha256:6ddd0fe1fe8b1fbf2a7cbd85b1004f1c30036b0bdaa3e9a5c2e418de1154de92",
+      "existing_mapping_candidate_ids": [],
+      "priority": 1,
+      "priority_reasons": [
+        "fixed-sgml-id-anchor"
+      ],
+      "candidate_cluster_id": null,
+      "batch_id": "review-p1-sgml-id-attribute-18",
+      "state": "pending-human"
+    },
+    {
+      "anchor_id": "anchor-pg-97778c97c27c3e697c72",
+      "document_id": "document-pg-5f298333bb781288",
+      "authority_url": "https://github.com/postgres/postgres/tree/REL_18_6",
+      "document_locator": "git:724edf9bde9d356724ad384a2e196edc3c9f80f7:doc/src/sgml/ref/pg_restore.sgml",
+      "source_ids": [
+        "postgresql-source-rel-18.6"
+      ],
+      "locked_source_digest": "sha256:2d44ab4afc941e3c701d128a4925bcff9a59377f24482d1152e8acf6cb972145",
+      "inventory_tool_digest": "sha256:097da35cf95014735db866fca94f5db07c0717353928b543bcf9c188ae005d2c",
+      "review_queue_tool_digest": "sha256:409ff9047ea99f14bcfbc26a4a680a8f24e9c99fa04679ee3a20355e5394cdc0",
+      "locator": "#app-pgrestore-examples",
+      "locator_kind": "fragment",
+      "raw_selector": "sgml-id-attribute",
+      "element_name": "refsect1",
+      "parent_anchor_id": "anchor-pg-61832956e81a27806c2e",
+      "context_start": 43180,
+      "context_end": 43220,
+      "context_unit": "byte",
+      "context_digest": "sha256:2779697de4a1ccac42594fe893c613dddd7ec9c7021c33b2563b404011e90d30",
+      "existing_mapping_candidate_ids": [],
+      "priority": 1,
+      "priority_reasons": [
+        "fixed-sgml-id-anchor"
+      ],
+      "candidate_cluster_id": null,
+      "batch_id": "review-p1-sgml-id-attribute-18",
+      "state": "pending-human"
+    },
+    {
+      "anchor_id": "anchor-pg-9a6cc706350474e5bdde",
+      "document_id": "document-pg-d2610d8429b4b3e1",
+      "authority_url": "https://github.com/postgres/postgres/tree/REL_18_6",
+      "document_locator": "git:724edf9bde9d356724ad384a2e196edc3c9f80f7:doc/src/sgml/ref/psql-ref.sgml",
+      "source_ids": [
+        "postgresql-source-rel-18.6"
+      ],
+      "locked_source_digest": "sha256:4bb2c8eda5be839b141e142d7434997242d5894ec56a311e0fba1a439fe38973",
+      "inventory_tool_digest": "sha256:097da35cf95014735db866fca94f5db07c0717353928b543bcf9c188ae005d2c",
+      "review_queue_tool_digest": "sha256:409ff9047ea99f14bcfbc26a4a680a8f24e9c99fa04679ee3a20355e5394cdc0",
+      "locator": "#app-psql-option-field-separator",
+      "locator_kind": "fragment",
+      "raw_selector": "sgml-id-attribute",
+      "element_name": "varlistentry",
+      "parent_anchor_id": "anchor-pg-6ef686f1d08a9234b3e3",
+      "context_start": 9482,
+      "context_end": 9538,
+      "context_unit": "byte",
+      "context_digest": "sha256:497fee86ec28fa66f1ead7b8c3e9dbe82afd60a04180d0cc76e11f6cada4ca5d",
+      "existing_mapping_candidate_ids": [],
+      "priority": 1,
+      "priority_reasons": [
+        "fixed-sgml-id-anchor"
+      ],
+      "candidate_cluster_id": null,
+      "batch_id": "review-p1-sgml-id-attribute-18",
+      "state": "pending-human"
+    },
+    {
+      "anchor_id": "anchor-pg-9ff4bac8b9357d32edc4",
+      "document_id": "document-pg-d2610d8429b4b3e1",
+      "authority_url": "https://github.com/postgres/postgres/tree/REL_18_6",
+      "document_locator": "git:724edf9bde9d356724ad384a2e196edc3c9f80f7:doc/src/sgml/ref/psql-ref.sgml",
+      "source_ids": [
+        "postgresql-source-rel-18.6"
+      ],
+      "locked_source_digest": "sha256:4bb2c8eda5be839b141e142d7434997242d5894ec56a311e0fba1a439fe38973",
+      "inventory_tool_digest": "sha256:097da35cf95014735db866fca94f5db07c0717353928b543bcf9c188ae005d2c",
+      "review_queue_tool_digest": "sha256:409ff9047ea99f14bcfbc26a4a680a8f24e9c99fa04679ee3a20355e5394cdc0",
+      "locator": "#app-psql-environment-shell",
+      "locator_kind": "fragment",
+      "raw_selector": "sgml-id-attribute",
+      "element_name": "varlistentry",
+      "parent_anchor_id": "anchor-pg-6ef686f1d08a9234b3e3",
+      "context_start": 233719,
+      "context_end": 233769,
+      "context_unit": "byte",
+      "context_digest": "sha256:6b3c2b54f3e7eaa698a459a7a451613d8128522f524d4f60d897af18cca4cc91",
+      "existing_mapping_candidate_ids": [],
+      "priority": 1,
+      "priority_reasons": [
+        "fixed-sgml-id-anchor"
+      ],
+      "candidate_cluster_id": null,
+      "batch_id": "review-p1-sgml-id-attribute-18",
+      "state": "pending-human"
+    },
+    {
+      "anchor_id": "anchor-pg-aad0fc4aefa4d917ce6c",
+      "document_id": "document-pg-d2610d8429b4b3e1",
+      "authority_url": "https://github.com/postgres/postgres/tree/REL_18_6",
+      "document_locator": "git:724edf9bde9d356724ad384a2e196edc3c9f80f7:doc/src/sgml/ref/psql-ref.sgml",
+      "source_ids": [
+        "postgresql-source-rel-18.6"
+      ],
+      "locked_source_digest": "sha256:4bb2c8eda5be839b141e142d7434997242d5894ec56a311e0fba1a439fe38973",
+      "inventory_tool_digest": "sha256:097da35cf95014735db866fca94f5db07c0717353928b543bcf9c188ae005d2c",
+      "review_queue_tool_digest": "sha256:409ff9047ea99f14bcfbc26a4a680a8f24e9c99fa04679ee3a20355e5394cdc0",
+      "locator": "#app-psql-meta-command-dp-lc",
+      "locator_kind": "fragment",
+      "raw_selector": "sgml-id-attribute",
+      "element_name": "varlistentry",
+      "parent_anchor_id": "anchor-pg-6ef686f1d08a9234b3e3",
+      "context_start": 89247,
+      "context_end": 89301,
+      "context_unit": "byte",
+      "context_digest": "sha256:f37a08472a85fad5f0d45578e8a4056b7f62e6a4fb3eb7fa6a0f5aff2b93c254",
+      "existing_mapping_candidate_ids": [],
+      "priority": 1,
+      "priority_reasons": [
+        "fixed-sgml-id-anchor"
+      ],
+      "candidate_cluster_id": null,
+      "batch_id": "review-p1-sgml-id-attribute-18",
+      "state": "pending-human"
+    },
+    {
+      "anchor_id": "anchor-pg-b0841b2f1ddcfd86535b",
+      "document_id": "document-pg-1cd5b57fa5285435",
+      "authority_url": "https://github.com/postgres/postgres/tree/REL_18_6",
+      "document_locator": "git:724edf9bde9d356724ad384a2e196edc3c9f80f7:doc/src/sgml/ref/create_table.sgml",
+      "source_ids": [
+        "postgresql-source-rel-18.6"
+      ],
+      "locked_source_digest": "sha256:674a39aea1eeb3d7b3e344ffeacbab8eb07ef1d8ac2360a01f9f0e6a0349988e",
+      "inventory_tool_digest": "sha256:097da35cf95014735db866fca94f5db07c0717353928b543bcf9c188ae005d2c",
+      "review_queue_tool_digest": "sha256:409ff9047ea99f14bcfbc26a4a680a8f24e9c99fa04679ee3a20355e5394cdc0",
+      "locator": "#reloption-autovacuum-vacuum-insert-threshold",
+      "locator_kind": "fragment",
+      "raw_selector": "sgml-id-attribute",
+      "element_name": "varlistentry",
+      "parent_anchor_id": "anchor-pg-fc59d9eab6768b91daee",
+      "context_start": 85990,
+      "context_end": 86105,
+      "context_unit": "byte",
+      "context_digest": "sha256:2f6711f8e6e5fcb3c0f3240e8c1daf055ad31190584d2feb286ce1b441f82971",
+      "existing_mapping_candidate_ids": [],
+      "priority": 1,
+      "priority_reasons": [
+        "fixed-sgml-id-anchor"
+      ],
+      "candidate_cluster_id": null,
+      "batch_id": "review-p1-sgml-id-attribute-18",
+      "state": "pending-human"
+    },
+    {
+      "anchor_id": "anchor-pg-b5b26b842dc727361529",
+      "document_id": "document-pg-d2610d8429b4b3e1",
+      "authority_url": "https://github.com/postgres/postgres/tree/REL_18_6",
+      "document_locator": "git:724edf9bde9d356724ad384a2e196edc3c9f80f7:doc/src/sgml/ref/psql-ref.sgml",
+      "source_ids": [
+        "postgresql-source-rel-18.6"
+      ],
+      "locked_source_digest": "sha256:4bb2c8eda5be839b141e142d7434997242d5894ec56a311e0fba1a439fe38973",
+      "inventory_tool_digest": "sha256:097da35cf95014735db866fca94f5db07c0717353928b543bcf9c188ae005d2c",
+      "review_queue_tool_digest": "sha256:409ff9047ea99f14bcfbc26a4a680a8f24e9c99fa04679ee3a20355e5394cdc0",
+      "locator": "#app-psql-option-record-separator-zero",
+      "locator_kind": "fragment",
+      "raw_selector": "sgml-id-attribute",
+      "element_name": "varlistentry",
+      "parent_anchor_id": "anchor-pg-6ef686f1d08a9234b3e3",
+      "context_start": 22010,
+      "context_end": 22072,
+      "context_unit": "byte",
+      "context_digest": "sha256:406dfe77c68285b2b3db79ad4e9483a5e4adadd6d186e0804226e0b8dc4310d8",
+      "existing_mapping_candidate_ids": [],
+      "priority": 1,
+      "priority_reasons": [
+        "fixed-sgml-id-anchor"
+      ],
+      "candidate_cluster_id": null,
+      "batch_id": "review-p1-sgml-id-attribute-18",
+      "state": "pending-human"
+    },
+    {
+      "anchor_id": "anchor-pg-bc74effedff23e444626",
+      "document_id": "document-pg-d2610d8429b4b3e1",
+      "authority_url": "https://github.com/postgres/postgres/tree/REL_18_6",
+      "document_locator": "git:724edf9bde9d356724ad384a2e196edc3c9f80f7:doc/src/sgml/ref/psql-ref.sgml",
+      "source_ids": [
+        "postgresql-source-rel-18.6"
+      ],
+      "locked_source_digest": "sha256:4bb2c8eda5be839b141e142d7434997242d5894ec56a311e0fba1a439fe38973",
+      "inventory_tool_digest": "sha256:097da35cf95014735db866fca94f5db07c0717353928b543bcf9c188ae005d2c",
+      "review_queue_tool_digest": "sha256:409ff9047ea99f14bcfbc26a4a680a8f24e9c99fa04679ee3a20355e5394cdc0",
+      "locator": "#r2-app-psql-4",
+      "locator_kind": "fragment",
+      "raw_selector": "sgml-id-attribute",
+      "element_name": "refsect2",
+      "parent_anchor_id": "anchor-pg-6ef686f1d08a9234b3e3",
+      "context_start": 28719,
+      "context_end": 28751,
+      "context_unit": "byte",
+      "context_digest": "sha256:b5cf32d84a1f9e0e0811de8b110f982ce4b4bb230a262e4ef48edfa25fa4c61e",
+      "existing_mapping_candidate_ids": [],
+      "priority": 1,
+      "priority_reasons": [
+        "fixed-sgml-id-anchor"
+      ],
+      "candidate_cluster_id": null,
+      "batch_id": "review-p1-sgml-id-attribute-18",
+      "state": "pending-human"
+    },
+    {
+      "anchor_id": "anchor-pg-cb9ff2fc43339b42530c",
+      "document_id": "document-pg-d2610d8429b4b3e1",
+      "authority_url": "https://github.com/postgres/postgres/tree/REL_18_6",
+      "document_locator": "git:724edf9bde9d356724ad384a2e196edc3c9f80f7:doc/src/sgml/ref/psql-ref.sgml",
+      "source_ids": [
+        "postgresql-source-rel-18.6"
+      ],
+      "locked_source_digest": "sha256:4bb2c8eda5be839b141e142d7434997242d5894ec56a311e0fba1a439fe38973",
+      "inventory_tool_digest": "sha256:097da35cf95014735db866fca94f5db07c0717353928b543bcf9c188ae005d2c",
+      "review_queue_tool_digest": "sha256:409ff9047ea99f14bcfbc26a4a680a8f24e9c99fa04679ee3a20355e5394cdc0",
+      "locator": "#app-psql-option-version",
+      "locator_kind": "fragment",
+      "raw_selector": "sgml-id-attribute",
+      "element_name": "varlistentry",
+      "parent_anchor_id": "anchor-pg-6ef686f1d08a9234b3e3",
+      "context_start": 18723,
+      "context_end": 18771,
+      "context_unit": "byte",
+      "context_digest": "sha256:0779afe4b84eeaf9aca58748b316e9b807c7dadf31c5b4e3e8e28d91436d6c5b",
+      "existing_mapping_candidate_ids": [],
+      "priority": 1,
+      "priority_reasons": [
+        "fixed-sgml-id-anchor"
+      ],
+      "candidate_cluster_id": null,
+      "batch_id": "review-p1-sgml-id-attribute-18",
+      "state": "pending-human"
+    },
+    {
+      "anchor_id": "anchor-pg-ce3da6872ff86544a794",
+      "document_id": "document-pg-df2e5fd11a0e73e0",
+      "authority_url": "https://github.com/postgres/postgres/tree/REL_18_6",
+      "document_locator": "git:724edf9bde9d356724ad384a2e196edc3c9f80f7:doc/src/sgml/ref/alter_collation.sgml",
+      "source_ids": [
+        "postgresql-source-rel-18.6"
+      ],
+      "locked_source_digest": "sha256:3d197049b17e70d82a552e05b0c3dc958347030154770f3ef2af66937f610acf",
+      "inventory_tool_digest": "sha256:097da35cf95014735db866fca94f5db07c0717353928b543bcf9c188ae005d2c",
+      "review_queue_tool_digest": "sha256:409ff9047ea99f14bcfbc26a4a680a8f24e9c99fa04679ee3a20355e5394cdc0",
+      "locator": "#sql-altercollation",
+      "locator_kind": "fragment",
+      "raw_selector": "sgml-id-attribute",
+      "element_name": "refentry",
+      "parent_anchor_id": "anchor-pg-e3413a5216071adddb3b",
+      "context_start": 73,
+      "context_end": 108,
+      "context_unit": "byte",
+      "context_digest": "sha256:fe55028523858fbf09ec54f03c4d10a31e7dfc9367711c413bb0ddfc999f6827",
+      "existing_mapping_candidate_ids": [],
+      "priority": 1,
+      "priority_reasons": [
+        "fixed-sgml-id-anchor"
+      ],
+      "candidate_cluster_id": null,
+      "batch_id": "review-p1-sgml-id-attribute-18",
+      "state": "pending-human"
+    },
+    {
+      "anchor_id": "anchor-pg-e18e53a3ae2a29b87849",
+      "document_id": "document-pg-63a8d27e68f61fe9",
+      "authority_url": "https://github.com/postgres/postgres/tree/REL_18_6",
+      "document_locator": "git:724edf9bde9d356724ad384a2e196edc3c9f80f7:doc/src/sgml/ref/create_subscription.sgml",
+      "source_ids": [
+        "postgresql-source-rel-18.6"
+      ],
+      "locked_source_digest": "sha256:68ca87f12214ebc7252972633cf4c09de609d7993ac97e7edadaf931cb1f20c5",
+      "inventory_tool_digest": "sha256:097da35cf95014735db866fca94f5db07c0717353928b543bcf9c188ae005d2c",
+      "review_queue_tool_digest": "sha256:409ff9047ea99f14bcfbc26a4a680a8f24e9c99fa04679ee3a20355e5394cdc0",
+      "locator": "#sql-createsubscription-params-with-connect",
+      "locator_kind": "fragment",
+      "raw_selector": "sgml-id-attribute",
+      "element_name": "varlistentry",
+      "parent_anchor_id": "anchor-pg-233d9169dbf0557d7173",
+      "context_start": 3715,
+      "context_end": 3785,
+      "context_unit": "byte",
+      "context_digest": "sha256:ea46338c129b177d0d8f5f9ef4355a6e356f5cf32dba148bc8d5b28a930fc4f5",
+      "existing_mapping_candidate_ids": [],
+      "priority": 1,
+      "priority_reasons": [
+        "fixed-sgml-id-anchor"
+      ],
+      "candidate_cluster_id": null,
+      "batch_id": "review-p1-sgml-id-attribute-18",
+      "state": "pending-human"
+    },
+    {
+      "anchor_id": "anchor-pg-e37f15d0472d202bb8cd",
+      "document_id": "document-pg-a1cd97ad848a970f",
+      "authority_url": "https://github.com/postgres/postgres/tree/REL_18_6",
+      "document_locator": "git:724edf9bde9d356724ad384a2e196edc3c9f80f7:doc/src/sgml/ref/alter_type.sgml",
+      "source_ids": [
+        "postgresql-source-rel-18.6"
+      ],
+      "locked_source_digest": "sha256:467e2a6f1f0e6cda2a574170c28fafab552d0a4bec235480eddb96dd69d0f8d8",
+      "inventory_tool_digest": "sha256:097da35cf95014735db866fca94f5db07c0717353928b543bcf9c188ae005d2c",
+      "review_queue_tool_digest": "sha256:409ff9047ea99f14bcfbc26a4a680a8f24e9c99fa04679ee3a20355e5394cdc0",
+      "locator": "#sql-altertype-see-also",
+      "locator_kind": "fragment",
+      "raw_selector": "sgml-id-attribute",
+      "element_name": "refsect1",
+      "parent_anchor_id": "anchor-pg-a640a3cb7c319b48db6e",
+      "context_start": 16717,
+      "context_end": 16757,
+      "context_unit": "byte",
+      "context_digest": "sha256:efec3d44abb5d47c2a6c7dbe3558e14421f79776f05da595ee866f7a40e5b3d5",
+      "existing_mapping_candidate_ids": [],
+      "priority": 1,
+      "priority_reasons": [
+        "fixed-sgml-id-anchor"
+      ],
+      "candidate_cluster_id": null,
+      "batch_id": "review-p1-sgml-id-attribute-18",
+      "state": "pending-human"
+    },
+    {
+      "anchor_id": "anchor-pg-f2c94b352f8cc4799ee3",
+      "document_id": "document-pg-d2610d8429b4b3e1",
+      "authority_url": "https://github.com/postgres/postgres/tree/REL_18_6",
+      "document_locator": "git:724edf9bde9d356724ad384a2e196edc3c9f80f7:doc/src/sgml/ref/psql-ref.sgml",
+      "source_ids": [
+        "postgresql-source-rel-18.6"
+      ],
+      "locked_source_digest": "sha256:4bb2c8eda5be839b141e142d7434997242d5894ec56a311e0fba1a439fe38973",
+      "inventory_tool_digest": "sha256:097da35cf95014735db866fca94f5db07c0717353928b543bcf9c188ae005d2c",
+      "review_queue_tool_digest": "sha256:409ff9047ea99f14bcfbc26a4a680a8f24e9c99fa04679ee3a20355e5394cdc0",
+      "locator": "#app-psql-meta-command-unset",
+      "locator_kind": "fragment",
+      "raw_selector": "sgml-id-attribute",
+      "element_name": "varlistentry",
+      "parent_anchor_id": "anchor-pg-6ef686f1d08a9234b3e3",
+      "context_start": 170882,
+      "context_end": 170936,
+      "context_unit": "byte",
+      "context_digest": "sha256:eb6fa74faf83376d150df4a313873c1da1a7574eedb8b83129c16096e6b2bdce",
+      "existing_mapping_candidate_ids": [],
+      "priority": 1,
+      "priority_reasons": [
+        "fixed-sgml-id-anchor"
+      ],
+      "candidate_cluster_id": null,
+      "batch_id": "review-p1-sgml-id-attribute-18",
+      "state": "pending-human"
+    },
+    {
+      "anchor_id": "anchor-pg-f3427af7810ccc9d867f",
+      "document_id": "document-pg-6dff50d273d047b4",
+      "authority_url": "https://github.com/postgres/postgres/tree/REL_18_6",
+      "document_locator": "git:724edf9bde9d356724ad384a2e196edc3c9f80f7:doc/src/sgml/ref/create_tsdictionary.sgml",
+      "source_ids": [
+        "postgresql-source-rel-18.6"
+      ],
+      "locked_source_digest": "sha256:0ee074fe8399486475245a2d6c25683beda5d585fb9a370b36b45a4af8c8ad92",
+      "inventory_tool_digest": "sha256:097da35cf95014735db866fca94f5db07c0717353928b543bcf9c188ae005d2c",
+      "review_queue_tool_digest": "sha256:409ff9047ea99f14bcfbc26a4a680a8f24e9c99fa04679ee3a20355e5394cdc0",
+      "locator": "#sql-createtsdictionary",
+      "locator_kind": "fragment",
+      "raw_selector": "sgml-id-attribute",
+      "element_name": "refentry",
+      "parent_anchor_id": "anchor-pg-c6d125229507b6c58969",
+      "context_start": 77,
+      "context_end": 116,
+      "context_unit": "byte",
+      "context_digest": "sha256:f987b91dc277c0a5bb3d4429621cb3d9c26d2bbb825d4e633c2567c15d37dbed",
+      "existing_mapping_candidate_ids": [],
+      "priority": 1,
+      "priority_reasons": [
+        "fixed-sgml-id-anchor"
+      ],
+      "candidate_cluster_id": null,
+      "batch_id": "review-p1-sgml-id-attribute-18",
+      "state": "pending-human"
+    },
+    {
+      "anchor_id": "anchor-pg-f8b0f550aecbb0702232",
+      "document_id": "document-pg-1773d3be917e529e",
+      "authority_url": "https://github.com/postgres/postgres/tree/REL_18_6",
+      "document_locator": "git:724edf9bde9d356724ad384a2e196edc3c9f80f7:doc/src/sgml/ref/postgres-ref.sgml",
+      "source_ids": [
+        "postgresql-source-rel-18.6"
+      ],
+      "locked_source_digest": "sha256:c1a9ea7fe4eb39960e6ffbb5b24d82aba87c1a820c78a93db5967fa6443d1054",
+      "inventory_tool_digest": "sha256:097da35cf95014735db866fca94f5db07c0717353928b543bcf9c188ae005d2c",
+      "review_queue_tool_digest": "sha256:409ff9047ea99f14bcfbc26a4a680a8f24e9c99fa04679ee3a20355e5394cdc0",
+      "locator": "#app-postgres-examples",
+      "locator_kind": "fragment",
+      "raw_selector": "sgml-id-attribute",
+      "element_name": "refsect1",
+      "parent_anchor_id": "anchor-pg-6a77c8daf38490f113f2",
+      "context_start": 28341,
+      "context_end": 28380,
+      "context_unit": "byte",
+      "context_digest": "sha256:877410e8235ecf317152e1a51bed5ea0e7ed56ad7db88fe99b63864034e19f9a",
+      "existing_mapping_candidate_ids": [],
+      "priority": 1,
+      "priority_reasons": [
+        "fixed-sgml-id-anchor"
+      ],
+      "candidate_cluster_id": null,
+      "batch_id": "review-p1-sgml-id-attribute-18",
+      "state": "pending-human"
+    },
+    {
+      "anchor_id": "anchor-pg-f9906afe1ac0ac365449",
+      "document_id": "document-pg-2ac913f9f17e31eb",
+      "authority_url": "https://github.com/postgres/postgres/tree/REL_18_6",
+      "document_locator": "git:724edf9bde9d356724ad384a2e196edc3c9f80f7:doc/src/sgml/ref/create_database.sgml",
+      "source_ids": [
+        "postgresql-source-rel-18.6"
+      ],
+      "locked_source_digest": "sha256:2ff34127b456868e3ce1ea1c8ec02eb1e4e86f54911fc2749a97a67869794671",
+      "inventory_tool_digest": "sha256:097da35cf95014735db866fca94f5db07c0717353928b543bcf9c188ae005d2c",
+      "review_queue_tool_digest": "sha256:409ff9047ea99f14bcfbc26a4a680a8f24e9c99fa04679ee3a20355e5394cdc0",
+      "locator": "#create-database-locale",
+      "locator_kind": "fragment",
+      "raw_selector": "sgml-id-attribute",
+      "element_name": "varlistentry",
+      "parent_anchor_id": "anchor-pg-23ed4855ba027c31b285",
+      "context_start": 6430,
+      "context_end": 6478,
+      "context_unit": "byte",
+      "context_digest": "sha256:b6524aa9abf19eb0c8c61951bdcedd69d9557be9f5a459f3dddac5d896353697",
+      "existing_mapping_candidate_ids": [],
+      "priority": 1,
+      "priority_reasons": [
+        "fixed-sgml-id-anchor"
+      ],
+      "candidate_cluster_id": null,
+      "batch_id": "review-p1-sgml-id-attribute-18",
+      "state": "pending-human"
+    }
+  ]
+}

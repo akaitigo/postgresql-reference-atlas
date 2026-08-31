@@ -1,0 +1,125 @@
+schema_version: 2
+atlas_id: postgresql-reference-atlas
+baseline:
+  path: baselines/core-v1.4-v1.0.0.non-regression-baseline.json
+  digest: sha256:f520ee3e3fae67ec70566e0980c9677fb018bbc5b9d9ba3110907fe0942a5dbb
+baseline_upgrade:
+  mode: monotonic-capture-contract-extension
+  from:
+    path: baselines/v1.0.0.non-regression-baseline.json
+    digest: sha256:01ab1feaab1cbea85275a3422fba55a402c581df9b62f6dacbff4b4e3870cb8d
+  reason: Core v1.1/v1.2のAuthority・Review Queue・Skill Router・Scenario Proof Rowに加え、Definitive Gate v2のScenario Closure Plan、Evidence Durability、Evidence Dependency Graph collectionを追加したため、初回公開anchorと同一commitから旧全項目をbyte-equivalentに保持し、公開時点0件のcollectionだけを加えて再捕捉する。
+  migration_evidence_ids: [lab.migration]
+replacements:
+  - collection: tests_labs
+    old_id: lab:labs/sql/run.sh
+    new_ids: [lab:labs/sql/run.sh]
+    equivalence: equal-or-stronger
+    reason: 既存SQL semanticsとAssertionを保持し、成功・失敗時のtask-owned anonymous volume cleanupを加えた。
+    execution_proof_evidence_ids: [lab.sql]
+    migration_evidence_ids: [lab.migration]
+  - collection: tests_labs
+    old_id: lab:labs/backup-recovery/run.sh
+    new_ids: [lab:labs/backup-recovery/run.sh]
+    equivalence: equal-or-stronger
+    reason: 既存Backup/Recovery Oracleを保持し、task-owned anonymous volume cleanupを加えた。
+    execution_proof_evidence_ids: [lab.backup-recovery]
+    migration_evidence_ids: [lab.migration]
+  - collection: tests_labs
+    old_id: lab:labs/compatibility-matrix/run.sh
+    new_ids: [lab:labs/compatibility-matrix/run.sh]
+    equivalence: equal-or-stronger
+    reason: 既存14.24〜18.6 denominatorとAssertionを保持し、各containerのanonymous volume cleanupを加えた。
+    execution_proof_evidence_ids: [lab.compatibility-matrix]
+    migration_evidence_ids: [lab.migration]
+  - collection: tests_labs
+    old_id: lab:labs/deadlock/run.sh
+    new_ids: [lab:labs/deadlock/run.sh]
+    equivalence: equal-or-stronger
+    reason: 既存Deadlock detection Oracleを保持し、task-owned anonymous volume cleanupを加えた。
+    execution_proof_evidence_ids: [lab.deadlock]
+    migration_evidence_ids: [lab.migration]
+  - collection: tests_labs
+    old_id: lab:labs/index/run.sh
+    new_ids: [lab:labs/index/run.sh]
+    equivalence: equal-or-stronger
+    reason: 既存Index plan Assertionを保持し、task-owned anonymous volume cleanupを加えた。
+    execution_proof_evidence_ids: [lab.index]
+    migration_evidence_ids: [lab.migration]
+  - collection: tests_labs
+    old_id: lab:labs/logical-replication/run.sh
+    new_ids: [lab:labs/logical-replication/run.sh]
+    equivalence: equal-or-stronger
+    reason: 既存Logical Replication Oracleを保持し、publisher/subscriberのanonymous volume cleanupを加えた。
+    execution_proof_evidence_ids: [lab.logical-replication]
+    migration_evidence_ids: [lab.migration]
+  - collection: tests_labs
+    old_id: lab:labs/mvcc/run.sh
+    new_ids: [lab:labs/mvcc/run.sh]
+    equivalence: equal-or-stronger
+    reason: 既存MVCC visibility Assertionを保持し、task-owned anonymous volume cleanupを加えた。
+    execution_proof_evidence_ids: [lab.mvcc]
+    migration_evidence_ids: [lab.migration]
+  - collection: tests_labs
+    old_id: lab:labs/planner/run.sh
+    new_ids: [lab:labs/planner/run.sh]
+    equivalence: equal-or-stronger
+    reason: 既存Planner plan Assertionを保持し、task-owned anonymous volume cleanupを加えた。
+    execution_proof_evidence_ids: [lab.planner]
+    migration_evidence_ids: [lab.migration]
+  - collection: tests_labs
+    old_id: lab:labs/replication/run.sh
+    new_ids: [lab:labs/replication/run.sh]
+    equivalence: equal-or-stronger
+    reason: 既存Physical Replication Oracleを保持し、primary/standbyのanonymous volume cleanupを加えた。
+    execution_proof_evidence_ids: [lab.replication]
+    migration_evidence_ids: [lab.migration]
+  - collection: tests_labs
+    old_id: lab:labs/upgrade/run.sh
+    new_ids: [lab:labs/upgrade/run.sh]
+    equivalence: equal-or-stronger
+    reason: 既存Major Upgrade Oracleを保持し、old/new containerのanonymous volume cleanupを加えた。
+    execution_proof_evidence_ids: [lab.upgrade]
+    migration_evidence_ids: [lab.migration]
+  - collection: tests_labs
+    old_id: test-harness:scripts/run-sql-lab.sh
+    new_ids: [test-harness:scripts/run-sql-lab.sh]
+    equivalence: equal-or-stronger
+    reason: 共有SQL Lab harnessの実PostgreSQL実行とAssertionを保持し、成功・失敗trapのanonymous volume cleanupを加えた。
+    execution_proof_evidence_ids: [lab.sql]
+    migration_evidence_ids: [lab.migration]
+  - collection: tests_labs
+    old_id: lab:labs/pitr/run.sh
+    new_ids: [lab:labs/pitr/run.sh]
+    equivalence: equal-or-stronger
+    reason: 既存のrestore point到達、対象前行保持、対象後行除外、promote、archive確認を維持し、永続Volumeを作らない固有tmpfs containerへ置換した。
+    execution_proof_evidence_ids: [lab.pitr]
+    migration_evidence_ids: [lab.migration]
+  - collection: tests_labs
+    old_id: test-harness:evals/run.sh
+    new_ids: [test-harness:evals/run.sh]
+    equivalence: equal-or-stronger
+    reason: 既存30件のRouter Evalとpass閾値を保持し、112 Routing cell、5 fail-closed境界、独立Agent Forward Evalを後段へ加法接続した。
+    execution_proof_evidence_ids: [skill.router-eval]
+    migration_evidence_ids: [lab.migration]
+  - collection: tests_labs
+    old_id: test-harness:scripts/static-gates.sh
+    new_ids: [test-harness:scripts/static-gates.sh]
+    equivalence: equal-or-stronger
+    reason: 既存のstatic publication gatesとAssertionを保持し、ledger固定created_atによるbyte deterministic生成とpipeline clean確認を加えた。
+    execution_proof_evidence_ids: [foundation.authority-lock, publication.static-gates]
+    migration_evidence_ids: [lab.migration]
+  - collection: ci_jobs
+    old_id: .github/workflows/ci.yml:validate
+    new_ids: [.github/workflows/ci.yml:validate]
+    equivalence: equal-or-stronger
+    reason: 公開mainの全検証Stepを保持したまま非後退監査とDefinitive監査を加え、Coreをv1互換の子孫commitへ更新した。
+    execution_proof_evidence_ids: [lab.compatibility-matrix]
+    migration_evidence_ids: [lab.migration]
+  - collection: ci_jobs
+    old_id: .github/workflows/ci.yml:executable-labs
+    new_ids: [.github/workflows/ci.yml:executable-labs]
+    equivalence: equal-or-stronger
+    reason: 公開mainの27 Lab Matrixをすべて保持し、固定Source Inventoryと統合Runtime SystemのLabを追加した。
+    execution_proof_evidence_ids: [lab.compatibility-matrix]
+    migration_evidence_ids: [lab.migration]

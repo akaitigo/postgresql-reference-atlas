@@ -2,10 +2,13 @@
 # frozen_string_literal: true
 
 require "digest"
+require "json"
 require "time"
 require "yaml"
 
 root = File.expand_path("..", __dir__)
+ledger_time = ENV["EVIDENCE_LEDGER_TIME"] ||
+  JSON.parse(File.read(File.join(root, "evidence/dependency-rerun.json"))).fetch("started_at")
 claims = YAML.safe_load(File.read(File.join(root, "atlas/claims/index.yaml")), aliases: false)
   .fetch("claims").to_h { |claim| [claim.fetch("id"), claim] }
 records = Dir.glob(File.join(root, "evidence", "*.evidence.yaml")).sort.map do |path|
@@ -30,7 +33,35 @@ end
 
 {
   "evals/postgresql-router.skill-eval.json" => ["skill-eval", ["postgresql-docs-18.6"], "make eval"],
-  "sbom.spdx.json" => ["sbom", ["postgresql-source-rel-18.6"], "make provenance"]
+  "evals/postgresql-atlas.definitive-skill-eval.json" => ["skill-eval", ["postgresql-docs-18.6", "postgresql-source-rel-18.6"], "ruby tools/generate-definitive-skill-eval.rb"],
+  "evals/postgresql-atlas.definitive-routing-eval.json" => ["skill-eval", ["postgresql-docs-18.6", "postgresql-source-rel-18.6", "postgres-container-18.6-alpine"], "ruby tools/generate-definitive-skill-eval.rb"],
+  "evals/definitive-skill-router.json" => ["skill-eval", ["postgresql-docs-18.6", "postgresql-source-rel-18.6", "postgres-container-18.6-alpine"], "ruby tools/generate-definitive-skill-eval.rb"],
+  "evals/postgresql-atlas.forward-agent-eval.json" => ["skill-eval", ["postgresql-docs-18.6", "postgresql-source-rel-18.6"], "independent Agent forward evaluation"],
+  "sbom.spdx.json" => ["sbom", ["postgresql-source-rel-18.6"], "make provenance"],
+  "authority/FE_DEPTH_REFERENCE.json" => ["document", [], "frontend-behavior-atlas@4a0b2df8e2091a963bd0e0e1bbccef9c84b49a45"],
+  "authority/locator-extraction.snapshot.json" => ["generated", ["postgresql-docs-18.6", "postgresql-source-rel-18.6"], "ruby tools/generate-authority-locators.rb <REL_18_6-checkout>"],
+  "authority/body-inventory.snapshot.json" => ["generated", ["postgresql-source-rel-18.6", "postgresql-license-rel-18.6"], "ruby tools/generate-authority-body-inventory.rb <REL_18_6-checkout>"],
+  "authority/review-queue.snapshot.json" => ["generated", ["postgresql-source-rel-18.6", "postgresql-license-rel-18.6"], "ruby tools/generate-authority-review-queue.rb"],
+  "authority/reviews/decisions.json" => ["document", ["postgresql-source-rel-18.6", "postgresql-license-rel-18.6"], "manual primary-source review decisions; verified by ruby tools/verify-authority-review-queue.rb"],
+  "baselines/authority-body-inventory-v1.json" => ["generated", ["postgresql-source-rel-18.6", "postgresql-license-rel-18.6"], "ruby tools/generate-authority-body-baseline.rb"],
+  "migrations/authority-body-inventory-v1.json" => ["document", [], "manual migration mapping"],
+  "evidence/authority-body-non-regression-report.json" => ["test-report", [], "make authority-body-non-regression-audit"],
+  "evidence/scenarios/index.json" => ["test-report", ["postgresql-docs-18.6", "postgresql-source-rel-18.6", "postgres-container-18.6-alpine"], "make scenario-proofs-generate"],
+  "evidence/scenarios/closure-plan.json" => ["test-report", ["postgres-container-18.6-alpine"], "make scenario-closure-plan-generate"],
+  "artifacts/pattern-scenarios/results.json" => ["test-report", ["postgres-container-18.6-alpine"], "ruby tools/run-scenario-security-001.rb"],
+  "tools/run-scenario-security-001.rb" => ["document", ["postgres-container-18.6-alpine"], "manual implementation; verified by make scenario-proofs-verify"],
+  "tools/lib/atomic_evidence_publisher.rb" => ["document", [], "manual implementation; verified by make scenario-evidence-atomicity-test"],
+  "tools/test-atomic-evidence-publisher.rb" => ["test-report", [], "make scenario-evidence-atomicity-test"],
+  "docs/SCENARIO_EVIDENCE_ATOMICITY.md" => ["document", [], "manual contract documentation"],
+  "evidence/artifacts/reference-system.server.log" => ["capture", ["postgres-container-18.6-alpine"], "make lab LAB=reference-system"],
+  "integrations/reference-system/manifest.json" => ["document", ["postgres-container-18.6-alpine"], "make scenario-proofs-generate"],
+  "artifacts/reference-system/results.json" => ["test-report", ["postgres-container-18.6-alpine"], "make scenario-proofs-generate"],
+  "authority/locator-draft/definitive-domain.json" => ["generated", [], "ruby tools/generate-authority-locators.rb <REL_18_6-checkout>"],
+  "authority/locator-draft/docs-sections.json" => ["generated", ["postgresql-source-rel-18.6"], "ruby tools/generate-authority-locators.rb <REL_18_6-checkout>"],
+  "authority/locator-draft/docs-sql.json" => ["generated", ["postgresql-docs-18.6", "postgresql-source-rel-18.6"], "ruby tools/generate-authority-locators.rb <REL_18_6-checkout>"],
+  "authority/locator-draft/runtime-catalog.json" => ["generated", ["postgres-container-18.6-alpine"], "ruby tools/generate-authority-locators.rb <REL_18_6-checkout>"],
+  "authority/locator-draft/source-surface.json" => ["generated", ["postgresql-source-rel-18.6"], "ruby tools/generate-authority-locators.rb <REL_18_6-checkout>"],
+  "postgresql-depth-parity.yaml" => ["generated", [], "make depth-parity-audit"]
 }.each do |relative, (kind, source_ids, generator)|
   records << {
     "path" => relative,
@@ -42,10 +73,30 @@ end
   }
 end
 
+records << {
+  "path" => "authority/extraction.snapshot.json",
+  "digest" => "sha256:#{Digest::SHA256.file(File.join(root, "authority/extraction.snapshot.json")).hexdigest}",
+  "kind" => "generated",
+  "license" => "Apache-2.0",
+  "source_ids" => [],
+  "generated_by" => "ruby tools/generate-core-authority-extraction.rb"
+}
+Dir.glob(File.join(root, "authority/surfaces-draft/*.json")).sort.each do |path|
+  source_id = File.basename(path, ".json")
+  records << {
+    "path" => path.delete_prefix("#{root}/"),
+    "digest" => "sha256:#{Digest::SHA256.file(path).hexdigest}",
+    "kind" => "generated",
+    "license" => "Apache-2.0",
+    "source_ids" => [source_id],
+    "generated_by" => "ruby tools/generate-core-authority-extraction.rb"
+  }
+end
+
 document = {
   "schema_version" => 1,
   "atlas_id" => "postgresql-reference-atlas",
-  "generated_at" => Time.now.utc.iso8601,
+  "generated_at" => Time.iso8601(ledger_time).utc.iso8601(6),
   "artifacts" => records.sort_by { |record| record.fetch("path") }
 }
 File.write(File.join(root, "provenance.yaml"), document.to_yaml(line_width: -1))

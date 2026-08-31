@@ -1,0 +1,32 @@
+schema_version: 2
+atlas_id: postgresql-reference-atlas
+from: bounded-complete-v1
+to: subject-definitive-v2
+generated_at: "2026-08-28T10:25:00Z"
+historical_certificate:
+  path: evidence/history/v1.0.0/completion-certificate.json
+  digest: sha256:7f88fc0e072438d84b296b51428e88983688eca85cf4f97d7bf819b0bde9a26a
+  classification: bounded-complete
+status: proof-required
+required_actions:
+  - lock-authority-artifacts
+  - extract-authority-locators
+  - inventory-authority-body-anchors
+  - review-authority-body-anchors
+  - lock-authority-body-baseline
+  - review-stale-relock-explicitly
+  - review-authority-text-surfaces
+  - lock-non-regression-baseline
+  - classify-all-surfaces
+  - split-behavior-proofs
+  - complete-scenario-matrix
+  - complete-integrated-scenario-trace-closure
+  - execute-bounded-scenario-closure-plan
+  - verify-evidence-durability
+  - verify-evidence-dependency-reruns
+  - collect-runtime-evidence
+  - add-reference-system-if-applicable
+  - add-comparisons-if-applicable
+  - upgrade-skill-eval
+  - complete-skill-router-forward-eval
+  - issue-definitive-certificate

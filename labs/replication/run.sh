@@ -12,7 +12,7 @@ artifact="$(mktemp)"
 
 cleanup() {
   if [[ "${KEEP_LAB:-0}" != "1" ]]; then
-    docker rm -f "$standby" "$primary" >/dev/null 2>&1 || true
+    docker rm -f -v "$standby" "$primary" >/dev/null 2>&1 || true
     docker volume rm "$standby_volume" >/dev/null 2>&1 || true
     docker network rm "$network" >/dev/null 2>&1 || true
   fi

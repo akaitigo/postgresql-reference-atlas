@@ -1,0 +1,108 @@
+{
+  "document_id": "document-pg-f819e0a5bd736804",
+  "source_ids": [
+    "postgresql-source-rel-18.6"
+  ],
+  "authority_url": "https://github.com/postgres/postgres/tree/REL_18_6",
+  "document_locator": "git:724edf9bde9d356724ad384a2e196edc3c9f80f7:doc/src/sgml/ref/rollback.sgml",
+  "locked_source_digest": "sha256:873c03070a2e8aae0768fb75d8d6739ae9589681c6cd50839e79d787a7aed222",
+  "locked_body_digest": "sha256:19c2de8c54244e8ce0b44bbba8135a85a7dc4e0656919d8c7fdd88ee5d6155b8",
+  "fetch": {
+    "status": "matched",
+    "fetched_digest": "sha256:19c2de8c54244e8ce0b44bbba8135a85a7dc4e0656919d8c7fdd88ee5d6155b8",
+    "locked_digest_match": true,
+    "error_digest": null
+  },
+  "schema_version": 1,
+  "extraction": {
+    "method": "sgml-raw-anchor-selector-v1",
+    "tool": "postgresql-reference-atlas-authority-body-inventory-v1",
+    "tool_digest": "sha256:097da35cf95014735db866fca94f5db07c0717353928b543bcf9c188ae005d2c",
+    "selector_contract": [
+      "document-root",
+      "sgml-id-attribute"
+    ],
+    "selector_exhaustive_for_locked_body": true,
+    "authority_semantics_exhaustive": false,
+    "review_status": "automated-unreviewed",
+    "body_storage": "digest-locator-and-offset-only"
+  },
+  "anchors": [
+    {
+      "id": "anchor-pg-2ddba3c8f9eb27b89352",
+      "locator": "document-root",
+      "locator_kind": "document-root",
+      "raw_selector": "document-root",
+      "element_name": "document",
+      "parent_anchor_id": null,
+      "context_start": 0,
+      "context_end": 2689,
+      "context_unit": "byte",
+      "context_digest": "sha256:19c2de8c54244e8ce0b44bbba8135a85a7dc4e0656919d8c7fdd88ee5d6155b8",
+      "classification_status": "pending-human",
+      "surface_ids": [
+
+      ],
+      "behavior_ids": [
+
+      ]
+    },
+    {
+      "id": "anchor-pg-e6a9f2e38cdf393fbad1",
+      "locator": "#sql-rollback",
+      "locator_kind": "fragment",
+      "raw_selector": "sgml-id-attribute",
+      "element_name": "refentry",
+      "parent_anchor_id": "anchor-pg-2ddba3c8f9eb27b89352",
+      "context_start": 66,
+      "context_end": 95,
+      "context_unit": "byte",
+      "context_digest": "sha256:85ce37d9d308c18ecf16422be689197b7ceb5b6c564049d9304c44faeae324e9",
+      "classification_status": "pending-human",
+      "surface_ids": [
+
+      ],
+      "behavior_ids": [
+
+      ]
+    },
+    {
+      "id": "anchor-pg-c38eb4a3ac44b1989f52",
+      "locator": "#sql-rollback-transaction",
+      "locator_kind": "fragment",
+      "raw_selector": "sgml-id-attribute",
+      "element_name": "varlistentry",
+      "parent_anchor_id": "anchor-pg-2ddba3c8f9eb27b89352",
+      "context_start": 921,
+      "context_end": 969,
+      "context_unit": "byte",
+      "context_digest": "sha256:5c281ec3d4a19f615fb538f4ef8f8ccd53d9220ded6af7789eddfd8e634d9538",
+      "classification_status": "pending-human",
+      "surface_ids": [
+
+      ],
+      "behavior_ids": [
+
+      ]
+    },
+    {
+      "id": "anchor-pg-d0e0b4f1d31b4dc371f6",
+      "locator": "#sql-rollback-chain",
+      "locator_kind": "fragment",
+      "raw_selector": "sgml-id-attribute",
+      "element_name": "varlistentry",
+      "parent_anchor_id": "anchor-pg-2ddba3c8f9eb27b89352",
+      "context_start": 1181,
+      "context_end": 1223,
+      "context_unit": "byte",
+      "context_digest": "sha256:a8c6f508bbd0817389f96edfebe1910c8e5b70a8514ed8ffeba0b4efdd294b8c",
+      "classification_status": "pending-human",
+      "surface_ids": [
+
+      ],
+      "behavior_ids": [
+
+      ]
+    }
+  ]
+}

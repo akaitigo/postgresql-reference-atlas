@@ -5,12 +5,12 @@ claim_ids: [query.sql-surface]
 kind: test-report
 producer: postgresql-reference-atlas
 command: make lab LAB=sql
-created_at: "2026-08-28T07:48:55Z"
+created_at: "2026-08-30T19:45:42Z"
 environment:
   profile: container
   manifest_digest: sha256:3df4dbd82139e17c785348c281f26b54d7300662087baaeec3034acefedf36b9
 source_digest: sha256:7a5097c6130472b193adb30fda89b4a607f1ae00a1ae87dbc1cf22ae5484eaef
-harness_digest: sha256:2909e4754d1ddf615fdeb248359b280af970d27d50b57b514a6e39443378a488
+harness_digest: sha256:9934c45fc6612db3fd871c74df23dc22f9b28130b91b1a1a35068a509286d75e
 harness_path: evidence/harnesses/sql.manifest
 artifact:
   uri: evidence/artifacts/sql.json

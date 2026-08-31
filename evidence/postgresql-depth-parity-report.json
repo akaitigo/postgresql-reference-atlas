@@ -1,0 +1,462 @@
+{
+  "schema_version": 1,
+  "id": "postgresql-depth-parity",
+  "atlas_id": "postgresql-reference-atlas",
+  "frontend_reference": {
+    "repository": "frontend-behavior-atlas",
+    "commit": "4a0b2df8e2091a963bd0e0e1bbccef9c84b49a45",
+    "status": "incomplete",
+    "summary": {
+      "satisfied": 1,
+      "partial": 17,
+      "missing": 0
+    },
+    "files": [
+      {
+        "path": "FE_DEPTH_REFERENCE.json",
+        "digest": "sha256:2452696f9807b7d4a8ffb22b3ba37f079a25a34ac2370d78423445b96064582a",
+        "size_bytes": 31657
+      },
+      {
+        "path": "docs/DEFINITIVE_GATE_V2_REFERENCE.md",
+        "digest": "sha256:280a398ed1251438ad244e999c9c9cef9b0b6b78217db82e2b55ef882306d241",
+        "size_bytes": 4435
+      },
+      {
+        "path": "fixtures/definitive-gate-v2/authority-surface-inventory.fixture.json",
+        "digest": "sha256:01c29cdd29f61968b06791edf3d0d0674462d279422bd312d523ab7964e2a1e4",
+        "size_bytes": 1783
+      },
+      {
+        "path": "fixtures/definitive-gate-v2/variant-comparison.fixture.json",
+        "digest": "sha256:2964d596201033761c083d06dc705d21a428de043a91a0f1e71e7d5b841f59d3",
+        "size_bytes": 2306
+      },
+      {
+        "path": "fixtures/definitive-gate-v2/profile-incompatibility.fixture.json",
+        "digest": "sha256:95c07992da4b78db5c5551d7ed0c4425668dde9188c0acb53c3b76b17a91e364",
+        "size_bytes": 2209
+      },
+      {
+        "path": "fixtures/definitive-gate-v2/evidence-granularity.fixture.json",
+        "digest": "sha256:94506646f1e30429cb84a87927e1af7e1e890d401efd0335ebf911aed6f85126",
+        "size_bytes": 3590
+      },
+      {
+        "path": "baselines/definitive-gate-v2.json",
+        "digest": "sha256:b6685fac1e11429ed7c203e35aac55c7a82c276dc32aadb97f225af801c3bb67",
+        "size_bytes": 656649
+      }
+    ]
+  },
+  "frontend_source_verified": true,
+  "authority_locator_reference": {
+    "repository": "frontend-behavior-atlas",
+    "commit": "cabf687bab769b17928d950acc416f3f77eb4ca3",
+    "policy": {
+      "body_storage": "digest-and-locator-offset-only",
+      "generated_candidates_are_authority_text_exhaustive": false,
+      "require_explicit_stale_deferred_human_review_counts": true
+    },
+    "files": [
+      {
+        "path": "scripts/lib/authority-extraction.ts",
+        "digest": "sha256:d0efb14e943384b363f6596cff32371368ad69d4aa319de4c7f5ecf189cb8c7c",
+        "size_bytes": 17508
+      },
+      {
+        "path": "scripts/verify-authority-extraction.ts",
+        "digest": "sha256:420acbe08bff848786c4a28febb4443c671afdd53ff1643413317a9ce175d9aa",
+        "size_bytes": 121
+      }
+    ]
+  },
+  "authority_locator_extraction": {
+    "authority_artifacts": 5,
+    "candidate_surfaces": 11340,
+    "source_commit_matched": true,
+    "stale_source_bodies": 0,
+    "url_retrieval_deferred": 183,
+    "locator_evaluations_deferred": 183,
+    "human_reviewed_surfaces": 0,
+    "generated_surface_candidates_exhaustive": true,
+    "authority_text_surfaces_exhaustive": false,
+    "postgresql_authority_denominator_closed": false,
+    "core_v2_eligible_surfaces": 0
+  },
+  "core_authority_extraction": {
+    "locked_sources": 10,
+    "fetched_digest_matched": 0,
+    "fetched_digest_stale": 0,
+    "fetch_failed": 10,
+    "candidate_surfaces": 10,
+    "root_locators": 0,
+    "fragments_found": 0,
+    "fragments_not_found": 0,
+    "locator_evaluations_deferred": 10,
+    "reference_edges_classified": 10,
+    "unclassified_reference_edges": 0,
+    "authority_text_surfaces_exhaustive": false,
+    "human_reviewed_surfaces": 0,
+    "core_v2_eligible_surfaces": 0
+  },
+  "authority_body_denominator": {
+    "source_entries": 10,
+    "unique_documents": 398,
+    "matched_documents": 390,
+    "stale_documents": 0,
+    "failed_documents": 8,
+    "selector_exhaustive_documents": 390,
+    "raw_anchor_candidates": 5512,
+    "anchors_by_selector": {
+      "document-root": 390,
+      "sgml-id-attribute": 5122
+    },
+    "pending_human_anchors": 5512,
+    "human_reviewed_anchors": 0,
+    "promoted_surface_artifacts": 0,
+    "promoted_atomic_behaviors": 0,
+    "authority_semantics_exhaustive": false,
+    "postgresql_authority_denominator_closed": false
+  },
+  "authority_review_queue": {
+    "eligible_documents": 390,
+    "queued_anchors": 5512,
+    "pending_human": 5512,
+    "human_reviewed": 0,
+    "priority_counts": {
+      "0": 4352,
+      "1": 989,
+      "2": 171
+    },
+    "candidate_clusters": 0,
+    "clustered_anchors": 0,
+    "batches": 255,
+    "stale_document_holds": 0,
+    "unavailable_document_holds": 8,
+    "decisions": 0,
+    "included": 0,
+    "excluded": 0,
+    "merged": 0,
+    "split": 0,
+    "authority_semantics_exhaustive": false,
+    "queue_counts_as_depth_achievement": false
+  },
+  "authority_body_non_regression": {
+    "schema_version": 1,
+    "baseline_id": "postgresql-authority-body-inventory-v1-2026-08-28",
+    "baseline_anchors": 5512,
+    "current_anchors": 5512,
+    "retained": 5512,
+    "replaced": 0,
+    "added": 0,
+    "document_floor": "398/398",
+    "status": "pass"
+  },
+  "definitive_skill_eval": {
+    "outcomes": 8,
+    "surfaces": 14,
+    "matrix_cells": 112,
+    "contract_passed": 112,
+    "contract_failed": 0,
+    "bounded_evidence_routes": 72,
+    "routing_gaps": 40,
+    "boundary_cases": 5,
+    "boundary_passed": 5,
+    "boundary_failed": 0,
+    "targets": 56,
+    "covered_targets": 29,
+    "partial_targets": 16,
+    "planned_targets": 11,
+    "independent_agent_forward_eval": "pass",
+    "matrix_pass_counts_as_completion": false
+  },
+  "reference_system_scenario_proof": {
+    "status": "incomplete-authority-atomic-and-runtime-closure",
+    "denominator": "29-current-domain-behaviors-x-10-scenarios",
+    "summary": {
+      "patterns": 29,
+      "scenarios": 10,
+      "rows": 290,
+      "dedicated_artifacts": 290,
+      "pattern_specific_rows": 28,
+      "pattern_specific_runtime_rows": 28,
+      "pattern_specific_capture_rows": 0,
+      "pattern_specific_gaps": 262,
+      "integrated_trace_rows": 290,
+      "authority_atomic_rows": 0,
+      "completion_eligible_rows": 0
+    },
+    "by_scenario": {
+      "normal": {
+        "rows": 29,
+        "pattern_specific": 0,
+        "runtime_identity": 0,
+        "integrated_pattern_mapped": 0,
+        "gaps": 29
+      },
+      "boundary": {
+        "rows": 29,
+        "pattern_specific": 0,
+        "runtime_identity": 0,
+        "integrated_pattern_mapped": 0,
+        "gaps": 29
+      },
+      "refusal": {
+        "rows": 29,
+        "pattern_specific": 0,
+        "runtime_identity": 0,
+        "integrated_pattern_mapped": 0,
+        "gaps": 29
+      },
+      "failure": {
+        "rows": 29,
+        "pattern_specific": 0,
+        "runtime_identity": 0,
+        "integrated_pattern_mapped": 0,
+        "gaps": 29
+      },
+      "recovery": {
+        "rows": 29,
+        "pattern_specific": 0,
+        "runtime_identity": 0,
+        "integrated_pattern_mapped": 0,
+        "gaps": 29
+      },
+      "migration": {
+        "rows": 29,
+        "pattern_specific": 0,
+        "runtime_identity": 0,
+        "integrated_pattern_mapped": 0,
+        "gaps": 29
+      },
+      "operations": {
+        "rows": 29,
+        "pattern_specific": 0,
+        "runtime_identity": 0,
+        "integrated_pattern_mapped": 0,
+        "gaps": 29
+      },
+      "security": {
+        "rows": 29,
+        "pattern_specific": 28,
+        "runtime_identity": 28,
+        "integrated_pattern_mapped": 0,
+        "gaps": 1
+      },
+      "performance": {
+        "rows": 29,
+        "pattern_specific": 0,
+        "runtime_identity": 0,
+        "integrated_pattern_mapped": 0,
+        "gaps": 29
+      },
+      "compatibility": {
+        "rows": 29,
+        "pattern_specific": 0,
+        "runtime_identity": 0,
+        "integrated_pattern_mapped": 0,
+        "gaps": 29
+      }
+    },
+    "completion_limits": [
+      "frontend-behavior-atlas f2e4c4b19156f8e993f48cdcbce23679ad881924の方式を使用するが絶対件数は転用しない。",
+      "29 Behaviorは公開済みVerification Matrixの非後退分母でありAuthority由来Atomic behavior denominatorではない。",
+      "統合Reference Systemの10 Scenario成功、identity、ArtifactをBehavior固有Proofとして流用しない。",
+      "各Surface × Scenarioの全Variantを専用実server/clientでretry 0実行し、Oracle、Source/Harness digest、SQL/plan/WAL/log/metricを同じ専用実行へ結ぶまでgapを閉じない。",
+      "別Evidence Artifactのmetadataを専用実行Proofとして流用しない。",
+      "Authority Human reviewとAtomic behavior bindingがないrowのcompletion eligibleは0を維持する。"
+    ]
+  },
+  "independent_agent_forward_eval": {
+    "status": "evaluated-not-completion-certificate",
+    "reviewer": "independent-codex-agent:/root/pg_skill_forward_eval",
+    "evaluated_commit": "b2ea671dcb86da27ca98c9c200b1b0c21bfbbb00; dirty-reviewed",
+    "prompt_digest": "sha256:9d298b117613de3e6042972bd41ffe8d297c347739502b485e41f828682d8b65",
+    "result": "pass",
+    "completion_credit": false
+  },
+  "denominator": {
+    "generated_mapping_candidates": 11340,
+    "raw_anchor_candidates": 5512,
+    "pending_human_anchors": 5512,
+    "human_reviewed_anchors": 0,
+    "promoted_semantic_surfaces": 0,
+    "promoted_atomic_behaviors": 0,
+    "variant_ids": 0,
+    "provisional_mapping_records_with_runtime_proof": 29,
+    "generated_mapping_records_without_dedicated_accepted_claim": 11320,
+    "provisional_scenario_lower_bound": {
+      "normal": {
+        "required": 11340,
+        "closed": 24,
+        "gap": 11316
+      },
+      "boundary": {
+        "required": 11340,
+        "closed": 3,
+        "gap": 11337
+      },
+      "rejection": {
+        "required": 11340,
+        "closed": 7,
+        "gap": 11333
+      },
+      "failure": {
+        "required": 892,
+        "closed": 6,
+        "gap": 886
+      },
+      "recovery": {
+        "required": 892,
+        "closed": 10,
+        "gap": 882
+      },
+      "migration": {
+        "required": 1696,
+        "closed": 3,
+        "gap": 1693
+      },
+      "operations": {
+        "required": 1534,
+        "closed": 3,
+        "gap": 1531
+      },
+      "security": {
+        "required": 679,
+        "closed": 1,
+        "gap": 678
+      },
+      "performance": {
+        "required": 1361,
+        "closed": 6,
+        "gap": 1355
+      },
+      "compatibility": {
+        "required": 2470,
+        "closed": 6,
+        "gap": 2464
+      }
+    },
+    "denominator_closed": false
+  },
+  "axes": [
+    {
+      "id": "authority-body-digestion",
+      "status": "partial",
+      "gap_count": 3,
+      "denominator": "unique Authority document × fixed raw selector anchor × explicit Human classification decision"
+    },
+    {
+      "id": "surface-atomic-behavior-variant",
+      "status": "partial",
+      "gap_count": 2,
+      "denominator": "Human-reviewed raw anchor decisionsから昇格したAtomic behavior × applicable PostgreSQL implementation variants"
+    },
+    {
+      "id": "real-runtime-lab",
+      "status": "partial",
+      "gap_count": 1,
+      "denominator": "required behavior × PostgreSQL version/runtime/profile"
+    },
+    {
+      "id": "scenario-normal",
+      "status": "partial",
+      "gap_count": 1,
+      "denominator": "applicable authority-derived behaviors"
+    },
+    {
+      "id": "scenario-boundary",
+      "status": "partial",
+      "gap_count": 1,
+      "denominator": "applicable authority-derived behaviors"
+    },
+    {
+      "id": "scenario-refusal",
+      "status": "partial",
+      "gap_count": 1,
+      "denominator": "applicable authority-derived behaviors"
+    },
+    {
+      "id": "scenario-failure",
+      "status": "partial",
+      "gap_count": 1,
+      "denominator": "failure-applicable authority-derived behaviors"
+    },
+    {
+      "id": "scenario-recovery",
+      "status": "partial",
+      "gap_count": 1,
+      "denominator": "recovery-applicable authority-derived behaviors"
+    },
+    {
+      "id": "scenario-migration",
+      "status": "partial",
+      "gap_count": 1,
+      "denominator": "migration-applicable authority-derived behaviors × source/target version path"
+    },
+    {
+      "id": "scenario-operations",
+      "status": "partial",
+      "gap_count": 1,
+      "denominator": "operations-applicable authority-derived behaviors × runbook exercise"
+    },
+    {
+      "id": "scenario-security",
+      "status": "partial",
+      "gap_count": 1,
+      "denominator": "security-applicable authority-derived behaviors × trust boundary"
+    },
+    {
+      "id": "scenario-performance",
+      "status": "partial",
+      "gap_count": 1,
+      "denominator": "performance-applicable behavior × variant × workload/profile"
+    },
+    {
+      "id": "scenario-compatibility",
+      "status": "partial",
+      "gap_count": 1,
+      "denominator": "compatibility-applicable behavior × PostgreSQL version/profile"
+    },
+    {
+      "id": "artifact-trace",
+      "status": "partial",
+      "gap_count": 1,
+      "denominator": "required scenario rows"
+    },
+    {
+      "id": "integrated-reference-system",
+      "status": "partial",
+      "gap_count": 1,
+      "denominator": "authority-derived architecture/integration behaviors"
+    },
+    {
+      "id": "skill-eval",
+      "status": "partial",
+      "gap_count": 1,
+      "denominator": "outcome × surface × risk/coverage-gap class × task result"
+    },
+    {
+      "id": "rights-provenance",
+      "status": "partial",
+      "gap_count": 1,
+      "denominator": "repository files × authority artifacts × runtime images × transitive publication dependencies"
+    },
+    {
+      "id": "non-regression-gate",
+      "status": "satisfied",
+      "gap_count": 0,
+      "denominator": "published-main Test/Lab/Target/Claim/Proof/Evidence/Source/Skill/CI identities"
+    }
+  ],
+  "summary": {
+    "satisfied": 1,
+    "partial": 17,
+    "missing": 0
+  },
+  "structural_errors": [
+
+  ],
+  "completion_status": "incomplete"
+}

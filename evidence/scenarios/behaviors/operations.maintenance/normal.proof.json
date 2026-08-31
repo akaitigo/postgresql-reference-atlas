@@ -1,0 +1,192 @@
+{
+  "schema_version": 1,
+  "id": "proof.behavior.operations.maintenance.normal",
+  "atlas_id": "postgresql-reference-atlas",
+  "generated_at": "2026-08-28T00:00:00+09:00",
+  "behavior_scope": "current-domain-pattern-not-authority-atomic",
+  "behavior_id": "definitive-domain.operations.maintenance",
+  "pattern_id": "definitive-domain.operations.maintenance",
+  "target_id": "operations.maintenance",
+  "target_set": "operations",
+  "scenario": "normal",
+  "status": "pattern-specific-gap",
+  "classification": {
+    "method": "postgresql-verification-matrix-row-or-explicit-gap",
+    "matcher_digest": "sha256:b8734bc90dcefeb02b28f1858c73e8aba0452cf78d0d27349b708e16a4e14ad9",
+    "state_ids": [
+      "normal"
+    ],
+    "semantic_scope_match": true
+  },
+  "source_bindings": [
+    {
+      "variant_id": "postgresql-verification-matrix-v2",
+      "path": "verification.matrix.yaml",
+      "digest": "sha256:b8734bc90dcefeb02b28f1858c73e8aba0452cf78d0d27349b708e16a4e14ad9"
+    }
+  ],
+  "pattern_evidence": {
+    "capture_environment_identity": {
+      "postgresql_scenario": "normal",
+      "server": {
+        "status": "observed",
+        "category": "server",
+        "path": "evidence/artifacts/maintenance.json",
+        "digest": "sha256:db36e8c0afcfd8a8a7fc11351cc4acf2546003e2545c02f94acd4f1b8bdc8b9a",
+        "pointers": [
+          "/server_version"
+        ],
+        "claim_scope": "behavior-scenario-evidence-binding"
+      },
+      "client": {
+        "status": "gap",
+        "category": "client",
+        "reason": "専用Evidenceにclient identityが固定されていない。"
+      },
+      "version": {
+        "status": "observed",
+        "category": "version",
+        "path": "evidence/artifacts/maintenance.json",
+        "digest": "sha256:db36e8c0afcfd8a8a7fc11351cc4acf2546003e2545c02f94acd4f1b8bdc8b9a",
+        "pointers": [
+          "/server_version"
+        ],
+        "claim_scope": "behavior-scenario-evidence-binding"
+      },
+      "runtime": {
+        "status": "observed",
+        "category": "runtime",
+        "profile": "container",
+        "path": "environments/container.yaml",
+        "digest": "sha256:3df4dbd82139e17c785348c281f26b54d7300662087baaeec3034acefedf36b9",
+        "claim_scope": "behavior-scenario-runtime-profile-not-server-or-client-version"
+      },
+      "closure_contract": {
+        "surface_scenario_dedicated_row": true,
+        "bounded_supporting_evidence": true,
+        "dedicated_real_server_client": false,
+        "variant_denominator_status": "gap",
+        "all_variants_executed": false,
+        "retry_count": {
+          "status": "gap",
+          "value": null,
+          "required": 0
+        },
+        "oracle": {
+          "status": "observed",
+          "proof_obligation_id": "operations.vacuum-maintenance"
+        },
+        "source_digest": {
+          "status": "observed"
+        },
+        "harness_digest": {
+          "status": "observed"
+        },
+        "required_artifacts": {
+          "sql": "observed",
+          "plan": "gap",
+          "wal": "gap",
+          "log": "gap",
+          "metric": "observed"
+        },
+        "integrated_reference_credit": false,
+        "foreign_artifact_metadata_credit": false,
+        "gap_closed": false
+      }
+    },
+    "capture_harness_digest": "sha256:b8734bc90dcefeb02b28f1858c73e8aba0452cf78d0d27349b708e16a4e14ad9",
+    "capture_records": [
+      {
+        "status": "observed",
+        "category": "sql",
+        "path": "labs/maintenance/verify.sql",
+        "digest": "sha256:cc075d2ce8e431c830cdd63edcd004473346c38bce47b1b8776bb9d53e392e46",
+        "result_path": "evidence/artifacts/maintenance.json",
+        "result_digest": "sha256:db36e8c0afcfd8a8a7fc11351cc4acf2546003e2545c02f94acd4f1b8bdc8b9a",
+        "pointers": [
+          "/"
+        ],
+        "claim_scope": "executed-sql-harness-and-result-for-bounded-behavior-scenario"
+      },
+      {
+        "status": "gap",
+        "category": "plan",
+        "reason": "専用PLAN Artifactまたは機械参照可能なpointerがない。"
+      },
+      {
+        "status": "gap",
+        "category": "wal",
+        "reason": "専用WAL Artifactまたは機械参照可能なpointerがない。"
+      },
+      {
+        "status": "gap",
+        "category": "log",
+        "reason": "専用Behavior × Scenario Server/Client Log Artifactがない。統合Reference System Logは流用しない。"
+      },
+      {
+        "status": "observed",
+        "category": "metric",
+        "path": "evidence/artifacts/maintenance.json",
+        "digest": "sha256:db36e8c0afcfd8a8a7fc11351cc4acf2546003e2545c02f94acd4f1b8bdc8b9a",
+        "pointers": [
+          "/rows_after_delete",
+          "/vacuum_count",
+          "/analyze_count"
+        ],
+        "claim_scope": "behavior-scenario-evidence-binding"
+      }
+    ],
+    "benchmark_environment": null,
+    "benchmark_records": [],
+    "compatibility_environment": null,
+    "compatibility_records": []
+  },
+  "integrated_reference": {
+    "manifest": "integrations/reference-system/manifest.json",
+    "result": "artifacts/reference-system/results.json",
+    "runtime_boundaries": [
+      "PostgreSQL server",
+      "psql client",
+      "SQL transaction/session"
+    ],
+    "assertions": [
+      "{\"expected\":1000,\"tenant_visible_rows\":1000}"
+    ],
+    "outcome": "expected",
+    "attempts": 1,
+    "trace": {
+      "path": "artifacts/reference-system/traces/normal.trace.json",
+      "digest": "sha256:a4bd0e4aee8d6832f3e466ca97eda3e535dc18e7376f1303daf9b498a02769b4",
+      "bytes": 1360,
+      "action_stream": true,
+      "network_stream": true,
+      "resource_stream": true
+    },
+    "screenshot": {
+      "path": "artifacts/reference-system/observations/normal.observable.json",
+      "digest": "sha256:915910d32ddc9ed25d859286cbe0a2c2a6740349de1a288e17663cd4f2635e89",
+      "bytes": 770
+    },
+    "pattern_mapped": false
+  },
+  "closure": {
+    "dedicated_row": true,
+    "dedicated_artifact": true,
+    "pattern_specific_evidence": false,
+    "real_runtime_identity": false,
+    "integrated_runtime_trace": true,
+    "authority_atomic_behavior": false,
+    "completion_eligible": false
+  },
+  "gaps": [
+    "全Variantのstable denominatorと専用実行記録がない。",
+    "専用実行のretry count 0を機械記録していない。",
+    "client identity gap: 専用Evidenceにclient identityが固定されていない。",
+    "plan artifact gap: 専用PLAN Artifactまたは機械参照可能なpointerがない。",
+    "wal artifact gap: 専用WAL Artifactまたは機械参照可能なpointerがない。",
+    "log artifact gap: 専用Behavior × Scenario Server/Client Log Artifactがない。統合Reference System Logは流用しない。",
+    "統合Reference Systemの結果は専用Surface × Scenario × Variant Closureへ流用しない。",
+    "別Evidence Artifactのmetadataだけでは専用実行Proofを閉じない。",
+    "Authority raw anchorのHuman reviewとAtomic behavior bindingが未完了でCompletion対象外。"
+  ]
+}

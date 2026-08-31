@@ -1,0 +1,175 @@
+{
+  "schema_version": 1,
+  "id": "proof.behavior.query.security.boundary",
+  "atlas_id": "postgresql-reference-atlas",
+  "generated_at": "2026-08-28T00:00:00+09:00",
+  "behavior_scope": "current-domain-pattern-not-authority-atomic",
+  "behavior_id": "definitive-domain.query.security",
+  "pattern_id": "definitive-domain.query.security",
+  "target_id": "query.security",
+  "target_set": "query",
+  "scenario": "boundary",
+  "status": "pattern-specific-gap",
+  "classification": {
+    "method": "postgresql-verification-matrix-row-or-explicit-gap",
+    "matcher_digest": "sha256:b8734bc90dcefeb02b28f1858c73e8aba0452cf78d0d27349b708e16a4e14ad9",
+    "state_ids": [
+      "boundary"
+    ],
+    "semantic_scope_match": false
+  },
+  "source_bindings": [
+    {
+      "variant_id": "postgresql-verification-matrix-v2",
+      "path": "verification.matrix.yaml",
+      "digest": "sha256:b8734bc90dcefeb02b28f1858c73e8aba0452cf78d0d27349b708e16a4e14ad9"
+    }
+  ],
+  "pattern_evidence": {
+    "capture_environment_identity": {
+      "postgresql_scenario": "boundary",
+      "server": {
+        "status": "gap",
+        "category": "server",
+        "reason": "専用Evidenceにserver identityが固定されていない。"
+      },
+      "client": {
+        "status": "gap",
+        "category": "client",
+        "reason": "専用Evidenceにclient identityが固定されていない。"
+      },
+      "version": {
+        "status": "gap",
+        "category": "version",
+        "reason": "専用Evidenceにversion identityが固定されていない。"
+      },
+      "runtime": {
+        "status": "gap",
+        "category": "runtime",
+        "reason": "専用EvidenceまたはEnvironment profileがない。"
+      },
+      "closure_contract": {
+        "surface_scenario_dedicated_row": true,
+        "bounded_supporting_evidence": false,
+        "dedicated_real_server_client": false,
+        "variant_denominator_status": "gap",
+        "all_variants_executed": false,
+        "retry_count": {
+          "status": "gap",
+          "value": null,
+          "required": 0
+        },
+        "oracle": {
+          "status": "gap",
+          "proof_obligation_id": null
+        },
+        "source_digest": {
+          "status": "gap"
+        },
+        "harness_digest": {
+          "status": "gap"
+        },
+        "required_artifacts": {
+          "sql": "gap",
+          "plan": "gap",
+          "wal": "gap",
+          "log": "gap",
+          "metric": "gap"
+        },
+        "integrated_reference_credit": false,
+        "foreign_artifact_metadata_credit": false,
+        "gap_closed": false
+      }
+    },
+    "capture_harness_digest": "sha256:b8734bc90dcefeb02b28f1858c73e8aba0452cf78d0d27349b708e16a4e14ad9",
+    "capture_records": [
+      {
+        "status": "gap",
+        "category": "sql",
+        "reason": "このBehavior × Scenarioに既存Verification Matrix Evidenceがない。"
+      },
+      {
+        "status": "gap",
+        "category": "plan",
+        "reason": "専用PLAN Artifactまたは機械参照可能なpointerがない。"
+      },
+      {
+        "status": "gap",
+        "category": "wal",
+        "reason": "専用WAL Artifactまたは機械参照可能なpointerがない。"
+      },
+      {
+        "status": "gap",
+        "category": "log",
+        "reason": "専用Behavior × Scenario Server/Client Log Artifactがない。統合Reference System Logは流用しない。"
+      },
+      {
+        "status": "gap",
+        "category": "metric",
+        "reason": "専用METRIC Artifactまたは機械参照可能なpointerがない。"
+      }
+    ],
+    "benchmark_environment": null,
+    "benchmark_records": [],
+    "compatibility_environment": null,
+    "compatibility_records": []
+  },
+  "integrated_reference": {
+    "manifest": "integrations/reference-system/manifest.json",
+    "result": "artifacts/reference-system/results.json",
+    "runtime_boundaries": [
+      "PostgreSQL server",
+      "psql client",
+      "SQL transaction/session"
+    ],
+    "assertions": [
+      "{\"expected\":2,\"partition_count\":2}"
+    ],
+    "outcome": "expected",
+    "attempts": 1,
+    "trace": {
+      "path": "artifacts/reference-system/traces/boundary.trace.json",
+      "digest": "sha256:4132e0817027f38319aa525d4c4b8a900f1e2363ff5af0858952388a80342a6e",
+      "bytes": 1346,
+      "action_stream": true,
+      "network_stream": true,
+      "resource_stream": true
+    },
+    "screenshot": {
+      "path": "artifacts/reference-system/observations/boundary.observable.json",
+      "digest": "sha256:21a3d45de36d36d6a4d589fb14275fc31b22192e2cfbd76e4738c85966fe0369",
+      "bytes": 764
+    },
+    "pattern_mapped": false
+  },
+  "closure": {
+    "dedicated_row": true,
+    "dedicated_artifact": true,
+    "pattern_specific_evidence": false,
+    "real_runtime_identity": false,
+    "integrated_runtime_trace": true,
+    "authority_atomic_behavior": false,
+    "completion_eligible": false
+  },
+  "gaps": [
+    "既存Verification MatrixにこのBehavior × Scenario専用rowがない。",
+    "専用Evidence Artifactがない。",
+    "全Variantのstable denominatorと専用実行記録がない。",
+    "専用実行のretry count 0を機械記録していない。",
+    "専用Oracleと期待結果の対応がない。",
+    "専用Source digestがない。",
+    "専用Harness digestまたはHarness pathがない。",
+    "server identity gap: 専用Evidenceにserver identityが固定されていない。",
+    "client identity gap: 専用Evidenceにclient identityが固定されていない。",
+    "version identity gap: 専用Evidenceにversion identityが固定されていない。",
+    "runtime identity gap: 専用EvidenceまたはEnvironment profileがない。",
+    "sql artifact gap: このBehavior × Scenarioに既存Verification Matrix Evidenceがない。",
+    "plan artifact gap: 専用PLAN Artifactまたは機械参照可能なpointerがない。",
+    "wal artifact gap: 専用WAL Artifactまたは機械参照可能なpointerがない。",
+    "log artifact gap: 専用Behavior × Scenario Server/Client Log Artifactがない。統合Reference System Logは流用しない。",
+    "metric artifact gap: 専用METRIC Artifactまたは機械参照可能なpointerがない。",
+    "統合Reference Systemの結果は専用Surface × Scenario × Variant Closureへ流用しない。",
+    "別Evidence Artifactのmetadataだけでは専用実行Proofを閉じない。",
+    "Authority raw anchorのHuman reviewとAtomic behavior bindingが未完了でCompletion対象外。"
+  ]
+}

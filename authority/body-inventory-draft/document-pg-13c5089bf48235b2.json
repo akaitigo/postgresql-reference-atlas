@@ -1,0 +1,70 @@
+{
+  "document_id": "document-pg-13c5089bf48235b2",
+  "source_ids": [
+    "postgresql-source-rel-18.6"
+  ],
+  "authority_url": "https://github.com/postgres/postgres/tree/REL_18_6",
+  "document_locator": "git:724edf9bde9d356724ad384a2e196edc3c9f80f7:doc/src/sgml/ref/alter_foreign_data_wrapper.sgml",
+  "locked_source_digest": "sha256:873c03070a2e8aae0768fb75d8d6739ae9589681c6cd50839e79d787a7aed222",
+  "locked_body_digest": "sha256:76175187a659e042b77e00c3c9b4eb2f4d581d1a29d6615b3ca0a6127451e27c",
+  "fetch": {
+    "status": "matched",
+    "fetched_digest": "sha256:76175187a659e042b77e00c3c9b4eb2f4d581d1a29d6615b3ca0a6127451e27c",
+    "locked_digest_match": true,
+    "error_digest": null
+  },
+  "schema_version": 1,
+  "extraction": {
+    "method": "sgml-raw-anchor-selector-v1",
+    "tool": "postgresql-reference-atlas-authority-body-inventory-v1",
+    "tool_digest": "sha256:097da35cf95014735db866fca94f5db07c0717353928b543bcf9c188ae005d2c",
+    "selector_contract": [
+      "document-root",
+      "sgml-id-attribute"
+    ],
+    "selector_exhaustive_for_locked_body": true,
+    "authority_semantics_exhaustive": false,
+    "review_status": "automated-unreviewed",
+    "body_storage": "digest-locator-and-offset-only"
+  },
+  "anchors": [
+    {
+      "id": "anchor-pg-980dcaa41dfc15f22a7a",
+      "locator": "document-root",
+      "locator_kind": "document-root",
+      "raw_selector": "document-root",
+      "element_name": "document",
+      "parent_anchor_id": null,
+      "context_start": 0,
+      "context_end": 6119,
+      "context_unit": "byte",
+      "context_digest": "sha256:76175187a659e042b77e00c3c9b4eb2f4d581d1a29d6615b3ca0a6127451e27c",
+      "classification_status": "pending-human",
+      "surface_ids": [
+
+      ],
+      "behavior_ids": [
+
+      ]
+    },
+    {
+      "id": "anchor-pg-8cacc9a64b139ce955f7",
+      "locator": "#sql-alterforeigndatawrapper",
+      "locator_kind": "fragment",
+      "raw_selector": "sgml-id-attribute",
+      "element_name": "refentry",
+      "parent_anchor_id": "anchor-pg-980dcaa41dfc15f22a7a",
+      "context_start": 84,
+      "context_end": 128,
+      "context_unit": "byte",
+      "context_digest": "sha256:5d84f666ee6be9884502041fe843b609657ad496dfee7d5b823fbafd57fcceed",
+      "classification_status": "pending-human",
+      "surface_ids": [
+
+      ],
+      "behavior_ids": [
+
+      ]
+    }
+  ]
+}

@@ -1,0 +1,82 @@
+{
+  "schema_version": 1,
+  "pattern_id": "definitive-domain.operations.maintenance",
+  "target_id": "operations.maintenance",
+  "scenario": "security",
+  "variant_id": "postgresql-verification-matrix-v2",
+  "environment": {
+    "subject": "PostgreSQL",
+    "server_product": "PostgreSQL",
+    "server_version": "18.6",
+    "server_version_num": "180006",
+    "client_product": "psql",
+    "client_version": "psql (PostgreSQL) 18.6",
+    "runtime_image": "postgres:18.6-alpine",
+    "runtime_identity": "pg-atlas-security-68614-b1cef5",
+    "workers": 1,
+    "retries": 0,
+    "trace_mode": "on",
+    "execution_mode": "real-postgresql-server-client",
+    "row_runtime": {
+      "server_versions": [
+        "18.6"
+      ],
+      "containers": [
+        "pg-atlas-security-68614-b1cef5"
+      ]
+    }
+  },
+  "sql": {
+    "source": "\n      BEGIN;\n      CREATE ROLE atlas_maintenance_reader;\n      CREATE TABLE atlas_maintenance_secure(id integer PRIMARY KEY, payload text NOT NULL);\n      INSERT INTO atlas_maintenance_secure VALUES (1, 'stable');\n      GRANT SELECT ON atlas_maintenance_secure TO atlas_maintenance_reader;\n      SET ROLE atlas_maintenance_reader;\n      DO $$ BEGIN\n        ALTER TABLE atlas_maintenance_secure SET (autovacuum_enabled = false);\n        RAISE EXCEPTION 'maintenance configuration unexpectedly allowed';\n      EXCEPTION WHEN insufficient_privilege THEN\n        RAISE NOTICE 'ATLAS_SECURITY_PASS:operations.maintenance';\n      END $$;\n      SELECT CASE WHEN count(*) = 1 AND min(payload) = 'stable'\n        THEN 'ATLAS_SECURITY_PASS:operations.maintenance'\n        ELSE 'ATLAS_SECURITY_FAIL:operations.maintenance' END\n      FROM atlas_maintenance_secure;\n      RESET ROLE;\n      ROLLBACK;\n    ",
+    "stdout": "BEGIN\nCREATE ROLE\nCREATE TABLE\nINSERT 0 1\nGRANT\nSET\nDO\n                    case                    \n--------------------------------------------\n ATLAS_SECURITY_PASS:operations.maintenance\n(1 row)\n\nRESET\nROLLBACK\n",
+    "stderr": "NOTICE:  ATLAS_SECURITY_PASS:operations.maintenance\n"
+  },
+  "plan": [
+    {
+      "Plan": {
+        "Node Type": "Index Scan",
+        "Parallel Aware": false,
+        "Async Capable": false,
+        "Scan Direction": "Forward",
+        "Index Name": "pg_class_relname_nsp_index",
+        "Relation Name": "pg_class",
+        "Alias": "pg_class",
+        "Startup Cost": 0.27,
+        "Total Cost": 8.29,
+        "Plan Rows": 1,
+        "Plan Width": 113,
+        "Disabled": false,
+        "Index Cond": "(relname = 'atlas_maintenance_secure'::name)"
+      }
+    }
+  ],
+  "wal": {
+    "before_lsn": "0/1C01AA8",
+    "after_lsn": "0/1C01AA8"
+  },
+  "log": "2026-08-31 14:46:10.973 UTC [275] LOG:  statement: CREATE ROLE atlas_migration_reader;\n2026-08-31 14:46:10.974 UTC [275] LOG:  statement: CREATE SCHEMA atlas_migration AUTHORIZATION postgres;\n2026-08-31 14:46:10.975 UTC [275] LOG:  statement: CREATE TABLE atlas_migration.secure_record(id integer PRIMARY KEY, payload text NOT NULL);\n2026-08-31 14:46:10.979 UTC [275] LOG:  statement: INSERT INTO atlas_migration.secure_record VALUES (1, 'stable');\n2026-08-31 14:46:10.980 UTC [275] LOG:  statement: GRANT USAGE ON SCHEMA atlas_migration TO atlas_migration_reader;\n2026-08-31 14:46:10.980 UTC [275] LOG:  statement: GRANT SELECT ON atlas_migration.secure_record TO atlas_migration_reader;\n2026-08-31 14:46:10.980 UTC [275] LOG:  statement: SET ROLE atlas_migration_reader;\n2026-08-31 14:46:10.981 UTC [275] LOG:  statement: DO $$ BEGIN\n\t        RAISE NOTICE 'ATLAS_SECURITY_PASS:lifecycle.schema-migration';\n2026-08-31 14:46:10.982 UTC [275] LOG:  statement: SELECT CASE WHEN count(*) = 1 AND min(payload) = 'stable'\n\t        THEN 'ATLAS_SECURITY_PASS:lifecycle.schema-migration'\n2026-08-31 14:46:10.983 UTC [275] LOG:  statement: RESET ROLE;\n2026-08-31 14:46:10.983 UTC [275] LOG:  statement: ROLLBACK;\n2026-08-31 14:46:11.049 UTC [282] LOG:  statement: SELECT pg_current_wal_lsn()\n2026-08-31 14:46:11.118 UTC [289] LOG:  statement: EXPLAIN (FORMAT JSON) SELECT 1 AS security_probe\n2026-08-31 14:46:21.357 UTC [297] LOG:  statement: SELECT pg_current_wal_lsn()\n2026-08-31 14:46:21.391 UTC [304] LOG:  statement: BEGIN;\n2026-08-31 14:46:21.391 UTC [304] LOG:  statement: CREATE ROLE atlas_maintenance_reader;\n2026-08-31 14:46:21.391 UTC [304] LOG:  statement: CREATE TABLE atlas_maintenance_secure(id integer PRIMARY KEY, payload text NOT NULL);\n2026-08-31 14:46:21.393 UTC [304] LOG:  statement: INSERT INTO atlas_maintenance_secure VALUES (1, 'stable');\n2026-08-31 14:46:21.394 UTC [304] LOG:  statement: GRANT SELECT ON atlas_maintenance_secure TO atlas_maintenance_reader;\n2026-08-31 14:46:21.394 UTC [304] LOG:  statement: SET ROLE atlas_maintenance_reader;\n2026-08-31 14:46:21.394 UTC [304] LOG:  statement: DO $$ BEGIN\n\t        RAISE NOTICE 'ATLAS_SECURITY_PASS:operations.maintenance';\n2026-08-31 14:46:21.394 UTC [304] LOG:  statement: SELECT CASE WHEN count(*) = 1 AND min(payload) = 'stable'\n\t        THEN 'ATLAS_SECURITY_PASS:operations.maintenance'\n2026-08-31 14:46:21.395 UTC [304] LOG:  statement: RESET ROLE;\n2026-08-31 14:46:21.395 UTC [304] LOG:  statement: ROLLBACK;\n2026-08-31 14:46:21.429 UTC [311] LOG:  statement: SELECT pg_current_wal_lsn()\n2026-08-31 14:46:21.467 UTC [318] LOG:  statement: EXPLAIN (FORMAT JSON) SELECT relname, reloptions FROM pg_class WHERE relname = 'atlas_maintenance_secure'\n",
+  "metric": {
+    "elapsed_ms": 37.81
+  },
+  "oracle": {
+    "kind": "maintenance-configuration-change-requires-table-owner",
+    "scenario": "security",
+    "marker": "ATLAS_SECURITY_PASS:operations.maintenance",
+    "passed": true
+  },
+  "streams": {
+    "action": [
+      "psql security transaction"
+    ],
+    "network": [
+      "psql-to-PostgreSQL-session"
+    ],
+    "resource": [
+      "SQL",
+      "plan",
+      "WAL",
+      "server-log",
+      "elapsed-metric"
+    ]
+  }
+}

@@ -1,0 +1,4192 @@
+{
+  "schema_version": 2,
+  "source_id": "postgresql-source-rel-18.6",
+  "source_digest": "sha256:873c03070a2e8aae0768fb75d8d6739ae9589681c6cd50839e79d787a7aed222",
+  "extraction": {
+    "method": "machine-readable-primary",
+    "tool": "tools/generate-definitive-inventory.rb",
+    "reviewed_by": "independent-definitive-audit",
+    "reviewed_at": "2026-08-28"
+  },
+  "surfaces": [
+    {
+      "id": "source-ref.abort",
+      "locator": "doc/src/sgml/ref/abort.sgml",
+      "kind": "capability",
+      "capability_id": "query.sql-commands",
+      "behavior_id": "source-ref.abort",
+      "title": "ABORT",
+      "surface_ids": [
+        "implementation-construction",
+        "testing-verification",
+        "compatibility-integration"
+      ]
+    },
+    {
+      "id": "source-ref.allfiles",
+      "locator": "doc/src/sgml/ref/allfiles.sgml",
+      "kind": "capability",
+      "capability_id": "integration.client-tools",
+      "behavior_id": "source-ref.allfiles",
+      "title": "allfiles",
+      "surface_ids": [
+        "implementation-construction",
+        "operations-observability",
+        "compatibility-integration"
+      ]
+    },
+    {
+      "id": "source-ref.alter-aggregate",
+      "locator": "doc/src/sgml/ref/alter_aggregate.sgml",
+      "kind": "capability",
+      "capability_id": "query.sql-commands",
+      "behavior_id": "source-ref.alter-aggregate",
+      "title": "ALTER AGGREGATE",
+      "surface_ids": [
+        "implementation-construction",
+        "testing-verification",
+        "compatibility-integration"
+      ]
+    },
+    {
+      "id": "source-ref.alter-collation",
+      "locator": "doc/src/sgml/ref/alter_collation.sgml",
+      "kind": "capability",
+      "capability_id": "query.sql-commands",
+      "behavior_id": "source-ref.alter-collation",
+      "title": "ALTER COLLATION",
+      "surface_ids": [
+        "implementation-construction",
+        "testing-verification",
+        "compatibility-integration"
+      ]
+    },
+    {
+      "id": "source-ref.alter-conversion",
+      "locator": "doc/src/sgml/ref/alter_conversion.sgml",
+      "kind": "capability",
+      "capability_id": "query.sql-commands",
+      "behavior_id": "source-ref.alter-conversion",
+      "title": "ALTER CONVERSION",
+      "surface_ids": [
+        "implementation-construction",
+        "testing-verification",
+        "compatibility-integration"
+      ]
+    },
+    {
+      "id": "source-ref.alter-database",
+      "locator": "doc/src/sgml/ref/alter_database.sgml",
+      "kind": "capability",
+      "capability_id": "query.sql-commands",
+      "behavior_id": "source-ref.alter-database",
+      "title": "ALTER DATABASE",
+      "surface_ids": [
+        "implementation-construction",
+        "testing-verification",
+        "compatibility-integration"
+      ]
+    },
+    {
+      "id": "source-ref.alter-default-privileges",
+      "locator": "doc/src/sgml/ref/alter_default_privileges.sgml",
+      "kind": "capability",
+      "capability_id": "query.sql-commands",
+      "behavior_id": "source-ref.alter-default-privileges",
+      "title": "ALTER DEFAULT PRIVILEGES",
+      "surface_ids": [
+        "implementation-construction",
+        "testing-verification",
+        "compatibility-integration"
+      ]
+    },
+    {
+      "id": "source-ref.alter-domain",
+      "locator": "doc/src/sgml/ref/alter_domain.sgml",
+      "kind": "capability",
+      "capability_id": "query.sql-commands",
+      "behavior_id": "source-ref.alter-domain",
+      "title": "ALTER DOMAIN",
+      "surface_ids": [
+        "implementation-construction",
+        "testing-verification",
+        "compatibility-integration"
+      ]
+    },
+    {
+      "id": "source-ref.alter-event-trigger",
+      "locator": "doc/src/sgml/ref/alter_event_trigger.sgml",
+      "kind": "capability",
+      "capability_id": "query.sql-commands",
+      "behavior_id": "source-ref.alter-event-trigger",
+      "title": "ALTER EVENT TRIGGER",
+      "surface_ids": [
+        "implementation-construction",
+        "testing-verification",
+        "compatibility-integration"
+      ]
+    },
+    {
+      "id": "source-ref.alter-extension",
+      "locator": "doc/src/sgml/ref/alter_extension.sgml",
+      "kind": "capability",
+      "capability_id": "query.sql-commands",
+      "behavior_id": "source-ref.alter-extension",
+      "title": "ALTER EXTENSION",
+      "surface_ids": [
+        "implementation-construction",
+        "testing-verification",
+        "compatibility-integration"
+      ]
+    },
+    {
+      "id": "source-ref.alter-foreign-data-wrapper",
+      "locator": "doc/src/sgml/ref/alter_foreign_data_wrapper.sgml",
+      "kind": "capability",
+      "capability_id": "query.sql-commands",
+      "behavior_id": "source-ref.alter-foreign-data-wrapper",
+      "title": "ALTER FOREIGN DATA WRAPPER",
+      "surface_ids": [
+        "implementation-construction",
+        "testing-verification",
+        "compatibility-integration"
+      ]
+    },
+    {
+      "id": "source-ref.alter-foreign-table",
+      "locator": "doc/src/sgml/ref/alter_foreign_table.sgml",
+      "kind": "capability",
+      "capability_id": "query.sql-commands",
+      "behavior_id": "source-ref.alter-foreign-table",
+      "title": "ALTER FOREIGN TABLE",
+      "surface_ids": [
+        "implementation-construction",
+        "testing-verification",
+        "compatibility-integration"
+      ]
+    },
+    {
+      "id": "source-ref.alter-function",
+      "locator": "doc/src/sgml/ref/alter_function.sgml",
+      "kind": "capability",
+      "capability_id": "query.sql-commands",
+      "behavior_id": "source-ref.alter-function",
+      "title": "ALTER FUNCTION",
+      "surface_ids": [
+        "implementation-construction",
+        "testing-verification",
+        "compatibility-integration"
+      ]
+    },
+    {
+      "id": "source-ref.alter-group",
+      "locator": "doc/src/sgml/ref/alter_group.sgml",
+      "kind": "capability",
+      "capability_id": "query.sql-commands",
+      "behavior_id": "source-ref.alter-group",
+      "title": "ALTER GROUP",
+      "surface_ids": [
+        "implementation-construction",
+        "testing-verification",
+        "compatibility-integration"
+      ]
+    },
+    {
+      "id": "source-ref.alter-index",
+      "locator": "doc/src/sgml/ref/alter_index.sgml",
+      "kind": "capability",
+      "capability_id": "query.sql-commands",
+      "behavior_id": "source-ref.alter-index",
+      "title": "ALTER INDEX",
+      "surface_ids": [
+        "implementation-construction",
+        "testing-verification",
+        "compatibility-integration"
+      ]
+    },
+    {
+      "id": "source-ref.alter-language",
+      "locator": "doc/src/sgml/ref/alter_language.sgml",
+      "kind": "capability",
+      "capability_id": "query.sql-commands",
+      "behavior_id": "source-ref.alter-language",
+      "title": "ALTER LANGUAGE",
+      "surface_ids": [
+        "implementation-construction",
+        "testing-verification",
+        "compatibility-integration"
+      ]
+    },
+    {
+      "id": "source-ref.alter-large-object",
+      "locator": "doc/src/sgml/ref/alter_large_object.sgml",
+      "kind": "capability",
+      "capability_id": "query.sql-commands",
+      "behavior_id": "source-ref.alter-large-object",
+      "title": "ALTER LARGE OBJECT",
+      "surface_ids": [
+        "implementation-construction",
+        "testing-verification",
+        "compatibility-integration"
+      ]
+    },
+    {
+      "id": "source-ref.alter-materialized-view",
+      "locator": "doc/src/sgml/ref/alter_materialized_view.sgml",
+      "kind": "capability",
+      "capability_id": "query.sql-commands",
+      "behavior_id": "source-ref.alter-materialized-view",
+      "title": "ALTER MATERIALIZED VIEW",
+      "surface_ids": [
+        "implementation-construction",
+        "testing-verification",
+        "compatibility-integration"
+      ]
+    },
+    {
+      "id": "source-ref.alter-opclass",
+      "locator": "doc/src/sgml/ref/alter_opclass.sgml",
+      "kind": "capability",
+      "capability_id": "integration.client-tools",
+      "behavior_id": "source-ref.alter-opclass",
+      "title": "ALTER OPERATOR CLASS",
+      "surface_ids": [
+        "implementation-construction",
+        "operations-observability",
+        "compatibility-integration"
+      ]
+    },
+    {
+      "id": "source-ref.alter-operator",
+      "locator": "doc/src/sgml/ref/alter_operator.sgml",
+      "kind": "capability",
+      "capability_id": "query.sql-commands",
+      "behavior_id": "source-ref.alter-operator",
+      "title": "ALTER OPERATOR",
+      "surface_ids": [
+        "implementation-construction",
+        "testing-verification",
+        "compatibility-integration"
+      ]
+    },
+    {
+      "id": "source-ref.alter-opfamily",
+      "locator": "doc/src/sgml/ref/alter_opfamily.sgml",
+      "kind": "capability",
+      "capability_id": "integration.client-tools",
+      "behavior_id": "source-ref.alter-opfamily",
+      "title": "ALTER OPERATOR FAMILY",
+      "surface_ids": [
+        "implementation-construction",
+        "operations-observability",
+        "compatibility-integration"
+      ]
+    },
+    {
+      "id": "source-ref.alter-policy",
+      "locator": "doc/src/sgml/ref/alter_policy.sgml",
+      "kind": "capability",
+      "capability_id": "query.sql-commands",
+      "behavior_id": "source-ref.alter-policy",
+      "title": "ALTER POLICY",
+      "surface_ids": [
+        "implementation-construction",
+        "testing-verification",
+        "compatibility-integration"
+      ]
+    },
+    {
+      "id": "source-ref.alter-procedure",
+      "locator": "doc/src/sgml/ref/alter_procedure.sgml",
+      "kind": "capability",
+      "capability_id": "query.sql-commands",
+      "behavior_id": "source-ref.alter-procedure",
+      "title": "ALTER PROCEDURE",
+      "surface_ids": [
+        "implementation-construction",
+        "testing-verification",
+        "compatibility-integration"
+      ]
+    },
+    {
+      "id": "source-ref.alter-publication",
+      "locator": "doc/src/sgml/ref/alter_publication.sgml",
+      "kind": "capability",
+      "capability_id": "query.sql-commands",
+      "behavior_id": "source-ref.alter-publication",
+      "title": "ALTER PUBLICATION",
+      "surface_ids": [
+        "implementation-construction",
+        "testing-verification",
+        "compatibility-integration"
+      ]
+    },
+    {
+      "id": "source-ref.alter-role",
+      "locator": "doc/src/sgml/ref/alter_role.sgml",
+      "kind": "capability",
+      "capability_id": "query.sql-commands",
+      "behavior_id": "source-ref.alter-role",
+      "title": "ALTER ROLE",
+      "surface_ids": [
+        "implementation-construction",
+        "testing-verification",
+        "compatibility-integration"
+      ]
+    },
+    {
+      "id": "source-ref.alter-routine",
+      "locator": "doc/src/sgml/ref/alter_routine.sgml",
+      "kind": "capability",
+      "capability_id": "query.sql-commands",
+      "behavior_id": "source-ref.alter-routine",
+      "title": "ALTER ROUTINE",
+      "surface_ids": [
+        "implementation-construction",
+        "testing-verification",
+        "compatibility-integration"
+      ]
+    },
+    {
+      "id": "source-ref.alter-rule",
+      "locator": "doc/src/sgml/ref/alter_rule.sgml",
+      "kind": "capability",
+      "capability_id": "query.sql-commands",
+      "behavior_id": "source-ref.alter-rule",
+      "title": "ALTER RULE",
+      "surface_ids": [
+        "implementation-construction",
+        "testing-verification",
+        "compatibility-integration"
+      ]
+    },
+    {
+      "id": "source-ref.alter-schema",
+      "locator": "doc/src/sgml/ref/alter_schema.sgml",
+      "kind": "capability",
+      "capability_id": "query.sql-commands",
+      "behavior_id": "source-ref.alter-schema",
+      "title": "ALTER SCHEMA",
+      "surface_ids": [
+        "implementation-construction",
+        "testing-verification",
+        "compatibility-integration"
+      ]
+    },
+    {
+      "id": "source-ref.alter-sequence",
+      "locator": "doc/src/sgml/ref/alter_sequence.sgml",
+      "kind": "capability",
+      "capability_id": "query.sql-commands",
+      "behavior_id": "source-ref.alter-sequence",
+      "title": "ALTER SEQUENCE",
+      "surface_ids": [
+        "implementation-construction",
+        "testing-verification",
+        "compatibility-integration"
+      ]
+    },
+    {
+      "id": "source-ref.alter-server",
+      "locator": "doc/src/sgml/ref/alter_server.sgml",
+      "kind": "capability",
+      "capability_id": "query.sql-commands",
+      "behavior_id": "source-ref.alter-server",
+      "title": "ALTER SERVER",
+      "surface_ids": [
+        "implementation-construction",
+        "testing-verification",
+        "compatibility-integration"
+      ]
+    },
+    {
+      "id": "source-ref.alter-statistics",
+      "locator": "doc/src/sgml/ref/alter_statistics.sgml",
+      "kind": "capability",
+      "capability_id": "query.sql-commands",
+      "behavior_id": "source-ref.alter-statistics",
+      "title": "ALTER STATISTICS",
+      "surface_ids": [
+        "implementation-construction",
+        "testing-verification",
+        "compatibility-integration"
+      ]
+    },
+    {
+      "id": "source-ref.alter-subscription",
+      "locator": "doc/src/sgml/ref/alter_subscription.sgml",
+      "kind": "capability",
+      "capability_id": "query.sql-commands",
+      "behavior_id": "source-ref.alter-subscription",
+      "title": "ALTER SUBSCRIPTION",
+      "surface_ids": [
+        "implementation-construction",
+        "testing-verification",
+        "compatibility-integration"
+      ]
+    },
+    {
+      "id": "source-ref.alter-system",
+      "locator": "doc/src/sgml/ref/alter_system.sgml",
+      "kind": "capability",
+      "capability_id": "query.sql-commands",
+      "behavior_id": "source-ref.alter-system",
+      "title": "ALTER SYSTEM",
+      "surface_ids": [
+        "implementation-construction",
+        "testing-verification",
+        "compatibility-integration"
+      ]
+    },
+    {
+      "id": "source-ref.alter-table",
+      "locator": "doc/src/sgml/ref/alter_table.sgml",
+      "kind": "capability",
+      "capability_id": "query.sql-commands",
+      "behavior_id": "source-ref.alter-table",
+      "title": "ALTER TABLE",
+      "surface_ids": [
+        "implementation-construction",
+        "testing-verification",
+        "compatibility-integration"
+      ]
+    },
+    {
+      "id": "source-ref.alter-tablespace",
+      "locator": "doc/src/sgml/ref/alter_tablespace.sgml",
+      "kind": "capability",
+      "capability_id": "query.sql-commands",
+      "behavior_id": "source-ref.alter-tablespace",
+      "title": "ALTER TABLESPACE",
+      "surface_ids": [
+        "implementation-construction",
+        "testing-verification",
+        "compatibility-integration"
+      ]
+    },
+    {
+      "id": "source-ref.alter-trigger",
+      "locator": "doc/src/sgml/ref/alter_trigger.sgml",
+      "kind": "capability",
+      "capability_id": "query.sql-commands",
+      "behavior_id": "source-ref.alter-trigger",
+      "title": "ALTER TRIGGER",
+      "surface_ids": [
+        "implementation-construction",
+        "testing-verification",
+        "compatibility-integration"
+      ]
+    },
+    {
+      "id": "source-ref.alter-tsconfig",
+      "locator": "doc/src/sgml/ref/alter_tsconfig.sgml",
+      "kind": "capability",
+      "capability_id": "integration.client-tools",
+      "behavior_id": "source-ref.alter-tsconfig",
+      "title": "ALTER TEXT SEARCH CONFIGURATION",
+      "surface_ids": [
+        "implementation-construction",
+        "operations-observability",
+        "compatibility-integration"
+      ]
+    },
+    {
+      "id": "source-ref.alter-tsdictionary",
+      "locator": "doc/src/sgml/ref/alter_tsdictionary.sgml",
+      "kind": "capability",
+      "capability_id": "integration.client-tools",
+      "behavior_id": "source-ref.alter-tsdictionary",
+      "title": "ALTER TEXT SEARCH DICTIONARY",
+      "surface_ids": [
+        "implementation-construction",
+        "operations-observability",
+        "compatibility-integration"
+      ]
+    },
+    {
+      "id": "source-ref.alter-tsparser",
+      "locator": "doc/src/sgml/ref/alter_tsparser.sgml",
+      "kind": "capability",
+      "capability_id": "integration.client-tools",
+      "behavior_id": "source-ref.alter-tsparser",
+      "title": "ALTER TEXT SEARCH PARSER",
+      "surface_ids": [
+        "implementation-construction",
+        "operations-observability",
+        "compatibility-integration"
+      ]
+    },
+    {
+      "id": "source-ref.alter-tstemplate",
+      "locator": "doc/src/sgml/ref/alter_tstemplate.sgml",
+      "kind": "capability",
+      "capability_id": "integration.client-tools",
+      "behavior_id": "source-ref.alter-tstemplate",
+      "title": "ALTER TEXT SEARCH TEMPLATE",
+      "surface_ids": [
+        "implementation-construction",
+        "operations-observability",
+        "compatibility-integration"
+      ]
+    },
+    {
+      "id": "source-ref.alter-type",
+      "locator": "doc/src/sgml/ref/alter_type.sgml",
+      "kind": "capability",
+      "capability_id": "query.sql-commands",
+      "behavior_id": "source-ref.alter-type",
+      "title": "ALTER TYPE",
+      "surface_ids": [
+        "implementation-construction",
+        "testing-verification",
+        "compatibility-integration"
+      ]
+    },
+    {
+      "id": "source-ref.alter-user",
+      "locator": "doc/src/sgml/ref/alter_user.sgml",
+      "kind": "capability",
+      "capability_id": "query.sql-commands",
+      "behavior_id": "source-ref.alter-user",
+      "title": "ALTER USER",
+      "surface_ids": [
+        "implementation-construction",
+        "testing-verification",
+        "compatibility-integration"
+      ]
+    },
+    {
+      "id": "source-ref.alter-user-mapping",
+      "locator": "doc/src/sgml/ref/alter_user_mapping.sgml",
+      "kind": "capability",
+      "capability_id": "query.sql-commands",
+      "behavior_id": "source-ref.alter-user-mapping",
+      "title": "ALTER USER MAPPING",
+      "surface_ids": [
+        "implementation-construction",
+        "testing-verification",
+        "compatibility-integration"
+      ]
+    },
+    {
+      "id": "source-ref.alter-view",
+      "locator": "doc/src/sgml/ref/alter_view.sgml",
+      "kind": "capability",
+      "capability_id": "query.sql-commands",
+      "behavior_id": "source-ref.alter-view",
+      "title": "ALTER VIEW",
+      "surface_ids": [
+        "implementation-construction",
+        "testing-verification",
+        "compatibility-integration"
+      ]
+    },
+    {
+      "id": "source-ref.analyze",
+      "locator": "doc/src/sgml/ref/analyze.sgml",
+      "kind": "capability",
+      "capability_id": "query.sql-commands",
+      "behavior_id": "source-ref.analyze",
+      "title": "ANALYZE",
+      "surface_ids": [
+        "implementation-construction",
+        "testing-verification",
+        "compatibility-integration"
+      ]
+    },
+    {
+      "id": "source-ref.begin",
+      "locator": "doc/src/sgml/ref/begin.sgml",
+      "kind": "capability",
+      "capability_id": "query.sql-commands",
+      "behavior_id": "source-ref.begin",
+      "title": "BEGIN",
+      "surface_ids": [
+        "implementation-construction",
+        "testing-verification",
+        "compatibility-integration"
+      ]
+    },
+    {
+      "id": "source-ref.call",
+      "locator": "doc/src/sgml/ref/call.sgml",
+      "kind": "capability",
+      "capability_id": "query.sql-commands",
+      "behavior_id": "source-ref.call",
+      "title": "CALL",
+      "surface_ids": [
+        "implementation-construction",
+        "testing-verification",
+        "compatibility-integration"
+      ]
+    },
+    {
+      "id": "source-ref.checkpoint",
+      "locator": "doc/src/sgml/ref/checkpoint.sgml",
+      "kind": "capability",
+      "capability_id": "query.sql-commands",
+      "behavior_id": "source-ref.checkpoint",
+      "title": "CHECKPOINT",
+      "surface_ids": [
+        "implementation-construction",
+        "testing-verification",
+        "compatibility-integration"
+      ]
+    },
+    {
+      "id": "source-ref.close",
+      "locator": "doc/src/sgml/ref/close.sgml",
+      "kind": "capability",
+      "capability_id": "query.sql-commands",
+      "behavior_id": "source-ref.close",
+      "title": "CLOSE",
+      "surface_ids": [
+        "implementation-construction",
+        "testing-verification",
+        "compatibility-integration"
+      ]
+    },
+    {
+      "id": "source-ref.cluster",
+      "locator": "doc/src/sgml/ref/cluster.sgml",
+      "kind": "capability",
+      "capability_id": "query.sql-commands",
+      "behavior_id": "source-ref.cluster",
+      "title": "CLUSTER",
+      "surface_ids": [
+        "implementation-construction",
+        "testing-verification",
+        "compatibility-integration"
+      ]
+    },
+    {
+      "id": "source-ref.clusterdb",
+      "locator": "doc/src/sgml/ref/clusterdb.sgml",
+      "kind": "capability",
+      "capability_id": "integration.client-tools",
+      "behavior_id": "source-ref.clusterdb",
+      "title": "clusterdb",
+      "surface_ids": [
+        "implementation-construction",
+        "operations-observability",
+        "compatibility-integration"
+      ]
+    },
+    {
+      "id": "source-ref.comment",
+      "locator": "doc/src/sgml/ref/comment.sgml",
+      "kind": "capability",
+      "capability_id": "query.sql-commands",
+      "behavior_id": "source-ref.comment",
+      "title": "COMMENT",
+      "surface_ids": [
+        "implementation-construction",
+        "testing-verification",
+        "compatibility-integration"
+      ]
+    },
+    {
+      "id": "source-ref.commit",
+      "locator": "doc/src/sgml/ref/commit.sgml",
+      "kind": "capability",
+      "capability_id": "query.sql-commands",
+      "behavior_id": "source-ref.commit",
+      "title": "COMMIT",
+      "surface_ids": [
+        "implementation-construction",
+        "testing-verification",
+        "compatibility-integration"
+      ]
+    },
+    {
+      "id": "source-ref.commit-prepared",
+      "locator": "doc/src/sgml/ref/commit_prepared.sgml",
+      "kind": "capability",
+      "capability_id": "query.sql-commands",
+      "behavior_id": "source-ref.commit-prepared",
+      "title": "COMMIT PREPARED",
+      "surface_ids": [
+        "implementation-construction",
+        "testing-verification",
+        "compatibility-integration"
+      ]
+    },
+    {
+      "id": "source-ref.copy",
+      "locator": "doc/src/sgml/ref/copy.sgml",
+      "kind": "capability",
+      "capability_id": "query.sql-commands",
+      "behavior_id": "source-ref.copy",
+      "title": "COPY",
+      "surface_ids": [
+        "implementation-construction",
+        "testing-verification",
+        "compatibility-integration"
+      ]
+    },
+    {
+      "id": "source-ref.create-access-method",
+      "locator": "doc/src/sgml/ref/create_access_method.sgml",
+      "kind": "capability",
+      "capability_id": "query.sql-commands",
+      "behavior_id": "source-ref.create-access-method",
+      "title": "CREATE ACCESS METHOD",
+      "surface_ids": [
+        "implementation-construction",
+        "testing-verification",
+        "compatibility-integration"
+      ]
+    },
+    {
+      "id": "source-ref.create-aggregate",
+      "locator": "doc/src/sgml/ref/create_aggregate.sgml",
+      "kind": "capability",
+      "capability_id": "query.sql-commands",
+      "behavior_id": "source-ref.create-aggregate",
+      "title": "CREATE AGGREGATE",
+      "surface_ids": [
+        "implementation-construction",
+        "testing-verification",
+        "compatibility-integration"
+      ]
+    },
+    {
+      "id": "source-ref.create-cast",
+      "locator": "doc/src/sgml/ref/create_cast.sgml",
+      "kind": "capability",
+      "capability_id": "query.sql-commands",
+      "behavior_id": "source-ref.create-cast",
+      "title": "CREATE CAST",
+      "surface_ids": [
+        "implementation-construction",
+        "testing-verification",
+        "compatibility-integration"
+      ]
+    },
+    {
+      "id": "source-ref.create-collation",
+      "locator": "doc/src/sgml/ref/create_collation.sgml",
+      "kind": "capability",
+      "capability_id": "query.sql-commands",
+      "behavior_id": "source-ref.create-collation",
+      "title": "CREATE COLLATION",
+      "surface_ids": [
+        "implementation-construction",
+        "testing-verification",
+        "compatibility-integration"
+      ]
+    },
+    {
+      "id": "source-ref.create-conversion",
+      "locator": "doc/src/sgml/ref/create_conversion.sgml",
+      "kind": "capability",
+      "capability_id": "query.sql-commands",
+      "behavior_id": "source-ref.create-conversion",
+      "title": "CREATE CONVERSION",
+      "surface_ids": [
+        "implementation-construction",
+        "testing-verification",
+        "compatibility-integration"
+      ]
+    },
+    {
+      "id": "source-ref.create-database",
+      "locator": "doc/src/sgml/ref/create_database.sgml",
+      "kind": "capability",
+      "capability_id": "query.sql-commands",
+      "behavior_id": "source-ref.create-database",
+      "title": "CREATE DATABASE",
+      "surface_ids": [
+        "implementation-construction",
+        "testing-verification",
+        "compatibility-integration"
+      ]
+    },
+    {
+      "id": "source-ref.create-domain",
+      "locator": "doc/src/sgml/ref/create_domain.sgml",
+      "kind": "capability",
+      "capability_id": "query.sql-commands",
+      "behavior_id": "source-ref.create-domain",
+      "title": "CREATE DOMAIN",
+      "surface_ids": [
+        "implementation-construction",
+        "testing-verification",
+        "compatibility-integration"
+      ]
+    },
+    {
+      "id": "source-ref.create-event-trigger",
+      "locator": "doc/src/sgml/ref/create_event_trigger.sgml",
+      "kind": "capability",
+      "capability_id": "query.sql-commands",
+      "behavior_id": "source-ref.create-event-trigger",
+      "title": "CREATE EVENT TRIGGER",
+      "surface_ids": [
+        "implementation-construction",
+        "testing-verification",
+        "compatibility-integration"
+      ]
+    },
+    {
+      "id": "source-ref.create-extension",
+      "locator": "doc/src/sgml/ref/create_extension.sgml",
+      "kind": "capability",
+      "capability_id": "query.sql-commands",
+      "behavior_id": "source-ref.create-extension",
+      "title": "CREATE EXTENSION",
+      "surface_ids": [
+        "implementation-construction",
+        "testing-verification",
+        "compatibility-integration"
+      ]
+    },
+    {
+      "id": "source-ref.create-foreign-data-wrapper",
+      "locator": "doc/src/sgml/ref/create_foreign_data_wrapper.sgml",
+      "kind": "capability",
+      "capability_id": "query.sql-commands",
+      "behavior_id": "source-ref.create-foreign-data-wrapper",
+      "title": "CREATE FOREIGN DATA WRAPPER",
+      "surface_ids": [
+        "implementation-construction",
+        "testing-verification",
+        "compatibility-integration"
+      ]
+    },
+    {
+      "id": "source-ref.create-foreign-table",
+      "locator": "doc/src/sgml/ref/create_foreign_table.sgml",
+      "kind": "capability",
+      "capability_id": "query.sql-commands",
+      "behavior_id": "source-ref.create-foreign-table",
+      "title": "CREATE FOREIGN TABLE",
+      "surface_ids": [
+        "implementation-construction",
+        "testing-verification",
+        "compatibility-integration"
+      ]
+    },
+    {
+      "id": "source-ref.create-function",
+      "locator": "doc/src/sgml/ref/create_function.sgml",
+      "kind": "capability",
+      "capability_id": "query.sql-commands",
+      "behavior_id": "source-ref.create-function",
+      "title": "CREATE FUNCTION",
+      "surface_ids": [
+        "implementation-construction",
+        "testing-verification",
+        "compatibility-integration"
+      ]
+    },
+    {
+      "id": "source-ref.create-group",
+      "locator": "doc/src/sgml/ref/create_group.sgml",
+      "kind": "capability",
+      "capability_id": "query.sql-commands",
+      "behavior_id": "source-ref.create-group",
+      "title": "CREATE GROUP",
+      "surface_ids": [
+        "implementation-construction",
+        "testing-verification",
+        "compatibility-integration"
+      ]
+    },
+    {
+      "id": "source-ref.create-index",
+      "locator": "doc/src/sgml/ref/create_index.sgml",
+      "kind": "capability",
+      "capability_id": "query.sql-commands",
+      "behavior_id": "source-ref.create-index",
+      "title": "CREATE INDEX",
+      "surface_ids": [
+        "implementation-construction",
+        "testing-verification",
+        "compatibility-integration"
+      ]
+    },
+    {
+      "id": "source-ref.create-language",
+      "locator": "doc/src/sgml/ref/create_language.sgml",
+      "kind": "capability",
+      "capability_id": "query.sql-commands",
+      "behavior_id": "source-ref.create-language",
+      "title": "CREATE LANGUAGE",
+      "surface_ids": [
+        "implementation-construction",
+        "testing-verification",
+        "compatibility-integration"
+      ]
+    },
+    {
+      "id": "source-ref.create-materialized-view",
+      "locator": "doc/src/sgml/ref/create_materialized_view.sgml",
+      "kind": "capability",
+      "capability_id": "query.sql-commands",
+      "behavior_id": "source-ref.create-materialized-view",
+      "title": "CREATE MATERIALIZED VIEW",
+      "surface_ids": [
+        "implementation-construction",
+        "testing-verification",
+        "compatibility-integration"
+      ]
+    },
+    {
+      "id": "source-ref.create-opclass",
+      "locator": "doc/src/sgml/ref/create_opclass.sgml",
+      "kind": "capability",
+      "capability_id": "integration.client-tools",
+      "behavior_id": "source-ref.create-opclass",
+      "title": "CREATE OPERATOR CLASS",
+      "surface_ids": [
+        "implementation-construction",
+        "operations-observability",
+        "compatibility-integration"
+      ]
+    },
+    {
+      "id": "source-ref.create-operator",
+      "locator": "doc/src/sgml/ref/create_operator.sgml",
+      "kind": "capability",
+      "capability_id": "query.sql-commands",
+      "behavior_id": "source-ref.create-operator",
+      "title": "CREATE OPERATOR",
+      "surface_ids": [
+        "implementation-construction",
+        "testing-verification",
+        "compatibility-integration"
+      ]
+    },
+    {
+      "id": "source-ref.create-opfamily",
+      "locator": "doc/src/sgml/ref/create_opfamily.sgml",
+      "kind": "capability",
+      "capability_id": "integration.client-tools",
+      "behavior_id": "source-ref.create-opfamily",
+      "title": "CREATE OPERATOR FAMILY",
+      "surface_ids": [
+        "implementation-construction",
+        "operations-observability",
+        "compatibility-integration"
+      ]
+    },
+    {
+      "id": "source-ref.create-policy",
+      "locator": "doc/src/sgml/ref/create_policy.sgml",
+      "kind": "capability",
+      "capability_id": "query.sql-commands",
+      "behavior_id": "source-ref.create-policy",
+      "title": "CREATE POLICY",
+      "surface_ids": [
+        "implementation-construction",
+        "testing-verification",
+        "compatibility-integration"
+      ]
+    },
+    {
+      "id": "source-ref.create-procedure",
+      "locator": "doc/src/sgml/ref/create_procedure.sgml",
+      "kind": "capability",
+      "capability_id": "query.sql-commands",
+      "behavior_id": "source-ref.create-procedure",
+      "title": "CREATE PROCEDURE",
+      "surface_ids": [
+        "implementation-construction",
+        "testing-verification",
+        "compatibility-integration"
+      ]
+    },
+    {
+      "id": "source-ref.create-publication",
+      "locator": "doc/src/sgml/ref/create_publication.sgml",
+      "kind": "capability",
+      "capability_id": "query.sql-commands",
+      "behavior_id": "source-ref.create-publication",
+      "title": "CREATE PUBLICATION",
+      "surface_ids": [
+        "implementation-construction",
+        "testing-verification",
+        "compatibility-integration"
+      ]
+    },
+    {
+      "id": "source-ref.create-role",
+      "locator": "doc/src/sgml/ref/create_role.sgml",
+      "kind": "capability",
+      "capability_id": "query.sql-commands",
+      "behavior_id": "source-ref.create-role",
+      "title": "CREATE ROLE",
+      "surface_ids": [
+        "implementation-construction",
+        "testing-verification",
+        "compatibility-integration"
+      ]
+    },
+    {
+      "id": "source-ref.create-rule",
+      "locator": "doc/src/sgml/ref/create_rule.sgml",
+      "kind": "capability",
+      "capability_id": "query.sql-commands",
+      "behavior_id": "source-ref.create-rule",
+      "title": "CREATE RULE",
+      "surface_ids": [
+        "implementation-construction",
+        "testing-verification",
+        "compatibility-integration"
+      ]
+    },
+    {
+      "id": "source-ref.create-schema",
+      "locator": "doc/src/sgml/ref/create_schema.sgml",
+      "kind": "capability",
+      "capability_id": "query.sql-commands",
+      "behavior_id": "source-ref.create-schema",
+      "title": "CREATE SCHEMA",
+      "surface_ids": [
+        "implementation-construction",
+        "testing-verification",
+        "compatibility-integration"
+      ]
+    },
+    {
+      "id": "source-ref.create-sequence",
+      "locator": "doc/src/sgml/ref/create_sequence.sgml",
+      "kind": "capability",
+      "capability_id": "query.sql-commands",
+      "behavior_id": "source-ref.create-sequence",
+      "title": "CREATE SEQUENCE",
+      "surface_ids": [
+        "implementation-construction",
+        "testing-verification",
+        "compatibility-integration"
+      ]
+    },
+    {
+      "id": "source-ref.create-server",
+      "locator": "doc/src/sgml/ref/create_server.sgml",
+      "kind": "capability",
+      "capability_id": "query.sql-commands",
+      "behavior_id": "source-ref.create-server",
+      "title": "CREATE SERVER",
+      "surface_ids": [
+        "implementation-construction",
+        "testing-verification",
+        "compatibility-integration"
+      ]
+    },
+    {
+      "id": "source-ref.create-statistics",
+      "locator": "doc/src/sgml/ref/create_statistics.sgml",
+      "kind": "capability",
+      "capability_id": "query.sql-commands",
+      "behavior_id": "source-ref.create-statistics",
+      "title": "CREATE STATISTICS",
+      "surface_ids": [
+        "implementation-construction",
+        "testing-verification",
+        "compatibility-integration"
+      ]
+    },
+    {
+      "id": "source-ref.create-subscription",
+      "locator": "doc/src/sgml/ref/create_subscription.sgml",
+      "kind": "capability",
+      "capability_id": "query.sql-commands",
+      "behavior_id": "source-ref.create-subscription",
+      "title": "CREATE SUBSCRIPTION",
+      "surface_ids": [
+        "implementation-construction",
+        "testing-verification",
+        "compatibility-integration"
+      ]
+    },
+    {
+      "id": "source-ref.create-table",
+      "locator": "doc/src/sgml/ref/create_table.sgml",
+      "kind": "capability",
+      "capability_id": "query.sql-commands",
+      "behavior_id": "source-ref.create-table",
+      "title": "CREATE TABLE",
+      "surface_ids": [
+        "implementation-construction",
+        "testing-verification",
+        "compatibility-integration"
+      ]
+    },
+    {
+      "id": "source-ref.create-table-as",
+      "locator": "doc/src/sgml/ref/create_table_as.sgml",
+      "kind": "capability",
+      "capability_id": "query.sql-commands",
+      "behavior_id": "source-ref.create-table-as",
+      "title": "CREATE TABLE AS",
+      "surface_ids": [
+        "implementation-construction",
+        "testing-verification",
+        "compatibility-integration"
+      ]
+    },
+    {
+      "id": "source-ref.create-tablespace",
+      "locator": "doc/src/sgml/ref/create_tablespace.sgml",
+      "kind": "capability",
+      "capability_id": "query.sql-commands",
+      "behavior_id": "source-ref.create-tablespace",
+      "title": "CREATE TABLESPACE",
+      "surface_ids": [
+        "implementation-construction",
+        "testing-verification",
+        "compatibility-integration"
+      ]
+    },
+    {
+      "id": "source-ref.create-transform",
+      "locator": "doc/src/sgml/ref/create_transform.sgml",
+      "kind": "capability",
+      "capability_id": "query.sql-commands",
+      "behavior_id": "source-ref.create-transform",
+      "title": "CREATE TRANSFORM",
+      "surface_ids": [
+        "implementation-construction",
+        "testing-verification",
+        "compatibility-integration"
+      ]
+    },
+    {
+      "id": "source-ref.create-trigger",
+      "locator": "doc/src/sgml/ref/create_trigger.sgml",
+      "kind": "capability",
+      "capability_id": "query.sql-commands",
+      "behavior_id": "source-ref.create-trigger",
+      "title": "CREATE TRIGGER",
+      "surface_ids": [
+        "implementation-construction",
+        "testing-verification",
+        "compatibility-integration"
+      ]
+    },
+    {
+      "id": "source-ref.create-tsconfig",
+      "locator": "doc/src/sgml/ref/create_tsconfig.sgml",
+      "kind": "capability",
+      "capability_id": "integration.client-tools",
+      "behavior_id": "source-ref.create-tsconfig",
+      "title": "CREATE TEXT SEARCH CONFIGURATION",
+      "surface_ids": [
+        "implementation-construction",
+        "operations-observability",
+        "compatibility-integration"
+      ]
+    },
+    {
+      "id": "source-ref.create-tsdictionary",
+      "locator": "doc/src/sgml/ref/create_tsdictionary.sgml",
+      "kind": "capability",
+      "capability_id": "integration.client-tools",
+      "behavior_id": "source-ref.create-tsdictionary",
+      "title": "CREATE TEXT SEARCH DICTIONARY",
+      "surface_ids": [
+        "implementation-construction",
+        "operations-observability",
+        "compatibility-integration"
+      ]
+    },
+    {
+      "id": "source-ref.create-tsparser",
+      "locator": "doc/src/sgml/ref/create_tsparser.sgml",
+      "kind": "capability",
+      "capability_id": "integration.client-tools",
+      "behavior_id": "source-ref.create-tsparser",
+      "title": "CREATE TEXT SEARCH PARSER",
+      "surface_ids": [
+        "implementation-construction",
+        "operations-observability",
+        "compatibility-integration"
+      ]
+    },
+    {
+      "id": "source-ref.create-tstemplate",
+      "locator": "doc/src/sgml/ref/create_tstemplate.sgml",
+      "kind": "capability",
+      "capability_id": "integration.client-tools",
+      "behavior_id": "source-ref.create-tstemplate",
+      "title": "CREATE TEXT SEARCH TEMPLATE",
+      "surface_ids": [
+        "implementation-construction",
+        "operations-observability",
+        "compatibility-integration"
+      ]
+    },
+    {
+      "id": "source-ref.create-type",
+      "locator": "doc/src/sgml/ref/create_type.sgml",
+      "kind": "capability",
+      "capability_id": "query.sql-commands",
+      "behavior_id": "source-ref.create-type",
+      "title": "CREATE TYPE",
+      "surface_ids": [
+        "implementation-construction",
+        "testing-verification",
+        "compatibility-integration"
+      ]
+    },
+    {
+      "id": "source-ref.create-user",
+      "locator": "doc/src/sgml/ref/create_user.sgml",
+      "kind": "capability",
+      "capability_id": "query.sql-commands",
+      "behavior_id": "source-ref.create-user",
+      "title": "CREATE USER",
+      "surface_ids": [
+        "implementation-construction",
+        "testing-verification",
+        "compatibility-integration"
+      ]
+    },
+    {
+      "id": "source-ref.create-user-mapping",
+      "locator": "doc/src/sgml/ref/create_user_mapping.sgml",
+      "kind": "capability",
+      "capability_id": "query.sql-commands",
+      "behavior_id": "source-ref.create-user-mapping",
+      "title": "CREATE USER MAPPING",
+      "surface_ids": [
+        "implementation-construction",
+        "testing-verification",
+        "compatibility-integration"
+      ]
+    },
+    {
+      "id": "source-ref.create-view",
+      "locator": "doc/src/sgml/ref/create_view.sgml",
+      "kind": "capability",
+      "capability_id": "query.sql-commands",
+      "behavior_id": "source-ref.create-view",
+      "title": "CREATE VIEW",
+      "surface_ids": [
+        "implementation-construction",
+        "testing-verification",
+        "compatibility-integration"
+      ]
+    },
+    {
+      "id": "source-ref.createdb",
+      "locator": "doc/src/sgml/ref/createdb.sgml",
+      "kind": "capability",
+      "capability_id": "integration.client-tools",
+      "behavior_id": "source-ref.createdb",
+      "title": "createdb",
+      "surface_ids": [
+        "implementation-construction",
+        "operations-observability",
+        "compatibility-integration"
+      ]
+    },
+    {
+      "id": "source-ref.createuser",
+      "locator": "doc/src/sgml/ref/createuser.sgml",
+      "kind": "capability",
+      "capability_id": "integration.client-tools",
+      "behavior_id": "source-ref.createuser",
+      "title": "createuser",
+      "surface_ids": [
+        "implementation-construction",
+        "operations-observability",
+        "compatibility-integration"
+      ]
+    },
+    {
+      "id": "source-ref.deallocate",
+      "locator": "doc/src/sgml/ref/deallocate.sgml",
+      "kind": "capability",
+      "capability_id": "query.sql-commands",
+      "behavior_id": "source-ref.deallocate",
+      "title": "DEALLOCATE",
+      "surface_ids": [
+        "implementation-construction",
+        "testing-verification",
+        "compatibility-integration"
+      ]
+    },
+    {
+      "id": "source-ref.declare",
+      "locator": "doc/src/sgml/ref/declare.sgml",
+      "kind": "capability",
+      "capability_id": "query.sql-commands",
+      "behavior_id": "source-ref.declare",
+      "title": "DECLARE",
+      "surface_ids": [
+        "implementation-construction",
+        "testing-verification",
+        "compatibility-integration"
+      ]
+    },
+    {
+      "id": "source-ref.delete",
+      "locator": "doc/src/sgml/ref/delete.sgml",
+      "kind": "capability",
+      "capability_id": "query.sql-commands",
+      "behavior_id": "source-ref.delete",
+      "title": "DELETE",
+      "surface_ids": [
+        "implementation-construction",
+        "testing-verification",
+        "compatibility-integration"
+      ]
+    },
+    {
+      "id": "source-ref.discard",
+      "locator": "doc/src/sgml/ref/discard.sgml",
+      "kind": "capability",
+      "capability_id": "query.sql-commands",
+      "behavior_id": "source-ref.discard",
+      "title": "DISCARD",
+      "surface_ids": [
+        "implementation-construction",
+        "testing-verification",
+        "compatibility-integration"
+      ]
+    },
+    {
+      "id": "source-ref.do",
+      "locator": "doc/src/sgml/ref/do.sgml",
+      "kind": "capability",
+      "capability_id": "query.sql-commands",
+      "behavior_id": "source-ref.do",
+      "title": "DO",
+      "surface_ids": [
+        "implementation-construction",
+        "testing-verification",
+        "compatibility-integration"
+      ]
+    },
+    {
+      "id": "source-ref.drop-access-method",
+      "locator": "doc/src/sgml/ref/drop_access_method.sgml",
+      "kind": "capability",
+      "capability_id": "query.sql-commands",
+      "behavior_id": "source-ref.drop-access-method",
+      "title": "DROP ACCESS METHOD",
+      "surface_ids": [
+        "implementation-construction",
+        "testing-verification",
+        "compatibility-integration"
+      ]
+    },
+    {
+      "id": "source-ref.drop-aggregate",
+      "locator": "doc/src/sgml/ref/drop_aggregate.sgml",
+      "kind": "capability",
+      "capability_id": "query.sql-commands",
+      "behavior_id": "source-ref.drop-aggregate",
+      "title": "DROP AGGREGATE",
+      "surface_ids": [
+        "implementation-construction",
+        "testing-verification",
+        "compatibility-integration"
+      ]
+    },
+    {
+      "id": "source-ref.drop-cast",
+      "locator": "doc/src/sgml/ref/drop_cast.sgml",
+      "kind": "capability",
+      "capability_id": "query.sql-commands",
+      "behavior_id": "source-ref.drop-cast",
+      "title": "DROP CAST",
+      "surface_ids": [
+        "implementation-construction",
+        "testing-verification",
+        "compatibility-integration"
+      ]
+    },
+    {
+      "id": "source-ref.drop-collation",
+      "locator": "doc/src/sgml/ref/drop_collation.sgml",
+      "kind": "capability",
+      "capability_id": "query.sql-commands",
+      "behavior_id": "source-ref.drop-collation",
+      "title": "DROP COLLATION",
+      "surface_ids": [
+        "implementation-construction",
+        "testing-verification",
+        "compatibility-integration"
+      ]
+    },
+    {
+      "id": "source-ref.drop-conversion",
+      "locator": "doc/src/sgml/ref/drop_conversion.sgml",
+      "kind": "capability",
+      "capability_id": "query.sql-commands",
+      "behavior_id": "source-ref.drop-conversion",
+      "title": "DROP CONVERSION",
+      "surface_ids": [
+        "implementation-construction",
+        "testing-verification",
+        "compatibility-integration"
+      ]
+    },
+    {
+      "id": "source-ref.drop-database",
+      "locator": "doc/src/sgml/ref/drop_database.sgml",
+      "kind": "capability",
+      "capability_id": "query.sql-commands",
+      "behavior_id": "source-ref.drop-database",
+      "title": "DROP DATABASE",
+      "surface_ids": [
+        "implementation-construction",
+        "testing-verification",
+        "compatibility-integration"
+      ]
+    },
+    {
+      "id": "source-ref.drop-domain",
+      "locator": "doc/src/sgml/ref/drop_domain.sgml",
+      "kind": "capability",
+      "capability_id": "query.sql-commands",
+      "behavior_id": "source-ref.drop-domain",
+      "title": "DROP DOMAIN",
+      "surface_ids": [
+        "implementation-construction",
+        "testing-verification",
+        "compatibility-integration"
+      ]
+    },
+    {
+      "id": "source-ref.drop-event-trigger",
+      "locator": "doc/src/sgml/ref/drop_event_trigger.sgml",
+      "kind": "capability",
+      "capability_id": "query.sql-commands",
+      "behavior_id": "source-ref.drop-event-trigger",
+      "title": "DROP EVENT TRIGGER",
+      "surface_ids": [
+        "implementation-construction",
+        "testing-verification",
+        "compatibility-integration"
+      ]
+    },
+    {
+      "id": "source-ref.drop-extension",
+      "locator": "doc/src/sgml/ref/drop_extension.sgml",
+      "kind": "capability",
+      "capability_id": "query.sql-commands",
+      "behavior_id": "source-ref.drop-extension",
+      "title": "DROP EXTENSION",
+      "surface_ids": [
+        "implementation-construction",
+        "testing-verification",
+        "compatibility-integration"
+      ]
+    },
+    {
+      "id": "source-ref.drop-foreign-data-wrapper",
+      "locator": "doc/src/sgml/ref/drop_foreign_data_wrapper.sgml",
+      "kind": "capability",
+      "capability_id": "query.sql-commands",
+      "behavior_id": "source-ref.drop-foreign-data-wrapper",
+      "title": "DROP FOREIGN DATA WRAPPER",
+      "surface_ids": [
+        "implementation-construction",
+        "testing-verification",
+        "compatibility-integration"
+      ]
+    },
+    {
+      "id": "source-ref.drop-foreign-table",
+      "locator": "doc/src/sgml/ref/drop_foreign_table.sgml",
+      "kind": "capability",
+      "capability_id": "query.sql-commands",
+      "behavior_id": "source-ref.drop-foreign-table",
+      "title": "DROP FOREIGN TABLE",
+      "surface_ids": [
+        "implementation-construction",
+        "testing-verification",
+        "compatibility-integration"
+      ]
+    },
+    {
+      "id": "source-ref.drop-function",
+      "locator": "doc/src/sgml/ref/drop_function.sgml",
+      "kind": "capability",
+      "capability_id": "query.sql-commands",
+      "behavior_id": "source-ref.drop-function",
+      "title": "DROP FUNCTION",
+      "surface_ids": [
+        "implementation-construction",
+        "testing-verification",
+        "compatibility-integration"
+      ]
+    },
+    {
+      "id": "source-ref.drop-group",
+      "locator": "doc/src/sgml/ref/drop_group.sgml",
+      "kind": "capability",
+      "capability_id": "query.sql-commands",
+      "behavior_id": "source-ref.drop-group",
+      "title": "DROP GROUP",
+      "surface_ids": [
+        "implementation-construction",
+        "testing-verification",
+        "compatibility-integration"
+      ]
+    },
+    {
+      "id": "source-ref.drop-index",
+      "locator": "doc/src/sgml/ref/drop_index.sgml",
+      "kind": "capability",
+      "capability_id": "query.sql-commands",
+      "behavior_id": "source-ref.drop-index",
+      "title": "DROP INDEX",
+      "surface_ids": [
+        "implementation-construction",
+        "testing-verification",
+        "compatibility-integration"
+      ]
+    },
+    {
+      "id": "source-ref.drop-language",
+      "locator": "doc/src/sgml/ref/drop_language.sgml",
+      "kind": "capability",
+      "capability_id": "query.sql-commands",
+      "behavior_id": "source-ref.drop-language",
+      "title": "DROP LANGUAGE",
+      "surface_ids": [
+        "implementation-construction",
+        "testing-verification",
+        "compatibility-integration"
+      ]
+    },
+    {
+      "id": "source-ref.drop-materialized-view",
+      "locator": "doc/src/sgml/ref/drop_materialized_view.sgml",
+      "kind": "capability",
+      "capability_id": "query.sql-commands",
+      "behavior_id": "source-ref.drop-materialized-view",
+      "title": "DROP MATERIALIZED VIEW",
+      "surface_ids": [
+        "implementation-construction",
+        "testing-verification",
+        "compatibility-integration"
+      ]
+    },
+    {
+      "id": "source-ref.drop-opclass",
+      "locator": "doc/src/sgml/ref/drop_opclass.sgml",
+      "kind": "capability",
+      "capability_id": "integration.client-tools",
+      "behavior_id": "source-ref.drop-opclass",
+      "title": "DROP OPERATOR CLASS",
+      "surface_ids": [
+        "implementation-construction",
+        "operations-observability",
+        "compatibility-integration"
+      ]
+    },
+    {
+      "id": "source-ref.drop-operator",
+      "locator": "doc/src/sgml/ref/drop_operator.sgml",
+      "kind": "capability",
+      "capability_id": "query.sql-commands",
+      "behavior_id": "source-ref.drop-operator",
+      "title": "DROP OPERATOR",
+      "surface_ids": [
+        "implementation-construction",
+        "testing-verification",
+        "compatibility-integration"
+      ]
+    },
+    {
+      "id": "source-ref.drop-opfamily",
+      "locator": "doc/src/sgml/ref/drop_opfamily.sgml",
+      "kind": "capability",
+      "capability_id": "integration.client-tools",
+      "behavior_id": "source-ref.drop-opfamily",
+      "title": "DROP OPERATOR FAMILY",
+      "surface_ids": [
+        "implementation-construction",
+        "operations-observability",
+        "compatibility-integration"
+      ]
+    },
+    {
+      "id": "source-ref.drop-owned",
+      "locator": "doc/src/sgml/ref/drop_owned.sgml",
+      "kind": "capability",
+      "capability_id": "query.sql-commands",
+      "behavior_id": "source-ref.drop-owned",
+      "title": "DROP OWNED",
+      "surface_ids": [
+        "implementation-construction",
+        "testing-verification",
+        "compatibility-integration"
+      ]
+    },
+    {
+      "id": "source-ref.drop-policy",
+      "locator": "doc/src/sgml/ref/drop_policy.sgml",
+      "kind": "capability",
+      "capability_id": "query.sql-commands",
+      "behavior_id": "source-ref.drop-policy",
+      "title": "DROP POLICY",
+      "surface_ids": [
+        "implementation-construction",
+        "testing-verification",
+        "compatibility-integration"
+      ]
+    },
+    {
+      "id": "source-ref.drop-procedure",
+      "locator": "doc/src/sgml/ref/drop_procedure.sgml",
+      "kind": "capability",
+      "capability_id": "query.sql-commands",
+      "behavior_id": "source-ref.drop-procedure",
+      "title": "DROP PROCEDURE",
+      "surface_ids": [
+        "implementation-construction",
+        "testing-verification",
+        "compatibility-integration"
+      ]
+    },
+    {
+      "id": "source-ref.drop-publication",
+      "locator": "doc/src/sgml/ref/drop_publication.sgml",
+      "kind": "capability",
+      "capability_id": "query.sql-commands",
+      "behavior_id": "source-ref.drop-publication",
+      "title": "DROP PUBLICATION",
+      "surface_ids": [
+        "implementation-construction",
+        "testing-verification",
+        "compatibility-integration"
+      ]
+    },
+    {
+      "id": "source-ref.drop-role",
+      "locator": "doc/src/sgml/ref/drop_role.sgml",
+      "kind": "capability",
+      "capability_id": "query.sql-commands",
+      "behavior_id": "source-ref.drop-role",
+      "title": "DROP ROLE",
+      "surface_ids": [
+        "implementation-construction",
+        "testing-verification",
+        "compatibility-integration"
+      ]
+    },
+    {
+      "id": "source-ref.drop-routine",
+      "locator": "doc/src/sgml/ref/drop_routine.sgml",
+      "kind": "capability",
+      "capability_id": "query.sql-commands",
+      "behavior_id": "source-ref.drop-routine",
+      "title": "DROP ROUTINE",
+      "surface_ids": [
+        "implementation-construction",
+        "testing-verification",
+        "compatibility-integration"
+      ]
+    },
+    {
+      "id": "source-ref.drop-rule",
+      "locator": "doc/src/sgml/ref/drop_rule.sgml",
+      "kind": "capability",
+      "capability_id": "query.sql-commands",
+      "behavior_id": "source-ref.drop-rule",
+      "title": "DROP RULE",
+      "surface_ids": [
+        "implementation-construction",
+        "testing-verification",
+        "compatibility-integration"
+      ]
+    },
+    {
+      "id": "source-ref.drop-schema",
+      "locator": "doc/src/sgml/ref/drop_schema.sgml",
+      "kind": "capability",
+      "capability_id": "query.sql-commands",
+      "behavior_id": "source-ref.drop-schema",
+      "title": "DROP SCHEMA",
+      "surface_ids": [
+        "implementation-construction",
+        "testing-verification",
+        "compatibility-integration"
+      ]
+    },
+    {
+      "id": "source-ref.drop-sequence",
+      "locator": "doc/src/sgml/ref/drop_sequence.sgml",
+      "kind": "capability",
+      "capability_id": "query.sql-commands",
+      "behavior_id": "source-ref.drop-sequence",
+      "title": "DROP SEQUENCE",
+      "surface_ids": [
+        "implementation-construction",
+        "testing-verification",
+        "compatibility-integration"
+      ]
+    },
+    {
+      "id": "source-ref.drop-server",
+      "locator": "doc/src/sgml/ref/drop_server.sgml",
+      "kind": "capability",
+      "capability_id": "query.sql-commands",
+      "behavior_id": "source-ref.drop-server",
+      "title": "DROP SERVER",
+      "surface_ids": [
+        "implementation-construction",
+        "testing-verification",
+        "compatibility-integration"
+      ]
+    },
+    {
+      "id": "source-ref.drop-statistics",
+      "locator": "doc/src/sgml/ref/drop_statistics.sgml",
+      "kind": "capability",
+      "capability_id": "query.sql-commands",
+      "behavior_id": "source-ref.drop-statistics",
+      "title": "DROP STATISTICS",
+      "surface_ids": [
+        "implementation-construction",
+        "testing-verification",
+        "compatibility-integration"
+      ]
+    },
+    {
+      "id": "source-ref.drop-subscription",
+      "locator": "doc/src/sgml/ref/drop_subscription.sgml",
+      "kind": "capability",
+      "capability_id": "query.sql-commands",
+      "behavior_id": "source-ref.drop-subscription",
+      "title": "DROP SUBSCRIPTION",
+      "surface_ids": [
+        "implementation-construction",
+        "testing-verification",
+        "compatibility-integration"
+      ]
+    },
+    {
+      "id": "source-ref.drop-table",
+      "locator": "doc/src/sgml/ref/drop_table.sgml",
+      "kind": "capability",
+      "capability_id": "query.sql-commands",
+      "behavior_id": "source-ref.drop-table",
+      "title": "DROP TABLE",
+      "surface_ids": [
+        "implementation-construction",
+        "testing-verification",
+        "compatibility-integration"
+      ]
+    },
+    {
+      "id": "source-ref.drop-tablespace",
+      "locator": "doc/src/sgml/ref/drop_tablespace.sgml",
+      "kind": "capability",
+      "capability_id": "query.sql-commands",
+      "behavior_id": "source-ref.drop-tablespace",
+      "title": "DROP TABLESPACE",
+      "surface_ids": [
+        "implementation-construction",
+        "testing-verification",
+        "compatibility-integration"
+      ]
+    },
+    {
+      "id": "source-ref.drop-transform",
+      "locator": "doc/src/sgml/ref/drop_transform.sgml",
+      "kind": "capability",
+      "capability_id": "query.sql-commands",
+      "behavior_id": "source-ref.drop-transform",
+      "title": "DROP TRANSFORM",
+      "surface_ids": [
+        "implementation-construction",
+        "testing-verification",
+        "compatibility-integration"
+      ]
+    },
+    {
+      "id": "source-ref.drop-trigger",
+      "locator": "doc/src/sgml/ref/drop_trigger.sgml",
+      "kind": "capability",
+      "capability_id": "query.sql-commands",
+      "behavior_id": "source-ref.drop-trigger",
+      "title": "DROP TRIGGER",
+      "surface_ids": [
+        "implementation-construction",
+        "testing-verification",
+        "compatibility-integration"
+      ]
+    },
+    {
+      "id": "source-ref.drop-tsconfig",
+      "locator": "doc/src/sgml/ref/drop_tsconfig.sgml",
+      "kind": "capability",
+      "capability_id": "integration.client-tools",
+      "behavior_id": "source-ref.drop-tsconfig",
+      "title": "DROP TEXT SEARCH CONFIGURATION",
+      "surface_ids": [
+        "implementation-construction",
+        "operations-observability",
+        "compatibility-integration"
+      ]
+    },
+    {
+      "id": "source-ref.drop-tsdictionary",
+      "locator": "doc/src/sgml/ref/drop_tsdictionary.sgml",
+      "kind": "capability",
+      "capability_id": "integration.client-tools",
+      "behavior_id": "source-ref.drop-tsdictionary",
+      "title": "DROP TEXT SEARCH DICTIONARY",
+      "surface_ids": [
+        "implementation-construction",
+        "operations-observability",
+        "compatibility-integration"
+      ]
+    },
+    {
+      "id": "source-ref.drop-tsparser",
+      "locator": "doc/src/sgml/ref/drop_tsparser.sgml",
+      "kind": "capability",
+      "capability_id": "integration.client-tools",
+      "behavior_id": "source-ref.drop-tsparser",
+      "title": "DROP TEXT SEARCH PARSER",
+      "surface_ids": [
+        "implementation-construction",
+        "operations-observability",
+        "compatibility-integration"
+      ]
+    },
+    {
+      "id": "source-ref.drop-tstemplate",
+      "locator": "doc/src/sgml/ref/drop_tstemplate.sgml",
+      "kind": "capability",
+      "capability_id": "integration.client-tools",
+      "behavior_id": "source-ref.drop-tstemplate",
+      "title": "DROP TEXT SEARCH TEMPLATE",
+      "surface_ids": [
+        "implementation-construction",
+        "operations-observability",
+        "compatibility-integration"
+      ]
+    },
+    {
+      "id": "source-ref.drop-type",
+      "locator": "doc/src/sgml/ref/drop_type.sgml",
+      "kind": "capability",
+      "capability_id": "query.sql-commands",
+      "behavior_id": "source-ref.drop-type",
+      "title": "DROP TYPE",
+      "surface_ids": [
+        "implementation-construction",
+        "testing-verification",
+        "compatibility-integration"
+      ]
+    },
+    {
+      "id": "source-ref.drop-user",
+      "locator": "doc/src/sgml/ref/drop_user.sgml",
+      "kind": "capability",
+      "capability_id": "query.sql-commands",
+      "behavior_id": "source-ref.drop-user",
+      "title": "DROP USER",
+      "surface_ids": [
+        "implementation-construction",
+        "testing-verification",
+        "compatibility-integration"
+      ]
+    },
+    {
+      "id": "source-ref.drop-user-mapping",
+      "locator": "doc/src/sgml/ref/drop_user_mapping.sgml",
+      "kind": "capability",
+      "capability_id": "query.sql-commands",
+      "behavior_id": "source-ref.drop-user-mapping",
+      "title": "DROP USER MAPPING",
+      "surface_ids": [
+        "implementation-construction",
+        "testing-verification",
+        "compatibility-integration"
+      ]
+    },
+    {
+      "id": "source-ref.drop-view",
+      "locator": "doc/src/sgml/ref/drop_view.sgml",
+      "kind": "capability",
+      "capability_id": "query.sql-commands",
+      "behavior_id": "source-ref.drop-view",
+      "title": "DROP VIEW",
+      "surface_ids": [
+        "implementation-construction",
+        "testing-verification",
+        "compatibility-integration"
+      ]
+    },
+    {
+      "id": "source-ref.dropdb",
+      "locator": "doc/src/sgml/ref/dropdb.sgml",
+      "kind": "capability",
+      "capability_id": "integration.client-tools",
+      "behavior_id": "source-ref.dropdb",
+      "title": "dropdb",
+      "surface_ids": [
+        "implementation-construction",
+        "operations-observability",
+        "compatibility-integration"
+      ]
+    },
+    {
+      "id": "source-ref.dropuser",
+      "locator": "doc/src/sgml/ref/dropuser.sgml",
+      "kind": "capability",
+      "capability_id": "integration.client-tools",
+      "behavior_id": "source-ref.dropuser",
+      "title": "dropuser",
+      "surface_ids": [
+        "implementation-construction",
+        "operations-observability",
+        "compatibility-integration"
+      ]
+    },
+    {
+      "id": "source-ref.ecpg",
+      "locator": "doc/src/sgml/ref/ecpg-ref.sgml",
+      "kind": "capability",
+      "capability_id": "integration.client-tools",
+      "behavior_id": "source-ref.ecpg",
+      "title": "ecpg",
+      "surface_ids": [
+        "implementation-construction",
+        "operations-observability",
+        "compatibility-integration"
+      ]
+    },
+    {
+      "id": "source-ref.end",
+      "locator": "doc/src/sgml/ref/end.sgml",
+      "kind": "capability",
+      "capability_id": "query.sql-commands",
+      "behavior_id": "source-ref.end",
+      "title": "END",
+      "surface_ids": [
+        "implementation-construction",
+        "testing-verification",
+        "compatibility-integration"
+      ]
+    },
+    {
+      "id": "source-ref.execute",
+      "locator": "doc/src/sgml/ref/execute.sgml",
+      "kind": "capability",
+      "capability_id": "query.sql-commands",
+      "behavior_id": "source-ref.execute",
+      "title": "EXECUTE",
+      "surface_ids": [
+        "implementation-construction",
+        "testing-verification",
+        "compatibility-integration"
+      ]
+    },
+    {
+      "id": "source-ref.explain",
+      "locator": "doc/src/sgml/ref/explain.sgml",
+      "kind": "capability",
+      "capability_id": "query.sql-commands",
+      "behavior_id": "source-ref.explain",
+      "title": "EXPLAIN",
+      "surface_ids": [
+        "implementation-construction",
+        "testing-verification",
+        "compatibility-integration"
+      ]
+    },
+    {
+      "id": "source-ref.fetch",
+      "locator": "doc/src/sgml/ref/fetch.sgml",
+      "kind": "capability",
+      "capability_id": "query.sql-commands",
+      "behavior_id": "source-ref.fetch",
+      "title": "FETCH",
+      "surface_ids": [
+        "implementation-construction",
+        "testing-verification",
+        "compatibility-integration"
+      ]
+    },
+    {
+      "id": "source-ref.grant",
+      "locator": "doc/src/sgml/ref/grant.sgml",
+      "kind": "capability",
+      "capability_id": "query.sql-commands",
+      "behavior_id": "source-ref.grant",
+      "title": "GRANT",
+      "surface_ids": [
+        "implementation-construction",
+        "testing-verification",
+        "compatibility-integration"
+      ]
+    },
+    {
+      "id": "source-ref.import-foreign-schema",
+      "locator": "doc/src/sgml/ref/import_foreign_schema.sgml",
+      "kind": "capability",
+      "capability_id": "query.sql-commands",
+      "behavior_id": "source-ref.import-foreign-schema",
+      "title": "IMPORT FOREIGN SCHEMA",
+      "surface_ids": [
+        "implementation-construction",
+        "testing-verification",
+        "compatibility-integration"
+      ]
+    },
+    {
+      "id": "source-ref.initdb",
+      "locator": "doc/src/sgml/ref/initdb.sgml",
+      "kind": "capability",
+      "capability_id": "integration.client-tools",
+      "behavior_id": "source-ref.initdb",
+      "title": "initdb",
+      "surface_ids": [
+        "implementation-construction",
+        "operations-observability",
+        "compatibility-integration"
+      ]
+    },
+    {
+      "id": "source-ref.insert",
+      "locator": "doc/src/sgml/ref/insert.sgml",
+      "kind": "capability",
+      "capability_id": "query.sql-commands",
+      "behavior_id": "source-ref.insert",
+      "title": "INSERT",
+      "surface_ids": [
+        "implementation-construction",
+        "testing-verification",
+        "compatibility-integration"
+      ]
+    },
+    {
+      "id": "source-ref.listen",
+      "locator": "doc/src/sgml/ref/listen.sgml",
+      "kind": "capability",
+      "capability_id": "query.sql-commands",
+      "behavior_id": "source-ref.listen",
+      "title": "LISTEN",
+      "surface_ids": [
+        "implementation-construction",
+        "testing-verification",
+        "compatibility-integration"
+      ]
+    },
+    {
+      "id": "source-ref.load",
+      "locator": "doc/src/sgml/ref/load.sgml",
+      "kind": "capability",
+      "capability_id": "query.sql-commands",
+      "behavior_id": "source-ref.load",
+      "title": "LOAD",
+      "surface_ids": [
+        "implementation-construction",
+        "testing-verification",
+        "compatibility-integration"
+      ]
+    },
+    {
+      "id": "source-ref.lock",
+      "locator": "doc/src/sgml/ref/lock.sgml",
+      "kind": "capability",
+      "capability_id": "query.sql-commands",
+      "behavior_id": "source-ref.lock",
+      "title": "LOCK",
+      "surface_ids": [
+        "implementation-construction",
+        "testing-verification",
+        "compatibility-integration"
+      ]
+    },
+    {
+      "id": "source-ref.merge",
+      "locator": "doc/src/sgml/ref/merge.sgml",
+      "kind": "capability",
+      "capability_id": "query.sql-commands",
+      "behavior_id": "source-ref.merge",
+      "title": "MERGE",
+      "surface_ids": [
+        "implementation-construction",
+        "testing-verification",
+        "compatibility-integration"
+      ]
+    },
+    {
+      "id": "source-ref.move",
+      "locator": "doc/src/sgml/ref/move.sgml",
+      "kind": "capability",
+      "capability_id": "query.sql-commands",
+      "behavior_id": "source-ref.move",
+      "title": "MOVE",
+      "surface_ids": [
+        "implementation-construction",
+        "testing-verification",
+        "compatibility-integration"
+      ]
+    },
+    {
+      "id": "source-ref.notify",
+      "locator": "doc/src/sgml/ref/notify.sgml",
+      "kind": "capability",
+      "capability_id": "query.sql-commands",
+      "behavior_id": "source-ref.notify",
+      "title": "NOTIFY",
+      "surface_ids": [
+        "implementation-construction",
+        "testing-verification",
+        "compatibility-integration"
+      ]
+    },
+    {
+      "id": "source-ref.pg-amcheck",
+      "locator": "doc/src/sgml/ref/pg_amcheck.sgml",
+      "kind": "capability",
+      "capability_id": "integration.client-tools",
+      "behavior_id": "source-ref.pg-amcheck",
+      "title": "pg_amcheck",
+      "surface_ids": [
+        "implementation-construction",
+        "operations-observability",
+        "compatibility-integration"
+      ]
+    },
+    {
+      "id": "source-ref.pg-basebackup",
+      "locator": "doc/src/sgml/ref/pg_basebackup.sgml",
+      "kind": "capability",
+      "capability_id": "integration.client-tools",
+      "behavior_id": "source-ref.pg-basebackup",
+      "title": "pg_basebackup",
+      "surface_ids": [
+        "implementation-construction",
+        "operations-observability",
+        "compatibility-integration"
+      ]
+    },
+    {
+      "id": "source-ref.pg-checksums",
+      "locator": "doc/src/sgml/ref/pg_checksums.sgml",
+      "kind": "capability",
+      "capability_id": "integration.client-tools",
+      "behavior_id": "source-ref.pg-checksums",
+      "title": "pg_checksums",
+      "surface_ids": [
+        "implementation-construction",
+        "operations-observability",
+        "compatibility-integration"
+      ]
+    },
+    {
+      "id": "source-ref.pg-combinebackup",
+      "locator": "doc/src/sgml/ref/pg_combinebackup.sgml",
+      "kind": "capability",
+      "capability_id": "integration.client-tools",
+      "behavior_id": "source-ref.pg-combinebackup",
+      "title": "pg_combinebackup",
+      "surface_ids": [
+        "implementation-construction",
+        "operations-observability",
+        "compatibility-integration"
+      ]
+    },
+    {
+      "id": "source-ref.pg-config",
+      "locator": "doc/src/sgml/ref/pg_config-ref.sgml",
+      "kind": "capability",
+      "capability_id": "integration.client-tools",
+      "behavior_id": "source-ref.pg-config",
+      "title": "pg_config",
+      "surface_ids": [
+        "implementation-construction",
+        "operations-observability",
+        "compatibility-integration"
+      ]
+    },
+    {
+      "id": "source-ref.pg-controldata",
+      "locator": "doc/src/sgml/ref/pg_controldata.sgml",
+      "kind": "capability",
+      "capability_id": "integration.client-tools",
+      "behavior_id": "source-ref.pg-controldata",
+      "title": "pg_controldata",
+      "surface_ids": [
+        "implementation-construction",
+        "operations-observability",
+        "compatibility-integration"
+      ]
+    },
+    {
+      "id": "source-ref.pg-createsubscriber",
+      "locator": "doc/src/sgml/ref/pg_createsubscriber.sgml",
+      "kind": "capability",
+      "capability_id": "integration.client-tools",
+      "behavior_id": "source-ref.pg-createsubscriber",
+      "title": "pg_createsubscriber",
+      "surface_ids": [
+        "implementation-construction",
+        "operations-observability",
+        "compatibility-integration"
+      ]
+    },
+    {
+      "id": "source-ref.pg-ctl",
+      "locator": "doc/src/sgml/ref/pg_ctl-ref.sgml",
+      "kind": "capability",
+      "capability_id": "integration.client-tools",
+      "behavior_id": "source-ref.pg-ctl",
+      "title": "pg_ctl",
+      "surface_ids": [
+        "implementation-construction",
+        "operations-observability",
+        "compatibility-integration"
+      ]
+    },
+    {
+      "id": "source-ref.pg-dump",
+      "locator": "doc/src/sgml/ref/pg_dump.sgml",
+      "kind": "capability",
+      "capability_id": "integration.client-tools",
+      "behavior_id": "source-ref.pg-dump",
+      "title": "pg_dump",
+      "surface_ids": [
+        "implementation-construction",
+        "operations-observability",
+        "compatibility-integration"
+      ]
+    },
+    {
+      "id": "source-ref.pg-dumpall",
+      "locator": "doc/src/sgml/ref/pg_dumpall.sgml",
+      "kind": "capability",
+      "capability_id": "integration.client-tools",
+      "behavior_id": "source-ref.pg-dumpall",
+      "title": "pg_dumpall",
+      "surface_ids": [
+        "implementation-construction",
+        "operations-observability",
+        "compatibility-integration"
+      ]
+    },
+    {
+      "id": "source-ref.pg-isready",
+      "locator": "doc/src/sgml/ref/pg_isready.sgml",
+      "kind": "capability",
+      "capability_id": "integration.client-tools",
+      "behavior_id": "source-ref.pg-isready",
+      "title": "pg_isready",
+      "surface_ids": [
+        "implementation-construction",
+        "operations-observability",
+        "compatibility-integration"
+      ]
+    },
+    {
+      "id": "source-ref.pg-receivewal",
+      "locator": "doc/src/sgml/ref/pg_receivewal.sgml",
+      "kind": "capability",
+      "capability_id": "integration.client-tools",
+      "behavior_id": "source-ref.pg-receivewal",
+      "title": "pg_receivewal",
+      "surface_ids": [
+        "implementation-construction",
+        "operations-observability",
+        "compatibility-integration"
+      ]
+    },
+    {
+      "id": "source-ref.pg-recvlogical",
+      "locator": "doc/src/sgml/ref/pg_recvlogical.sgml",
+      "kind": "capability",
+      "capability_id": "integration.client-tools",
+      "behavior_id": "source-ref.pg-recvlogical",
+      "title": "pg_recvlogical",
+      "surface_ids": [
+        "implementation-construction",
+        "operations-observability",
+        "compatibility-integration"
+      ]
+    },
+    {
+      "id": "source-ref.pg-resetwal",
+      "locator": "doc/src/sgml/ref/pg_resetwal.sgml",
+      "kind": "capability",
+      "capability_id": "integration.client-tools",
+      "behavior_id": "source-ref.pg-resetwal",
+      "title": "pg_resetwal",
+      "surface_ids": [
+        "implementation-construction",
+        "operations-observability",
+        "compatibility-integration"
+      ]
+    },
+    {
+      "id": "source-ref.pg-restore",
+      "locator": "doc/src/sgml/ref/pg_restore.sgml",
+      "kind": "capability",
+      "capability_id": "integration.client-tools",
+      "behavior_id": "source-ref.pg-restore",
+      "title": "pg_restore",
+      "surface_ids": [
+        "implementation-construction",
+        "operations-observability",
+        "compatibility-integration"
+      ]
+    },
+    {
+      "id": "source-ref.pg-rewind",
+      "locator": "doc/src/sgml/ref/pg_rewind.sgml",
+      "kind": "capability",
+      "capability_id": "integration.client-tools",
+      "behavior_id": "source-ref.pg-rewind",
+      "title": "pg_rewind",
+      "surface_ids": [
+        "implementation-construction",
+        "operations-observability",
+        "compatibility-integration"
+      ]
+    },
+    {
+      "id": "source-ref.pg-verifybackup",
+      "locator": "doc/src/sgml/ref/pg_verifybackup.sgml",
+      "kind": "capability",
+      "capability_id": "integration.client-tools",
+      "behavior_id": "source-ref.pg-verifybackup",
+      "title": "pg_verifybackup",
+      "surface_ids": [
+        "implementation-construction",
+        "operations-observability",
+        "compatibility-integration"
+      ]
+    },
+    {
+      "id": "source-ref.pg-waldump",
+      "locator": "doc/src/sgml/ref/pg_waldump.sgml",
+      "kind": "capability",
+      "capability_id": "integration.client-tools",
+      "behavior_id": "source-ref.pg-waldump",
+      "title": "pg_waldump",
+      "surface_ids": [
+        "implementation-construction",
+        "operations-observability",
+        "compatibility-integration"
+      ]
+    },
+    {
+      "id": "source-ref.pg-walsummary",
+      "locator": "doc/src/sgml/ref/pg_walsummary.sgml",
+      "kind": "capability",
+      "capability_id": "integration.client-tools",
+      "behavior_id": "source-ref.pg-walsummary",
+      "title": "pg_walsummary",
+      "surface_ids": [
+        "implementation-construction",
+        "operations-observability",
+        "compatibility-integration"
+      ]
+    },
+    {
+      "id": "source-ref.pgarchivecleanup",
+      "locator": "doc/src/sgml/ref/pgarchivecleanup.sgml",
+      "kind": "capability",
+      "capability_id": "integration.client-tools",
+      "behavior_id": "source-ref.pgarchivecleanup",
+      "title": "pg_archivecleanup",
+      "surface_ids": [
+        "implementation-construction",
+        "operations-observability",
+        "compatibility-integration"
+      ]
+    },
+    {
+      "id": "source-ref.pgbench",
+      "locator": "doc/src/sgml/ref/pgbench.sgml",
+      "kind": "capability",
+      "capability_id": "integration.client-tools",
+      "behavior_id": "source-ref.pgbench",
+      "title": "pgbench",
+      "surface_ids": [
+        "implementation-construction",
+        "operations-observability",
+        "compatibility-integration"
+      ]
+    },
+    {
+      "id": "source-ref.pgtestfsync",
+      "locator": "doc/src/sgml/ref/pgtestfsync.sgml",
+      "kind": "capability",
+      "capability_id": "integration.client-tools",
+      "behavior_id": "source-ref.pgtestfsync",
+      "title": "pg_test_fsync",
+      "surface_ids": [
+        "implementation-construction",
+        "operations-observability",
+        "compatibility-integration"
+      ]
+    },
+    {
+      "id": "source-ref.pgtesttiming",
+      "locator": "doc/src/sgml/ref/pgtesttiming.sgml",
+      "kind": "capability",
+      "capability_id": "integration.client-tools",
+      "behavior_id": "source-ref.pgtesttiming",
+      "title": "pg_test_timing",
+      "surface_ids": [
+        "implementation-construction",
+        "operations-observability",
+        "compatibility-integration"
+      ]
+    },
+    {
+      "id": "source-ref.pgupgrade",
+      "locator": "doc/src/sgml/ref/pgupgrade.sgml",
+      "kind": "capability",
+      "capability_id": "integration.client-tools",
+      "behavior_id": "source-ref.pgupgrade",
+      "title": "pg_upgrade",
+      "surface_ids": [
+        "implementation-construction",
+        "operations-observability",
+        "compatibility-integration"
+      ]
+    },
+    {
+      "id": "source-ref.postgres",
+      "locator": "doc/src/sgml/ref/postgres-ref.sgml",
+      "kind": "capability",
+      "capability_id": "integration.client-tools",
+      "behavior_id": "source-ref.postgres",
+      "title": "postgres",
+      "surface_ids": [
+        "implementation-construction",
+        "operations-observability",
+        "compatibility-integration"
+      ]
+    },
+    {
+      "id": "source-ref.prepare",
+      "locator": "doc/src/sgml/ref/prepare.sgml",
+      "kind": "capability",
+      "capability_id": "query.sql-commands",
+      "behavior_id": "source-ref.prepare",
+      "title": "PREPARE",
+      "surface_ids": [
+        "implementation-construction",
+        "testing-verification",
+        "compatibility-integration"
+      ]
+    },
+    {
+      "id": "source-ref.prepare-transaction",
+      "locator": "doc/src/sgml/ref/prepare_transaction.sgml",
+      "kind": "capability",
+      "capability_id": "query.sql-commands",
+      "behavior_id": "source-ref.prepare-transaction",
+      "title": "PREPARE TRANSACTION",
+      "surface_ids": [
+        "implementation-construction",
+        "testing-verification",
+        "compatibility-integration"
+      ]
+    },
+    {
+      "id": "source-ref.psql",
+      "locator": "doc/src/sgml/ref/psql-ref.sgml",
+      "kind": "capability",
+      "capability_id": "integration.client-tools",
+      "behavior_id": "source-ref.psql",
+      "title": "psql",
+      "surface_ids": [
+        "implementation-construction",
+        "operations-observability",
+        "compatibility-integration"
+      ]
+    },
+    {
+      "id": "source-ref.reassign-owned",
+      "locator": "doc/src/sgml/ref/reassign_owned.sgml",
+      "kind": "capability",
+      "capability_id": "query.sql-commands",
+      "behavior_id": "source-ref.reassign-owned",
+      "title": "REASSIGN OWNED",
+      "surface_ids": [
+        "implementation-construction",
+        "testing-verification",
+        "compatibility-integration"
+      ]
+    },
+    {
+      "id": "source-ref.refresh-materialized-view",
+      "locator": "doc/src/sgml/ref/refresh_materialized_view.sgml",
+      "kind": "capability",
+      "capability_id": "query.sql-commands",
+      "behavior_id": "source-ref.refresh-materialized-view",
+      "title": "REFRESH MATERIALIZED VIEW",
+      "surface_ids": [
+        "implementation-construction",
+        "testing-verification",
+        "compatibility-integration"
+      ]
+    },
+    {
+      "id": "source-ref.reindex",
+      "locator": "doc/src/sgml/ref/reindex.sgml",
+      "kind": "capability",
+      "capability_id": "query.sql-commands",
+      "behavior_id": "source-ref.reindex",
+      "title": "REINDEX",
+      "surface_ids": [
+        "implementation-construction",
+        "testing-verification",
+        "compatibility-integration"
+      ]
+    },
+    {
+      "id": "source-ref.reindexdb",
+      "locator": "doc/src/sgml/ref/reindexdb.sgml",
+      "kind": "capability",
+      "capability_id": "integration.client-tools",
+      "behavior_id": "source-ref.reindexdb",
+      "title": "reindexdb",
+      "surface_ids": [
+        "implementation-construction",
+        "operations-observability",
+        "compatibility-integration"
+      ]
+    },
+    {
+      "id": "source-ref.release-savepoint",
+      "locator": "doc/src/sgml/ref/release_savepoint.sgml",
+      "kind": "capability",
+      "capability_id": "query.sql-commands",
+      "behavior_id": "source-ref.release-savepoint",
+      "title": "RELEASE SAVEPOINT",
+      "surface_ids": [
+        "implementation-construction",
+        "testing-verification",
+        "compatibility-integration"
+      ]
+    },
+    {
+      "id": "source-ref.reset",
+      "locator": "doc/src/sgml/ref/reset.sgml",
+      "kind": "capability",
+      "capability_id": "query.sql-commands",
+      "behavior_id": "source-ref.reset",
+      "title": "RESET",
+      "surface_ids": [
+        "implementation-construction",
+        "testing-verification",
+        "compatibility-integration"
+      ]
+    },
+    {
+      "id": "source-ref.revoke",
+      "locator": "doc/src/sgml/ref/revoke.sgml",
+      "kind": "capability",
+      "capability_id": "query.sql-commands",
+      "behavior_id": "source-ref.revoke",
+      "title": "REVOKE",
+      "surface_ids": [
+        "implementation-construction",
+        "testing-verification",
+        "compatibility-integration"
+      ]
+    },
+    {
+      "id": "source-ref.rollback",
+      "locator": "doc/src/sgml/ref/rollback.sgml",
+      "kind": "capability",
+      "capability_id": "query.sql-commands",
+      "behavior_id": "source-ref.rollback",
+      "title": "ROLLBACK",
+      "surface_ids": [
+        "implementation-construction",
+        "testing-verification",
+        "compatibility-integration"
+      ]
+    },
+    {
+      "id": "source-ref.rollback-prepared",
+      "locator": "doc/src/sgml/ref/rollback_prepared.sgml",
+      "kind": "capability",
+      "capability_id": "query.sql-commands",
+      "behavior_id": "source-ref.rollback-prepared",
+      "title": "ROLLBACK PREPARED",
+      "surface_ids": [
+        "implementation-construction",
+        "testing-verification",
+        "compatibility-integration"
+      ]
+    },
+    {
+      "id": "source-ref.rollback-to",
+      "locator": "doc/src/sgml/ref/rollback_to.sgml",
+      "kind": "capability",
+      "capability_id": "integration.client-tools",
+      "behavior_id": "source-ref.rollback-to",
+      "title": "ROLLBACK TO SAVEPOINT",
+      "surface_ids": [
+        "implementation-construction",
+        "operations-observability",
+        "compatibility-integration"
+      ]
+    },
+    {
+      "id": "source-ref.savepoint",
+      "locator": "doc/src/sgml/ref/savepoint.sgml",
+      "kind": "capability",
+      "capability_id": "query.sql-commands",
+      "behavior_id": "source-ref.savepoint",
+      "title": "SAVEPOINT",
+      "surface_ids": [
+        "implementation-construction",
+        "testing-verification",
+        "compatibility-integration"
+      ]
+    },
+    {
+      "id": "source-ref.security-label",
+      "locator": "doc/src/sgml/ref/security_label.sgml",
+      "kind": "capability",
+      "capability_id": "query.sql-commands",
+      "behavior_id": "source-ref.security-label",
+      "title": "SECURITY LABEL",
+      "surface_ids": [
+        "implementation-construction",
+        "testing-verification",
+        "compatibility-integration"
+      ]
+    },
+    {
+      "id": "source-ref.select",
+      "locator": "doc/src/sgml/ref/select.sgml",
+      "kind": "capability",
+      "capability_id": "query.sql-commands",
+      "behavior_id": "source-ref.select",
+      "title": "SELECT",
+      "surface_ids": [
+        "implementation-construction",
+        "testing-verification",
+        "compatibility-integration"
+      ]
+    },
+    {
+      "id": "source-ref.select-into",
+      "locator": "doc/src/sgml/ref/select_into.sgml",
+      "kind": "capability",
+      "capability_id": "query.sql-commands",
+      "behavior_id": "source-ref.select-into",
+      "title": "SELECT INTO",
+      "surface_ids": [
+        "implementation-construction",
+        "testing-verification",
+        "compatibility-integration"
+      ]
+    },
+    {
+      "id": "source-ref.set",
+      "locator": "doc/src/sgml/ref/set.sgml",
+      "kind": "capability",
+      "capability_id": "query.sql-commands",
+      "behavior_id": "source-ref.set",
+      "title": "SET",
+      "surface_ids": [
+        "implementation-construction",
+        "testing-verification",
+        "compatibility-integration"
+      ]
+    },
+    {
+      "id": "source-ref.set-constraints",
+      "locator": "doc/src/sgml/ref/set_constraints.sgml",
+      "kind": "capability",
+      "capability_id": "query.sql-commands",
+      "behavior_id": "source-ref.set-constraints",
+      "title": "SET CONSTRAINTS",
+      "surface_ids": [
+        "implementation-construction",
+        "testing-verification",
+        "compatibility-integration"
+      ]
+    },
+    {
+      "id": "source-ref.set-role",
+      "locator": "doc/src/sgml/ref/set_role.sgml",
+      "kind": "capability",
+      "capability_id": "query.sql-commands",
+      "behavior_id": "source-ref.set-role",
+      "title": "SET ROLE",
+      "surface_ids": [
+        "implementation-construction",
+        "testing-verification",
+        "compatibility-integration"
+      ]
+    },
+    {
+      "id": "source-ref.set-session-auth",
+      "locator": "doc/src/sgml/ref/set_session_auth.sgml",
+      "kind": "capability",
+      "capability_id": "integration.client-tools",
+      "behavior_id": "source-ref.set-session-auth",
+      "title": "SET SESSION AUTHORIZATION",
+      "surface_ids": [
+        "implementation-construction",
+        "operations-observability",
+        "compatibility-integration"
+      ]
+    },
+    {
+      "id": "source-ref.set-transaction",
+      "locator": "doc/src/sgml/ref/set_transaction.sgml",
+      "kind": "capability",
+      "capability_id": "query.sql-commands",
+      "behavior_id": "source-ref.set-transaction",
+      "title": "SET TRANSACTION",
+      "surface_ids": [
+        "implementation-construction",
+        "testing-verification",
+        "compatibility-integration"
+      ]
+    },
+    {
+      "id": "source-ref.show",
+      "locator": "doc/src/sgml/ref/show.sgml",
+      "kind": "capability",
+      "capability_id": "query.sql-commands",
+      "behavior_id": "source-ref.show",
+      "title": "SHOW",
+      "surface_ids": [
+        "implementation-construction",
+        "testing-verification",
+        "compatibility-integration"
+      ]
+    },
+    {
+      "id": "source-ref.start-transaction",
+      "locator": "doc/src/sgml/ref/start_transaction.sgml",
+      "kind": "capability",
+      "capability_id": "query.sql-commands",
+      "behavior_id": "source-ref.start-transaction",
+      "title": "START TRANSACTION",
+      "surface_ids": [
+        "implementation-construction",
+        "testing-verification",
+        "compatibility-integration"
+      ]
+    },
+    {
+      "id": "source-ref.truncate",
+      "locator": "doc/src/sgml/ref/truncate.sgml",
+      "kind": "capability",
+      "capability_id": "query.sql-commands",
+      "behavior_id": "source-ref.truncate",
+      "title": "TRUNCATE",
+      "surface_ids": [
+        "implementation-construction",
+        "testing-verification",
+        "compatibility-integration"
+      ]
+    },
+    {
+      "id": "source-ref.unlisten",
+      "locator": "doc/src/sgml/ref/unlisten.sgml",
+      "kind": "capability",
+      "capability_id": "query.sql-commands",
+      "behavior_id": "source-ref.unlisten",
+      "title": "UNLISTEN",
+      "surface_ids": [
+        "implementation-construction",
+        "testing-verification",
+        "compatibility-integration"
+      ]
+    },
+    {
+      "id": "source-ref.update",
+      "locator": "doc/src/sgml/ref/update.sgml",
+      "kind": "capability",
+      "capability_id": "query.sql-commands",
+      "behavior_id": "source-ref.update",
+      "title": "UPDATE",
+      "surface_ids": [
+        "implementation-construction",
+        "testing-verification",
+        "compatibility-integration"
+      ]
+    },
+    {
+      "id": "source-ref.vacuum",
+      "locator": "doc/src/sgml/ref/vacuum.sgml",
+      "kind": "capability",
+      "capability_id": "query.sql-commands",
+      "behavior_id": "source-ref.vacuum",
+      "title": "VACUUM",
+      "surface_ids": [
+        "implementation-construction",
+        "testing-verification",
+        "compatibility-integration"
+      ]
+    },
+    {
+      "id": "source-ref.vacuumdb",
+      "locator": "doc/src/sgml/ref/vacuumdb.sgml",
+      "kind": "capability",
+      "capability_id": "integration.client-tools",
+      "behavior_id": "source-ref.vacuumdb",
+      "title": "vacuumdb",
+      "surface_ids": [
+        "implementation-construction",
+        "operations-observability",
+        "compatibility-integration"
+      ]
+    },
+    {
+      "id": "source-ref.values",
+      "locator": "doc/src/sgml/ref/values.sgml",
+      "kind": "capability",
+      "capability_id": "query.sql-commands",
+      "behavior_id": "source-ref.values",
+      "title": "VALUES",
+      "surface_ids": [
+        "implementation-construction",
+        "testing-verification",
+        "compatibility-integration"
+      ]
+    },
+    {
+      "id": "protocol.async",
+      "locator": "doc/src/sgml/protocol.sgml#protocol-async",
+      "kind": "behavior",
+      "capability_id": "integration.protocol",
+      "behavior_id": "protocol.async",
+      "title": "protocol async",
+      "surface_ids": [
+        "foundations-mechanics",
+        "testing-verification",
+        "security-privacy-safety",
+        "compatibility-integration"
+      ]
+    },
+    {
+      "id": "protocol.changes",
+      "locator": "doc/src/sgml/protocol.sgml#protocol-changes",
+      "kind": "behavior",
+      "capability_id": "integration.protocol",
+      "behavior_id": "protocol.changes",
+      "title": "protocol changes",
+      "surface_ids": [
+        "foundations-mechanics",
+        "testing-verification",
+        "security-privacy-safety",
+        "compatibility-integration"
+      ]
+    },
+    {
+      "id": "protocol.copy",
+      "locator": "doc/src/sgml/protocol.sgml#protocol-copy",
+      "kind": "behavior",
+      "capability_id": "integration.protocol",
+      "behavior_id": "protocol.copy",
+      "title": "protocol copy",
+      "surface_ids": [
+        "foundations-mechanics",
+        "testing-verification",
+        "security-privacy-safety",
+        "compatibility-integration"
+      ]
+    },
+    {
+      "id": "protocol.error-fields",
+      "locator": "doc/src/sgml/protocol.sgml#protocol-error-fields",
+      "kind": "behavior",
+      "capability_id": "integration.protocol",
+      "behavior_id": "protocol.error-fields",
+      "title": "protocol error fields",
+      "surface_ids": [
+        "foundations-mechanics",
+        "testing-verification",
+        "security-privacy-safety",
+        "compatibility-integration"
+      ]
+    },
+    {
+      "id": "protocol.flow",
+      "locator": "doc/src/sgml/protocol.sgml#protocol-flow",
+      "kind": "behavior",
+      "capability_id": "integration.protocol",
+      "behavior_id": "protocol.flow",
+      "title": "protocol flow",
+      "surface_ids": [
+        "foundations-mechanics",
+        "testing-verification",
+        "security-privacy-safety",
+        "compatibility-integration"
+      ]
+    },
+    {
+      "id": "protocol.flow-canceling-requests",
+      "locator": "doc/src/sgml/protocol.sgml#protocol-flow-canceling-requests",
+      "kind": "behavior",
+      "capability_id": "integration.protocol",
+      "behavior_id": "protocol.flow-canceling-requests",
+      "title": "protocol flow canceling requests",
+      "surface_ids": [
+        "foundations-mechanics",
+        "testing-verification",
+        "security-privacy-safety",
+        "compatibility-integration"
+      ]
+    },
+    {
+      "id": "protocol.flow-ext-query",
+      "locator": "doc/src/sgml/protocol.sgml#protocol-flow-ext-query",
+      "kind": "behavior",
+      "capability_id": "integration.protocol",
+      "behavior_id": "protocol.flow-ext-query",
+      "title": "protocol flow ext query",
+      "surface_ids": [
+        "foundations-mechanics",
+        "testing-verification",
+        "security-privacy-safety",
+        "compatibility-integration"
+      ]
+    },
+    {
+      "id": "protocol.flow-function-call",
+      "locator": "doc/src/sgml/protocol.sgml#protocol-flow-function-call",
+      "kind": "behavior",
+      "capability_id": "integration.protocol",
+      "behavior_id": "protocol.flow-function-call",
+      "title": "protocol flow function call",
+      "surface_ids": [
+        "foundations-mechanics",
+        "testing-verification",
+        "security-privacy-safety",
+        "compatibility-integration"
+      ]
+    },
+    {
+      "id": "protocol.flow-gssapi",
+      "locator": "doc/src/sgml/protocol.sgml#protocol-flow-gssapi",
+      "kind": "behavior",
+      "capability_id": "integration.protocol",
+      "behavior_id": "protocol.flow-gssapi",
+      "title": "protocol flow gssapi",
+      "surface_ids": [
+        "foundations-mechanics",
+        "testing-verification",
+        "security-privacy-safety",
+        "compatibility-integration"
+      ]
+    },
+    {
+      "id": "protocol.flow-multi-statement",
+      "locator": "doc/src/sgml/protocol.sgml#protocol-flow-multi-statement",
+      "kind": "behavior",
+      "capability_id": "integration.protocol",
+      "behavior_id": "protocol.flow-multi-statement",
+      "title": "protocol flow multi statement",
+      "surface_ids": [
+        "foundations-mechanics",
+        "testing-verification",
+        "security-privacy-safety",
+        "compatibility-integration"
+      ]
+    },
+    {
+      "id": "protocol.flow-pipelining",
+      "locator": "doc/src/sgml/protocol.sgml#protocol-flow-pipelining",
+      "kind": "behavior",
+      "capability_id": "integration.protocol",
+      "behavior_id": "protocol.flow-pipelining",
+      "title": "protocol flow pipelining",
+      "surface_ids": [
+        "foundations-mechanics",
+        "testing-verification",
+        "security-privacy-safety",
+        "compatibility-integration"
+      ]
+    },
+    {
+      "id": "protocol.flow-simple-query",
+      "locator": "doc/src/sgml/protocol.sgml#protocol-flow-simple-query",
+      "kind": "behavior",
+      "capability_id": "integration.protocol",
+      "behavior_id": "protocol.flow-simple-query",
+      "title": "protocol flow simple query",
+      "surface_ids": [
+        "foundations-mechanics",
+        "testing-verification",
+        "security-privacy-safety",
+        "compatibility-integration"
+      ]
+    },
+    {
+      "id": "protocol.flow-ssl",
+      "locator": "doc/src/sgml/protocol.sgml#protocol-flow-ssl",
+      "kind": "behavior",
+      "capability_id": "integration.protocol",
+      "behavior_id": "protocol.flow-ssl",
+      "title": "protocol flow ssl",
+      "surface_ids": [
+        "foundations-mechanics",
+        "testing-verification",
+        "security-privacy-safety",
+        "compatibility-integration"
+      ]
+    },
+    {
+      "id": "protocol.flow-start-up",
+      "locator": "doc/src/sgml/protocol.sgml#protocol-flow-start-up",
+      "kind": "behavior",
+      "capability_id": "integration.protocol",
+      "behavior_id": "protocol.flow-start-up",
+      "title": "protocol flow start up",
+      "surface_ids": [
+        "foundations-mechanics",
+        "testing-verification",
+        "security-privacy-safety",
+        "compatibility-integration"
+      ]
+    },
+    {
+      "id": "protocol.flow-termination",
+      "locator": "doc/src/sgml/protocol.sgml#protocol-flow-termination",
+      "kind": "behavior",
+      "capability_id": "integration.protocol",
+      "behavior_id": "protocol.flow-termination",
+      "title": "protocol flow termination",
+      "surface_ids": [
+        "foundations-mechanics",
+        "testing-verification",
+        "security-privacy-safety",
+        "compatibility-integration"
+      ]
+    },
+    {
+      "id": "protocol.format-codes",
+      "locator": "doc/src/sgml/protocol.sgml#protocol-format-codes",
+      "kind": "behavior",
+      "capability_id": "integration.protocol",
+      "behavior_id": "protocol.format-codes",
+      "title": "protocol format codes",
+      "surface_ids": [
+        "foundations-mechanics",
+        "testing-verification",
+        "security-privacy-safety",
+        "compatibility-integration"
+      ]
+    },
+    {
+      "id": "protocol.logical-messages",
+      "locator": "doc/src/sgml/protocol.sgml#protocol-logical-messages",
+      "kind": "behavior",
+      "capability_id": "integration.protocol",
+      "behavior_id": "protocol.logical-messages",
+      "title": "protocol logical messages",
+      "surface_ids": [
+        "foundations-mechanics",
+        "testing-verification",
+        "security-privacy-safety",
+        "compatibility-integration"
+      ]
+    },
+    {
+      "id": "protocol.logical-messages-flow",
+      "locator": "doc/src/sgml/protocol.sgml#protocol-logical-messages-flow",
+      "kind": "behavior",
+      "capability_id": "integration.protocol",
+      "behavior_id": "protocol.logical-messages-flow",
+      "title": "protocol logical messages flow",
+      "surface_ids": [
+        "foundations-mechanics",
+        "testing-verification",
+        "security-privacy-safety",
+        "compatibility-integration"
+      ]
+    },
+    {
+      "id": "protocol.logical-replication",
+      "locator": "doc/src/sgml/protocol.sgml#protocol-logical-replication",
+      "kind": "behavior",
+      "capability_id": "integration.protocol",
+      "behavior_id": "protocol.logical-replication",
+      "title": "protocol logical replication",
+      "surface_ids": [
+        "foundations-mechanics",
+        "testing-verification",
+        "security-privacy-safety",
+        "compatibility-integration"
+      ]
+    },
+    {
+      "id": "protocol.logical-replication-params",
+      "locator": "doc/src/sgml/protocol.sgml#protocol-logical-replication-params",
+      "kind": "behavior",
+      "capability_id": "integration.protocol",
+      "behavior_id": "protocol.logical-replication-params",
+      "title": "protocol logical replication params",
+      "surface_ids": [
+        "foundations-mechanics",
+        "testing-verification",
+        "security-privacy-safety",
+        "compatibility-integration"
+      ]
+    },
+    {
+      "id": "protocol.logicalrep-message-formats",
+      "locator": "doc/src/sgml/protocol.sgml#protocol-logicalrep-message-formats",
+      "kind": "behavior",
+      "capability_id": "integration.protocol",
+      "behavior_id": "protocol.logicalrep-message-formats",
+      "title": "protocol logicalrep message formats",
+      "surface_ids": [
+        "foundations-mechanics",
+        "testing-verification",
+        "security-privacy-safety",
+        "compatibility-integration"
+      ]
+    },
+    {
+      "id": "protocol.message-concepts",
+      "locator": "doc/src/sgml/protocol.sgml#protocol-message-concepts",
+      "kind": "behavior",
+      "capability_id": "integration.protocol",
+      "behavior_id": "protocol.message-concepts",
+      "title": "protocol message concepts",
+      "surface_ids": [
+        "foundations-mechanics",
+        "testing-verification",
+        "security-privacy-safety",
+        "compatibility-integration"
+      ]
+    },
+    {
+      "id": "protocol.message-formats",
+      "locator": "doc/src/sgml/protocol.sgml#protocol-message-formats",
+      "kind": "behavior",
+      "capability_id": "integration.protocol",
+      "behavior_id": "protocol.message-formats",
+      "title": "protocol message formats",
+      "surface_ids": [
+        "foundations-mechanics",
+        "testing-verification",
+        "security-privacy-safety",
+        "compatibility-integration"
+      ]
+    },
+    {
+      "id": "protocol.message-types",
+      "locator": "doc/src/sgml/protocol.sgml#protocol-message-types",
+      "kind": "behavior",
+      "capability_id": "integration.protocol",
+      "behavior_id": "protocol.message-types",
+      "title": "protocol message types",
+      "surface_ids": [
+        "foundations-mechanics",
+        "testing-verification",
+        "security-privacy-safety",
+        "compatibility-integration"
+      ]
+    },
+    {
+      "id": "protocol.overview",
+      "locator": "doc/src/sgml/protocol.sgml#protocol-overview",
+      "kind": "behavior",
+      "capability_id": "integration.protocol",
+      "behavior_id": "protocol.overview",
+      "title": "protocol overview",
+      "surface_ids": [
+        "foundations-mechanics",
+        "testing-verification",
+        "security-privacy-safety",
+        "compatibility-integration"
+      ]
+    },
+    {
+      "id": "protocol.query-concepts",
+      "locator": "doc/src/sgml/protocol.sgml#protocol-query-concepts",
+      "kind": "behavior",
+      "capability_id": "integration.protocol",
+      "behavior_id": "protocol.query-concepts",
+      "title": "protocol query concepts",
+      "surface_ids": [
+        "foundations-mechanics",
+        "testing-verification",
+        "security-privacy-safety",
+        "compatibility-integration"
+      ]
+    },
+    {
+      "id": "protocol.replication",
+      "locator": "doc/src/sgml/protocol.sgml#protocol-replication",
+      "kind": "behavior",
+      "capability_id": "integration.protocol",
+      "behavior_id": "protocol.replication",
+      "title": "protocol replication",
+      "surface_ids": [
+        "foundations-mechanics",
+        "testing-verification",
+        "security-privacy-safety",
+        "compatibility-integration"
+      ]
+    },
+    {
+      "id": "protocol.replication-alter-replication-slot",
+      "locator": "doc/src/sgml/protocol.sgml#protocol-replication-alter-replication-slot",
+      "kind": "behavior",
+      "capability_id": "integration.protocol",
+      "behavior_id": "protocol.replication-alter-replication-slot",
+      "title": "protocol replication alter replication slot",
+      "surface_ids": [
+        "foundations-mechanics",
+        "testing-verification",
+        "security-privacy-safety",
+        "compatibility-integration"
+      ]
+    },
+    {
+      "id": "protocol.replication-base-backup",
+      "locator": "doc/src/sgml/protocol.sgml#protocol-replication-base-backup",
+      "kind": "behavior",
+      "capability_id": "integration.protocol",
+      "behavior_id": "protocol.replication-base-backup",
+      "title": "protocol replication base backup",
+      "surface_ids": [
+        "foundations-mechanics",
+        "testing-verification",
+        "security-privacy-safety",
+        "compatibility-integration"
+      ]
+    },
+    {
+      "id": "protocol.replication-create-replication-slot",
+      "locator": "doc/src/sgml/protocol.sgml#protocol-replication-create-replication-slot",
+      "kind": "behavior",
+      "capability_id": "integration.protocol",
+      "behavior_id": "protocol.replication-create-replication-slot",
+      "title": "protocol replication create replication slot",
+      "surface_ids": [
+        "foundations-mechanics",
+        "testing-verification",
+        "security-privacy-safety",
+        "compatibility-integration"
+      ]
+    },
+    {
+      "id": "protocol.replication-create-replication-slot-legacy",
+      "locator": "doc/src/sgml/protocol.sgml#protocol-replication-create-replication-slot-legacy",
+      "kind": "behavior",
+      "capability_id": "integration.protocol",
+      "behavior_id": "protocol.replication-create-replication-slot-legacy",
+      "title": "protocol replication create replication slot legacy",
+      "surface_ids": [
+        "foundations-mechanics",
+        "testing-verification",
+        "security-privacy-safety",
+        "compatibility-integration"
+      ]
+    },
+    {
+      "id": "protocol.replication-drop-replication-slot",
+      "locator": "doc/src/sgml/protocol.sgml#protocol-replication-drop-replication-slot",
+      "kind": "behavior",
+      "capability_id": "integration.protocol",
+      "behavior_id": "protocol.replication-drop-replication-slot",
+      "title": "protocol replication drop replication slot",
+      "surface_ids": [
+        "foundations-mechanics",
+        "testing-verification",
+        "security-privacy-safety",
+        "compatibility-integration"
+      ]
+    },
+    {
+      "id": "protocol.replication-hot-standby-feedback-message",
+      "locator": "doc/src/sgml/protocol.sgml#protocol-replication-hot-standby-feedback-message",
+      "kind": "behavior",
+      "capability_id": "integration.protocol",
+      "behavior_id": "protocol.replication-hot-standby-feedback-message",
+      "title": "protocol replication hot standby feedback message",
+      "surface_ids": [
+        "foundations-mechanics",
+        "testing-verification",
+        "security-privacy-safety",
+        "compatibility-integration"
+      ]
+    },
+    {
+      "id": "protocol.replication-identify-system",
+      "locator": "doc/src/sgml/protocol.sgml#protocol-replication-identify-system",
+      "kind": "behavior",
+      "capability_id": "integration.protocol",
+      "behavior_id": "protocol.replication-identify-system",
+      "title": "protocol replication identify system",
+      "surface_ids": [
+        "foundations-mechanics",
+        "testing-verification",
+        "security-privacy-safety",
+        "compatibility-integration"
+      ]
+    },
+    {
+      "id": "protocol.replication-primary-keepalive-message",
+      "locator": "doc/src/sgml/protocol.sgml#protocol-replication-primary-keepalive-message",
+      "kind": "behavior",
+      "capability_id": "integration.protocol",
+      "behavior_id": "protocol.replication-primary-keepalive-message",
+      "title": "protocol replication primary keepalive message",
+      "surface_ids": [
+        "foundations-mechanics",
+        "testing-verification",
+        "security-privacy-safety",
+        "compatibility-integration"
+      ]
+    },
+    {
+      "id": "protocol.replication-read-replication-slot",
+      "locator": "doc/src/sgml/protocol.sgml#protocol-replication-read-replication-slot",
+      "kind": "behavior",
+      "capability_id": "integration.protocol",
+      "behavior_id": "protocol.replication-read-replication-slot",
+      "title": "protocol replication read replication slot",
+      "surface_ids": [
+        "foundations-mechanics",
+        "testing-verification",
+        "security-privacy-safety",
+        "compatibility-integration"
+      ]
+    },
+    {
+      "id": "protocol.replication-show",
+      "locator": "doc/src/sgml/protocol.sgml#protocol-replication-show",
+      "kind": "behavior",
+      "capability_id": "integration.protocol",
+      "behavior_id": "protocol.replication-show",
+      "title": "protocol replication show",
+      "surface_ids": [
+        "foundations-mechanics",
+        "testing-verification",
+        "security-privacy-safety",
+        "compatibility-integration"
+      ]
+    },
+    {
+      "id": "protocol.replication-standby-status-update",
+      "locator": "doc/src/sgml/protocol.sgml#protocol-replication-standby-status-update",
+      "kind": "behavior",
+      "capability_id": "integration.protocol",
+      "behavior_id": "protocol.replication-standby-status-update",
+      "title": "protocol replication standby status update",
+      "surface_ids": [
+        "foundations-mechanics",
+        "testing-verification",
+        "security-privacy-safety",
+        "compatibility-integration"
+      ]
+    },
+    {
+      "id": "protocol.replication-start-replication",
+      "locator": "doc/src/sgml/protocol.sgml#protocol-replication-start-replication",
+      "kind": "behavior",
+      "capability_id": "integration.protocol",
+      "behavior_id": "protocol.replication-start-replication",
+      "title": "protocol replication start replication",
+      "surface_ids": [
+        "foundations-mechanics",
+        "testing-verification",
+        "security-privacy-safety",
+        "compatibility-integration"
+      ]
+    },
+    {
+      "id": "protocol.replication-start-replication-slot-logical",
+      "locator": "doc/src/sgml/protocol.sgml#protocol-replication-start-replication-slot-logical",
+      "kind": "behavior",
+      "capability_id": "integration.protocol",
+      "behavior_id": "protocol.replication-start-replication-slot-logical",
+      "title": "protocol replication start replication slot logical",
+      "surface_ids": [
+        "foundations-mechanics",
+        "testing-verification",
+        "security-privacy-safety",
+        "compatibility-integration"
+      ]
+    },
+    {
+      "id": "protocol.replication-timeline-history",
+      "locator": "doc/src/sgml/protocol.sgml#protocol-replication-timeline-history",
+      "kind": "behavior",
+      "capability_id": "integration.protocol",
+      "behavior_id": "protocol.replication-timeline-history",
+      "title": "protocol replication timeline history",
+      "surface_ids": [
+        "foundations-mechanics",
+        "testing-verification",
+        "security-privacy-safety",
+        "compatibility-integration"
+      ]
+    },
+    {
+      "id": "protocol.replication-upload-manifest",
+      "locator": "doc/src/sgml/protocol.sgml#protocol-replication-upload-manifest",
+      "kind": "behavior",
+      "capability_id": "integration.protocol",
+      "behavior_id": "protocol.replication-upload-manifest",
+      "title": "protocol replication upload manifest",
+      "surface_ids": [
+        "foundations-mechanics",
+        "testing-verification",
+        "security-privacy-safety",
+        "compatibility-integration"
+      ]
+    },
+    {
+      "id": "protocol.replication-xlogdata",
+      "locator": "doc/src/sgml/protocol.sgml#protocol-replication-xlogdata",
+      "kind": "behavior",
+      "capability_id": "integration.protocol",
+      "behavior_id": "protocol.replication-xlogdata",
+      "title": "protocol replication xlogdata",
+      "surface_ids": [
+        "foundations-mechanics",
+        "testing-verification",
+        "security-privacy-safety",
+        "compatibility-integration"
+      ]
+    },
+    {
+      "id": "protocol.versions",
+      "locator": "doc/src/sgml/protocol.sgml#protocol-versions",
+      "kind": "behavior",
+      "capability_id": "integration.protocol",
+      "behavior_id": "protocol.versions",
+      "title": "protocol versions",
+      "surface_ids": [
+        "foundations-mechanics",
+        "testing-verification",
+        "security-privacy-safety",
+        "compatibility-integration"
+      ]
+    },
+    {
+      "id": "protocol.versions-table",
+      "locator": "doc/src/sgml/protocol.sgml#protocol-versions-table",
+      "kind": "behavior",
+      "capability_id": "integration.protocol",
+      "behavior_id": "protocol.versions-table",
+      "title": "protocol versions table",
+      "surface_ids": [
+        "foundations-mechanics",
+        "testing-verification",
+        "security-privacy-safety",
+        "compatibility-integration"
+      ]
+    },
+    {
+      "id": "contrib.amcheck",
+      "locator": "contrib/amcheck/amcheck.control",
+      "kind": "capability",
+      "capability_id": "query.extension",
+      "behavior_id": "contrib.amcheck",
+      "title": "amcheck",
+      "surface_ids": [
+        "implementation-construction",
+        "compatibility-integration",
+        "provenance-rights"
+      ]
+    },
+    {
+      "id": "contrib.bloom",
+      "locator": "contrib/bloom/bloom.control",
+      "kind": "capability",
+      "capability_id": "query.extension",
+      "behavior_id": "contrib.bloom",
+      "title": "bloom",
+      "surface_ids": [
+        "implementation-construction",
+        "compatibility-integration",
+        "provenance-rights"
+      ]
+    },
+    {
+      "id": "contrib.bool-plperl",
+      "locator": "contrib/bool_plperl/bool_plperl.control",
+      "kind": "capability",
+      "capability_id": "query.extension",
+      "behavior_id": "contrib.bool-plperl",
+      "title": "bool_plperl",
+      "surface_ids": [
+        "implementation-construction",
+        "compatibility-integration",
+        "provenance-rights"
+      ]
+    },
+    {
+      "id": "contrib.bool-plperlu",
+      "locator": "contrib/bool_plperl/bool_plperlu.control",
+      "kind": "capability",
+      "capability_id": "query.extension",
+      "behavior_id": "contrib.bool-plperlu",
+      "title": "bool_plperlu",
+      "surface_ids": [
+        "implementation-construction",
+        "compatibility-integration",
+        "provenance-rights"
+      ]
+    },
+    {
+      "id": "contrib.btree-gin",
+      "locator": "contrib/btree_gin/btree_gin.control",
+      "kind": "capability",
+      "capability_id": "query.extension",
+      "behavior_id": "contrib.btree-gin",
+      "title": "btree_gin",
+      "surface_ids": [
+        "implementation-construction",
+        "compatibility-integration",
+        "provenance-rights"
+      ]
+    },
+    {
+      "id": "contrib.btree-gist",
+      "locator": "contrib/btree_gist/btree_gist.control",
+      "kind": "capability",
+      "capability_id": "query.extension",
+      "behavior_id": "contrib.btree-gist",
+      "title": "btree_gist",
+      "surface_ids": [
+        "implementation-construction",
+        "compatibility-integration",
+        "provenance-rights"
+      ]
+    },
+    {
+      "id": "contrib.citext",
+      "locator": "contrib/citext/citext.control",
+      "kind": "capability",
+      "capability_id": "query.extension",
+      "behavior_id": "contrib.citext",
+      "title": "citext",
+      "surface_ids": [
+        "implementation-construction",
+        "compatibility-integration",
+        "provenance-rights"
+      ]
+    },
+    {
+      "id": "contrib.cube",
+      "locator": "contrib/cube/cube.control",
+      "kind": "capability",
+      "capability_id": "query.extension",
+      "behavior_id": "contrib.cube",
+      "title": "cube",
+      "surface_ids": [
+        "implementation-construction",
+        "compatibility-integration",
+        "provenance-rights"
+      ]
+    },
+    {
+      "id": "contrib.dblink",
+      "locator": "contrib/dblink/dblink.control",
+      "kind": "capability",
+      "capability_id": "query.extension",
+      "behavior_id": "contrib.dblink",
+      "title": "dblink",
+      "surface_ids": [
+        "implementation-construction",
+        "compatibility-integration",
+        "provenance-rights"
+      ]
+    },
+    {
+      "id": "contrib.dict-int",
+      "locator": "contrib/dict_int/dict_int.control",
+      "kind": "capability",
+      "capability_id": "query.extension",
+      "behavior_id": "contrib.dict-int",
+      "title": "dict_int",
+      "surface_ids": [
+        "implementation-construction",
+        "compatibility-integration",
+        "provenance-rights"
+      ]
+    },
+    {
+      "id": "contrib.dict-xsyn",
+      "locator": "contrib/dict_xsyn/dict_xsyn.control",
+      "kind": "capability",
+      "capability_id": "query.extension",
+      "behavior_id": "contrib.dict-xsyn",
+      "title": "dict_xsyn",
+      "surface_ids": [
+        "implementation-construction",
+        "compatibility-integration",
+        "provenance-rights"
+      ]
+    },
+    {
+      "id": "contrib.earthdistance",
+      "locator": "contrib/earthdistance/earthdistance.control",
+      "kind": "capability",
+      "capability_id": "query.extension",
+      "behavior_id": "contrib.earthdistance",
+      "title": "earthdistance",
+      "surface_ids": [
+        "implementation-construction",
+        "compatibility-integration",
+        "provenance-rights"
+      ]
+    },
+    {
+      "id": "contrib.file-fdw",
+      "locator": "contrib/file_fdw/file_fdw.control",
+      "kind": "capability",
+      "capability_id": "query.extension",
+      "behavior_id": "contrib.file-fdw",
+      "title": "file_fdw",
+      "surface_ids": [
+        "implementation-construction",
+        "compatibility-integration",
+        "provenance-rights"
+      ]
+    },
+    {
+      "id": "contrib.fuzzystrmatch",
+      "locator": "contrib/fuzzystrmatch/fuzzystrmatch.control",
+      "kind": "capability",
+      "capability_id": "query.extension",
+      "behavior_id": "contrib.fuzzystrmatch",
+      "title": "fuzzystrmatch",
+      "surface_ids": [
+        "implementation-construction",
+        "compatibility-integration",
+        "provenance-rights"
+      ]
+    },
+    {
+      "id": "contrib.hstore",
+      "locator": "contrib/hstore/hstore.control",
+      "kind": "capability",
+      "capability_id": "query.extension",
+      "behavior_id": "contrib.hstore",
+      "title": "hstore",
+      "surface_ids": [
+        "implementation-construction",
+        "compatibility-integration",
+        "provenance-rights"
+      ]
+    },
+    {
+      "id": "contrib.hstore-plperl",
+      "locator": "contrib/hstore_plperl/hstore_plperl.control",
+      "kind": "capability",
+      "capability_id": "query.extension",
+      "behavior_id": "contrib.hstore-plperl",
+      "title": "hstore_plperl",
+      "surface_ids": [
+        "implementation-construction",
+        "compatibility-integration",
+        "provenance-rights"
+      ]
+    },
+    {
+      "id": "contrib.hstore-plperlu",
+      "locator": "contrib/hstore_plperl/hstore_plperlu.control",
+      "kind": "capability",
+      "capability_id": "query.extension",
+      "behavior_id": "contrib.hstore-plperlu",
+      "title": "hstore_plperlu",
+      "surface_ids": [
+        "implementation-construction",
+        "compatibility-integration",
+        "provenance-rights"
+      ]
+    },
+    {
+      "id": "contrib.hstore-plpython3u",
+      "locator": "contrib/hstore_plpython/hstore_plpython3u.control",
+      "kind": "capability",
+      "capability_id": "query.extension",
+      "behavior_id": "contrib.hstore-plpython3u",
+      "title": "hstore_plpython3u",
+      "surface_ids": [
+        "implementation-construction",
+        "compatibility-integration",
+        "provenance-rights"
+      ]
+    },
+    {
+      "id": "contrib.intagg",
+      "locator": "contrib/intagg/intagg.control",
+      "kind": "capability",
+      "capability_id": "query.extension",
+      "behavior_id": "contrib.intagg",
+      "title": "intagg",
+      "surface_ids": [
+        "implementation-construction",
+        "compatibility-integration",
+        "provenance-rights"
+      ]
+    },
+    {
+      "id": "contrib.intarray",
+      "locator": "contrib/intarray/intarray.control",
+      "kind": "capability",
+      "capability_id": "query.extension",
+      "behavior_id": "contrib.intarray",
+      "title": "intarray",
+      "surface_ids": [
+        "implementation-construction",
+        "compatibility-integration",
+        "provenance-rights"
+      ]
+    },
+    {
+      "id": "contrib.isn",
+      "locator": "contrib/isn/isn.control",
+      "kind": "capability",
+      "capability_id": "query.extension",
+      "behavior_id": "contrib.isn",
+      "title": "isn",
+      "surface_ids": [
+        "implementation-construction",
+        "compatibility-integration",
+        "provenance-rights"
+      ]
+    },
+    {
+      "id": "contrib.jsonb-plperl",
+      "locator": "contrib/jsonb_plperl/jsonb_plperl.control",
+      "kind": "capability",
+      "capability_id": "query.extension",
+      "behavior_id": "contrib.jsonb-plperl",
+      "title": "jsonb_plperl",
+      "surface_ids": [
+        "implementation-construction",
+        "compatibility-integration",
+        "provenance-rights"
+      ]
+    },
+    {
+      "id": "contrib.jsonb-plperlu",
+      "locator": "contrib/jsonb_plperl/jsonb_plperlu.control",
+      "kind": "capability",
+      "capability_id": "query.extension",
+      "behavior_id": "contrib.jsonb-plperlu",
+      "title": "jsonb_plperlu",
+      "surface_ids": [
+        "implementation-construction",
+        "compatibility-integration",
+        "provenance-rights"
+      ]
+    },
+    {
+      "id": "contrib.jsonb-plpython3u",
+      "locator": "contrib/jsonb_plpython/jsonb_plpython3u.control",
+      "kind": "capability",
+      "capability_id": "query.extension",
+      "behavior_id": "contrib.jsonb-plpython3u",
+      "title": "jsonb_plpython3u",
+      "surface_ids": [
+        "implementation-construction",
+        "compatibility-integration",
+        "provenance-rights"
+      ]
+    },
+    {
+      "id": "contrib.lo",
+      "locator": "contrib/lo/lo.control",
+      "kind": "capability",
+      "capability_id": "query.extension",
+      "behavior_id": "contrib.lo",
+      "title": "lo",
+      "surface_ids": [
+        "implementation-construction",
+        "compatibility-integration",
+        "provenance-rights"
+      ]
+    },
+    {
+      "id": "contrib.ltree",
+      "locator": "contrib/ltree/ltree.control",
+      "kind": "capability",
+      "capability_id": "query.extension",
+      "behavior_id": "contrib.ltree",
+      "title": "ltree",
+      "surface_ids": [
+        "implementation-construction",
+        "compatibility-integration",
+        "provenance-rights"
+      ]
+    },
+    {
+      "id": "contrib.ltree-plpython3u",
+      "locator": "contrib/ltree_plpython/ltree_plpython3u.control",
+      "kind": "capability",
+      "capability_id": "query.extension",
+      "behavior_id": "contrib.ltree-plpython3u",
+      "title": "ltree_plpython3u",
+      "surface_ids": [
+        "implementation-construction",
+        "compatibility-integration",
+        "provenance-rights"
+      ]
+    },
+    {
+      "id": "contrib.pageinspect",
+      "locator": "contrib/pageinspect/pageinspect.control",
+      "kind": "capability",
+      "capability_id": "query.extension",
+      "behavior_id": "contrib.pageinspect",
+      "title": "pageinspect",
+      "surface_ids": [
+        "implementation-construction",
+        "compatibility-integration",
+        "provenance-rights"
+      ]
+    },
+    {
+      "id": "contrib.pg-buffercache",
+      "locator": "contrib/pg_buffercache/pg_buffercache.control",
+      "kind": "capability",
+      "capability_id": "query.extension",
+      "behavior_id": "contrib.pg-buffercache",
+      "title": "pg_buffercache",
+      "surface_ids": [
+        "implementation-construction",
+        "compatibility-integration",
+        "provenance-rights"
+      ]
+    },
+    {
+      "id": "contrib.pg-freespacemap",
+      "locator": "contrib/pg_freespacemap/pg_freespacemap.control",
+      "kind": "capability",
+      "capability_id": "query.extension",
+      "behavior_id": "contrib.pg-freespacemap",
+      "title": "pg_freespacemap",
+      "surface_ids": [
+        "implementation-construction",
+        "compatibility-integration",
+        "provenance-rights"
+      ]
+    },
+    {
+      "id": "contrib.pg-logicalinspect",
+      "locator": "contrib/pg_logicalinspect/pg_logicalinspect.control",
+      "kind": "capability",
+      "capability_id": "query.extension",
+      "behavior_id": "contrib.pg-logicalinspect",
+      "title": "pg_logicalinspect",
+      "surface_ids": [
+        "implementation-construction",
+        "compatibility-integration",
+        "provenance-rights"
+      ]
+    },
+    {
+      "id": "contrib.pg-prewarm",
+      "locator": "contrib/pg_prewarm/pg_prewarm.control",
+      "kind": "capability",
+      "capability_id": "query.extension",
+      "behavior_id": "contrib.pg-prewarm",
+      "title": "pg_prewarm",
+      "surface_ids": [
+        "implementation-construction",
+        "compatibility-integration",
+        "provenance-rights"
+      ]
+    },
+    {
+      "id": "contrib.pg-stat-statements",
+      "locator": "contrib/pg_stat_statements/pg_stat_statements.control",
+      "kind": "capability",
+      "capability_id": "query.extension",
+      "behavior_id": "contrib.pg-stat-statements",
+      "title": "pg_stat_statements",
+      "surface_ids": [
+        "implementation-construction",
+        "compatibility-integration",
+        "provenance-rights"
+      ]
+    },
+    {
+      "id": "contrib.pg-surgery",
+      "locator": "contrib/pg_surgery/pg_surgery.control",
+      "kind": "capability",
+      "capability_id": "query.extension",
+      "behavior_id": "contrib.pg-surgery",
+      "title": "pg_surgery",
+      "surface_ids": [
+        "implementation-construction",
+        "compatibility-integration",
+        "provenance-rights"
+      ]
+    },
+    {
+      "id": "contrib.pg-trgm",
+      "locator": "contrib/pg_trgm/pg_trgm.control",
+      "kind": "capability",
+      "capability_id": "query.extension",
+      "behavior_id": "contrib.pg-trgm",
+      "title": "pg_trgm",
+      "surface_ids": [
+        "implementation-construction",
+        "compatibility-integration",
+        "provenance-rights"
+      ]
+    },
+    {
+      "id": "contrib.pg-visibility",
+      "locator": "contrib/pg_visibility/pg_visibility.control",
+      "kind": "capability",
+      "capability_id": "query.extension",
+      "behavior_id": "contrib.pg-visibility",
+      "title": "pg_visibility",
+      "surface_ids": [
+        "implementation-construction",
+        "compatibility-integration",
+        "provenance-rights"
+      ]
+    },
+    {
+      "id": "contrib.pg-walinspect",
+      "locator": "contrib/pg_walinspect/pg_walinspect.control",
+      "kind": "capability",
+      "capability_id": "query.extension",
+      "behavior_id": "contrib.pg-walinspect",
+      "title": "pg_walinspect",
+      "surface_ids": [
+        "implementation-construction",
+        "compatibility-integration",
+        "provenance-rights"
+      ]
+    },
+    {
+      "id": "contrib.pgcrypto",
+      "locator": "contrib/pgcrypto/pgcrypto.control",
+      "kind": "capability",
+      "capability_id": "query.extension",
+      "behavior_id": "contrib.pgcrypto",
+      "title": "pgcrypto",
+      "surface_ids": [
+        "implementation-construction",
+        "compatibility-integration",
+        "provenance-rights"
+      ]
+    },
+    {
+      "id": "contrib.pgrowlocks",
+      "locator": "contrib/pgrowlocks/pgrowlocks.control",
+      "kind": "capability",
+      "capability_id": "query.extension",
+      "behavior_id": "contrib.pgrowlocks",
+      "title": "pgrowlocks",
+      "surface_ids": [
+        "implementation-construction",
+        "compatibility-integration",
+        "provenance-rights"
+      ]
+    },
+    {
+      "id": "contrib.pgstattuple",
+      "locator": "contrib/pgstattuple/pgstattuple.control",
+      "kind": "capability",
+      "capability_id": "query.extension",
+      "behavior_id": "contrib.pgstattuple",
+      "title": "pgstattuple",
+      "surface_ids": [
+        "implementation-construction",
+        "compatibility-integration",
+        "provenance-rights"
+      ]
+    },
+    {
+      "id": "contrib.postgres-fdw",
+      "locator": "contrib/postgres_fdw/postgres_fdw.control",
+      "kind": "capability",
+      "capability_id": "query.extension",
+      "behavior_id": "contrib.postgres-fdw",
+      "title": "postgres_fdw",
+      "surface_ids": [
+        "implementation-construction",
+        "compatibility-integration",
+        "provenance-rights"
+      ]
+    },
+    {
+      "id": "contrib.seg",
+      "locator": "contrib/seg/seg.control",
+      "kind": "capability",
+      "capability_id": "query.extension",
+      "behavior_id": "contrib.seg",
+      "title": "seg",
+      "surface_ids": [
+        "implementation-construction",
+        "compatibility-integration",
+        "provenance-rights"
+      ]
+    },
+    {
+      "id": "contrib.autoinc",
+      "locator": "contrib/spi/autoinc.control",
+      "kind": "capability",
+      "capability_id": "query.extension",
+      "behavior_id": "contrib.autoinc",
+      "title": "autoinc",
+      "surface_ids": [
+        "implementation-construction",
+        "compatibility-integration",
+        "provenance-rights"
+      ]
+    },
+    {
+      "id": "contrib.insert-username",
+      "locator": "contrib/spi/insert_username.control",
+      "kind": "capability",
+      "capability_id": "query.extension",
+      "behavior_id": "contrib.insert-username",
+      "title": "insert_username",
+      "surface_ids": [
+        "implementation-construction",
+        "compatibility-integration",
+        "provenance-rights"
+      ]
+    },
+    {
+      "id": "contrib.moddatetime",
+      "locator": "contrib/spi/moddatetime.control",
+      "kind": "capability",
+      "capability_id": "query.extension",
+      "behavior_id": "contrib.moddatetime",
+      "title": "moddatetime",
+      "surface_ids": [
+        "implementation-construction",
+        "compatibility-integration",
+        "provenance-rights"
+      ]
+    },
+    {
+      "id": "contrib.refint",
+      "locator": "contrib/spi/refint.control",
+      "kind": "capability",
+      "capability_id": "query.extension",
+      "behavior_id": "contrib.refint",
+      "title": "refint",
+      "surface_ids": [
+        "implementation-construction",
+        "compatibility-integration",
+        "provenance-rights"
+      ]
+    },
+    {
+      "id": "contrib.sslinfo",
+      "locator": "contrib/sslinfo/sslinfo.control",
+      "kind": "capability",
+      "capability_id": "query.extension",
+      "behavior_id": "contrib.sslinfo",
+      "title": "sslinfo",
+      "surface_ids": [
+        "implementation-construction",
+        "compatibility-integration",
+        "provenance-rights"
+      ]
+    },
+    {
+      "id": "contrib.tablefunc",
+      "locator": "contrib/tablefunc/tablefunc.control",
+      "kind": "capability",
+      "capability_id": "query.extension",
+      "behavior_id": "contrib.tablefunc",
+      "title": "tablefunc",
+      "surface_ids": [
+        "implementation-construction",
+        "compatibility-integration",
+        "provenance-rights"
+      ]
+    },
+    {
+      "id": "contrib.tcn",
+      "locator": "contrib/tcn/tcn.control",
+      "kind": "capability",
+      "capability_id": "query.extension",
+      "behavior_id": "contrib.tcn",
+      "title": "tcn",
+      "surface_ids": [
+        "implementation-construction",
+        "compatibility-integration",
+        "provenance-rights"
+      ]
+    },
+    {
+      "id": "contrib.tsm-system-rows",
+      "locator": "contrib/tsm_system_rows/tsm_system_rows.control",
+      "kind": "capability",
+      "capability_id": "query.extension",
+      "behavior_id": "contrib.tsm-system-rows",
+      "title": "tsm_system_rows",
+      "surface_ids": [
+        "implementation-construction",
+        "compatibility-integration",
+        "provenance-rights"
+      ]
+    },
+    {
+      "id": "contrib.tsm-system-time",
+      "locator": "contrib/tsm_system_time/tsm_system_time.control",
+      "kind": "capability",
+      "capability_id": "query.extension",
+      "behavior_id": "contrib.tsm-system-time",
+      "title": "tsm_system_time",
+      "surface_ids": [
+        "implementation-construction",
+        "compatibility-integration",
+        "provenance-rights"
+      ]
+    },
+    {
+      "id": "contrib.unaccent",
+      "locator": "contrib/unaccent/unaccent.control",
+      "kind": "capability",
+      "capability_id": "query.extension",
+      "behavior_id": "contrib.unaccent",
+      "title": "unaccent",
+      "surface_ids": [
+        "implementation-construction",
+        "compatibility-integration",
+        "provenance-rights"
+      ]
+    },
+    {
+      "id": "contrib.uuid-ossp",
+      "locator": "contrib/uuid-ossp/uuid-ossp.control",
+      "kind": "capability",
+      "capability_id": "query.extension",
+      "behavior_id": "contrib.uuid-ossp",
+      "title": "uuid-ossp",
+      "surface_ids": [
+        "implementation-construction",
+        "compatibility-integration",
+        "provenance-rights"
+      ]
+    },
+    {
+      "id": "contrib.xml2",
+      "locator": "contrib/xml2/xml2.control",
+      "kind": "capability",
+      "capability_id": "query.extension",
+      "behavior_id": "contrib.xml2",
+      "title": "xml2",
+      "surface_ids": [
+        "implementation-construction",
+        "compatibility-integration",
+        "provenance-rights"
+      ]
+    }
+  ]
+}

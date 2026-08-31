@@ -1,0 +1,2392 @@
+{
+  "schema_version": 2,
+  "source_id": "postgresql-docs-18.6",
+  "source_digest": "sha256:c51c06f037afdb7563e2d98a5e59ebb380f103b13ce5b9eff5bc11128c330656",
+  "extraction": {
+    "method": "machine-readable-primary",
+    "tool": "tools/generate-definitive-inventory.rb",
+    "reviewed_by": "independent-definitive-audit",
+    "reviewed_at": "2026-08-28"
+  },
+  "surfaces": [
+    {
+      "id": "docs-sql.abort",
+      "locator": "https://www.postgresql.org/docs/18/sql-abort.html",
+      "kind": "capability",
+      "capability_id": "query.sql-commands",
+      "behavior_id": "docs-sql.abort",
+      "title": "ABORT",
+      "surface_ids": [
+        "implementation-construction",
+        "testing-verification",
+        "compatibility-integration"
+      ]
+    },
+    {
+      "id": "docs-sql.alter-aggregate",
+      "locator": "https://www.postgresql.org/docs/18/sql-alteraggregate.html",
+      "kind": "capability",
+      "capability_id": "query.sql-commands",
+      "behavior_id": "docs-sql.alter-aggregate",
+      "title": "ALTER AGGREGATE",
+      "surface_ids": [
+        "implementation-construction",
+        "testing-verification",
+        "compatibility-integration"
+      ]
+    },
+    {
+      "id": "docs-sql.alter-collation",
+      "locator": "https://www.postgresql.org/docs/18/sql-altercollation.html",
+      "kind": "capability",
+      "capability_id": "query.sql-commands",
+      "behavior_id": "docs-sql.alter-collation",
+      "title": "ALTER COLLATION",
+      "surface_ids": [
+        "implementation-construction",
+        "testing-verification",
+        "compatibility-integration"
+      ]
+    },
+    {
+      "id": "docs-sql.alter-conversion",
+      "locator": "https://www.postgresql.org/docs/18/sql-alterconversion.html",
+      "kind": "capability",
+      "capability_id": "query.sql-commands",
+      "behavior_id": "docs-sql.alter-conversion",
+      "title": "ALTER CONVERSION",
+      "surface_ids": [
+        "implementation-construction",
+        "testing-verification",
+        "compatibility-integration"
+      ]
+    },
+    {
+      "id": "docs-sql.alter-database",
+      "locator": "https://www.postgresql.org/docs/18/sql-alterdatabase.html",
+      "kind": "capability",
+      "capability_id": "query.sql-commands",
+      "behavior_id": "docs-sql.alter-database",
+      "title": "ALTER DATABASE",
+      "surface_ids": [
+        "implementation-construction",
+        "testing-verification",
+        "compatibility-integration"
+      ]
+    },
+    {
+      "id": "docs-sql.alter-default-privileges",
+      "locator": "https://www.postgresql.org/docs/18/sql-alterdefaultprivileges.html",
+      "kind": "capability",
+      "capability_id": "query.sql-commands",
+      "behavior_id": "docs-sql.alter-default-privileges",
+      "title": "ALTER DEFAULT PRIVILEGES",
+      "surface_ids": [
+        "implementation-construction",
+        "testing-verification",
+        "compatibility-integration"
+      ]
+    },
+    {
+      "id": "docs-sql.alter-domain",
+      "locator": "https://www.postgresql.org/docs/18/sql-alterdomain.html",
+      "kind": "capability",
+      "capability_id": "query.sql-commands",
+      "behavior_id": "docs-sql.alter-domain",
+      "title": "ALTER DOMAIN",
+      "surface_ids": [
+        "implementation-construction",
+        "testing-verification",
+        "compatibility-integration"
+      ]
+    },
+    {
+      "id": "docs-sql.alter-event-trigger",
+      "locator": "https://www.postgresql.org/docs/18/sql-altereventtrigger.html",
+      "kind": "capability",
+      "capability_id": "query.sql-commands",
+      "behavior_id": "docs-sql.alter-event-trigger",
+      "title": "ALTER EVENT TRIGGER",
+      "surface_ids": [
+        "implementation-construction",
+        "testing-verification",
+        "compatibility-integration"
+      ]
+    },
+    {
+      "id": "docs-sql.alter-extension",
+      "locator": "https://www.postgresql.org/docs/18/sql-alterextension.html",
+      "kind": "capability",
+      "capability_id": "query.sql-commands",
+      "behavior_id": "docs-sql.alter-extension",
+      "title": "ALTER EXTENSION",
+      "surface_ids": [
+        "implementation-construction",
+        "testing-verification",
+        "compatibility-integration"
+      ]
+    },
+    {
+      "id": "docs-sql.alter-foreign-data-wrapper",
+      "locator": "https://www.postgresql.org/docs/18/sql-alterforeigndatawrapper.html",
+      "kind": "capability",
+      "capability_id": "query.sql-commands",
+      "behavior_id": "docs-sql.alter-foreign-data-wrapper",
+      "title": "ALTER FOREIGN DATA WRAPPER",
+      "surface_ids": [
+        "implementation-construction",
+        "testing-verification",
+        "compatibility-integration"
+      ]
+    },
+    {
+      "id": "docs-sql.alter-foreign-table",
+      "locator": "https://www.postgresql.org/docs/18/sql-alterforeigntable.html",
+      "kind": "capability",
+      "capability_id": "query.sql-commands",
+      "behavior_id": "docs-sql.alter-foreign-table",
+      "title": "ALTER FOREIGN TABLE",
+      "surface_ids": [
+        "implementation-construction",
+        "testing-verification",
+        "compatibility-integration"
+      ]
+    },
+    {
+      "id": "docs-sql.alter-function",
+      "locator": "https://www.postgresql.org/docs/18/sql-alterfunction.html",
+      "kind": "capability",
+      "capability_id": "query.sql-commands",
+      "behavior_id": "docs-sql.alter-function",
+      "title": "ALTER FUNCTION",
+      "surface_ids": [
+        "implementation-construction",
+        "testing-verification",
+        "compatibility-integration"
+      ]
+    },
+    {
+      "id": "docs-sql.alter-group",
+      "locator": "https://www.postgresql.org/docs/18/sql-altergroup.html",
+      "kind": "capability",
+      "capability_id": "query.sql-commands",
+      "behavior_id": "docs-sql.alter-group",
+      "title": "ALTER GROUP",
+      "surface_ids": [
+        "implementation-construction",
+        "testing-verification",
+        "compatibility-integration"
+      ]
+    },
+    {
+      "id": "docs-sql.alter-index",
+      "locator": "https://www.postgresql.org/docs/18/sql-alterindex.html",
+      "kind": "capability",
+      "capability_id": "query.sql-commands",
+      "behavior_id": "docs-sql.alter-index",
+      "title": "ALTER INDEX",
+      "surface_ids": [
+        "implementation-construction",
+        "testing-verification",
+        "compatibility-integration"
+      ]
+    },
+    {
+      "id": "docs-sql.alter-language",
+      "locator": "https://www.postgresql.org/docs/18/sql-alterlanguage.html",
+      "kind": "capability",
+      "capability_id": "query.sql-commands",
+      "behavior_id": "docs-sql.alter-language",
+      "title": "ALTER LANGUAGE",
+      "surface_ids": [
+        "implementation-construction",
+        "testing-verification",
+        "compatibility-integration"
+      ]
+    },
+    {
+      "id": "docs-sql.alter-large-object",
+      "locator": "https://www.postgresql.org/docs/18/sql-alterlargeobject.html",
+      "kind": "capability",
+      "capability_id": "query.sql-commands",
+      "behavior_id": "docs-sql.alter-large-object",
+      "title": "ALTER LARGE OBJECT",
+      "surface_ids": [
+        "implementation-construction",
+        "testing-verification",
+        "compatibility-integration"
+      ]
+    },
+    {
+      "id": "docs-sql.alter-materialized-view",
+      "locator": "https://www.postgresql.org/docs/18/sql-altermaterializedview.html",
+      "kind": "capability",
+      "capability_id": "query.sql-commands",
+      "behavior_id": "docs-sql.alter-materialized-view",
+      "title": "ALTER MATERIALIZED VIEW",
+      "surface_ids": [
+        "implementation-construction",
+        "testing-verification",
+        "compatibility-integration"
+      ]
+    },
+    {
+      "id": "docs-sql.alter-operator",
+      "locator": "https://www.postgresql.org/docs/18/sql-alteroperator.html",
+      "kind": "capability",
+      "capability_id": "query.sql-commands",
+      "behavior_id": "docs-sql.alter-operator",
+      "title": "ALTER OPERATOR",
+      "surface_ids": [
+        "implementation-construction",
+        "testing-verification",
+        "compatibility-integration"
+      ]
+    },
+    {
+      "id": "docs-sql.alter-operator-class",
+      "locator": "https://www.postgresql.org/docs/18/sql-alteropclass.html",
+      "kind": "capability",
+      "capability_id": "query.sql-commands",
+      "behavior_id": "docs-sql.alter-operator-class",
+      "title": "ALTER OPERATOR CLASS",
+      "surface_ids": [
+        "implementation-construction",
+        "testing-verification",
+        "compatibility-integration"
+      ]
+    },
+    {
+      "id": "docs-sql.alter-operator-family",
+      "locator": "https://www.postgresql.org/docs/18/sql-alteropfamily.html",
+      "kind": "capability",
+      "capability_id": "query.sql-commands",
+      "behavior_id": "docs-sql.alter-operator-family",
+      "title": "ALTER OPERATOR FAMILY",
+      "surface_ids": [
+        "implementation-construction",
+        "testing-verification",
+        "compatibility-integration"
+      ]
+    },
+    {
+      "id": "docs-sql.alter-policy",
+      "locator": "https://www.postgresql.org/docs/18/sql-alterpolicy.html",
+      "kind": "capability",
+      "capability_id": "query.sql-commands",
+      "behavior_id": "docs-sql.alter-policy",
+      "title": "ALTER POLICY",
+      "surface_ids": [
+        "implementation-construction",
+        "testing-verification",
+        "compatibility-integration"
+      ]
+    },
+    {
+      "id": "docs-sql.alter-procedure",
+      "locator": "https://www.postgresql.org/docs/18/sql-alterprocedure.html",
+      "kind": "capability",
+      "capability_id": "query.sql-commands",
+      "behavior_id": "docs-sql.alter-procedure",
+      "title": "ALTER PROCEDURE",
+      "surface_ids": [
+        "implementation-construction",
+        "testing-verification",
+        "compatibility-integration"
+      ]
+    },
+    {
+      "id": "docs-sql.alter-publication",
+      "locator": "https://www.postgresql.org/docs/18/sql-alterpublication.html",
+      "kind": "capability",
+      "capability_id": "query.sql-commands",
+      "behavior_id": "docs-sql.alter-publication",
+      "title": "ALTER PUBLICATION",
+      "surface_ids": [
+        "implementation-construction",
+        "testing-verification",
+        "compatibility-integration"
+      ]
+    },
+    {
+      "id": "docs-sql.alter-role",
+      "locator": "https://www.postgresql.org/docs/18/sql-alterrole.html",
+      "kind": "capability",
+      "capability_id": "query.sql-commands",
+      "behavior_id": "docs-sql.alter-role",
+      "title": "ALTER ROLE",
+      "surface_ids": [
+        "implementation-construction",
+        "testing-verification",
+        "compatibility-integration"
+      ]
+    },
+    {
+      "id": "docs-sql.alter-routine",
+      "locator": "https://www.postgresql.org/docs/18/sql-alterroutine.html",
+      "kind": "capability",
+      "capability_id": "query.sql-commands",
+      "behavior_id": "docs-sql.alter-routine",
+      "title": "ALTER ROUTINE",
+      "surface_ids": [
+        "implementation-construction",
+        "testing-verification",
+        "compatibility-integration"
+      ]
+    },
+    {
+      "id": "docs-sql.alter-rule",
+      "locator": "https://www.postgresql.org/docs/18/sql-alterrule.html",
+      "kind": "capability",
+      "capability_id": "query.sql-commands",
+      "behavior_id": "docs-sql.alter-rule",
+      "title": "ALTER RULE",
+      "surface_ids": [
+        "implementation-construction",
+        "testing-verification",
+        "compatibility-integration"
+      ]
+    },
+    {
+      "id": "docs-sql.alter-schema",
+      "locator": "https://www.postgresql.org/docs/18/sql-alterschema.html",
+      "kind": "capability",
+      "capability_id": "query.sql-commands",
+      "behavior_id": "docs-sql.alter-schema",
+      "title": "ALTER SCHEMA",
+      "surface_ids": [
+        "implementation-construction",
+        "testing-verification",
+        "compatibility-integration"
+      ]
+    },
+    {
+      "id": "docs-sql.alter-sequence",
+      "locator": "https://www.postgresql.org/docs/18/sql-altersequence.html",
+      "kind": "capability",
+      "capability_id": "query.sql-commands",
+      "behavior_id": "docs-sql.alter-sequence",
+      "title": "ALTER SEQUENCE",
+      "surface_ids": [
+        "implementation-construction",
+        "testing-verification",
+        "compatibility-integration"
+      ]
+    },
+    {
+      "id": "docs-sql.alter-server",
+      "locator": "https://www.postgresql.org/docs/18/sql-alterserver.html",
+      "kind": "capability",
+      "capability_id": "query.sql-commands",
+      "behavior_id": "docs-sql.alter-server",
+      "title": "ALTER SERVER",
+      "surface_ids": [
+        "implementation-construction",
+        "testing-verification",
+        "compatibility-integration"
+      ]
+    },
+    {
+      "id": "docs-sql.alter-statistics",
+      "locator": "https://www.postgresql.org/docs/18/sql-alterstatistics.html",
+      "kind": "capability",
+      "capability_id": "query.sql-commands",
+      "behavior_id": "docs-sql.alter-statistics",
+      "title": "ALTER STATISTICS",
+      "surface_ids": [
+        "implementation-construction",
+        "testing-verification",
+        "compatibility-integration"
+      ]
+    },
+    {
+      "id": "docs-sql.alter-subscription",
+      "locator": "https://www.postgresql.org/docs/18/sql-altersubscription.html",
+      "kind": "capability",
+      "capability_id": "query.sql-commands",
+      "behavior_id": "docs-sql.alter-subscription",
+      "title": "ALTER SUBSCRIPTION",
+      "surface_ids": [
+        "implementation-construction",
+        "testing-verification",
+        "compatibility-integration"
+      ]
+    },
+    {
+      "id": "docs-sql.alter-system",
+      "locator": "https://www.postgresql.org/docs/18/sql-altersystem.html",
+      "kind": "capability",
+      "capability_id": "query.sql-commands",
+      "behavior_id": "docs-sql.alter-system",
+      "title": "ALTER SYSTEM",
+      "surface_ids": [
+        "implementation-construction",
+        "testing-verification",
+        "compatibility-integration"
+      ]
+    },
+    {
+      "id": "docs-sql.alter-table",
+      "locator": "https://www.postgresql.org/docs/18/sql-altertable.html",
+      "kind": "capability",
+      "capability_id": "query.sql-commands",
+      "behavior_id": "docs-sql.alter-table",
+      "title": "ALTER TABLE",
+      "surface_ids": [
+        "implementation-construction",
+        "testing-verification",
+        "compatibility-integration"
+      ]
+    },
+    {
+      "id": "docs-sql.alter-tablespace",
+      "locator": "https://www.postgresql.org/docs/18/sql-altertablespace.html",
+      "kind": "capability",
+      "capability_id": "query.sql-commands",
+      "behavior_id": "docs-sql.alter-tablespace",
+      "title": "ALTER TABLESPACE",
+      "surface_ids": [
+        "implementation-construction",
+        "testing-verification",
+        "compatibility-integration"
+      ]
+    },
+    {
+      "id": "docs-sql.alter-text-search-configuration",
+      "locator": "https://www.postgresql.org/docs/18/sql-altertsconfig.html",
+      "kind": "capability",
+      "capability_id": "query.sql-commands",
+      "behavior_id": "docs-sql.alter-text-search-configuration",
+      "title": "ALTER TEXT SEARCH CONFIGURATION",
+      "surface_ids": [
+        "implementation-construction",
+        "testing-verification",
+        "compatibility-integration"
+      ]
+    },
+    {
+      "id": "docs-sql.alter-text-search-dictionary",
+      "locator": "https://www.postgresql.org/docs/18/sql-altertsdictionary.html",
+      "kind": "capability",
+      "capability_id": "query.sql-commands",
+      "behavior_id": "docs-sql.alter-text-search-dictionary",
+      "title": "ALTER TEXT SEARCH DICTIONARY",
+      "surface_ids": [
+        "implementation-construction",
+        "testing-verification",
+        "compatibility-integration"
+      ]
+    },
+    {
+      "id": "docs-sql.alter-text-search-parser",
+      "locator": "https://www.postgresql.org/docs/18/sql-altertsparser.html",
+      "kind": "capability",
+      "capability_id": "query.sql-commands",
+      "behavior_id": "docs-sql.alter-text-search-parser",
+      "title": "ALTER TEXT SEARCH PARSER",
+      "surface_ids": [
+        "implementation-construction",
+        "testing-verification",
+        "compatibility-integration"
+      ]
+    },
+    {
+      "id": "docs-sql.alter-text-search-template",
+      "locator": "https://www.postgresql.org/docs/18/sql-altertstemplate.html",
+      "kind": "capability",
+      "capability_id": "query.sql-commands",
+      "behavior_id": "docs-sql.alter-text-search-template",
+      "title": "ALTER TEXT SEARCH TEMPLATE",
+      "surface_ids": [
+        "implementation-construction",
+        "testing-verification",
+        "compatibility-integration"
+      ]
+    },
+    {
+      "id": "docs-sql.alter-trigger",
+      "locator": "https://www.postgresql.org/docs/18/sql-altertrigger.html",
+      "kind": "capability",
+      "capability_id": "query.sql-commands",
+      "behavior_id": "docs-sql.alter-trigger",
+      "title": "ALTER TRIGGER",
+      "surface_ids": [
+        "implementation-construction",
+        "testing-verification",
+        "compatibility-integration"
+      ]
+    },
+    {
+      "id": "docs-sql.alter-type",
+      "locator": "https://www.postgresql.org/docs/18/sql-altertype.html",
+      "kind": "capability",
+      "capability_id": "query.sql-commands",
+      "behavior_id": "docs-sql.alter-type",
+      "title": "ALTER TYPE",
+      "surface_ids": [
+        "implementation-construction",
+        "testing-verification",
+        "compatibility-integration"
+      ]
+    },
+    {
+      "id": "docs-sql.alter-user",
+      "locator": "https://www.postgresql.org/docs/18/sql-alteruser.html",
+      "kind": "capability",
+      "capability_id": "query.sql-commands",
+      "behavior_id": "docs-sql.alter-user",
+      "title": "ALTER USER",
+      "surface_ids": [
+        "implementation-construction",
+        "testing-verification",
+        "compatibility-integration"
+      ]
+    },
+    {
+      "id": "docs-sql.alter-user-mapping",
+      "locator": "https://www.postgresql.org/docs/18/sql-alterusermapping.html",
+      "kind": "capability",
+      "capability_id": "query.sql-commands",
+      "behavior_id": "docs-sql.alter-user-mapping",
+      "title": "ALTER USER MAPPING",
+      "surface_ids": [
+        "implementation-construction",
+        "testing-verification",
+        "compatibility-integration"
+      ]
+    },
+    {
+      "id": "docs-sql.alter-view",
+      "locator": "https://www.postgresql.org/docs/18/sql-alterview.html",
+      "kind": "capability",
+      "capability_id": "query.sql-commands",
+      "behavior_id": "docs-sql.alter-view",
+      "title": "ALTER VIEW",
+      "surface_ids": [
+        "implementation-construction",
+        "testing-verification",
+        "compatibility-integration"
+      ]
+    },
+    {
+      "id": "docs-sql.analyze",
+      "locator": "https://www.postgresql.org/docs/18/sql-analyze.html",
+      "kind": "capability",
+      "capability_id": "query.sql-commands",
+      "behavior_id": "docs-sql.analyze",
+      "title": "ANALYZE",
+      "surface_ids": [
+        "implementation-construction",
+        "testing-verification",
+        "compatibility-integration"
+      ]
+    },
+    {
+      "id": "docs-sql.begin",
+      "locator": "https://www.postgresql.org/docs/18/sql-begin.html",
+      "kind": "capability",
+      "capability_id": "query.sql-commands",
+      "behavior_id": "docs-sql.begin",
+      "title": "BEGIN",
+      "surface_ids": [
+        "implementation-construction",
+        "testing-verification",
+        "compatibility-integration"
+      ]
+    },
+    {
+      "id": "docs-sql.call",
+      "locator": "https://www.postgresql.org/docs/18/sql-call.html",
+      "kind": "capability",
+      "capability_id": "query.sql-commands",
+      "behavior_id": "docs-sql.call",
+      "title": "CALL",
+      "surface_ids": [
+        "implementation-construction",
+        "testing-verification",
+        "compatibility-integration"
+      ]
+    },
+    {
+      "id": "docs-sql.checkpoint",
+      "locator": "https://www.postgresql.org/docs/18/sql-checkpoint.html",
+      "kind": "capability",
+      "capability_id": "query.sql-commands",
+      "behavior_id": "docs-sql.checkpoint",
+      "title": "CHECKPOINT",
+      "surface_ids": [
+        "implementation-construction",
+        "testing-verification",
+        "compatibility-integration"
+      ]
+    },
+    {
+      "id": "docs-sql.close",
+      "locator": "https://www.postgresql.org/docs/18/sql-close.html",
+      "kind": "capability",
+      "capability_id": "query.sql-commands",
+      "behavior_id": "docs-sql.close",
+      "title": "CLOSE",
+      "surface_ids": [
+        "implementation-construction",
+        "testing-verification",
+        "compatibility-integration"
+      ]
+    },
+    {
+      "id": "docs-sql.cluster",
+      "locator": "https://www.postgresql.org/docs/18/sql-cluster.html",
+      "kind": "capability",
+      "capability_id": "query.sql-commands",
+      "behavior_id": "docs-sql.cluster",
+      "title": "CLUSTER",
+      "surface_ids": [
+        "implementation-construction",
+        "testing-verification",
+        "compatibility-integration"
+      ]
+    },
+    {
+      "id": "docs-sql.comment",
+      "locator": "https://www.postgresql.org/docs/18/sql-comment.html",
+      "kind": "capability",
+      "capability_id": "query.sql-commands",
+      "behavior_id": "docs-sql.comment",
+      "title": "COMMENT",
+      "surface_ids": [
+        "implementation-construction",
+        "testing-verification",
+        "compatibility-integration"
+      ]
+    },
+    {
+      "id": "docs-sql.commit",
+      "locator": "https://www.postgresql.org/docs/18/sql-commit.html",
+      "kind": "capability",
+      "capability_id": "query.sql-commands",
+      "behavior_id": "docs-sql.commit",
+      "title": "COMMIT",
+      "surface_ids": [
+        "implementation-construction",
+        "testing-verification",
+        "compatibility-integration"
+      ]
+    },
+    {
+      "id": "docs-sql.commit-prepared",
+      "locator": "https://www.postgresql.org/docs/18/sql-commit-prepared.html",
+      "kind": "capability",
+      "capability_id": "query.sql-commands",
+      "behavior_id": "docs-sql.commit-prepared",
+      "title": "COMMIT PREPARED",
+      "surface_ids": [
+        "implementation-construction",
+        "testing-verification",
+        "compatibility-integration"
+      ]
+    },
+    {
+      "id": "docs-sql.copy",
+      "locator": "https://www.postgresql.org/docs/18/sql-copy.html",
+      "kind": "capability",
+      "capability_id": "query.sql-commands",
+      "behavior_id": "docs-sql.copy",
+      "title": "COPY",
+      "surface_ids": [
+        "implementation-construction",
+        "testing-verification",
+        "compatibility-integration"
+      ]
+    },
+    {
+      "id": "docs-sql.create-access-method",
+      "locator": "https://www.postgresql.org/docs/18/sql-create-access-method.html",
+      "kind": "capability",
+      "capability_id": "query.sql-commands",
+      "behavior_id": "docs-sql.create-access-method",
+      "title": "CREATE ACCESS METHOD",
+      "surface_ids": [
+        "implementation-construction",
+        "testing-verification",
+        "compatibility-integration"
+      ]
+    },
+    {
+      "id": "docs-sql.create-aggregate",
+      "locator": "https://www.postgresql.org/docs/18/sql-createaggregate.html",
+      "kind": "capability",
+      "capability_id": "query.sql-commands",
+      "behavior_id": "docs-sql.create-aggregate",
+      "title": "CREATE AGGREGATE",
+      "surface_ids": [
+        "implementation-construction",
+        "testing-verification",
+        "compatibility-integration"
+      ]
+    },
+    {
+      "id": "docs-sql.create-cast",
+      "locator": "https://www.postgresql.org/docs/18/sql-createcast.html",
+      "kind": "capability",
+      "capability_id": "query.sql-commands",
+      "behavior_id": "docs-sql.create-cast",
+      "title": "CREATE CAST",
+      "surface_ids": [
+        "implementation-construction",
+        "testing-verification",
+        "compatibility-integration"
+      ]
+    },
+    {
+      "id": "docs-sql.create-collation",
+      "locator": "https://www.postgresql.org/docs/18/sql-createcollation.html",
+      "kind": "capability",
+      "capability_id": "query.sql-commands",
+      "behavior_id": "docs-sql.create-collation",
+      "title": "CREATE COLLATION",
+      "surface_ids": [
+        "implementation-construction",
+        "testing-verification",
+        "compatibility-integration"
+      ]
+    },
+    {
+      "id": "docs-sql.create-conversion",
+      "locator": "https://www.postgresql.org/docs/18/sql-createconversion.html",
+      "kind": "capability",
+      "capability_id": "query.sql-commands",
+      "behavior_id": "docs-sql.create-conversion",
+      "title": "CREATE CONVERSION",
+      "surface_ids": [
+        "implementation-construction",
+        "testing-verification",
+        "compatibility-integration"
+      ]
+    },
+    {
+      "id": "docs-sql.create-database",
+      "locator": "https://www.postgresql.org/docs/18/sql-createdatabase.html",
+      "kind": "capability",
+      "capability_id": "query.sql-commands",
+      "behavior_id": "docs-sql.create-database",
+      "title": "CREATE DATABASE",
+      "surface_ids": [
+        "implementation-construction",
+        "testing-verification",
+        "compatibility-integration"
+      ]
+    },
+    {
+      "id": "docs-sql.create-domain",
+      "locator": "https://www.postgresql.org/docs/18/sql-createdomain.html",
+      "kind": "capability",
+      "capability_id": "query.sql-commands",
+      "behavior_id": "docs-sql.create-domain",
+      "title": "CREATE DOMAIN",
+      "surface_ids": [
+        "implementation-construction",
+        "testing-verification",
+        "compatibility-integration"
+      ]
+    },
+    {
+      "id": "docs-sql.create-event-trigger",
+      "locator": "https://www.postgresql.org/docs/18/sql-createeventtrigger.html",
+      "kind": "capability",
+      "capability_id": "query.sql-commands",
+      "behavior_id": "docs-sql.create-event-trigger",
+      "title": "CREATE EVENT TRIGGER",
+      "surface_ids": [
+        "implementation-construction",
+        "testing-verification",
+        "compatibility-integration"
+      ]
+    },
+    {
+      "id": "docs-sql.create-extension",
+      "locator": "https://www.postgresql.org/docs/18/sql-createextension.html",
+      "kind": "capability",
+      "capability_id": "query.sql-commands",
+      "behavior_id": "docs-sql.create-extension",
+      "title": "CREATE EXTENSION",
+      "surface_ids": [
+        "implementation-construction",
+        "testing-verification",
+        "compatibility-integration"
+      ]
+    },
+    {
+      "id": "docs-sql.create-foreign-data-wrapper",
+      "locator": "https://www.postgresql.org/docs/18/sql-createforeigndatawrapper.html",
+      "kind": "capability",
+      "capability_id": "query.sql-commands",
+      "behavior_id": "docs-sql.create-foreign-data-wrapper",
+      "title": "CREATE FOREIGN DATA WRAPPER",
+      "surface_ids": [
+        "implementation-construction",
+        "testing-verification",
+        "compatibility-integration"
+      ]
+    },
+    {
+      "id": "docs-sql.create-foreign-table",
+      "locator": "https://www.postgresql.org/docs/18/sql-createforeigntable.html",
+      "kind": "capability",
+      "capability_id": "query.sql-commands",
+      "behavior_id": "docs-sql.create-foreign-table",
+      "title": "CREATE FOREIGN TABLE",
+      "surface_ids": [
+        "implementation-construction",
+        "testing-verification",
+        "compatibility-integration"
+      ]
+    },
+    {
+      "id": "docs-sql.create-function",
+      "locator": "https://www.postgresql.org/docs/18/sql-createfunction.html",
+      "kind": "capability",
+      "capability_id": "query.sql-commands",
+      "behavior_id": "docs-sql.create-function",
+      "title": "CREATE FUNCTION",
+      "surface_ids": [
+        "implementation-construction",
+        "testing-verification",
+        "compatibility-integration"
+      ]
+    },
+    {
+      "id": "docs-sql.create-group",
+      "locator": "https://www.postgresql.org/docs/18/sql-creategroup.html",
+      "kind": "capability",
+      "capability_id": "query.sql-commands",
+      "behavior_id": "docs-sql.create-group",
+      "title": "CREATE GROUP",
+      "surface_ids": [
+        "implementation-construction",
+        "testing-verification",
+        "compatibility-integration"
+      ]
+    },
+    {
+      "id": "docs-sql.create-index",
+      "locator": "https://www.postgresql.org/docs/18/sql-createindex.html",
+      "kind": "capability",
+      "capability_id": "query.sql-commands",
+      "behavior_id": "docs-sql.create-index",
+      "title": "CREATE INDEX",
+      "surface_ids": [
+        "implementation-construction",
+        "testing-verification",
+        "compatibility-integration"
+      ]
+    },
+    {
+      "id": "docs-sql.create-language",
+      "locator": "https://www.postgresql.org/docs/18/sql-createlanguage.html",
+      "kind": "capability",
+      "capability_id": "query.sql-commands",
+      "behavior_id": "docs-sql.create-language",
+      "title": "CREATE LANGUAGE",
+      "surface_ids": [
+        "implementation-construction",
+        "testing-verification",
+        "compatibility-integration"
+      ]
+    },
+    {
+      "id": "docs-sql.create-materialized-view",
+      "locator": "https://www.postgresql.org/docs/18/sql-creatematerializedview.html",
+      "kind": "capability",
+      "capability_id": "query.sql-commands",
+      "behavior_id": "docs-sql.create-materialized-view",
+      "title": "CREATE MATERIALIZED VIEW",
+      "surface_ids": [
+        "implementation-construction",
+        "testing-verification",
+        "compatibility-integration"
+      ]
+    },
+    {
+      "id": "docs-sql.create-operator",
+      "locator": "https://www.postgresql.org/docs/18/sql-createoperator.html",
+      "kind": "capability",
+      "capability_id": "query.sql-commands",
+      "behavior_id": "docs-sql.create-operator",
+      "title": "CREATE OPERATOR",
+      "surface_ids": [
+        "implementation-construction",
+        "testing-verification",
+        "compatibility-integration"
+      ]
+    },
+    {
+      "id": "docs-sql.create-operator-class",
+      "locator": "https://www.postgresql.org/docs/18/sql-createopclass.html",
+      "kind": "capability",
+      "capability_id": "query.sql-commands",
+      "behavior_id": "docs-sql.create-operator-class",
+      "title": "CREATE OPERATOR CLASS",
+      "surface_ids": [
+        "implementation-construction",
+        "testing-verification",
+        "compatibility-integration"
+      ]
+    },
+    {
+      "id": "docs-sql.create-operator-family",
+      "locator": "https://www.postgresql.org/docs/18/sql-createopfamily.html",
+      "kind": "capability",
+      "capability_id": "query.sql-commands",
+      "behavior_id": "docs-sql.create-operator-family",
+      "title": "CREATE OPERATOR FAMILY",
+      "surface_ids": [
+        "implementation-construction",
+        "testing-verification",
+        "compatibility-integration"
+      ]
+    },
+    {
+      "id": "docs-sql.create-policy",
+      "locator": "https://www.postgresql.org/docs/18/sql-createpolicy.html",
+      "kind": "capability",
+      "capability_id": "query.sql-commands",
+      "behavior_id": "docs-sql.create-policy",
+      "title": "CREATE POLICY",
+      "surface_ids": [
+        "implementation-construction",
+        "testing-verification",
+        "compatibility-integration"
+      ]
+    },
+    {
+      "id": "docs-sql.create-procedure",
+      "locator": "https://www.postgresql.org/docs/18/sql-createprocedure.html",
+      "kind": "capability",
+      "capability_id": "query.sql-commands",
+      "behavior_id": "docs-sql.create-procedure",
+      "title": "CREATE PROCEDURE",
+      "surface_ids": [
+        "implementation-construction",
+        "testing-verification",
+        "compatibility-integration"
+      ]
+    },
+    {
+      "id": "docs-sql.create-publication",
+      "locator": "https://www.postgresql.org/docs/18/sql-createpublication.html",
+      "kind": "capability",
+      "capability_id": "query.sql-commands",
+      "behavior_id": "docs-sql.create-publication",
+      "title": "CREATE PUBLICATION",
+      "surface_ids": [
+        "implementation-construction",
+        "testing-verification",
+        "compatibility-integration"
+      ]
+    },
+    {
+      "id": "docs-sql.create-role",
+      "locator": "https://www.postgresql.org/docs/18/sql-createrole.html",
+      "kind": "capability",
+      "capability_id": "query.sql-commands",
+      "behavior_id": "docs-sql.create-role",
+      "title": "CREATE ROLE",
+      "surface_ids": [
+        "implementation-construction",
+        "testing-verification",
+        "compatibility-integration"
+      ]
+    },
+    {
+      "id": "docs-sql.create-rule",
+      "locator": "https://www.postgresql.org/docs/18/sql-createrule.html",
+      "kind": "capability",
+      "capability_id": "query.sql-commands",
+      "behavior_id": "docs-sql.create-rule",
+      "title": "CREATE RULE",
+      "surface_ids": [
+        "implementation-construction",
+        "testing-verification",
+        "compatibility-integration"
+      ]
+    },
+    {
+      "id": "docs-sql.create-schema",
+      "locator": "https://www.postgresql.org/docs/18/sql-createschema.html",
+      "kind": "capability",
+      "capability_id": "query.sql-commands",
+      "behavior_id": "docs-sql.create-schema",
+      "title": "CREATE SCHEMA",
+      "surface_ids": [
+        "implementation-construction",
+        "testing-verification",
+        "compatibility-integration"
+      ]
+    },
+    {
+      "id": "docs-sql.create-sequence",
+      "locator": "https://www.postgresql.org/docs/18/sql-createsequence.html",
+      "kind": "capability",
+      "capability_id": "query.sql-commands",
+      "behavior_id": "docs-sql.create-sequence",
+      "title": "CREATE SEQUENCE",
+      "surface_ids": [
+        "implementation-construction",
+        "testing-verification",
+        "compatibility-integration"
+      ]
+    },
+    {
+      "id": "docs-sql.create-server",
+      "locator": "https://www.postgresql.org/docs/18/sql-createserver.html",
+      "kind": "capability",
+      "capability_id": "query.sql-commands",
+      "behavior_id": "docs-sql.create-server",
+      "title": "CREATE SERVER",
+      "surface_ids": [
+        "implementation-construction",
+        "testing-verification",
+        "compatibility-integration"
+      ]
+    },
+    {
+      "id": "docs-sql.create-statistics",
+      "locator": "https://www.postgresql.org/docs/18/sql-createstatistics.html",
+      "kind": "capability",
+      "capability_id": "query.sql-commands",
+      "behavior_id": "docs-sql.create-statistics",
+      "title": "CREATE STATISTICS",
+      "surface_ids": [
+        "implementation-construction",
+        "testing-verification",
+        "compatibility-integration"
+      ]
+    },
+    {
+      "id": "docs-sql.create-subscription",
+      "locator": "https://www.postgresql.org/docs/18/sql-createsubscription.html",
+      "kind": "capability",
+      "capability_id": "query.sql-commands",
+      "behavior_id": "docs-sql.create-subscription",
+      "title": "CREATE SUBSCRIPTION",
+      "surface_ids": [
+        "implementation-construction",
+        "testing-verification",
+        "compatibility-integration"
+      ]
+    },
+    {
+      "id": "docs-sql.create-table",
+      "locator": "https://www.postgresql.org/docs/18/sql-createtable.html",
+      "kind": "capability",
+      "capability_id": "query.sql-commands",
+      "behavior_id": "docs-sql.create-table",
+      "title": "CREATE TABLE",
+      "surface_ids": [
+        "implementation-construction",
+        "testing-verification",
+        "compatibility-integration"
+      ]
+    },
+    {
+      "id": "docs-sql.create-table-as",
+      "locator": "https://www.postgresql.org/docs/18/sql-createtableas.html",
+      "kind": "capability",
+      "capability_id": "query.sql-commands",
+      "behavior_id": "docs-sql.create-table-as",
+      "title": "CREATE TABLE AS",
+      "surface_ids": [
+        "implementation-construction",
+        "testing-verification",
+        "compatibility-integration"
+      ]
+    },
+    {
+      "id": "docs-sql.create-tablespace",
+      "locator": "https://www.postgresql.org/docs/18/sql-createtablespace.html",
+      "kind": "capability",
+      "capability_id": "query.sql-commands",
+      "behavior_id": "docs-sql.create-tablespace",
+      "title": "CREATE TABLESPACE",
+      "surface_ids": [
+        "implementation-construction",
+        "testing-verification",
+        "compatibility-integration"
+      ]
+    },
+    {
+      "id": "docs-sql.create-text-search-configuration",
+      "locator": "https://www.postgresql.org/docs/18/sql-createtsconfig.html",
+      "kind": "capability",
+      "capability_id": "query.sql-commands",
+      "behavior_id": "docs-sql.create-text-search-configuration",
+      "title": "CREATE TEXT SEARCH CONFIGURATION",
+      "surface_ids": [
+        "implementation-construction",
+        "testing-verification",
+        "compatibility-integration"
+      ]
+    },
+    {
+      "id": "docs-sql.create-text-search-dictionary",
+      "locator": "https://www.postgresql.org/docs/18/sql-createtsdictionary.html",
+      "kind": "capability",
+      "capability_id": "query.sql-commands",
+      "behavior_id": "docs-sql.create-text-search-dictionary",
+      "title": "CREATE TEXT SEARCH DICTIONARY",
+      "surface_ids": [
+        "implementation-construction",
+        "testing-verification",
+        "compatibility-integration"
+      ]
+    },
+    {
+      "id": "docs-sql.create-text-search-parser",
+      "locator": "https://www.postgresql.org/docs/18/sql-createtsparser.html",
+      "kind": "capability",
+      "capability_id": "query.sql-commands",
+      "behavior_id": "docs-sql.create-text-search-parser",
+      "title": "CREATE TEXT SEARCH PARSER",
+      "surface_ids": [
+        "implementation-construction",
+        "testing-verification",
+        "compatibility-integration"
+      ]
+    },
+    {
+      "id": "docs-sql.create-text-search-template",
+      "locator": "https://www.postgresql.org/docs/18/sql-createtstemplate.html",
+      "kind": "capability",
+      "capability_id": "query.sql-commands",
+      "behavior_id": "docs-sql.create-text-search-template",
+      "title": "CREATE TEXT SEARCH TEMPLATE",
+      "surface_ids": [
+        "implementation-construction",
+        "testing-verification",
+        "compatibility-integration"
+      ]
+    },
+    {
+      "id": "docs-sql.create-transform",
+      "locator": "https://www.postgresql.org/docs/18/sql-createtransform.html",
+      "kind": "capability",
+      "capability_id": "query.sql-commands",
+      "behavior_id": "docs-sql.create-transform",
+      "title": "CREATE TRANSFORM",
+      "surface_ids": [
+        "implementation-construction",
+        "testing-verification",
+        "compatibility-integration"
+      ]
+    },
+    {
+      "id": "docs-sql.create-trigger",
+      "locator": "https://www.postgresql.org/docs/18/sql-createtrigger.html",
+      "kind": "capability",
+      "capability_id": "query.sql-commands",
+      "behavior_id": "docs-sql.create-trigger",
+      "title": "CREATE TRIGGER",
+      "surface_ids": [
+        "implementation-construction",
+        "testing-verification",
+        "compatibility-integration"
+      ]
+    },
+    {
+      "id": "docs-sql.create-type",
+      "locator": "https://www.postgresql.org/docs/18/sql-createtype.html",
+      "kind": "capability",
+      "capability_id": "query.sql-commands",
+      "behavior_id": "docs-sql.create-type",
+      "title": "CREATE TYPE",
+      "surface_ids": [
+        "implementation-construction",
+        "testing-verification",
+        "compatibility-integration"
+      ]
+    },
+    {
+      "id": "docs-sql.create-user",
+      "locator": "https://www.postgresql.org/docs/18/sql-createuser.html",
+      "kind": "capability",
+      "capability_id": "query.sql-commands",
+      "behavior_id": "docs-sql.create-user",
+      "title": "CREATE USER",
+      "surface_ids": [
+        "implementation-construction",
+        "testing-verification",
+        "compatibility-integration"
+      ]
+    },
+    {
+      "id": "docs-sql.create-user-mapping",
+      "locator": "https://www.postgresql.org/docs/18/sql-createusermapping.html",
+      "kind": "capability",
+      "capability_id": "query.sql-commands",
+      "behavior_id": "docs-sql.create-user-mapping",
+      "title": "CREATE USER MAPPING",
+      "surface_ids": [
+        "implementation-construction",
+        "testing-verification",
+        "compatibility-integration"
+      ]
+    },
+    {
+      "id": "docs-sql.create-view",
+      "locator": "https://www.postgresql.org/docs/18/sql-createview.html",
+      "kind": "capability",
+      "capability_id": "query.sql-commands",
+      "behavior_id": "docs-sql.create-view",
+      "title": "CREATE VIEW",
+      "surface_ids": [
+        "implementation-construction",
+        "testing-verification",
+        "compatibility-integration"
+      ]
+    },
+    {
+      "id": "docs-sql.deallocate",
+      "locator": "https://www.postgresql.org/docs/18/sql-deallocate.html",
+      "kind": "capability",
+      "capability_id": "query.sql-commands",
+      "behavior_id": "docs-sql.deallocate",
+      "title": "DEALLOCATE",
+      "surface_ids": [
+        "implementation-construction",
+        "testing-verification",
+        "compatibility-integration"
+      ]
+    },
+    {
+      "id": "docs-sql.declare",
+      "locator": "https://www.postgresql.org/docs/18/sql-declare.html",
+      "kind": "capability",
+      "capability_id": "query.sql-commands",
+      "behavior_id": "docs-sql.declare",
+      "title": "DECLARE",
+      "surface_ids": [
+        "implementation-construction",
+        "testing-verification",
+        "compatibility-integration"
+      ]
+    },
+    {
+      "id": "docs-sql.delete",
+      "locator": "https://www.postgresql.org/docs/18/sql-delete.html",
+      "kind": "capability",
+      "capability_id": "query.sql-commands",
+      "behavior_id": "docs-sql.delete",
+      "title": "DELETE",
+      "surface_ids": [
+        "implementation-construction",
+        "testing-verification",
+        "compatibility-integration"
+      ]
+    },
+    {
+      "id": "docs-sql.discard",
+      "locator": "https://www.postgresql.org/docs/18/sql-discard.html",
+      "kind": "capability",
+      "capability_id": "query.sql-commands",
+      "behavior_id": "docs-sql.discard",
+      "title": "DISCARD",
+      "surface_ids": [
+        "implementation-construction",
+        "testing-verification",
+        "compatibility-integration"
+      ]
+    },
+    {
+      "id": "docs-sql.do",
+      "locator": "https://www.postgresql.org/docs/18/sql-do.html",
+      "kind": "capability",
+      "capability_id": "query.sql-commands",
+      "behavior_id": "docs-sql.do",
+      "title": "DO",
+      "surface_ids": [
+        "implementation-construction",
+        "testing-verification",
+        "compatibility-integration"
+      ]
+    },
+    {
+      "id": "docs-sql.drop-access-method",
+      "locator": "https://www.postgresql.org/docs/18/sql-drop-access-method.html",
+      "kind": "capability",
+      "capability_id": "query.sql-commands",
+      "behavior_id": "docs-sql.drop-access-method",
+      "title": "DROP ACCESS METHOD",
+      "surface_ids": [
+        "implementation-construction",
+        "testing-verification",
+        "compatibility-integration"
+      ]
+    },
+    {
+      "id": "docs-sql.drop-aggregate",
+      "locator": "https://www.postgresql.org/docs/18/sql-dropaggregate.html",
+      "kind": "capability",
+      "capability_id": "query.sql-commands",
+      "behavior_id": "docs-sql.drop-aggregate",
+      "title": "DROP AGGREGATE",
+      "surface_ids": [
+        "implementation-construction",
+        "testing-verification",
+        "compatibility-integration"
+      ]
+    },
+    {
+      "id": "docs-sql.drop-cast",
+      "locator": "https://www.postgresql.org/docs/18/sql-dropcast.html",
+      "kind": "capability",
+      "capability_id": "query.sql-commands",
+      "behavior_id": "docs-sql.drop-cast",
+      "title": "DROP CAST",
+      "surface_ids": [
+        "implementation-construction",
+        "testing-verification",
+        "compatibility-integration"
+      ]
+    },
+    {
+      "id": "docs-sql.drop-collation",
+      "locator": "https://www.postgresql.org/docs/18/sql-dropcollation.html",
+      "kind": "capability",
+      "capability_id": "query.sql-commands",
+      "behavior_id": "docs-sql.drop-collation",
+      "title": "DROP COLLATION",
+      "surface_ids": [
+        "implementation-construction",
+        "testing-verification",
+        "compatibility-integration"
+      ]
+    },
+    {
+      "id": "docs-sql.drop-conversion",
+      "locator": "https://www.postgresql.org/docs/18/sql-dropconversion.html",
+      "kind": "capability",
+      "capability_id": "query.sql-commands",
+      "behavior_id": "docs-sql.drop-conversion",
+      "title": "DROP CONVERSION",
+      "surface_ids": [
+        "implementation-construction",
+        "testing-verification",
+        "compatibility-integration"
+      ]
+    },
+    {
+      "id": "docs-sql.drop-database",
+      "locator": "https://www.postgresql.org/docs/18/sql-dropdatabase.html",
+      "kind": "capability",
+      "capability_id": "query.sql-commands",
+      "behavior_id": "docs-sql.drop-database",
+      "title": "DROP DATABASE",
+      "surface_ids": [
+        "implementation-construction",
+        "testing-verification",
+        "compatibility-integration"
+      ]
+    },
+    {
+      "id": "docs-sql.drop-domain",
+      "locator": "https://www.postgresql.org/docs/18/sql-dropdomain.html",
+      "kind": "capability",
+      "capability_id": "query.sql-commands",
+      "behavior_id": "docs-sql.drop-domain",
+      "title": "DROP DOMAIN",
+      "surface_ids": [
+        "implementation-construction",
+        "testing-verification",
+        "compatibility-integration"
+      ]
+    },
+    {
+      "id": "docs-sql.drop-event-trigger",
+      "locator": "https://www.postgresql.org/docs/18/sql-dropeventtrigger.html",
+      "kind": "capability",
+      "capability_id": "query.sql-commands",
+      "behavior_id": "docs-sql.drop-event-trigger",
+      "title": "DROP EVENT TRIGGER",
+      "surface_ids": [
+        "implementation-construction",
+        "testing-verification",
+        "compatibility-integration"
+      ]
+    },
+    {
+      "id": "docs-sql.drop-extension",
+      "locator": "https://www.postgresql.org/docs/18/sql-dropextension.html",
+      "kind": "capability",
+      "capability_id": "query.sql-commands",
+      "behavior_id": "docs-sql.drop-extension",
+      "title": "DROP EXTENSION",
+      "surface_ids": [
+        "implementation-construction",
+        "testing-verification",
+        "compatibility-integration"
+      ]
+    },
+    {
+      "id": "docs-sql.drop-foreign-data-wrapper",
+      "locator": "https://www.postgresql.org/docs/18/sql-dropforeigndatawrapper.html",
+      "kind": "capability",
+      "capability_id": "query.sql-commands",
+      "behavior_id": "docs-sql.drop-foreign-data-wrapper",
+      "title": "DROP FOREIGN DATA WRAPPER",
+      "surface_ids": [
+        "implementation-construction",
+        "testing-verification",
+        "compatibility-integration"
+      ]
+    },
+    {
+      "id": "docs-sql.drop-foreign-table",
+      "locator": "https://www.postgresql.org/docs/18/sql-dropforeigntable.html",
+      "kind": "capability",
+      "capability_id": "query.sql-commands",
+      "behavior_id": "docs-sql.drop-foreign-table",
+      "title": "DROP FOREIGN TABLE",
+      "surface_ids": [
+        "implementation-construction",
+        "testing-verification",
+        "compatibility-integration"
+      ]
+    },
+    {
+      "id": "docs-sql.drop-function",
+      "locator": "https://www.postgresql.org/docs/18/sql-dropfunction.html",
+      "kind": "capability",
+      "capability_id": "query.sql-commands",
+      "behavior_id": "docs-sql.drop-function",
+      "title": "DROP FUNCTION",
+      "surface_ids": [
+        "implementation-construction",
+        "testing-verification",
+        "compatibility-integration"
+      ]
+    },
+    {
+      "id": "docs-sql.drop-group",
+      "locator": "https://www.postgresql.org/docs/18/sql-dropgroup.html",
+      "kind": "capability",
+      "capability_id": "query.sql-commands",
+      "behavior_id": "docs-sql.drop-group",
+      "title": "DROP GROUP",
+      "surface_ids": [
+        "implementation-construction",
+        "testing-verification",
+        "compatibility-integration"
+      ]
+    },
+    {
+      "id": "docs-sql.drop-index",
+      "locator": "https://www.postgresql.org/docs/18/sql-dropindex.html",
+      "kind": "capability",
+      "capability_id": "query.sql-commands",
+      "behavior_id": "docs-sql.drop-index",
+      "title": "DROP INDEX",
+      "surface_ids": [
+        "implementation-construction",
+        "testing-verification",
+        "compatibility-integration"
+      ]
+    },
+    {
+      "id": "docs-sql.drop-language",
+      "locator": "https://www.postgresql.org/docs/18/sql-droplanguage.html",
+      "kind": "capability",
+      "capability_id": "query.sql-commands",
+      "behavior_id": "docs-sql.drop-language",
+      "title": "DROP LANGUAGE",
+      "surface_ids": [
+        "implementation-construction",
+        "testing-verification",
+        "compatibility-integration"
+      ]
+    },
+    {
+      "id": "docs-sql.drop-materialized-view",
+      "locator": "https://www.postgresql.org/docs/18/sql-dropmaterializedview.html",
+      "kind": "capability",
+      "capability_id": "query.sql-commands",
+      "behavior_id": "docs-sql.drop-materialized-view",
+      "title": "DROP MATERIALIZED VIEW",
+      "surface_ids": [
+        "implementation-construction",
+        "testing-verification",
+        "compatibility-integration"
+      ]
+    },
+    {
+      "id": "docs-sql.drop-operator",
+      "locator": "https://www.postgresql.org/docs/18/sql-dropoperator.html",
+      "kind": "capability",
+      "capability_id": "query.sql-commands",
+      "behavior_id": "docs-sql.drop-operator",
+      "title": "DROP OPERATOR",
+      "surface_ids": [
+        "implementation-construction",
+        "testing-verification",
+        "compatibility-integration"
+      ]
+    },
+    {
+      "id": "docs-sql.drop-operator-class",
+      "locator": "https://www.postgresql.org/docs/18/sql-dropopclass.html",
+      "kind": "capability",
+      "capability_id": "query.sql-commands",
+      "behavior_id": "docs-sql.drop-operator-class",
+      "title": "DROP OPERATOR CLASS",
+      "surface_ids": [
+        "implementation-construction",
+        "testing-verification",
+        "compatibility-integration"
+      ]
+    },
+    {
+      "id": "docs-sql.drop-operator-family",
+      "locator": "https://www.postgresql.org/docs/18/sql-dropopfamily.html",
+      "kind": "capability",
+      "capability_id": "query.sql-commands",
+      "behavior_id": "docs-sql.drop-operator-family",
+      "title": "DROP OPERATOR FAMILY",
+      "surface_ids": [
+        "implementation-construction",
+        "testing-verification",
+        "compatibility-integration"
+      ]
+    },
+    {
+      "id": "docs-sql.drop-owned",
+      "locator": "https://www.postgresql.org/docs/18/sql-drop-owned.html",
+      "kind": "capability",
+      "capability_id": "query.sql-commands",
+      "behavior_id": "docs-sql.drop-owned",
+      "title": "DROP OWNED",
+      "surface_ids": [
+        "implementation-construction",
+        "testing-verification",
+        "compatibility-integration"
+      ]
+    },
+    {
+      "id": "docs-sql.drop-policy",
+      "locator": "https://www.postgresql.org/docs/18/sql-droppolicy.html",
+      "kind": "capability",
+      "capability_id": "query.sql-commands",
+      "behavior_id": "docs-sql.drop-policy",
+      "title": "DROP POLICY",
+      "surface_ids": [
+        "implementation-construction",
+        "testing-verification",
+        "compatibility-integration"
+      ]
+    },
+    {
+      "id": "docs-sql.drop-procedure",
+      "locator": "https://www.postgresql.org/docs/18/sql-dropprocedure.html",
+      "kind": "capability",
+      "capability_id": "query.sql-commands",
+      "behavior_id": "docs-sql.drop-procedure",
+      "title": "DROP PROCEDURE",
+      "surface_ids": [
+        "implementation-construction",
+        "testing-verification",
+        "compatibility-integration"
+      ]
+    },
+    {
+      "id": "docs-sql.drop-publication",
+      "locator": "https://www.postgresql.org/docs/18/sql-droppublication.html",
+      "kind": "capability",
+      "capability_id": "query.sql-commands",
+      "behavior_id": "docs-sql.drop-publication",
+      "title": "DROP PUBLICATION",
+      "surface_ids": [
+        "implementation-construction",
+        "testing-verification",
+        "compatibility-integration"
+      ]
+    },
+    {
+      "id": "docs-sql.drop-role",
+      "locator": "https://www.postgresql.org/docs/18/sql-droprole.html",
+      "kind": "capability",
+      "capability_id": "query.sql-commands",
+      "behavior_id": "docs-sql.drop-role",
+      "title": "DROP ROLE",
+      "surface_ids": [
+        "implementation-construction",
+        "testing-verification",
+        "compatibility-integration"
+      ]
+    },
+    {
+      "id": "docs-sql.drop-routine",
+      "locator": "https://www.postgresql.org/docs/18/sql-droproutine.html",
+      "kind": "capability",
+      "capability_id": "query.sql-commands",
+      "behavior_id": "docs-sql.drop-routine",
+      "title": "DROP ROUTINE",
+      "surface_ids": [
+        "implementation-construction",
+        "testing-verification",
+        "compatibility-integration"
+      ]
+    },
+    {
+      "id": "docs-sql.drop-rule",
+      "locator": "https://www.postgresql.org/docs/18/sql-droprule.html",
+      "kind": "capability",
+      "capability_id": "query.sql-commands",
+      "behavior_id": "docs-sql.drop-rule",
+      "title": "DROP RULE",
+      "surface_ids": [
+        "implementation-construction",
+        "testing-verification",
+        "compatibility-integration"
+      ]
+    },
+    {
+      "id": "docs-sql.drop-schema",
+      "locator": "https://www.postgresql.org/docs/18/sql-dropschema.html",
+      "kind": "capability",
+      "capability_id": "query.sql-commands",
+      "behavior_id": "docs-sql.drop-schema",
+      "title": "DROP SCHEMA",
+      "surface_ids": [
+        "implementation-construction",
+        "testing-verification",
+        "compatibility-integration"
+      ]
+    },
+    {
+      "id": "docs-sql.drop-sequence",
+      "locator": "https://www.postgresql.org/docs/18/sql-dropsequence.html",
+      "kind": "capability",
+      "capability_id": "query.sql-commands",
+      "behavior_id": "docs-sql.drop-sequence",
+      "title": "DROP SEQUENCE",
+      "surface_ids": [
+        "implementation-construction",
+        "testing-verification",
+        "compatibility-integration"
+      ]
+    },
+    {
+      "id": "docs-sql.drop-server",
+      "locator": "https://www.postgresql.org/docs/18/sql-dropserver.html",
+      "kind": "capability",
+      "capability_id": "query.sql-commands",
+      "behavior_id": "docs-sql.drop-server",
+      "title": "DROP SERVER",
+      "surface_ids": [
+        "implementation-construction",
+        "testing-verification",
+        "compatibility-integration"
+      ]
+    },
+    {
+      "id": "docs-sql.drop-statistics",
+      "locator": "https://www.postgresql.org/docs/18/sql-dropstatistics.html",
+      "kind": "capability",
+      "capability_id": "query.sql-commands",
+      "behavior_id": "docs-sql.drop-statistics",
+      "title": "DROP STATISTICS",
+      "surface_ids": [
+        "implementation-construction",
+        "testing-verification",
+        "compatibility-integration"
+      ]
+    },
+    {
+      "id": "docs-sql.drop-subscription",
+      "locator": "https://www.postgresql.org/docs/18/sql-dropsubscription.html",
+      "kind": "capability",
+      "capability_id": "query.sql-commands",
+      "behavior_id": "docs-sql.drop-subscription",
+      "title": "DROP SUBSCRIPTION",
+      "surface_ids": [
+        "implementation-construction",
+        "testing-verification",
+        "compatibility-integration"
+      ]
+    },
+    {
+      "id": "docs-sql.drop-table",
+      "locator": "https://www.postgresql.org/docs/18/sql-droptable.html",
+      "kind": "capability",
+      "capability_id": "query.sql-commands",
+      "behavior_id": "docs-sql.drop-table",
+      "title": "DROP TABLE",
+      "surface_ids": [
+        "implementation-construction",
+        "testing-verification",
+        "compatibility-integration"
+      ]
+    },
+    {
+      "id": "docs-sql.drop-tablespace",
+      "locator": "https://www.postgresql.org/docs/18/sql-droptablespace.html",
+      "kind": "capability",
+      "capability_id": "query.sql-commands",
+      "behavior_id": "docs-sql.drop-tablespace",
+      "title": "DROP TABLESPACE",
+      "surface_ids": [
+        "implementation-construction",
+        "testing-verification",
+        "compatibility-integration"
+      ]
+    },
+    {
+      "id": "docs-sql.drop-text-search-configuration",
+      "locator": "https://www.postgresql.org/docs/18/sql-droptsconfig.html",
+      "kind": "capability",
+      "capability_id": "query.sql-commands",
+      "behavior_id": "docs-sql.drop-text-search-configuration",
+      "title": "DROP TEXT SEARCH CONFIGURATION",
+      "surface_ids": [
+        "implementation-construction",
+        "testing-verification",
+        "compatibility-integration"
+      ]
+    },
+    {
+      "id": "docs-sql.drop-text-search-dictionary",
+      "locator": "https://www.postgresql.org/docs/18/sql-droptsdictionary.html",
+      "kind": "capability",
+      "capability_id": "query.sql-commands",
+      "behavior_id": "docs-sql.drop-text-search-dictionary",
+      "title": "DROP TEXT SEARCH DICTIONARY",
+      "surface_ids": [
+        "implementation-construction",
+        "testing-verification",
+        "compatibility-integration"
+      ]
+    },
+    {
+      "id": "docs-sql.drop-text-search-parser",
+      "locator": "https://www.postgresql.org/docs/18/sql-droptsparser.html",
+      "kind": "capability",
+      "capability_id": "query.sql-commands",
+      "behavior_id": "docs-sql.drop-text-search-parser",
+      "title": "DROP TEXT SEARCH PARSER",
+      "surface_ids": [
+        "implementation-construction",
+        "testing-verification",
+        "compatibility-integration"
+      ]
+    },
+    {
+      "id": "docs-sql.drop-text-search-template",
+      "locator": "https://www.postgresql.org/docs/18/sql-droptstemplate.html",
+      "kind": "capability",
+      "capability_id": "query.sql-commands",
+      "behavior_id": "docs-sql.drop-text-search-template",
+      "title": "DROP TEXT SEARCH TEMPLATE",
+      "surface_ids": [
+        "implementation-construction",
+        "testing-verification",
+        "compatibility-integration"
+      ]
+    },
+    {
+      "id": "docs-sql.drop-transform",
+      "locator": "https://www.postgresql.org/docs/18/sql-droptransform.html",
+      "kind": "capability",
+      "capability_id": "query.sql-commands",
+      "behavior_id": "docs-sql.drop-transform",
+      "title": "DROP TRANSFORM",
+      "surface_ids": [
+        "implementation-construction",
+        "testing-verification",
+        "compatibility-integration"
+      ]
+    },
+    {
+      "id": "docs-sql.drop-trigger",
+      "locator": "https://www.postgresql.org/docs/18/sql-droptrigger.html",
+      "kind": "capability",
+      "capability_id": "query.sql-commands",
+      "behavior_id": "docs-sql.drop-trigger",
+      "title": "DROP TRIGGER",
+      "surface_ids": [
+        "implementation-construction",
+        "testing-verification",
+        "compatibility-integration"
+      ]
+    },
+    {
+      "id": "docs-sql.drop-type",
+      "locator": "https://www.postgresql.org/docs/18/sql-droptype.html",
+      "kind": "capability",
+      "capability_id": "query.sql-commands",
+      "behavior_id": "docs-sql.drop-type",
+      "title": "DROP TYPE",
+      "surface_ids": [
+        "implementation-construction",
+        "testing-verification",
+        "compatibility-integration"
+      ]
+    },
+    {
+      "id": "docs-sql.drop-user",
+      "locator": "https://www.postgresql.org/docs/18/sql-dropuser.html",
+      "kind": "capability",
+      "capability_id": "query.sql-commands",
+      "behavior_id": "docs-sql.drop-user",
+      "title": "DROP USER",
+      "surface_ids": [
+        "implementation-construction",
+        "testing-verification",
+        "compatibility-integration"
+      ]
+    },
+    {
+      "id": "docs-sql.drop-user-mapping",
+      "locator": "https://www.postgresql.org/docs/18/sql-dropusermapping.html",
+      "kind": "capability",
+      "capability_id": "query.sql-commands",
+      "behavior_id": "docs-sql.drop-user-mapping",
+      "title": "DROP USER MAPPING",
+      "surface_ids": [
+        "implementation-construction",
+        "testing-verification",
+        "compatibility-integration"
+      ]
+    },
+    {
+      "id": "docs-sql.drop-view",
+      "locator": "https://www.postgresql.org/docs/18/sql-dropview.html",
+      "kind": "capability",
+      "capability_id": "query.sql-commands",
+      "behavior_id": "docs-sql.drop-view",
+      "title": "DROP VIEW",
+      "surface_ids": [
+        "implementation-construction",
+        "testing-verification",
+        "compatibility-integration"
+      ]
+    },
+    {
+      "id": "docs-sql.end",
+      "locator": "https://www.postgresql.org/docs/18/sql-end.html",
+      "kind": "capability",
+      "capability_id": "query.sql-commands",
+      "behavior_id": "docs-sql.end",
+      "title": "END",
+      "surface_ids": [
+        "implementation-construction",
+        "testing-verification",
+        "compatibility-integration"
+      ]
+    },
+    {
+      "id": "docs-sql.execute",
+      "locator": "https://www.postgresql.org/docs/18/sql-execute.html",
+      "kind": "capability",
+      "capability_id": "query.sql-commands",
+      "behavior_id": "docs-sql.execute",
+      "title": "EXECUTE",
+      "surface_ids": [
+        "implementation-construction",
+        "testing-verification",
+        "compatibility-integration"
+      ]
+    },
+    {
+      "id": "docs-sql.explain",
+      "locator": "https://www.postgresql.org/docs/18/sql-explain.html",
+      "kind": "capability",
+      "capability_id": "query.sql-commands",
+      "behavior_id": "docs-sql.explain",
+      "title": "EXPLAIN",
+      "surface_ids": [
+        "implementation-construction",
+        "testing-verification",
+        "compatibility-integration"
+      ]
+    },
+    {
+      "id": "docs-sql.fetch",
+      "locator": "https://www.postgresql.org/docs/18/sql-fetch.html",
+      "kind": "capability",
+      "capability_id": "query.sql-commands",
+      "behavior_id": "docs-sql.fetch",
+      "title": "FETCH",
+      "surface_ids": [
+        "implementation-construction",
+        "testing-verification",
+        "compatibility-integration"
+      ]
+    },
+    {
+      "id": "docs-sql.grant",
+      "locator": "https://www.postgresql.org/docs/18/sql-grant.html",
+      "kind": "capability",
+      "capability_id": "query.sql-commands",
+      "behavior_id": "docs-sql.grant",
+      "title": "GRANT",
+      "surface_ids": [
+        "implementation-construction",
+        "testing-verification",
+        "compatibility-integration"
+      ]
+    },
+    {
+      "id": "docs-sql.import-foreign-schema",
+      "locator": "https://www.postgresql.org/docs/18/sql-importforeignschema.html",
+      "kind": "capability",
+      "capability_id": "query.sql-commands",
+      "behavior_id": "docs-sql.import-foreign-schema",
+      "title": "IMPORT FOREIGN SCHEMA",
+      "surface_ids": [
+        "implementation-construction",
+        "testing-verification",
+        "compatibility-integration"
+      ]
+    },
+    {
+      "id": "docs-sql.insert",
+      "locator": "https://www.postgresql.org/docs/18/sql-insert.html",
+      "kind": "capability",
+      "capability_id": "query.sql-commands",
+      "behavior_id": "docs-sql.insert",
+      "title": "INSERT",
+      "surface_ids": [
+        "implementation-construction",
+        "testing-verification",
+        "compatibility-integration"
+      ]
+    },
+    {
+      "id": "docs-sql.listen",
+      "locator": "https://www.postgresql.org/docs/18/sql-listen.html",
+      "kind": "capability",
+      "capability_id": "query.sql-commands",
+      "behavior_id": "docs-sql.listen",
+      "title": "LISTEN",
+      "surface_ids": [
+        "implementation-construction",
+        "testing-verification",
+        "compatibility-integration"
+      ]
+    },
+    {
+      "id": "docs-sql.load",
+      "locator": "https://www.postgresql.org/docs/18/sql-load.html",
+      "kind": "capability",
+      "capability_id": "query.sql-commands",
+      "behavior_id": "docs-sql.load",
+      "title": "LOAD",
+      "surface_ids": [
+        "implementation-construction",
+        "testing-verification",
+        "compatibility-integration"
+      ]
+    },
+    {
+      "id": "docs-sql.lock",
+      "locator": "https://www.postgresql.org/docs/18/sql-lock.html",
+      "kind": "capability",
+      "capability_id": "query.sql-commands",
+      "behavior_id": "docs-sql.lock",
+      "title": "LOCK",
+      "surface_ids": [
+        "implementation-construction",
+        "testing-verification",
+        "compatibility-integration"
+      ]
+    },
+    {
+      "id": "docs-sql.merge",
+      "locator": "https://www.postgresql.org/docs/18/sql-merge.html",
+      "kind": "capability",
+      "capability_id": "query.sql-commands",
+      "behavior_id": "docs-sql.merge",
+      "title": "MERGE",
+      "surface_ids": [
+        "implementation-construction",
+        "testing-verification",
+        "compatibility-integration"
+      ]
+    },
+    {
+      "id": "docs-sql.move",
+      "locator": "https://www.postgresql.org/docs/18/sql-move.html",
+      "kind": "capability",
+      "capability_id": "query.sql-commands",
+      "behavior_id": "docs-sql.move",
+      "title": "MOVE",
+      "surface_ids": [
+        "implementation-construction",
+        "testing-verification",
+        "compatibility-integration"
+      ]
+    },
+    {
+      "id": "docs-sql.notify",
+      "locator": "https://www.postgresql.org/docs/18/sql-notify.html",
+      "kind": "capability",
+      "capability_id": "query.sql-commands",
+      "behavior_id": "docs-sql.notify",
+      "title": "NOTIFY",
+      "surface_ids": [
+        "implementation-construction",
+        "testing-verification",
+        "compatibility-integration"
+      ]
+    },
+    {
+      "id": "docs-sql.prepare",
+      "locator": "https://www.postgresql.org/docs/18/sql-prepare.html",
+      "kind": "capability",
+      "capability_id": "query.sql-commands",
+      "behavior_id": "docs-sql.prepare",
+      "title": "PREPARE",
+      "surface_ids": [
+        "implementation-construction",
+        "testing-verification",
+        "compatibility-integration"
+      ]
+    },
+    {
+      "id": "docs-sql.prepare-transaction",
+      "locator": "https://www.postgresql.org/docs/18/sql-prepare-transaction.html",
+      "kind": "capability",
+      "capability_id": "query.sql-commands",
+      "behavior_id": "docs-sql.prepare-transaction",
+      "title": "PREPARE TRANSACTION",
+      "surface_ids": [
+        "implementation-construction",
+        "testing-verification",
+        "compatibility-integration"
+      ]
+    },
+    {
+      "id": "docs-sql.reassign-owned",
+      "locator": "https://www.postgresql.org/docs/18/sql-reassign-owned.html",
+      "kind": "capability",
+      "capability_id": "query.sql-commands",
+      "behavior_id": "docs-sql.reassign-owned",
+      "title": "REASSIGN OWNED",
+      "surface_ids": [
+        "implementation-construction",
+        "testing-verification",
+        "compatibility-integration"
+      ]
+    },
+    {
+      "id": "docs-sql.refresh-materialized-view",
+      "locator": "https://www.postgresql.org/docs/18/sql-refreshmaterializedview.html",
+      "kind": "capability",
+      "capability_id": "query.sql-commands",
+      "behavior_id": "docs-sql.refresh-materialized-view",
+      "title": "REFRESH MATERIALIZED VIEW",
+      "surface_ids": [
+        "implementation-construction",
+        "testing-verification",
+        "compatibility-integration"
+      ]
+    },
+    {
+      "id": "docs-sql.reindex",
+      "locator": "https://www.postgresql.org/docs/18/sql-reindex.html",
+      "kind": "capability",
+      "capability_id": "query.sql-commands",
+      "behavior_id": "docs-sql.reindex",
+      "title": "REINDEX",
+      "surface_ids": [
+        "implementation-construction",
+        "testing-verification",
+        "compatibility-integration"
+      ]
+    },
+    {
+      "id": "docs-sql.release-savepoint",
+      "locator": "https://www.postgresql.org/docs/18/sql-release-savepoint.html",
+      "kind": "capability",
+      "capability_id": "query.sql-commands",
+      "behavior_id": "docs-sql.release-savepoint",
+      "title": "RELEASE SAVEPOINT",
+      "surface_ids": [
+        "implementation-construction",
+        "testing-verification",
+        "compatibility-integration"
+      ]
+    },
+    {
+      "id": "docs-sql.reset",
+      "locator": "https://www.postgresql.org/docs/18/sql-reset.html",
+      "kind": "capability",
+      "capability_id": "query.sql-commands",
+      "behavior_id": "docs-sql.reset",
+      "title": "RESET",
+      "surface_ids": [
+        "implementation-construction",
+        "testing-verification",
+        "compatibility-integration"
+      ]
+    },
+    {
+      "id": "docs-sql.revoke",
+      "locator": "https://www.postgresql.org/docs/18/sql-revoke.html",
+      "kind": "capability",
+      "capability_id": "query.sql-commands",
+      "behavior_id": "docs-sql.revoke",
+      "title": "REVOKE",
+      "surface_ids": [
+        "implementation-construction",
+        "testing-verification",
+        "compatibility-integration"
+      ]
+    },
+    {
+      "id": "docs-sql.rollback",
+      "locator": "https://www.postgresql.org/docs/18/sql-rollback.html",
+      "kind": "capability",
+      "capability_id": "query.sql-commands",
+      "behavior_id": "docs-sql.rollback",
+      "title": "ROLLBACK",
+      "surface_ids": [
+        "implementation-construction",
+        "testing-verification",
+        "compatibility-integration"
+      ]
+    },
+    {
+      "id": "docs-sql.rollback-prepared",
+      "locator": "https://www.postgresql.org/docs/18/sql-rollback-prepared.html",
+      "kind": "capability",
+      "capability_id": "query.sql-commands",
+      "behavior_id": "docs-sql.rollback-prepared",
+      "title": "ROLLBACK PREPARED",
+      "surface_ids": [
+        "implementation-construction",
+        "testing-verification",
+        "compatibility-integration"
+      ]
+    },
+    {
+      "id": "docs-sql.rollback-to-savepoint",
+      "locator": "https://www.postgresql.org/docs/18/sql-rollback-to.html",
+      "kind": "capability",
+      "capability_id": "query.sql-commands",
+      "behavior_id": "docs-sql.rollback-to-savepoint",
+      "title": "ROLLBACK TO SAVEPOINT",
+      "surface_ids": [
+        "implementation-construction",
+        "testing-verification",
+        "compatibility-integration"
+      ]
+    },
+    {
+      "id": "docs-sql.savepoint",
+      "locator": "https://www.postgresql.org/docs/18/sql-savepoint.html",
+      "kind": "capability",
+      "capability_id": "query.sql-commands",
+      "behavior_id": "docs-sql.savepoint",
+      "title": "SAVEPOINT",
+      "surface_ids": [
+        "implementation-construction",
+        "testing-verification",
+        "compatibility-integration"
+      ]
+    },
+    {
+      "id": "docs-sql.security-label",
+      "locator": "https://www.postgresql.org/docs/18/sql-security-label.html",
+      "kind": "capability",
+      "capability_id": "query.sql-commands",
+      "behavior_id": "docs-sql.security-label",
+      "title": "SECURITY LABEL",
+      "surface_ids": [
+        "implementation-construction",
+        "testing-verification",
+        "compatibility-integration"
+      ]
+    },
+    {
+      "id": "docs-sql.select",
+      "locator": "https://www.postgresql.org/docs/18/sql-select.html",
+      "kind": "capability",
+      "capability_id": "query.sql-commands",
+      "behavior_id": "docs-sql.select",
+      "title": "SELECT",
+      "surface_ids": [
+        "implementation-construction",
+        "testing-verification",
+        "compatibility-integration"
+      ]
+    },
+    {
+      "id": "docs-sql.select-into",
+      "locator": "https://www.postgresql.org/docs/18/sql-selectinto.html",
+      "kind": "capability",
+      "capability_id": "query.sql-commands",
+      "behavior_id": "docs-sql.select-into",
+      "title": "SELECT INTO",
+      "surface_ids": [
+        "implementation-construction",
+        "testing-verification",
+        "compatibility-integration"
+      ]
+    },
+    {
+      "id": "docs-sql.set",
+      "locator": "https://www.postgresql.org/docs/18/sql-set.html",
+      "kind": "capability",
+      "capability_id": "query.sql-commands",
+      "behavior_id": "docs-sql.set",
+      "title": "SET",
+      "surface_ids": [
+        "implementation-construction",
+        "testing-verification",
+        "compatibility-integration"
+      ]
+    },
+    {
+      "id": "docs-sql.set-constraints",
+      "locator": "https://www.postgresql.org/docs/18/sql-set-constraints.html",
+      "kind": "capability",
+      "capability_id": "query.sql-commands",
+      "behavior_id": "docs-sql.set-constraints",
+      "title": "SET CONSTRAINTS",
+      "surface_ids": [
+        "implementation-construction",
+        "testing-verification",
+        "compatibility-integration"
+      ]
+    },
+    {
+      "id": "docs-sql.set-role",
+      "locator": "https://www.postgresql.org/docs/18/sql-set-role.html",
+      "kind": "capability",
+      "capability_id": "query.sql-commands",
+      "behavior_id": "docs-sql.set-role",
+      "title": "SET ROLE",
+      "surface_ids": [
+        "implementation-construction",
+        "testing-verification",
+        "compatibility-integration"
+      ]
+    },
+    {
+      "id": "docs-sql.set-session-authorization",
+      "locator": "https://www.postgresql.org/docs/18/sql-set-session-authorization.html",
+      "kind": "capability",
+      "capability_id": "query.sql-commands",
+      "behavior_id": "docs-sql.set-session-authorization",
+      "title": "SET SESSION AUTHORIZATION",
+      "surface_ids": [
+        "implementation-construction",
+        "testing-verification",
+        "compatibility-integration"
+      ]
+    },
+    {
+      "id": "docs-sql.set-transaction",
+      "locator": "https://www.postgresql.org/docs/18/sql-set-transaction.html",
+      "kind": "capability",
+      "capability_id": "query.sql-commands",
+      "behavior_id": "docs-sql.set-transaction",
+      "title": "SET TRANSACTION",
+      "surface_ids": [
+        "implementation-construction",
+        "testing-verification",
+        "compatibility-integration"
+      ]
+    },
+    {
+      "id": "docs-sql.show",
+      "locator": "https://www.postgresql.org/docs/18/sql-show.html",
+      "kind": "capability",
+      "capability_id": "query.sql-commands",
+      "behavior_id": "docs-sql.show",
+      "title": "SHOW",
+      "surface_ids": [
+        "implementation-construction",
+        "testing-verification",
+        "compatibility-integration"
+      ]
+    },
+    {
+      "id": "docs-sql.start-transaction",
+      "locator": "https://www.postgresql.org/docs/18/sql-start-transaction.html",
+      "kind": "capability",
+      "capability_id": "query.sql-commands",
+      "behavior_id": "docs-sql.start-transaction",
+      "title": "START TRANSACTION",
+      "surface_ids": [
+        "implementation-construction",
+        "testing-verification",
+        "compatibility-integration"
+      ]
+    },
+    {
+      "id": "docs-sql.truncate",
+      "locator": "https://www.postgresql.org/docs/18/sql-truncate.html",
+      "kind": "capability",
+      "capability_id": "query.sql-commands",
+      "behavior_id": "docs-sql.truncate",
+      "title": "TRUNCATE",
+      "surface_ids": [
+        "implementation-construction",
+        "testing-verification",
+        "compatibility-integration"
+      ]
+    },
+    {
+      "id": "docs-sql.unlisten",
+      "locator": "https://www.postgresql.org/docs/18/sql-unlisten.html",
+      "kind": "capability",
+      "capability_id": "query.sql-commands",
+      "behavior_id": "docs-sql.unlisten",
+      "title": "UNLISTEN",
+      "surface_ids": [
+        "implementation-construction",
+        "testing-verification",
+        "compatibility-integration"
+      ]
+    },
+    {
+      "id": "docs-sql.update",
+      "locator": "https://www.postgresql.org/docs/18/sql-update.html",
+      "kind": "capability",
+      "capability_id": "query.sql-commands",
+      "behavior_id": "docs-sql.update",
+      "title": "UPDATE",
+      "surface_ids": [
+        "implementation-construction",
+        "testing-verification",
+        "compatibility-integration"
+      ]
+    },
+    {
+      "id": "docs-sql.vacuum",
+      "locator": "https://www.postgresql.org/docs/18/sql-vacuum.html",
+      "kind": "capability",
+      "capability_id": "query.sql-commands",
+      "behavior_id": "docs-sql.vacuum",
+      "title": "VACUUM",
+      "surface_ids": [
+        "implementation-construction",
+        "testing-verification",
+        "compatibility-integration"
+      ]
+    },
+    {
+      "id": "docs-sql.values",
+      "locator": "https://www.postgresql.org/docs/18/sql-values.html",
+      "kind": "capability",
+      "capability_id": "query.sql-commands",
+      "behavior_id": "docs-sql.values",
+      "title": "VALUES",
+      "surface_ids": [
+        "implementation-construction",
+        "testing-verification",
+        "compatibility-integration"
+      ]
+    }
+  ]
+}

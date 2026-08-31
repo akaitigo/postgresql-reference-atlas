@@ -1,0 +1,67 @@
+{
+  "schema_version": 1,
+  "scenario": "recovery",
+  "postgresql_scenario": "recovery",
+  "source": {
+    "path": "evidence/artifacts/reference-system.json",
+    "digest": "sha256:2f94f4e2e2b00253667c0c74b586d5423e5442a45e8772d84b3af478176e6e94"
+  },
+  "identity": {
+    "server": {
+      "product": "PostgreSQL",
+      "version": "18.6",
+      "version_num": 180006
+    },
+    "client": {
+      "product": "psql",
+      "version": "psql (PostgreSQL) 18.6"
+    },
+    "version": {
+      "contract": "18.6",
+      "server_num": 180006
+    },
+    "runtime": {
+      "container_image": "postgres:18.6-alpine@sha256:d3e1620b530c944afa6e887d22eb899824da68e19c52024bf98f5220c88a65b2",
+      "database": "atlas"
+    }
+  },
+  "oracle": {
+    "update_after_lock_release": true,
+    "valid_write_after_rejection": true
+  },
+  "artifact_pointers": [
+    "/recovery",
+    "/locking/post_release_update",
+    "/artifacts/sql",
+    "/artifacts/wal"
+  ],
+  "streams": {
+    "action": [
+      {
+        "kind": "executed-sql-oracle",
+        "path": "labs/reference-system/verify.sql"
+      }
+    ],
+    "network": [
+      {
+        "kind": "postgresql-client-server-session",
+        "scope": "session-observation-not-packet-capture"
+      }
+    ],
+    "resource": [
+      {
+        "pointer": "/recovery"
+      },
+      {
+        "pointer": "/locking/post_release_update"
+      },
+      {
+        "pointer": "/artifacts/sql"
+      },
+      {
+        "pointer": "/artifacts/wal"
+      }
+    ]
+  },
+  "claim_scope": "cross-behavior-integrated-scenario-trace"
+}

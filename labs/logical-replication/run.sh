@@ -11,7 +11,7 @@ artifact="$(mktemp)"
 
 cleanup() {
   if [[ "${KEEP_LAB:-0}" != "1" ]]; then
-    docker rm -f "$subscriber" "$publisher" >/dev/null 2>&1 || true
+    docker rm -f -v "$subscriber" "$publisher" >/dev/null 2>&1 || true
     docker network rm "$network" >/dev/null 2>&1 || true
   fi
   rm -f "$artifact"

@@ -1,0 +1,261 @@
+{
+  "schema_version": 1,
+  "id": "proof.behavior.lifecycle.compatibility-matrix.security",
+  "atlas_id": "postgresql-reference-atlas",
+  "generated_at": "2026-08-28T00:00:00+09:00",
+  "behavior_scope": "current-domain-pattern-not-authority-atomic",
+  "behavior_id": "definitive-domain.lifecycle.compatibility-matrix",
+  "pattern_id": "definitive-domain.lifecycle.compatibility-matrix",
+  "target_id": "lifecycle.compatibility-matrix",
+  "target_set": "lifecycle",
+  "scenario": "security",
+  "status": "bounded-runtime-proof",
+  "classification": {
+    "method": "postgresql-verification-matrix-row-or-explicit-gap",
+    "matcher_digest": "sha256:b8734bc90dcefeb02b28f1858c73e8aba0452cf78d0d27349b708e16a4e14ad9",
+    "state_ids": [
+      "security"
+    ],
+    "semantic_scope_match": false
+  },
+  "source_bindings": [
+    {
+      "variant_id": "postgresql-verification-matrix-v2",
+      "path": "verification.matrix.yaml",
+      "digest": "sha256:b8734bc90dcefeb02b28f1858c73e8aba0452cf78d0d27349b708e16a4e14ad9"
+    }
+  ],
+  "pattern_evidence": {
+    "capture_environment_identity": {
+      "postgresql_scenario": "security",
+      "server": {
+        "status": "gap",
+        "category": "server",
+        "reason": "専用Evidenceにserver identityが固定されていない。"
+      },
+      "client": {
+        "status": "gap",
+        "category": "client",
+        "reason": "専用Evidenceにclient identityが固定されていない。"
+      },
+      "version": {
+        "status": "gap",
+        "category": "version",
+        "reason": "専用Evidenceにversion identityが固定されていない。"
+      },
+      "runtime": {
+        "status": "gap",
+        "category": "runtime",
+        "reason": "専用EvidenceまたはEnvironment profileがない。"
+      },
+      "closure_contract": {
+        "surface_scenario_dedicated_row": true,
+        "bounded_supporting_evidence": false,
+        "dedicated_real_server_client": true,
+        "variant_denominator_status": "observed",
+        "all_variants_executed": true,
+        "retry_count": {
+          "status": "observed",
+          "value": 0,
+          "required": 0
+        },
+        "oracle": {
+          "status": "observed",
+          "proof_obligation_id": null
+        },
+        "source_digest": {
+          "status": "observed"
+        },
+        "harness_digest": {
+          "status": "observed"
+        },
+        "required_artifacts": {
+          "sql": "observed",
+          "plan": "observed",
+          "wal": "observed",
+          "log": "observed",
+          "metric": "observed"
+        },
+        "integrated_reference_credit": false,
+        "foreign_artifact_metadata_credit": false,
+        "gap_closed": true
+      }
+    },
+    "capture_harness_digest": "sha256:b8734bc90dcefeb02b28f1858c73e8aba0452cf78d0d27349b708e16a4e14ad9",
+    "capture_records": [
+      {
+        "status": "gap",
+        "category": "sql",
+        "reason": "このBehavior × Scenarioに既存Verification Matrix Evidenceがない。"
+      },
+      {
+        "status": "gap",
+        "category": "plan",
+        "reason": "専用PLAN Artifactまたは機械参照可能なpointerがない。"
+      },
+      {
+        "status": "gap",
+        "category": "wal",
+        "reason": "専用WAL Artifactまたは機械参照可能なpointerがない。"
+      },
+      {
+        "status": "gap",
+        "category": "log",
+        "reason": "専用Behavior × Scenario Server/Client Log Artifactがない。統合Reference System Logは流用しない。"
+      },
+      {
+        "status": "gap",
+        "category": "metric",
+        "reason": "専用METRIC Artifactまたは機械参照可能なpointerがない。"
+      }
+    ],
+    "benchmark_environment": null,
+    "benchmark_records": [],
+    "compatibility_environment": null,
+    "compatibility_records": [],
+    "scenario_runtime_report": "artifacts/pattern-scenarios/results.json",
+    "scenario_runtime_environment": {
+      "subject": "PostgreSQL",
+      "server_product": "PostgreSQL",
+      "server_version": "18.6",
+      "server_version_num": "180006",
+      "client_product": "psql",
+      "client_version": "psql (PostgreSQL) 18.6",
+      "runtime_image": "postgres:18.6-alpine",
+      "runtime_identity": "pg-atlas-security-68614-b1cef5",
+      "workers": 1,
+      "retries": 0,
+      "trace_mode": "on",
+      "execution_mode": "real-postgresql-server-client",
+      "runtime_preflight": {
+        "schema_version": 1,
+        "kind": "postgresql-security-runtime-preflight-v1",
+        "tranche_id": "security-001",
+        "scenario": "security",
+        "command": "ruby tools/run-scenario-security-001.rb",
+        "attempt_policy": {
+          "workers": 1,
+          "retries": 0,
+          "first_attempt_only": true
+        },
+        "publication_policy": {
+          "publish_on": "full-run-passed",
+          "failed_run": "retain-prior-success",
+          "swap": "staged-directory-rename-with-rollback"
+        },
+        "row_ids": [
+          "closure.definitive-domain.query.partitioning.security",
+          "closure.definitive-domain.query.security.security",
+          "closure.definitive-domain.query.sql-surface.security",
+          "closure.definitive-domain.query.types-constraints.security"
+        ],
+        "expected_outputs": [
+          "artifacts/pattern-scenarios/results.json",
+          "artifacts/pattern-scenarios/traces/definitive-domain_query_partitioning__security__postgresql-verification-matrix-v2.trace.json",
+          "artifacts/pattern-scenarios/traces/definitive-domain_query_security__security__postgresql-verification-matrix-v2.trace.json",
+          "artifacts/pattern-scenarios/traces/definitive-domain_query_sql-surface__security__postgresql-verification-matrix-v2.trace.json",
+          "artifacts/pattern-scenarios/traces/definitive-domain_query_types-constraints__security__postgresql-verification-matrix-v2.trace.json",
+          "artifacts/pattern-scenarios/observations/definitive-domain_query_partitioning__security__postgresql-verification-matrix-v2.observable.json",
+          "artifacts/pattern-scenarios/observations/definitive-domain_query_security__security__postgresql-verification-matrix-v2.observable.json",
+          "artifacts/pattern-scenarios/observations/definitive-domain_query_sql-surface__security__postgresql-verification-matrix-v2.observable.json",
+          "artifacts/pattern-scenarios/observations/definitive-domain_query_types-constraints__security__postgresql-verification-matrix-v2.observable.json"
+        ],
+        "runtime_prerequisites": {
+          "exclusive_heavy_slot_required": true,
+          "minimum_free_gib": 4,
+          "docker_active_containers": 0
+        },
+        "repo_root": "/Users/nakayamaryuuukei/work/private-code/postgresql-reference-atlas",
+        "cwd": "/Users/nakayamaryuuukei/work/private-code/postgresql-reference-atlas",
+        "pid": 68614,
+        "slot_token_env": "PG_ATLAS_EXCLUSIVE_HEAVY_SLOT_TOKEN",
+        "slot_token": "pg-security-001-20260831T1515JST",
+        "measured_at": "2026-08-31T14:45:47Z",
+        "measurements": {
+          "free_gib": 67.34,
+          "docker_active_containers": 0
+        },
+        "status": "ready",
+        "failures": []
+      }
+    },
+    "scenario_runtime_records": [
+      {
+        "id": "security-runtime.lifecycle.compatibility-matrix",
+        "pattern_id": "definitive-domain.lifecycle.compatibility-matrix",
+        "variant_id": "postgresql-verification-matrix-v2",
+        "scenario": "security",
+        "title": "lifecycle.compatibility-matrix dedicated PostgreSQL security scenario",
+        "file": "tools/run-scenario-security-001.rb",
+        "line": 1,
+        "source_digest": "sha256:b8734bc90dcefeb02b28f1858c73e8aba0452cf78d0d27349b708e16a4e14ad9",
+        "outcome": "expected",
+        "attempts": 1,
+        "final_status": "passed",
+        "error": null,
+        "oracle": {
+          "kind": "scram-and-role-boundary-across-14-24-to-18-6",
+          "scenario": "security",
+          "marker": "ATLAS_SECURITY_PASS:lifecycle.compatibility-matrix",
+          "passed": true
+        },
+        "trace": {
+          "path": "artifacts/pattern-scenarios/traces/definitive-domain_lifecycle_compatibility-matrix__security__postgresql-verification-matrix-v2.trace.json",
+          "digest": "sha256:7cd1630ebc174cae0d902ed18cad6da7362ce3c147b6269f1c452003400a4437",
+          "bytes": 15602,
+          "action_stream": true,
+          "network_stream": true,
+          "resource_stream": true
+        },
+        "screenshot": {
+          "path": "artifacts/pattern-scenarios/observations/definitive-domain_lifecycle_compatibility-matrix__security__postgresql-verification-matrix-v2.observable.json",
+          "digest": "sha256:00e1ca23dd1411c0f3404f9f4ab6d1530c4683f420bc7d19253785d2fb80e592",
+          "bytes": 313
+        }
+      }
+    ]
+  },
+  "integrated_reference": {
+    "manifest": "integrations/reference-system/manifest.json",
+    "result": "artifacts/reference-system/results.json",
+    "runtime_boundaries": [
+      "PostgreSQL server",
+      "psql client",
+      "SQL transaction/session"
+    ],
+    "assertions": [
+      "{\"sqlstate\":\"42501\",\"cross_tenant_write_rejected\":true}"
+    ],
+    "outcome": "expected",
+    "attempts": 1,
+    "trace": {
+      "path": "artifacts/reference-system/traces/security.trace.json",
+      "digest": "sha256:f3c720685a141f15f906632cc7549e7d651180eb11a1ffa4927b3a2202625fb0",
+      "bytes": 1418,
+      "action_stream": true,
+      "network_stream": true,
+      "resource_stream": true
+    },
+    "screenshot": {
+      "path": "artifacts/reference-system/observations/security.observable.json",
+      "digest": "sha256:48fb9617d2bb14935af97abda4319d4c08a1f90512b6b76dd3dac1dac0c20c57",
+      "bytes": 785
+    },
+    "pattern_mapped": false
+  },
+  "closure": {
+    "dedicated_row": true,
+    "dedicated_artifact": true,
+    "pattern_specific_evidence": true,
+    "real_runtime_identity": true,
+    "integrated_runtime_trace": true,
+    "authority_atomic_behavior": false,
+    "completion_eligible": false
+  },
+  "gaps": [
+    "既存Verification MatrixにこのBehavior × Scenario専用rowがない。",
+    "統合Reference Systemの結果は専用Surface × Scenario × Variant Closureへ流用しない。",
+    "別Evidence Artifactのmetadataだけでは専用実行Proofを閉じない。",
+    "Authority raw anchorのHuman reviewとAtomic behavior bindingが未完了でCompletion対象外。"
+  ]
+}

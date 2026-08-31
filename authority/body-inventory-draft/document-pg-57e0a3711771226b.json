@@ -1,0 +1,127 @@
+{
+  "document_id": "document-pg-57e0a3711771226b",
+  "source_ids": [
+    "postgresql-source-rel-18.6"
+  ],
+  "authority_url": "https://github.com/postgres/postgres/tree/REL_18_6",
+  "document_locator": "git:724edf9bde9d356724ad384a2e196edc3c9f80f7:doc/src/sgml/problems.sgml",
+  "locked_source_digest": "sha256:873c03070a2e8aae0768fb75d8d6739ae9589681c6cd50839e79d787a7aed222",
+  "locked_body_digest": "sha256:8ada1678526cd26d37caf08102b21bee89532d4d00f5fd0551d003c86d0e45f1",
+  "fetch": {
+    "status": "matched",
+    "fetched_digest": "sha256:8ada1678526cd26d37caf08102b21bee89532d4d00f5fd0551d003c86d0e45f1",
+    "locked_digest_match": true,
+    "error_digest": null
+  },
+  "schema_version": 1,
+  "extraction": {
+    "method": "sgml-raw-anchor-selector-v1",
+    "tool": "postgresql-reference-atlas-authority-body-inventory-v1",
+    "tool_digest": "sha256:097da35cf95014735db866fca94f5db07c0717353928b543bcf9c188ae005d2c",
+    "selector_contract": [
+      "document-root",
+      "sgml-id-attribute"
+    ],
+    "selector_exhaustive_for_locked_body": true,
+    "authority_semantics_exhaustive": false,
+    "review_status": "automated-unreviewed",
+    "body_storage": "digest-locator-and-offset-only"
+  },
+  "anchors": [
+    {
+      "id": "anchor-pg-aab4813668cb21c95d93",
+      "locator": "document-root",
+      "locator_kind": "document-root",
+      "raw_selector": "document-root",
+      "element_name": "document",
+      "parent_anchor_id": null,
+      "context_start": 0,
+      "context_end": 15389,
+      "context_unit": "byte",
+      "context_digest": "sha256:8ada1678526cd26d37caf08102b21bee89532d4d00f5fd0551d003c86d0e45f1",
+      "classification_status": "pending-human",
+      "surface_ids": [
+
+      ],
+      "behavior_ids": [
+
+      ]
+    },
+    {
+      "id": "anchor-pg-90f406c8ce0223e6be7a",
+      "locator": "#bug-reporting",
+      "locator_kind": "fragment",
+      "raw_selector": "sgml-id-attribute",
+      "element_name": "sect1",
+      "parent_anchor_id": "anchor-pg-aab4813668cb21c95d93",
+      "context_start": 37,
+      "context_end": 64,
+      "context_unit": "byte",
+      "context_digest": "sha256:8e116e4d12a5abbcd38bf009c16fc623fced9a3fa132cc4639d11a4cfd883e1e",
+      "classification_status": "pending-human",
+      "surface_ids": [
+
+      ],
+      "behavior_ids": [
+
+      ]
+    },
+    {
+      "id": "anchor-pg-12e862eb51933d1c2423",
+      "locator": "#bug-reporting-identifying-bugs",
+      "locator_kind": "fragment",
+      "raw_selector": "sgml-id-attribute",
+      "element_name": "sect2",
+      "parent_anchor_id": "anchor-pg-aab4813668cb21c95d93",
+      "context_start": 1267,
+      "context_end": 1312,
+      "context_unit": "byte",
+      "context_digest": "sha256:4c057cf9a3990af063e606ec44cdf8623e686d1818a1f137518468d084b4aeae",
+      "classification_status": "pending-human",
+      "surface_ids": [
+
+      ],
+      "behavior_ids": [
+
+      ]
+    },
+    {
+      "id": "anchor-pg-91b3b11bb81f1092a26d",
+      "locator": "#bug-reporting-what-to-report",
+      "locator_kind": "fragment",
+      "raw_selector": "sgml-id-attribute",
+      "element_name": "sect2",
+      "parent_anchor_id": "anchor-pg-aab4813668cb21c95d93",
+      "context_start": 3594,
+      "context_end": 3637,
+      "context_unit": "byte",
+      "context_digest": "sha256:1fb9b911377ab82bba257d82bf89bc8df06516044de71d2d56155e68e7f5c58a",
+      "classification_status": "pending-human",
+      "surface_ids": [
+
+      ],
+      "behavior_ids": [
+
+      ]
+    },
+    {
+      "id": "anchor-pg-2346ddbe2ad8c4f5d6db",
+      "locator": "#bug-reporting-where-to-report-bugs",
+      "locator_kind": "fragment",
+      "raw_selector": "sgml-id-attribute",
+      "element_name": "sect2",
+      "parent_anchor_id": "anchor-pg-aab4813668cb21c95d93",
+      "context_start": 12707,
+      "context_end": 12756,
+      "context_unit": "byte",
+      "context_digest": "sha256:181f5819ea6c037fdddc5583d5f7b00b62ca5b46998dfe12269df58677963ea1",
+      "classification_status": "pending-human",
+      "surface_ids": [
+
+      ],
+      "behavior_ids": [
+
+      ]
+    }
+  ]
+}

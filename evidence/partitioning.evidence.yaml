@@ -5,12 +5,12 @@ claim_ids: [query.partitioning]
 kind: test-report
 producer: postgresql-reference-atlas
 command: make lab LAB=partitioning
-created_at: "2026-08-28T07:49:14Z"
+created_at: "2026-08-30T19:45:58Z"
 environment:
   profile: container
   manifest_digest: sha256:3df4dbd82139e17c785348c281f26b54d7300662087baaeec3034acefedf36b9
 source_digest: sha256:7a5097c6130472b193adb30fda89b4a607f1ae00a1ae87dbc1cf22ae5484eaef
-harness_digest: sha256:da44ecb385cafb79536d3d5f7e4d1d2f9c9094ff9b0a7378bf83f902242b31f5
+harness_digest: sha256:3e081ff1187fc334b517476803db832efb8bb3392f099596013fa053f8238306
 harness_path: evidence/harnesses/partitioning.manifest
 artifact:
   uri: evidence/artifacts/partitioning.json

@@ -1,0 +1,178 @@
+{
+  "schema_version": 1,
+  "pattern_id": "definitive-domain.query.security",
+  "target_id": "query.security",
+  "scenario": "security",
+  "variant_id": "postgresql-verification-matrix-v2",
+  "environment": {
+    "subject": "PostgreSQL",
+    "server_product": "PostgreSQL",
+    "server_version": "18.6",
+    "server_version_num": "180006",
+    "client_product": "psql",
+    "client_version": "psql (PostgreSQL) 18.6",
+    "runtime_image": "postgres:18.6-alpine",
+    "runtime_identity": "pg-atlas-security-68614-b1cef5",
+    "workers": 1,
+    "retries": 0,
+    "trace_mode": "on",
+    "execution_mode": "real-postgresql-server-client",
+    "row_runtime": {
+      "server_versions": [
+        "18.6"
+      ],
+      "containers": [
+        "pg-atlas-security-68614-b1cef5"
+      ]
+    }
+  },
+  "sql": {
+    "source": "BEGIN;\nCREATE EXTENSION dblink;\nCREATE ROLE tenant_app LOGIN PASSWORD 'tenant-atlas' NOSUPERUSER NOCREATEDB NOCREATEROLE;\nCREATE TABLE tenant_record(tenant_id integer NOT NULL, id integer NOT NULL, secret text NOT NULL, PRIMARY KEY (tenant_id, id));\nALTER TABLE tenant_record ENABLE ROW LEVEL SECURITY;\nALTER TABLE tenant_record FORCE ROW LEVEL SECURITY;\nCREATE POLICY tenant_isolation ON tenant_record\n  USING (tenant_id = current_setting('app.tenant_id')::integer)\n  WITH CHECK (tenant_id = current_setting('app.tenant_id')::integer);\nGRANT SELECT, INSERT ON tenant_record TO tenant_app;\nINSERT INTO tenant_record VALUES (1, 1, 'tenant-one'), (2, 1, 'tenant-two');\nCREATE FUNCTION secured_row_count() RETURNS bigint\nLANGUAGE sql SECURITY DEFINER\nSET search_path = pg_catalog, public\nAS 'SELECT count(*) FROM public.tenant_record';\nREVOKE ALL ON FUNCTION secured_row_count() FROM PUBLIC;\nCOMMIT;\n\nBEGIN;\nCREATE TEMP TABLE atlas_query_security_observation(plan jsonb, visible_rows integer, tenant_escape_denied boolean DEFAULT false, sqlstate text);\nINSERT INTO atlas_query_security_observation DEFAULT VALUES;\nGRANT SELECT, UPDATE ON atlas_query_security_observation TO tenant_app;\nSET ROLE tenant_app;\nSELECT set_config('app.tenant_id', '1', true);\nDO $atlas$\nDECLARE observed jsonb;\nDECLARE updated_rows bigint;\nBEGIN\n  EXECUTE 'EXPLAIN (ANALYZE, BUFFERS, FORMAT JSON) SELECT tenant_id, id FROM tenant_record ORDER BY id' INTO observed;\n  UPDATE atlas_query_security_observation SET plan = observed;\n  GET DIAGNOSTICS updated_rows = ROW_COUNT;\n  IF updated_rows <> 1 THEN\n    RAISE EXCEPTION 'atlas_query_security_observation plan update expected 1 row, got %', updated_rows;\n  END IF;\nEND;\n$atlas$;\nDO $atlas$\nDECLARE updated_rows bigint;\nBEGIN\n  UPDATE atlas_query_security_observation SET visible_rows = (SELECT count(*)::integer FROM tenant_record);\n  GET DIAGNOSTICS updated_rows = ROW_COUNT;\n  IF updated_rows <> 1 THEN\n    RAISE EXCEPTION 'atlas_query_security_observation visible_rows update expected 1 row, got %', updated_rows;\n  END IF;\nEND;\n$atlas$;\nRESET ROLE;\nSELECT dblink_connect('tenant1', 'host=127.0.0.1 dbname=atlas user=tenant_app password=tenant-atlas options=-capp.tenant_id=1');\nDO $atlas$\nDECLARE observed_state text;\nDECLARE updated_rows bigint;\nBEGIN\n  PERFORM dblink_exec('tenant1', $q$INSERT INTO tenant_record VALUES (2, 2, 'escape')$q$);\n  RAISE EXCEPTION 'cross-tenant insert unexpectedly allowed';\nEXCEPTION WHEN insufficient_privilege THEN\n  GET STACKED DIAGNOSTICS observed_state = RETURNED_SQLSTATE;\n  UPDATE atlas_query_security_observation SET tenant_escape_denied = true, sqlstate = observed_state;\n  GET DIAGNOSTICS updated_rows = ROW_COUNT;\n  IF updated_rows <> 1 THEN\n    RAISE EXCEPTION 'atlas_query_security_observation refusal update expected 1 row, got %', updated_rows;\n  END IF;\n  RAISE NOTICE 'ATLAS_SECURITY_PASS:query.security';\nEND;\n$atlas$;\nSELECT dblink_disconnect('tenant1');\nDO $atlas$\nDECLARE observation_rows bigint;\nBEGIN\n  SELECT count(*) INTO observation_rows FROM atlas_query_security_observation;\n  IF observation_rows <> 1 THEN\n    RAISE EXCEPTION 'atlas_query_security_observation final cardinality expected 1 row, got %', observation_rows;\n  END IF;\nEND;\n$atlas$;\nSELECT json_build_object(\n  'server_version', current_setting('server_version'),\n  'observation_rows', (SELECT count(*)::integer FROM atlas_query_security_observation),\n  'visible_rows', visible_rows,\n  'tenant_escape_denied', tenant_escape_denied,\n  'sqlstate', sqlstate,\n  'password_encryption', current_setting('password_encryption'),\n  'scram_verifier', (SELECT rolpassword LIKE 'SCRAM-SHA-256$%' FROM pg_authid WHERE rolname = 'tenant_app'),\n  'host_rule_rows', COALESCE((\n    SELECT json_agg(json_build_object(\n      'line_number', line_number,\n      'type', type,\n      'database', database,\n      'user_name', user_name,\n      'address', address,\n      'auth_method', auth_method,\n      'error', error\n    ) ORDER BY line_number)\n    FROM pg_hba_file_rules\n    WHERE type LIKE 'host%'\n  ), '[]'::json),\n  'effective_host_rule', COALESCE((\n    SELECT json_build_object(\n      'line_number', line_number,\n      'type', type,\n      'database', database,\n      'user_name', user_name,\n      'address', address,\n      'auth_method', auth_method,\n      'error', error\n    )\n    FROM (\n      SELECT line_number, type, database, user_name, address, auth_method, error\n      FROM pg_hba_file_rules\n      WHERE type LIKE 'host%'\n        AND COALESCE(error, '') = ''\n        AND (database @> ARRAY['atlas']::text[] OR database @> ARRAY['all']::text[])\n        AND (user_name @> ARRAY['tenant_app']::text[] OR user_name @> ARRAY['all']::text[])\n        AND (address = '127.0.0.1' OR address LIKE '127.0.0.1/%' OR address IN ('all', 'samehost'))\n      ORDER BY line_number\n      LIMIT 1\n    ) AS matched_host_rule\n  ), '{}'::json),\n  'host_scram_rule', COALESCE((\n    SELECT auth_method = 'scram-sha-256'\n    FROM (\n      SELECT auth_method\n      FROM pg_hba_file_rules\n      WHERE type LIKE 'host%'\n        AND COALESCE(error, '') = ''\n        AND (database @> ARRAY['atlas']::text[] OR database @> ARRAY['all']::text[])\n        AND (user_name @> ARRAY['tenant_app']::text[] OR user_name @> ARRAY['all']::text[])\n        AND (address = '127.0.0.1' OR address LIKE '127.0.0.1/%' OR address IN ('all', 'samehost'))\n      ORDER BY line_number\n      LIMIT 1\n    ) AS effective_host_auth\n  ), false),\n  'fixed_search_path', (SELECT proconfig @> ARRAY['search_path=pg_catalog, public'] FROM pg_proc WHERE proname = 'secured_row_count'),\n  'oracle_marker', CASE WHEN tenant_escape_denied THEN 'ATLAS_SECURITY_PASS:query.security' ELSE 'ATLAS_SECURITY_FAIL:query.security' END,\n  'plan', plan,\n  'verdict', CASE WHEN (SELECT count(*)::integer FROM atlas_query_security_observation) = 1 AND visible_rows = 1 AND tenant_escape_denied AND sqlstate = '42501'\n    AND current_setting('password_encryption') = 'scram-sha-256'\n    AND (SELECT rolpassword LIKE 'SCRAM-SHA-256$%' FROM pg_authid WHERE rolname = 'tenant_app')\n    AND COALESCE((\n      SELECT auth_method = 'scram-sha-256'\n      FROM (\n        SELECT auth_method\n        FROM pg_hba_file_rules\n        WHERE type LIKE 'host%'\n          AND COALESCE(error, '') = ''\n          AND (database @> ARRAY['atlas']::text[] OR database @> ARRAY['all']::text[])\n          AND (user_name @> ARRAY['tenant_app']::text[] OR user_name @> ARRAY['all']::text[])\n          AND (address = '127.0.0.1' OR address LIKE '127.0.0.1/%' OR address IN ('all', 'samehost'))\n        ORDER BY line_number\n        LIMIT 1\n      ) AS effective_host_auth\n    ), false)\n    AND (SELECT proconfig @> ARRAY['search_path=pg_catalog, public'] FROM pg_proc WHERE proname = 'secured_row_count')\n  THEN 'pass' ELSE 'fail' END\n)\nFROM atlas_query_security_observation;\nROLLBACK;\n",
+    "stdout": "BEGIN\nCREATE EXTENSION\nCREATE ROLE\nCREATE TABLE\nALTER TABLE\nALTER TABLE\nCREATE POLICY\nGRANT\nINSERT 0 2\nCREATE FUNCTION\nREVOKE\nCOMMIT\nBEGIN\nCREATE TABLE\nINSERT 0 1\nGRANT\nSET\n1\nDO\nDO\nRESET\nOK\nDO\nOK\nDO\n{\"server_version\" : \"18.6\", \"observation_rows\" : 1, \"visible_rows\" : 1, \"tenant_escape_denied\" : true, \"sqlstate\" : \"42501\", \"password_encryption\" : \"scram-sha-256\", \"scram_verifier\" : true, \"host_rule_rows\" : [{\"line_number\" : 119, \"type\" : \"host\", \"database\" : [\"all\"], \"user_name\" : [\"all\"], \"address\" : \"127.0.0.1\", \"auth_method\" : \"scram-sha-256\", \"error\" : null}, {\"line_number\" : 121, \"type\" : \"host\", \"database\" : [\"all\"], \"user_name\" : [\"all\"], \"address\" : \"::1\", \"auth_method\" : \"scram-sha-256\", \"error\" : null}, {\"line_number\" : 125, \"type\" : \"host\", \"database\" : [\"replication\"], \"user_name\" : [\"all\"], \"address\" : \"127.0.0.1\", \"auth_method\" : \"scram-sha-256\", \"error\" : null}, {\"line_number\" : 126, \"type\" : \"host\", \"database\" : [\"replication\"], \"user_name\" : [\"all\"], \"address\" : \"::1\", \"auth_method\" : \"scram-sha-256\", \"error\" : null}, {\"line_number\" : 128, \"type\" : \"host\", \"database\" : [\"all\"], \"user_name\" : [\"all\"], \"address\" : \"all\", \"auth_method\" : \"scram-sha-256\", \"error\" : null}], \"effective_host_rule\" : {\"line_number\" : 119, \"type\" : \"host\", \"database\" : [\"all\"], \"user_name\" : [\"all\"], \"address\" : \"127.0.0.1\", \"auth_method\" : \"scram-sha-256\", \"error\" : null}, \"host_scram_rule\" : true, \"fixed_search_path\" : true, \"oracle_marker\" : \"ATLAS_SECURITY_PASS:query.security\", \"plan\" : [{\"Plan\": {\"Plans\": [{\"Alias\": \"tenant_record\", \"Plans\": [{\"Disabled\": false, \"Node Type\": \"Bitmap Index Scan\", \"Plan Rows\": 6, \"Index Cond\": \"(tenant_id = (current_setting('app.tenant_id'::text))::integer)\", \"Index Name\": \"tenant_record_pkey\", \"Plan Width\": 0, \"Total Cost\": 4.21, \"Actual Rows\": 1.00, \"Actual Loops\": 1, \"Startup Cost\": 0.00, \"Async Capable\": false, \"Index Searches\": 1, \"Parallel Aware\": false, \"Local Hit Blocks\": 0, \"Temp Read Blocks\": 0, \"Actual Total Time\": 0.003, \"Local Read Blocks\": 0, \"Shared Hit Blocks\": 1, \"Shared Read Blocks\": 0, \"Actual Startup Time\": 0.003, \"Parent Relationship\": \"Outer\", \"Temp Written Blocks\": 0, \"Local Dirtied Blocks\": 0, \"Local Written Blocks\": 0, \"Shared Dirtied Blocks\": 0, \"Shared Written Blocks\": 0}], \"Disabled\": false, \"Node Type\": \"Bitmap Heap Scan\", \"Plan Rows\": 6, \"Plan Width\": 8, \"Total Cost\": 13.72, \"Actual Rows\": 1.00, \"Actual Loops\": 1, \"Recheck Cond\": \"(tenant_id = (current_setting('app.tenant_id'::text))::integer)\", \"Startup Cost\": 4.21, \"Async Capable\": false, \"Relation Name\": \"tenant_record\", \"Parallel Aware\": false, \"Local Hit Blocks\": 0, \"Temp Read Blocks\": 0, \"Actual Total Time\": 0.009, \"Exact Heap Blocks\": 1, \"Local Read Blocks\": 0, \"Lossy Heap Blocks\": 0, \"Shared Hit Blocks\": 2, \"Shared Read Blocks\": 0, \"Actual Startup Time\": 0.009, \"Parent Relationship\": \"Outer\", \"Temp Written Blocks\": 0, \"Local Dirtied Blocks\": 0, \"Local Written Blocks\": 0, \"Shared Dirtied Blocks\": 0, \"Shared Written Blocks\": 0, \"Rows Removed by Index Recheck\": 0}], \"Disabled\": false, \"Sort Key\": [\"id\"], \"Node Type\": \"Sort\", \"Plan Rows\": 6, \"Plan Width\": 8, \"Total Cost\": 13.81, \"Actual Rows\": 1.00, \"Sort Method\": \"quicksort\", \"Actual Loops\": 1, \"Startup Cost\": 13.80, \"Async Capable\": false, \"Parallel Aware\": false, \"Sort Space Type\": \"Memory\", \"Sort Space Used\": 25, \"Local Hit Blocks\": 0, \"Temp Read Blocks\": 0, \"Actual Total Time\": 0.018, \"Local Read Blocks\": 0, \"Shared Hit Blocks\": 2, \"Shared Read Blocks\": 0, \"Actual Startup Time\": 0.018, \"Temp Written Blocks\": 0, \"Local Dirtied Blocks\": 0, \"Local Written Blocks\": 0, \"Shared Dirtied Blocks\": 0, \"Shared Written Blocks\": 0}, \"Planning\": {\"Local Hit Blocks\": 0, \"Temp Read Blocks\": 0, \"Local Read Blocks\": 0, \"Shared Hit Blocks\": 57, \"Shared Read Blocks\": 0, \"Temp Written Blocks\": 0, \"Local Dirtied Blocks\": 0, \"Local Written Blocks\": 0, \"Shared Dirtied Blocks\": 0, \"Shared Written Blocks\": 0}, \"Triggers\": [], \"Planning Time\": 0.312, \"Execution Time\": 0.039}], \"verdict\" : \"pass\"}\nROLLBACK\n",
+    "stderr": "NOTICE:  ATLAS_SECURITY_PASS:query.security\n"
+  },
+  "plan": [
+    {
+      "Plan": {
+        "Plans": [
+          {
+            "Alias": "tenant_record",
+            "Plans": [
+              {
+                "Disabled": false,
+                "Node Type": "Bitmap Index Scan",
+                "Plan Rows": 6,
+                "Index Cond": "(tenant_id = (current_setting('app.tenant_id'::text))::integer)",
+                "Index Name": "tenant_record_pkey",
+                "Plan Width": 0,
+                "Total Cost": 4.21,
+                "Actual Rows": 1.0,
+                "Actual Loops": 1,
+                "Startup Cost": 0.0,
+                "Async Capable": false,
+                "Index Searches": 1,
+                "Parallel Aware": false,
+                "Local Hit Blocks": 0,
+                "Temp Read Blocks": 0,
+                "Actual Total Time": 0.003,
+                "Local Read Blocks": 0,
+                "Shared Hit Blocks": 1,
+                "Shared Read Blocks": 0,
+                "Actual Startup Time": 0.003,
+                "Parent Relationship": "Outer",
+                "Temp Written Blocks": 0,
+                "Local Dirtied Blocks": 0,
+                "Local Written Blocks": 0,
+                "Shared Dirtied Blocks": 0,
+                "Shared Written Blocks": 0
+              }
+            ],
+            "Disabled": false,
+            "Node Type": "Bitmap Heap Scan",
+            "Plan Rows": 6,
+            "Plan Width": 8,
+            "Total Cost": 13.72,
+            "Actual Rows": 1.0,
+            "Actual Loops": 1,
+            "Recheck Cond": "(tenant_id = (current_setting('app.tenant_id'::text))::integer)",
+            "Startup Cost": 4.21,
+            "Async Capable": false,
+            "Relation Name": "tenant_record",
+            "Parallel Aware": false,
+            "Local Hit Blocks": 0,
+            "Temp Read Blocks": 0,
+            "Actual Total Time": 0.009,
+            "Exact Heap Blocks": 1,
+            "Local Read Blocks": 0,
+            "Lossy Heap Blocks": 0,
+            "Shared Hit Blocks": 2,
+            "Shared Read Blocks": 0,
+            "Actual Startup Time": 0.009,
+            "Parent Relationship": "Outer",
+            "Temp Written Blocks": 0,
+            "Local Dirtied Blocks": 0,
+            "Local Written Blocks": 0,
+            "Shared Dirtied Blocks": 0,
+            "Shared Written Blocks": 0,
+            "Rows Removed by Index Recheck": 0
+          }
+        ],
+        "Disabled": false,
+        "Sort Key": [
+          "id"
+        ],
+        "Node Type": "Sort",
+        "Plan Rows": 6,
+        "Plan Width": 8,
+        "Total Cost": 13.81,
+        "Actual Rows": 1.0,
+        "Sort Method": "quicksort",
+        "Actual Loops": 1,
+        "Startup Cost": 13.8,
+        "Async Capable": false,
+        "Parallel Aware": false,
+        "Sort Space Type": "Memory",
+        "Sort Space Used": 25,
+        "Local Hit Blocks": 0,
+        "Temp Read Blocks": 0,
+        "Actual Total Time": 0.018,
+        "Local Read Blocks": 0,
+        "Shared Hit Blocks": 2,
+        "Shared Read Blocks": 0,
+        "Actual Startup Time": 0.018,
+        "Temp Written Blocks": 0,
+        "Local Dirtied Blocks": 0,
+        "Local Written Blocks": 0,
+        "Shared Dirtied Blocks": 0,
+        "Shared Written Blocks": 0
+      },
+      "Planning": {
+        "Local Hit Blocks": 0,
+        "Temp Read Blocks": 0,
+        "Local Read Blocks": 0,
+        "Shared Hit Blocks": 57,
+        "Shared Read Blocks": 0,
+        "Temp Written Blocks": 0,
+        "Local Dirtied Blocks": 0,
+        "Local Written Blocks": 0,
+        "Shared Dirtied Blocks": 0,
+        "Shared Written Blocks": 0
+      },
+      "Triggers": [
+
+      ],
+      "Planning Time": 0.312,
+      "Execution Time": 0.039
+    }
+  ],
+  "wal": {
+    "before_lsn": "0/BB54660",
+    "after_lsn": "0/BBA7930"
+  },
+  "log": "2026-08-31 14:48:09.255 UTC [513] LOG:  statement: DO $atlas$\n\t  RAISE NOTICE 'ATLAS_SECURITY_PASS:query.partitioning';\n2026-08-31 14:48:09.255 UTC [513] LOG:  statement: RESET ROLE;\n2026-08-31 14:48:09.256 UTC [513] LOG:  statement: DO $atlas$\n2026-08-31 14:48:09.256 UTC [513] LOG:  statement: SELECT json_build_object(\n\t  'oracle_marker', CASE WHEN security_rejected THEN 'ATLAS_SECURITY_PASS:query.partitioning' ELSE 'ATLAS_SECURITY_FAIL:query.partitioning' END,\n2026-08-31 14:48:09.256 UTC [513] LOG:  statement: ROLLBACK;\n2026-08-31 14:48:09.325 UTC [520] LOG:  statement: SELECT pg_current_wal_lsn()\n2026-08-31 14:48:09.404 UTC [527] LOG:  statement: SELECT pg_current_wal_lsn()\n2026-08-31 14:48:09.453 UTC [534] LOG:  statement: BEGIN;\n2026-08-31 14:48:09.453 UTC [534] LOG:  statement: CREATE EXTENSION dblink;\n2026-08-31 14:48:09.458 UTC [534] LOG:  statement: CREATE ROLE tenant_app LOGIN PASSWORD 'tenant-atlas' NOSUPERUSER NOCREATEDB NOCREATEROLE;\n2026-08-31 14:48:09.460 UTC [534] LOG:  statement: CREATE TABLE tenant_record(tenant_id integer NOT NULL, id integer NOT NULL, secret text NOT NULL, PRIMARY KEY (tenant_id, id));\n2026-08-31 14:48:09.462 UTC [534] LOG:  statement: ALTER TABLE tenant_record ENABLE ROW LEVEL SECURITY;\n2026-08-31 14:48:09.463 UTC [534] LOG:  statement: ALTER TABLE tenant_record FORCE ROW LEVEL SECURITY;\n2026-08-31 14:48:09.463 UTC [534] LOG:  statement: CREATE POLICY tenant_isolation ON tenant_record\n2026-08-31 14:48:09.463 UTC [534] LOG:  statement: GRANT SELECT, INSERT ON tenant_record TO tenant_app;\n2026-08-31 14:48:09.463 UTC [534] LOG:  statement: INSERT INTO tenant_record VALUES (1, 1, 'tenant-one'), (2, 1, 'tenant-two');\n2026-08-31 14:48:09.464 UTC [534] LOG:  statement: CREATE FUNCTION secured_row_count() RETURNS bigint\n2026-08-31 14:48:09.464 UTC [534] LOG:  statement: REVOKE ALL ON FUNCTION secured_row_count() FROM PUBLIC;\n2026-08-31 14:48:09.464 UTC [534] LOG:  statement: COMMIT;\n2026-08-31 14:48:09.520 UTC [541] LOG:  statement: BEGIN;\n2026-08-31 14:48:09.520 UTC [541] LOG:  statement: CREATE TEMP TABLE atlas_query_security_observation(plan jsonb, visible_rows integer, tenant_escape_denied boolean DEFAULT false, sqlstate text);\n2026-08-31 14:48:09.522 UTC [541] LOG:  statement: INSERT INTO atlas_query_security_observation DEFAULT VALUES;\n2026-08-31 14:48:09.522 UTC [541] LOG:  statement: GRANT SELECT, UPDATE ON atlas_query_security_observation TO tenant_app;\n2026-08-31 14:48:09.523 UTC [541] LOG:  statement: SET ROLE tenant_app;\n2026-08-31 14:48:09.523 UTC [541] LOG:  statement: SELECT set_config('app.tenant_id', '1', true);\n2026-08-31 14:48:09.523 UTC [541] LOG:  statement: DO $atlas$\n2026-08-31 14:48:09.526 UTC [541] LOG:  statement: DO $atlas$\n2026-08-31 14:48:09.526 UTC [541] LOG:  statement: RESET ROLE;\n2026-08-31 14:48:09.527 UTC [541] LOG:  statement: SELECT dblink_connect('tenant1', 'host=127.0.0.1 dbname=atlas user=tenant_app password=tenant-atlas options=-capp.tenant_id=1');\n2026-08-31 14:48:09.535 UTC [541] LOG:  statement: DO $atlas$\n\t  RAISE NOTICE 'ATLAS_SECURITY_PASS:query.security';\n2026-08-31 14:48:09.536 UTC [542] LOG:  statement: INSERT INTO tenant_record VALUES (2, 2, 'escape')\n2026-08-31 14:48:09.537 UTC [541] LOG:  statement: SELECT dblink_disconnect('tenant1');\n2026-08-31 14:48:09.537 UTC [541] LOG:  statement: DO $atlas$\n2026-08-31 14:48:09.538 UTC [541] LOG:  statement: SELECT json_build_object(\n\t  'oracle_marker', CASE WHEN tenant_escape_denied THEN 'ATLAS_SECURITY_PASS:query.security' ELSE 'ATLAS_SECURITY_FAIL:query.security' END,\n2026-08-31 14:48:09.541 UTC [541] LOG:  statement: ROLLBACK;\n2026-08-31 14:48:09.608 UTC [549] LOG:  statement: SELECT pg_current_wal_lsn()\n",
+  "metric": {
+    "elapsed_ms": 245.647,
+    "visible_rows": 1
+  },
+  "oracle": {
+    "kind": "force-rls-scram-search-path-and-cross-tenant-refusal",
+    "scenario": "security",
+    "marker": "ATLAS_SECURITY_PASS:query.security",
+    "passed": true
+  },
+  "streams": {
+    "action": [
+      "psql security transaction"
+    ],
+    "network": [
+      "psql-to-PostgreSQL-session"
+    ],
+    "resource": [
+      "SQL",
+      "plan",
+      "WAL",
+      "server-log",
+      "elapsed-metric"
+    ]
+  }
+}

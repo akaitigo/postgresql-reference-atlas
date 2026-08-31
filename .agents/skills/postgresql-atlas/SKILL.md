@@ -13,7 +13,7 @@ description: PostgreSQL 18.6のSQL、型、Constraint、Index、Planner、Statis
 2. [Mastery Routing](references/mastery-routing.md)から利用者が求めるOutcomeとSurfaceを選ぶ。
 3. [Capability Index](references/capability-index.md)から対象Capabilityと現在のCoverage stateを選ぶ。
 4. 技術的主張は`atlas/claims/index.yaml`、一次資料は`sources.lock.yaml`、合格条件は`atlas/proof-obligations/index.yaml`へ戻る。
-5. `scripts/route.sh`の`version`、`coverage`、`safety`、`lab`、`runbook`、`evidence`を確認する。
+5. 単純なCapability検索は`scripts/route.sh`、Outcome/Surfaceと変更権限を含む計画は`scripts/plan-request.rb`を使い、Target state、Variant、Authority、Evidence、停止条件を確認する。
 6. 実行が必要なら対応Labを隔離環境で再実行し、EvidenceのSource/Harness/Environment DigestとVerdictを確認する。
 
 ## Mode
@@ -32,5 +32,7 @@ description: PostgreSQL 18.6のSQL、型、Constraint、Index、Planner、Statis
 - 実環境のPromotion、Drop、WAL操作、Replica再構築、PITR、Major Upgradeを承認なしに実行しない。
 - Coverage Targetが`partial`なら、実装済み部分と未証明部分を明示し、`complete`と表現しない。
 - 8 Outcomeと14 SurfaceはPostgreSQL内の問いを閉じる契約であり、別分野を追加する理由にしない。
+- Authority raw anchorのSemantic分類は人が一次資料を確認してdecision ledgerへ記録する。Agentは昇格判断を代行しない。
+- stale Sourceのrelockは明示手順なしに進めず、曖昧または未知のQueryは`coverage-gap`として停止する。
 
-決定論的なCapability検索には`scripts/route.sh "<依頼>"`を使える。該当しなければ`coverage-gap`と`safety: stop`を返す。Router結果だけで変更を実行せず、`requires-approval`は必ず事前条件・停止条件・Rollback境界を提示する。
+構造化計画の例は`ruby scripts/plan-request.rb '{"id":"request.1","outcome":"build","surface":"implementation-construction","query":"SQL Constraintを構築","authorized_change":true}'`である。Matrix成功はTarget completeを意味しない。`partial`、`planned`、Target-set不一致、Evidenceなしはrouting gapとして返す。

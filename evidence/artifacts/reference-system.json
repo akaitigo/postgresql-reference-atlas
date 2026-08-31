@@ -1,0 +1,371 @@
+{
+  "schema_version": 2,
+  "lab": "reference-system",
+  "server_version": "18.6",
+  "identity": {
+    "server": {
+      "product": "PostgreSQL",
+      "version": "18.6",
+      "version_num": 180006
+    },
+    "client": {
+      "product": "psql",
+      "version": "psql (PostgreSQL) 18.6"
+    },
+    "version": {
+      "contract": "18.6",
+      "server_num": 180006
+    },
+    "runtime": {
+      "container_image": "postgres:18.6-alpine@sha256:d3e1620b530c944afa6e887d22eb899824da68e19c52024bf98f5220c88a65b2",
+      "database": "atlas"
+    }
+  },
+  "partition_count": 2,
+  "tenant_visible_rows": 1000,
+  "rls": {
+    "rejected": true,
+    "sqlstate": "42501"
+  },
+  "locking": {
+    "nowait_rejected": true,
+    "sqlstate": "55P03",
+    "post_release_update": true
+  },
+  "failure": {
+    "check_rejected": true,
+    "sqlstate": "23514"
+  },
+  "recovery": {
+    "valid_write_after_rejection": true
+  },
+  "migration": {
+    "constraint_validated": true
+  },
+  "query_plan": [
+    {
+      "Plan": {
+        "Plans": [
+          {
+            "Plans": [
+              {
+                "Alias": "orders_1",
+                "Disabled": false,
+                "Node Type": "Index Scan",
+                "Plan Rows": 149,
+                "Index Cond": "((tenant_id = 1) AND (status = 'open'::text) AND (total_cents > 1000))",
+                "Index Name": "orders_2026_01_tenant_id_status_total_cents_idx",
+                "Plan Width": 12,
+                "Total Cost": 30.19,
+                "Actual Rows": 12.00,
+                "Actual Loops": 1,
+                "Startup Cost": 0.28,
+                "Async Capable": false,
+                "Relation Name": "orders_2026_01",
+                "Index Searches": 1,
+                "Parallel Aware": false,
+                "Scan Direction": "Forward",
+                "Local Hit Blocks": 0,
+                "Temp Read Blocks": 0,
+                "Actual Total Time": 0.025,
+                "Local Read Blocks": 0,
+                "Shared Hit Blocks": 13,
+                "Shared Read Blocks": 0,
+                "Actual Startup Time": 0.019,
+                "Parent Relationship": "Member",
+                "Temp Written Blocks": 0,
+                "Local Dirtied Blocks": 0,
+                "Local Written Blocks": 0,
+                "Shared Dirtied Blocks": 0,
+                "Shared Written Blocks": 0,
+                "Rows Removed by Index Recheck": 0
+              },
+              {
+                "Alias": "orders_2",
+                "Disabled": false,
+                "Node Type": "Index Scan",
+                "Plan Rows": 280,
+                "Index Cond": "((tenant_id = 1) AND (status = 'open'::text) AND (total_cents > 1000))",
+                "Index Name": "orders_2026_02_tenant_id_status_total_cents_idx",
+                "Plan Width": 12,
+                "Total Cost": 33.70,
+                "Actual Rows": 9.00,
+                "Actual Loops": 1,
+                "Startup Cost": 0.28,
+                "Async Capable": false,
+                "Relation Name": "orders_2026_02",
+                "Index Searches": 1,
+                "Parallel Aware": false,
+                "Scan Direction": "Forward",
+                "Local Hit Blocks": 0,
+                "Temp Read Blocks": 0,
+                "Actual Total Time": 0.011,
+                "Local Read Blocks": 0,
+                "Shared Hit Blocks": 3,
+                "Shared Read Blocks": 0,
+                "Actual Startup Time": 0.010,
+                "Parent Relationship": "Member",
+                "Temp Written Blocks": 0,
+                "Local Dirtied Blocks": 0,
+                "Local Written Blocks": 0,
+                "Shared Dirtied Blocks": 0,
+                "Shared Written Blocks": 0,
+                "Rows Removed by Index Recheck": 0
+              }
+            ],
+            "Disabled": false,
+            "Sort Key": [
+              "orders.total_cents"
+            ],
+            "Node Type": "Merge Append",
+            "Plan Rows": 429,
+            "Plan Width": 12,
+            "Total Cost": 68.19,
+            "Actual Rows": 20.00,
+            "Actual Loops": 1,
+            "Startup Cost": 0.56,
+            "Async Capable": false,
+            "Parallel Aware": false,
+            "Local Hit Blocks": 0,
+            "Subplans Removed": 0,
+            "Temp Read Blocks": 0,
+            "Actual Total Time": 0.042,
+            "Local Read Blocks": 0,
+            "Shared Hit Blocks": 16,
+            "Shared Read Blocks": 0,
+            "Actual Startup Time": 0.033,
+            "Parent Relationship": "Outer",
+            "Temp Written Blocks": 0,
+            "Local Dirtied Blocks": 0,
+            "Local Written Blocks": 0,
+            "Shared Dirtied Blocks": 0,
+            "Shared Written Blocks": 0
+          }
+        ],
+        "Disabled": false,
+        "Node Type": "Limit",
+        "Plan Rows": 20,
+        "Plan Width": 12,
+        "Total Cost": 3.71,
+        "Actual Rows": 20.00,
+        "Actual Loops": 1,
+        "Startup Cost": 0.56,
+        "Async Capable": false,
+        "Parallel Aware": false,
+        "Local Hit Blocks": 0,
+        "Temp Read Blocks": 0,
+        "Actual Total Time": 0.043,
+        "Local Read Blocks": 0,
+        "Shared Hit Blocks": 16,
+        "Shared Read Blocks": 0,
+        "Actual Startup Time": 0.034,
+        "Temp Written Blocks": 0,
+        "Local Dirtied Blocks": 0,
+        "Local Written Blocks": 0,
+        "Shared Dirtied Blocks": 0,
+        "Shared Written Blocks": 0
+      },
+      "Planning": {
+        "Local Hit Blocks": 0,
+        "Temp Read Blocks": 0,
+        "Local Read Blocks": 0,
+        "Shared Hit Blocks": 89,
+        "Shared Read Blocks": 0,
+        "Temp Written Blocks": 0,
+        "Local Dirtied Blocks": 0,
+        "Local Written Blocks": 0,
+        "Shared Dirtied Blocks": 0,
+        "Shared Written Blocks": 0
+      },
+      "Triggers": [],
+      "Planning Time": 0.446,
+      "Execution Time": 0.075
+    }
+  ],
+  "plan_has_index": true,
+  "plan_has_actual_rows": true,
+  "plan_has_buffers": true,
+  "wal_bytes_delta": 328,
+  "statement_calls": 2,
+  "counts": {
+    "total": 10,
+    "passed": 10,
+    "failed": 0
+  },
+  "scenario_results": [
+    {
+      "ordinal": 1,
+      "scenario": "normal",
+      "final_status": "passed",
+      "oracle": {
+        "expected": 1000,
+        "tenant_visible_rows": 1000
+      },
+      "artifact_pointers": [
+        "/tenant_visible_rows",
+        "/artifacts/sql"
+      ]
+    },
+    {
+      "ordinal": 2,
+      "scenario": "boundary",
+      "final_status": "passed",
+      "oracle": {
+        "expected": 2,
+        "partition_count": 2
+      },
+      "artifact_pointers": [
+        "/partition_count",
+        "/artifacts/sql"
+      ]
+    },
+    {
+      "ordinal": 3,
+      "scenario": "rejection",
+      "final_status": "passed",
+      "oracle": {
+        "rls_sqlstate": "42501",
+        "lock_sqlstate": "55P03"
+      },
+      "artifact_pointers": [
+        "/rls",
+        "/locking",
+        "/artifacts/sql",
+        "/artifacts/log"
+      ]
+    },
+    {
+      "ordinal": 4,
+      "scenario": "failure",
+      "final_status": "passed",
+      "oracle": {
+        "sqlstate": "23514",
+        "check_rejected": true
+      },
+      "artifact_pointers": [
+        "/failure",
+        "/artifacts/sql",
+        "/artifacts/log"
+      ]
+    },
+    {
+      "ordinal": 5,
+      "scenario": "recovery",
+      "final_status": "passed",
+      "oracle": {
+        "update_after_lock_release": true,
+        "valid_write_after_rejection": true
+      },
+      "artifact_pointers": [
+        "/recovery",
+        "/locking/post_release_update",
+        "/artifacts/sql",
+        "/artifacts/wal"
+      ]
+    },
+    {
+      "ordinal": 6,
+      "scenario": "migration",
+      "final_status": "passed",
+      "oracle": {
+        "not_valid_then_validated": true
+      },
+      "artifact_pointers": [
+        "/migration",
+        "/artifacts/sql"
+      ]
+    },
+    {
+      "ordinal": 7,
+      "scenario": "operations",
+      "final_status": "passed",
+      "oracle": {
+        "minimum": 1,
+        "pg_stat_statements_calls": 2
+      },
+      "artifact_pointers": [
+        "/statement_calls",
+        "/artifacts/metric"
+      ]
+    },
+    {
+      "ordinal": 8,
+      "scenario": "security",
+      "final_status": "passed",
+      "oracle": {
+        "sqlstate": "42501",
+        "cross_tenant_write_rejected": true
+      },
+      "artifact_pointers": [
+        "/rls",
+        "/artifacts/sql",
+        "/artifacts/log"
+      ]
+    },
+    {
+      "ordinal": 9,
+      "scenario": "performance",
+      "final_status": "passed",
+      "oracle": {
+        "index_observed": true,
+        "buffers_observed": true,
+        "actual_rows_observed": true
+      },
+      "artifact_pointers": [
+        "/query_plan",
+        "/artifacts/plan",
+        "/artifacts/metric"
+      ]
+    },
+    {
+      "ordinal": 10,
+      "scenario": "compatibility",
+      "final_status": "passed",
+      "oracle": {
+        "client_version": "psql (PostgreSQL) 18.6",
+        "server_version_num": 180006
+      },
+      "artifact_pointers": [
+        "/identity/server",
+        "/identity/client",
+        "/identity/version",
+        "/identity/runtime"
+      ]
+    }
+  ],
+  "artifacts": {
+    "sql": {
+      "path": "labs/reference-system/verify.sql",
+      "kind": "executed-sql-harness"
+    },
+    "plan": {
+      "pointer": "/query_plan",
+      "kind": "explain-analyze-buffers-json"
+    },
+    "wal": {
+      "pointer": "/wal_bytes_delta",
+      "kind": "wal-lsn-delta"
+    },
+    "log": {
+      "path": "evidence/artifacts/reference-system.server.log",
+      "digest": "sha256:f74609e5248ec8850bac9a471e222bd89d4d5346bbc4bd58161ebbb1fdb13034",
+      "bytes": 3558,
+      "stream": "postgres-server-stderr"
+    },
+    "metric": {
+      "pointers": [
+        "/statement_calls",
+        "/query_plan/0/Planning Time",
+        "/query_plan/0/Execution Time"
+      ]
+    }
+  },
+  "completion_limits": {
+    "integrated_success_counts_as_behavior_specific_proof": false,
+    "requires_authority_atomic_binding": true,
+    "authority_atomic_bindings": 0,
+    "completion_eligible": false
+  },
+  "verdict": "pass",
+  "duration_ms": 5000
+}

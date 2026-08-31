@@ -1,0 +1,545 @@
+{
+  "document_id": "document-pg-2db92666d97a37cc",
+  "source_ids": [
+    "postgresql-source-rel-18.6"
+  ],
+  "authority_url": "https://github.com/postgres/postgres/tree/REL_18_6",
+  "document_locator": "git:724edf9bde9d356724ad384a2e196edc3c9f80f7:doc/src/sgml/postgres-fdw.sgml",
+  "locked_source_digest": "sha256:873c03070a2e8aae0768fb75d8d6739ae9589681c6cd50839e79d787a7aed222",
+  "locked_body_digest": "sha256:6bac65b77f200f8a615e18c8bcc54d1309c261ff50ce3a5e6d4280c71be24a64",
+  "fetch": {
+    "status": "matched",
+    "fetched_digest": "sha256:6bac65b77f200f8a615e18c8bcc54d1309c261ff50ce3a5e6d4280c71be24a64",
+    "locked_digest_match": true,
+    "error_digest": null
+  },
+  "schema_version": 1,
+  "extraction": {
+    "method": "sgml-raw-anchor-selector-v1",
+    "tool": "postgresql-reference-atlas-authority-body-inventory-v1",
+    "tool_digest": "sha256:097da35cf95014735db866fca94f5db07c0717353928b543bcf9c188ae005d2c",
+    "selector_contract": [
+      "document-root",
+      "sgml-id-attribute"
+    ],
+    "selector_exhaustive_for_locked_body": true,
+    "authority_semantics_exhaustive": false,
+    "review_status": "automated-unreviewed",
+    "body_storage": "digest-locator-and-offset-only"
+  },
+  "anchors": [
+    {
+      "id": "anchor-pg-c9c70b2e5bc722eda1fd",
+      "locator": "document-root",
+      "locator_kind": "document-root",
+      "raw_selector": "document-root",
+      "element_name": "document",
+      "parent_anchor_id": null,
+      "context_start": 0,
+      "context_end": 57702,
+      "context_unit": "byte",
+      "context_digest": "sha256:6bac65b77f200f8a615e18c8bcc54d1309c261ff50ce3a5e6d4280c71be24a64",
+      "classification_status": "pending-human",
+      "surface_ids": [
+
+      ],
+      "behavior_ids": [
+
+      ]
+    },
+    {
+      "id": "anchor-pg-b189e4f8ac4aa9266a56",
+      "locator": "#postgres-fdw",
+      "locator_kind": "fragment",
+      "raw_selector": "sgml-id-attribute",
+      "element_name": "sect1",
+      "parent_anchor_id": "anchor-pg-c9c70b2e5bc722eda1fd",
+      "context_start": 41,
+      "context_end": 92,
+      "context_unit": "byte",
+      "context_digest": "sha256:eaed2688a3161b2e3ee1a9d275188035ef7add62e3a2e49734b0ff5d22b555da",
+      "classification_status": "pending-human",
+      "surface_ids": [
+
+      ],
+      "behavior_ids": [
+
+      ]
+    },
+    {
+      "id": "anchor-pg-78bd5a68d75704cb782b",
+      "locator": "#postgres-fdw-options",
+      "locator_kind": "fragment",
+      "raw_selector": "sgml-id-attribute",
+      "element_name": "sect2",
+      "parent_anchor_id": "anchor-pg-c9c70b2e5bc722eda1fd",
+      "context_start": 4472,
+      "context_end": 4507,
+      "context_unit": "byte",
+      "context_digest": "sha256:efb7c0af3c23ab9dadc06cc449e0ab8cc4ff12dedd84475cec011e3c7cdab638",
+      "classification_status": "pending-human",
+      "surface_ids": [
+
+      ],
+      "behavior_ids": [
+
+      ]
+    },
+    {
+      "id": "anchor-pg-92bfa0f4e555b2cf55e9",
+      "locator": "#postgres-fdw-options-connection",
+      "locator_kind": "fragment",
+      "raw_selector": "sgml-id-attribute",
+      "element_name": "sect3",
+      "parent_anchor_id": "anchor-pg-c9c70b2e5bc722eda1fd",
+      "context_start": 4553,
+      "context_end": 4600,
+      "context_unit": "byte",
+      "context_digest": "sha256:2c7cf18d8b05520992ce880a019aad70e09e97f7e9ce4b09215185db5a6faef5",
+      "classification_status": "pending-human",
+      "surface_ids": [
+
+      ],
+      "behavior_ids": [
+
+      ]
+    },
+    {
+      "id": "anchor-pg-247c26e0f2c0b914d5e6",
+      "locator": "#postgres-fdw-options-object-name",
+      "locator_kind": "fragment",
+      "raw_selector": "sgml-id-attribute",
+      "element_name": "sect3",
+      "parent_anchor_id": "anchor-pg-c9c70b2e5bc722eda1fd",
+      "context_start": 8320,
+      "context_end": 8368,
+      "context_unit": "byte",
+      "context_digest": "sha256:92ae671ca89e4f71f3d0831cedec81c29f0e4bf9aa0198d05a75703e13a13f95",
+      "classification_status": "pending-human",
+      "surface_ids": [
+
+      ],
+      "behavior_ids": [
+
+      ]
+    },
+    {
+      "id": "anchor-pg-6dbf402dae26afd094e0",
+      "locator": "#postgres-fdw-options-cost-estimation",
+      "locator_kind": "fragment",
+      "raw_selector": "sgml-id-attribute",
+      "element_name": "sect3",
+      "parent_anchor_id": "anchor-pg-c9c70b2e5bc722eda1fd",
+      "context_start": 9913,
+      "context_end": 9965,
+      "context_unit": "byte",
+      "context_digest": "sha256:28e17349e3f7e946a1215020a550c32b98aa2a6bd9c678414022aba630218def",
+      "classification_status": "pending-human",
+      "surface_ids": [
+
+      ],
+      "behavior_ids": [
+
+      ]
+    },
+    {
+      "id": "anchor-pg-83550a912b5fc1e92816",
+      "locator": "#postgres-fdw-options-remote-execution",
+      "locator_kind": "fragment",
+      "raw_selector": "sgml-id-attribute",
+      "element_name": "sect3",
+      "parent_anchor_id": "anchor-pg-c9c70b2e5bc722eda1fd",
+      "context_start": 15154,
+      "context_end": 15207,
+      "context_unit": "byte",
+      "context_digest": "sha256:439c6081401f128398c814ef3f79ef0d6caab15b93775e74b913b2a1b5e83d18",
+      "classification_status": "pending-human",
+      "surface_ids": [
+
+      ],
+      "behavior_ids": [
+
+      ]
+    },
+    {
+      "id": "anchor-pg-0e94d5e49e5eddd203ba",
+      "locator": "#postgres-fdw-options-asynchronous-execution",
+      "locator_kind": "fragment",
+      "raw_selector": "sgml-id-attribute",
+      "element_name": "sect3",
+      "parent_anchor_id": "anchor-pg-c9c70b2e5bc722eda1fd",
+      "context_start": 18736,
+      "context_end": 18795,
+      "context_unit": "byte",
+      "context_digest": "sha256:e0d0c9aeba6e44e44d67173c311fafdd5017a2d983a3adaacf9ac6d65eb65627",
+      "classification_status": "pending-human",
+      "surface_ids": [
+
+      ],
+      "behavior_ids": [
+
+      ]
+    },
+    {
+      "id": "anchor-pg-799bf8fc1a3bd93d534c",
+      "locator": "#postgres-fdw-options-transaction-management",
+      "locator_kind": "fragment",
+      "raw_selector": "sgml-id-attribute",
+      "element_name": "sect3",
+      "parent_anchor_id": "anchor-pg-c9c70b2e5bc722eda1fd",
+      "context_start": 20937,
+      "context_end": 20996,
+      "context_unit": "byte",
+      "context_digest": "sha256:770d65420ae26600b38809c5b0c130918297d045a6669b8eeb3a4db63c2c494a",
+      "classification_status": "pending-human",
+      "surface_ids": [
+
+      ],
+      "behavior_ids": [
+
+      ]
+    },
+    {
+      "id": "anchor-pg-4b5c11226ea957d8b5b0",
+      "locator": "#postgres-fdw-options-updatability",
+      "locator_kind": "fragment",
+      "raw_selector": "sgml-id-attribute",
+      "element_name": "sect3",
+      "parent_anchor_id": "anchor-pg-c9c70b2e5bc722eda1fd",
+      "context_start": 23617,
+      "context_end": 23666,
+      "context_unit": "byte",
+      "context_digest": "sha256:e2a0cf28506f8da32460fc02cc6b073cb550786fbd7055f179e6f5841a43b927",
+      "classification_status": "pending-human",
+      "surface_ids": [
+
+      ],
+      "behavior_ids": [
+
+      ]
+    },
+    {
+      "id": "anchor-pg-42fc7edc14c61f02a61d",
+      "locator": "#postgres-fdw-options-truncatability",
+      "locator_kind": "fragment",
+      "raw_selector": "sgml-id-attribute",
+      "element_name": "sect3",
+      "parent_anchor_id": "anchor-pg-c9c70b2e5bc722eda1fd",
+      "context_start": 25007,
+      "context_end": 25058,
+      "context_unit": "byte",
+      "context_digest": "sha256:ea514076381b1d62737001c3b7f3a6ee724f3044b9e81b1995b48a32387a8383",
+      "classification_status": "pending-human",
+      "surface_ids": [
+
+      ],
+      "behavior_ids": [
+
+      ]
+    },
+    {
+      "id": "anchor-pg-05666f7d9f640ed3ed01",
+      "locator": "#postgres-fdw-options-importing",
+      "locator_kind": "fragment",
+      "raw_selector": "sgml-id-attribute",
+      "element_name": "sect3",
+      "parent_anchor_id": "anchor-pg-c9c70b2e5bc722eda1fd",
+      "context_start": 26083,
+      "context_end": 26129,
+      "context_unit": "byte",
+      "context_digest": "sha256:0a552aa3be0f3ed79730201448c786c44a7b9d1d3004cbda011a478a87dd4079",
+      "classification_status": "pending-human",
+      "surface_ids": [
+
+      ],
+      "behavior_ids": [
+
+      ]
+    },
+    {
+      "id": "anchor-pg-df9dda8256f35cf0093e",
+      "locator": "#postgres-fdw-options-connection-management",
+      "locator_kind": "fragment",
+      "raw_selector": "sgml-id-attribute",
+      "element_name": "sect3",
+      "parent_anchor_id": "anchor-pg-c9c70b2e5bc722eda1fd",
+      "context_start": 31013,
+      "context_end": 31071,
+      "context_unit": "byte",
+      "context_digest": "sha256:a8b14ef39c98a5e7fe4bce034db697069656f9c6a07738237ca08dd13d2e2b9c",
+      "classification_status": "pending-human",
+      "surface_ids": [
+
+      ],
+      "behavior_ids": [
+
+      ]
+    },
+    {
+      "id": "anchor-pg-9e5713ed312d2467f45d",
+      "locator": "#postgres-fdw-option-keep-connections",
+      "locator_kind": "fragment",
+      "raw_selector": "sgml-id-attribute",
+      "element_name": "varlistentry",
+      "parent_anchor_id": "anchor-pg-c9c70b2e5bc722eda1fd",
+      "context_start": 31325,
+      "context_end": 31387,
+      "context_unit": "byte",
+      "context_digest": "sha256:bdf388bac45aab3720fbd64724827ac93a2a5bf01cd289fa92d0d5254c6aac34",
+      "classification_status": "pending-human",
+      "surface_ids": [
+
+      ],
+      "behavior_ids": [
+
+      ]
+    },
+    {
+      "id": "anchor-pg-c9e52b40bd7fed3df1e3",
+      "locator": "#postgres-fdw-option-use-scram-passthrough",
+      "locator_kind": "fragment",
+      "raw_selector": "sgml-id-attribute",
+      "element_name": "varlistentry",
+      "parent_anchor_id": "anchor-pg-c9c70b2e5bc722eda1fd",
+      "context_start": 31962,
+      "context_end": 32029,
+      "context_unit": "byte",
+      "context_digest": "sha256:53d6995b16dbc0ef73e9a0dc7311bf0d3e47f57fa4ae25e59549df5da927261d",
+      "classification_status": "pending-human",
+      "surface_ids": [
+
+      ],
+      "behavior_ids": [
+
+      ]
+    },
+    {
+      "id": "anchor-pg-eceb99a47f2d6f764352",
+      "locator": "#postgres-fdw-functions",
+      "locator_kind": "fragment",
+      "raw_selector": "sgml-id-attribute",
+      "element_name": "sect2",
+      "parent_anchor_id": "anchor-pg-c9c70b2e5bc722eda1fd",
+      "context_start": 34700,
+      "context_end": 34736,
+      "context_unit": "byte",
+      "context_digest": "sha256:a023858eeed4847fdddb9cf3fbdd41f7c0c1bb48801d074515861c43a29a3654",
+      "classification_status": "pending-human",
+      "surface_ids": [
+
+      ],
+      "behavior_ids": [
+
+      ]
+    },
+    {
+      "id": "anchor-pg-b9896085b4888809544e",
+      "locator": "#postgres-fdw-get-connections-columns",
+      "locator_kind": "fragment",
+      "raw_selector": "sgml-id-attribute",
+      "element_name": "table",
+      "parent_anchor_id": "anchor-pg-c9c70b2e5bc722eda1fd",
+      "context_start": 36900,
+      "context_end": 36954,
+      "context_unit": "byte",
+      "context_digest": "sha256:87493dcb0d40686fc1068475b425a61e3c7126d445cb51b61ca8d508b1e6f8e3",
+      "classification_status": "pending-human",
+      "surface_ids": [
+
+      ],
+      "behavior_ids": [
+
+      ]
+    },
+    {
+      "id": "anchor-pg-5ad86988a3c61c83024a",
+      "locator": "#postgres-fdw-connection-management",
+      "locator_kind": "fragment",
+      "raw_selector": "sgml-id-attribute",
+      "element_name": "sect2",
+      "parent_anchor_id": "anchor-pg-c9c70b2e5bc722eda1fd",
+      "context_start": 41519,
+      "context_end": 41568,
+      "context_unit": "byte",
+      "context_digest": "sha256:2257a8980385c64974847efd37e525508373283f9c96bedfa940a7f74c0ccdd8",
+      "classification_status": "pending-human",
+      "surface_ids": [
+
+      ],
+      "behavior_ids": [
+
+      ]
+    },
+    {
+      "id": "anchor-pg-1644cef0e6bab4b3a0e7",
+      "locator": "#postgres-fdw-transaction-management",
+      "locator_kind": "fragment",
+      "raw_selector": "sgml-id-attribute",
+      "element_name": "sect2",
+      "parent_anchor_id": "anchor-pg-c9c70b2e5bc722eda1fd",
+      "context_start": 43111,
+      "context_end": 43161,
+      "context_unit": "byte",
+      "context_digest": "sha256:d327a302bb13943476c090a18e98e68b0b49df514163e1098412192af49921f3",
+      "classification_status": "pending-human",
+      "surface_ids": [
+
+      ],
+      "behavior_ids": [
+
+      ]
+    },
+    {
+      "id": "anchor-pg-d1059fff08d7f8fac4d8",
+      "locator": "#postgres-fdw-remote-query-optimization",
+      "locator_kind": "fragment",
+      "raw_selector": "sgml-id-attribute",
+      "element_name": "sect2",
+      "parent_anchor_id": "anchor-pg-c9c70b2e5bc722eda1fd",
+      "context_start": 44767,
+      "context_end": 44820,
+      "context_unit": "byte",
+      "context_digest": "sha256:6a64e108b7ed81b7615492d4b4a6afce8d34f452db01913023f0e1b1876213c7",
+      "classification_status": "pending-human",
+      "surface_ids": [
+
+      ],
+      "behavior_ids": [
+
+      ]
+    },
+    {
+      "id": "anchor-pg-004d3c6f8e2471d385cd",
+      "locator": "#postgres-fdw-remote-query-execution-environment",
+      "locator_kind": "fragment",
+      "raw_selector": "sgml-id-attribute",
+      "element_name": "sect2",
+      "parent_anchor_id": "anchor-pg-c9c70b2e5bc722eda1fd",
+      "context_start": 47088,
+      "context_end": 47150,
+      "context_unit": "byte",
+      "context_digest": "sha256:009520505f838cd66131304bc42b5157b2d95b5be759c6e0ad678412fa381ac8",
+      "classification_status": "pending-human",
+      "surface_ids": [
+
+      ],
+      "behavior_ids": [
+
+      ]
+    },
+    {
+      "id": "anchor-pg-fe3d53f32a8f33f44657",
+      "locator": "#postgres-fdw-cross-version-compatibility",
+      "locator_kind": "fragment",
+      "raw_selector": "sgml-id-attribute",
+      "element_name": "sect2",
+      "parent_anchor_id": "anchor-pg-c9c70b2e5bc722eda1fd",
+      "context_start": 49345,
+      "context_end": 49400,
+      "context_unit": "byte",
+      "context_digest": "sha256:14d74f2b748a7f376579aa8b3f788963d7742f2885a98bf8d8a6d461258858b0",
+      "classification_status": "pending-human",
+      "surface_ids": [
+
+      ],
+      "behavior_ids": [
+
+      ]
+    },
+    {
+      "id": "anchor-pg-a92eb23286cc137f6f93",
+      "locator": "#postgres-fdw-wait-events",
+      "locator_kind": "fragment",
+      "raw_selector": "sgml-id-attribute",
+      "element_name": "sect2",
+      "parent_anchor_id": "anchor-pg-c9c70b2e5bc722eda1fd",
+      "context_start": 50778,
+      "context_end": 50817,
+      "context_unit": "byte",
+      "context_digest": "sha256:e0b200c980783d6a6399a048744e231d1181cc46081e74b7c33ac0e6bfef5c59",
+      "classification_status": "pending-human",
+      "surface_ids": [
+
+      ],
+      "behavior_ids": [
+
+      ]
+    },
+    {
+      "id": "anchor-pg-bc991f8c86cb1fd35c73",
+      "locator": "#postgres-fdw-configuration-parameters",
+      "locator_kind": "fragment",
+      "raw_selector": "sgml-id-attribute",
+      "element_name": "sect2",
+      "parent_anchor_id": "anchor-pg-c9c70b2e5bc722eda1fd",
+      "context_start": 51684,
+      "context_end": 51736,
+      "context_unit": "byte",
+      "context_digest": "sha256:049d60c7e550b3ea90e86a6220fb0d4748b46300b88665d7da82d7e8c00e9f3e",
+      "classification_status": "pending-human",
+      "surface_ids": [
+
+      ],
+      "behavior_ids": [
+
+      ]
+    },
+    {
+      "id": "anchor-pg-19e4f68661f3bf559921",
+      "locator": "#guc-pgfdw-application-name",
+      "locator_kind": "fragment",
+      "raw_selector": "sgml-id-attribute",
+      "element_name": "varlistentry",
+      "parent_anchor_id": "anchor-pg-c9c70b2e5bc722eda1fd",
+      "context_start": 51796,
+      "context_end": 51888,
+      "context_unit": "byte",
+      "context_digest": "sha256:2ef86d046112c1faa62308efce6e5859ed45652464424d6e7b8a3dc49bd62d6c",
+      "classification_status": "pending-human",
+      "surface_ids": [
+
+      ],
+      "behavior_ids": [
+
+      ]
+    },
+    {
+      "id": "anchor-pg-2167c6b0afce9ae98986",
+      "locator": "#postgres-fdw-examples",
+      "locator_kind": "fragment",
+      "raw_selector": "sgml-id-attribute",
+      "element_name": "sect2",
+      "parent_anchor_id": "anchor-pg-c9c70b2e5bc722eda1fd",
+      "context_start": 55308,
+      "context_end": 55344,
+      "context_unit": "byte",
+      "context_digest": "sha256:87b807b78b7b9423300f9ce3f17708df0b0371669c2c4d7ced87a8972ef3962b",
+      "classification_status": "pending-human",
+      "surface_ids": [
+
+      ],
+      "behavior_ids": [
+
+      ]
+    },
+    {
+      "id": "anchor-pg-1761fee9baefc78e2ff5",
+      "locator": "#postgres-fdw-author",
+      "locator_kind": "fragment",
+      "raw_selector": "sgml-id-attribute",
+      "element_name": "sect2",
+      "parent_anchor_id": "anchor-pg-c9c70b2e5bc722eda1fd",
+      "context_start": 57547,
+      "context_end": 57581,
+      "context_unit": "byte",
+      "context_digest": "sha256:9543c1b4c89fe66e4c8727e6a4e587433e20f35005dd6622639e1efacd7cd570",
+      "classification_status": "pending-human",
+      "surface_ids": [
+
+      ],
+      "behavior_ids": [
+
+      ]
+    }
+  ]
+}

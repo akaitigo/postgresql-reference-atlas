@@ -1,0 +1,87 @@
+{
+  "schema_version": 1,
+  "pattern_id": "definitive-domain.operations.logical-replication",
+  "target_id": "operations.logical-replication",
+  "scenario": "security",
+  "variant_id": "postgresql-verification-matrix-v2",
+  "environment": {
+    "subject": "PostgreSQL",
+    "server_product": "PostgreSQL",
+    "server_version": "18.6",
+    "server_version_num": "180006",
+    "client_product": "psql",
+    "client_version": "psql (PostgreSQL) 18.6",
+    "runtime_image": "postgres:18.6-alpine",
+    "runtime_identity": "pg-atlas-security-68614-b1cef5",
+    "workers": 1,
+    "retries": 0,
+    "trace_mode": "on",
+    "execution_mode": "real-postgresql-server-client",
+    "row_runtime": {
+      "server_versions": [
+        "18.6"
+      ],
+      "images": [
+        "postgres:18.6-alpine@sha256:d3e1620b530c944afa6e887d22eb899824da68e19c52024bf98f5220c88a65b2"
+      ],
+      "containers": [
+        "pg-atlas-security-logical-publisher-68614-f6cdba",
+        "pg-atlas-security-logical-subscriber-68614-f6cdba"
+      ],
+      "network": "pg-atlas-security-logical-net-68614-f6cdba"
+    }
+  },
+  "sql": {
+    "source": "CREATE ROLE atlas_logical_reader;\nCREATE TABLE atlas_logical_secure(tenant name NOT NULL, payload text NOT NULL);\nALTER TABLE atlas_logical_secure ENABLE ROW LEVEL SECURITY;\nCREATE POLICY atlas_security_policy ON atlas_logical_secure USING (tenant = current_user);\nGRANT SELECT ON atlas_logical_secure TO atlas_logical_reader;\nINSERT INTO atlas_logical_secure VALUES ('atlas_logical_reader', 'visible'), ('postgres', 'hidden');\nCREATE ROLE atlas_logical_reader;\nCREATE TABLE atlas_logical_secure(tenant name NOT NULL, payload text NOT NULL);\nALTER TABLE atlas_logical_secure ENABLE ROW LEVEL SECURITY;\nCREATE POLICY atlas_security_policy ON atlas_logical_secure USING (tenant = current_user);\nGRANT SELECT ON atlas_logical_secure TO atlas_logical_reader;\nSET ROLE atlas_logical_reader;\nSELECT CASE WHEN count(*) = 1 AND min(payload) = 'visible'\n  THEN 'ATLAS_SECURITY_PASS:operations.logical-replication'\n  ELSE 'ATLAS_SECURITY_FAIL:operations.logical-replication' END\nFROM atlas_logical_secure;\nDO $$ BEGIN\n  UPDATE atlas_logical_secure SET payload = 'forged';\n  RAISE EXCEPTION 'update unexpectedly allowed';\nEXCEPTION WHEN insufficient_privilege THEN\n  RAISE NOTICE 'ATLAS_SECURITY_PASS:operations.logical-replication';\nEND $$;\nRESET ROLE;\n",
+    "stdout": "SET\n                        case                        \n----------------------------------------------------\n ATLAS_SECURITY_PASS:operations.logical-replication\n(1 row)\n\nDO\nRESET\n",
+    "stderr": "NOTICE:  ATLAS_SECURITY_PASS:operations.logical-replication\n"
+  },
+  "plan": [
+    {
+      "Plan": {
+        "Node Type": "Seq Scan",
+        "Parallel Aware": false,
+        "Async Capable": false,
+        "Relation Name": "atlas_logical_secure",
+        "Alias": "atlas_logical_secure",
+        "Startup Cost": 0.0,
+        "Total Cost": 19.75,
+        "Plan Rows": 3,
+        "Plan Width": 96,
+        "Disabled": false,
+        "Filter": "(tenant = CURRENT_USER)"
+      }
+    }
+  ],
+  "wal": {
+    "publisher_before_lsn": "0/1BE3478",
+    "publisher_after_lsn": "0/1BE34E8"
+  },
+  "log": "2026-08-31 14:46:19.815 UTC [72] LOG:  statement: SELECT 1 FROM pg_database WHERE datname = 'atlas' ;\n2026-08-31 14:46:19.821 UTC [74] LOG:  statement: CREATE DATABASE \"atlas\" ;\n2026-08-31 14:46:19.870 UTC [53] LOG:  background worker \"logical replication launcher\" (PID 62) exited with exit code 1\n2026-08-31 14:46:20.061 UTC [92] LOG:  statement: SELECT 1\n2026-08-31 14:46:20.348 UTC [99] LOG:  statement: SELECT 1\n2026-08-31 14:46:20.708 UTC [106] LOG:  statement: CREATE ROLE atlas_logical_reader;\n2026-08-31 14:46:20.709 UTC [106] LOG:  statement: CREATE TABLE atlas_logical_secure(tenant name NOT NULL, payload text NOT NULL);\n2026-08-31 14:46:20.711 UTC [106] LOG:  statement: ALTER TABLE atlas_logical_secure ENABLE ROW LEVEL SECURITY;\n2026-08-31 14:46:20.711 UTC [106] LOG:  statement: CREATE POLICY atlas_security_policy ON atlas_logical_secure USING (tenant = current_user);\n2026-08-31 14:46:20.712 UTC [106] LOG:  statement: GRANT SELECT ON atlas_logical_secure TO atlas_logical_reader;\n2026-08-31 14:46:20.712 UTC [106] LOG:  statement: INSERT INTO atlas_logical_secure VALUES ('atlas_logical_reader', 'visible'), ('postgres', 'hidden');\n2026-08-31 14:46:20.712 UTC [106] LOG:  statement: CREATE PUBLICATION atlas_security_publication FOR TABLE atlas_logical_secure;\n2026-08-31 14:46:20.780 UTC [113] LOG:  statement: SELECT pg_current_wal_lsn()\n2026-08-31 14:46:20.815 UTC [114] LOG:  statement: SELECT pg_catalog.set_config('search_path', '', false);\n2026-08-31 14:46:20.816 UTC [114] LOG:  statement: SELECT t.pubname FROM\n2026-08-31 14:46:20.816 UTC [114] LOG:  statement: SELECT DISTINCT n.nspname, c.relname, gpt.attrs\n2026-08-31 14:46:20.821 UTC [114] LOG:  logical decoding found consistent point at 0/1BE3478\n2026-08-31 14:46:20.826 UTC [115] LOG:  statement: SELECT pg_catalog.set_config('search_path', '', false);\n2026-08-31 14:46:20.827 UTC [115] LOG:  starting logical decoding for slot \"atlas_security_subscription\"\n2026-08-31 14:46:20.827 UTC [115] LOG:  logical decoding found consistent point at 0/1BE3478\n2026-08-31 14:46:20.833 UTC [116] LOG:  statement: SELECT pg_catalog.set_config('search_path', '', false);\n2026-08-31 14:46:20.834 UTC [116] LOG:  statement: BEGIN READ ONLY ISOLATION LEVEL REPEATABLE READ\n2026-08-31 14:46:20.840 UTC [116] LOG:  logical decoding found consistent point at 0/1BE34B0\n2026-08-31 14:46:20.842 UTC [116] LOG:  statement: SELECT c.oid, c.relreplident, c.relkind  FROM pg_catalog.pg_class c  INNER JOIN pg_catalog.pg_namespace n        ON (c.relnamespace = n.oid) WHERE n.nspname = 'public'   AND c.relname = 'atlas_logical_secure'\n2026-08-31 14:46:20.843 UTC [116] LOG:  statement: SELECT DISTINCT  (CASE WHEN (array_length(gpt.attrs, 1) = c.relnatts)   THEN NULL ELSE gpt.attrs END)  FROM pg_publication p,  LATERAL pg_get_publication_tables(p.pubname) gpt,  pg_class c WHERE gpt.relid = 16386 AND c.oid = gpt.relid   AND p.pubname IN ( 'atlas_security_publication' )\n2026-08-31 14:46:20.845 UTC [116] LOG:  statement: SELECT a.attnum,       a.attname,       a.atttypid,       a.attnum = ANY(i.indkey), a.attgenerated != ''  FROM pg_catalog.pg_attribute a  LEFT JOIN pg_catalog.pg_index i       ON (i.indexrelid = pg_get_replica_identity_index(16386)) WHERE a.attnum > 0::pg_catalog.int2   AND NOT a.attisdropped    AND a.attrelid = 16386 ORDER BY a.attnum\n2026-08-31 14:46:20.846 UTC [116] LOG:  statement: SELECT DISTINCT pg_get_expr(gpt.qual, gpt.relid)  FROM pg_publication p,  LATERAL pg_get_publication_tables(p.pubname) gpt WHERE gpt.relid = 16386   AND p.pubname IN ( 'atlas_security_publication' )\n2026-08-31 14:46:20.846 UTC [116] LOG:  statement: COPY public.atlas_logical_secure (tenant, payload) TO STDOUT\n2026-08-31 14:46:20.846 UTC [116] LOG:  statement: COMMIT\n2026-08-31 14:46:20.847 UTC [116] LOG:  starting logical decoding for slot \"pg_16394_sync_16386_7680207172894085160\"\n2026-08-31 14:46:20.847 UTC [116] LOG:  logical decoding found consistent point at 0/1BE34B0\n2026-08-31 14:46:20.932 UTC [123] LOG:  statement: SELECT pg_current_wal_lsn()\n2026-08-31 14:46:20.996 UTC [130] LOG:  statement: SELECT active FROM pg_replication_slots WHERE slot_name='atlas_security_subscription'\n2026-08-31 14:46:20.019 UTC [59] LOG:  statement: SELECT 1 FROM pg_database WHERE datname = 'atlas' ;\n2026-08-31 14:46:20.024 UTC [61] LOG:  statement: CREATE DATABASE \"atlas\" ;\n2026-08-31 14:46:20.086 UTC [47] LOG:  background worker \"logical replication launcher\" (PID 56) exited with exit code 1\n2026-08-31 14:46:20.387 UTC [79] LOG:  statement: SELECT 1\n2026-08-31 14:46:20.676 UTC [86] LOG:  statement: SELECT 1\n2026-08-31 14:46:20.744 UTC [93] LOG:  statement: CREATE ROLE atlas_logical_reader;\n2026-08-31 14:46:20.745 UTC [93] LOG:  statement: CREATE TABLE atlas_logical_secure(tenant name NOT NULL, payload text NOT NULL);\n2026-08-31 14:46:20.747 UTC [93] LOG:  statement: ALTER TABLE atlas_logical_secure ENABLE ROW LEVEL SECURITY;\n2026-08-31 14:46:20.747 UTC [93] LOG:  statement: CREATE POLICY atlas_security_policy ON atlas_logical_secure USING (tenant = current_user);\n2026-08-31 14:46:20.748 UTC [93] LOG:  statement: GRANT SELECT ON atlas_logical_secure TO atlas_logical_reader;\n2026-08-31 14:46:20.812 UTC [100] LOG:  statement: CREATE SUBSCRIPTION atlas_security_subscription CONNECTION 'host=publisher dbname=atlas user=postgres' PUBLICATION atlas_security_publication WITH (copy_data=true, create_slot=true, enabled=true)\n2026-08-31 14:46:20.824 UTC [101] LOG:  logical replication apply worker for subscription \"atlas_security_subscription\" has started\n2026-08-31 14:46:20.829 UTC [102] LOG:  logical replication table synchronization worker for subscription \"atlas_security_subscription\", table \"atlas_logical_secure\" has started\n2026-08-31 14:46:20.848 UTC [102] LOG:  logical replication table synchronization worker for subscription \"atlas_security_subscription\", table \"atlas_logical_secure\" has finished\n2026-08-31 14:46:20.866 UTC [109] LOG:  statement: SELECT count(*) FROM atlas_logical_secure\n2026-08-31 14:46:20.899 UTC [116] LOG:  statement: SET ROLE atlas_logical_reader;\n2026-08-31 14:46:20.899 UTC [116] LOG:  statement: SELECT CASE WHEN count(*) = 1 AND min(payload) = 'visible'\n\t  THEN 'ATLAS_SECURITY_PASS:operations.logical-replication'\n\t  ELSE 'ATLAS_SECURITY_FAIL:operations.logical-replication' END\n\tFROM atlas_logical_secure;\n2026-08-31 14:46:20.900 UTC [116] LOG:  statement: DO $$ BEGIN\n\t  UPDATE atlas_logical_secure SET payload = 'forged';\n\t  RAISE NOTICE 'ATLAS_SECURITY_PASS:operations.logical-replication';\n2026-08-31 14:46:20.900 UTC [116] LOG:  statement: RESET ROLE;\n2026-08-31 14:46:20.964 UTC [123] LOG:  statement: SET ROLE atlas_logical_reader; EXPLAIN (FORMAT JSON) SELECT * FROM atlas_logical_secure; RESET ROLE\n",
+  "metric": {
+    "elapsed_ms": 2032.398,
+    "replicated_rows": 2,
+    "slot_active": true
+  },
+  "oracle": {
+    "kind": "replicated-data-remains-bounded-by-subscriber-rls-and-acl",
+    "scenario": "security",
+    "marker": "ATLAS_SECURITY_PASS:operations.logical-replication",
+    "passed": true
+  },
+  "streams": {
+    "action": [
+      "psql security transaction"
+    ],
+    "network": [
+      "psql-to-PostgreSQL-session"
+    ],
+    "resource": [
+      "SQL",
+      "plan",
+      "WAL",
+      "server-log",
+      "elapsed-metric"
+    ]
+  }
+}

@@ -5,12 +5,12 @@ claim_ids: [operations.maintenance]
 kind: test-report
 producer: postgresql-reference-atlas
 command: make lab LAB=maintenance
-created_at: "2026-08-28T07:52:03Z"
+created_at: "2026-08-30T19:47:50Z"
 environment:
   profile: container
   manifest_digest: sha256:3df4dbd82139e17c785348c281f26b54d7300662087baaeec3034acefedf36b9
 source_digest: sha256:7a5097c6130472b193adb30fda89b4a607f1ae00a1ae87dbc1cf22ae5484eaef
-harness_digest: sha256:9b12937f7ffde52a627ead1385b541625dedee19ba20e6a775a968956d5eafa9
+harness_digest: sha256:3153893f1270460be3342b1e9bb9375b0ef81253f03c38c5796d6401ef24a420
 harness_path: evidence/harnesses/maintenance.manifest
 artifact:
   uri: evidence/artifacts/maintenance.json

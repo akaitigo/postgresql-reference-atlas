@@ -3,6 +3,15 @@ set -euo pipefail
 
 ROOT="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
 source "$ROOT/scripts/lib.sh"
+
+# Static Evidence is derived from locked repository inputs. Reuse the full-run
+# ledger's start time so CI/local verification is byte-identical without
+# pretending that runtime PostgreSQL captures happened at a fixed time.
+ledger_time="${EVIDENCE_LEDGER_TIME:-}"
+if [[ -z "$ledger_time" ]]; then
+  ledger_time="$(ruby -rjson -e 'puts JSON.parse(File.read(ARGV.fetch(0))).fetch("started_at")' "$ROOT/evidence/dependency-rerun.json")"
+fi
+export EVIDENCE_CREATED_AT="$ledger_time"
 required=(
   LICENSE
   NOTICE

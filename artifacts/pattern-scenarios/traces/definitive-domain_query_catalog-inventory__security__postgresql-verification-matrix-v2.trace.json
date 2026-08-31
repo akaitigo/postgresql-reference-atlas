@@ -1,0 +1,143 @@
+{
+  "schema_version": 1,
+  "pattern_id": "definitive-domain.query.catalog-inventory",
+  "target_id": "query.catalog-inventory",
+  "scenario": "security",
+  "variant_id": "postgresql-verification-matrix-v2",
+  "environment": {
+    "subject": "PostgreSQL",
+    "server_product": "PostgreSQL",
+    "server_version": "18.6",
+    "server_version_num": "180006",
+    "client_product": "psql",
+    "client_version": "psql (PostgreSQL) 18.6",
+    "runtime_image": "postgres:18.6-alpine",
+    "runtime_identity": "pg-atlas-security-68614-b1cef5",
+    "workers": 1,
+    "retries": 0,
+    "trace_mode": "on",
+    "execution_mode": "real-postgresql-server-client",
+    "row_runtime": {
+      "server_versions": [
+        "18.6"
+      ],
+      "containers": [
+        "pg-atlas-security-68614-b1cef5"
+      ]
+    }
+  },
+  "sql": {
+    "source": "BEGIN;\nCREATE ROLE atlas_catalog_reader;\nSET ROLE atlas_catalog_reader;\nDO $$ BEGIN\n  BEGIN\n    CREATE TABLE pg_catalog.atlas_catalog_forged(id integer);\n    PERFORM set_config('atlas.catalog.mutation_denied', 'false', true);\n  EXCEPTION WHEN insufficient_privilege THEN\n    PERFORM set_config('atlas.catalog.mutation_denied', 'true', true);\n  END;\nEND $$;\nRESET ROLE;\nCREATE TEMP TABLE atlas_catalog_plan(plan jsonb);\nDO $$ DECLARE captured jsonb; BEGIN\n  EXECUTE 'EXPLAIN (ANALYZE, BUFFERS, FORMAT JSON) SELECT oid, typname FROM pg_type WHERE typnamespace = ''pg_catalog''::regnamespace ORDER BY oid LIMIT 10' INTO captured;\n  INSERT INTO atlas_catalog_plan VALUES (captured);\nEND $$;\nWITH\ntypes AS (SELECT count(*) AS count, md5(string_agg(oid::text || ':' || typname, ',' ORDER BY oid)) AS digest FROM pg_type WHERE typnamespace = 'pg_catalog'::regnamespace),\nfunctions AS (SELECT count(*) AS count, md5(string_agg(oid::text || ':' || proname || ':' || pg_get_function_identity_arguments(oid), ',' ORDER BY oid)) AS digest FROM pg_proc WHERE pronamespace = 'pg_catalog'::regnamespace),\noperators AS (SELECT count(*) AS count, md5(string_agg(oid::text || ':' || oprname, ',' ORDER BY oid)) AS digest FROM pg_operator WHERE oprnamespace = 'pg_catalog'::regnamespace),\ncasts AS (SELECT count(*) AS count, md5(string_agg(oid::text || ':' || castsource::text || ':' || casttarget::text, ',' ORDER BY oid)) AS digest FROM pg_cast),\naccess_methods AS (SELECT count(*) AS count, md5(string_agg(oid::text || ':' || amname, ',' ORDER BY oid)) AS digest FROM pg_am),\ncollations AS (SELECT count(*) AS count, md5(string_agg(oid::text || ':' || collname, ',' ORDER BY oid)) AS digest FROM pg_collation),\nextensions AS (SELECT count(*) AS count, md5(string_agg(name || ':' || default_version, ',' ORDER BY name)) AS digest FROM pg_available_extensions),\ncatalog_relations AS (SELECT count(*) AS count, md5(string_agg(c.oid::text || ':' || c.relname, ',' ORDER BY c.oid)) AS digest FROM pg_class c WHERE c.relnamespace = 'pg_catalog'::regnamespace)\nSELECT json_build_object(\n  'server_version', current_setting('server_version'),\n  'types', (SELECT json_build_object('count', count, 'digest', digest) FROM types),\n  'functions', (SELECT json_build_object('count', count, 'digest', digest) FROM functions),\n  'operators', (SELECT json_build_object('count', count, 'digest', digest) FROM operators),\n  'casts', (SELECT json_build_object('count', count, 'digest', digest) FROM casts),\n  'access_methods', (SELECT json_build_object('count', count, 'digest', digest) FROM access_methods),\n  'collations', (SELECT json_build_object('count', count, 'digest', digest) FROM collations),\n  'available_extensions', (SELECT json_build_object('count', count, 'digest', digest) FROM extensions),\n  'catalog_relations', (SELECT json_build_object('count', count, 'digest', digest) FROM catalog_relations),\n  'security_rejected', current_setting('atlas.catalog.mutation_denied', true) = 'true',\n  'oracle_marker', 'ATLAS_SECURITY_PASS:query.catalog-inventory', 'plan', (SELECT plan FROM atlas_catalog_plan),\n  'verdict', CASE WHEN (SELECT count FROM types) > 100 AND (SELECT count FROM functions) > 1000\n    AND (SELECT count FROM operators) > 500 AND (SELECT count FROM casts) > 100\n    AND (SELECT count FROM access_methods) >= 7 AND (SELECT count FROM collations) > 0\n    AND (SELECT count FROM extensions) > 20 AND (SELECT count FROM catalog_relations) > 50\n    AND current_setting('atlas.catalog.mutation_denied', true) = 'true' THEN 'pass' ELSE 'fail' END\n);\nROLLBACK;\n",
+    "stdout": "BEGIN\nCREATE ROLE\nSET\nDO\nRESET\nCREATE TABLE\nDO\n{\"server_version\" : \"18.6\", \"types\" : {\"count\" : 473, \"digest\" : \"f0dd17020a65a7544565db74ef065f13\"}, \"functions\" : {\"count\" : 3402, \"digest\" : \"2a9332f20e28247a8e880d82be214cdb\"}, \"operators\" : {\"count\" : 799, \"digest\" : \"b75b232b0e2c0784cc5364a9c059b754\"}, \"casts\" : {\"count\" : 235, \"digest\" : \"2061c475584c9f9274a436560ea5d6b9\"}, \"access_methods\" : {\"count\" : 7, \"digest\" : \"9b99d064cb70c968245af275905a04ff\"}, \"collations\" : {\"count\" : 914, \"digest\" : \"bb064a41ddccfb9d31341794c4a745cc\"}, \"available_extensions\" : {\"count\" : 60, \"digest\" : \"3c1933d18c76ea3d97c5dbaf4d0cb4d2\"}, \"catalog_relations\" : {\"count\" : 268, \"digest\" : \"7aebbfac6190436cc780d75964a20157\"}, \"security_rejected\" : true, \"oracle_marker\" : \"ATLAS_SECURITY_PASS:query.catalog-inventory\", \"plan\" : [{\"Plan\": {\"Plans\": [{\"Alias\": \"pg_type\", \"Filter\": \"(typnamespace = '11'::oid)\", \"Disabled\": false, \"Node Type\": \"Index Scan\", \"Plan Rows\": 504, \"Index Name\": \"pg_type_oid_index\", \"Plan Width\": 68, \"Total Cost\": 48.60, \"Actual Rows\": 10.00, \"Actual Loops\": 1, \"Startup Cost\": 0.28, \"Async Capable\": false, \"Relation Name\": \"pg_type\", \"Index Searches\": 1, \"Parallel Aware\": false, \"Scan Direction\": \"Forward\", \"Local Hit Blocks\": 0, \"Temp Read Blocks\": 0, \"Actual Total Time\": 0.009, \"Local Read Blocks\": 0, \"Shared Hit Blocks\": 3, \"Shared Read Blocks\": 0, \"Actual Startup Time\": 0.008, \"Parent Relationship\": \"Outer\", \"Temp Written Blocks\": 0, \"Local Dirtied Blocks\": 0, \"Local Written Blocks\": 0, \"Shared Dirtied Blocks\": 0, \"Shared Written Blocks\": 0, \"Rows Removed by Filter\": 0}], \"Disabled\": false, \"Node Type\": \"Limit\", \"Plan Rows\": 10, \"Plan Width\": 68, \"Total Cost\": 1.23, \"Actual Rows\": 10.00, \"Actual Loops\": 1, \"Startup Cost\": 0.28, \"Async Capable\": false, \"Parallel Aware\": false, \"Local Hit Blocks\": 0, \"Temp Read Blocks\": 0, \"Actual Total Time\": 0.010, \"Local Read Blocks\": 0, \"Shared Hit Blocks\": 3, \"Shared Read Blocks\": 0, \"Actual Startup Time\": 0.009, \"Temp Written Blocks\": 0, \"Local Dirtied Blocks\": 0, \"Local Written Blocks\": 0, \"Shared Dirtied Blocks\": 0, \"Shared Written Blocks\": 0}, \"Planning\": {\"Local Hit Blocks\": 0, \"Temp Read Blocks\": 0, \"Local Read Blocks\": 0, \"Shared Hit Blocks\": 39, \"Shared Read Blocks\": 1, \"Temp Written Blocks\": 0, \"Local Dirtied Blocks\": 0, \"Local Written Blocks\": 0, \"Shared Dirtied Blocks\": 0, \"Shared Written Blocks\": 0}, \"Triggers\": [], \"Planning Time\": 0.189, \"Execution Time\": 0.021}], \"verdict\" : \"pass\"}\nROLLBACK\n",
+    "stderr": ""
+  },
+  "plan": [
+    {
+      "Plan": {
+        "Plans": [
+          {
+            "Alias": "pg_type",
+            "Filter": "(typnamespace = '11'::oid)",
+            "Disabled": false,
+            "Node Type": "Index Scan",
+            "Plan Rows": 504,
+            "Index Name": "pg_type_oid_index",
+            "Plan Width": 68,
+            "Total Cost": 48.6,
+            "Actual Rows": 10.0,
+            "Actual Loops": 1,
+            "Startup Cost": 0.28,
+            "Async Capable": false,
+            "Relation Name": "pg_type",
+            "Index Searches": 1,
+            "Parallel Aware": false,
+            "Scan Direction": "Forward",
+            "Local Hit Blocks": 0,
+            "Temp Read Blocks": 0,
+            "Actual Total Time": 0.009,
+            "Local Read Blocks": 0,
+            "Shared Hit Blocks": 3,
+            "Shared Read Blocks": 0,
+            "Actual Startup Time": 0.008,
+            "Parent Relationship": "Outer",
+            "Temp Written Blocks": 0,
+            "Local Dirtied Blocks": 0,
+            "Local Written Blocks": 0,
+            "Shared Dirtied Blocks": 0,
+            "Shared Written Blocks": 0,
+            "Rows Removed by Filter": 0
+          }
+        ],
+        "Disabled": false,
+        "Node Type": "Limit",
+        "Plan Rows": 10,
+        "Plan Width": 68,
+        "Total Cost": 1.23,
+        "Actual Rows": 10.0,
+        "Actual Loops": 1,
+        "Startup Cost": 0.28,
+        "Async Capable": false,
+        "Parallel Aware": false,
+        "Local Hit Blocks": 0,
+        "Temp Read Blocks": 0,
+        "Actual Total Time": 0.01,
+        "Local Read Blocks": 0,
+        "Shared Hit Blocks": 3,
+        "Shared Read Blocks": 0,
+        "Actual Startup Time": 0.009,
+        "Temp Written Blocks": 0,
+        "Local Dirtied Blocks": 0,
+        "Local Written Blocks": 0,
+        "Shared Dirtied Blocks": 0,
+        "Shared Written Blocks": 0
+      },
+      "Planning": {
+        "Local Hit Blocks": 0,
+        "Temp Read Blocks": 0,
+        "Local Read Blocks": 0,
+        "Shared Hit Blocks": 39,
+        "Shared Read Blocks": 1,
+        "Temp Written Blocks": 0,
+        "Local Dirtied Blocks": 0,
+        "Local Written Blocks": 0,
+        "Shared Dirtied Blocks": 0,
+        "Shared Written Blocks": 0
+      },
+      "Triggers": [
+
+      ],
+      "Planning Time": 0.189,
+      "Execution Time": 0.021
+    }
+  ],
+  "wal": {
+    "before_lsn": "0/B525360",
+    "after_lsn": "0/B525360"
+  },
+  "log": "\t    PERFORM set_config('atlas.catalog.mutation_denied', 'false', true);\n\t  EXCEPTION WHEN insufficient_privilege THEN\n\t    PERFORM set_config('atlas.catalog.mutation_denied', 'true', true);\n\t  END;\n\tEND $$;\n2026-08-31 14:48:08.652 UTC [470] LOG:  statement: RESET ROLE;\n2026-08-31 14:48:08.652 UTC [470] LOG:  statement: CREATE TEMP TABLE atlas_catalog_plan(plan jsonb);\n2026-08-31 14:48:08.654 UTC [470] LOG:  statement: DO $$ DECLARE captured jsonb; BEGIN\n\t  EXECUTE 'EXPLAIN (ANALYZE, BUFFERS, FORMAT JSON) SELECT oid, typname FROM pg_type WHERE typnamespace = ''pg_catalog''::regnamespace ORDER BY oid LIMIT 10' INTO captured;\n\t  INSERT INTO atlas_catalog_plan VALUES (captured);\n\tEND $$;\n2026-08-31 14:48:08.655 UTC [470] LOG:  statement: WITH\n\ttypes AS (SELECT count(*) AS count, md5(string_agg(oid::text || ':' || typname, ',' ORDER BY oid)) AS digest FROM pg_type WHERE typnamespace = 'pg_catalog'::regnamespace),\n\tfunctions AS (SELECT count(*) AS count, md5(string_agg(oid::text || ':' || proname || ':' || pg_get_function_identity_arguments(oid), ',' ORDER BY oid)) AS digest FROM pg_proc WHERE pronamespace = 'pg_catalog'::regnamespace),\n\toperators AS (SELECT count(*) AS count, md5(string_agg(oid::text || ':' || oprname, ',' ORDER BY oid)) AS digest FROM pg_operator WHERE oprnamespace = 'pg_catalog'::regnamespace),\n\tcasts AS (SELECT count(*) AS count, md5(string_agg(oid::text || ':' || castsource::text || ':' || casttarget::text, ',' ORDER BY oid)) AS digest FROM pg_cast),\n\taccess_methods AS (SELECT count(*) AS count, md5(string_agg(oid::text || ':' || amname, ',' ORDER BY oid)) AS digest FROM pg_am),\n\tcollations AS (SELECT count(*) AS count, md5(string_agg(oid::text || ':' || collname, ',' ORDER BY oid)) AS digest FROM pg_collation),\n\textensions AS (SELECT count(*) AS count, md5(string_agg(name || ':' || default_version, ',' ORDER BY name)) AS digest FROM pg_available_extensions),\n\tcatalog_relations AS (SELECT count(*) AS count, md5(string_agg(c.oid::text || ':' || c.relname, ',' ORDER BY c.oid)) AS digest FROM pg_class c WHERE c.relnamespace = 'pg_catalog'::regnamespace)\n\tSELECT json_build_object(\n\t  'server_version', current_setting('server_version'),\n\t  'types', (SELECT json_build_object('count', count, 'digest', digest) FROM types),\n\t  'functions', (SELECT json_build_object('count', count, 'digest', digest) FROM functions),\n\t  'operators', (SELECT json_build_object('count', count, 'digest', digest) FROM operators),\n\t  'casts', (SELECT json_build_object('count', count, 'digest', digest) FROM casts),\n\t  'access_methods', (SELECT json_build_object('count', count, 'digest', digest) FROM access_methods),\n\t  'collations', (SELECT json_build_object('count', count, 'digest', digest) FROM collations),\n\t  'available_extensions', (SELECT json_build_object('count', count, 'digest', digest) FROM extensions),\n\t  'catalog_relations', (SELECT json_build_object('count', count, 'digest', digest) FROM catalog_relations),\n\t  'security_rejected', current_setting('atlas.catalog.mutation_denied', true) = 'true',\n\t  'oracle_marker', 'ATLAS_SECURITY_PASS:query.catalog-inventory', 'plan', (SELECT plan FROM atlas_catalog_plan),\n\t  'verdict', CASE WHEN (SELECT count FROM types) > 100 AND (SELECT count FROM functions) > 1000\n\t    AND (SELECT count FROM operators) > 500 AND (SELECT count FROM casts) > 100\n\t    AND (SELECT count FROM access_methods) >= 7 AND (SELECT count FROM collations) > 0\n\t    AND (SELECT count FROM extensions) > 20 AND (SELECT count FROM catalog_relations) > 50\n\t    AND current_setting('atlas.catalog.mutation_denied', true) = 'true' THEN 'pass' ELSE 'fail' END\n\t);\n2026-08-31 14:48:08.691 UTC [470] LOG:  statement: ROLLBACK;\n2026-08-31 14:48:08.731 UTC [477] LOG:  statement: SELECT pg_current_wal_lsn()\n",
+  "metric": {
+    "elapsed_ms": 139.519,
+    "catalog_objects": 6158
+  },
+  "oracle": {
+    "kind": "ordered-pg-catalog-digests-and-mutation-refusal",
+    "scenario": "security",
+    "marker": "ATLAS_SECURITY_PASS:query.catalog-inventory",
+    "passed": true
+  },
+  "streams": {
+    "action": [
+      "psql security transaction"
+    ],
+    "network": [
+      "psql-to-PostgreSQL-session"
+    ],
+    "resource": [
+      "SQL",
+      "plan",
+      "WAL",
+      "server-log",
+      "elapsed-metric"
+    ]
+  }
+}

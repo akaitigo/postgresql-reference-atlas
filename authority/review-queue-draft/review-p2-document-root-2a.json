@@ -1,0 +1,39 @@
+{
+  "schema_version": 1,
+  "queue_id": "authority-review-pg-e4c9877a8fc101d28b42",
+  "batch_id": "review-p2-document-root-2a",
+  "status": "pending-human",
+  "machine_assistance": "ordering-and-candidate-clustering-only",
+  "semantic_decisions": "none",
+  "items": [
+    {
+      "anchor_id": "anchor-pg-ca0ebfa50a8523bfbcfe",
+      "document_id": "document-pg-e6dafcd4cb96eb4c",
+      "authority_url": "https://github.com/postgres/postgres/tree/REL_18_6",
+      "document_locator": "git:724edf9bde9d356724ad384a2e196edc3c9f80f7:doc/src/sgml/appendix-obsolete-pgresetxlog.sgml",
+      "source_ids": [
+        "postgresql-source-rel-18.6"
+      ],
+      "locked_source_digest": "sha256:addeb18efe79e717c5ec617a201f6defef3cd3bd7f3d86c5ed69426a40ef4bcb",
+      "inventory_tool_digest": "sha256:097da35cf95014735db866fca94f5db07c0717353928b543bcf9c188ae005d2c",
+      "review_queue_tool_digest": "sha256:409ff9047ea99f14bcfbc26a4a680a8f24e9c99fa04679ee3a20355e5394cdc0",
+      "locator": "document-root",
+      "locator_kind": "document-root",
+      "raw_selector": "document-root",
+      "element_name": "document",
+      "parent_anchor_id": null,
+      "context_start": 0,
+      "context_end": 907,
+      "context_unit": "byte",
+      "context_digest": "sha256:addeb18efe79e717c5ec617a201f6defef3cd3bd7f3d86c5ed69426a40ef4bcb",
+      "existing_mapping_candidate_ids": [],
+      "priority": 2,
+      "priority_reasons": [
+        "document-structure-anchor"
+      ],
+      "candidate_cluster_id": null,
+      "batch_id": "review-p2-document-root-2a",
+      "state": "pending-human"
+    }
+  ]
+}

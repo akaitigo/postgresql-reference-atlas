@@ -1,0 +1,183 @@
+{
+  "schema_version": 1,
+  "pattern_id": "definitive-domain.lifecycle.compatibility-matrix",
+  "target_id": "lifecycle.compatibility-matrix",
+  "scenario": "security",
+  "variant_id": "postgresql-verification-matrix-v2",
+  "environment": {
+    "subject": "PostgreSQL",
+    "server_product": "PostgreSQL",
+    "server_version": "18.6",
+    "server_version_num": "180006",
+    "client_product": "psql",
+    "client_version": "psql (PostgreSQL) 18.6",
+    "runtime_image": "postgres:18.6-alpine",
+    "runtime_identity": "pg-atlas-security-68614-b1cef5",
+    "workers": 1,
+    "retries": 0,
+    "trace_mode": "on",
+    "execution_mode": "real-postgresql-server-client",
+    "row_runtime": {
+      "server_versions": [
+        "14.24",
+        "15.19",
+        "16.15",
+        "17.11",
+        "18.6"
+      ],
+      "images": [
+        "postgres:14.24-alpine@sha256:727876d274666da0b92a445390ba093c84b8e9f8343e1c53cd4e9a7ab2d85310",
+        "postgres:15.19-alpine3.23@sha256:b0dc4a8dc256b963ee25867843d9fd366850e327e4a2a65ccb3c47262d092973",
+        "postgres:16.15-alpine3.23@sha256:421b84e07a72bb8f3715f20501a1fdbe1219aad1fa4af7786a49d9a3f2480296",
+        "postgres:17.11-alpine@sha256:18cfe3ef5e6815560c98237d6216d1e5119702fb0f3894c8785dd58b8bbe5d73",
+        "postgres:18.6-alpine@sha256:d3e1620b530c944afa6e887d22eb899824da68e19c52024bf98f5220c88a65b2"
+      ]
+    }
+  },
+  "sql": {
+    "source": "\n      BEGIN;\n      CREATE ROLE atlas_compat_reader LOGIN PASSWORD 'atlas-scenario-only-password';\n      CREATE TABLE atlas_compat_private(tenant name NOT NULL, payload text NOT NULL);\n      ALTER TABLE atlas_compat_private ENABLE ROW LEVEL SECURITY;\n      CREATE POLICY atlas_compat_policy ON atlas_compat_private USING (tenant = current_user);\n      GRANT SELECT ON atlas_compat_private TO atlas_compat_reader;\n      INSERT INTO atlas_compat_private VALUES ('atlas_compat_reader', 'visible'), ('postgres', 'hidden');\n      SET ROLE atlas_compat_reader;\n      SELECT CASE WHEN count(*) = 1 AND min(payload) = 'visible'\n        THEN 'ATLAS_SECURITY_PASS:lifecycle.compatibility-matrix'\n        ELSE 'ATLAS_SECURITY_FAIL:lifecycle.compatibility-matrix' END\n      FROM atlas_compat_private;\n      DO $$ BEGIN\n        DELETE FROM atlas_compat_private;\n        RAISE EXCEPTION 'delete unexpectedly allowed';\n      EXCEPTION WHEN insufficient_privilege THEN\n        RAISE NOTICE 'ATLAS_SECURITY_PASS:lifecycle.compatibility-matrix';\n      END $$;\n      RESET ROLE;\n      ROLLBACK;\n    ",
+    "stdout": "[{\"server_version\":\"14.24\",\"client_version\":\"psql (PostgreSQL) 14.24\",\"password_encryption\":\"scram-sha-256\",\"role_boundary_passed\":true},{\"server_version\":\"15.19\",\"client_version\":\"psql (PostgreSQL) 15.19\",\"password_encryption\":\"scram-sha-256\",\"role_boundary_passed\":true},{\"server_version\":\"16.15\",\"client_version\":\"psql (PostgreSQL) 16.15\",\"password_encryption\":\"scram-sha-256\",\"role_boundary_passed\":true},{\"server_version\":\"17.11\",\"client_version\":\"psql (PostgreSQL) 17.11\",\"password_encryption\":\"scram-sha-256\",\"role_boundary_passed\":true},{\"server_version\":\"18.6\",\"client_version\":\"psql (PostgreSQL) 18.6\",\"password_encryption\":\"scram-sha-256\",\"role_boundary_passed\":true}]",
+    "stderr": ""
+  },
+  "plan": [
+    {
+      "server_version": "14.24",
+      "plan": [
+        {
+          "Plan": {
+            "Node Type": "Result",
+            "Parallel Aware": false,
+            "Async Capable": false,
+            "Startup Cost": 0.0,
+            "Total Cost": 0.01,
+            "Plan Rows": 1,
+            "Plan Width": 32
+          }
+        }
+      ]
+    },
+    {
+      "server_version": "15.19",
+      "plan": [
+        {
+          "Plan": {
+            "Node Type": "Result",
+            "Parallel Aware": false,
+            "Async Capable": false,
+            "Startup Cost": 0.0,
+            "Total Cost": 0.01,
+            "Plan Rows": 1,
+            "Plan Width": 32
+          }
+        }
+      ]
+    },
+    {
+      "server_version": "16.15",
+      "plan": [
+        {
+          "Plan": {
+            "Node Type": "Result",
+            "Parallel Aware": false,
+            "Async Capable": false,
+            "Startup Cost": 0.0,
+            "Total Cost": 0.01,
+            "Plan Rows": 1,
+            "Plan Width": 32
+          }
+        }
+      ]
+    },
+    {
+      "server_version": "17.11",
+      "plan": [
+        {
+          "Plan": {
+            "Node Type": "Result",
+            "Parallel Aware": false,
+            "Async Capable": false,
+            "Startup Cost": 0.0,
+            "Total Cost": 0.01,
+            "Plan Rows": 1,
+            "Plan Width": 32
+          }
+        }
+      ]
+    },
+    {
+      "server_version": "18.6",
+      "plan": [
+        {
+          "Plan": {
+            "Node Type": "Result",
+            "Parallel Aware": false,
+            "Async Capable": false,
+            "Startup Cost": 0.0,
+            "Total Cost": 0.01,
+            "Plan Rows": 1,
+            "Plan Width": 32,
+            "Disabled": false
+          }
+        }
+      ]
+    }
+  ],
+  "wal": [
+    {
+      "server_version": "14.24",
+      "before_lsn": "0/170ED48",
+      "after_lsn": "0/1730000"
+    },
+    {
+      "server_version": "15.19",
+      "before_lsn": "0/192D440",
+      "after_lsn": "0/194E000"
+    },
+    {
+      "server_version": "16.15",
+      "before_lsn": "0/191E8D8",
+      "after_lsn": "0/1940000"
+    },
+    {
+      "server_version": "17.11",
+      "before_lsn": "0/191E7E8",
+      "after_lsn": "0/194C000"
+    },
+    {
+      "server_version": "18.6",
+      "before_lsn": "0/1BA8BA8",
+      "after_lsn": "0/1BE0000"
+    }
+  ],
+  "log": "14.24:\n2026-08-31 14:45:54.471 UTC [105] LOG:  statement: SELECT 1\n2026-08-31 14:45:54.513 UTC [112] LOG:  statement: SELECT pg_current_wal_lsn()\n2026-08-31 14:45:54.556 UTC [119] LOG:  statement: BEGIN;\n2026-08-31 14:45:54.556 UTC [119] LOG:  statement: CREATE ROLE atlas_compat_reader LOGIN PASSWORD 'atlas-scenario-only-password';\n2026-08-31 14:45:54.559 UTC [119] LOG:  statement: CREATE TABLE atlas_compat_private(tenant name NOT NULL, payload text NOT NULL);\n2026-08-31 14:45:54.562 UTC [119] LOG:  statement: ALTER TABLE atlas_compat_private ENABLE ROW LEVEL SECURITY;\n2026-08-31 14:45:54.562 UTC [119] LOG:  statement: CREATE POLICY atlas_compat_policy ON atlas_compat_private USING (tenant = current_user);\n2026-08-31 14:45:54.563 UTC [119] LOG:  statement: GRANT SELECT ON atlas_compat_private TO atlas_compat_reader;\n2026-08-31 14:45:54.563 UTC [119] LOG:  statement: INSERT INTO atlas_compat_private VALUES ('atlas_compat_reader', 'visible'), ('postgres', 'hidden');\n2026-08-31 14:45:54.563 UTC [119] LOG:  statement: SET ROLE atlas_compat_reader;\n2026-08-31 14:45:54.564 UTC [119] LOG:  statement: SELECT CASE WHEN count(*) = 1 AND min(payload) = 'visible'\n\t        THEN 'ATLAS_SECURITY_PASS:lifecycle.compatibility-matrix'\n2026-08-31 14:45:54.564 UTC [119] LOG:  statement: DO $$ BEGIN\n\t        RAISE NOTICE 'ATLAS_SECURITY_PASS:lifecycle.compatibility-matrix';\n2026-08-31 14:45:54.565 UTC [119] LOG:  statement: RESET ROLE;\n2026-08-31 14:45:54.565 UTC [119] LOG:  statement: ROLLBACK;\n2026-08-31 14:45:54.606 UTC [126] LOG:  statement: SHOW server_version\n2026-08-31 14:45:54.693 UTC [141] LOG:  statement: SHOW password_encryption\n2026-08-31 14:45:54.737 UTC [148] LOG:  statement: SELECT pg_current_wal_lsn()\n2026-08-31 14:45:54.787 UTC [155] LOG:  statement: EXPLAIN (FORMAT JSON) SELECT current_setting('server_version')\n\n15.19:\n2026-08-31 14:45:56.673 UTC [98] LOG:  statement: SELECT 1\n2026-08-31 14:45:56.711 UTC [105] LOG:  statement: SELECT pg_current_wal_lsn()\n2026-08-31 14:45:56.747 UTC [112] LOG:  statement: BEGIN;\n2026-08-31 14:45:56.747 UTC [112] LOG:  statement: CREATE ROLE atlas_compat_reader LOGIN PASSWORD 'atlas-scenario-only-password';\n2026-08-31 14:45:56.750 UTC [112] LOG:  statement: CREATE TABLE atlas_compat_private(tenant name NOT NULL, payload text NOT NULL);\n2026-08-31 14:45:56.752 UTC [112] LOG:  statement: ALTER TABLE atlas_compat_private ENABLE ROW LEVEL SECURITY;\n2026-08-31 14:45:56.752 UTC [112] LOG:  statement: CREATE POLICY atlas_compat_policy ON atlas_compat_private USING (tenant = current_user);\n2026-08-31 14:45:56.752 UTC [112] LOG:  statement: GRANT SELECT ON atlas_compat_private TO atlas_compat_reader;\n2026-08-31 14:45:56.753 UTC [112] LOG:  statement: INSERT INTO atlas_compat_private VALUES ('atlas_compat_reader', 'visible'), ('postgres', 'hidden');\n2026-08-31 14:45:56.753 UTC [112] LOG:  statement: SET ROLE atlas_compat_reader;\n2026-08-31 14:45:56.753 UTC [112] LOG:  statement: SELECT CASE WHEN count(*) = 1 AND min(payload) = 'visible'\n\t        THEN 'ATLAS_SECURITY_PASS:lifecycle.compatibility-matrix'\n2026-08-31 14:45:56.754 UTC [112] LOG:  statement: DO $$ BEGIN\n\t        RAISE NOTICE 'ATLAS_SECURITY_PASS:lifecycle.compatibility-matrix';\n2026-08-31 14:45:56.754 UTC [112] LOG:  statement: RESET ROLE;\n2026-08-31 14:45:56.754 UTC [112] LOG:  statement: ROLLBACK;\n2026-08-31 14:45:56.790 UTC [119] LOG:  statement: SHOW server_version\n2026-08-31 14:45:56.857 UTC [132] LOG:  statement: SHOW password_encryption\n2026-08-31 14:45:56.891 UTC [139] LOG:  statement: SELECT pg_current_wal_lsn()\n2026-08-31 14:45:56.924 UTC [146] LOG:  statement: EXPLAIN (FORMAT JSON) SELECT current_setting('server_version')\n\n16.15:\n2026-08-31 14:45:58.494 UTC [94] LOG:  statement: SELECT 1\n2026-08-31 14:45:58.536 UTC [101] LOG:  statement: SELECT pg_current_wal_lsn()\n2026-08-31 14:45:58.574 UTC [108] LOG:  statement: BEGIN;\n2026-08-31 14:45:58.574 UTC [108] LOG:  statement: CREATE ROLE atlas_compat_reader LOGIN PASSWORD 'atlas-scenario-only-password';\n2026-08-31 14:45:58.577 UTC [108] LOG:  statement: CREATE TABLE atlas_compat_private(tenant name NOT NULL, payload text NOT NULL);\n2026-08-31 14:45:58.579 UTC [108] LOG:  statement: ALTER TABLE atlas_compat_private ENABLE ROW LEVEL SECURITY;\n2026-08-31 14:45:58.580 UTC [108] LOG:  statement: CREATE POLICY atlas_compat_policy ON atlas_compat_private USING (tenant = current_user);\n2026-08-31 14:45:58.580 UTC [108] LOG:  statement: GRANT SELECT ON atlas_compat_private TO atlas_compat_reader;\n2026-08-31 14:45:58.580 UTC [108] LOG:  statement: INSERT INTO atlas_compat_private VALUES ('atlas_compat_reader', 'visible'), ('postgres', 'hidden');\n2026-08-31 14:45:58.581 UTC [108] LOG:  statement: SET ROLE atlas_compat_reader;\n2026-08-31 14:45:58.581 UTC [108] LOG:  statement: SELECT CASE WHEN count(*) = 1 AND min(payload) = 'visible'\n\t        THEN 'ATLAS_SECURITY_PASS:lifecycle.compatibility-matrix'\n2026-08-31 14:45:58.581 UTC [108] LOG:  statement: DO $$ BEGIN\n\t        RAISE NOTICE 'ATLAS_SECURITY_PASS:lifecycle.compatibility-matrix';\n2026-08-31 14:45:58.582 UTC [108] LOG:  statement: RESET ROLE;\n2026-08-31 14:45:58.582 UTC [108] LOG:  statement: ROLLBACK;\n2026-08-31 14:45:58.620 UTC [115] LOG:  statement: SHOW server_version\n2026-08-31 14:45:58.690 UTC [128] LOG:  statement: SHOW password_encryption\n2026-08-31 14:45:58.727 UTC [135] LOG:  statement: SELECT pg_current_wal_lsn()\n2026-08-31 14:45:58.765 UTC [142] LOG:  statement: EXPLAIN (FORMAT JSON) SELECT current_setting('server_version')\n\n17.11:\n2026-08-31 14:46:00.674 UTC [97] LOG:  statement: SELECT 1\n2026-08-31 14:46:00.719 UTC [104] LOG:  statement: SELECT pg_current_wal_lsn()\n2026-08-31 14:46:00.766 UTC [111] LOG:  statement: BEGIN;\n2026-08-31 14:46:00.766 UTC [111] LOG:  statement: CREATE ROLE atlas_compat_reader LOGIN PASSWORD 'atlas-scenario-only-password';\n2026-08-31 14:46:00.770 UTC [111] LOG:  statement: CREATE TABLE atlas_compat_private(tenant name NOT NULL, payload text NOT NULL);\n2026-08-31 14:46:00.772 UTC [111] LOG:  statement: ALTER TABLE atlas_compat_private ENABLE ROW LEVEL SECURITY;\n2026-08-31 14:46:00.773 UTC [111] LOG:  statement: CREATE POLICY atlas_compat_policy ON atlas_compat_private USING (tenant = current_user);\n2026-08-31 14:46:00.773 UTC [111] LOG:  statement: GRANT SELECT ON atlas_compat_private TO atlas_compat_reader;\n2026-08-31 14:46:00.774 UTC [111] LOG:  statement: INSERT INTO atlas_compat_private VALUES ('atlas_compat_reader', 'visible'), ('postgres', 'hidden');\n2026-08-31 14:46:00.774 UTC [111] LOG:  statement: SET ROLE atlas_compat_reader;\n2026-08-31 14:46:00.774 UTC [111] LOG:  statement: SELECT CASE WHEN count(*) = 1 AND min(payload) = 'visible'\n\t        THEN 'ATLAS_SECURITY_PASS:lifecycle.compatibility-matrix'\n2026-08-31 14:46:00.775 UTC [111] LOG:  statement: DO $$ BEGIN\n\t        RAISE NOTICE 'ATLAS_SECURITY_PASS:lifecycle.compatibility-matrix';\n2026-08-31 14:46:00.775 UTC [111] LOG:  statement: RESET ROLE;\n2026-08-31 14:46:00.775 UTC [111] LOG:  statement: ROLLBACK;\n2026-08-31 14:46:00.819 UTC [118] LOG:  statement: SHOW server_version\n2026-08-31 14:46:00.916 UTC [131] LOG:  statement: SHOW password_encryption\n2026-08-31 14:46:00.967 UTC [138] LOG:  statement: SELECT pg_current_wal_lsn()\n2026-08-31 14:46:01.023 UTC [145] LOG:  statement: EXPLAIN (FORMAT JSON) SELECT current_setting('server_version')\n\n18.6:\n2026-08-31 14:46:02.682 UTC [106] LOG:  statement: SELECT 1\n2026-08-31 14:46:02.726 UTC [113] LOG:  statement: SELECT pg_current_wal_lsn()\n2026-08-31 14:46:02.768 UTC [120] LOG:  statement: BEGIN;\n2026-08-31 14:46:02.768 UTC [120] LOG:  statement: CREATE ROLE atlas_compat_reader LOGIN PASSWORD 'atlas-scenario-only-password';\n2026-08-31 14:46:02.771 UTC [120] LOG:  statement: CREATE TABLE atlas_compat_private(tenant name NOT NULL, payload text NOT NULL);\n2026-08-31 14:46:02.774 UTC [120] LOG:  statement: ALTER TABLE atlas_compat_private ENABLE ROW LEVEL SECURITY;\n2026-08-31 14:46:02.774 UTC [120] LOG:  statement: CREATE POLICY atlas_compat_policy ON atlas_compat_private USING (tenant = current_user);\n2026-08-31 14:46:02.775 UTC [120] LOG:  statement: GRANT SELECT ON atlas_compat_private TO atlas_compat_reader;\n2026-08-31 14:46:02.775 UTC [120] LOG:  statement: INSERT INTO atlas_compat_private VALUES ('atlas_compat_reader', 'visible'), ('postgres', 'hidden');\n2026-08-31 14:46:02.775 UTC [120] LOG:  statement: SET ROLE atlas_compat_reader;\n2026-08-31 14:46:02.776 UTC [120] LOG:  statement: SELECT CASE WHEN count(*) = 1 AND min(payload) = 'visible'\n\t        THEN 'ATLAS_SECURITY_PASS:lifecycle.compatibility-matrix'\n2026-08-31 14:46:02.776 UTC [120] LOG:  statement: DO $$ BEGIN\n\t        RAISE NOTICE 'ATLAS_SECURITY_PASS:lifecycle.compatibility-matrix';\n2026-08-31 14:46:02.777 UTC [120] LOG:  statement: RESET ROLE;\n2026-08-31 14:46:02.777 UTC [120] LOG:  statement: ROLLBACK;\n2026-08-31 14:46:02.820 UTC [127] LOG:  statement: SHOW server_version\n2026-08-31 14:46:02.895 UTC [140] LOG:  statement: SHOW password_encryption\n2026-08-31 14:46:02.934 UTC [148] LOG:  statement: SELECT pg_current_wal_lsn()\n2026-08-31 14:46:02.975 UTC [156] LOG:  statement: EXPLAIN (FORMAT JSON) SELECT current_setting('server_version')\n",
+  "metric": {
+    "elapsed_ms_by_version": {
+      "14.24": 49.754,
+      "15.19": 42.882,
+      "16.15": 46.605,
+      "17.11": 55.639,
+      "18.6": 49.89
+    }
+  },
+  "oracle": {
+    "kind": "scram-and-role-boundary-across-14-24-to-18-6",
+    "scenario": "security",
+    "marker": "ATLAS_SECURITY_PASS:lifecycle.compatibility-matrix",
+    "passed": true
+  },
+  "streams": {
+    "action": [
+      "psql security transaction"
+    ],
+    "network": [
+      "psql-to-PostgreSQL-session"
+    ],
+    "resource": [
+      "SQL",
+      "plan",
+      "WAL",
+      "server-log",
+      "elapsed-metric"
+    ]
+  }
+}

@@ -1,0 +1,69 @@
+{
+  "schema_version": 1,
+  "pattern_id": "definitive-domain.publication.provenance",
+  "target_id": "publication.provenance",
+  "scenario": "security",
+  "variant_id": "postgresql-verification-matrix-v2",
+  "environment": {
+    "subject": "PostgreSQL",
+    "server_product": "PostgreSQL",
+    "server_version": "18.6",
+    "server_version_num": "180006",
+    "client_product": "psql",
+    "client_version": "psql (PostgreSQL) 18.6",
+    "runtime_image": "postgres:18.6-alpine",
+    "runtime_identity": "pg-atlas-security-68614-b1cef5",
+    "workers": 1,
+    "retries": 0,
+    "trace_mode": "on",
+    "execution_mode": "real-postgresql-server-client",
+    "row_runtime": {
+      "server_versions": [
+        "18.6"
+      ],
+      "mode": "local-static-verifier"
+    }
+  },
+  "sql": {
+    "source": "#!/usr/bin/env bash\nset -euo pipefail\n\nROOT=\"$(cd \"$(dirname \"${BASH_SOURCE[0]}\")/..\" && pwd)\"\nsource \"$ROOT/scripts/lib.sh\"\n\n# Static Evidence is derived from locked repository inputs. Reuse the full-run\n# ledger's start time so CI/local verification is byte-identical without\n# pretending that runtime PostgreSQL captures happened at a fixed time.\nledger_time=\"${EVIDENCE_LEDGER_TIME:-}\"\nif [[ -z \"$ledger_time\" ]]; then\n  ledger_time=\"$(ruby -rjson -e 'puts JSON.parse(File.read(ARGV.fetch(0))).fetch(\"started_at\")' \"$ROOT/evidence/dependency-rerun.json\")\"\nfi\nexport EVIDENCE_CREATED_AT=\"$ledger_time\"\nrequired=(\n  LICENSE\n  NOTICE\n  SECURITY.md\n  CONTRIBUTING.md\n  atlas.yaml\n  mastery.yaml\n  sources.lock.yaml\n  coverage.yaml\n  skill.package.yaml\n  third_party/manifest.yaml\n  sbom.spdx.json\n  go.mod\n  surface/sql-commands.yaml\n)\n\nfor path in \"${required[@]}\"; do\n  [[ -s \"$ROOT/$path\" ]] || { echo \"必須Fileがありません: $path\" >&2; exit 1; }\ndone\n\nif rg -n --hidden --glob '!evidence/**' --glob '!.git/**' \\\n  '(BEGIN (RSA|OPENSSH|EC) PRIVATE KEY|AKIA[0-9A-Z]{16}|postgres(ql)?://[^[:space:]]+:[^[:space:]@]+@)' \"$ROOT\"; then\n  echo \"秘密情報候補を検出しました\" >&2\n  exit 1\nfi\n\nif ! rg -q 'Apache License' \"$ROOT/LICENSE\"; then\n  echo \"LICENSEがApache-2.0本文ではありません\" >&2\n  exit 1\nfi\n\nif ! jq -e '.spdxVersion == \"SPDX-2.3\" and .packages[0].licenseDeclared == \"Apache-2.0\"' \\\n  \"$ROOT/sbom.spdx.json\" >/dev/null; then\n  echo \"SPDX SBOMが期待形式ではありません\" >&2\n  exit 1\nfi\n\nmkdir -p \"$ROOT/evidence/artifacts\"\nlock_digest=\"$(sha256_file \"$ROOT/sources.lock.yaml\")\"\ncoverage_digest=\"$(awk '/^authority_lock_digest:/ {sub(/^sha256:/, \"\", $2); print $2}' \"$ROOT/coverage.yaml\")\"\nif [[ \"$lock_digest\" != \"$coverage_digest\" ]]; then\n  echo \"Authority Lock DigestがCoverageと一致しません\" >&2\n  exit 1\nfi\njq -n --arg digest \"sha256:$lock_digest\" \\\n  '{authority_lock_digest:$digest,coverage_binding:\"pass\",version_lock:\"PostgreSQL 18.6 / REL_18_6\",verdict:\"pass\"}' \\\n  > \"$ROOT/evidence/artifacts/foundation-authority-lock.json\"\nrecord_evidence foundation-authority-lock \"foundation.authority-lock, foundation.version-lock\" test-report local \\\n  \"make test-static\" \"$ROOT/evidence/artifacts/foundation-authority-lock.json\" pass \\\n  \"$ROOT/scripts\" foundation.authority-lock\n\necho '{\"rights_files\":\"pass\",\"secret_scan\":\"pass\",\"sbom\":\"pass\"}' \\\n  > \"$ROOT/evidence/artifacts/publication-static-gates.json\"\nrecord_evidence publication-static-gates publication.provenance test-report local \\\n  \"make test-static\" \"$ROOT/evidence/artifacts/publication-static-gates.json\" pass \\\n  \"$ROOT/scripts\" publication.static-gates\nruby \"$ROOT/scripts/graph-gates.rb\"\necho \"公開前の静的Gateを通過しました\"\n",
+    "stdout": "Atlas GraphとEvidence Digestの整合を確認しました\n",
+    "stderr": ""
+  },
+  "plan": [
+    {
+      "Plan": {
+        "Node Type": "Local Static Verification",
+        "Actual Rows": 7,
+        "Actual Loops": 1
+      }
+    }
+  ],
+  "wal": {
+  },
+  "log": "Atlas GraphとEvidence Digestの整合を確認しました\n",
+  "metric": {
+    "elapsed_ms": 329.919,
+    "required_files": 7
+  },
+  "oracle": {
+    "kind": "read-only-rights-sbom-secret-and-graph-gates",
+    "scenario": "security",
+    "marker": "ATLAS_SECURITY_PASS:publication.provenance",
+    "passed": true
+  },
+  "streams": {
+    "action": [
+      "psql security transaction"
+    ],
+    "network": [
+      "psql-to-PostgreSQL-session"
+    ],
+    "resource": [
+      "SQL",
+      "plan",
+      "WAL",
+      "server-log",
+      "elapsed-metric"
+    ]
+  }
+}

@@ -1,0 +1,630 @@
+---
+schema_version: 2
+atlas_id: postgresql-reference-atlas
+epoch: '2026-08-28'
+rows:
+- behavior_id: definitive-domain.foundation.version-lock
+  scenario: normal
+  applicability: required
+  rationale: v1で実行済みの証拠がこのScenarioの限定的なBehaviorを立証するため再利用する。
+  proof_obligation_id: foundation.authority-digests
+  evidence_ids:
+  - foundation.authority-lock
+  execution_requirement: runtime
+  profile: local
+- behavior_id: definitive-domain.foundation.version-lock
+  scenario: compatibility
+  applicability: required
+  rationale: v1で実行済みの証拠がこのScenarioの限定的なBehaviorを立証するため再利用する。
+  proof_obligation_id: foundation.authority-digests
+  evidence_ids:
+  - foundation.authority-lock
+  execution_requirement: platform
+  profile: local
+- behavior_id: definitive-domain.foundation.authority-lock
+  scenario: normal
+  applicability: required
+  rationale: v1で実行済みの証拠がこのScenarioの限定的なBehaviorを立証するため再利用する。
+  proof_obligation_id: foundation.authority-digests
+  evidence_ids:
+  - foundation.authority-lock
+  - lab.authority-lock
+  execution_requirement: runtime
+  profile: local
+- behavior_id: definitive-domain.foundation.authority-lock
+  scenario: compatibility
+  applicability: required
+  rationale: v1で実行済みの証拠がこのScenarioの限定的なBehaviorを立証するため再利用する。
+  proof_obligation_id: foundation.authority-digests
+  evidence_ids:
+  - foundation.authority-lock
+  - lab.authority-lock
+  execution_requirement: platform
+  profile: local
+- behavior_id: definitive-domain.query.sql-surface
+  scenario: normal
+  applicability: required
+  rationale: v1で実行済みの証拠がこのScenarioの限定的なBehaviorを立証するため再利用する。
+  proof_obligation_id: query.constraints-and-returning
+  evidence_ids:
+  - lab.sql
+  - lab.sql-surface
+  execution_requirement: runtime
+  profile: container
+- behavior_id: definitive-domain.query.sql-surface
+  scenario: rejection
+  applicability: required
+  rationale: v1で実行済みの証拠がこのScenarioの限定的なBehaviorを立証するため再利用する。
+  proof_obligation_id: query.constraints-and-returning
+  evidence_ids:
+  - lab.sql
+  - lab.sql-surface
+  execution_requirement: runtime
+  profile: container
+- behavior_id: definitive-domain.query.types-constraints
+  scenario: normal
+  applicability: required
+  rationale: v1で実行済みの証拠がこのScenarioの限定的なBehaviorを立証するため再利用する。
+  proof_obligation_id: query.types-constraints
+  evidence_ids:
+  - lab.types-constraints
+  execution_requirement: runtime
+  profile: container
+- behavior_id: definitive-domain.query.types-constraints
+  scenario: boundary
+  applicability: required
+  rationale: v1で実行済みの証拠がこのScenarioの限定的なBehaviorを立証するため再利用する。
+  proof_obligation_id: query.types-constraints
+  evidence_ids:
+  - lab.types-constraints
+  execution_requirement: runtime
+  profile: container
+- behavior_id: definitive-domain.query.types-constraints
+  scenario: rejection
+  applicability: required
+  rationale: v1で実行済みの証拠がこのScenarioの限定的なBehaviorを立証するため再利用する。
+  proof_obligation_id: query.types-constraints
+  evidence_ids:
+  - lab.types-constraints
+  execution_requirement: runtime
+  profile: container
+- behavior_id: definitive-domain.query.catalog-inventory
+  scenario: normal
+  applicability: required
+  rationale: v1で実行済みの証拠がこのScenarioの限定的なBehaviorを立証するため再利用する。
+  proof_obligation_id: query.runtime-catalog-inventory
+  evidence_ids:
+  - lab.catalog-inventory
+  execution_requirement: runtime
+  profile: container
+- behavior_id: definitive-domain.query.catalog-inventory
+  scenario: compatibility
+  applicability: required
+  rationale: v1で実行済みの証拠がこのScenarioの限定的なBehaviorを立証するため再利用する。
+  proof_obligation_id: query.runtime-catalog-inventory
+  evidence_ids:
+  - lab.catalog-inventory
+  execution_requirement: platform
+  profile: container
+- behavior_id: definitive-domain.query.partitioning
+  scenario: normal
+  applicability: required
+  rationale: v1で実行済みの証拠がこのScenarioの限定的なBehaviorを立証するため再利用する。
+  proof_obligation_id: query.partition-routing-pruning
+  evidence_ids:
+  - lab.partitioning
+  execution_requirement: runtime
+  profile: container
+- behavior_id: definitive-domain.query.partitioning
+  scenario: boundary
+  applicability: required
+  rationale: v1で実行済みの証拠がこのScenarioの限定的なBehaviorを立証するため再利用する。
+  proof_obligation_id: query.partition-routing-pruning
+  evidence_ids:
+  - lab.partitioning
+  execution_requirement: runtime
+  profile: container
+- behavior_id: definitive-domain.query.partitioning
+  scenario: performance
+  applicability: required
+  rationale: v1で実行済みの証拠がこのScenarioの限定的なBehaviorを立証するため再利用する。
+  proof_obligation_id: query.partition-routing-pruning
+  evidence_ids:
+  - lab.partitioning
+  execution_requirement: runtime
+  profile: container
+- behavior_id: definitive-domain.query.extension
+  scenario: normal
+  applicability: required
+  rationale: v1で実行済みの証拠がこのScenarioの限定的なBehaviorを立証するため再利用する。
+  proof_obligation_id: query.bundled-extension
+  evidence_ids:
+  - lab.extension
+  execution_requirement: runtime
+  profile: container
+- behavior_id: definitive-domain.query.extension
+  scenario: rejection
+  applicability: required
+  rationale: v1で実行済みの証拠がこのScenarioの限定的なBehaviorを立証するため再利用する。
+  proof_obligation_id: query.bundled-extension
+  evidence_ids:
+  - lab.extension
+  execution_requirement: runtime
+  profile: container
+- behavior_id: definitive-domain.query.extension
+  scenario: performance
+  applicability: required
+  rationale: v1で実行済みの証拠がこのScenarioの限定的なBehaviorを立証するため再利用する。
+  proof_obligation_id: query.bundled-extension
+  evidence_ids:
+  - lab.extension
+  execution_requirement: runtime
+  profile: container
+- behavior_id: definitive-domain.query.security
+  scenario: normal
+  applicability: required
+  rationale: v1で実行済みの証拠がこのScenarioの限定的なBehaviorを立証するため再利用する。
+  proof_obligation_id: query.rls-boundary
+  evidence_ids:
+  - lab.security
+  execution_requirement: runtime
+  profile: container
+- behavior_id: definitive-domain.query.security
+  scenario: rejection
+  applicability: required
+  rationale: v1で実行済みの証拠がこのScenarioの限定的なBehaviorを立証するため再利用する。
+  proof_obligation_id: query.rls-boundary
+  evidence_ids:
+  - lab.security
+  execution_requirement: runtime
+  profile: container
+- behavior_id: definitive-domain.query.security
+  scenario: security
+  applicability: required
+  rationale: v1で実行済みの証拠がこのScenarioの限定的なBehaviorを立証するため再利用する。
+  proof_obligation_id: query.rls-boundary
+  evidence_ids:
+  - lab.security
+  execution_requirement: runtime
+  profile: container
+- behavior_id: definitive-domain.concurrency.mvcc
+  scenario: normal
+  applicability: required
+  rationale: v1で実行済みの証拠がこのScenarioの限定的なBehaviorを立証するため再利用する。
+  proof_obligation_id: concurrency.repeatable-read-snapshot
+  evidence_ids:
+  - lab.mvcc
+  execution_requirement: runtime
+  profile: container
+- behavior_id: definitive-domain.concurrency.mvcc
+  scenario: boundary
+  applicability: required
+  rationale: v1で実行済みの証拠がこのScenarioの限定的なBehaviorを立証するため再利用する。
+  proof_obligation_id: concurrency.repeatable-read-snapshot
+  evidence_ids:
+  - lab.mvcc
+  execution_requirement: runtime
+  profile: container
+- behavior_id: definitive-domain.concurrency.locking
+  scenario: rejection
+  applicability: required
+  rationale: v1で実行済みの証拠がこのScenarioの限定的なBehaviorを立証するため再利用する。
+  proof_obligation_id: concurrency.row-lock-nowait
+  evidence_ids:
+  - lab.locking
+  execution_requirement: runtime
+  profile: container
+- behavior_id: definitive-domain.concurrency.locking
+  scenario: failure
+  applicability: required
+  rationale: v1で実行済みの証拠がこのScenarioの限定的なBehaviorを立証するため再利用する。
+  proof_obligation_id: concurrency.row-lock-nowait
+  evidence_ids:
+  - lab.locking
+  execution_requirement: runtime
+  profile: container
+- behavior_id: definitive-domain.concurrency.locking
+  scenario: recovery
+  applicability: required
+  rationale: v1で実行済みの証拠がこのScenarioの限定的なBehaviorを立証するため再利用する。
+  proof_obligation_id: concurrency.row-lock-nowait
+  evidence_ids:
+  - lab.locking
+  execution_requirement: runtime
+  profile: container
+- behavior_id: definitive-domain.concurrency.deadlock
+  scenario: failure
+  applicability: required
+  rationale: v1で実行済みの証拠がこのScenarioの限定的なBehaviorを立証するため再利用する。
+  proof_obligation_id: concurrency.deadlock-victim
+  evidence_ids:
+  - lab.deadlock
+  execution_requirement: runtime
+  profile: container
+- behavior_id: definitive-domain.concurrency.deadlock
+  scenario: recovery
+  applicability: required
+  rationale: v1で実行済みの証拠がこのScenarioの限定的なBehaviorを立証するため再利用する。
+  proof_obligation_id: concurrency.deadlock-victim
+  evidence_ids:
+  - lab.deadlock
+  execution_requirement: runtime
+  profile: container
+- behavior_id: definitive-domain.performance.planner
+  scenario: normal
+  applicability: required
+  rationale: v1で実行済みの証拠がこのScenarioの限定的なBehaviorを立証するため再利用する。
+  proof_obligation_id: performance.semantic-plan
+  evidence_ids:
+  - lab.planner
+  execution_requirement: runtime
+  profile: container
+- behavior_id: definitive-domain.performance.planner
+  scenario: performance
+  applicability: required
+  rationale: v1で実行済みの証拠がこのScenarioの限定的なBehaviorを立証するため再利用する。
+  proof_obligation_id: performance.semantic-plan
+  evidence_ids:
+  - lab.planner
+  execution_requirement: runtime
+  profile: container
+- behavior_id: definitive-domain.performance.statistics
+  scenario: normal
+  applicability: required
+  rationale: v1で実行済みの証拠がこのScenarioの限定的なBehaviorを立証するため再利用する。
+  proof_obligation_id: performance.extended-statistics
+  evidence_ids:
+  - lab.statistics
+  execution_requirement: runtime
+  profile: container
+- behavior_id: definitive-domain.performance.statistics
+  scenario: performance
+  applicability: required
+  rationale: v1で実行済みの証拠がこのScenarioの限定的なBehaviorを立証するため再利用する。
+  proof_obligation_id: performance.extended-statistics
+  evidence_ids:
+  - lab.statistics
+  execution_requirement: runtime
+  profile: container
+- behavior_id: definitive-domain.performance.index
+  scenario: normal
+  applicability: required
+  rationale: v1で実行済みの証拠がこのScenarioの限定的なBehaviorを立証するため再利用する。
+  proof_obligation_id: performance.partial-index
+  evidence_ids:
+  - lab.index
+  execution_requirement: runtime
+  profile: container
+- behavior_id: definitive-domain.performance.index
+  scenario: performance
+  applicability: required
+  rationale: v1で実行済みの証拠がこのScenarioの限定的なBehaviorを立証するため再利用する。
+  proof_obligation_id: performance.partial-index
+  evidence_ids:
+  - lab.index
+  execution_requirement: runtime
+  profile: container
+- behavior_id: definitive-domain.performance.execution
+  scenario: normal
+  applicability: required
+  rationale: v1で実行済みの証拠がこのScenarioの限定的なBehaviorを立証するため再利用する。
+  proof_obligation_id: performance.execution-evidence
+  evidence_ids:
+  - lab.performance
+  execution_requirement: runtime
+  profile: container
+- behavior_id: definitive-domain.performance.execution
+  scenario: performance
+  applicability: required
+  rationale: v1で実行済みの証拠がこのScenarioの限定的なBehaviorを立証するため再利用する。
+  proof_obligation_id: performance.execution-evidence
+  evidence_ids:
+  - lab.performance
+  execution_requirement: runtime
+  profile: container
+- behavior_id: definitive-domain.operations.backup-recovery
+  scenario: normal
+  applicability: required
+  rationale: v1で実行済みの証拠がこのScenarioの限定的なBehaviorを立証するため再利用する。
+  proof_obligation_id: operations.logical-restore
+  evidence_ids:
+  - lab.backup-recovery
+  execution_requirement: runtime
+  profile: container
+- behavior_id: definitive-domain.operations.backup-recovery
+  scenario: recovery
+  applicability: required
+  rationale: v1で実行済みの証拠がこのScenarioの限定的なBehaviorを立証するため再利用する。
+  proof_obligation_id: operations.logical-restore
+  evidence_ids:
+  - lab.backup-recovery
+  execution_requirement: runtime
+  profile: container
+- behavior_id: definitive-domain.operations.observability
+  scenario: normal
+  applicability: required
+  rationale: v1で実行済みの証拠がこのScenarioの限定的なBehaviorを立証するため再利用する。
+  proof_obligation_id: operations.observability-views
+  evidence_ids:
+  - lab.observability
+  execution_requirement: runtime
+  profile: container
+- behavior_id: definitive-domain.operations.observability
+  scenario: operations
+  applicability: required
+  rationale: v1で実行済みの証拠がこのScenarioの限定的なBehaviorを立証するため再利用する。
+  proof_obligation_id: operations.observability-views
+  evidence_ids:
+  - lab.observability
+  execution_requirement: runtime
+  profile: container
+- behavior_id: definitive-domain.operations.wal
+  scenario: normal
+  applicability: required
+  rationale: v1で実行済みの証拠がこのScenarioの限定的なBehaviorを立証するため再利用する。
+  proof_obligation_id: operations.wal-generation
+  evidence_ids:
+  - lab.wal
+  execution_requirement: runtime
+  profile: container
+- behavior_id: definitive-domain.operations.wal
+  scenario: operations
+  applicability: required
+  rationale: v1で実行済みの証拠がこのScenarioの限定的なBehaviorを立証するため再利用する。
+  proof_obligation_id: operations.wal-generation
+  evidence_ids:
+  - lab.wal
+  execution_requirement: runtime
+  profile: container
+- behavior_id: definitive-domain.operations.pitr-recovery
+  scenario: failure
+  applicability: required
+  rationale: v1で実行済みの証拠がこのScenarioの限定的なBehaviorを立証するため再利用する。
+  proof_obligation_id: operations.named-pitr
+  evidence_ids:
+  - lab.pitr
+  execution_requirement: runtime
+  profile: cluster
+- behavior_id: definitive-domain.operations.pitr-recovery
+  scenario: recovery
+  applicability: required
+  rationale: v1で実行済みの証拠がこのScenarioの限定的なBehaviorを立証するため再利用する。
+  proof_obligation_id: operations.named-pitr
+  evidence_ids:
+  - lab.pitr
+  execution_requirement: runtime
+  profile: cluster
+- behavior_id: definitive-domain.operations.replication
+  scenario: normal
+  applicability: required
+  rationale: v1で実行済みの証拠がこのScenarioの限定的なBehaviorを立証するため再利用する。
+  proof_obligation_id: operations.physical-replication
+  evidence_ids:
+  - lab.replication
+  execution_requirement: runtime
+  profile: cluster
+- behavior_id: definitive-domain.operations.replication
+  scenario: failure
+  applicability: required
+  rationale: v1で実行済みの証拠がこのScenarioの限定的なBehaviorを立証するため再利用する。
+  proof_obligation_id: operations.physical-replication
+  evidence_ids:
+  - lab.replication
+  execution_requirement: runtime
+  profile: cluster
+- behavior_id: definitive-domain.operations.replication
+  scenario: recovery
+  applicability: required
+  rationale: v1で実行済みの証拠がこのScenarioの限定的なBehaviorを立証するため再利用する。
+  proof_obligation_id: operations.physical-replication
+  evidence_ids:
+  - lab.replication
+  execution_requirement: runtime
+  profile: cluster
+- behavior_id: definitive-domain.operations.logical-replication
+  scenario: normal
+  applicability: required
+  rationale: v1で実行済みの証拠がこのScenarioの限定的なBehaviorを立証するため再利用する。
+  proof_obligation_id: operations.logical-replication
+  evidence_ids:
+  - lab.logical-replication
+  execution_requirement: runtime
+  profile: cluster
+- behavior_id: definitive-domain.operations.logical-replication
+  scenario: failure
+  applicability: required
+  rationale: v1で実行済みの証拠がこのScenarioの限定的なBehaviorを立証するため再利用する。
+  proof_obligation_id: operations.logical-replication
+  evidence_ids:
+  - lab.logical-replication
+  execution_requirement: runtime
+  profile: cluster
+- behavior_id: definitive-domain.operations.logical-replication
+  scenario: recovery
+  applicability: required
+  rationale: v1で実行済みの証拠がこのScenarioの限定的なBehaviorを立証するため再利用する。
+  proof_obligation_id: operations.logical-replication
+  evidence_ids:
+  - lab.logical-replication
+  execution_requirement: runtime
+  profile: cluster
+- behavior_id: definitive-domain.operations.failure-injection
+  scenario: failure
+  applicability: required
+  rationale: v1で実行済みの証拠がこのScenarioの限定的なBehaviorを立証するため再利用する。
+  proof_obligation_id: operations.backend-failure
+  evidence_ids:
+  - lab.failure-injection
+  execution_requirement: runtime
+  profile: container
+- behavior_id: definitive-domain.operations.failure-injection
+  scenario: recovery
+  applicability: required
+  rationale: v1で実行済みの証拠がこのScenarioの限定的なBehaviorを立証するため再利用する。
+  proof_obligation_id: operations.backend-failure
+  evidence_ids:
+  - lab.failure-injection
+  execution_requirement: runtime
+  profile: container
+- behavior_id: definitive-domain.operations.maintenance
+  scenario: normal
+  applicability: required
+  rationale: v1で実行済みの証拠がこのScenarioの限定的なBehaviorを立証するため再利用する。
+  proof_obligation_id: operations.vacuum-maintenance
+  evidence_ids:
+  - lab.maintenance
+  execution_requirement: runtime
+  profile: container
+- behavior_id: definitive-domain.operations.maintenance
+  scenario: operations
+  applicability: required
+  rationale: v1で実行済みの証拠がこのScenarioの限定的なBehaviorを立証するため再利用する。
+  proof_obligation_id: operations.vacuum-maintenance
+  evidence_ids:
+  - lab.maintenance
+  execution_requirement: runtime
+  profile: container
+- behavior_id: definitive-domain.operations.maintenance
+  scenario: recovery
+  applicability: required
+  rationale: v1で実行済みの証拠がこのScenarioの限定的なBehaviorを立証するため再利用する。
+  proof_obligation_id: operations.vacuum-maintenance
+  evidence_ids:
+  - lab.maintenance
+  execution_requirement: runtime
+  profile: container
+- behavior_id: definitive-domain.lifecycle.schema-migration
+  scenario: normal
+  applicability: required
+  rationale: v1で実行済みの証拠がこのScenarioの限定的なBehaviorを立証するため再利用する。
+  proof_obligation_id: lifecycle.online-schema-migration
+  evidence_ids:
+  - lab.migration
+  execution_requirement: runtime
+  profile: container
+- behavior_id: definitive-domain.lifecycle.schema-migration
+  scenario: migration
+  applicability: required
+  rationale: v1で実行済みの証拠がこのScenarioの限定的なBehaviorを立証するため再利用する。
+  proof_obligation_id: lifecycle.online-schema-migration
+  evidence_ids:
+  - lab.migration
+  execution_requirement: runtime
+  profile: container
+- behavior_id: definitive-domain.lifecycle.schema-migration
+  scenario: recovery
+  applicability: required
+  rationale: v1で実行済みの証拠がこのScenarioの限定的なBehaviorを立証するため再利用する。
+  proof_obligation_id: lifecycle.online-schema-migration
+  evidence_ids:
+  - lab.migration
+  execution_requirement: runtime
+  profile: container
+- behavior_id: definitive-domain.lifecycle.upgrade
+  scenario: normal
+  applicability: required
+  rationale: v1で実行済みの証拠がこのScenarioの限定的なBehaviorを立証するため再利用する。
+  proof_obligation_id: lifecycle.logical-upgrade
+  evidence_ids:
+  - lab.upgrade
+  execution_requirement: runtime
+  profile: cluster
+- behavior_id: definitive-domain.lifecycle.upgrade
+  scenario: migration
+  applicability: required
+  rationale: v1で実行済みの証拠がこのScenarioの限定的なBehaviorを立証するため再利用する。
+  proof_obligation_id: lifecycle.logical-upgrade
+  evidence_ids:
+  - lab.upgrade
+  execution_requirement: runtime
+  profile: cluster
+- behavior_id: definitive-domain.lifecycle.upgrade
+  scenario: compatibility
+  applicability: required
+  rationale: v1で実行済みの証拠がこのScenarioの限定的なBehaviorを立証するため再利用する。
+  proof_obligation_id: lifecycle.logical-upgrade
+  evidence_ids:
+  - lab.upgrade
+  execution_requirement: platform
+  profile: cluster
+- behavior_id: definitive-domain.lifecycle.pg-upgrade
+  scenario: migration
+  applicability: required
+  rationale: v1で実行済みの証拠がこのScenarioの限定的なBehaviorを立証するため再利用する。
+  proof_obligation_id: lifecycle.binary-pg-upgrade
+  evidence_ids:
+  - lab.pg-upgrade
+  execution_requirement: runtime
+  profile: cluster
+- behavior_id: definitive-domain.lifecycle.pg-upgrade
+  scenario: compatibility
+  applicability: required
+  rationale: v1で実行済みの証拠がこのScenarioの限定的なBehaviorを立証するため再利用する。
+  proof_obligation_id: lifecycle.binary-pg-upgrade
+  evidence_ids:
+  - lab.pg-upgrade
+  execution_requirement: platform
+  profile: cluster
+- behavior_id: definitive-domain.lifecycle.pg-upgrade
+  scenario: recovery
+  applicability: required
+  rationale: v1で実行済みの証拠がこのScenarioの限定的なBehaviorを立証するため再利用する。
+  proof_obligation_id: lifecycle.binary-pg-upgrade
+  evidence_ids:
+  - lab.pg-upgrade
+  execution_requirement: runtime
+  profile: cluster
+- behavior_id: definitive-domain.lifecycle.compatibility-matrix
+  scenario: normal
+  applicability: required
+  rationale: v1で実行済みの証拠がこのScenarioの限定的なBehaviorを立証するため再利用する。
+  proof_obligation_id: lifecycle.cross-version-matrix
+  evidence_ids:
+  - lab.compatibility-matrix
+  execution_requirement: runtime
+  profile: cluster
+- behavior_id: definitive-domain.lifecycle.compatibility-matrix
+  scenario: compatibility
+  applicability: required
+  rationale: v1で実行済みの証拠がこのScenarioの限定的なBehaviorを立証するため再利用する。
+  proof_obligation_id: lifecycle.cross-version-matrix
+  evidence_ids:
+  - lab.compatibility-matrix
+  execution_requirement: platform
+  profile: cluster
+- behavior_id: definitive-domain.skill.router-evaluation
+  scenario: normal
+  applicability: required
+  rationale: v1で実行済みの証拠がこのScenarioの限定的なBehaviorを立証するため再利用する。
+  proof_obligation_id: skill.routing
+  evidence_ids:
+  - skill.router-eval
+  execution_requirement: runtime
+  profile: local
+- behavior_id: definitive-domain.skill.router-evaluation
+  scenario: rejection
+  applicability: required
+  rationale: v1で実行済みの証拠がこのScenarioの限定的なBehaviorを立証するため再利用する。
+  proof_obligation_id: skill.routing
+  evidence_ids:
+  - skill.router-eval
+  execution_requirement: runtime
+  profile: local
+- behavior_id: definitive-domain.publication.provenance
+  scenario: normal
+  applicability: required
+  rationale: v1で実行済みの証拠がこのScenarioの限定的なBehaviorを立証するため再利用する。
+  proof_obligation_id: publication.static-gates
+  evidence_ids:
+  - publication.static-gates
+  execution_requirement: runtime
+  profile: local
+- behavior_id: definitive-domain.publication.provenance
+  scenario: rejection
+  applicability: required
+  rationale: v1で実行済みの証拠がこのScenarioの限定的なBehaviorを立証するため再利用する。
+  proof_obligation_id: publication.static-gates
+  evidence_ids:
+  - publication.static-gates
+  execution_requirement: runtime
+  profile: local

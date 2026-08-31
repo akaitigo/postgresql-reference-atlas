@@ -1,0 +1,15 @@
+---
+schema_version: 1
+id: skill.definitive-proof-routing
+atlas_id: postgresql-reference-atlas
+capability_id: skill.definitive-proof-routing
+statement: PostgreSQL 18.6のTarget別Proof Router Evalは公式Inventory全件とTarget別実行証拠が揃うまでDefinitiveとは判定しない。
+status: proposed
+source_ids:
+- postgresql-docs-18.6
+- postgresql-source-rel-18.6
+proof_obligations:
+- id: skill.definitive-proof-routing.definitive
+  statement: 対象Surfaceの正常、境界、拒否、障害、回復を適用可能性とともに検証する。
+  acceptance_criteria:
+  - Inventory未分類ゼロかつ適用可能な全ScenarioがTarget固有Evidenceへ接続されること。

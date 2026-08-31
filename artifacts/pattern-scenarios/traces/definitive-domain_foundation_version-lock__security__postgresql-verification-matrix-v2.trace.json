@@ -1,0 +1,77 @@
+{
+  "schema_version": 1,
+  "pattern_id": "definitive-domain.foundation.version-lock",
+  "target_id": "foundation.version-lock",
+  "scenario": "security",
+  "variant_id": "postgresql-verification-matrix-v2",
+  "environment": {
+    "subject": "PostgreSQL",
+    "server_product": "PostgreSQL",
+    "server_version": "18.6",
+    "server_version_num": "180006",
+    "client_product": "psql",
+    "client_version": "psql (PostgreSQL) 18.6",
+    "runtime_image": "postgres:18.6-alpine",
+    "runtime_identity": "pg-atlas-security-68614-b1cef5",
+    "workers": 1,
+    "retries": 0,
+    "trace_mode": "on",
+    "execution_mode": "real-postgresql-server-client",
+    "row_runtime": {
+      "server_versions": [
+        "18.6"
+      ],
+      "containers": [
+        "pg-atlas-security-68614-b1cef5"
+      ]
+    }
+  },
+  "sql": {
+    "source": "\n      SELECT CASE WHEN current_setting('server_version_num') = '180006'\n        AND current_setting('password_encryption') = 'scram-sha-256'\n        THEN 'ATLAS_SECURITY_PASS:foundation.version-lock'\n        ELSE 'ATLAS_SECURITY_FAIL:foundation.version-lock' END;\n    ",
+    "stdout": "                    case                     \n---------------------------------------------\n ATLAS_SECURITY_PASS:foundation.version-lock\n(1 row)\n\n",
+    "stderr": ""
+  },
+  "plan": [
+    {
+      "Plan": {
+        "Node Type": "Result",
+        "Parallel Aware": false,
+        "Async Capable": false,
+        "Startup Cost": 0.0,
+        "Total Cost": 0.01,
+        "Plan Rows": 1,
+        "Plan Width": 4,
+        "Disabled": false
+      }
+    }
+  ],
+  "wal": {
+    "before_lsn": "0/1BF7FE8",
+    "after_lsn": "0/1BF7FE8"
+  },
+  "log": "2026-08-31 14:45:51.733 UTC [165] LOG:  statement: RESET ROLE;\n2026-08-31 14:45:51.733 UTC [165] LOG:  statement: ROLLBACK;\n2026-08-31 14:45:51.770 UTC [172] LOG:  statement: SELECT pg_current_wal_lsn()\n2026-08-31 14:45:51.805 UTC [179] LOG:  statement: EXPLAIN (FORMAT JSON) SELECT 1 AS security_probe\n2026-08-31 14:45:51.857 UTC [186] LOG:  statement: SELECT pg_current_wal_lsn()\n2026-08-31 14:45:51.894 UTC [193] LOG:  statement: BEGIN;\n2026-08-31 14:45:51.894 UTC [193] LOG:  statement: CREATE ROLE atlas_tenant_a;\n2026-08-31 14:45:51.894 UTC [193] LOG:  statement: CREATE ROLE atlas_tenant_b;\n2026-08-31 14:45:51.895 UTC [193] LOG:  statement: CREATE TABLE atlas_mvcc_tenant(tenant name, value text);\n2026-08-31 14:45:51.896 UTC [193] LOG:  statement: ALTER TABLE atlas_mvcc_tenant ENABLE ROW LEVEL SECURITY;\n2026-08-31 14:45:51.896 UTC [193] LOG:  statement: CREATE POLICY atlas_tenant_policy ON atlas_mvcc_tenant USING (tenant = current_user);\n2026-08-31 14:45:51.896 UTC [193] LOG:  statement: GRANT SELECT ON atlas_mvcc_tenant TO atlas_tenant_a, atlas_tenant_b;\n2026-08-31 14:45:51.897 UTC [193] LOG:  statement: INSERT INTO atlas_mvcc_tenant VALUES ('atlas_tenant_a', 'a'), ('atlas_tenant_b', 'b');\n2026-08-31 14:45:51.897 UTC [193] LOG:  statement: SET ROLE atlas_tenant_a;\n2026-08-31 14:45:51.897 UTC [193] LOG:  statement: SELECT CASE WHEN count(*) = 1 AND min(value) = 'a'\n\t        THEN 'ATLAS_SECURITY_PASS:concurrency.mvcc'\n2026-08-31 14:45:51.897 UTC [193] LOG:  statement: RESET ROLE;\n2026-08-31 14:45:51.897 UTC [193] LOG:  statement: ROLLBACK;\n2026-08-31 14:45:51.931 UTC [200] LOG:  statement: SELECT pg_current_wal_lsn()\n2026-08-31 14:45:51.965 UTC [207] LOG:  statement: EXPLAIN (FORMAT JSON) SELECT 1 AS security_probe\n2026-08-31 14:45:52.017 UTC [214] LOG:  statement: SELECT pg_current_wal_lsn()\n2026-08-31 14:45:52.050 UTC [221] LOG:  statement: SELECT CASE WHEN current_setting('server_version') LIKE '18.6%'\n\t        THEN 'ATLAS_SECURITY_PASS:foundation.authority-lock'\n2026-08-31 14:45:52.090 UTC [228] LOG:  statement: SELECT pg_current_wal_lsn()\n2026-08-31 14:45:52.132 UTC [235] LOG:  statement: EXPLAIN (FORMAT JSON) SELECT 1 AS security_probe\n2026-08-31 14:45:52.202 UTC [242] LOG:  statement: SELECT pg_current_wal_lsn()\n2026-08-31 14:45:52.249 UTC [249] LOG:  statement: SELECT CASE WHEN current_setting('server_version_num') = '180006'\n\t        THEN 'ATLAS_SECURITY_PASS:foundation.version-lock'\n2026-08-31 14:45:52.303 UTC [256] LOG:  statement: SELECT pg_current_wal_lsn()\n2026-08-31 14:45:52.350 UTC [263] LOG:  statement: EXPLAIN (FORMAT JSON) SELECT 1 AS security_probe\n",
+  "metric": {
+    "elapsed_ms": 47.256
+  },
+  "oracle": {
+    "kind": "exact-server-version-and-scram-default",
+    "scenario": "security",
+    "marker": "ATLAS_SECURITY_PASS:foundation.version-lock",
+    "passed": true
+  },
+  "streams": {
+    "action": [
+      "psql security transaction"
+    ],
+    "network": [
+      "psql-to-PostgreSQL-session"
+    ],
+    "resource": [
+      "SQL",
+      "plan",
+      "WAL",
+      "server-log",
+      "elapsed-metric"
+    ]
+  }
+}
